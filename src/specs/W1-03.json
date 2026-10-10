@@ -1,0 +1,55 @@
+{
+  "id": "W1-03", "pal": "B3", "audience": "content creators",
+  "lines": [
+    "You filmed it. Edited it. Finally posted it.",
+    "Now do it again, for five more apps.",
+    "New caption. New size. Re-upload. Repeat.",
+    "And there goes your whole Sunday.",
+    "So tell FansaChat, once.",
+    "It builds the whole flow, and tests it.",
+    "Upload once. It shows up everywhere.",
+    "More time creating. Less time copy-pasting.",
+    "FansaChat. Post once, show up everywhere. Join the waitlist."
+  ],
+  "beats": [
+    {"line": 0, "hero": {"x": 0.84, "y": 0.78, "mood": "happy", "size": 210}, "els": [
+      {"t": "title", "style": "flip", "text": "Filmed. Edited. Posted.", "size": 112, "x": 0.5, "y": 0.2, "p45": {"y": 0.16, "s": 0.85}},
+      {"t": "card", "icon": "youtube", "title": "New video is live", "sub": "Posted on 1 platform", "badge": "1 / 6", "x": 0.42, "y": 0.58, "word": "posted", "p45": {"x": 0.5, "y": 0.52}},
+      {"t": "card", "icon": "▶", "title": "12:48 · 4K", "sub": "Edited in 9 hours", "x": 0.7, "y": 0.4, "d": 10, "rot": 4, "p45": {"x": 0.5, "y": 0.34, "s": 0.8}}
+    ]},
+    {"line": 1, "go": "right", "hero": {"x": 0.5, "y": 0.86, "mood": "wow", "size": 190}, "els": [
+      {"t": "title", "text": "Now… five more apps.", "em": ["five", "more"], "size": 110, "x": 0.5, "y": 0.16},
+      {"t": "cloud", "apps": ["instagram", "tiktok", "x", "linkedin", "threads", "facebook", "pinterest", "youtube"], "x": 0.5, "y": 0.52, "word": "five", "p45": {"y": 0.5}}
+    ]},
+    {"line": 2, "go": "down", "hero": {"x": 0.86, "y": 0.8, "mood": "meh", "size": 190}, "els": [
+      {"t": "pile", "items": [["linkedin", "Post rewritten", "not posted"], ["x", "Thread draft (280 chars)", "not posted"], ["threads", "Caption copied", "not posted"], ["instagram", "Reel 9:16 export", "uploading 37%…"]], "x": 0.38, "y": 0.58, "p45": {"x": 0.5, "y": 0.5}},
+      {"t": "title", "style": "tape", "text": "REPEAT.", "size": 120, "x": 0.72, "y": 0.22, "word": "repeat", "p45": {"x": 0.5, "y": 0.13}},
+      {"t": "badges", "n": 7, "r": 330, "x": 0.38, "y": 0.5, "word": "upload", "p45": {"x": 0.5, "y": 0.5}}
+    ]},
+    {"line": 3, "go": "right", "hero": {"x": 0.5, "y": 0.78, "mood": "meh", "size": 200}, "els": [
+      {"t": "strike", "text": "Sunday plans", "size": 130, "x": 0.5, "y": 0.32, "word": "sunday"},
+      {"t": "counter", "label": "HOURS", "from": 0, "to": 6, "suffix": "h", "size": 90, "x": 0.5, "y": 0.56, "d": 6, "bg": "#E8362B"}
+    ]},
+    {"line": 4, "go": "zoom", "focus": [0.5, 0.32], "hero": {"x": 0.88, "y": 0.3, "mood": "happy", "size": 170}, "els": [
+      {"t": "title", "text": "So tell FansaChat, once.", "em": ["FansaChat,", "once."], "size": 120, "x": 0.5, "y": 0.45}
+    ]},
+    {"dur": 160, "go": "right", "hero": {"x": 0.88, "y": 0.2, "mood": "wow", "size": 150}, "els": [
+      {"t": "chat", "text": "When I publish a YouTube video, post the clip to Instagram, X and LinkedIn with a caption, share it in my Telegram channel and log it in my Notion content calendar.", "typeDur": 120, "x": 0.5, "y": 0.52, "cw": 1300, "p45": {"cw": 860}}
+    ]},
+    {"line": 5, "go": "down", "hold": 70, "hero": {"x": 0.9, "y": 0.86, "mood": "happy", "size": 160}, "els": [
+      {"t": "flow", "nodes": [["youtube", "YouTube", "New video"], ["instagram", "Instagram", "Post clip"], ["x", "X", "Post + link"], ["linkedin", "LinkedIn", "Share"], ["telegram", "Telegram", "Channel post"], ["notion", "Notion", "Calendar: Published"]], "layout": "snake", "layout45": "col", "x": 0.5, "y": 0.5, "p45": {"s": 0.8}}
+    ]},
+    {"line": 6, "go": "right", "hero": {"x": 0.12, "y": 0.84, "mood": "wink", "size": 180}, "els": [
+      {"t": "title", "text": "Upload once. Everywhere.", "em": ["Everywhere."], "size": 100, "align": "left", "x": 0.3, "y": 0.4, "p45": {"x": 0.5, "y": 0.12, "s": 0.85}},
+      {"t": "phone", "notes": [["instagram", "Posted to Instagram ✓", "Reel + caption"], ["linkedin", "Shared on LinkedIn ✓", "3 reactions already"], ["notion", "Calendar updated ✓", "Status: Published"]], "x": 0.74, "y": 0.5, "ps": 1.05, "p45": {"x": 0.5, "y": 0.58, "ps": 0.95}}
+    ]},
+    {"line": 7, "go": "down", "hero": {"x": 0.5, "y": 0.84, "mood": "happy", "size": 200}, "els": [
+      {"t": "title", "style": "roll", "text": "More time creating.", "size": 120, "x": 0.5, "y": 0.3},
+      {"t": "strike", "text": "Less time copy-pasting.", "size": 80, "x": 0.5, "y": 0.52, "word": "less"},
+      {"t": "conveyor", "apps": ["youtube", "instagram", "x", "linkedin", "threads", "telegram", "notion", "canva", "figma"], "x": 0, "y": 0.8, "dir": 1}
+    ]},
+    {"line": 8, "go": "zoom", "focus": [0.5, 0.5], "els": [
+      {"t": "end", "tag": "Post once. Show up everywhere.", "apps": ["youtube", "instagram", "x", "linkedin", "threads", "telegram", "notion", "canva", "figma", "spotify"], "ctaWord": "join", "x": 0.5, "y": 0.5}
+    ]}
+  ]
+}

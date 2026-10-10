@@ -1,0 +1,105 @@
+# One-shot video pipeline (free on public runners): voice -> Whisper pick -> parallel render (16:9 + 4:5) -> join + loudnorm.
+# Run: gh workflow run make.yml -f ids='["W1-03","W1-04"]'
+name: make
+on:
+  workflow_dispatch:
+    inputs:
+      ids: { description: 'JSON array of spec ids', required: true }
+      parts: { description: 'chunks per format', required: false, default: '[0,1,2,3,4,5]' }
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix: { id: '${{ fromJSON(inputs.ids) }}', shard: [0, 1, 2, 3] }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: Install Chatterbox (CPU)
+        run: |
+          pip install --quiet torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install --quiet chatterbox-tts==0.1.7
+      - uses: actions/cache@v4
+        with: { path: ~/.cache/huggingface, key: chatterbox-std-v1 }
+      - name: Generate shard
+        env: { CB_THREADS: '4' }
+        run: |
+          python scripts/mkjobs.py ${{ matrix.id }}
+          python - <<'EOF'
+          import json
+          j=json.load(open("voices/jobs/${{ matrix.id }}.json")); s=${{ matrix.shard }}
+          json.dump([x for i,x in enumerate(j) if i%4==s],open("shard.json","w"))
+          EOF
+          python voices/cb_std_batch.py shard.json
+      - uses: actions/upload-artifact@v4
+        with: { name: 'voice-${{ matrix.id }}-${{ matrix.shard }}', path: out/, retention-days: 1 }
+  pick:
+    needs: voice
+    if: always()
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: { id: '${{ fromJSON(inputs.ids) }}' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install --quiet faster-whisper==1.1.1 numpy && sudo apt-get -qq install -y ffmpeg >/dev/null
+      - uses: actions/download-artifact@v4
+        with: { path: gen, pattern: 'voice-${{ matrix.id }}-*', merge-multiple: true }
+      - run: python scripts/pick.py ${{ matrix.id }}
+      - uses: actions/upload-artifact@v4
+        with: { name: 'vo-${{ matrix.id }}', path: 'public/v/${{ matrix.id }}/', retention-days: 1 }
+  chunk:
+    needs: pick
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix: { id: '${{ fromJSON(inputs.ids) }}', fmt: ['16x9', '4x5'], part: '${{ fromJSON(inputs.parts) }}' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - uses: actions/download-artifact@v4
+        with: { name: 'vo-${{ matrix.id }}', path: 'public/v/${{ matrix.id }}' }
+      - name: Render chunk
+        run: |
+          C="${{ matrix.id }}-${{ matrix.fmt }}"
+          npx remotion compositions src/kit/index.ts > comps.txt 2>&1 || true
+          N=$(grep -E "^[[:space:]]*$C[[:space:]]" comps.txt | grep -oE "[0-9]+ \([0-9.]+ sec\)" | grep -oE "^[0-9]+" | head -1)
+          K=$(python3 -c "print(len(${{ inputs.parts }}))"); P=${{ matrix.part }}
+          A=$(( N * P / K )); B=$(( N * (P + 1) / K - 1 ))
+          npx remotion render src/kit/index.ts "$C" "part$P.mp4" --frames=$A-$B --muted --gl=swangle --concurrency=100% --crf=19 --log=error --timeout=120000
+      - uses: actions/upload-artifact@v4
+        with: { name: 'part-${{ matrix.id }}-${{ matrix.fmt }}-${{ matrix.part }}', path: 'part${{ matrix.part }}.mp4', retention-days: 1 }
+  join:
+    needs: chunk
+    if: always()
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: { id: '${{ fromJSON(inputs.ids) }}', fmt: ['16x9', '4x5'] }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install --quiet numpy && sudo apt-get -qq install -y ffmpeg >/dev/null
+      - uses: actions/download-artifact@v4
+        with: { name: 'vo-${{ matrix.id }}', path: 'public/v/${{ matrix.id }}' }
+      - uses: actions/download-artifact@v4
+        with: { path: parts, pattern: 'part-${{ matrix.id }}-${{ matrix.fmt }}-*', merge-multiple: true }
+      - name: Audio + join + loudnorm
+        run: |
+          C="${{ matrix.id }}-${{ matrix.fmt }}"
+          python scripts/mix.py ${{ matrix.id }} audio.wav
+          for p in $(python3 -c "print(' '.join(str(x) for x in ${{ inputs.parts }}))"); do echo "file 'parts/part$p.mp4'" >> list.txt; done
+          ffmpeg -v error -f concat -safe 0 -i list.txt -c copy video.mp4
+          mkdir -p out && ffmpeg -v error -i video.mp4 -i audio.wav -map 0:v -map 1:a -c:v copy -af loudnorm=I=-14:TP=-1.5:LRA=7 -c:a aac -b:a 192k -shortest "out/FansaChat_${{ matrix.id }}_${{ matrix.fmt }}.mp4"
+      - uses: actions/upload-artifact@v4
+        with: { name: 'final-${{ matrix.id }}-${{ matrix.fmt }}', path: out/*.mp4, retention-days: 1 }
