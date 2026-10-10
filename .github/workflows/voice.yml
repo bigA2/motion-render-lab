@@ -1,0 +1,44 @@
+# Free, parallel emotional-voice generation on GitHub Actions (standard Chatterbox, CPU, MIT).
+# jobs file = JSON list of {ref, text, out, exaggeration, cfg_weight, temperature, seed}; ref/out are repo-relative paths.
+# Run: gh workflow run voice.yml --ref <branch> -f jobs=voices/jobs/week2.json -f shards=10
+name: voice
+on:
+  workflow_dispatch:
+    inputs:
+      jobs: { description: "Jobs JSON (repo path)", required: true }
+      shards: { description: "Parallel shards (max 10)", required: false, default: "10" }
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix: { shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: voices }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install Chatterbox (CPU)
+        run: |
+          pip install --quiet torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install --quiet chatterbox-tts==0.1.7
+      - name: Cache model weights
+        uses: actions/cache@v4
+        with: { path: ~/.cache/huggingface, key: chatterbox-std-v1 }
+      - name: Generate shard
+        if: ${{ matrix.shard < fromJSON(inputs.shards) }}
+        env: { CB_THREADS: "4" }
+        run: |
+          python - <<'EOF'
+          import json
+          j = json.load(open("${{ inputs.jobs }}", encoding="utf-8"))
+          n = ${{ inputs.shards }}; s = ${{ matrix.shard }}
+          part = [x for i, x in enumerate(j) if i % n == s]
+          json.dump(part, open("shard.json", "w"))
+          print(len(part), "jobs")
+          EOF
+          python voices/cb_std_batch.py shard.json
+      - uses: actions/upload-artifact@v4
+        if: ${{ matrix.shard < fromJSON(inputs.shards) }}
+        with: { name: "voice-${{ matrix.shard }}", path: out/, retention-days: 1 }

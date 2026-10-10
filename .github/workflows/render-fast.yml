@@ -1,0 +1,71 @@
+# Fast free rendering: split one composition into N parallel frame chunks (video only), render the audio once,
+# then join + mux. Same output as render.yml, ~N times faster. Private repo: 2,000 free Linux minutes/month.
+# Run: gh workflow run render-fast.yml --ref <branch> -f entry=src/v3/index.ts -f comp=IntroV3-16x9 -f props='{"endcard":"x"}'
+name: render-fast
+on:
+  workflow_dispatch:
+    inputs:
+      entry: { description: "Remotion entry file", required: true }
+      comp: { description: "Composition id", required: true }
+      props: { description: "Input props JSON", required: false, default: "{}" }
+      crf: { description: "x264 crf", required: false, default: "20" }
+      out: { description: "Output file name (no extension)", required: false, default: "" }
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      frames: ${{ steps.m.outputs.frames }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - id: m
+        run: |
+          npx remotion compositions "${{ inputs.entry }}" --props='${{ inputs.props }}' > comps.txt 2>&1 || true
+          cat comps.txt
+          N=$(grep -E "^[[:space:]]*${{ inputs.comp }}[[:space:]]" comps.txt | grep -oE "[0-9]+ \([0-9.]+ sec\)" | grep -oE "^[0-9]+" | head -1)
+          [ -z "$N" ] && { echo "could not read frame count"; exit 1; }
+          echo "frames=$N" >> $GITHUB_OUTPUT
+          echo "frames=$N"
+  chunk:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      matrix: { part: [0, 1, 2, 3] }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - name: Render chunk
+        run: |
+          N=${{ needs.plan.outputs.frames }}; P=${{ matrix.part }}
+          A=$(( N * P / 4 )); B=$(( N * (P + 1) / 4 - 1 ))
+          npx remotion render "${{ inputs.entry }}" "${{ inputs.comp }}" "part$P.mp4" --frames=$A-$B --muted --props='${{ inputs.props }}' --gl=swangle --concurrency=100% --crf=${{ inputs.crf }} --log=error --timeout=120000
+      - uses: actions/upload-artifact@v4
+        with: { name: "part${{ matrix.part }}", path: "part${{ matrix.part }}.mp4", retention-days: 2 }
+  join:
+    needs: chunk
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - name: Render audio once
+        run: npx remotion render "${{ inputs.entry }}" "${{ inputs.comp }}" audio.m4a --codec=aac --props='${{ inputs.props }}' --log=error --timeout=120000
+      - uses: actions/download-artifact@v4
+        with: { path: parts, pattern: "part*", merge-multiple: true }
+      - name: Join + mux
+        run: |
+          sudo apt-get -qq install -y ffmpeg >/dev/null
+          for i in 0 1 2 3; do echo "file 'parts/part$i.mp4'" >> list.txt; done
+          ffmpeg -v error -f concat -safe 0 -i list.txt -c copy video.mp4
+          NAME="${{ inputs.out }}"; [ -z "$NAME" ] && NAME="${{ inputs.comp }}"
+          mkdir -p out && ffmpeg -v error -i video.mp4 -i audio.m4a -map 0:v -map 1:a -c:v copy -c:a copy -shortest "out/$NAME.mp4"
+      - uses: actions/upload-artifact@v4
+        with: { name: renders, path: out/*.mp4, retention-days: 14 }

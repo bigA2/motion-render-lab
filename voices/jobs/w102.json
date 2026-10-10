@@ -1,0 +1,236 @@
+[
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "You did the work. Delivered on time.",
+  "out": "out/W102/01_take1.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "You did the work. Delivered on time.",
+  "out": "out/W102/01_take2.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Sent the invoice. Feeling proud.",
+  "out": "out/W102/02_take1.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Sent the invoice. Feeling proud.",
+  "out": "out/W102/02_take2.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Day seven. Seen. No reply.",
+  "out": "out/W102/03_take1.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Day seven. Seen. No reply.",
+  "out": "out/W102/03_take2.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Day fourteen. You write the email, delete it, write it again.",
+  "out": "out/W102/04_take1.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Day fourteen. You write the email, delete it, write it again.",
+  "out": "out/W102/04_take2.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Day twenty-one. Rent is due. They're still ghosting you.",
+  "out": "out/W102/05_take1.wav",
+  "exaggeration": 0.55,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Day twenty-one. Rent is due. They're still ghosting you.",
+  "out": "out/W102/05_take2.wav",
+  "exaggeration": 0.55,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Chasing money shouldn't be your second job.",
+  "out": "out/W102/06_take1.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Chasing money shouldn't be your second job.",
+  "out": "out/W102/06_take2.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "So tell Fan-sa Chat, once.",
+  "out": "out/W102/07_take1.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "So tell Fan-sa Chat, once.",
+  "out": "out/W102/07_take2.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "So tell Fan-sa Chat, once.",
+  "out": "out/W102/07_take3.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 3
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "It builds the workflow, and tests it.",
+  "out": "out/W102/08_take1.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "It builds the workflow, and tests it.",
+  "out": "out/W102/08_take2.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Now the reminders go out without you.",
+  "out": "out/W102/09_take1.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Now the reminders go out without you.",
+  "out": "out/W102/09_take2.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "No awkward emails. Just paid invoices.",
+  "out": "out/W102/10_take1.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "No awkward emails. Just paid invoices.",
+  "out": "out/W102/10_take2.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Fan-sa Chat. Get paid, without chasing.",
+  "out": "out/W102/11_take1.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Fan-sa Chat. Get paid, without chasing.",
+  "out": "out/W102/11_take2.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Fan-sa Chat. Get paid, without chasing.",
+  "out": "out/W102/11_take3.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 3
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Join the waitlist.",
+  "out": "out/W102/12_take1.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 1
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Join the waitlist.",
+  "out": "out/W102/12_take2.wav",
+  "exaggeration": 0.45,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 2
+ }
+]
