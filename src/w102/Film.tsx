@@ -40,8 +40,8 @@ const Orb: React.FC<{x: number; y: number; size: number; mood?: 'happy' | 'meh' 
   const f = useCurrentFrame();
   const blink = Math.max(0, 1 - Math.abs(((f + 13) % 70) - 3) / 3);
   if (o <= 0.01) return null;
-  return <div style={{position: 'absolute', left: x - size / 2, top: y - size / 2, width: size, height: size, opacity: o, filter: 'drop-shadow(0 30px 40px rgba(120,30,0,0.35))'}}>
-    <ThreeCanvas width={size} height={size} camera={{position: [0, 0, 3.4], fov: 32}} gl={{alpha: true, antialias: true}}>
+  return <div style={{position: 'absolute', left: x - size * 0.8, top: y - size * 0.8, width: size * 1.6, height: size * 1.6, opacity: o, filter: 'drop-shadow(0 30px 40px rgba(120,30,0,0.35))'}}>
+    <ThreeCanvas width={Math.round(size * 1.6)} height={Math.round(size * 1.6)} camera={{position: [0, 0, 5.4], fov: 32}} gl={{alpha: true, antialias: true}}>
       <Studio />
       <Pip mood={mood} squash={squash + Math.sin(f / 9) * 0.02} blink={blink} look={look} tilt={tilt} />
     </ThreeCanvas>
@@ -84,7 +84,7 @@ const Invoice: React.FC<{w?: number; stamp?: number; overdue?: number}> = ({w = 
 };
 
 // ---------------- scenes ----------------
-const Center: React.FC<{children: React.ReactNode; y?: number}> = ({children, y = 0}) => <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `translateY(${y}px)`}}>{children}</AbsoluteFill>;
+const Center: React.FC<{children: React.ReactNode; y?: number}> = ({children, y = 0}) => { const {width: W, height: H} = useVideoConfig(); const k = W > H ? 1.55 : 1.25; return <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `translateY(${y}px) scale(${k})`}}>{children}</AbsoluteFill>; };
 
 const S1: React.FC = () => { // delivered + sent (lines 1-2)
   const f = useCurrentFrame(); const {width: W, height: H} = useVideoConfig(); const w = W > H;
@@ -126,16 +126,16 @@ const S4: React.FC = () => { // day 14: type, delete, retype + Notion board stuc
   const n = f < 40 ? Math.floor(len * ease(f, 4, 40, (x) => x)) : f < 58 ? Math.floor(len * (1 - ease(f, 44, 58, (x) => x))) : Math.floor(len * ease(f, 62, 96, (x) => x));
   const cols = ['Sent', 'Waiting', 'Paid'];
   return <AbsoluteFill>
-    <div style={{position: 'absolute', left: w ? 90 : 60, right: w ? undefined : 60, top: w ? 210 : 230, width: w ? 860 : undefined}}>
+    <div style={{position: 'absolute', left: w ? 80 : 60, right: w ? undefined : 60, top: w ? 260 : 230, width: w ? 900 : undefined}}>
       <Glass style={{padding: 0, overflow: 'hidden'}}>
-        <div style={{background: '#128C7E', padding: '18px 24px', display: 'flex', alignItems: 'center', gap: 14}}><Logo k="whatsapp" size={34} color="#fff" /><span style={{fontFamily: F.ui, fontWeight: 800, fontSize: 26, color: '#fff'}}>Bloom Studio</span></div>
-        <div style={{padding: 26, background: '#ECE5DD', minHeight: 120}}><div style={{background: '#fff', borderRadius: 22, padding: '16px 22px', fontFamily: F.ui, fontSize: 30, color: C.ink, minHeight: 40}}>{DRAFT.slice(0, n)}<Caret h={30} color="#128C7E" /></div></div>
+        <div style={{background: '#128C7E', padding: '18px 24px', display: 'flex', alignItems: 'center', gap: 14}}><Logo k="whatsapp" size={34} color="#fff" /><span style={{fontFamily: F.ui, fontWeight: 800, fontSize: w ? 34 : 28, color: '#fff'}}>Bloom Studio</span></div>
+        <div style={{padding: 26, background: '#ECE5DD', minHeight: 120}}><div style={{background: '#fff', borderRadius: 22, padding: '16px 22px', fontFamily: F.ui, fontSize: w ? 40 : 32, color: C.ink, minHeight: 40}}>{DRAFT.slice(0, n)}<Caret h={30} color="#128C7E" /></div></div>
       </Glass>
     </div>
-    <div style={{position: 'absolute', left: w ? 1010 : 60, right: w ? 70 : 60, top: w ? 210 : 650, display: 'flex', gap: 16}}>
+    <div style={{position: 'absolute', left: w ? 1030 : 60, right: w ? 70 : 60, top: w ? 260 : 650, display: 'flex', gap: 16}}>
       {cols.map((c, i) => <div key={c} style={{flex: 1, background: 'rgba(255,255,255,0.55)', borderRadius: 22, padding: 16, minHeight: w ? 360 : 300}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 8, fontFamily: F.ui, fontWeight: 800, fontSize: 22, color: C.ink, marginBottom: 12}}>{i === 0 && <Logo k="notion" size={22} />}{c}</div>
-        {i === 1 && <div style={{background: '#fff', borderRadius: 16, padding: 14, boxShadow: '0 10px 20px -10px rgba(0,0,0,0.3)', transform: `translateX(${Math.sin(f / 2) * (f > 70 ? 3 : 0)}px)`}}><div style={{fontFamily: F.ui, fontWeight: 700, fontSize: 20, color: C.ink}}>Bloom Studio · $1,200</div><div style={{marginTop: 8, display: 'inline-block', padding: '4px 10px', borderRadius: 10, background: '#FFE1DD', color: C.red, fontFamily: F.ui, fontWeight: 700, fontSize: 16, opacity: 0.6 + 0.4 * Math.sin(f / 5)}}>14 days</div></div>}
+        {i === 1 && <div style={{background: '#fff', borderRadius: 16, padding: 14, boxShadow: '0 10px 20px -10px rgba(0,0,0,0.3)', transform: `translateX(${Math.sin(f / 2) * (f > 70 ? 3 : 0)}px)`}}><div style={{fontFamily: F.ui, fontWeight: 700, fontSize: w ? 26 : 20, color: C.ink}}>Bloom Studio · $1,200</div><div style={{marginTop: 8, display: 'inline-block', padding: '4px 10px', borderRadius: 10, background: '#FFE1DD', color: C.red, fontFamily: F.ui, fontWeight: 700, fontSize: 16, opacity: 0.6 + 0.4 * Math.sin(f / 5)}}>14 days</div></div>}
       </div>)}
     </div>
   </AbsoluteFill>;
@@ -172,12 +172,12 @@ const S7: React.FC = () => { // chat box + typing (lines 7 + typing beat)
   const box = sp(f, 4, 30, 14, 140);
   const t = typed(PROMPT, f - typeAt, 42);
   const sent = f >= sentAt;
-  const zoom = interpolate(f, [typeAt - 6, typeAt + 10, sentAt - 4, sentAt + 6], [1, w ? 1.18 : 1.12, w ? 1.18 : 1.12, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
+  const zoom = interpolate(f, [typeAt - 6, typeAt + 10, sentAt - 4, sentAt + 6], [1, w ? 1.18 : 1.06, w ? 1.18 : 1.06, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
   return <AbsoluteFill style={{background: C.cream}}>
     <AbsoluteFill style={{background: `radial-gradient(60% 50% at 50% 30%, rgba(255,154,61,0.35), transparent 70%)`}} />
     <div style={{position: 'absolute', left: 0, right: 0, top: w ? 90 : 130, display: 'flex', justifyContent: 'center', opacity: 1 - ease(f, typeAt, typeAt + 8)}}><BlurWords text="So tell FansaChat, once." at={0} size={w ? 96 : 80} color={C.ink} accent={C.o1} em={['FansaChat,', 'once.']} font={F.head} stagger={4} /></div>
-    <Center y={w ? 70 : 90}>
-      <div style={{transform: `scale(${box * zoom}) perspective(1600px) rotateX(${(1 - box) * 30}deg)`, width: w ? 1300 : 960}}>
+    <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `translateY(${w ? 70 : 90}px)`}}>
+      <div style={{transform: `scale(${box * zoom}) perspective(1600px) rotateX(${(1 - box) * 30}deg)`, width: w ? 1300 : 900}}>
         <Glass style={{padding: 34, background: '#fff', border: `3px solid ${f >= typeAt && !sent ? C.o1 : '#F1E3D3'}`}}>
           <div style={{display: 'flex', alignItems: 'center', gap: 12, fontFamily: F.ui, fontWeight: 700, fontSize: 24, color: '#8C7B6A', marginBottom: 16}}><Img src={staticFile('logo-fansa.png')} style={{width: 40, height: 40}} />FansaChat · new workflow</div>
           <div style={{fontFamily: F.ui, fontWeight: 500, fontSize: w ? 40 : 38, lineHeight: 1.35, color: C.ink, minHeight: w ? 160 : 260, paddingRight: 90}}>{sent ? PROMPT : t}{!sent && f >= typeAt && <Caret h={40} color={C.o1} />}{f < typeAt && <span style={{color: '#B9A895'}}>Describe what should happen…</span>}</div>
@@ -188,7 +188,7 @@ const S7: React.FC = () => { // chat box + typing (lines 7 + typing beat)
           </div>
         </Glass>
       </div>
-    </Center>
+    </AbsoluteFill>
   </AbsoluteFill>;
 };
 
@@ -203,21 +203,21 @@ const NODES: {k: string; t: string; s: string; x: number; y: number}[] = [
 ];
 const S9: React.FC = () => {
   const f = useCurrentFrame(); const {width: W, height: H} = useVideoConfig(); const w = W > H;
-  const gx = w ? 330 : 250, gy = w ? 330 : 360, nodeW = w ? 280 : 230;
-  const pos = (n: typeof NODES[0]) => w ? {x: 120 + n.x * gx, y: 330 + n.y * gy} : {x: 80 + (n.x % 3) * gx + (n.x >= 3 ? 125 : 0), y: 330 + (n.x >= 3 ? 1 : 0) * 300 + n.y * 600};
-  const pan = w ? interpolate(f, [10, 120], [0, -380], {...clamp, easing: Easing.inOut(Easing.cubic)}) : interpolate(f, [10, 120], [0, -120], clamp);
+  const gx = w ? 345 : 0, gy = w ? 330 : 0, nodeW = w ? 300 : 360;
+  const pos = (n: typeof NODES[0]) => w ? {x: 70 + n.x * gx, y: 300 + n.y * gy} : (n.y ? {x: 640, y: 250 + 2 * 190} : {x: 90, y: 250 + n.x * 190});
+  const pan = interpolate(f, [0, 140], [40, -40], clamp);
   const rib = ease(f, 0, 16);
   return <AbsoluteFill style={{background: C.cream}}>
     <AbsoluteFill style={{backgroundImage: 'radial-gradient(rgba(26,18,6,0.12) 1.5px, transparent 1.5px)', backgroundSize: '40px 40px', transform: `translateX(${pan * 0.3}px)`}} />
     <AbsoluteFill style={{transform: `translateX(${pan}px)`}}>
       <svg style={{position: 'absolute', inset: 0, overflow: 'visible'}} width="100%" height="100%">
-        {NODES.slice(0, 5).map((n, i) => { if (i === 0) return null; const a = pos(NODES[i - 1]), b = pos(n); const k = ease(f, 12 + i * 10, 22 + i * 10); return <line key={i} x1={a.x + nodeW} y1={a.y + 60} x2={a.x + nodeW + (b.x - a.x - nodeW) * k} y2={a.y + 60 + (b.y - a.y) * k} stroke={C.o1} strokeWidth={6} strokeLinecap="round" strokeDasharray="2 14" />; })}
-        {(() => { const a = pos(NODES[0]), b = pos(NODES[5]); const k = ease(f, 70, 86); return <path d={`M${a.x + nodeW / 2},${a.y + 130} C${a.x + nodeW / 2},${b.y + 60} ${b.x - 80},${b.y + 60} ${b.x},${b.y + 60}`} stroke={C.green} strokeWidth={6} fill="none" pathLength={1} strokeDasharray={`${k} 1`} />; })()}
+        {NODES.slice(0, 5).map((n, i) => { if (i === 0) return null; const a = pos(NODES[i - 1]), b = pos(n); const k = ease(f, 12 + i * 10, 22 + i * 10); return w ? <line key={i} x1={a.x + nodeW} y1={a.y + 60} x2={a.x + nodeW + (b.x - a.x - nodeW) * k} y2={a.y + 60 + (b.y - a.y) * k} stroke={C.o1} strokeWidth={6} strokeLinecap="round" strokeDasharray="2 14" /> : <line key={i} x1={a.x + 60} y1={a.y + 120} x2={a.x + 60} y2={a.y + 120 + (b.y - a.y - 120) * k} stroke={C.o1} strokeWidth={6} strokeLinecap="round" strokeDasharray="2 14" />; })}
+        {(() => { const a = pos(NODES[0]), b = pos(NODES[5]); const k = ease(f, 70, 86); return <path d={w ? `M${a.x + nodeW / 2},${a.y + 130} C${a.x + nodeW / 2},${b.y + 60} ${b.x - 80},${b.y + 60} ${b.x},${b.y + 60}` : `M${a.x + nodeW},${a.y + 60} C${b.x + 120},${a.y + 60} ${b.x + 120},${b.y - 80} ${b.x + 120},${b.y}`} stroke={C.green} strokeWidth={6} fill="none" pathLength={1} strokeDasharray={`${k} 1`} />; })()}
       </svg>
       {NODES.map((n, i) => { const p = pos(n); const at = 8 + i * 10; const s = sp(f, at, 30, 12, 200); const ok = f >= 90 + i * 5; return <div key={i} style={{position: 'absolute', left: p.x, top: p.y, width: nodeW, transform: `scale(${s})`}}>
         <Glass style={{padding: '18px 20px', display: 'flex', gap: 14, alignItems: 'center', background: '#fff', border: i === 5 ? `2px solid ${C.green}` : undefined}}>
-          {n.k === 'clock' ? <div style={{width: 64, height: 64, borderRadius: 18, background: '#FFF1E2', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 34}}>⏱</div> : <AppTile k={n.k} size={64} />}
-          <div><div style={{fontFamily: F.ui, fontWeight: 800, fontSize: 24, color: C.ink}}>{n.t}</div><div style={{fontFamily: F.ui, fontSize: 17, color: '#8C7B6A'}}>{ok ? <span style={{color: C.green, fontWeight: 800}}>✓ Tested</span> : n.s}</div></div>
+          {n.k === 'clock' ? <div style={{width: 72, height: 72, borderRadius: 18, background: '#FFF1E2', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 34}}>⏱</div> : <AppTile k={n.k} size={72} />}
+          <div><div style={{fontFamily: F.ui, fontWeight: 800, fontSize: 30, color: C.ink}}>{n.t}</div><div style={{fontFamily: F.ui, fontSize: 21, color: '#8C7B6A'}}>{ok ? <span style={{color: C.green, fontWeight: 800}}>✓ Tested</span> : n.s}</div></div>
         </Glass>
         {i === 5 && <div style={{position: 'absolute', top: -30, left: 10, fontFamily: F.ui, fontWeight: 800, fontSize: 18, color: C.green}}>IF PAID</div>}
       </div>; })}
@@ -240,7 +240,7 @@ const S10: React.FC = () => { // phone + notifications (lines 10-11)
   const phoneX = w ? 1180 : W / 2 - 210;
   return <AbsoluteFill>
     <svg style={{position: 'absolute', inset: 0}} width="100%" height="100%"><path d={w ? `M${W * 0.45},${H} Q${W * 0.62},${H * 0.05} ${W * 0.98},${H * 0.55}` : `M0,${H * 0.95} Q${W * 0.5},${H * 0.15} ${W},${H * 0.95}`} stroke="rgba(255,255,255,0.7)" strokeWidth={4} fill="none" strokeDasharray="4 14" pathLength={1} /></svg>
-    <div style={{position: 'absolute', left: phoneX, top: (w ? 120 : 330) + (1 - up) * 900, width: 420, height: 840, borderRadius: 66, background: '#121212', padding: 12, transform: `rotate(${(1 - up) * 14 + Math.sin(f / 30) * 2}deg)`, boxShadow: '0 60px 120px -40px rgba(80,20,0,0.6)'}}>
+    <div style={{position: 'absolute', left: phoneX, top: (w ? 120 : 420) + (1 - up) * 900, width: 420, height: 840, borderRadius: 66, background: '#121212', padding: 12, transform: `rotate(${(1 - up) * 14 + Math.sin(f / 30) * 2}deg)`, boxShadow: '0 60px 120px -40px rgba(80,20,0,0.6)'}}>
       <div style={{width: '100%', height: '100%', borderRadius: 56, background: 'linear-gradient(170deg,#FFE7CC,#FFB27A)', position: 'relative', overflow: 'hidden'}}>
         <div style={{position: 'absolute', top: 14, left: 150, width: 108, height: 30, borderRadius: 15, background: '#121212'}} />
         <div style={{position: 'absolute', top: 70, width: '100%', textAlign: 'center', fontFamily: F.ui, fontWeight: 300, fontSize: 90, color: C.ink}}>9:41</div>

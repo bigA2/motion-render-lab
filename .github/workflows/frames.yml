@@ -27,7 +27,7 @@ jobs:
             mkdir -p "st/$c"
             for k in $(seq 0 $(( ${{ inputs.n }} - 1 ))); do
               F=$(( (N - 1) * k / (${{ inputs.n }} - 1) ))
-              npx remotion still "${{ inputs.entry }}" "$c" "st/$c/$(printf %03d $k).png" --frame=$F --gl=swangle --log=error || echo "FAIL $c $F"
+              npx remotion still "${{ inputs.entry }}" "$c" "st/$c/$(printf %03d $k).png" --frame=$F --gl=swangle --log=error --timeout=120000 || echo "FAIL $c $F"
             done
             ffmpeg -v error -pattern_type glob -i "st/$c/*.png" -vf "scale=360:-1,tile=${{ inputs.n }}x1" -frames:v 1 "sheets/$c.jpg" || true
           done
