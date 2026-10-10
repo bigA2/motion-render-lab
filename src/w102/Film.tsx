@@ -203,26 +203,26 @@ const NODES: {k: string; t: string; s: string; x: number; y: number}[] = [
 ];
 const S9: React.FC = () => {
   const f = useCurrentFrame(); const {width: W, height: H} = useVideoConfig(); const w = W > H;
-  const gx = w ? 345 : 0, gy = w ? 330 : 0, nodeW = w ? 300 : 360;
-  const pos = (n: typeof NODES[0]) => w ? {x: 70 + n.x * gx, y: 300 + n.y * gy} : (n.y ? {x: 640, y: 250 + 2 * 190} : {x: 90, y: 250 + n.x * 190});
+  const nodeW = w ? 440 : 380, nodeH = w ? 130 : 120;
+  const pos = (n: typeof NODES[0]) => { if (w) { const L = [[120, 230], [740, 230], [1360, 230], [1360, 560], [740, 560], [120, 640]]; const i = NODES.indexOf(n); return {x: L[i][0], y: L[i][1]}; } return n.y ? {x: 640, y: 250 + 2 * 200} : {x: 80, y: 220 + n.x * 200}; };
   const pan = interpolate(f, [0, 140], [40, -40], clamp);
   const rib = ease(f, 0, 16);
   return <AbsoluteFill style={{background: C.cream}}>
     <AbsoluteFill style={{backgroundImage: 'radial-gradient(rgba(26,18,6,0.12) 1.5px, transparent 1.5px)', backgroundSize: '40px 40px', transform: `translateX(${pan * 0.3}px)`}} />
     <AbsoluteFill style={{transform: `translateX(${pan}px)`}}>
       <svg style={{position: 'absolute', inset: 0, overflow: 'visible'}} width="100%" height="100%">
-        {NODES.slice(0, 5).map((n, i) => { if (i === 0) return null; const a = pos(NODES[i - 1]), b = pos(n); const k = ease(f, 12 + i * 10, 22 + i * 10); return w ? <line key={i} x1={a.x + nodeW} y1={a.y + 60} x2={a.x + nodeW + (b.x - a.x - nodeW) * k} y2={a.y + 60 + (b.y - a.y) * k} stroke={C.o1} strokeWidth={6} strokeLinecap="round" strokeDasharray="2 14" /> : <line key={i} x1={a.x + 60} y1={a.y + 120} x2={a.x + 60} y2={a.y + 120 + (b.y - a.y - 120) * k} stroke={C.o1} strokeWidth={6} strokeLinecap="round" strokeDasharray="2 14" />; })}
-        {(() => { const a = pos(NODES[0]), b = pos(NODES[5]); const k = ease(f, 70, 86); return <path d={w ? `M${a.x + nodeW / 2},${a.y + 130} C${a.x + nodeW / 2},${b.y + 60} ${b.x - 80},${b.y + 60} ${b.x},${b.y + 60}` : `M${a.x + nodeW},${a.y + 60} C${b.x + 120},${a.y + 60} ${b.x + 120},${b.y - 80} ${b.x + 120},${b.y}`} stroke={C.green} strokeWidth={6} fill="none" pathLength={1} strokeDasharray={`${k} 1`} />; })()}
+        {NODES.slice(0, 5).map((n, i) => { if (i === 0) return null; const A = pos(NODES[i - 1]), B = pos(n); const ax = A.x + nodeW / 2, ay = A.y + nodeH / 2, bx = B.x + nodeW / 2, by = B.y + nodeH / 2; const k = ease(f, 12 + i * 10, 22 + i * 10); return <line key={i} x1={ax} y1={ay} x2={ax + (bx - ax) * k} y2={ay + (by - ay) * k} stroke={C.o1} strokeWidth={7} strokeLinecap="round" strokeDasharray="2 16" />; })}
+        {(() => { const A = pos(NODES[0]), B = pos(NODES[5]); const k = ease(f, 70, 86); const ax = A.x + nodeW / 2, ay = A.y + nodeH / 2, bx = B.x + nodeW / 2, by = B.y + nodeH / 2; return <path d={`M${ax},${ay} C${ax - 60},${(ay + by) / 2} ${bx - 60},${(ay + by) / 2} ${bx},${by}`} stroke={C.green} strokeWidth={7} fill="none" pathLength={1} strokeDasharray={`${k} 1`} />; })()}
       </svg>
       {NODES.map((n, i) => { const p = pos(n); const at = 8 + i * 10; const s = sp(f, at, 30, 12, 200); const ok = f >= 90 + i * 5; return <div key={i} style={{position: 'absolute', left: p.x, top: p.y, width: nodeW, transform: `scale(${s})`}}>
-        <Glass style={{padding: '18px 20px', display: 'flex', gap: 14, alignItems: 'center', background: '#fff', border: i === 5 ? `2px solid ${C.green}` : undefined}}>
-          {n.k === 'clock' ? <div style={{width: 72, height: 72, borderRadius: 18, background: '#FFF1E2', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 34}}>⏱</div> : <AppTile k={n.k} size={72} />}
-          <div><div style={{fontFamily: F.ui, fontWeight: 800, fontSize: 30, color: C.ink}}>{n.t}</div><div style={{fontFamily: F.ui, fontSize: 21, color: '#8C7B6A'}}>{ok ? <span style={{color: C.green, fontWeight: 800}}>✓ Tested</span> : n.s}</div></div>
+        <Glass style={{padding: '20px 24px', height: nodeH, boxSizing: 'border-box', display: 'flex', gap: 18, alignItems: 'center', background: '#fff', border: i === 5 ? `3px solid ${C.green}` : undefined}}>
+          {n.k === 'clock' ? <div style={{width: 86, height: 86, borderRadius: 18, background: '#FFF1E2', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 34}}>⏱</div> : <AppTile k={n.k} size={86} />}
+          <div><div style={{fontFamily: F.ui, fontWeight: 800, fontSize: w ? 38 : 32, color: C.ink}}>{n.t}</div><div style={{fontFamily: F.ui, fontSize: w ? 26 : 22, color: '#8C7B6A'}}>{ok ? <span style={{color: C.green, fontWeight: 800}}>✓ Tested</span> : n.s}</div></div>
         </Glass>
-        {i === 5 && <div style={{position: 'absolute', top: -30, left: 10, fontFamily: F.ui, fontWeight: 800, fontSize: 18, color: C.green}}>IF PAID</div>}
+        {i === 5 && <div style={{position: 'absolute', top: -30, left: 10, fontFamily: F.ui, fontWeight: 800, fontSize: 26, color: C.green}}>IF PAID</div>}
       </div>; })}
     </AbsoluteFill>
-    <div style={{position: 'absolute', left: 0, right: 0, bottom: w ? 70 : 110, display: 'flex', justifyContent: 'center'}}><div style={{padding: '14px 30px', borderRadius: 40, background: C.ink, color: '#fff', fontFamily: F.ui, fontWeight: 800, fontSize: 30, opacity: ease(f, 110, 120), transform: `scale(${sp(f, 110, 30, 10, 220)})`}}>✓ Test run succeeded</div></div>
+    <div style={{position: 'absolute', left: 0, right: 0, bottom: w ? 70 : 110, display: 'flex', justifyContent: 'center'}}><div style={{padding: '14px 30px', borderRadius: 40, background: C.ink, color: '#fff', fontFamily: F.ui, fontWeight: 800, fontSize: 40, opacity: ease(f, 110, 120), transform: `scale(${sp(f, 110, 30, 10, 220)})`}}>✓ Test run succeeded</div></div>
     {/* ribbon wipe */}
     <svg style={{position: 'absolute', inset: 0, pointerEvents: 'none'}} width="100%" height="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none">
       <defs><linearGradient id="rb" x1="0" x2="1"><stop offset="0" stopColor="#FF3D6E" /><stop offset="0.5" stopColor={C.o1} /><stop offset="1" stopColor="#FFC77A" /></linearGradient></defs>
@@ -237,10 +237,10 @@ const S10: React.FC = () => { // phone + notifications (lines 10-11)
   const n1 = 18, n2 = n1 + 26;
   const a11 = AT[9] - AT[8] + 2;
   const notes = [{at: n1, i: 'whatsapp', t: 'Friendly reminder sent ✓', b: 'Bloom Studio · invoice #0042'}, {at: n2, i: 'stripe', t: '💸 Paid! $1,200.00', b: 'Thank-you sent · added to QuickBooks'}];
-  const phoneX = w ? 1180 : W / 2 - 210;
+  const phoneX = w ? 1200 : W / 2 - 210;
   return <AbsoluteFill>
     <svg style={{position: 'absolute', inset: 0}} width="100%" height="100%"><path d={w ? `M${W * 0.45},${H} Q${W * 0.62},${H * 0.05} ${W * 0.98},${H * 0.55}` : `M0,${H * 0.95} Q${W * 0.5},${H * 0.15} ${W},${H * 0.95}`} stroke="rgba(255,255,255,0.7)" strokeWidth={4} fill="none" strokeDasharray="4 14" pathLength={1} /></svg>
-    <div style={{position: 'absolute', left: phoneX, top: (w ? 120 : 420) + (1 - up) * 900, width: 420, height: 840, borderRadius: 66, background: '#121212', padding: 12, transform: `rotate(${(1 - up) * 14 + Math.sin(f / 30) * 2}deg)`, boxShadow: '0 60px 120px -40px rgba(80,20,0,0.6)'}}>
+    <div style={{position: 'absolute', left: phoneX, top: (w ? 120 : 420) + (1 - up) * 900, width: 420, height: 840, borderRadius: 66, background: '#121212', padding: 12, transformOrigin: '50% 0%', transform: `scale(${w ? 1.12 : 1}) rotate(${(1 - up) * 14 + Math.sin(f / 30) * 2}deg)`, boxShadow: '0 60px 120px -40px rgba(80,20,0,0.6)'}}>
       <div style={{width: '100%', height: '100%', borderRadius: 56, background: 'linear-gradient(170deg,#FFE7CC,#FFB27A)', position: 'relative', overflow: 'hidden'}}>
         <div style={{position: 'absolute', top: 14, left: 150, width: 108, height: 30, borderRadius: 15, background: '#121212'}} />
         <div style={{position: 'absolute', top: 70, width: '100%', textAlign: 'center', fontFamily: F.ui, fontWeight: 300, fontSize: 90, color: C.ink}}>9:41</div>
@@ -283,7 +283,7 @@ const orbAt = (f: number, W: number, H: number, w: boolean) => {
     [AT[3], w ? W * 0.5 : W * 0.75, w ? H * 0.82 : H * 0.92, w ? 200 : 230, 'meh'],
     [AT[4], W * 0.84, H * 0.78, w ? 220 : 240, 'wow'],
     [AT[5], W * 0.5, H * 0.86, w ? 200 : 220, 'meh'],
-    [AT[6] + 2, W * 0.5, w ? 210 : 260, w ? 170 : 190, 'happy'],
+    [AT[6] + 2, w ? W * 0.88 : W * 0.84, w ? H * 0.42 : H * 0.28, w ? 170 : 180, 'happy'],
     [AT[6] + Math.round(V[6].dur * 30) + 4, w ? W * 0.84 : W * 0.82, w ? 170 : 200, 150, 'wow'],
     [AT[7], W * 0.9, H * 0.86, 170, 'happy'],
     [AT[9], w ? W * 0.62 : W * 0.15, H * 0.82, w ? 190 : 200, 'wink'],
