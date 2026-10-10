@@ -24,7 +24,7 @@ export const ICON: Record<string, SI> = {
   dropbox: si.siDropbox, airtable: si.siAirtable, asana: si.siAsana, calendly: si.siCalendly, zoom: si.siZoom, gcal: si.siGooglecalendar,
   mailchimp: si.siMailchimp, figma: si.siFigma, canva: si.siCanva, instagram: si.siInstagram, youtube: si.siYoutube, xero: si.siXero,
   quickbooks: si.siQuickbooks, salesforce: si.siSalesforce, jira: si.siJira, github: si.siGithub, linear: si.siLinear, clickup: si.siClickup,
-  typeform: si.siTypeform, woo: si.siWoocommerce, paypal: si.siPaypal, wise: si.siWise,
+  typeform: si.siTypeform, woo: si.siWoocommerce, paypal: si.siPaypal, wise: si.siWise, toggl: si.siToggl, upwork: si.siUpwork, fiverr: si.siFiverr,
 } as unknown as Record<string, SI>;
 export const Logo: React.FC<{k: string; size?: number; color?: string}> = ({k, size = 40, color}) => {
   const i = ICON[k];

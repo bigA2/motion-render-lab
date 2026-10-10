@@ -1,0 +1,466 @@
+[
+ {
+  "file": "w102/01.wav",
+  "dur": 3.09,
+  "text": "You did the work. Delivered on time.",
+  "words": [
+   {
+    "w": "You",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "did",
+    "s": 0.38,
+    "e": 0
+   },
+   {
+    "w": "the",
+    "s": 0.77,
+    "e": 0
+   },
+   {
+    "w": "work",
+    "s": 1.15,
+    "e": 0
+   },
+   {
+    "w": "Delivered",
+    "s": 1.54,
+    "e": 0
+   },
+   {
+    "w": "on",
+    "s": 1.92,
+    "e": 0
+   },
+   {
+    "w": "time",
+    "s": 2.31,
+    "e": 0
+   }
+  ]
+ },
+ {
+  "file": "w102/02.wav",
+  "dur": 2.32,
+  "text": "Sent the invoice. Feeling proud.",
+  "words": [
+   {
+    "w": "Sent",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "the",
+    "s": 0.38,
+    "e": 0
+   },
+   {
+    "w": "invoice",
+    "s": 0.77,
+    "e": 0
+   },
+   {
+    "w": "Feeling",
+    "s": 1.15,
+    "e": 0
+   },
+   {
+    "w": "proud",
+    "s": 1.54,
+    "e": 0
+   }
+  ]
+ },
+ {
+  "file": "w102/03.wav",
+  "dur": 2.32,
+  "text": "Day seven. Seen. No reply.",
+  "words": [
+   {
+    "w": "Day",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "seven",
+    "s": 0.38,
+    "e": 0
+   },
+   {
+    "w": "Seen",
+    "s": 0.77,
+    "e": 0
+   },
+   {
+    "w": "No",
+    "s": 1.15,
+    "e": 0
+   },
+   {
+    "w": "reply",
+    "s": 1.54,
+    "e": 0
+   }
+  ]
+ },
+ {
+  "file": "w102/04.wav",
+  "dur": 4.63,
+  "text": "Day fourteen. You type the follow-up, delete it, type it again.",
+  "words": [
+   {
+    "w": "Day",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "fourteen",
+    "s": 0.38,
+    "e": 0
+   },
+   {
+    "w": "You",
+    "s": 0.77,
+    "e": 0
+   },
+   {
+    "w": "type",
+    "s": 1.15,
+    "e": 0
+   },
+   {
+    "w": "the",
+    "s": 1.54,
+    "e": 0
+   },
+   {
+    "w": "follow-up",
+    "s": 1.92,
+    "e": 0
+   },
+   {
+    "w": "delete",
+    "s": 2.31,
+    "e": 0
+   },
+   {
+    "w": "it",
+    "s": 2.69,
+    "e": 0
+   },
+   {
+    "w": "type",
+    "s": 3.08,
+    "e": 0
+   },
+   {
+    "w": "it",
+    "s": 3.46,
+    "e": 0
+   },
+   {
+    "w": "again",
+    "s": 3.85,
+    "e": 0
+   }
+  ]
+ },
+ {
+  "file": "w102/05.wav",
+  "dur": 3.86,
+  "text": "Day twenty-one. Rent is due. They're still ghosting you.",
+  "words": [
+   {
+    "w": "Day",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "twenty-one",
+    "s": 0.38,
+    "e": 0
+   },
+   {
+    "w": "Rent",
+    "s": 0.77,
+    "e": 0
+   },
+   {
+    "w": "is",
+    "s": 1.15,
+    "e": 0
+   },
+   {
+    "w": "due",
+    "s": 1.54,
+    "e": 0
+   },
+   {
+    "w": "They're",
+    "s": 1.92,
+    "e": 0
+   },
+   {
+    "w": "still",
+    "s": 2.31,
+    "e": 0
+   },
+   {
+    "w": "ghosting",
+    "s": 2.69,
+    "e": 0
+   },
+   {
+    "w": "you",
+    "s": 3.08,
+    "e": 0
+   }
+  ]
+ },
+ {
+  "file": "w102/06.wav",
+  "dur": 3.09,
+  "text": "Chasing money shouldn't be your second job.",
+  "words": [
+   {
+    "w": "Chasing",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "money",
+    "s": 0.38,
+    "e": 0
+   },
+   {
+    "w": "shouldn't",
+    "s": 0.77,
+    "e": 0
+   },
+   {
+    "w": "be",
+    "s": 1.15,
+    "e": 0
+   },
+   {
+    "w": "your",
+    "s": 1.54,
+    "e": 0
+   },
+   {
+    "w": "second",
+    "s": 1.92,
+    "e": 0
+   },
+   {
+    "w": "job",
+    "s": 2.31,
+    "e": 0
+   }
+  ]
+ },
+ {
+  "file": "w102/07.wav",
+  "dur": 1.94,
+  "text": "So tell FansaChat, once.",
+  "words": [
+   {
+    "w": "So",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "tell",
+    "s": 0.39,
+    "e": 0
+   },
+   {
+    "w": "FansaChat",
+    "s": 0.77,
+    "e": 0
+   },
+   {
+    "w": "once",
+    "s": 1.16,
+    "e": 0
+   }
+  ]
+ },
+ {
+  "file": "w102/08.wav",
+  "dur": 3.09,
+  "text": "It builds the workflow, and tests it.",
+  "words": [
+   {
+    "w": "It",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "builds",
+    "s": 0.38,
+    "e": 0
+   },
+   {
+    "w": "the",
+    "s": 0.77,
+    "e": 0
+   },
+   {
+    "w": "workflow",
+    "s": 1.15,
+    "e": 0
+   },
+   {
+    "w": "and",
+    "s": 1.54,
+    "e": 0
+   },
+   {
+    "w": "tests",
+    "s": 1.92,
+    "e": 0
+   },
+   {
+    "w": "it",
+    "s": 2.31,
+    "e": 0
+   }
+  ]
+ },
+ {
+  "file": "w102/09.wav",
+  "dur": 3.09,
+  "text": "Now the reminders go out without you.",
+  "words": [
+   {
+    "w": "Now",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "the",
+    "s": 0.38,
+    "e": 0
+   },
+   {
+    "w": "reminders",
+    "s": 0.77,
+    "e": 0
+   },
+   {
+    "w": "go",
+    "s": 1.15,
+    "e": 0
+   },
+   {
+    "w": "out",
+    "s": 1.54,
+    "e": 0
+   },
+   {
+    "w": "without",
+    "s": 1.92,
+    "e": 0
+   },
+   {
+    "w": "you",
+    "s": 2.31,
+    "e": 0
+   }
+  ]
+ },
+ {
+  "file": "w102/10.wav",
+  "dur": 2.71,
+  "text": "No awkward follow-ups. Just paid invoices.",
+  "words": [
+   {
+    "w": "No",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "awkward",
+    "s": 0.39,
+    "e": 0
+   },
+   {
+    "w": "follow-ups",
+    "s": 0.77,
+    "e": 0
+   },
+   {
+    "w": "Just",
+    "s": 1.16,
+    "e": 0
+   },
+   {
+    "w": "paid",
+    "s": 1.54,
+    "e": 0
+   },
+   {
+    "w": "invoices",
+    "s": 1.93,
+    "e": 0
+   }
+  ]
+ },
+ {
+  "file": "w102/11.wav",
+  "dur": 2.32,
+  "text": "FansaChat. Get paid, without chasing.",
+  "words": [
+   {
+    "w": "FansaChat",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "Get",
+    "s": 0.38,
+    "e": 0
+   },
+   {
+    "w": "paid",
+    "s": 0.77,
+    "e": 0
+   },
+   {
+    "w": "without",
+    "s": 1.15,
+    "e": 0
+   },
+   {
+    "w": "chasing",
+    "s": 1.54,
+    "e": 0
+   }
+  ]
+ },
+ {
+  "file": "w102/12.wav",
+  "dur": 1.55,
+  "text": "Join the waitlist.",
+  "words": [
+   {
+    "w": "Join",
+    "s": 0.0,
+    "e": 0
+   },
+   {
+    "w": "the",
+    "s": 0.38,
+    "e": 0
+   },
+   {
+    "w": "waitlist",
+    "s": 0.77,
+    "e": 0
+   }
+  ]
+ }
+]

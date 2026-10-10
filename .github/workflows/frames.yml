@@ -1,0 +1,35 @@
+# QA: render N evenly spaced still frames for each composition and tile them into one contact sheet per comp (free, fast).
+# Run: gh workflow run frames.yml --ref <branch> -f entry=src/week1/index.ts -f comps="W1-01 W1-02" -f n=10
+name: frames
+on:
+  workflow_dispatch:
+    inputs:
+      entry: { required: true }
+      comps: { required: true }
+      n: { required: false, default: "10" }
+jobs:
+  frames:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - run: sudo apt-get -qq install -y ffmpeg >/dev/null
+      - name: Stills + sheets
+        run: |
+          npx remotion compositions "${{ inputs.entry }}" > comps.txt 2>&1 || true
+          mkdir -p sheets
+          for c in ${{ inputs.comps }}; do
+            N=$(grep -E "^[[:space:]]*$c[[:space:]]" comps.txt | grep -oE "[0-9]+ \([0-9.]+ sec\)" | grep -oE "^[0-9]+" | head -1)
+            mkdir -p "st/$c"
+            for k in $(seq 0 $(( ${{ inputs.n }} - 1 ))); do
+              F=$(( (N - 1) * k / (${{ inputs.n }} - 1) ))
+              npx remotion still "${{ inputs.entry }}" "$c" "st/$c/$(printf %03d $k).png" --frame=$F --gl=swangle --log=error || echo "FAIL $c $F"
+            done
+            ffmpeg -v error -pattern_type glob -i "st/$c/*.png" -vf "scale=360:-1,tile=${{ inputs.n }}x1" -frames:v 1 "sheets/$c.jpg" || true
+          done
+      - uses: actions/upload-artifact@v4
+        with: { name: sheets, path: sheets/*.jpg, retention-days: 1 }

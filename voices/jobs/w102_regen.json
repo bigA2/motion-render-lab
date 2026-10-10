@@ -1,0 +1,56 @@
+[
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Day fourteen. You type the follow-up, delete it, type it again.",
+  "out": "out/W102/04_take11.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 11
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Day fourteen. You type the follow-up, delete it, type it again.",
+  "out": "out/W102/04_take12.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 12
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "Day fourteen. You type the follow-up, delete it, type it again.",
+  "out": "out/W102/04_take13.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 13
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "No awkward follow-ups. Just paid invoices.",
+  "out": "out/W102/10_take11.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 11
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "No awkward follow-ups. Just paid invoices.",
+  "out": "out/W102/10_take12.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 12
+ },
+ {
+  "ref": "voices/female_ref.wav",
+  "text": "No awkward follow-ups. Just paid invoices.",
+  "out": "out/W102/10_take13.wav",
+  "exaggeration": 0.5,
+  "cfg_weight": 0.5,
+  "temperature": 0.75,
+  "seed": 13
+ }
+]
