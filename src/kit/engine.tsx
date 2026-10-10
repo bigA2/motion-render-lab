@@ -46,8 +46,11 @@ export type Vo = {file: string; dur: number; words: {w: string; s: number; e: nu
 const ICON: Record<string, {path: string; hex: string}> = {};
 const ICON_KEYS: Record<string, string> = {gmail: 'siGmail', sheets: 'siGooglesheets', slack: 'siSlack', telegram: 'siTelegram', notion: 'siNotion', trello: 'siTrello', shopify: 'siShopify', stripe: 'siStripe', hubspot: 'siHubspot', discord: 'siDiscord', whatsapp: 'siWhatsapp', drive: 'siGoogledrive', dropbox: 'siDropbox', airtable: 'siAirtable', asana: 'siAsana', calendly: 'siCalendly', zoom: 'siZoom', gcal: 'siGooglecalendar', mailchimp: 'siMailchimp', figma: 'siFigma', canva: 'siCanva', instagram: 'siInstagram', youtube: 'siYoutube', xero: 'siXero', quickbooks: 'siQuickbooks', salesforce: 'siSalesforce', jira: 'siJira', github: 'siGithub', linear: 'siLinear', clickup: 'siClickup', typeform: 'siTypeform', woo: 'siWoocommerce', paypal: 'siPaypal', wise: 'siWise', toggl: 'siToggl', upwork: 'siUpwork', fiverr: 'siFiverr', x: 'siX', threads: 'siThreads', linkedin: 'siLinkedin', tiktok: 'siTiktok', facebook: 'siFacebook', zendesk: 'siZendesk', intercom: 'siIntercom', freshdesk: 'siFreshdesk', gitlab: 'siGitlab', vercel: 'siVercel', openai: 'siOpenai', claude: 'siClaude', monday: 'siMondaydotcom', pinterest: 'siPinterest', squarespace: 'siSquarespace', wix: 'siWix', webflow: 'siWebflow', docusign: 'siDocusign', googledocs: 'siGoogledocs', googleforms: 'siGoogleforms', outlook: 'siMicrosoftoutlook', teams: 'siMicrosoftteams', excel: 'siMicrosoftexcel', bitbucket: 'siBitbucket', sentry: 'siSentry', etsy: 'siEtsy', amazon: 'siAmazon', klaviyo: 'siKlaviyo', ebay: 'siEbay', lemon: 'siLemonsqueezy', gumroad: 'siGumroad', patreon: 'siPatreon', spotify: 'siSpotify', twitch: 'siTwitch', medium: 'siMedium', substack: 'siSubstack', wordpress: 'siWordpress', ghost: 'siGhost', bufferapp: 'siBuffer', zapierless: 'siZapier'};
 for (const [k, v] of Object.entries(ICON_KEYS)) { const ic = (si as unknown as Record<string, {path: string; hex: string}>)[v]; if (ic) ICON[k] = ic; }
+const CUSTOM: Record<string, [string, string, string]> = {linkedin: ['#0A66C2', 'in', '#fff'], outlook: ['#0078D4', 'O', '#fff'], docusign: ['#FFCC22', 'DS', '#1A1A1A'], klaviyo: ['#232426', 'K', '#fff'], freshdesk: ['#25C16F', 'F', '#fff']};
 const lum = (h: string) => { const v = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255); return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2]; };
 export const Icon: React.FC<{k: string; size: number; dark?: boolean}> = ({k, size, dark}) => {
+  const cu = CUSTOM[k];
+  if (cu) return <svg viewBox="0 0 24 24" width={size} height={size}><rect width="24" height="24" rx="5" fill={cu[0]} /><text x="12" y="16.5" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="700" fontSize={cu[1].length > 1 ? 10 : 14} fill={cu[2]}>{cu[1]}</text></svg>;
   const i = ICON[k];
   if (!i) return <span style={{fontSize: size * 0.85, lineHeight: 1}}>{k}</span>;
   const fill = dark && lum(i.hex) < 0.22 ? '#FFFFFF' : '#' + i.hex;
@@ -125,7 +128,7 @@ const EL: Record<string, React.FC<{e: El; c: Ctx; a: number}>> = {
   // stack of cards fanned at depth (problem pile)
   pile: ({e, c, a}) => {
     const {P} = c; const items = e.items as [string, string, string?][];
-    return <div style={{position: 'relative', width: 560 * c.sc, height: 420 * c.sc, perspective: 1200}}>{items.map(([ic, t, sub], i) => { const s = sp(c.lf, a + i * 5, 12, 170); const d = items.length - 1 - i; return <div key={i} style={{position: 'absolute', left: 0, top: 0, width: 560 * c.sc, transform: `translate(${d * 26 * c.sc}px, ${-d * 34 * c.sc + (1 - s) * 300}px) translateZ(${-d * 80}px) rotate(${(i % 2 ? 1 : -1) * d * 2}deg)`, opacity: s * (1 - d * 0.1), filter: d ? `blur(${d * 1.6}px)` : undefined}}><div style={{...glass(P), padding: 22 * c.sc, display: 'flex', gap: 16, alignItems: 'center'}}><Tile k={ic} size={64 * c.sc} P={P} /><div><div style={{fontFamily: FONT.ui, fontWeight: 800, fontSize: 28 * c.sc, color: P.cardInk}}>{t}</div>{sub ? <div style={{fontFamily: FONT.ui, fontSize: 20 * c.sc, color: '#E8362B', fontWeight: 700}}>{sub}</div> : null}</div></div></div>; })}</div>;
+    return <div style={{position: 'relative', width: 680 * c.sc, height: 420 * c.sc, perspective: 1200}}>{items.map(([ic, t, sub], i) => { const s = sp(c.lf, a + i * 5, 12, 170); const d = items.length - 1 - i; return <div key={i} style={{position: 'absolute', left: 0, top: 120 * c.sc, width: 680 * c.sc, transform: `translate(${d * 26 * c.sc}px, ${-d * 34 * c.sc + (1 - s) * 300}px) translateZ(${-d * 80}px) rotate(${(i % 2 ? 1 : -1) * d * 2}deg)`, opacity: s * (1 - d * 0.1), filter: d ? `blur(${d * 1.6}px)` : undefined}}><div style={{...glass(P), padding: 22 * c.sc, display: 'flex', gap: 16, alignItems: 'center'}}><Tile k={ic} size={78 * c.sc} P={P} /><div><div style={{fontFamily: FONT.ui, fontWeight: 800, fontSize: 34 * c.sc, color: P.cardInk}}>{t}</div>{sub ? <div style={{fontFamily: FONT.ui, fontSize: 24 * c.sc, color: '#E8362B', fontWeight: 700}}>{sub}</div> : null}</div></div></div>; })}</div>;
   },
   // "!" alert badges swarming around a point
   badges: ({e, c, a}) => {
@@ -205,7 +208,7 @@ const EL: Record<string, React.FC<{e: El; c: Ctx; a: number}>> = {
   // stamp (PAID / DONE / GHOSTED)
   stamp: ({e, c, a}) => { const s = sp(c.lf, a, 9, 260); if (c.lf < a) return null; const col = (e.color as string) ?? '#19A55A'; return <div style={{padding: `${8 * c.sc}px ${28 * c.sc}px`, border: `${8 * c.sc}px solid ${col}`, borderRadius: 18, color: col, fontFamily: FONT.head, fontWeight: 800, fontSize: ((e.size as number) ?? 80) * c.sc, transform: `rotate(${(e.rot as number) ?? -12}deg) scale(${2.4 - 1.4 * s})`, opacity: Math.min(1, s * 2), background: 'rgba(255,255,255,0.85)'}}>{e.text as string}</div>; },
   // text with animated strike-through
-  strike: ({e, c, a}) => { const {P} = c; const size = ((e.size as number) ?? 90) * c.sc; return <span style={{position: 'relative', fontFamily: FONT.head, fontWeight: 800, fontSize: size, color: (e.color as string) ?? P.ink, letterSpacing: '-0.03em', opacity: ez(c.lf, a - 6, a)}}>{e.text as string}<span style={{position: 'absolute', left: -6, right: -6, top: '55%', height: size * 0.12, background: '#E8362B', borderRadius: 6, transform: `scaleX(${ez(c.lf, a + 6, a + 16)})`, transformOrigin: '0 50%'}} /></span>; },
+  strike: ({e, c, a}) => { const {P} = c; const size = ((e.size as number) ?? 90) * c.sc; return <span style={{position: 'relative', whiteSpace: 'nowrap', fontFamily: FONT.head, fontWeight: 800, fontSize: size, color: (e.color as string) ?? P.ink, letterSpacing: '-0.03em', opacity: ez(c.lf, a - 6, a)}}>{e.text as string}<span style={{position: 'absolute', left: -6, right: -6, top: '55%', height: size * 0.12, background: '#E8362B', borderRadius: 6, transform: `scaleX(${ez(c.lf, a + 6, a + 16)})`, transformOrigin: '0 50%'}} /></span>; },
   // checklist (5 automations lists, features)
   list: ({e, c, a}) => {
     const {P} = c; const items = e.items as [string, string][];
@@ -256,10 +259,10 @@ export const layoutBeats = (spec: Spec, vo: Vo) => {
 };
 
 // ---------------- camera + world ----------------
-const DIRV: Record<string, [number, number]> = {right: [1, 0], left: [-1, 0], down: [0, 1], up: [0, -1], whip: [1, 0], zoom: [0, 0], iris: [0, 0]};
+const DIRV: Record<string, [number, number]> = {right: [1, 0], left: [-1, 0], down: [0, 1], up: [0, -1], whip: [1, 0], zoom: [0, 2], iris: [0, -2]};
 export const Film: React.FC<{spec: Spec; vo: Vo}> = ({spec, vo}) => {
   const f = useCurrentFrame(); const {width: W, height: H} = useVideoConfig(); const w = W > H;
-  const P = PAL[spec.pal]; const sc = w ? 1.2 : 1;
+  const P = PAL[spec.pal]; const sc = w ? 1.35 : 1;
   const {starts, durs} = layoutBeats(spec, vo);
   // world anchors
   const anchors: [number, number][] = []; let ax = 0, ay = 0;
@@ -270,13 +273,15 @@ export const Film: React.FC<{spec: Spec; vo: Vo}> = ({spec, vo}) => {
   const trLen = go === 'whip' ? 10 : TR;
   const k = cur === 0 ? 1 : ez(lf, 0, trLen, Easing.inOut(Easing.cubic));
   const prev = anchors[Math.max(0, cur - 1)], next = anchors[cur];
-  let camX = prev[0] + (next[0] - prev[0]) * k, camY = prev[1] + (next[1] - prev[1]) * k;
+  const jump = (go === 'zoom' || go === 'iris') && cur > 0;
+  const kk2 = jump ? (go === 'zoom' ? (lf < trLen / 2 ? 0 : 1) : 1) : k;
+  let camX = prev[0] + (next[0] - prev[0]) * kk2, camY = prev[1] + (next[1] - prev[1]) * kk2;
   let zoom = 1;
   // zoom-through: punch into the previous slot's focus, then the new slot scales up from small
   const isZoom = go === 'zoom' && cur > 0;
   if (isZoom) zoom = lf < trLen / 2 ? 1 + 3 * ez(lf, 0, trLen / 2, Easing.in(Easing.cubic)) : 1;
   // velocity blur
-  const vel = cur > 0 && lf < trLen ? Math.sin((lf / trLen) * Math.PI) : 0;
+  const vel = cur > 0 && lf < trLen && !jump ? Math.sin((lf / trLen) * Math.PI) : 0;
   const blurX = Math.abs((next[0] - prev[0]) / W) * vel * (go === 'whip' ? 40 : 18), blurY = Math.abs((next[1] - prev[1]) / H) * vel * 18;
   // continuous micro drift + slow push
   camX += Math.sin(f / 55) * 10; camY += Math.cos(f / 63) * 7; zoom *= 1 + 0.03 * ez(lf, 0, durs[cur]);
