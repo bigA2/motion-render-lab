@@ -1,0 +1,311 @@
+{
+ "pal": "B5",
+ "lines": [
+  "Maya met Ravi. He handles finance for a growing startup.",
+  "Thirty unpaid invoices, and he chased every one by hand.",
+  "Awkward messages, late payments, and a messy spreadsheet.",
+  "So Maya typed one sentence into FansaChat.",
+  "It built the payment flow, and tested it.",
+  "Now overdue invoices get polite reminders, and paid ones go straight into the books.",
+  "Ravi stopped chasing. The money comes in on time.",
+  "FansaChat. Get paid without chasing. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.24,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Meet Ravi.",
+     "size": 104,
+     "style": "flip",
+     "x": 0.64,
+     "y": 0.32,
+     "p45": {
+      "x": 0.5,
+      "y": 0.14,
+      "s": 0.85
+     },
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "xero",
+     "title": "Finance lead",
+     "sub": "30 open invoices",
+     "x": 0.64,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.32
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.16,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "concernedFear",
+    "size": 270
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "xero",
+       "INV-2031 · 21 days",
+       "overdue"
+      ],
+      [
+       "stripe",
+       "INV-2044 · 14 days",
+       "overdue"
+      ],
+      [
+       "quickbooks",
+       "INV-2052 · 9 days",
+       "overdue"
+      ],
+      [
+       "paypal",
+       "INV-2060 · 7 days",
+       "overdue"
+      ]
+     ],
+     "x": 0.6,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.84,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "serious",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Awkward. Late. Messy.",
+     "size": 88,
+     "style": "tape",
+     "x": 0.4,
+     "y": 0.42,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36
+     },
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.14,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "explaining",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When an invoice in Xero is seven days overdue, send a polite reminder on WhatsApp, log it in Google Sheets, and when it is paid, mark it paid and notify me in Slack.",
+     "typeDur": 120,
+     "x": 0.58,
+     "y": 0.46,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36,
+      "cw": 860
+     }
+    }
+   ],
+   "hold": 50
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 60,
+   "hero": {
+    "x": 0.88,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 240
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "xero",
+       "Xero",
+       "Overdue 7d"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Reminder"
+      ],
+      [
+       "sheets",
+       "Sheets",
+       "Logged"
+      ],
+      [
+       "xero",
+       "Paid",
+       "Marked"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Notify"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.46,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "s": 0.78
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Reminders go out alone.",
+     "size": 92,
+     "style": "blur",
+     "x": 0.34,
+     "y": 0.36,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "alone."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "whatsapp",
+       "Reminder sent ✓",
+       "INV-2031"
+      ],
+      [
+       "xero",
+       "Paid ✓",
+       "$4,200"
+      ],
+      [
+       "slack",
+       "#finance updated ✓",
+       "3 paid today"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Paid on time.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Get paid without chasing.",
+     "apps": [
+      "xero",
+      "quickbooks",
+      "stripe",
+      "paypal",
+      "whatsapp",
+      "sheets",
+      "slack",
+      "wise",
+      "notion"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W3-08"
+}

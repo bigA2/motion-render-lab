@@ -1,0 +1,322 @@
+{
+ "pal": "D1",
+ "lines": [
+  "Maya met Sara. She runs a ten-person agency.",
+  "Every new client meant a day of setup across six tools.",
+  "Someone always forgot a step, and the client noticed.",
+  "So Maya typed one sentence into FansaChat.",
+  "It built the onboarding flow, and tested it.",
+  "Now a signed contract sets up the CRM, the project, the channel and the folder in a minute.",
+  "Sara's team does the creative work. Not the admin.",
+  "FansaChat. One chat for the whole team. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.24,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Meet Sara.",
+     "size": 104,
+     "style": "flip",
+     "x": 0.64,
+     "y": 0.32,
+     "p45": {
+      "x": 0.5,
+      "y": 0.14,
+      "s": 0.85
+     },
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "hubspot",
+     "title": "Agency owner",
+     "sub": "10 people · 14 clients",
+     "x": 0.64,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.32
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.16,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "concernedFear",
+    "size": 270
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "hubspot",
+       "Create deal",
+       "manual"
+      ],
+      [
+       "clickup",
+       "Open project",
+       "manual"
+      ],
+      [
+       "slack",
+       "Client channel",
+       "forgot"
+      ],
+      [
+       "drive",
+       "Shared folder",
+       "which one?"
+      ]
+     ],
+     "x": 0.6,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.84,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "serious",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Client: “Hello?”",
+     "size": 96,
+     "style": "tape",
+     "x": 0.4,
+     "y": 0.42,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36
+     },
+     "em": []
+    },
+    {
+     "t": "badges",
+     "n": 6,
+     "r": 280,
+     "x": 0.4,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "y": 0.4
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.14,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "explaining",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a contract is signed in DocuSign, create the deal in HubSpot, open a ClickUp project from our template, create a Slack channel with the client and share a Google Drive folder.",
+     "typeDur": 120,
+     "x": 0.58,
+     "y": 0.46,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36,
+      "cw": 860
+     }
+    }
+   ],
+   "hold": 50
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 60,
+   "hero": {
+    "x": 0.88,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 240
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "docusign",
+       "DocuSign",
+       "Signed"
+      ],
+      [
+       "hubspot",
+       "HubSpot",
+       "Deal"
+      ],
+      [
+       "clickup",
+       "ClickUp",
+       "Project"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Channel"
+      ],
+      [
+       "drive",
+       "Drive",
+       "Folder"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.46,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "s": 0.78
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Set up in a minute.",
+     "size": 92,
+     "style": "blur",
+     "x": 0.34,
+     "y": 0.36,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "minute."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "hubspot",
+       "Deal created ✓",
+       "North & Co"
+      ],
+      [
+       "clickup",
+       "Project ready ✓",
+       "24 tasks"
+      ],
+      [
+       "slack",
+       "#north-co ✓",
+       "client invited"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Creative work. Not admin.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "One chat for the whole team.",
+     "apps": [
+      "docusign",
+      "hubspot",
+      "clickup",
+      "slack",
+      "drive",
+      "notion",
+      "figma",
+      "calendly",
+      "zoom"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W3-05"
+}

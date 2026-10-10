@@ -71,8 +71,33 @@
    ]
   },
   {
-   "dur": 165,
+   "line": 2,
    "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Just say what changed.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
    "hero": {
     "x": 0.88,
     "y": 0.2,

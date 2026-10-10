@@ -1,0 +1,193 @@
+{
+ "pal": "B7",
+ "lines": [
+  "Myth: automation is only for engineers.",
+  "Reality: if you can describe your work, you can automate it.",
+  "No code. No flowcharts. No tutorials.",
+  "Just say what should happen, and FansaChat builds it.",
+  "FansaChat. Automation for everyone. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "MYTH:",
+     "size": 110,
+     "style": "tape",
+     "x": 0.5,
+     "y": 0.26,
+     "em": []
+    },
+    {
+     "t": "strike",
+     "text": "Automation is for engineers.",
+     "size": 92,
+     "x": 0.5,
+     "y": 0.5,
+     "word": "engineers"
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "REALITY:",
+     "size": 110,
+     "style": "tape",
+     "x": 0.5,
+     "y": 0.26,
+     "bg": "#19A55A",
+     "em": []
+    },
+    {
+     "t": "title",
+     "text": "Describe it → automate it.",
+     "size": 100,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.5,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "wink",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "strike",
+     "text": "Code.",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.26
+    },
+    {
+     "t": "strike",
+     "text": "Flowcharts.",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.46,
+     "word": "flowcharts"
+    },
+    {
+     "t": "strike",
+     "text": "Tutorials.",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.66,
+     "word": "tutorials"
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When I get a new Calendly booking, add it to my Google Sheet and send me a WhatsApp message.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "calendly",
+       "Calendly",
+       "Booking"
+      ],
+      [
+       "sheets",
+       "Sheets",
+       "Row"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Message"
+      ]
+     ],
+     "layout": "row",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Automation for everyone.",
+     "apps": [
+      "calendly",
+      "sheets",
+      "whatsapp",
+      "gmail",
+      "notion",
+      "slack",
+      "shopify",
+      "stripe",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-10"
+}

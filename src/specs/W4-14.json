@@ -1,0 +1,187 @@
+{
+ "pal": "B2",
+ "lines": [
+  "One founder. One laptop. Seven hundred plus integrations.",
+  "Built in Bangladesh, for anyone who's tired of copy-paste.",
+  "You type what you need. FansaChat builds it, tests it, and runs it.",
+  "We launch soon, and the first people in line get in first.",
+  "FansaChat. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "👤",
+       "One founder"
+      ],
+      [
+       "💻",
+       "One laptop"
+      ],
+      [
+       "🔌",
+       "700+ integrations"
+      ]
+     ],
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 900
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Built in Bangladesh.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.36,
+     "em": []
+    },
+    {
+     "t": "title",
+     "text": "For anyone tired of copy-paste.",
+     "size": 80,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.58,
+     "em": [
+      "copy-paste."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a lead fills my form, add them to HubSpot and message me on Telegram.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "typeform",
+       "Form",
+       "Lead"
+      ],
+      [
+       "hubspot",
+       "HubSpot",
+       "Added"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Ping"
+      ]
+     ],
+     "layout": "row",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "First in line, first in.",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Built in Bangladesh. Made for the world.",
+     "apps": [
+      "typeform",
+      "hubspot",
+      "telegram",
+      "gmail",
+      "shopify",
+      "notion",
+      "slack",
+      "stripe",
+      "whatsapp"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-14"
+}

@@ -1,0 +1,349 @@
+{
+ "pal": "D2",
+ "lines": [
+  "Five automations every dev team should have.",
+  "One. Bug reported? A labelled GitHub issue appears.",
+  "Two. Pull request merged? The changelog updates itself.",
+  "Three. Error spike in Sentry? The on-call dev gets paged in Slack.",
+  "Four. Deploy finished on Vercel? The team and the client hear about it.",
+  "Five. Sprint ends? A summary from Linear lands in Notion.",
+  "Ship code. Not status updates.",
+  "FansaChat. Your dev ops, in plain English. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Ship, don’t sort.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "conveyor",
+     "apps": [
+      "github",
+      "gitlab",
+      "linear",
+      "jira",
+      "sentry",
+      "vercel",
+      "slack",
+      "discord"
+     ],
+     "x": 0,
+     "y": 0.68
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 1,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16,
+     "bg": "#111"
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "discord",
+       "Discord",
+       "Bug"
+      ],
+      [
+       "github",
+       "GitHub",
+       "Issue"
+      ],
+      [
+       "slack",
+       "Slack",
+       "#dev"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 2,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16,
+     "bg": "#111"
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "github",
+       "GitHub",
+       "PR merged"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Changelog"
+      ],
+      [
+       "x",
+       "X",
+       "Announce"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 3,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16,
+     "bg": "#111"
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "sentry",
+       "Sentry",
+       "Error spike"
+      ],
+      [
+       "slack",
+       "Slack",
+       "On-call"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Page"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "up",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 4,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16,
+     "bg": "#111"
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "vercel",
+       "Vercel",
+       "Deployed"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Team"
+      ],
+      [
+       "gmail",
+       "Email",
+       "Client"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 5,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16,
+     "bg": "#111"
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "linear",
+       "Linear",
+       "Sprint end"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Summary"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Shared"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Ship code. Not status updates.",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Your dev ops, in plain English.",
+     "apps": [
+      "github",
+      "gitlab",
+      "linear",
+      "jira",
+      "sentry",
+      "vercel",
+      "slack",
+      "discord",
+      "notion"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-04"
+}

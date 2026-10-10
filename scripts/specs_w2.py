@@ -174,7 +174,8 @@ S['W2-12'] = {'pal': 'B4', 'lines': [
  'beats': [
   {'line': 0, 'hero': H(0.86, 0.8, 'wow'), 'els': [{'t': 'card', 'icon': 'hubspot', 'title': 'Field “Phone” renamed', 'sub': 'to “Mobile number”', 'badge': 'BREAKING', 'x': 0.5, 'y': 0.46}]},
   {'line': 1, 'go': 'right', 'hero': H(0.86, 0.84, 'meh', 180), 'els': [{'t': 'pile', 'items': [['⬜', 'Box 12 · Map fields', 'which one?'], ['⬜', 'Box 23 · Formatter', 'which one?'], ['⬜', 'Box 31 · Lookup', 'which one?'], ['⬜', 'Box 40 · Update', 'failing']], 'x': 0.45, 'y': 0.58, 'p45': {'x': 0.5}}]},
-  chat_beat("HubSpot renamed Phone to Mobile number. Use the new field everywhere.", go='zoom'),
+  {'line': 2, 'go': 'zoom', 'focus': [0.5, 0.45], 'hero': H(0.88, 0.3, 'happy', 170), 'els': [title('Just say what changed.', style='flip', y=0.44, size=120)]},
+  chat_beat("HubSpot renamed Phone to Mobile number. Use the new field everywhere.", go='right'),
   flow_beat(3, [['hubspot', 'HubSpot', 'Mobile number'], ['whatsapp', 'WhatsApp', 'Uses new field'], ['sheets', 'Google Sheets', 'Updated']], go='right', layout='row'),
   end_beat(4, 'Change it by saying it.', ['hubspot', 'whatsapp', 'sheets', 'notion', 'slack', 'gmail', 'stripe', 'airtable', 'calendly'])]}
 S['W2-13'] = {'pal': 'B7', 'lines': [

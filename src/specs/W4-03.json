@@ -1,0 +1,344 @@
+{
+ "pal": "B3",
+ "lines": [
+  "Five automations every content creator needs.",
+  "One. New YouTube video? Posted to Instagram, X and LinkedIn.",
+  "Two. New sponsor email? Added to your Notion deal board.",
+  "Three. Comments with a question? Collected for your next video.",
+  "Four. New Patreon member? A personal thank-you message.",
+  "Five. Every Friday? Your growth numbers in one report.",
+  "Create more. Post less.",
+  "FansaChat. Post once, everywhere. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Post once. Everywhere.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "conveyor",
+     "apps": [
+      "youtube",
+      "instagram",
+      "x",
+      "linkedin",
+      "threads",
+      "notion",
+      "patreon",
+      "telegram"
+     ],
+     "x": 0,
+     "y": 0.68
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 1,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "youtube",
+       "YouTube",
+       "New video"
+      ],
+      [
+       "instagram",
+       "Instagram",
+       "Clip"
+      ],
+      [
+       "linkedin",
+       "LinkedIn",
+       "Post"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 2,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "gmail",
+       "Email",
+       "Sponsor"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Deal board"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Ping"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 3,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "youtube",
+       "YouTube",
+       "Comments"
+      ],
+      [
+       "openai",
+       "AI",
+       "Find questions"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Ideas list"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "up",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 4,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "patreon",
+       "Patreon",
+       "New member"
+      ],
+      [
+       "gmail",
+       "Email",
+       "Thank-you"
+      ],
+      [
+       "discord",
+       "Discord",
+       "Role"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 5,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "youtube",
+       "Schedule",
+       "Friday"
+      ],
+      [
+       "sheets",
+       "Sheets",
+       "Growth"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Report"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Create more. Post less.",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Post once, everywhere.",
+     "apps": [
+      "youtube",
+      "instagram",
+      "x",
+      "linkedin",
+      "threads",
+      "notion",
+      "patreon",
+      "discord",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-03"
+}

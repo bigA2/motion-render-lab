@@ -1,0 +1,313 @@
+{
+ "pal": "B2",
+ "lines": [
+  "Maya met Lena, a freelance designer drowning in revisions.",
+  "Feedback in Figma, WhatsApp, Slack and voice notes.",
+  "Lena spent her evenings just finding what clients wanted.",
+  "So Maya opened FansaChat and typed one sentence.",
+  "FansaChat built the flow, and tested it.",
+  "Now every comment lands on Lena's Notion board, sorted by client.",
+  "Lena designs again. The hunting is over.",
+  "FansaChat. Feedback, organised. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.24,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Meet Lena.",
+     "size": 104,
+     "style": "flip",
+     "x": 0.64,
+     "y": 0.32,
+     "p45": {
+      "x": 0.5,
+      "y": 0.14,
+      "s": 0.85
+     },
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "figma",
+     "title": "Freelance designer",
+     "sub": "7 clients · 23 open revisions",
+     "x": 0.64,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.32
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.16,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "concernedFear",
+    "size": 270
+   },
+   "els": [
+    {
+     "t": "cloud",
+     "apps": [
+      "figma",
+      "whatsapp",
+      "slack",
+      "gmail",
+      "notion",
+      "dropbox",
+      "canva",
+      "trello"
+     ],
+     "x": 0.6,
+     "y": 0.5,
+     "p45": {
+      "x": 0.5,
+      "y": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.84,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "serious",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "counter",
+     "label": "EVENINGS LOST",
+     "from": 0,
+     "to": 5,
+     "size": 100,
+     "x": 0.4,
+     "y": 0.4,
+     "bg": "#E8362B",
+     "p45": {
+      "x": 0.5,
+      "y": 0.3
+     }
+    },
+    {
+     "t": "title",
+     "text": "just finding feedback",
+     "size": 72,
+     "style": "tape",
+     "x": 0.4,
+     "y": 0.62,
+     "p45": {
+      "x": 0.5,
+      "y": 0.5
+     },
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.14,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "explaining",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a client comments in Figma or messages me on WhatsApp or Slack, add it as a task on my Notion board for that client and ping me on Telegram.",
+     "typeDur": 120,
+     "x": 0.58,
+     "y": 0.46,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36,
+      "cw": 860
+     }
+    }
+   ],
+   "hold": 50
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 60,
+   "hero": {
+    "x": 0.88,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 240
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "figma",
+       "Figma",
+       "Comment"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Message"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Thread"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Task by client"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Ping"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.46,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "s": 0.78
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Every comment, sorted.",
+     "size": 92,
+     "style": "blur",
+     "x": 0.34,
+     "y": 0.36,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "sorted."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "notion",
+       "Task added ✓",
+       "Bloom Studio · logo v3"
+      ],
+      [
+       "figma",
+       "Comment synced ✓",
+       "“make it pop”"
+      ],
+      [
+       "telegram",
+       "4 new requests today",
+       "all in Notion"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Lena designs again.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Feedback, organised.",
+     "apps": [
+      "figma",
+      "notion",
+      "whatsapp",
+      "slack",
+      "telegram",
+      "canva",
+      "dropbox",
+      "trello",
+      "drive"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W3-01"
+}

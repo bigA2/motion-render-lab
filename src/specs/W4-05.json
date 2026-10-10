@@ -1,0 +1,349 @@
+{
+ "pal": "D1",
+ "lines": [
+  "Five automations every agency runs on.",
+  "One. Contract signed? Client onboarded across five tools.",
+  "Two. New lead? Qualified, logged, and a call booked.",
+  "Three. Every Friday? Each client gets their status report.",
+  "Four. Task overdue? The owner gets a nudge in Slack.",
+  "Five. Invoice due? Sent from Xero, reminded until paid.",
+  "Scale clients. Not chaos.",
+  "FansaChat. One chat for the whole agency. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Scale clients, not chaos.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "conveyor",
+     "apps": [
+      "hubspot",
+      "clickup",
+      "slack",
+      "notion",
+      "docusign",
+      "xero",
+      "calendly",
+      "drive"
+     ],
+     "x": 0,
+     "y": 0.68
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 1,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16,
+     "bg": "#111"
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "docusign",
+       "DocuSign",
+       "Signed"
+      ],
+      [
+       "hubspot",
+       "HubSpot",
+       "Deal"
+      ],
+      [
+       "clickup",
+       "ClickUp",
+       "Project"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 2,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16,
+     "bg": "#111"
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "typeform",
+       "Typeform",
+       "Lead"
+      ],
+      [
+       "hubspot",
+       "HubSpot",
+       "Logged"
+      ],
+      [
+       "calendly",
+       "Calendly",
+       "Call"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 3,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16,
+     "bg": "#111"
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "clickup",
+       "Schedule",
+       "Friday"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Status"
+      ],
+      [
+       "gmail",
+       "Email",
+       "Client"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "up",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 4,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16,
+     "bg": "#111"
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "clickup",
+       "ClickUp",
+       "Overdue"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Nudge"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Owner"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 5,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16,
+     "bg": "#111"
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "xero",
+       "Xero",
+       "Invoice"
+      ],
+      [
+       "gmail",
+       "Email",
+       "Sent"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Paid"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Scale clients. Not chaos.",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "One chat for the whole agency.",
+     "apps": [
+      "hubspot",
+      "clickup",
+      "slack",
+      "notion",
+      "docusign",
+      "xero",
+      "calendly",
+      "drive",
+      "figma"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-05"
+}

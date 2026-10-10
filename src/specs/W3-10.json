@@ -1,0 +1,295 @@
+{
+ "pal": "B2",
+ "lines": [
+  "Maya met Leo. His sales team was losing hot leads.",
+  "A lead filled the form at night, and nobody replied until the afternoon.",
+  "By then, they had already booked a call elsewhere.",
+  "So Maya typed one sentence into FansaChat.",
+  "It built the lead flow, and tested it.",
+  "Now every lead gets a reply in seconds, and the right rep gets the deal.",
+  "Leo's hot leads stay hot.",
+  "FansaChat. Never miss a lead. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.24,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Meet Leo.",
+     "size": 104,
+     "style": "flip",
+     "x": 0.64,
+     "y": 0.32,
+     "p45": {
+      "x": 0.5,
+      "y": 0.14,
+      "s": 0.85
+     },
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "hubspot",
+     "title": "Sales manager",
+     "sub": "5 reps",
+     "x": 0.64,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.32
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.16,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "concernedFear",
+    "size": 270
+   },
+   "els": [
+    {
+     "t": "counter",
+     "label": "HOURS UNANSWERED",
+     "from": 0,
+     "to": 15,
+     "suffix": "h",
+     "size": 100,
+     "x": 0.6,
+     "y": 0.46,
+     "bg": "#E8362B",
+     "p45": {
+      "x": 0.5,
+      "y": 0.4
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.84,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "serious",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "calendly",
+     "title": "Call booked",
+     "sub": "with someone else",
+     "badge": "LOST",
+     "x": 0.4,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "y": 0.4
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.14,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "explaining",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When someone fills my Typeform, add them to HubSpot, assign the rep on shift, send my Calendly link on WhatsApp within a minute, and alert the team in Slack.",
+     "typeDur": 120,
+     "x": 0.58,
+     "y": 0.46,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36,
+      "cw": 860
+     }
+    }
+   ],
+   "hold": 50
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 60,
+   "hero": {
+    "x": 0.88,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 240
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "typeform",
+       "Typeform",
+       "Lead"
+      ],
+      [
+       "hubspot",
+       "HubSpot",
+       "Deal"
+      ],
+      [
+       "salesforce",
+       "Assign",
+       "Rep on shift"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Calendly link"
+      ],
+      [
+       "slack",
+       "Slack",
+       "#sales"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.46,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "s": 0.78
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Reply in seconds.",
+     "size": 92,
+     "style": "blur",
+     "x": 0.34,
+     "y": 0.36,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "seconds."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "whatsapp",
+       "Link sent ✓",
+       "23 seconds"
+      ],
+      [
+       "hubspot",
+       "Deal → Sam ✓",
+       "Demo stage"
+      ],
+      [
+       "calendly",
+       "Demo booked ✓",
+       "Thu 10:30"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Hot leads stay hot.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Never miss a lead.",
+     "apps": [
+      "typeform",
+      "hubspot",
+      "salesforce",
+      "calendly",
+      "whatsapp",
+      "slack",
+      "linkedin",
+      "zoom",
+      "gmail"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W3-10"
+}

@@ -1,0 +1,174 @@
+{
+ "pal": "D4",
+ "lines": [
+  "Is my data safe with an automation tool?",
+  "With FansaChat, you connect your own accounts.",
+  "Your workflows run on your connections, and you can turn them off any time.",
+  "Every run is logged, step by step, so you can see exactly what happened.",
+  "You stay in control.",
+  "FansaChat. Your data, your rules. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Is my data safe?",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.42,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "gmail",
+       "Your Gmail"
+      ],
+      [
+       "hubspot",
+       "Your HubSpot"
+      ],
+      [
+       "stripe",
+       "Your Stripe"
+      ]
+     ],
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 900
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "🔒",
+     "title": "Your connections",
+     "sub": "switch any workflow off, any time",
+     "x": 0.5,
+     "y": 0.44
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "✓",
+       "Step 1 · trigger received"
+      ],
+      [
+       "✓",
+       "Step 2 · row added"
+      ],
+      [
+       "✓",
+       "Step 3 · message sent"
+      ]
+     ],
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 1000,
+     "p45": {
+      "cw": 920
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "You stay in control.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Your data, your rules.",
+     "apps": [
+      "gmail",
+      "hubspot",
+      "stripe",
+      "notion",
+      "slack",
+      "sheets",
+      "drive",
+      "shopify",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-08"
+}

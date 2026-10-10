@@ -1,0 +1,344 @@
+{
+ "pal": "B6",
+ "lines": [
+  "Five automations every online shop needs.",
+  "One. New order? Logged in your sheet and the customer gets an update.",
+  "Two. Stock running low? You get a Telegram alert.",
+  "Three. Abandoned cart? A friendly reminder goes out.",
+  "Four. Five-star review? Shared on Instagram stories.",
+  "Five. Refund request? A ticket for the right person.",
+  "Your shop, running itself.",
+  "FansaChat. Your store on autopilot. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Your store, on autopilot.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "conveyor",
+     "apps": [
+      "shopify",
+      "woo",
+      "etsy",
+      "stripe",
+      "whatsapp",
+      "instagram",
+      "klaviyo",
+      "sheets"
+     ],
+     "x": 0,
+     "y": 0.68
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 1,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "shopify",
+       "Shopify",
+       "Order"
+      ],
+      [
+       "sheets",
+       "Sheets",
+       "Logged"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Update"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 2,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "shopify",
+       "Shopify",
+       "Stock < 5"
+      ],
+      [
+       "sheets",
+       "Sheets",
+       "Reorder list"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Alert"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 3,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "shopify",
+       "Shopify",
+       "Cart left"
+      ],
+      [
+       "klaviyo",
+       "Klaviyo",
+       "Email"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Reminder"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "up",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 4,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "shopify",
+       "Review",
+       "5 stars"
+      ],
+      [
+       "canva",
+       "Canva",
+       "Story card"
+      ],
+      [
+       "instagram",
+       "Instagram",
+       "Shared"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 5,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Refund ask"
+      ],
+      [
+       "zendesk",
+       "Zendesk",
+       "Ticket"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Assigned"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Your shop, running itself.",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Your store on autopilot.",
+     "apps": [
+      "shopify",
+      "woo",
+      "etsy",
+      "stripe",
+      "whatsapp",
+      "instagram",
+      "klaviyo",
+      "sheets",
+      "zendesk"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-02"
+}

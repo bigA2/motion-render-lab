@@ -1,0 +1,238 @@
+{
+ "pal": "B5",
+ "lines": [
+  "What exactly is a workflow run?",
+  "It's one finished job, from start to end.",
+  "A new order, logged, messaged, and filed. That's one run.",
+  "Three steps or thirty, it still counts as one.",
+  "Starter gives you two thousand runs a month. Pro, ten thousand.",
+  "So you pay for finished work, not for clicks.",
+  "FansaChat. Simple, fair automation. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "What is a “run”?",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.42,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "One finished job.",
+     "size": 130,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.42,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "shopify",
+       "Order",
+       "Start"
+      ],
+      [
+       "sheets",
+       "Logged",
+       "Step 2"
+      ],
+      [
+       "whatsapp",
+       "Messaged",
+       "Step 3"
+      ],
+      [
+       "drive",
+       "Filed",
+       "End"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "counter",
+     "label": "STEPS",
+     "from": 3,
+     "to": 30,
+     "size": 90,
+     "x": 0.32,
+     "y": 0.44,
+     "p45": {
+      "x": 0.5,
+      "y": 0.3
+     }
+    },
+    {
+     "t": "counter",
+     "label": "RUNS",
+     "from": 1,
+     "to": 1,
+     "size": 120,
+     "x": 0.7,
+     "y": 0.44,
+     "bg": "#19A55A",
+     "p45": {
+      "x": 0.5,
+      "y": 0.58
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "🌱",
+     "title": "Starter",
+     "big": "2,000 runs/mo",
+     "x": 0.3,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "y": 0.3
+     }
+    },
+    {
+     "t": "card",
+     "icon": "🚀",
+     "title": "Pro",
+     "big": "10,000 runs/mo",
+     "x": 0.7,
+     "y": 0.46,
+     "d": 8,
+     "p45": {
+      "x": 0.5,
+      "y": 0.62
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Finished work.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.36,
+     "em": []
+    },
+    {
+     "t": "strike",
+     "text": "Not clicks.",
+     "size": 100,
+     "x": 0.5,
+     "y": 0.58,
+     "word": "not"
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Simple, fair automation.",
+     "apps": [
+      "shopify",
+      "sheets",
+      "whatsapp",
+      "drive",
+      "gmail",
+      "slack",
+      "notion",
+      "stripe",
+      "hubspot"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-07"
+}

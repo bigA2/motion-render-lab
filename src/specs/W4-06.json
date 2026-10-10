@@ -1,0 +1,209 @@
+{
+ "pal": "B4",
+ "ex": 0.4,
+ "lines": [
+  "Watch this.",
+  "One sentence.",
+  "Nodes appear. Every one connects.",
+  "Tested. Every step green.",
+  "Running.",
+  "That's FansaChat. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Watch this.",
+     "size": 150,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "zoom",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a new row is added to my Airtable, create a Trello card, message the owner on Slack and log it in Notion.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "One sentence.",
+     "size": 140,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "airtable",
+       "Airtable",
+       "New row"
+      ],
+      [
+       "trello",
+       "Trello",
+       "Card"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Owner"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Logged"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "stamp",
+     "text": "✓ ALL STEPS GREEN",
+     "color": "#19A55A",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.44
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "up",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "orbit",
+     "apps": [
+      "airtable",
+      "trello",
+      "slack",
+      "notion",
+      "gmail",
+      "sheets",
+      "hubspot",
+      "stripe"
+     ],
+     "r": 420,
+     "x": 0.5,
+     "y": 0.46
+    },
+    {
+     "t": "title",
+     "text": "Running.",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.46,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "One sentence. Running.",
+     "apps": [
+      "airtable",
+      "trello",
+      "slack",
+      "notion",
+      "gmail",
+      "sheets",
+      "hubspot",
+      "stripe",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-06"
+}

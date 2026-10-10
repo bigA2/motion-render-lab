@@ -1,0 +1,300 @@
+{
+ "pal": "B1",
+ "lines": [
+  "Maya met Ben, who manages operations for a small company.",
+  "Every Monday, he spent three hours building one report.",
+  "By Friday, nobody remembered the numbers anyway.",
+  "So Maya typed one sentence into FansaChat.",
+  "It built the report flow, and tested it.",
+  "Now the report is ready at eight every Monday, in Slack and in everyone's inbox.",
+  "Ben's Monday mornings are his again.",
+  "FansaChat. Reports that write themselves. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.24,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Meet Ben.",
+     "size": 104,
+     "style": "flip",
+     "x": 0.64,
+     "y": 0.32,
+     "p45": {
+      "x": 0.5,
+      "y": 0.14,
+      "s": 0.85
+     },
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "airtable",
+     "title": "Operations manager",
+     "sub": "3 departments",
+     "x": 0.64,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.32
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.16,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "concernedFear",
+    "size": 270
+   },
+   "els": [
+    {
+     "t": "counter",
+     "label": "HOURS EVERY MONDAY",
+     "from": 0,
+     "to": 3,
+     "suffix": "h",
+     "size": 110,
+     "x": 0.6,
+     "y": 0.46,
+     "bg": "#E8362B",
+     "p45": {
+      "x": 0.5,
+      "y": 0.4
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.84,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "serious",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "“What were the numbers?”",
+     "size": 80,
+     "style": "tape",
+     "x": 0.4,
+     "y": 0.42,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36
+     },
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.14,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "explaining",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "Every Monday at 8, pull last week's Stripe sales, HubSpot leads and Asana tasks into a Google Sheet, then post a summary in Slack and email it to the team.",
+     "typeDur": 120,
+     "x": 0.58,
+     "y": 0.46,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36,
+      "cw": 860
+     }
+    }
+   ],
+   "hold": 50
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 60,
+   "hero": {
+    "x": 0.88,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 240
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "gcal",
+       "Schedule",
+       "Mon 8:00"
+      ],
+      [
+       "stripe",
+       "Stripe",
+       "Sales"
+      ],
+      [
+       "hubspot",
+       "HubSpot",
+       "Leads"
+      ],
+      [
+       "asana",
+       "Asana",
+       "Tasks"
+      ],
+      [
+       "sheets",
+       "Sheets",
+       "Report"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Posted"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.46,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "s": 0.78
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Ready at 8:00.",
+     "size": 92,
+     "style": "blur",
+     "x": 0.34,
+     "y": 0.36,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "8:00."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "slack",
+       "Report posted ✓",
+       "$12,480 · 64 leads"
+      ],
+      [
+       "sheets",
+       "Sheet updated ✓",
+       "Week 42"
+      ],
+      [
+       "gmail",
+       "Team emailed ✓",
+       "8:00 AM"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Mondays are his again.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Reports that write themselves.",
+     "apps": [
+      "stripe",
+      "hubspot",
+      "asana",
+      "sheets",
+      "slack",
+      "gmail",
+      "airtable",
+      "notion",
+      "gcal"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W3-13"
+}

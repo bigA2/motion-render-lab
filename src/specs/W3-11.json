@@ -1,0 +1,214 @@
+{
+ "pal": "D4",
+ "lines": [
+  "Built in Dhaka.",
+  "One founder, one laptop, and a simple idea.",
+  "What if anyone could automate their work, just by saying it?",
+  "That idea became FansaChat.",
+  "Seven hundred plus apps. Plain English. Tested before it runs.",
+  "Made in Bangladesh, for the whole world.",
+  "Join the FansaChat waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Built in Dhaka.",
+     "size": 150,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.4,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.24,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "calm",
+    "size": 280
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "👤",
+       "One founder"
+      ],
+      [
+       "💻",
+       "One laptop"
+      ],
+      [
+       "💡",
+       "One simple idea"
+      ]
+     ],
+     "x": 0.62,
+     "y": 0.5,
+     "cw": 900,
+     "p45": {
+      "x": 0.5,
+      "y": 0.4
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wow",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Just by saying it?",
+     "size": 130,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "down",
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "end",
+     "tag": "AI workflow automation in plain English",
+     "apps": [],
+     "ctaWord": "zzz",
+     "x": 0.5,
+     "y": 0.55
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "orbit",
+     "apps": [
+      "gmail",
+      "shopify",
+      "hubspot",
+      "notion",
+      "slack",
+      "stripe",
+      "whatsapp",
+      "telegram"
+     ],
+     "r": 420,
+     "x": 0.5,
+     "y": 0.46
+    },
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 700,
+     "suffix": "+",
+     "label": "APPS",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.46
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "wink",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Made in Bangladesh.",
+     "size": 110,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.34,
+     "em": []
+    },
+    {
+     "t": "title",
+     "text": "For the whole world. 🌍",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.55,
+     "word": "whole",
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Made in Bangladesh, for the world.",
+     "apps": [
+      "gmail",
+      "shopify",
+      "hubspot",
+      "notion",
+      "slack",
+      "stripe",
+      "whatsapp",
+      "telegram",
+      "airtable"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W3-11"
+}

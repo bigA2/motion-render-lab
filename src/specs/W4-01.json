@@ -1,0 +1,344 @@
+{
+ "pal": "B2",
+ "lines": [
+  "Five automations every freelancer should steal.",
+  "One. Stripe invoice unpaid? A polite WhatsApp reminder goes out.",
+  "Two. New client signs? A Notion project and Google Drive folder appear.",
+  "Three. Calendly booking? Zoom link and intake form sent.",
+  "Four. Toggl hours logged? A weekly summary for every client.",
+  "Five. Payment received? It lands in QuickBooks, and you get a ping.",
+  "Five automations. Five sentences. Zero code.",
+  "FansaChat. Steal these. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Steal these 5.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "conveyor",
+     "apps": [
+      "stripe",
+      "notion",
+      "calendly",
+      "toggl",
+      "quickbooks",
+      "whatsapp",
+      "drive",
+      "zoom"
+     ],
+     "x": 0,
+     "y": 0.68
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 1,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "stripe",
+       "Stripe",
+       "Unpaid 7d"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Reminder"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Reminded"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 2,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "docusign",
+       "Contract",
+       "Signed"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Project"
+      ],
+      [
+       "drive",
+       "Drive",
+       "Folder"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 3,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "calendly",
+       "Calendly",
+       "Booked"
+      ],
+      [
+       "zoom",
+       "Zoom",
+       "Link"
+      ],
+      [
+       "googleforms",
+       "Form",
+       "Intake"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "up",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 4,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "toggl",
+       "Toggl",
+       "Hours"
+      ],
+      [
+       "sheets",
+       "Sheets",
+       "Summary"
+      ],
+      [
+       "gmail",
+       "Email",
+       "Client report"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 5,
+     "prefix": "#",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.16
+    },
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "stripe",
+       "Stripe",
+       "Paid"
+      ],
+      [
+       "quickbooks",
+       "QuickBooks",
+       "Entry"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Ping"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.54,
+     "p45": {
+      "s": 0.85
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Five sentences. Zero code.",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Steal these.",
+     "apps": [
+      "stripe",
+      "notion",
+      "calendly",
+      "toggl",
+      "quickbooks",
+      "whatsapp",
+      "drive",
+      "zoom",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-01"
+}

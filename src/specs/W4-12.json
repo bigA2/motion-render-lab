@@ -1,0 +1,151 @@
+{
+ "pal": "B6",
+ "lines": [
+  "Your side project just got its hundredth customer.",
+  "Now the orders, emails and reports are eating your evenings.",
+  "That's when you upgrade to Pro.",
+  "Ten thousand runs a month, for automations that grow with you.",
+  "FansaChat Pro. For when it gets serious. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 100,
+     "label": "CUSTOMERS",
+     "size": 140,
+     "x": 0.5,
+     "y": 0.4
+    },
+    {
+     "t": "pop",
+     "text": "🎉",
+     "size": 140,
+     "x": 0.78,
+     "y": 0.3
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "shopify",
+       "Orders",
+       "by hand"
+      ],
+      [
+       "gmail",
+       "Emails",
+       "by hand"
+      ],
+      [
+       "sheets",
+       "Reports",
+       "by hand"
+      ]
+     ],
+     "x": 0.45,
+     "y": 0.58,
+     "p45": {
+      "x": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Upgrade to Pro.",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 10000,
+     "label": "RUNS / MONTH",
+     "size": 120,
+     "x": 0.5,
+     "y": 0.44
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Pro. For when it gets serious.",
+     "apps": [
+      "shopify",
+      "gmail",
+      "sheets",
+      "stripe",
+      "notion",
+      "slack",
+      "hubspot",
+      "whatsapp",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-12"
+}

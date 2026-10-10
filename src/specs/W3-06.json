@@ -1,0 +1,299 @@
+{
+ "pal": "B7",
+ "lines": [
+  "Maya met Tom, a recruiter with one hundred and twenty CVs.",
+  "They came by email, LinkedIn, forms, even photos.",
+  "By the time he replied, the best candidates were gone.",
+  "So Maya typed one sentence into FansaChat.",
+  "It built the hiring flow, and tested it.",
+  "Now every CV is filed, every candidate gets a reply, and interviews book themselves.",
+  "Tom spends his time on people, not paperwork.",
+  "FansaChat. Hiring without inbox chaos. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.24,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Meet Tom.",
+     "size": 104,
+     "style": "flip",
+     "x": 0.64,
+     "y": 0.32,
+     "p45": {
+      "x": 0.5,
+      "y": 0.14,
+      "s": 0.85
+     },
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "linkedin",
+     "title": "Recruiter",
+     "sub": "120 CVs · 3 roles",
+     "x": 0.64,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.32
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.16,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "concernedFear",
+    "size": 270
+   },
+   "els": [
+    {
+     "t": "cloud",
+     "apps": [
+      "gmail",
+      "linkedin",
+      "googleforms",
+      "whatsapp",
+      "drive",
+      "outlook",
+      "dropbox",
+      "notion"
+     ],
+     "x": 0.6,
+     "y": 0.5,
+     "p45": {
+      "x": 0.5,
+      "y": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.84,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "serious",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "linkedin",
+     "title": "Best candidate: hired elsewhere",
+     "sub": "waited 6 days for a reply",
+     "badge": "TOO LATE",
+     "x": 0.4,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "y": 0.4
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.14,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "explaining",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a CV arrives by email or my Google Form, save it to the role's Drive folder, add the candidate to Airtable, send a thank-you, and send my Calendly link to anyone I shortlist.",
+     "typeDur": 120,
+     "x": 0.58,
+     "y": 0.46,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36,
+      "cw": 860
+     }
+    }
+   ],
+   "hold": 50
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 60,
+   "hero": {
+    "x": 0.88,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 240
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "googleforms",
+       "Form",
+       "Application"
+      ],
+      [
+       "drive",
+       "Drive",
+       "CV filed"
+      ],
+      [
+       "airtable",
+       "Airtable",
+       "Candidate"
+      ],
+      [
+       "gmail",
+       "Reply",
+       "Thank-you"
+      ],
+      [
+       "calendly",
+       "Calendly",
+       "Interview"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.46,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "s": 0.78
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Every CV filed.",
+     "size": 92,
+     "style": "blur",
+     "x": 0.34,
+     "y": 0.36,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "filed."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "airtable",
+       "120 candidates sorted ✓",
+       "by role"
+      ],
+      [
+       "gmail",
+       "All replied ✓",
+       "thank-you sent"
+      ],
+      [
+       "calendly",
+       "Interview booked ✓",
+       "Tue 11:00"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "People, not paperwork.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Hiring without inbox chaos.",
+     "apps": [
+      "linkedin",
+      "gmail",
+      "googleforms",
+      "drive",
+      "airtable",
+      "calendly",
+      "zoom",
+      "notion",
+      "slack"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W3-06"
+}

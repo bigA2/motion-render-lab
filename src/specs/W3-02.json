@@ -1,0 +1,311 @@
+{
+ "pal": "B6",
+ "lines": [
+  "Maya met Omar. He runs a small online shop.",
+  "Forty orders a day, and every one copied by hand.",
+  "One wrong address, and a parcel went to the wrong city.",
+  "So Maya typed one sentence into FansaChat.",
+  "It built the order flow, and tested it.",
+  "Now orders log themselves, customers get updates, and Omar gets stock alerts.",
+  "Omar sells more, and copies nothing.",
+  "FansaChat. Your shop on autopilot. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.24,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Meet Omar.",
+     "size": 104,
+     "style": "flip",
+     "x": 0.64,
+     "y": 0.32,
+     "p45": {
+      "x": 0.5,
+      "y": 0.14,
+      "s": 0.85
+     },
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "shopify",
+     "title": "Online shop owner",
+     "sub": "40 orders a day",
+     "x": 0.64,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.32
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.16,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "concernedFear",
+    "size": 270
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "shopify",
+       "Order #1046 → copy",
+       "by hand"
+      ],
+      [
+       "sheets",
+       "Paste address",
+       "by hand"
+      ],
+      [
+       "whatsapp",
+       "Message courier",
+       "by hand"
+      ],
+      [
+       "instagram",
+       "Reply to DM",
+       "by hand"
+      ]
+     ],
+     "x": 0.6,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.84,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "serious",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "📦",
+     "title": "Delivered to: wrong city",
+     "sub": "one typo",
+     "badge": "OOPS",
+     "x": 0.4,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "y": 0.4
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.14,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "explaining",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a Shopify order comes in, add it to my Google Sheet, send the customer a WhatsApp update, send my courier the address, and alert me on Telegram when stock is low.",
+     "typeDur": 120,
+     "x": 0.58,
+     "y": 0.46,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36,
+      "cw": 860
+     }
+    }
+   ],
+   "hold": 50
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 60,
+   "hero": {
+    "x": 0.88,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 240
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "shopify",
+       "Shopify",
+       "Order"
+      ],
+      [
+       "sheets",
+       "Sheets",
+       "Logged"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Customer update"
+      ],
+      [
+       "telegram",
+       "Courier",
+       "Pickup"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Low stock"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.46,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "s": 0.78
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Orders log themselves.",
+     "size": 92,
+     "style": "blur",
+     "x": 0.34,
+     "y": 0.36,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "themselves."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "shopify",
+       "Order #1047 logged ✓",
+       "Sheets row 418"
+      ],
+      [
+       "whatsapp",
+       "Customer updated ✓",
+       "“packed & on its way”"
+      ],
+      [
+       "telegram",
+       "Low stock: Tote bag",
+       "4 left"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Sell more. Copy nothing.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Your shop on autopilot.",
+     "apps": [
+      "shopify",
+      "woo",
+      "etsy",
+      "sheets",
+      "whatsapp",
+      "instagram",
+      "stripe",
+      "paypal",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W3-02"
+}

@@ -1,0 +1,319 @@
+{
+ "pal": "B3",
+ "lines": [
+  "Maya met Zoe, a YouTuber with one hundred thousand subscribers.",
+  "Every video meant re-posting to five more apps.",
+  "New captions, new sizes, re-uploads. Her whole Sunday.",
+  "So Maya typed one sentence into FansaChat.",
+  "It built the posting flow, and tested it.",
+  "Now one upload shows up everywhere, and her calendar updates itself.",
+  "Zoe creates more, and posts less.",
+  "FansaChat. Post once, show up everywhere. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.24,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Meet Zoe.",
+     "size": 104,
+     "style": "flip",
+     "x": 0.64,
+     "y": 0.32,
+     "p45": {
+      "x": 0.5,
+      "y": 0.14,
+      "s": 0.85
+     },
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "youtube",
+     "title": "YouTuber · 100K subs",
+     "sub": "2 videos a week",
+     "x": 0.64,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.32
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.16,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "concernedFear",
+    "size": 270
+   },
+   "els": [
+    {
+     "t": "cloud",
+     "apps": [
+      "instagram",
+      "x",
+      "linkedin",
+      "threads",
+      "facebook",
+      "tiktok",
+      "pinterest",
+      "youtube"
+     ],
+     "x": 0.6,
+     "y": 0.5,
+     "p45": {
+      "x": 0.5,
+      "y": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.84,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "serious",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Her whole Sunday.",
+     "size": 96,
+     "style": "tape",
+     "x": 0.4,
+     "y": 0.4,
+     "p45": {
+      "x": 0.5,
+      "y": 0.3
+     },
+     "em": []
+    },
+    {
+     "t": "counter",
+     "label": "HOURS",
+     "from": 0,
+     "to": 6,
+     "suffix": "h",
+     "size": 90,
+     "x": 0.4,
+     "y": 0.62,
+     "bg": "#E8362B",
+     "p45": {
+      "x": 0.5,
+      "y": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.14,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "explaining",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When I publish a YouTube video, post the clip to Instagram, X and LinkedIn with a caption, share it in my Telegram channel and mark it published in my Notion calendar.",
+     "typeDur": 120,
+     "x": 0.58,
+     "y": 0.46,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36,
+      "cw": 860
+     }
+    }
+   ],
+   "hold": 50
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 60,
+   "hero": {
+    "x": 0.88,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 240
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "youtube",
+       "YouTube",
+       "New video"
+      ],
+      [
+       "instagram",
+       "Instagram",
+       "Clip"
+      ],
+      [
+       "x",
+       "X",
+       "Post"
+      ],
+      [
+       "linkedin",
+       "LinkedIn",
+       "Share"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Channel"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Published"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.46,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "s": 0.78
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "One upload. Everywhere.",
+     "size": 92,
+     "style": "blur",
+     "x": 0.34,
+     "y": 0.36,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "Everywhere."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "instagram",
+       "Posted ✓",
+       "Reel + caption"
+      ],
+      [
+       "linkedin",
+       "Shared ✓",
+       "12 reactions"
+      ],
+      [
+       "notion",
+       "Calendar updated ✓",
+       "Published"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Create more. Post less.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Post once, show up everywhere.",
+     "apps": [
+      "youtube",
+      "instagram",
+      "x",
+      "linkedin",
+      "threads",
+      "telegram",
+      "notion",
+      "canva",
+      "spotify"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W3-03"
+}

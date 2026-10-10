@@ -1,0 +1,312 @@
+{
+ "pal": "D2",
+ "lines": [
+  "Maya met Dev, who leads a small engineering team.",
+  "Bug reports arrived in Discord, X, and private messages.",
+  "His team copied them into GitHub, and half got lost.",
+  "So Maya typed one sentence into FansaChat.",
+  "It built the bug flow, and tested it.",
+  "Now every report becomes a labelled GitHub issue, and the team hears about it instantly.",
+  "Dev's team ships code, not copy-paste.",
+  "FansaChat. Bugs sorted automatically. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.24,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Meet Dev.",
+     "size": 104,
+     "style": "flip",
+     "x": 0.64,
+     "y": 0.32,
+     "p45": {
+      "x": 0.5,
+      "y": 0.14,
+      "s": 0.85
+     },
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "github",
+     "title": "Engineering lead",
+     "sub": "6 devs · 2 products",
+     "x": 0.64,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.32
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.16,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "concernedFear",
+    "size": 270
+   },
+   "els": [
+    {
+     "t": "cloud",
+     "apps": [
+      "discord",
+      "x",
+      "slack",
+      "telegram",
+      "github",
+      "linear",
+      "sentry",
+      "gmail"
+     ],
+     "x": 0.6,
+     "y": 0.5,
+     "p45": {
+      "x": 0.5,
+      "y": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.84,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "serious",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "github",
+       "Issue (copied)",
+       "no labels"
+      ],
+      [
+       "discord",
+       "Screenshot only",
+       "no steps"
+      ],
+      [
+       "x",
+       "DM: still broken?",
+       "lost"
+      ]
+     ],
+     "x": 0.4,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.14,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "explaining",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When someone reports a bug on Discord or our bug form, create a GitHub issue with labels and the screenshot, post it in our Slack dev channel, and ask the reporter for steps if they are missing.",
+     "typeDur": 120,
+     "x": 0.58,
+     "y": 0.46,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36,
+      "cw": 860
+     }
+    }
+   ],
+   "hold": 50
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 60,
+   "hero": {
+    "x": 0.88,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 240
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "discord",
+       "Discord",
+       "Report"
+      ],
+      [
+       "googleforms",
+       "Form",
+       "Report"
+      ],
+      [
+       "github",
+       "GitHub",
+       "Issue + labels"
+      ],
+      [
+       "slack",
+       "Slack",
+       "#dev"
+      ],
+      [
+       "discord",
+       "Reply",
+       "Ask for steps"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.46,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "s": 0.78
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Every bug, an issue.",
+     "size": 92,
+     "style": "blur",
+     "x": 0.34,
+     "y": 0.36,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "issue."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "github",
+       "Issue #512 ✓",
+       "labels: bug, ios"
+      ],
+      [
+       "slack",
+       "#dev alerted ✓",
+       "Sam is on it"
+      ],
+      [
+       "discord",
+       "Reporter replied ✓",
+       "steps attached"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Ship code. Not copy-paste.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Bugs sorted automatically.",
+     "apps": [
+      "github",
+      "gitlab",
+      "linear",
+      "jira",
+      "sentry",
+      "vercel",
+      "slack",
+      "discord",
+      "notion"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W3-04"
+}

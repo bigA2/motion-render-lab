@@ -1,0 +1,183 @@
+{
+ "pal": "D1",
+ "lines": [
+  "One month. Fifty-six videos. One idea.",
+  "Freelancers, shops, creators, developers, agencies, teams.",
+  "Different jobs. The same copy-paste.",
+  "And one sentence that fixes it.",
+  "FansaChat. Automation in plain English. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "One month.",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 56,
+     "label": "VIDEOS",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.58
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "carousel",
+     "items": [
+      [
+       "Freelancers",
+       "#FF8A3D"
+      ],
+      [
+       "Shops",
+       "#FF6F61"
+      ],
+      [
+       "Creators",
+       "#2F9BFF"
+      ],
+      [
+       "Developers",
+       "#3DE0FF"
+      ],
+      [
+       "Agencies",
+       "#8C72FF"
+      ],
+      [
+       "Teams",
+       "#FFC800"
+      ]
+     ],
+     "words": [
+      "freelancers",
+      "shops",
+      "creators",
+      "developers",
+      "agencies",
+      "teams"
+     ],
+     "x": 0.5,
+     "y": 0.48
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "meh",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "The same copy-paste.",
+     "size": 110,
+     "style": "tape",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "orbit",
+     "apps": [
+      "gmail",
+      "shopify",
+      "hubspot",
+      "notion",
+      "slack",
+      "stripe",
+      "whatsapp",
+      "github"
+     ],
+     "r": 420,
+     "x": 0.5,
+     "y": 0.46
+    },
+    {
+     "t": "title",
+     "text": "One sentence.",
+     "size": 130,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.46,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Automation in plain English.",
+     "apps": [
+      "gmail",
+      "shopify",
+      "hubspot",
+      "notion",
+      "slack",
+      "stripe",
+      "whatsapp",
+      "github",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-13"
+}

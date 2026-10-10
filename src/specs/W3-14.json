@@ -1,0 +1,316 @@
+{
+ "pal": "D3",
+ "lines": [
+  "Maya met a whole company. Fifty people, six teams.",
+  "Each team had its own copy-paste job, waiting for someone to fix it.",
+  "The automation wishlist had twenty-three items, and nobody had time.",
+  "So Maya typed what each team needed into FansaChat.",
+  "It built a flow for every role, and tested each one.",
+  "Leads routed, tickets answered, invoices chased, new hires onboarded.",
+  "One plan for the whole company. Every role, one flow each.",
+  "FansaChat. Your whole company, automated. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.24,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Meet the team.",
+     "size": 104,
+     "style": "flip",
+     "x": 0.64,
+     "y": 0.32,
+     "p45": {
+      "x": 0.5,
+      "y": 0.14,
+      "s": 0.85
+     },
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "👥",
+     "title": "50 people · 6 teams",
+     "sub": "Sales · Support · Finance · Ops · HR · Marketing",
+     "x": 0.64,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.32
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.16,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "concernedFear",
+    "size": 270
+   },
+   "els": [
+    {
+     "t": "carousel",
+     "items": [
+      [
+       "Sales",
+       "#FF8A3D"
+      ],
+      [
+       "Support",
+       "#3D9BFF"
+      ],
+      [
+       "Finance",
+       "#19A55A"
+      ],
+      [
+       "Ops",
+       "#8C72FF"
+      ],
+      [
+       "HR",
+       "#FF5A8A"
+      ],
+      [
+       "Marketing",
+       "#FFC800"
+      ]
+     ],
+     "x": 0.6,
+     "y": 0.48,
+     "p45": {
+      "x": 0.5,
+      "y": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.84,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "serious",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "counter",
+     "label": "WISHLIST ITEMS",
+     "from": 0,
+     "to": 23,
+     "size": 110,
+     "x": 0.4,
+     "y": 0.42,
+     "bg": "#E8362B",
+     "p45": {
+      "x": 0.5,
+      "y": 0.36
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.14,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "explaining",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "Route new HubSpot leads to the rep on shift, answer order questions on WhatsApp, send overdue reminders from Xero, and onboard new hires in Slack and Notion.",
+     "typeDur": 120,
+     "x": 0.58,
+     "y": 0.46,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "y": 0.36,
+      "cw": 860
+     }
+    }
+   ],
+   "hold": 50
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 60,
+   "hero": {
+    "x": 0.88,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 240
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "hubspot",
+       "Sales",
+       "Leads routed"
+      ],
+      [
+       "whatsapp",
+       "Support",
+       "Answered"
+      ],
+      [
+       "xero",
+       "Finance",
+       "Reminders"
+      ],
+      [
+       "slack",
+       "HR",
+       "Onboarding"
+      ],
+      [
+       "mailchimp",
+       "Marketing",
+       "Welcomes"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.46,
+     "y": 0.46,
+     "p45": {
+      "x": 0.5,
+      "s": 0.78
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Every team, handled.",
+     "size": 92,
+     "style": "blur",
+     "x": 0.34,
+     "y": 0.36,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "handled."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "hubspot",
+       "Lead → Sam ✓",
+       "9 seconds"
+      ],
+      [
+       "xero",
+       "12 reminders ✓",
+       "Finance"
+      ],
+      [
+       "slack",
+       "Welcome, Ana ✓",
+       "HR"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Every role. One flow each.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Your whole company, automated.",
+     "apps": [
+      "hubspot",
+      "zendesk",
+      "xero",
+      "asana",
+      "slack",
+      "mailchimp",
+      "jira",
+      "notion",
+      "sheets"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W3-14"
+}

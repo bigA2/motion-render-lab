@@ -1,0 +1,172 @@
+{
+ "pal": "B1",
+ "lines": [
+  "Four hundred seventy-eight templates, built for real work.",
+  "Sales. Support. Finance. Marketing. HR. Operations.",
+  "Pick one, connect your apps, and it runs.",
+  "Or describe your own, in one sentence.",
+  "FansaChat. Templates or plain English. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 478,
+     "label": "TEMPLATES",
+     "size": 150,
+     "x": 0.5,
+     "y": 0.44
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "carousel",
+     "items": [
+      [
+       "Sales",
+       "#FF8A3D"
+      ],
+      [
+       "Support",
+       "#3D9BFF"
+      ],
+      [
+       "Finance",
+       "#19A55A"
+      ],
+      [
+       "Marketing",
+       "#FFC800"
+      ],
+      [
+       "HR",
+       "#FF5A8A"
+      ],
+      [
+       "Operations",
+       "#8C72FF"
+      ]
+     ],
+     "words": [
+      "sales",
+      "support",
+      "finance",
+      "marketing",
+      "hr",
+      "operations"
+     ],
+     "x": 0.5,
+     "y": 0.48
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "hubspot",
+       "Pick",
+       "Lead routing"
+      ],
+      [
+       "slack",
+       "Connect",
+       "Your apps"
+      ],
+      [
+       "✓",
+       "Runs",
+       "Tested"
+      ]
+     ],
+     "layout": "row",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Or one sentence.",
+     "size": 130,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Templates or plain English.",
+     "apps": [
+      "hubspot",
+      "slack",
+      "stripe",
+      "shopify",
+      "notion",
+      "zendesk",
+      "xero",
+      "mailchimp",
+      "sheets"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-11"
+}

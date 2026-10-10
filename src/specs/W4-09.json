@@ -1,0 +1,179 @@
+{
+ "pal": "B3",
+ "lines": [
+  "We share one free automation idea every day.",
+  "On our Telegram channel, t dot me slash fansachat.",
+  "Real workflows for freelancers, shops, creators and teams.",
+  "Ask questions, share the boring task you hate, and we'll show you how to automate it.",
+  "Join the channel, and the FansaChat waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "1 automation a day.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.4,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "telegram",
+     "title": "t.me/fansachat",
+     "sub": "Telegram channel",
+     "x": 0.5,
+     "y": 0.44
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "carousel",
+     "items": [
+      [
+       "Freelancers",
+       "#FF8A3D"
+      ],
+      [
+       "Shops",
+       "#FF6F61"
+      ],
+      [
+       "Creators",
+       "#2F9BFF"
+      ],
+      [
+       "Teams",
+       "#8C72FF"
+      ]
+     ],
+     "words": [
+      "freelancers",
+      "shops",
+      "creators",
+      "teams"
+     ],
+     "x": 0.5,
+     "y": 0.48
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Share the task you hate.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "hate."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "telegram",
+       "New post 🔔",
+       "Today: auto-file receipts"
+      ],
+      [
+       "telegram",
+       "“How do I…?”",
+       "answered in comments"
+      ],
+      [
+       "telegram",
+       "Your idea featured ✓",
+       "automation of the day"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Join the channel: t.me/fansachat",
+     "apps": [
+      "telegram",
+      "notion",
+      "slack",
+      "shopify",
+      "stripe",
+      "youtube",
+      "hubspot",
+      "gmail",
+      "sheets"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W4-09"
+}
