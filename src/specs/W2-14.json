@@ -1,0 +1,172 @@
+{
+ "pal": "D3",
+ "lines": [
+  "Same work. Two ways to automate it.",
+  "Boxes, steps, per-step bills, and things that break quietly.",
+  "Or one sentence, one run, tested before it goes live.",
+  "Unlimited users. Seven hundred plus apps. Plain English.",
+  "FansaChat. The simpler way to automate. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Two ways.",
+     "size": 150,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.4,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "⬜",
+       "40 boxes to connect"
+      ],
+      [
+       "💸",
+       "Billed per step"
+      ],
+      [
+       "⚠️",
+       "Breaks quietly"
+      ]
+     ],
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 1000,
+     "p45": {
+      "cw": 920
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "💬",
+       "One sentence"
+      ],
+      [
+       "1️⃣",
+       "One run, however many steps"
+      ],
+      [
+       "✓",
+       "Tested before it goes live"
+      ]
+     ],
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 1000,
+     "p45": {
+      "cw": 920
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "orbit",
+     "apps": [
+      "gmail",
+      "shopify",
+      "hubspot",
+      "notion",
+      "slack",
+      "stripe",
+      "whatsapp",
+      "telegram"
+     ],
+     "r": 420,
+     "x": 0.5,
+     "y": 0.46
+    },
+    {
+     "t": "title",
+     "text": "Plain English.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.46,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "The simpler way to automate.",
+     "apps": [
+      "gmail",
+      "shopify",
+      "hubspot",
+      "notion",
+      "slack",
+      "stripe",
+      "whatsapp",
+      "telegram",
+      "airtable"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-14"
+}

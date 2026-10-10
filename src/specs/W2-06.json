@@ -1,0 +1,232 @@
+{
+ "pal": "B6",
+ "lines": [
+  "Here's a workflow with ten steps.",
+  "With per-step pricing, every step adds to the bill.",
+  "With FansaChat, ten steps is still one run.",
+  "Users and workflows are unlimited on every plan.",
+  "Only finished runs count. That's it.",
+  "FansaChat. Build big. Pay fair. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "typeform",
+       "Form",
+       "1"
+      ],
+      [
+       "hubspot",
+       "CRM",
+       "2"
+      ],
+      [
+       "slack",
+       "Slack",
+       "3"
+      ],
+      [
+       "notion",
+       "Notion",
+       "4"
+      ],
+      [
+       "gmail",
+       "Email",
+       "5"
+      ],
+      [
+       "sheets",
+       "Sheet",
+       "6"
+      ],
+      [
+       "calendly",
+       "Calendly",
+       "7"
+      ],
+      [
+       "zoom",
+       "Zoom",
+       "8"
+      ],
+      [
+       "stripe",
+       "Stripe",
+       "9"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "10"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.52,
+     "s": 0.62,
+     "p45": {
+      "s": 0.42
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "wow",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "counter",
+     "label": "STEPS BILLED",
+     "from": 1,
+     "to": 10,
+     "size": 120,
+     "x": 0.5,
+     "y": 0.44,
+     "bg": "#E8362B"
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "counter",
+     "label": "RUNS",
+     "from": 1,
+     "to": 1,
+     "size": 160,
+     "x": 0.5,
+     "y": 0.42,
+     "bg": "#19A55A"
+    },
+    {
+     "t": "title",
+     "text": "10 steps = 1 run",
+     "size": 90,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.66,
+     "em": [
+      "1",
+      "run"
+     ]
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "👥",
+       "Unlimited users"
+      ],
+      [
+       "🔁",
+       "Unlimited workflows"
+      ],
+      [
+       "✓",
+       "Only finished runs count"
+      ]
+     ],
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 1000,
+     "p45": {
+      "cw": 900
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "That's it.",
+     "size": 150,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Build big. Pay fair.",
+     "apps": [
+      "typeform",
+      "hubspot",
+      "slack",
+      "notion",
+      "gmail",
+      "sheets",
+      "calendly",
+      "zoom",
+      "stripe"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-06"
+}

@@ -1,0 +1,325 @@
+{
+ "pal": "B1",
+ "audience": "beginners and solopreneurs",
+ "lines": [
+  "You tried learning automation once.",
+  "Triggers. Webhooks. Forty boxes on a canvas.",
+  "Three tutorials later, nothing actually works.",
+  "Here's the secret: you don't need to learn any of it.",
+  "Just tell FansaChat what you want.",
+  "It builds the workflow, and tests it for you.",
+  "Your first automation, running in a minute.",
+  "Starts at fifteen dollars a month.",
+  "FansaChat. Automation in plain English. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.84,
+    "y": 0.78,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Learning automation…",
+     "size": 112,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.22,
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "youtube",
+     "title": "Tutorial 1 of 37",
+     "sub": "2:14:08",
+     "x": 0.45,
+     "y": 0.58,
+     "p45": {
+      "x": 0.5,
+      "y": 0.52
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.85,
+    "mood": "wow",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "paths",
+     "l": "Triggers · webhooks · 40 boxes",
+     "r": "One sentence",
+     "x": 0.5,
+     "y": 0.42
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "meh",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "⚠️",
+     "title": "Error: step 14 failed",
+     "sub": "invalid JSON in field “body”",
+     "badge": "FAILED",
+     "badgeColor": "#E8362B",
+     "x": 0.5,
+     "y": 0.44
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "hero": {
+    "x": 0.86,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "You don't need to learn it.",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Just tell FansaChat.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.45,
+     "em": [
+      "FansaChat."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When someone fills my Google Form, add them to my Google Sheet, send them a welcome email, and message me on Telegram.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "googleforms",
+       "Google Form",
+       "New response"
+      ],
+      [
+       "sheets",
+       "Google Sheets",
+       "Add row"
+      ],
+      [
+       "gmail",
+       "Welcome email",
+       "Sent"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Ping you"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Running in a minute.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "minute."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "sheets",
+       "Row added ✓",
+       "New signup: Leo M."
+      ],
+      [
+       "gmail",
+       "Welcome sent ✓",
+       "to leo@…"
+      ],
+      [
+       "telegram",
+       "New signup! 🎉",
+       "Leo M."
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "counter",
+     "prefix": "$",
+     "from": 0,
+     "to": 15,
+     "suffix": "/month",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.38
+    },
+    {
+     "t": "title",
+     "text": "Runs counted, not steps.",
+     "size": 70,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.6,
+     "em": [
+      "runs"
+     ]
+    }
+   ]
+  },
+  {
+   "line": 8,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Automation, in plain English.",
+     "apps": [
+      "googleforms",
+      "sheets",
+      "gmail",
+      "telegram",
+      "notion",
+      "slack",
+      "calendly",
+      "stripe",
+      "whatsapp"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W1-13"
+}

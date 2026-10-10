@@ -1,0 +1,383 @@
+{
+ "pal": "D3",
+ "audience": "teams of 10 to 200",
+ "lines": [
+  "Sales. Support. Finance. Ops. HR. Marketing.",
+  "Every team has its own copy-paste job.",
+  "And every team waits for someone to automate it.",
+  "What if every role had its own flow, from one chat?",
+  "So tell FansaChat what each team needs.",
+  "It builds every flow, and tests each one.",
+  "Leads routed. Tickets answered. Invoices sent. New hires onboarded.",
+  "One plan for the whole team. Every role, one flow each.",
+  "FansaChat. Your whole company, automated. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.88,
+    "y": 0.82,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "carousel",
+     "items": [
+      [
+       "Sales",
+       "#FF8A3D"
+      ],
+      [
+       "Support",
+       "#3D9BFF"
+      ],
+      [
+       "Finance",
+       "#19A55A"
+      ],
+      [
+       "Ops",
+       "#8C72FF"
+      ],
+      [
+       "HR",
+       "#FF5A8A"
+      ],
+      [
+       "Marketing",
+       "#FFC800"
+      ]
+     ],
+     "words": [
+      "sales",
+      "support",
+      "finance",
+      "ops",
+      "hr",
+      "marketing"
+     ],
+     "x": 0.5,
+     "y": 0.48
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.88,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Every team. Its own copy-paste.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.16,
+     "em": [
+      "copy-paste."
+     ]
+    },
+    {
+     "t": "cloud",
+     "apps": [
+      "hubspot",
+      "zendesk",
+      "xero",
+      "asana",
+      "slack",
+      "gmail",
+      "sheets",
+      "mailchimp",
+      "jira",
+      "notion"
+     ],
+     "x": 0.5,
+     "y": 0.58
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "jira",
+       "IT ticket: “automate leads” — open 41 days"
+      ],
+      [
+       "slack",
+       "“Can someone build a Zap?”"
+      ],
+      [
+       "notion",
+       "Automation wishlist (23 items)"
+      ]
+     ],
+     "x": 0.45,
+     "y": 0.5,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "cw": 960
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wow",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Every role. Its own flow.",
+     "size": 112,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "One chat. Every team.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.45,
+     "em": [
+      "Every",
+      "team."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "Route new HubSpot leads to the rep on shift, answer order questions on WhatsApp, send overdue invoice reminders from Xero, and onboard new hires in Slack and Notion.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hold": 60,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "hubspot",
+       "Sales · leads routed to the rep on shift"
+      ],
+      [
+       "whatsapp",
+       "Support · order questions answered"
+      ],
+      [
+       "xero",
+       "Finance · overdue reminders"
+      ],
+      [
+       "slack",
+       "HR · new hires onboarded"
+      ],
+      [
+       "mailchimp",
+       "Marketing · new subscribers welcomed"
+      ]
+     ],
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 1250,
+     "p45": {
+      "cw": 980
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Every team, handled.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "handled."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "hubspot",
+       "Lead → Sam ✓",
+       "in 9 seconds"
+      ],
+      [
+       "xero",
+       "12 reminders sent ✓",
+       "Finance"
+      ],
+      [
+       "slack",
+       "Welcome, Ana! ✓",
+       "HR onboarding done"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "One plan. Whole team.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "orbit",
+     "apps": [
+      "hubspot",
+      "zendesk",
+      "xero",
+      "asana",
+      "slack",
+      "mailchimp",
+      "jira",
+      "notion"
+     ],
+     "r": 400,
+     "x": 0.5,
+     "y": 0.72
+    }
+   ]
+  },
+  {
+   "line": 8,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Your whole company, automated.",
+     "apps": [
+      "hubspot",
+      "zendesk",
+      "xero",
+      "asana",
+      "slack",
+      "mailchimp",
+      "jira",
+      "notion",
+      "sheets",
+      "whatsapp"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W1-14"
+}

@@ -1,0 +1,360 @@
+{
+ "pal": "B2",
+ "audience": "sales teams",
+ "lines": [
+  "A hot lead filled your form at eleven p.m.",
+  "Nobody saw it until the next afternoon.",
+  "By then, they'd booked a call with someone else.",
+  "Slow replies lose deals. Every single day.",
+  "So tell FansaChat, once.",
+  "It builds the lead flow, and tests it.",
+  "New lead? Reply in seconds. Rep assigned. Call booked.",
+  "Hot leads stay hot.",
+  "FansaChat. Never miss a lead again. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.84,
+    "y": 0.78,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "🔥 Hot lead. 11:02 PM.",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.2,
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "typeform",
+     "title": "Priya K. · Head of Growth",
+     "sub": "“Need a demo this week”",
+     "x": 0.45,
+     "y": 0.58,
+     "badge": "HOT",
+     "p45": {
+      "x": 0.5,
+      "y": 0.52
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "counter",
+     "label": "HOURS WAITING",
+     "from": 0,
+     "to": 15,
+     "suffix": "h",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.4,
+     "bg": "#E8362B"
+    },
+    {
+     "t": "title",
+     "text": "…unread.",
+     "size": 100,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.62,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "calendly",
+     "title": "Call booked",
+     "sub": "with your competitor",
+     "x": 0.45,
+     "y": 0.46,
+     "badge": "LOST",
+     "p45": {
+      "x": 0.5
+     }
+    },
+    {
+     "t": "stamp",
+     "text": "GONE",
+     "color": "#E8362B",
+     "x": 0.7,
+     "y": 0.32,
+     "word": "someone"
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "whip",
+   "hero": {
+    "x": 0.5,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Slow replies lose deals.",
+     "size": 96,
+     "style": "tape",
+     "x": 0.5,
+     "y": 0.36,
+     "em": []
+    },
+    {
+     "t": "badges",
+     "n": 7,
+     "r": 320,
+     "x": 0.5,
+     "y": 0.4
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "So tell FansaChat, once.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.45,
+     "em": [
+      "FansaChat,",
+      "once."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When someone fills my Typeform, add them to HubSpot, assign the rep on shift, send them my Calendly link on WhatsApp within a minute, and alert the team in Slack.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "typeform",
+       "Typeform",
+       "New lead"
+      ],
+      [
+       "hubspot",
+       "HubSpot",
+       "Contact + deal"
+      ],
+      [
+       "salesforce",
+       "Assign rep",
+       "Round robin"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Calendly link"
+      ],
+      [
+       "slack",
+       "Slack",
+       "#sales alert"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Reply in seconds.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "seconds."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "whatsapp",
+       "Priya got your link ✓",
+       "23 seconds after the form"
+      ],
+      [
+       "hubspot",
+       "Deal assigned to Sam ✓",
+       "Stage: Demo"
+      ],
+      [
+       "calendly",
+       "Demo booked ✓",
+       "Thu 10:30"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Hot leads",
+     "size": 130,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "title",
+     "text": "stay hot. 🔥",
+     "size": 130,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.55,
+     "word": "stay",
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 8,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Never miss a lead again.",
+     "apps": [
+      "typeform",
+      "hubspot",
+      "salesforce",
+      "calendly",
+      "whatsapp",
+      "slack",
+      "linkedin",
+      "zoom",
+      "gmail"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W1-09"
+}

@@ -1,0 +1,383 @@
+{
+ "pal": "B5",
+ "audience": "small business operations",
+ "lines": [
+  "Monday, nine a.m. Time for the weekly report.",
+  "Sales from Stripe. Leads from HubSpot. Tasks from Asana.",
+  "Copy, paste, chart, check. Three hours, gone.",
+  "And by Friday, nobody remembers the numbers.",
+  "So tell FansaChat, once.",
+  "It builds the report flow, and tests it.",
+  "Every Monday at eight, the report is already waiting.",
+  "Your morning is yours again.",
+  "FansaChat. Reports that write themselves. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.84,
+    "y": 0.78,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Monday. 9:00 AM.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.2,
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "gcal",
+     "title": "Weekly report",
+     "sub": "due 10:00 · recurring",
+     "x": 0.45,
+     "y": 0.58,
+     "badge": "TODAY",
+     "p45": {
+      "x": 0.5,
+      "y": 0.52
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.88,
+    "mood": "wow",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "stripe",
+     "title": "Sales",
+     "big": "$12,480",
+     "x": 0.2,
+     "y": 0.48,
+     "word": "sales",
+     "p45": {
+      "x": 0.5,
+      "y": 0.22,
+      "s": 0.8
+     }
+    },
+    {
+     "t": "card",
+     "icon": "hubspot",
+     "title": "New leads",
+     "big": "64",
+     "x": 0.5,
+     "y": 0.48,
+     "word": "leads",
+     "p45": {
+      "x": 0.5,
+      "y": 0.47,
+      "s": 0.8
+     }
+    },
+    {
+     "t": "card",
+     "icon": "asana",
+     "title": "Tasks done",
+     "big": "38",
+     "x": 0.8,
+     "y": 0.48,
+     "word": "tasks",
+     "p45": {
+      "x": 0.5,
+      "y": 0.72,
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "COPY. PASTE. CHART. CHECK.",
+     "size": 78,
+     "style": "tape",
+     "x": 0.5,
+     "y": 0.24,
+     "em": []
+    },
+    {
+     "t": "counter",
+     "label": "HOURS",
+     "from": 0,
+     "to": 3,
+     "suffix": "h",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.56,
+     "bg": "#E8362B",
+     "word": "three"
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "iris",
+   "hero": {
+    "x": 0.5,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Friday: “what were the numbers?”",
+     "size": 96,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.4,
+     "em": [
+      "numbers?”"
+     ]
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "So tell FansaChat, once.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.45,
+     "em": [
+      "FansaChat,",
+      "once."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "Every Monday at 8 a.m., pull last week's Stripe sales, new HubSpot leads and finished Asana tasks into a Google Sheet, then post a short summary in Slack and email it to the team.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "gcal",
+       "Schedule",
+       "Mon 8:00"
+      ],
+      [
+       "stripe",
+       "Stripe",
+       "Last week sales"
+      ],
+      [
+       "hubspot",
+       "HubSpot",
+       "New leads"
+      ],
+      [
+       "asana",
+       "Asana",
+       "Tasks done"
+      ],
+      [
+       "sheets",
+       "Google Sheets",
+       "Report row"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Summary posted"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Report ready at 8:00.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "8:00."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "slack",
+       "Weekly report posted ✓",
+       "$12,480 · 64 leads · 38 tasks"
+      ],
+      [
+       "sheets",
+       "Sheet updated ✓",
+       "Week 41"
+      ],
+      [
+       "gmail",
+       "Team emailed ✓",
+       "8:00 AM"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Your morning.",
+     "size": 130,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.34,
+     "em": []
+    },
+    {
+     "t": "title",
+     "text": "Yours again. ☕",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.56,
+     "word": "yours",
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 8,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Reports that write themselves.",
+     "apps": [
+      "stripe",
+      "hubspot",
+      "asana",
+      "sheets",
+      "slack",
+      "gmail",
+      "airtable",
+      "notion",
+      "gcal"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W1-08"
+}

@@ -1,0 +1,166 @@
+{
+ "pal": "D2",
+ "lines": [
+  "Your AI assistant can write. But can it do anything?",
+  "It answers, then waits for you to copy the result somewhere.",
+  "FansaChat connects AI to twenty-two verified tool servers and seven hundred plus apps.",
+  "So your AI doesn't just suggest. It sends, files and updates.",
+  "FansaChat. AI that actually acts. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Can it DO anything?",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "openai",
+     "title": "AI assistant",
+     "sub": "Here is a draft you can copy…",
+     "x": 0.5,
+     "y": 0.58
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Answer. Wait. Copy. Paste.",
+     "size": 90,
+     "style": "tape",
+     "x": 0.5,
+     "y": 0.4,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 22,
+     "label": "VERIFIED MCP SERVERS",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.34
+    },
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 700,
+     "suffix": "+",
+     "label": "APPS",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.6,
+     "d": 14
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "openai",
+       "AI",
+       "Writes reply"
+      ],
+      [
+       "gmail",
+       "Sends",
+       "Email"
+      ],
+      [
+       "drive",
+       "Files",
+       "Drive"
+      ],
+      [
+       "hubspot",
+       "Updates",
+       "CRM"
+      ]
+     ],
+     "layout": "row",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "AI that actually acts.",
+     "apps": [
+      "openai",
+      "gmail",
+      "drive",
+      "hubspot",
+      "slack",
+      "notion",
+      "github",
+      "linear",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-10"
+}

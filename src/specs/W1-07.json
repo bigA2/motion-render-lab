@@ -1,0 +1,394 @@
+{
+ "pal": "D1",
+ "audience": "agency owners",
+ "lines": [
+  "You run an agency. Ten people. Forty tools.",
+  "A new client signs, and the chaos starts.",
+  "Someone makes the CRM deal. Someone opens the project. Someone forgets the Slack channel.",
+  "Day one, and the client already feels lost.",
+  "So tell FansaChat, once.",
+  "It builds the whole onboarding, and tests it.",
+  "One signed form. Everything set up in a minute.",
+  "Your team does the creative work. Not the admin.",
+  "FansaChat. One chat for the whole team. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.84,
+    "y": 0.8,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "10 people. 40 tools.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.18,
+     "em": []
+    },
+    {
+     "t": "cloud",
+     "apps": [
+      "hubspot",
+      "clickup",
+      "slack",
+      "notion",
+      "figma",
+      "drive",
+      "docusign",
+      "calendly",
+      "asana",
+      "gmail",
+      "zoom",
+      "canva"
+     ],
+     "x": 0.5,
+     "y": 0.56
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "wow",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "docusign",
+     "title": "Contract signed ✍️",
+     "sub": "North & Co · $4,800/mo retainer",
+     "x": 0.5,
+     "y": 0.36
+    },
+    {
+     "t": "title",
+     "text": "…and the chaos starts.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.62,
+     "em": [
+      "chaos"
+     ]
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hold": 10,
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "hubspot",
+       "Create the CRM deal (manually)"
+      ],
+      [
+       "clickup",
+       "Open the project + tasks"
+      ],
+      [
+       "slack",
+       "Make the client channel… forgot"
+      ],
+      [
+       "drive",
+       "Shared folder… which one?"
+      ]
+     ],
+     "x": 0.45,
+     "y": 0.52,
+     "cw": 1050,
+     "p45": {
+      "x": 0.5,
+      "cw": 920
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "whip",
+   "hero": {
+    "x": 0.5,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Day 1. Client: “Hello?”",
+     "size": 96,
+     "style": "tape",
+     "x": 0.5,
+     "y": 0.36,
+     "em": []
+    },
+    {
+     "t": "badges",
+     "n": 8,
+     "r": 330,
+     "x": 0.5,
+     "y": 0.4
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "So tell FansaChat, once.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.45,
+     "em": [
+      "FansaChat,",
+      "once."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a contract is signed in DocuSign, create the deal in HubSpot, open a ClickUp project from our template, make a Slack channel with the client, share a Google Drive folder and send the welcome pack.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "docusign",
+       "DocuSign",
+       "Contract signed"
+      ],
+      [
+       "hubspot",
+       "HubSpot",
+       "Deal created"
+      ],
+      [
+       "clickup",
+       "ClickUp",
+       "Project from template"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Client channel"
+      ],
+      [
+       "drive",
+       "Google Drive",
+       "Shared folder"
+      ],
+      [
+       "gmail",
+       "Welcome pack",
+       "Sent"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Signed form. Set up in a minute.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "minute."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "hubspot",
+       "Deal created ✓",
+       "North & Co"
+      ],
+      [
+       "clickup",
+       "Project ready ✓",
+       "24 tasks assigned"
+      ],
+      [
+       "slack",
+       "#north-co created ✓",
+       "client invited"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Creative work.",
+     "size": 130,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "strike",
+     "text": "Not the admin.",
+     "size": 96,
+     "x": 0.5,
+     "y": 0.55,
+     "word": "not"
+    },
+    {
+     "t": "orbit",
+     "apps": [
+      "hubspot",
+      "clickup",
+      "slack",
+      "notion",
+      "figma",
+      "drive",
+      "docusign",
+      "calendly"
+     ],
+     "r": 380,
+     "x": 0.5,
+     "y": 0.82
+    }
+   ]
+  },
+  {
+   "line": 8,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "One chat for the whole team.",
+     "apps": [
+      "hubspot",
+      "clickup",
+      "slack",
+      "notion",
+      "figma",
+      "drive",
+      "docusign",
+      "calendly",
+      "asana",
+      "zoom"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W1-07"
+}

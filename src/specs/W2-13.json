@@ -1,0 +1,213 @@
+{
+ "pal": "B7",
+ "lines": [
+  "Meet Maya. She runs a team of ten.",
+  "Every week, her team did the same copy-paste work, by hand.",
+  "So Maya typed one sentence into FansaChat.",
+  "Now new leads, invoices and reports handle themselves.",
+  "Maya's team finally does the work they were hired for.",
+  "Be like Maya. Join the FansaChat waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.3,
+    "y": 0.92,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Meet Maya.",
+     "size": 140,
+     "style": "flip",
+     "x": 0.66,
+     "y": 0.36,
+     "p45": {
+      "x": 0.5,
+      "y": 0.16
+     },
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "👥",
+     "title": "Team lead · 10 people",
+     "sub": "agency, 6 clients",
+     "x": 0.66,
+     "y": 0.58,
+     "p45": {
+      "x": 0.5,
+      "y": 0.3
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.18,
+    "y": 0.94,
+    "who": "maya",
+    "expr": "tired",
+    "size": 280
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "hubspot",
+       "Copy leads to CRM",
+       "every day"
+      ],
+      [
+       "xero",
+       "Chase invoices",
+       "every week"
+      ],
+      [
+       "sheets",
+       "Build the report",
+       "every Monday"
+      ]
+     ],
+     "x": 0.6,
+     "y": 0.56,
+     "p45": {
+      "x": 0.5,
+      "y": 0.4
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.16,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "explaining",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "Route new leads to the right person, send invoice reminders from Xero, and post the weekly report in Slack every Monday.",
+     "typeDur": 110,
+     "x": 0.58,
+     "y": 0.48,
+     "cw": 1150,
+     "p45": {
+      "x": 0.5,
+      "y": 0.4,
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hold": 30,
+   "hero": {
+    "x": 0.85,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 260
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "hubspot",
+       "Leads",
+       "Routed"
+      ],
+      [
+       "xero",
+       "Invoices",
+       "Reminded"
+      ],
+      [
+       "sheets",
+       "Report",
+       "Built"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Posted Mon 8:00"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.45,
+     "y": 0.45,
+     "p45": {
+      "x": 0.5,
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.95,
+    "who": "maya",
+    "expr": "smileBig",
+    "size": 300
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "The work they were hired for.",
+     "size": 100,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Be like Maya.",
+     "apps": [
+      "hubspot",
+      "xero",
+      "sheets",
+      "slack",
+      "notion",
+      "asana",
+      "gmail",
+      "calendly",
+      "zoom"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-13"
+}

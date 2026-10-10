@@ -1,0 +1,211 @@
+{
+ "pal": "D4",
+ "lines": [
+  "Most automations break quietly.",
+  "A field changes. A step fails. Nobody notices for a week.",
+  "FansaChat tests every workflow before it runs.",
+  "Real test run. Real data. Every step checked.",
+  "If something can't work, you know before it matters.",
+  "FansaChat. Tested before it runs. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Breaks quietly.",
+     "size": 130,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "badges",
+     "n": 7,
+     "r": 300,
+     "x": 0.5,
+     "y": 0.55,
+     "color": "#E8362B"
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "sheets",
+       "Column renamed",
+       "step 3 failing"
+      ],
+      [
+       "hubspot",
+       "Field deleted",
+       "step 2 failing"
+      ],
+      [
+       "slack",
+       "Channel archived",
+       "step 5 failing"
+      ]
+     ],
+     "x": 0.45,
+     "y": 0.58,
+     "p45": {
+      "x": 0.5
+     }
+    },
+    {
+     "t": "counter",
+     "label": "DAYS UNNOTICED",
+     "from": 0,
+     "to": 7,
+     "size": 80,
+     "x": 0.78,
+     "y": 0.22,
+     "bg": "#E8362B",
+     "p45": {
+      "x": 0.5,
+      "y": 0.15
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Tested before it runs.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "typeform",
+       "Typeform",
+       "Test response"
+      ],
+      [
+       "hubspot",
+       "HubSpot",
+       "Contact created"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Message posted"
+      ],
+      [
+       "sheets",
+       "Google Sheets",
+       "Row added"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "stamp",
+     "text": "✓ TEST PASSED",
+     "color": "#19A55A",
+     "size": 90,
+     "x": 0.5,
+     "y": 0.44
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Tested before it runs.",
+     "apps": [
+      "typeform",
+      "hubspot",
+      "slack",
+      "sheets",
+      "notion",
+      "stripe",
+      "gmail",
+      "airtable",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-05"
+}

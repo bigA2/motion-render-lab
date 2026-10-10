@@ -1,0 +1,393 @@
+{
+ "pal": "B4",
+ "audience": "designers",
+ "lines": [
+  "Designers: the client sent feedback.",
+  "In Figma. On WhatsApp. In a voice note. In a Slack thread.",
+  "Version twelve. Final final. Really final.",
+  "You spend more time finding feedback than designing.",
+  "So tell FansaChat, once.",
+  "It builds the flow, and tests it.",
+  "Every comment lands in one Notion board. Sorted.",
+  "Less hunting. More designing.",
+  "FansaChat. Feedback, organised for you. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.84,
+    "y": 0.78,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Feedback is in.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.2,
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "figma",
+     "title": "New comment",
+     "sub": "“Can we make the logo pop more?”",
+     "x": 0.45,
+     "y": 0.58,
+     "word": "feedback",
+     "p45": {
+      "x": 0.5,
+      "y": 0.52
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.88,
+    "mood": "wow",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Everywhere at once.",
+     "size": 110,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.14,
+     "em": [
+      "Everywhere"
+     ]
+    },
+    {
+     "t": "cloud",
+     "apps": [
+      "figma",
+      "whatsapp",
+      "slack",
+      "gmail",
+      "notion",
+      "trello",
+      "canva",
+      "dropbox"
+     ],
+     "x": 0.5,
+     "y": 0.54,
+     "word": "figma"
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "whip",
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "meh",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "figma",
+       "logo_v12_final_FINAL.fig",
+       "changes requested"
+      ],
+      [
+       "dropbox",
+       "logo_v11_final.png",
+       "outdated"
+      ],
+      [
+       "canva",
+       "logo_v10.png",
+       "outdated"
+      ],
+      [
+       "figma",
+       "logo_v9_really_final",
+       "outdated"
+      ]
+     ],
+     "x": 0.4,
+     "y": 0.58,
+     "p45": {
+      "x": 0.5,
+      "y": 0.5
+     }
+    },
+    {
+     "t": "title",
+     "text": "FINAL FINAL.",
+     "size": 110,
+     "style": "tape",
+     "x": 0.72,
+     "y": 0.2,
+     "word": "final",
+     "p45": {
+      "x": 0.5,
+      "y": 0.13
+     },
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "compare",
+     "left": {
+      "t": "Finding feedback",
+      "rows": [],
+      "meter": 0.8
+     },
+     "right": {
+      "t": "Designing",
+      "rows": [],
+      "meter": 0.25
+     },
+     "x": 0.5,
+     "y": 0.48,
+     "cw": 1400
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "So tell FansaChat, once.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.45,
+     "em": [
+      "FansaChat,",
+      "once."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a client comments in Figma, messages me on WhatsApp or posts in Slack, add it as a task on my Notion feedback board, tagged by project, and ping me on Telegram.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "figma",
+       "Figma",
+       "New comment"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Client message"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Thread reply"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Task on board"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Ping you"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "One board. Every comment.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "Every",
+      "comment."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "notion",
+       "Feedback added ✓",
+       "Bloom Studio · logo"
+      ],
+      [
+       "figma",
+       "New Figma comment synced ✓",
+       "Tagged: v12"
+      ],
+      [
+       "telegram",
+       "3 new comments today",
+       "All in Notion"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Less hunting.",
+     "size": 120,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "title",
+     "text": "More designing.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.55,
+     "word": "more",
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 8,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Feedback, organised for you.",
+     "apps": [
+      "figma",
+      "notion",
+      "slack",
+      "whatsapp",
+      "canva",
+      "trello",
+      "dropbox",
+      "telegram",
+      "drive"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W1-04"
+}

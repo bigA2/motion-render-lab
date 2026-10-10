@@ -1,0 +1,149 @@
+{
+ "pal": "B3",
+ "lines": [
+  "Four hundred seventy-eight templates, ready to use.",
+  "Lead routing. Invoice reminders. Order alerts. Weekly reports.",
+  "Pick one, and FansaChat sets it up for your apps.",
+  "Or skip the templates, and just say what you need.",
+  "FansaChat. Start from a template, or a sentence. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 478,
+     "label": "TEMPLATES",
+     "size": 140,
+     "x": 0.5,
+     "y": 0.44
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "carousel",
+     "items": [
+      [
+       "Lead routing",
+       "#2F9BFF"
+      ],
+      [
+       "Invoice reminders",
+       "#FF8A3D"
+      ],
+      [
+       "Order alerts",
+       "#19A55A"
+      ],
+      [
+       "Weekly reports",
+       "#8C72FF"
+      ]
+     ],
+     "words": [
+      "lead",
+      "invoice",
+      "order",
+      "weekly"
+     ],
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "stripe",
+     "title": "Invoice reminders",
+     "sub": "Stripe → WhatsApp → Notion",
+     "badge": "USE",
+     "badgeColor": "#19A55A",
+     "x": 0.5,
+     "y": 0.46
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Or just say it.",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Start from a template, or a sentence.",
+     "apps": [
+      "stripe",
+      "whatsapp",
+      "notion",
+      "hubspot",
+      "shopify",
+      "slack",
+      "sheets",
+      "gmail",
+      "calendly"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-11"
+}

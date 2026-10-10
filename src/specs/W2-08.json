@@ -1,0 +1,229 @@
+{
+ "pal": "B1",
+ "lines": [
+  "Bangladesh just built its first plain-English automation tool.",
+  "One founder. One laptop. A big idea.",
+  "Type what you need, and it builds the workflow for you.",
+  "Seven hundred plus apps. Tested before it runs.",
+  "Built in Bangladesh. Made for the world.",
+  "FansaChat. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Bangladesh's first.",
+     "size": 130,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "title",
+     "text": "plain-English automation tool",
+     "size": 72,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.55,
+     "em": [
+      "plain-English"
+     ]
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "👤",
+       "One founder"
+      ],
+      [
+       "💻",
+       "One laptop"
+      ],
+      [
+       "💡",
+       "One big idea"
+      ]
+     ],
+     "x": 0.5,
+     "y": 0.48,
+     "cw": 900
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a customer orders on Shopify, add them to my sheet and send a thank-you on WhatsApp.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "shopify",
+       "Shopify",
+       "Order"
+      ],
+      [
+       "sheets",
+       "Sheets",
+       "Row"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Thank-you"
+      ]
+     ],
+     "layout": "row",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "wink",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 700,
+     "suffix": "+",
+     "label": "APPS",
+     "size": 120,
+     "x": 0.5,
+     "y": 0.36
+    },
+    {
+     "t": "stamp",
+     "text": "✓ TESTED",
+     "color": "#19A55A",
+     "size": 80,
+     "x": 0.5,
+     "y": 0.62,
+     "word": "tested"
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Built in Bangladesh.",
+     "size": 110,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.36,
+     "em": []
+    },
+    {
+     "t": "title",
+     "text": "Made for the world. 🌍",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.56,
+     "word": "made",
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Built in Bangladesh. Made for the world.",
+     "apps": [
+      "shopify",
+      "sheets",
+      "whatsapp",
+      "gmail",
+      "notion",
+      "slack",
+      "stripe",
+      "hubspot",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-08"
+}

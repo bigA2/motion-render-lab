@@ -1,0 +1,369 @@
+{
+ "pal": "B3",
+ "audience": "support teams",
+ "lines": [
+  "“Where's my order?” The same question. Fifty times a day.",
+  "On WhatsApp. On Instagram. On Messenger. In your inbox.",
+  "You answer the same thing, again and again.",
+  "And the hard tickets wait at the bottom.",
+  "So tell FansaChat, once.",
+  "It builds the support flow, and tests it.",
+  "Easy questions answered. Hard ones routed to the right person.",
+  "Your team helps people. Not the same answer, fifty times.",
+  "FansaChat. Support that keeps up. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.84,
+    "y": 0.78,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "“Where’s my order?”",
+     "size": 112,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.2,
+     "em": []
+    },
+    {
+     "t": "counter",
+     "label": "TODAY",
+     "from": 1,
+     "to": 50,
+     "suffix": "×",
+     "size": 100,
+     "x": 0.5,
+     "y": 0.56,
+     "word": "fifty"
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.88,
+    "mood": "wow",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "cloud",
+     "apps": [
+      "whatsapp",
+      "instagram",
+      "facebook",
+      "gmail",
+      "zendesk",
+      "intercom",
+      "telegram",
+      "x"
+     ],
+     "x": 0.5,
+     "y": 0.52
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "instagram",
+       "“where is my order??”",
+       "unanswered"
+      ],
+      [
+       "whatsapp",
+       "“order status pls”",
+       "unanswered"
+      ],
+      [
+       "facebook",
+       "“hello? my order”",
+       "unanswered"
+      ],
+      [
+       "gmail",
+       "RE: RE: my order",
+       "unanswered"
+      ]
+     ],
+     "x": 0.42,
+     "y": 0.58,
+     "p45": {
+      "x": 0.5,
+      "y": 0.5
+     }
+    },
+    {
+     "t": "title",
+     "text": "AGAIN.",
+     "size": 120,
+     "style": "tape",
+     "x": 0.74,
+     "y": 0.2,
+     "word": "again",
+     "p45": {
+      "x": 0.5,
+      "y": 0.13
+     },
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "iris",
+   "hero": {
+    "x": 0.5,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "zendesk",
+     "title": "Refund dispute · urgent",
+     "sub": "waiting 2 days",
+     "badge": "BURIED",
+     "x": 0.5,
+     "y": 0.46
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "So tell FansaChat, once.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.45,
+     "em": [
+      "FansaChat,",
+      "once."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a customer asks about their order on WhatsApp, Instagram or Messenger, look it up in Shopify and reply with the tracking link. If it's a refund or complaint, open a Zendesk ticket for the right agent.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Question in"
+      ],
+      [
+       "instagram",
+       "Instagram",
+       "DM in"
+      ],
+      [
+       "shopify",
+       "Shopify",
+       "Find order"
+      ],
+      [
+       "whatsapp",
+       "Reply",
+       "Tracking link"
+      ],
+      [
+       "zendesk",
+       "Zendesk",
+       "Ticket if refund"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Easy ones answered.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "answered."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "whatsapp",
+       "Tracking link sent ✓",
+       "Order #1046 · out for delivery"
+      ],
+      [
+       "instagram",
+       "DM answered ✓",
+       "in 12 seconds"
+      ],
+      [
+       "zendesk",
+       "Refund ticket → Ana ✓",
+       "priority: high"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Help people.",
+     "size": 130,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "strike",
+     "text": "Same answer ×50",
+     "size": 96,
+     "x": 0.5,
+     "y": 0.55,
+     "word": "same"
+    }
+   ]
+  },
+  {
+   "line": 8,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Support that keeps up.",
+     "apps": [
+      "whatsapp",
+      "instagram",
+      "facebook",
+      "zendesk",
+      "intercom",
+      "freshdesk",
+      "shopify",
+      "telegram",
+      "slack"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W1-10"
+}

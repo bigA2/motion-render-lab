@@ -1,0 +1,362 @@
+{
+ "pal": "B8",
+ "audience": "coaches and consultants",
+ "lines": [
+  "A client booked a session. Amazing.",
+  "Now send the Zoom link. The intake form. The invoice. The reminder.",
+  "Forget one, and they show up confused. Or don't show up at all.",
+  "You became a coach, not an assistant.",
+  "So tell FansaChat, once.",
+  "It builds the booking flow, and tests it.",
+  "Booked? Everything goes out. Reminders included.",
+  "Show up. Coach. That's it.",
+  "FansaChat. Your bookings, handled. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.84,
+    "y": 0.78,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "New booking! 🎉",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.2,
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "calendly",
+     "title": "Session with Mia",
+     "sub": "Thu 4:00 PM · 60 min",
+     "x": 0.45,
+     "y": 0.58,
+     "p45": {
+      "x": 0.5,
+      "y": 0.52
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.85,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "zoom",
+       "Send the Zoom link"
+      ],
+      [
+       "googleforms",
+       "Send the intake form"
+      ],
+      [
+       "stripe",
+       "Send the invoice"
+      ],
+      [
+       "whatsapp",
+       "Remind 1 hour before"
+      ]
+     ],
+     "x": 0.45,
+     "y": 0.52,
+     "cw": 1000,
+     "p45": {
+      "x": 0.5,
+      "cw": 900
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "wow",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "zoom",
+     "title": "Waiting room · 0 people",
+     "sub": "4:12 PM",
+     "badge": "NO-SHOW",
+     "x": 0.5,
+     "y": 0.44
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "iris",
+   "hero": {
+    "x": 0.5,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Coach.",
+     "size": 140,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "strike",
+     "text": "Assistant.",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.55,
+     "word": "assistant"
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "So tell FansaChat, once.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.45,
+     "em": [
+      "FansaChat,",
+      "once."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When someone books on Calendly, send them the Zoom link and my intake form, create a Stripe invoice, add them to my Notion client list, and send a WhatsApp reminder one hour before.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "calendly",
+       "Calendly",
+       "New booking"
+      ],
+      [
+       "zoom",
+       "Zoom",
+       "Meeting link"
+      ],
+      [
+       "googleforms",
+       "Intake form",
+       "Sent"
+      ],
+      [
+       "stripe",
+       "Stripe",
+       "Invoice"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Client page"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Reminder −1h"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Booked? Handled.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "Handled."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "zoom",
+       "Zoom link sent ✓",
+       "Mia · Thu 4:00"
+      ],
+      [
+       "stripe",
+       "Invoice paid ✓",
+       "$120.00"
+      ],
+      [
+       "whatsapp",
+       "Reminder sent ✓",
+       "1 hour before"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Show up. Coach.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.34,
+     "em": []
+    },
+    {
+     "t": "title",
+     "text": "That's it.",
+     "size": 110,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.56,
+     "word": "that",
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 8,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Your bookings, handled.",
+     "apps": [
+      "calendly",
+      "zoom",
+      "stripe",
+      "notion",
+      "whatsapp",
+      "googleforms",
+      "gcal",
+      "paypal",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W1-12"
+}

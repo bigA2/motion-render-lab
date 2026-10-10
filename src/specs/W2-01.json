@@ -1,0 +1,268 @@
+{
+ "pal": "B2",
+ "lines": [
+  "Your automation has five steps.",
+  "Some tools charge you for every single step.",
+  "Five steps, five charges. Every time it runs.",
+  "FansaChat counts runs, not steps.",
+  "One finished workflow is one run. However many steps it has.",
+  "So the bigger your automation, the more you save.",
+  "Same work. Fewer surprises on your bill.",
+  "FansaChat. Pay for results, not steps. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "gmail",
+       "Gmail",
+       "Trigger"
+      ],
+      [
+       "sheets",
+       "Sheets",
+       "Add row"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Notify"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Log"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Ping"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "s": 0.85,
+     "p45": {
+      "s": 0.75
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "down",
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "wow",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Per step.",
+     "size": 130,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.25,
+     "em": []
+    },
+    {
+     "t": "counter",
+     "label": "CHARGES",
+     "from": 1,
+     "to": 5,
+     "size": 110,
+     "x": 0.5,
+     "y": 0.55,
+     "bg": "#E8362B"
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "meh",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "counter",
+     "label": "CHARGES / MONTH",
+     "from": 5,
+     "to": 15000,
+     "size": 100,
+     "x": 0.5,
+     "y": 0.4,
+     "bg": "#E8362B"
+    },
+    {
+     "t": "title",
+     "text": "…every time it runs.",
+     "size": 96,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.62,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "hero": {
+    "x": 0.86,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Runs, not steps.",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.82,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "compare",
+     "left": {
+      "t": "Per-step tools",
+      "rows": [
+       "5 steps = 5 charges",
+       "Every run multiplies"
+      ],
+      "meter": 0.95
+     },
+     "right": {
+      "t": "FansaChat",
+      "rows": [
+       "5 steps = 1 run",
+       "Count finished work only"
+      ],
+      "meter": 0.2
+     },
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 1500,
+     "p45": {
+      "cw": 960,
+      "s": 0.9
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "wink",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Bigger automation.",
+     "size": 120,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "title",
+     "text": "Bigger savings.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.52,
+     "word": "more",
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "up",
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "happy",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "paths",
+     "l": "Per step: 5 × charges",
+     "r": "Per run: 1 finished job",
+     "x": 0.5,
+     "y": 0.42
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Pay for results, not steps.",
+     "apps": [
+      "gmail",
+      "sheets",
+      "slack",
+      "notion",
+      "telegram",
+      "hubspot",
+      "stripe",
+      "shopify",
+      "airtable"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-01"
+}

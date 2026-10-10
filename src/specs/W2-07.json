@@ -1,0 +1,202 @@
+{
+ "pal": "B5",
+ "lines": [
+  "Five apps. Five different logins. Five different ways to connect them.",
+  "One tool for this. Another tool for that.",
+  "FansaChat connects to seven hundred plus apps, from one chat.",
+  "Gmail, Shopify, HubSpot, Notion, Slack. And hundreds more.",
+  "One place to describe it. One place to watch it run.",
+  "FansaChat. Every app, one conversation. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "cloud",
+     "apps": [
+      "gmail",
+      "shopify",
+      "hubspot",
+      "notion",
+      "slack"
+     ],
+     "x": 0.5,
+     "y": 0.5
+    },
+    {
+     "t": "title",
+     "text": "5 apps. 5 ways.",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.14,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "meh",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "paths",
+     "l": "One tool for this, another for that…",
+     "r": "One chat",
+     "x": 0.5,
+     "y": 0.42
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "counter",
+     "from": 0,
+     "to": 700,
+     "suffix": "+",
+     "label": "APPS",
+     "size": 140,
+     "x": 0.5,
+     "y": 0.44
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "down",
+   "hero": {
+    "x": 0.88,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "conveyor",
+     "apps": [
+      "gmail",
+      "shopify",
+      "hubspot",
+      "notion",
+      "slack",
+      "stripe",
+      "airtable",
+      "asana",
+      "trello"
+     ],
+     "x": 0,
+     "y": 0.3,
+     "dir": 1
+    },
+    {
+     "t": "conveyor",
+     "apps": [
+      "calendly",
+      "zoom",
+      "whatsapp",
+      "telegram",
+      "figma",
+      "canva",
+      "xero",
+      "quickbooks",
+      "jira"
+     ],
+     "x": 0,
+     "y": 0.62,
+     "dir": -1
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "wink",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "orbit",
+     "apps": [
+      "gmail",
+      "shopify",
+      "hubspot",
+      "notion",
+      "slack",
+      "stripe",
+      "whatsapp",
+      "telegram"
+     ],
+     "r": 420,
+     "x": 0.5,
+     "y": 0.45
+    },
+    {
+     "t": "title",
+     "text": "One place.",
+     "size": 120,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.45,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Every app, one conversation.",
+     "apps": [
+      "gmail",
+      "shopify",
+      "hubspot",
+      "notion",
+      "slack",
+      "stripe",
+      "whatsapp",
+      "telegram",
+      "airtable"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-07"
+}

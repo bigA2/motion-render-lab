@@ -1,0 +1,405 @@
+{
+ "pal": "D2",
+ "audience": "developers",
+ "lines": [
+  "Another bug report. In your DMs. Again.",
+  "Discord. X. A screenshot. No steps to reproduce.",
+  "You copy it into GitHub. Then tell the team. Then forget.",
+  "Your real work keeps getting interrupted.",
+  "So tell FansaChat, once.",
+  "It builds the flow, and tests it.",
+  "Bugs become GitHub issues, with labels, automatically.",
+  "Ship code. Not copy-paste.",
+  "FansaChat. Bugs sorted before you open the laptop. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.84,
+    "y": 0.78,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Bug report. In your DMs.",
+     "size": 104,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.2,
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "discord",
+     "title": "“the button is broken lol”",
+     "sub": "no steps · no browser · no version",
+     "x": 0.45,
+     "y": 0.58,
+     "badge": "BUG",
+     "p45": {
+      "x": 0.5,
+      "y": 0.52
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.88,
+    "mood": "wow",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "From everywhere.",
+     "size": 110,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.14,
+     "em": [
+      "everywhere."
+     ]
+    },
+    {
+     "t": "cloud",
+     "apps": [
+      "discord",
+      "x",
+      "slack",
+      "telegram",
+      "github",
+      "linear",
+      "sentry",
+      "gmail"
+     ],
+     "x": 0.5,
+     "y": 0.54
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "meh",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "slack",
+       "Told the team",
+       "later"
+      ],
+      [
+       "github",
+       "Issue #482 (copied)",
+       "no labels"
+      ],
+      [
+       "discord",
+       "Screenshot saved",
+       "missing info"
+      ],
+      [
+       "x",
+       "DM: “still broken?”",
+       "unread"
+      ]
+     ],
+     "x": 0.4,
+     "y": 0.58,
+     "p45": {
+      "x": 0.5,
+      "y": 0.5
+     }
+    },
+    {
+     "t": "title",
+     "text": "COPY. PASTE. FORGET.",
+     "size": 84,
+     "style": "tape",
+     "x": 0.72,
+     "y": 0.2,
+     "word": "forget",
+     "p45": {
+      "x": 0.5,
+      "y": 0.13
+     },
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "whip",
+   "hero": {
+    "x": 0.5,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Interrupted.",
+     "size": 140,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "badges",
+     "n": 9,
+     "r": 340,
+     "x": 0.5,
+     "y": 0.36,
+     "glyph": "!"
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "So tell FansaChat, once.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.45,
+     "em": [
+      "FansaChat,",
+      "once."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When someone reports a bug on Discord or fills my bug form, create a GitHub issue with labels and the screenshot, post it in our Slack dev channel, and ask the reporter for steps if they're missing.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "discord",
+       "Discord",
+       "Bug message"
+      ],
+      [
+       "googleforms",
+       "Bug form",
+       "New report"
+      ],
+      [
+       "github",
+       "GitHub",
+       "Issue + labels"
+      ],
+      [
+       "slack",
+       "Slack",
+       "#dev alert"
+      ],
+      [
+       "discord",
+       "Reply",
+       "Ask for steps"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Bugs become issues. Automatically.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "Automatically."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "github",
+       "Issue #483 created ✓",
+       "labels: bug, ui"
+      ],
+      [
+       "slack",
+       "#dev notified ✓",
+       "1 new bug"
+      ],
+      [
+       "discord",
+       "Reporter asked for steps ✓",
+       "reply sent"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Ship code.",
+     "size": 130,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "strike",
+     "text": "Not copy-paste.",
+     "size": 96,
+     "x": 0.5,
+     "y": 0.55,
+     "word": "not"
+    },
+    {
+     "t": "conveyor",
+     "apps": [
+      "github",
+      "gitlab",
+      "linear",
+      "jira",
+      "sentry",
+      "vercel",
+      "slack",
+      "discord"
+     ],
+     "x": 0,
+     "y": 0.82
+    }
+   ]
+  },
+  {
+   "line": 8,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Bugs sorted before you open the laptop.",
+     "apps": [
+      "github",
+      "gitlab",
+      "linear",
+      "jira",
+      "sentry",
+      "vercel",
+      "slack",
+      "discord",
+      "notion"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W1-05"
+}

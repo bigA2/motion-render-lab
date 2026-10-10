@@ -1,0 +1,274 @@
+{
+ "pal": "B1",
+ "lines": [
+  "Flowchart builders hand you forty boxes.",
+  "Drag. Connect. Map the fields. Test. Fail. Start again.",
+  "FansaChat hands you one chat box.",
+  "Describe it the way you'd tell a friend.",
+  "It builds the same flow. And tests it before it runs.",
+  "No boxes. No mapping. No guessing.",
+  "FansaChat. Say it. It's built. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "40 boxes.",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.2,
+     "em": []
+    },
+    {
+     "t": "pile",
+     "items": [
+      [
+       "⬜",
+       "Trigger → Filter → Formatter",
+       "step 1–3"
+      ],
+      [
+       "⬜",
+       "Lookup → Router → Path B",
+       "step 4–9"
+      ],
+      [
+       "⬜",
+       "Iterator → Aggregator",
+       "step 10–14"
+      ],
+      [
+       "⬜",
+       "Map 23 fields",
+       "step 15–40"
+      ]
+     ],
+     "x": 0.45,
+     "y": 0.6,
+     "p45": {
+      "x": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "DRAG. CONNECT. MAP. FAIL.",
+     "size": 84,
+     "style": "tape",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "⚠️",
+     "title": "Error in step 17",
+     "sub": "field “date” expected ISO string",
+     "badge": "FAILED",
+     "x": 0.5,
+     "y": 0.58
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "One chat box.",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a client books a call on Calendly, create a deal in HubSpot, add the call notes page in Notion, and remind me on Telegram ten minutes before.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Like telling a friend.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.44,
+     "em": [
+      "friend."
+     ]
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "calendly",
+       "Calendly",
+       "Call booked"
+      ],
+      [
+       "hubspot",
+       "HubSpot",
+       "Deal"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Call notes"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Reminder −10m"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "wink",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "strike",
+     "text": "No boxes.",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.26
+    },
+    {
+     "t": "strike",
+     "text": "No mapping.",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.46,
+     "word": "mapping"
+    },
+    {
+     "t": "strike",
+     "text": "No guessing.",
+     "size": 110,
+     "x": 0.5,
+     "y": 0.66,
+     "word": "guessing"
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Say it. It's built.",
+     "apps": [
+      "calendly",
+      "hubspot",
+      "notion",
+      "telegram",
+      "slack",
+      "sheets",
+      "gmail",
+      "stripe",
+      "airtable"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-02"
+}

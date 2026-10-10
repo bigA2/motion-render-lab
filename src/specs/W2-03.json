@@ -1,0 +1,229 @@
+{
+ "pal": "B3",
+ "lines": [
+  "Automation course: six hours. Certificate included.",
+  "Day two, you've forgotten half of it.",
+  "With FansaChat, the course is one sentence.",
+  "You say what should happen. It figures out the how.",
+  "Built, tested, running, before the course intro ends.",
+  "FansaChat. Skip the course. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "youtube",
+     "title": "Automation Masterclass",
+     "sub": "6h 12m · 48 lessons",
+     "x": 0.45,
+     "y": 0.48,
+     "badge": "6 HOURS",
+     "p45": {
+      "x": 0.5
+     }
+    },
+    {
+     "t": "title",
+     "text": "Certificate included 🎓",
+     "size": 96,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.2,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "meh",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Day 2.",
+     "size": 150,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "strike",
+     "text": "Webhooks, iterators, JSON paths",
+     "size": 72,
+     "x": 0.5,
+     "y": 0.56,
+     "word": "forgotten"
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "The course: one sentence.",
+     "size": 110,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "Every Friday at 5, send my clients their project status from Notion by email and post a summary in Slack.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "compare",
+     "left": {
+      "t": "You",
+      "rows": [
+       "What should happen"
+      ]
+     },
+     "right": {
+      "t": "FansaChat",
+      "rows": [
+       "How: apps, steps, fields, testing"
+      ]
+     },
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 1400,
+     "p45": {
+      "cw": 960
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "gcal",
+       "Schedule",
+       "Fri 5:00"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Project status"
+      ],
+      [
+       "gmail",
+       "Email clients",
+       "Sent"
+      ],
+      [
+       "slack",
+       "Slack",
+       "Summary"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Skip the course.",
+     "apps": [
+      "notion",
+      "gmail",
+      "slack",
+      "gcal",
+      "sheets",
+      "hubspot",
+      "trello",
+      "asana",
+      "telegram"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-03"
+}

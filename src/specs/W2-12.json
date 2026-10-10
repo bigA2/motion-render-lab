@@ -1,0 +1,166 @@
+{
+ "pal": "B4",
+ "lines": [
+  "An app changes one field, and your flowchart breaks.",
+  "Now you hunt through forty boxes to find which one.",
+  "With FansaChat, you just say what changed.",
+  "It updates the workflow, and tests it again.",
+  "FansaChat. Change it by saying it. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "hubspot",
+     "title": "Field “Phone” renamed",
+     "sub": "to “Mobile number”",
+     "badge": "BREAKING",
+     "x": 0.5,
+     "y": 0.46
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "⬜",
+       "Box 12 · Map fields",
+       "which one?"
+      ],
+      [
+       "⬜",
+       "Box 23 · Formatter",
+       "which one?"
+      ],
+      [
+       "⬜",
+       "Box 31 · Lookup",
+       "which one?"
+      ],
+      [
+       "⬜",
+       "Box 40 · Update",
+       "failing"
+      ]
+     ],
+     "x": 0.45,
+     "y": 0.58,
+     "p45": {
+      "x": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "zoom",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "HubSpot renamed Phone to Mobile number. Use the new field everywhere.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "right",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "hubspot",
+       "HubSpot",
+       "Mobile number"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Uses new field"
+      ],
+      [
+       "sheets",
+       "Google Sheets",
+       "Updated"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Change it by saying it.",
+     "apps": [
+      "hubspot",
+      "whatsapp",
+      "sheets",
+      "notion",
+      "slack",
+      "gmail",
+      "stripe",
+      "airtable",
+      "calendly"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-12"
+}

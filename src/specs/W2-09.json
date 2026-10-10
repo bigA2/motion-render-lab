@@ -1,0 +1,206 @@
+{
+ "pal": "D1",
+ "lines": [
+  "Some tools charge per seat.",
+  "Add your team, and the bill grows before any work gets done.",
+  "FansaChat gives every plan unlimited users.",
+  "Invite everyone. Pay only for finished runs.",
+  "Your whole team, building automations together.",
+  "FansaChat. Bring everyone. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Per seat.",
+     "size": 150,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "counter",
+     "prefix": "×",
+     "from": 1,
+     "to": 25,
+     "label": "SEATS",
+     "size": 100,
+     "x": 0.5,
+     "y": 0.58,
+     "bg": "#E8362B"
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "compare",
+     "left": {
+      "t": "Per-seat tools",
+      "rows": [
+       "Bill grows with headcount",
+       "Before any work is done"
+      ],
+      "meter": 0.9
+     },
+     "right": {
+      "t": "FansaChat",
+      "rows": [
+       "Unlimited users",
+       "Pay for finished runs"
+      ],
+      "meter": 0.3
+     },
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 1500,
+     "p45": {
+      "cw": 960
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Unlimited users.",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.44,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "cloud",
+     "apps": [
+      "👩",
+      "🧑",
+      "👨",
+      "👩‍💻",
+      "🧑‍💼",
+      "👨‍🎨",
+      "👩‍🔧",
+      "🧑‍🏫"
+     ],
+     "x": 0.5,
+     "y": 0.5
+    },
+    {
+     "t": "title",
+     "text": "Invite everyone.",
+     "size": 110,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.14,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "hubspot",
+       "Sales builds lead routing"
+      ],
+      [
+       "zendesk",
+       "Support builds auto-replies"
+      ],
+      [
+       "xero",
+       "Finance builds reminders"
+      ]
+     ],
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 1100,
+     "p45": {
+      "cw": 960
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Bring everyone.",
+     "apps": [
+      "hubspot",
+      "zendesk",
+      "xero",
+      "slack",
+      "notion",
+      "asana",
+      "jira",
+      "sheets",
+      "gmail"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-09"
+}

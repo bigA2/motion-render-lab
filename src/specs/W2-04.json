@@ -1,0 +1,233 @@
+{
+ "pal": "D2",
+ "lines": [
+  "Ask a chatbot how to automate your invoices.",
+  "It writes you a nice, long list of steps.",
+  "Then you do all of them yourself.",
+  "FansaChat doesn't tell you how. It does it.",
+  "It builds the workflow, tests it, and runs it.",
+  "FansaChat. Less advice. More done. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "“How do I automate invoices?”",
+     "size": 96,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.3,
+     "em": []
+    },
+    {
+     "t": "card",
+     "icon": "💬",
+     "title": "Chatbot",
+     "sub": "typing…",
+     "x": 0.5,
+     "y": 0.58
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "down",
+   "hero": {
+    "x": 0.86,
+    "y": 0.84,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "💬",
+       "Step 1: Create a webhook…"
+      ],
+      [
+       "💬",
+       "Step 2: Map the JSON fields…"
+      ],
+      [
+       "💬",
+       "Step 3: Set up OAuth…"
+      ],
+      [
+       "💬",
+       "Step 4–17: …"
+      ]
+     ],
+     "x": 0.5,
+     "y": 0.5,
+     "cw": 1100,
+     "p45": {
+      "cw": 960
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.86,
+    "mood": "meh",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Homework. 📚",
+     "size": 130,
+     "style": "tape",
+     "x": 0.5,
+     "y": 0.42,
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Doesn't tell you how.",
+     "size": 110,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.36,
+     "em": []
+    },
+    {
+     "t": "title",
+     "text": "Does it.",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.56,
+     "word": "does",
+     "em": []
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a Stripe invoice is paid, add it to my Google Sheet, mark the client as paid in Notion and send me a Telegram message.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "stripe",
+       "Stripe",
+       "Invoice paid"
+      ],
+      [
+       "sheets",
+       "Google Sheets",
+       "Row added"
+      ],
+      [
+       "notion",
+       "Notion",
+       "Client: Paid"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Ping"
+      ]
+     ],
+     "layout": "row",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Less advice. More done.",
+     "apps": [
+      "stripe",
+      "sheets",
+      "notion",
+      "telegram",
+      "slack",
+      "gmail",
+      "hubspot",
+      "openai",
+      "airtable"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W2-04"
+}

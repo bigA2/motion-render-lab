@@ -1,0 +1,368 @@
+{
+ "pal": "B7",
+ "audience": "recruiters and HR",
+ "lines": [
+  "You posted one job. You got one hundred and twenty CVs.",
+  "In your inbox. On LinkedIn. In a form. As a photo.",
+  "Download, rename, sort, reply. One by one.",
+  "And the best candidate? Hired by someone faster.",
+  "So tell FansaChat, once.",
+  "It builds the hiring flow, and tests it.",
+  "Every CV filed. Every candidate answered. Interviews booked.",
+  "Spend your time on people, not paperwork.",
+  "FansaChat. Hiring, without the inbox chaos. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.84,
+    "y": 0.78,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "1 job post.",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.2,
+     "em": []
+    },
+    {
+     "t": "counter",
+     "label": "CVs",
+     "from": 0,
+     "to": 120,
+     "size": 120,
+     "x": 0.5,
+     "y": 0.55,
+     "word": "hundred"
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.5,
+    "y": 0.88,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "cloud",
+     "apps": [
+      "gmail",
+      "linkedin",
+      "googleforms",
+      "whatsapp",
+      "drive",
+      "outlook",
+      "dropbox",
+      "notion"
+     ],
+     "x": 0.5,
+     "y": 0.52
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.86,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "pile",
+     "items": [
+      [
+       "drive",
+       "CV_final_v2(1).pdf",
+       "unsorted"
+      ],
+      [
+       "gmail",
+       "Application – Designer",
+       "no reply"
+      ],
+      [
+       "linkedin",
+       "InMail: “any update?”",
+       "no reply"
+      ],
+      [
+       "googleforms",
+       "Form response #87",
+       "unread"
+      ]
+     ],
+     "x": 0.42,
+     "y": 0.58,
+     "p45": {
+      "x": 0.5,
+      "y": 0.5
+     }
+    },
+    {
+     "t": "title",
+     "text": "ONE BY ONE.",
+     "size": 110,
+     "style": "tape",
+     "x": 0.74,
+     "y": 0.2,
+     "word": "one",
+     "p45": {
+      "x": 0.5,
+      "y": 0.13
+     },
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "whip",
+   "hero": {
+    "x": 0.5,
+    "y": 0.82,
+    "mood": "meh",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "linkedin",
+     "title": "Ana T. accepted an offer",
+     "sub": "at another company",
+     "badge": "TOO LATE",
+     "x": 0.5,
+     "y": 0.46
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "So tell FansaChat, once.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.45,
+     "em": [
+      "FansaChat,",
+      "once."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a CV arrives by email or my Google Form, save it in a Drive folder for that role, add the candidate to Airtable, send a thank-you reply, and send my Calendly link to anyone I mark as shortlisted.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "googleforms",
+       "Google Form",
+       "New application"
+      ],
+      [
+       "drive",
+       "Google Drive",
+       "CV filed by role"
+      ],
+      [
+       "airtable",
+       "Airtable",
+       "Candidate row"
+      ],
+      [
+       "gmail",
+       "Reply",
+       "Thank-you sent"
+      ],
+      [
+       "calendly",
+       "Calendly",
+       "Interview link"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Every CV filed.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "filed."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "airtable",
+       "120 candidates sorted ✓",
+       "by role + date"
+      ],
+      [
+       "gmail",
+       "Everyone replied to ✓",
+       "thank-you sent"
+      ],
+      [
+       "calendly",
+       "Interview booked ✓",
+       "Ana T. · Tue 11:00"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "People.",
+     "size": 140,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "strike",
+     "text": "Not paperwork.",
+     "size": 96,
+     "x": 0.5,
+     "y": 0.55,
+     "word": "not"
+    }
+   ]
+  },
+  {
+   "line": 8,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Hiring, without the inbox chaos.",
+     "apps": [
+      "linkedin",
+      "gmail",
+      "googleforms",
+      "drive",
+      "airtable",
+      "calendly",
+      "zoom",
+      "notion",
+      "slack"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W1-11"
+}

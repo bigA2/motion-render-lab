@@ -1,0 +1,382 @@
+{
+ "pal": "B6",
+ "audience": "online shop owners",
+ "lines": [
+  "New order! Love that sound.",
+  "Now copy the address. Update the sheet. Message the courier.",
+  "Forty orders later, it's midnight.",
+  "And one typo means a parcel goes to the wrong city.",
+  "So tell FansaChat, once.",
+  "It builds the flow, and tests it.",
+  "Orders log themselves. Customers get updates. You get sleep.",
+  "Sell more. Copy nothing.",
+  "FansaChat. Your shop, on autopilot. Join the waitlist."
+ ],
+ "beats": [
+  {
+   "line": 0,
+   "hero": {
+    "x": 0.84,
+    "y": 0.78,
+    "mood": "wow",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Cha-ching! 🛍️",
+     "size": 118,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.2,
+     "em": []
+    },
+    {
+     "t": "notif",
+     "icon": "shopify",
+     "title": "New order #1046",
+     "sub": "2 items · $86.00",
+     "x": 0.45,
+     "y": 0.55,
+     "p45": {
+      "x": 0.5,
+      "y": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "line": 1,
+   "go": "right",
+   "hero": {
+    "x": 0.86,
+    "y": 0.85,
+    "mood": "meh",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "list",
+     "items": [
+      [
+       "shopify",
+       "Copy address from order"
+      ],
+      [
+       "sheets",
+       "Paste into orders sheet"
+      ],
+      [
+       "whatsapp",
+       "Message the courier"
+      ],
+      [
+       "instagram",
+       "Reply to the customer DM"
+      ]
+     ],
+     "x": 0.45,
+     "y": 0.52,
+     "cw": 1000,
+     "p45": {
+      "x": 0.5,
+      "cw": 900
+     }
+    }
+   ]
+  },
+  {
+   "line": 2,
+   "go": "down",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "meh",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "counter",
+     "label": "ORDERS",
+     "from": 1,
+     "to": 40,
+     "size": 110,
+     "x": 0.5,
+     "y": 0.32
+    },
+    {
+     "t": "title",
+     "text": "It's midnight.",
+     "size": 110,
+     "style": "roll",
+     "x": 0.5,
+     "y": 0.56,
+     "word": "midnight",
+     "em": []
+    }
+   ]
+  },
+  {
+   "line": 3,
+   "go": "whip",
+   "hero": {
+    "x": 0.86,
+    "y": 0.8,
+    "mood": "wow",
+    "size": 190
+   },
+   "els": [
+    {
+     "t": "card",
+     "icon": "📦",
+     "title": "Ship to: Dhaka → Dubai?",
+     "sub": "one typo in the address",
+     "badge": "WRONG CITY",
+     "x": 0.45,
+     "y": 0.5,
+     "p45": {
+      "x": 0.5
+     }
+    },
+    {
+     "t": "badges",
+     "n": 6,
+     "r": 300,
+     "x": 0.45,
+     "y": 0.5
+    }
+   ]
+  },
+  {
+   "line": 4,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.35
+   ],
+   "hero": {
+    "x": 0.88,
+    "y": 0.3,
+    "mood": "happy",
+    "size": 170
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "So tell FansaChat, once.",
+     "size": 120,
+     "style": "blur",
+     "x": 0.5,
+     "y": 0.45,
+     "em": [
+      "FansaChat,",
+      "once."
+     ]
+    }
+   ]
+  },
+  {
+   "dur": 165,
+   "go": "right",
+   "hero": {
+    "x": 0.88,
+    "y": 0.2,
+    "mood": "wow",
+    "size": 150
+   },
+   "els": [
+    {
+     "t": "chat",
+     "text": "When a Shopify order comes in, add it to my Google Sheet, send the customer a WhatsApp confirmation, message my courier with the address, and warn me on Telegram when stock drops under five.",
+     "typeDur": 125,
+     "x": 0.5,
+     "y": 0.52,
+     "cw": 1300,
+     "p45": {
+      "cw": 860
+     }
+    }
+   ]
+  },
+  {
+   "line": 5,
+   "go": "down",
+   "hold": 70,
+   "hero": {
+    "x": 0.9,
+    "y": 0.86,
+    "mood": "happy",
+    "size": 160
+   },
+   "els": [
+    {
+     "t": "flow",
+     "nodes": [
+      [
+       "shopify",
+       "Shopify",
+       "New order"
+      ],
+      [
+       "sheets",
+       "Google Sheets",
+       "Add row"
+      ],
+      [
+       "whatsapp",
+       "WhatsApp",
+       "Customer update"
+      ],
+      [
+       "telegram",
+       "Courier",
+       "Pickup + address"
+      ],
+      [
+       "telegram",
+       "Telegram",
+       "Low-stock alert"
+      ]
+     ],
+     "layout": "snake",
+     "layout45": "col",
+     "x": 0.5,
+     "y": 0.5,
+     "p45": {
+      "s": 0.8
+     }
+    }
+   ]
+  },
+  {
+   "line": 6,
+   "go": "right",
+   "hero": {
+    "x": 0.12,
+    "y": 0.84,
+    "mood": "wink",
+    "size": 180
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Orders log themselves.",
+     "size": 96,
+     "style": "blur",
+     "x": 0.3,
+     "y": 0.4,
+     "align": "left",
+     "p45": {
+      "x": 0.5,
+      "y": 0.12,
+      "s": 0.85
+     },
+     "em": [
+      "themselves."
+     ]
+    },
+    {
+     "t": "phone",
+     "notes": [
+      [
+       "shopify",
+       "Order #1046 logged ✓",
+       "row 412 · Sheets"
+      ],
+      [
+       "whatsapp",
+       "Customer updated ✓",
+       "“Your order is packed!”"
+      ],
+      [
+       "telegram",
+       "Low stock: Tote bag (4)",
+       "reorder soon"
+      ]
+     ],
+     "x": 0.74,
+     "y": 0.5,
+     "ps": 1.05,
+     "p45": {
+      "x": 0.5,
+      "y": 0.58,
+      "ps": 0.95
+     }
+    }
+   ]
+  },
+  {
+   "line": 7,
+   "go": "up",
+   "hero": {
+    "x": 0.5,
+    "y": 0.84,
+    "mood": "happy",
+    "size": 200
+   },
+   "els": [
+    {
+     "t": "title",
+     "text": "Sell more.",
+     "size": 130,
+     "style": "flip",
+     "x": 0.5,
+     "y": 0.32,
+     "em": []
+    },
+    {
+     "t": "strike",
+     "text": "Copy nothing.",
+     "size": 96,
+     "x": 0.5,
+     "y": 0.55,
+     "word": "copy"
+    },
+    {
+     "t": "conveyor",
+     "apps": [
+      "shopify",
+      "woo",
+      "etsy",
+      "stripe",
+      "paypal",
+      "whatsapp",
+      "instagram",
+      "sheets"
+     ],
+     "x": 0,
+     "y": 0.82
+    }
+   ]
+  },
+  {
+   "line": 8,
+   "go": "zoom",
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "els": [
+    {
+     "t": "end",
+     "tag": "Your shop, on autopilot.",
+     "apps": [
+      "shopify",
+      "woo",
+      "etsy",
+      "stripe",
+      "paypal",
+      "whatsapp",
+      "instagram",
+      "sheets",
+      "klaviyo"
+     ],
+     "ctaWord": "join",
+     "x": 0.5,
+     "y": 0.5
+    }
+   ]
+  }
+ ],
+ "id": "W1-06"
+}
