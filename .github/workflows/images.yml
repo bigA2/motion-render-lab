@@ -1,0 +1,25 @@
+# Render all image specs (src/img/specs.json) as PNG stills, sharded. Free on public runners.
+name: images
+on:
+  workflow_dispatch:
+    inputs:
+      shards: { required: false, default: '10' }
+jobs:
+  stills:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: { shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - name: Render shard
+        run: |
+          mkdir -p out
+          for id in $(python3 -c "import json;s=json.load(open('src/img/specs.json'));print(' '.join(x['id'] for i,x in enumerate(s) if i%10==${{ matrix.shard }}))"); do
+            npx remotion still src/img/index.ts $id out/$id.png --log=error --timeout=60000 || echo "FAIL $id"
+          done
+      - uses: actions/upload-artifact@v4
+        with: { name: 'img-${{ matrix.shard }}', path: out/*.png, retention-days: 1 }
