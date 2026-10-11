@@ -8,9 +8,10 @@ on:
       ids: { description: 'JSON array of spec ids', required: true }
       parts: { description: 'chunks per format', required: false, default: '[0,1,2,3,4,5]' }
       voice_run: { description: 'reuse voice artifacts from this run id', required: false, default: '' }
+      vo_run: { description: 'reuse picked vo artifacts from this run id (skips voice+pick)', required: false, default: '' }
 jobs:
   voice:
-    if: inputs.voice_run == ''
+    if: inputs.voice_run == '' && inputs.vo_run == ''
     runs-on: ubuntu-latest
     timeout-minutes: 120
     strategy:
@@ -40,7 +41,7 @@ jobs:
         with: { name: 'voice-${{ matrix.id }}-${{ matrix.shard }}', path: out/, retention-days: 1 }
   pick:
     needs: voice
-    if: always()
+    if: always() && inputs.vo_run == ''
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -70,7 +71,7 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npx remotion browser ensure
       - uses: actions/download-artifact@v4
-        with: { name: 'vo-${{ matrix.id }}', path: 'public/v/${{ matrix.id }}' }
+        with: { name: 'vo-${{ matrix.id }}', path: 'public/v/${{ matrix.id }}', run-id: "${{ inputs.vo_run != '' && inputs.vo_run || github.run_id }}", github-token: '${{ secrets.GITHUB_TOKEN }}' }
       - name: Render chunk
         run: |
           C="${{ matrix.id }}-${{ matrix.fmt }}"
@@ -94,7 +95,7 @@ jobs:
         with: { python-version: '3.11' }
       - run: pip install --quiet numpy && sudo apt-get -qq install -y ffmpeg >/dev/null
       - uses: actions/download-artifact@v4
-        with: { name: 'vo-${{ matrix.id }}', path: 'public/v/${{ matrix.id }}' }
+        with: { name: 'vo-${{ matrix.id }}', path: 'public/v/${{ matrix.id }}', run-id: "${{ inputs.vo_run != '' && inputs.vo_run || github.run_id }}", github-token: '${{ secrets.GITHUB_TOKEN }}' }
       - uses: actions/download-artifact@v4
         with: { path: parts, pattern: 'part-${{ matrix.id }}-${{ matrix.fmt }}-*', merge-multiple: true }
       - name: Audio + join + loudnorm
