@@ -1,0 +1,31 @@
+# Build the free SFX library: Kenney CC0 packs + procedural (code-made) sounds, catalogued by event type.
+# Run: gh workflow run sfx-lib.yml
+name: sfx-lib
+on: { workflow_dispatch: {} }
+permissions: { contents: write }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - run: pip install -q numpy soundfile
+      - name: Fetch Kenney CC0 packs
+        run: |
+          mkdir -p public/sfx/kenney
+          for p in interface-sounds ui-audio impact-sounds digital-audio sci-fi-sounds casino-audio; do
+            url=$(curl -sL "https://kenney.nl/assets/$p" | grep -oE "https://kenney.nl/media/pages/assets/$p/[^\"]+\.zip" | head -1)
+            [ -z "$url" ] && { echo "no zip for $p"; continue; }
+            curl -sL "$url" -o /tmp/$p.zip && mkdir -p /tmp/$p && unzip -q -o /tmp/$p.zip -d /tmp/$p
+            mkdir -p public/sfx/kenney/$p
+            find /tmp/$p -iname "*.ogg" -o -iname "*.wav" | while read f; do b=$(basename "${f%.*}"); ffmpeg -loglevel error -y -i "$f" -ac 1 -ar 48000 -c:a libvorbis -q:a 5 "public/sfx/kenney/$p/$b.ogg"; done
+            echo "$p: $(ls public/sfx/kenney/$p | wc -l)"
+          done
+      - name: Procedural sounds (from the reel's event grammar)
+        run: python scripts/sfx_gen.py
+      - name: Catalogue
+        run: python scripts/sfx_catalog.py
+      - name: Commit library
+        run: |
+          git config user.name "bigA2"; git config user.email "293160669+bigA2@users.noreply.github.com"
+          git add public/sfx && git commit -q -m "sfx library: Kenney CC0 + procedural + catalog" && git push || echo "nothing new"
