@@ -9,7 +9,7 @@ rows = []
 for root, _, files in os.walk('public/sfx'):
     for f in sorted(files):
         if not f.endswith('.ogg'): continue
-        p = os.path.join(root, f).replace('\', '/'); x, sr = sf.read(p)
+        p = os.path.join(root, f).replace(os.sep, '/'); x, sr = sf.read(p)
         x = x if x.ndim == 1 else x.mean(1); S = np.abs(np.fft.rfft(x[: sr]))  # first second
         fr = np.fft.rfftfreq(min(len(x), sr), 1 / sr); c = float((S * fr).sum() / (S.sum() or 1))
         tag = next((t for k, t in TAGS if k in f.lower()), 'other')
