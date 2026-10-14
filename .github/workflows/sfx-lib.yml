@@ -18,7 +18,7 @@ jobs:
             [ -z "$url" ] && { echo "no zip for $p"; continue; }
             curl -sL "$url" -o /tmp/$p.zip && mkdir -p /tmp/$p && unzip -q -o /tmp/$p.zip -d /tmp/$p
             mkdir -p public/sfx/kenney/$p
-            find /tmp/$p -iname "*.ogg" -o -iname "*.wav" | while read f; do b=$(basename "${f%.*}"); ffmpeg -loglevel error -y -i "$f" -ac 1 -ar 48000 -c:a libvorbis -q:a 5 "public/sfx/kenney/$p/$b.ogg"; done
+            find /tmp/$p -iname "*.ogg" -o -iname "*.wav" | while read f; do b=$(basename "${f%.*}"); ffmpeg -nostdin -loglevel error -y -i "$f" -ac 1 -ar 48000 -c:a libvorbis -q:a 5 "public/sfx/kenney/$p/$b.ogg"; done
             echo "$p: $(ls public/sfx/kenney/$p | wc -l)"
           done
       - name: Procedural sounds (from the reel's event grammar)
