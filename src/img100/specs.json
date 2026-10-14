@@ -299,7 +299,7 @@
 "aud": "agency owners",
 "head": "Your Monday,|itemised.",
 "sub": "Everything you did by hand this week — and what it cost you.",
-"t": "every Monday at 8am, pull last week’s Google Analytics-free stats from Plausible and email each client their report",
+"t": "every Monday at 8am, pull last week’s Plausible stats for each client and email them their report",
 "apps": [
 "Schedule",
 "Plausible Analytics",
@@ -1023,7 +1023,7 @@
 "r": "swiss",
 "style": "Swiss Grid Red",
 "aud": "operations managers",
-"head": "One|sentence.|Seven|apps.",
+"head": "One|sentence.|Four|apps.",
 "sub": "A grid of everything you no longer do by hand.",
 "t": "when a deal is won in HubSpot, create the project in ClickUp, the folder in Google Drive and the invoice in Xero",
 "apps": [

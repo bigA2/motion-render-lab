@@ -15,9 +15,9 @@ export const Intro: React.FC<RP> = ({s, th}) => {
       <Txt f={F.inter} w={600} size={ts(s, 3)} c={th.ink}>{l1}</Txt>
       <div style={{fontFamily: F.serif, fontStyle: 'italic', fontSize: 168, lineHeight: 1.0, color: th.acc, marginTop: 6}}>{l2.replace(/\*/g, '')}</div>
       <div style={{fontFamily: F.unb, fontWeight: 800, fontSize: 52, letterSpacing: '-0.03em', color: th.ink, marginTop: 4}}>{l3}</div>
-      <Txt size={ts(s, 2)} c={th.soft} s={{marginTop: 26}}>{s.sub}</Txt>
+      <Txt size={34} c={th.soft} s={{marginTop: 26, marginLeft: 120, marginRight: 120}}>{s.sub}</Txt>
     </div>
-    <Prompt s={s} th={th} style={{position: 'absolute', left: M, top: 1010}} size={23} />
+    <Prompt s={s} th={th} style={{position: 'absolute', left: M, top: 1060}} size={23} />
     <Brand c={th.ink} />
     <Grain o={0.08} blend="screen" />
   </AbsoluteFill>;
@@ -28,7 +28,7 @@ export const Hero3d: React.FC<RP> = ({s, th}) => {
   if (t === 'bold') {
     const sz = fit(s, ls, W - 2 * M, 190);
     return <AbsoluteFill style={{background: th.main, overflow: 'hidden'}}>
-      {s.x.big && <div style={{position: 'absolute', left: -20, right: -20, bottom: 150, fontFamily: F.inter, fontWeight: 800, fontSize: 300, lineHeight: 0.8, color: th.con, letterSpacing: '-0.07em', textAlign: 'center', whiteSpace: 'nowrap', opacity: 0.9}}>{s.x.big}</div>}
+      {s.x.big && <div style={{position: 'absolute', left: -20, right: -20, bottom: 150, fontFamily: F.inter, fontWeight: 800, fontSize: 300, lineHeight: 0.8, color: mix(th.main, '#000', 0.6), letterSpacing: '-0.07em', textAlign: 'center', whiteSpace: 'nowrap'}}>{s.x.big}</div>}
       <Hero3D hero={s.hero} size={620} x={650} y={760} rot={-8} shadow={mix(th.main, '#000000', 0.6) + 'aa'} />
       <Rich s={s} text={s.head} size={sz} color={onC(th.main)} acc={th.con} style={{position: 'absolute', left: M, top: 70}} />
       <Txt size={26} c={onC(th.main)} s={{position: 'absolute', left: M, top: 90 + sz * ls.length * p.lh, maxWidth: 330}}>{s.sub}</Txt>
@@ -48,14 +48,14 @@ export const Hero3d: React.FC<RP> = ({s, th}) => {
     </AbsoluteFill>;
   }
   if (t === 'brutal') {
-    const sz = fit(s, ls, W - 2 * M, 260, PAIRS.A);
+    const sz = fit(s, ls, W - 2 * M, 230, PAIRS.A);
     return <AbsoluteFill style={{background: '#E9E9E6', overflow: 'hidden'}}>
       {ls.map((l, i) => <div key={i} style={{position: 'absolute', left: M - 10, top: 60 + i * sz * 0.98, fontFamily: F.anton, fontSize: sz, lineHeight: 1, color: th.main, textTransform: 'uppercase'}}>{l.replace(/\*/g, '')}</div>)}
       <svg style={{position: 'absolute', left: 0, bottom: 0}} width={W} height="440"><polygon points="0,440 0,140 120,210 210,90 330,230 470,150 560,260 700,120 820,230 960,100 1080,200 1080,440" fill="#0E0E0E" /></svg>
       <Hero3D hero={s.hero} size={600} x={690} y={680} filter="grayscale(1) contrast(1.25)" />
       <Meta c="#0E0E0E" s={{right: M, top: 64, textAlign: 'right'}}>{s.aud}<br />{vol(s)}</Meta>
-      <Txt size={26} c="#fff" s={{position: 'absolute', left: M, top: 1110, maxWidth: 600}}>{s.sub}</Txt>
-      <Ring x={W - M - 44} y={1120} c="#fff" /><Brand c="#fff" /><Grain o={0.15} />
+      <Txt size={26} c="#fff" s={{position: 'absolute', left: M, top: 1150, maxWidth: 760}}>{s.sub}</Txt>
+      <Ring x={W - M - 44} y={1150} c="#fff" /><Brand c="#fff" /><Grain o={0.15} />
     </AbsoluteFill>;
   }
   if (t === 'cinema') {
