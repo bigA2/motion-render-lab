@@ -1,0 +1,28 @@
+# Render the 100 designed posters (src/img100/specs.json) as PNG stills, 10 shards. Optional ids="IMG-001 IMG-002".
+name: images100
+on:
+  workflow_dispatch:
+    inputs:
+      ids: { required: false, default: '' }
+jobs:
+  stills:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: { shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - name: Render shard
+        run: |
+          mkdir -p out
+          IDS="${{ inputs.ids }}"
+          [ -z "$IDS" ] && IDS=$(python3 -c "import json;print(' '.join(x['id'] for x in json.load(open('src/img100/specs.json'))))")
+          i=0; for id in $IDS; do
+            if [ $((i % 10)) -eq ${{ matrix.shard }} ]; then npx remotion still src/img100/index.ts $id out/$id.png --log=error --timeout=90000 || echo "FAIL $id"; fi; i=$((i+1))
+          done
+          ls out | wc -l
+      - uses: actions/upload-artifact@v4
+        with: { name: 'p100-${{ matrix.shard }}', path: out/*.png, retention-days: 1, if-no-files-found: ignore }

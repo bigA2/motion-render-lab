@@ -1,0 +1,2978 @@
+[
+{
+"id": "IMG-001",
+"r": "intro",
+"style": "Monument Intro",
+"aud": "everyone",
+"head": "Bangladesh's first|*plain-English*|workflow automation tool",
+"sub": "Type what you want done. FansaChat builds the workflow.",
+"t": "when a new order comes in on Shopify, add it to Airtable and message me on Telegram",
+"apps": [
+"Shopify",
+"Airtable",
+"Telegram Bot"
+],
+"hero": "logo",
+"font": "U",
+"ratio": 1.5,
+"dark": true,
+"x": {},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-002",
+"r": "hero3d",
+"style": "Bold Red Shout",
+"aud": "freelancers",
+"head": "STILL|NOT PAID.",
+"sub": "Most late invoices stay late because nobody follows up. FansaChat does.",
+"t": "when a Stripe invoice is 7 days overdue, send the client a polite reminder and tell me on Telegram",
+"apps": [
+"Stripe",
+"Resend",
+"Telegram Bot"
+],
+"hero": "3d:money-bag:clay",
+"font": "A",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"treat": "bold",
+"big": "DAY 7"
+},
+"pal": [
+"#E8231B",
+"#1BE85F",
+"#E89996",
+"#0C682B"
+]
+},
+{
+"id": "IMG-003",
+"r": "hero3d",
+"style": "Quiet Minimal",
+"aud": "podcasters",
+"head": "Record|once.",
+"sub": "Your episode becomes show notes, a newsletter and a clip list — by itself.",
+"t": "when a new episode goes live on Spotify for Podcasters RSS, write show notes with AI and send them as a Beehiiv draft",
+"apps": [
+"RSS Feed",
+"OpenAI",
+"Beehiiv"
+],
+"hero": "3d:mic:gradient",
+"font": "IS",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"treat": "minimal"
+},
+"pal": [
+"#2E7D6B",
+"#8C3487",
+"#5D7D76",
+"#3F173D"
+]
+},
+{
+"id": "IMG-004",
+"r": "hero3d",
+"style": "Brutalist Repeat",
+"aud": "support leads",
+"head": "TICKET|TICKET|TICKET",
+"sub": "Same question, hundredth time. Let the first reply write itself.",
+"t": "when a new Zendesk ticket mentions refund, draft a reply with our refund policy and tag it urgent",
+"apps": [
+"Zendesk",
+"Anthropic Claude",
+"Zendesk"
+],
+"hero": "3d:chat-text:premium",
+"font": "A",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"treat": "brutal"
+},
+"pal": [
+"#D7261E",
+"#1ED75C",
+"#D7908D",
+"#0E6129"
+]
+},
+{
+"id": "IMG-005",
+"r": "hero3d",
+"style": "Cinematic Ember",
+"aud": "sales teams",
+"head": "COLD|LEADS",
+"sub": "The reason leads go cold is the four-hour reply.",
+"t": "when a Facebook lead form is submitted, add the lead to Pipedrive, assign the next rep and text them within a minute",
+"apps": [
+"Facebook Leads",
+"Pipedrive",
+"Twilio"
+],
+"hero": "3d:fire:premium",
+"font": "A",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"treat": "cinema",
+"small": "stay hot."
+},
+"pal": [
+"#FF6A2A",
+"#2AFFA8",
+"#FFC3AA",
+"#13734C"
+]
+},
+{
+"id": "IMG-006",
+"r": "hero3d",
+"style": "Editorial Meadow",
+"aud": "clinics",
+"head": "Every no-show,|ONE TEXT",
+"sub": "A reminder the day before. A rebook link if they cancel.",
+"t": "when an appointment is booked in Acuity Scheduling, send an SMS reminder 24 hours before with a reschedule link",
+"apps": [
+"Acuity Scheduling",
+"ClickSend SMS"
+],
+"hero": "3d:calender:color",
+"font": "D",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"treat": "editorial"
+},
+"pal": [
+"#6B2D12",
+"#188C5D",
+"#6B5247",
+"#0B3F2A"
+]
+},
+{
+"id": "IMG-007",
+"r": "hero3d",
+"style": "Pastel Clay",
+"aud": "Etsy-style shop owners",
+"head": "Thank-you notes|that send *themselves*",
+"sub": "Every first order gets a personal thank-you. You never lift a finger.",
+"t": "when a first-time customer orders on WooCommerce, send a personal thank-you email with a discount code",
+"apps": [
+"WooCommerce",
+"Brevo"
+],
+"hero": "3d:gift:clay",
+"font": "F",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"treat": "minimal"
+},
+"pal": [
+"#E68C74",
+"#74E6AD",
+"#E6C2B8",
+"#34684E"
+]
+},
+{
+"id": "IMG-008",
+"r": "hero3d",
+"style": "Night Rocket",
+"aud": "SaaS founders",
+"head": "Ship.|Then *tell everyone.*",
+"sub": "Release notes go from GitHub to your changelog and Discord in one sentence.",
+"t": "when a new GitHub release is published, post the notes to our Discord announcements channel",
+"apps": [
+"GitHub",
+"Discord"
+],
+"hero": "3d:rocket:premium",
+"font": "BB",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"treat": "cinema",
+"small": "launch day."
+},
+"pal": [
+"#3B82F6",
+"#F63B4B",
+"#ABC8F6",
+"#6F1B22"
+]
+},
+{
+"id": "IMG-009",
+"r": "hero3d",
+"style": "Swiss Trophy",
+"aud": "community managers",
+"head": "Welcome|*every* new member",
+"sub": "Nobody joins your Circle and hears silence again.",
+"t": "when a new member joins our Circle community, send a welcome DM and add them to the onboarding tag in ConvertKit",
+"apps": [
+"Circle",
+"ConvertKit"
+],
+"hero": "3d:trophy:gradient",
+"font": "S",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"treat": "bold"
+},
+"pal": [
+"#111111",
+"#4D8C60",
+"#111111",
+"#233F2B"
+]
+},
+{
+"id": "IMG-010",
+"r": "hero3d",
+"style": "Mono Lock",
+"aud": "IT admins",
+"head": "If you reset|passwords by hand,|*pay attention.*",
+"sub": "Offboarding a teammate is one sentence, not a checklist.",
+"t": "when an employee is marked as leaving in BambooHR, create a Jira ticket to revoke their access",
+"apps": [
+"BambooHR",
+"Jira Cloud"
+],
+"hero": "3d:lock:premium",
+"font": "A",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"treat": "brutal"
+},
+"pal": [
+"#0F766E",
+"#8C1272",
+"#4D7673",
+"#3F0833"
+]
+},
+{
+"id": "IMG-011",
+"r": "hero3d",
+"style": "Sunburst Megaphone",
+"aud": "newsletter writers",
+"head": "Write it once.|*Post it everywhere.*",
+"sub": "Each new issue becomes threads for Bluesky and Mastodon.",
+"t": "when a new Beehiiv post is published, turn it into a short thread and schedule it on Typefully",
+"apps": [
+"Beehiiv",
+"OpenAI",
+"Typefully"
+],
+"hero": "3d:megaphone:color",
+"font": "F",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"treat": "editorial"
+},
+"pal": [
+"#F59E0B",
+"#0BF5E2",
+"#F5D297",
+"#056E66"
+]
+},
+{
+"id": "IMG-012",
+"r": "receipt",
+"style": "Thermal Receipt",
+"aud": "agency owners",
+"head": "Your Monday,|itemised.",
+"sub": "Everything you did by hand this week — and what it cost you.",
+"t": "every Monday at 8am, pull last week’s Google Analytics-free stats from Plausible and email each client their report",
+"apps": [
+"Schedule",
+"Plausible Analytics",
+"Resend"
+],
+"hero": "object",
+"font": "M",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"items": [
+[
+"Copy client stats",
+"1h 10m"
+],
+[
+"Build 6 reports",
+"2h 40m"
+],
+[
+"Email them one by one",
+"35m"
+],
+[
+"Chase replies",
+"25m"
+]
+],
+"total": [
+"TIME SPENT",
+"4h 50m"
+],
+"after": [
+"WITH FANSACHAT",
+"1 sentence"
+]
+},
+"pal": [
+"#F2EFE8",
+"#85F2F1",
+"#F2F1EE",
+"#3C6D6C"
+]
+},
+{
+"id": "IMG-013",
+"r": "receipt",
+"style": "Restaurant Bill",
+"aud": "restaurant owners",
+"head": "Most kitchens|lose bookings|at 11 pm.",
+"sub": "Because nobody answers the late table request. FansaChat confirms it.",
+"t": "when a new booking request comes in from our Tally form, add it to Airtable and confirm it by SMS",
+"apps": [
+"Tally",
+"Airtable",
+"ClickSend SMS"
+],
+"hero": "object",
+"font": "M",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"items": [
+[
+"Table for 4 — Fri 8 pm",
+"confirmed"
+],
+[
+"Allergy note saved",
+"yes"
+],
+[
+"SMS to guest",
+"sent"
+],
+[
+"Staff woken up",
+"no"
+]
+],
+"total": [
+"YOUR EFFORT",
+"0 calls"
+],
+"after": [
+"HOW",
+"one sentence"
+]
+},
+"pal": [
+"#FFF8EC",
+"#8CFFF6",
+"#FFFCF7",
+"#3F736F"
+]
+},
+{
+"id": "IMG-014",
+"r": "receipt",
+"style": "Pharmacy Slip",
+"aud": "gym owners",
+"head": "Membership|paperwork,|cured.",
+"sub": "New sign-up → contract signed → welcome pack. No front-desk typing.",
+"t": "when someone signs up via our Jotform, send them a SignNow contract and add them to Mailchimp when it is signed",
+"apps": [
+"Jotform",
+"SignNow",
+"Mailchimp"
+],
+"hero": "object",
+"font": "M",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"items": [
+[
+"Sign-up form",
+"received"
+],
+[
+"Contract",
+"signed"
+],
+[
+"Welcome email",
+"sent"
+],
+[
+"Front desk typing",
+"none"
+]
+],
+"total": [
+"DOSE",
+"one sentence"
+],
+"after": [
+"SIDE EFFECTS",
+"free evenings"
+]
+},
+"pal": [
+"#E8F4F0",
+"#EF86F4",
+"#EFF4F2",
+"#6C3C6E"
+]
+},
+{
+"id": "IMG-015",
+"r": "receipt",
+"style": "Coffee Docket",
+"aud": "café owners",
+"head": "One flat white,|one *loyal* customer.",
+"sub": "Every tenth Square purchase earns a thank-you message automatically.",
+"t": "when a Square customer completes a payment, add it to their Airtable visit count and email them a free-coffee voucher on visit ten",
+"apps": [
+"Square",
+"Airtable",
+"Brevo"
+],
+"hero": "object",
+"font": "M",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"items": [
+[
+"Visit 10 logged",
+"auto"
+],
+[
+"Voucher email",
+"sent"
+],
+[
+"Punch card",
+"retired"
+],
+[
+"Manual tally",
+"0"
+]
+],
+"total": [
+"LOYALTY",
+"automatic"
+],
+"after": [
+"BUILT WITH",
+"plain English"
+]
+},
+"pal": [
+"#F5E6D3",
+"#87F5E5",
+"#F5EFE7",
+"#3D6E67"
+]
+},
+{
+"id": "IMG-016",
+"r": "notes",
+"style": "Notes App Confession",
+"aud": "solopreneurs",
+"head": "Things I copy-paste|every day:",
+"sub": "If this list looks like yours, one sentence fixes it.",
+"t": "when a Calendly meeting is booked, create a Todoist task to prepare and add the call to Airtable",
+"apps": [
+"Calendly",
+"Todoist",
+"Airtable"
+],
+"hero": "ui",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"items": [
+"Calendly bookings → my CRM",
+"Stripe payments → my spreadsheet",
+"Typeform answers → my inbox",
+"New subscribers → welcome email",
+"Every single day, by hand."
+],
+"strike": true
+},
+"pal": [
+"#FFD60A",
+"#0AE1FF",
+"#FFEF9D",
+"#046573"
+]
+},
+{
+"id": "IMG-017",
+"r": "notes",
+"style": "Notes Night Mode",
+"aud": "video editors",
+"head": "If you rename client files|at midnight,|pay attention.",
+"sub": "Uploads land in the right folder, renamed, with the client pinged.",
+"t": "when a new file is uploaded to the client Dropbox folder, rename it with the date and post a Frame review link to the client",
+"apps": [
+"Dropbox",
+"Discord"
+],
+"hero": "ui",
+"font": "B",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"items": [
+"FINAL_v3_REAL_final.mp4",
+"FINAL_v4_use_this.mp4",
+"ok_this_one.mp4",
+"client_notes_2.docx"
+],
+"strike": true
+},
+"pal": [
+"#0A84FF",
+"#FF0A3D",
+"#9DCEFF",
+"#73041B"
+]
+},
+{
+"id": "IMG-018",
+"r": "notes",
+"style": "Notes Checklist",
+"aud": "wedding planners",
+"head": "The 6-step|vendor follow-up|you keep forgetting.",
+"sub": "Deposits, confirmations, final counts — chased for you.",
+"t": "when a vendor contract is signed in PandaDoc, add the deposit date to Google Calendar and remind me a week before",
+"apps": [
+"PandaDoc",
+"Google Calendar",
+"Telegram Bot"
+],
+"hero": "ui",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"items": [
+"Florist deposit due",
+"Caterer final count",
+"Band arrival time",
+"Venue walkthrough",
+"Photographer shot list",
+"Thank-you cards"
+],
+"check": true
+},
+"pal": [
+"#34C759",
+"#8434C7",
+"#8CC79B",
+"#3B175A"
+]
+},
+{
+"id": "IMG-019",
+"r": "chat",
+"style": "Our Chat, Light",
+"aud": "Shopify sellers",
+"head": "Type it.|It’s built.",
+"sub": "This is the whole setup.",
+"t": "when a Shopify order is refunded, add a note to the customer in HubSpot and message the team on Microsoft Teams",
+"apps": [
+"Shopify",
+"HubSpot",
+"Microsoft Teams"
+],
+"hero": "ui",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-020",
+"r": "chat",
+"style": "Our Chat, Dark",
+"aud": "recruiters",
+"head": "Give me 20 seconds|and I’ll build your|*hiring pipeline.*",
+"sub": "Applicant in, interview booked, hiring manager told.",
+"t": "when a new candidate applies in Workable, send them a Cal.com interview link and post their profile to Discord",
+"apps": [
+"Workable",
+"Cal.com",
+"Discord"
+],
+"hero": "ui",
+"font": "B",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#8B5CF6",
+"#F6B85C",
+"#CBB8F6",
+"#6F5329"
+]
+},
+{
+"id": "IMG-021",
+"r": "chat",
+"style": "Chat Over Mesh",
+"aud": "property managers",
+"head": "Most repair requests|get lost in a group chat.",
+"sub": "Because nobody logs them. Now every one becomes a ticket.",
+"t": "when a tenant submits our repair Google Form, create a Trello card with the photos and text the contractor",
+"apps": [
+"Google Forms",
+"Trello",
+"Twilio"
+],
+"hero": "ui",
+"font": "S",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#14B8A6",
+"#B8149A",
+"#76B8B1",
+"#530945"
+]
+},
+{
+"id": "IMG-022",
+"r": "chat",
+"style": "Chat Split Screen",
+"aud": "online course creators",
+"head": "I love teaching.|The enrolment admin?|*Exhausting.*",
+"sub": "Here’s how it handles itself now.",
+"t": "when someone buys my course on Lemon Squeezy, give them access in Circle and add them to my students list in ConvertKit",
+"apps": [
+"Lemon Squeezy",
+"Circle",
+"ConvertKit"
+],
+"hero": "ui",
+"font": "F",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#EC4899",
+"#69EC48",
+"#ECAACB",
+"#2F6A20"
+]
+},
+{
+"id": "IMG-023",
+"r": "tweet",
+"style": "Tweet Card Light",
+"aud": "founders",
+"head": "",
+"sub": "",
+"t": "when a new Stripe subscription starts, post a celebration in our Discord and add the customer to Attio",
+"apps": [
+"Stripe",
+"Discord",
+"Attio"
+],
+"hero": "ui",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"name": "a founder, probably you",
+"handle": "@everyfounder",
+"text": "My \"automation\" is me, at 11 pm, copying Stripe customers into a CRM one by one.\n\nThere has to be a better way.",
+"reply": "There is. You type that sentence into FansaChat and it builds the workflow."
+},
+"pal": [
+"#1D9BF0",
+"#F01D5D",
+"#9CCEF0",
+"#6C0D2A"
+]
+},
+{
+"id": "IMG-024",
+"r": "tweet",
+"style": "Tweet Card Dim",
+"aud": "marketers",
+"head": "",
+"sub": "",
+"t": "when a new review appears on our Senja wall, turn it into a branded image with Bannerbear and add it to Buffer",
+"apps": [
+"Senja",
+"Bannerbear",
+"Buffer"
+],
+"hero": "ui",
+"font": "B",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"name": "Marketing, unfiltered",
+"handle": "@marketingbrain",
+"text": "Everyone says “repurpose your reviews.”\n\nAlmost nobody explains how to do it without a designer and three apps.",
+"reply": "One sentence: new Senja review → branded image → queued in Buffer."
+},
+"pal": [
+"#F91880",
+"#3EF918",
+"#F99FC9",
+"#1C700B"
+]
+},
+{
+"id": "IMG-025",
+"r": "search",
+"style": "Search Bar Hero",
+"aud": "small business owners",
+"head": "What people|actually search at 1 am:",
+"sub": "You don’t need a flowchart. You need a sentence.",
+"t": "when a new Google My Business review comes in, thank the reviewer and alert me on Telegram if it is under 4 stars",
+"apps": [
+"Google My Business",
+"OpenAI",
+"Telegram Bot"
+],
+"hero": "ui",
+"font": "S",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"q": "how to automate",
+"sugg": [
+"how to automate review replies",
+"how to automate invoices without code",
+"how to automate onboarding emails",
+"how to automate… everything I do twice"
+]
+},
+"pal": [
+"#4285F4",
+"#F44251",
+"#ADC8F4",
+"#6E1E24"
+]
+},
+{
+"id": "IMG-026",
+"r": "search",
+"style": "Search Dark Neon",
+"aud": "developers",
+"head": "The reason you|haven’t automated it:",
+"sub": "It needed a whole afternoon. Now it needs one line.",
+"t": "when PagerDuty opens an incident, create a Linear issue and post it in our Mattermost on-call channel",
+"apps": [
+"PagerDuty",
+"Linear",
+"Mattermost"
+],
+"hero": "ui",
+"font": "M",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"q": "why is automation so",
+"sugg": [
+"why is automation so complicated",
+"why is automation so expensive",
+"why is automation so time-consuming",
+"why is automation… one sentence now"
+]
+},
+"pal": [
+"#22D3EE",
+"#EE2298",
+"#9CE3EE",
+"#6B0F44"
+]
+},
+{
+"id": "IMG-027",
+"r": "ticket",
+"style": "Boarding Pass",
+"aud": "travel agencies",
+"head": "From enquiry|to itinerary",
+"sub": "Every trip request boards the right workflow.",
+"t": "when a trip enquiry arrives through our Typeform, create a deal in Pipedrive and send the client a PandaDoc quote",
+"apps": [
+"Typeform",
+"Pipedrive",
+"PandaDoc"
+],
+"hero": "object",
+"font": "S",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"from": "ENQ",
+"to": "BOOKED",
+"gate": "ONE LINE",
+"seat": "NO CODE",
+"flight": "FC-700"
+},
+"pal": [
+"#0EA5E9",
+"#E90E65",
+"#91CEE9",
+"#69062E"
+]
+},
+{
+"id": "IMG-028",
+"r": "ticket",
+"style": "Concert Stub",
+"aud": "event organisers",
+"head": "Admit one|automation.",
+"sub": "Ticket sold → guest list updated → reminder scheduled.",
+"t": "when a ticket is sold on Lemon Squeezy, add the buyer to our Airtable guest list and send a reminder the day before",
+"apps": [
+"Lemon Squeezy",
+"Airtable",
+"Brevo"
+],
+"hero": "object",
+"font": "BB",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"from": "SOLD",
+"to": "LISTED",
+"gate": "DOORS 8PM",
+"seat": "GA",
+"flight": "ADMIT ONE"
+},
+"pal": [
+"#A21CAF",
+"#91AF1C",
+"#AA74AF",
+"#414F0D"
+]
+},
+{
+"id": "IMG-029",
+"r": "magazine",
+"style": "Magazine Cover",
+"aud": "agency owners",
+"head": "THE|ISSUE",
+"sub": "How a 6-person agency got its Mondays back.",
+"t": "every Friday at 4pm, collect hours from Toggl Track per client and draft invoices in Xero",
+"apps": [
+"Schedule",
+"Toggl Track",
+"Xero"
+],
+"hero": "3d:clock:color",
+"font": "D",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"mast": "AUTOMATE",
+"lines": [
+"Timesheets to invoices in one sentence",
+"The 4 pm Friday rule",
+"700+ integrations, explained",
+"No flowcharts were harmed"
+]
+},
+"pal": [
+"#C0392B",
+"#2BC064",
+"#C08A84",
+"#13562D"
+]
+},
+{
+"id": "IMG-030",
+"r": "magazine",
+"style": "Fashion Glossy",
+"aud": "fashion brands",
+"head": "The *drop*|issue",
+"sub": "Restock alerts that sell out the waitlist.",
+"t": "when a Shopify product is back in stock, email everyone on its Klaviyo waitlist",
+"apps": [
+"Shopify",
+"Klaviyo"
+],
+"hero": "3d:bag:gradient",
+"font": "P",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"mast": "RESTOCK",
+"lines": [
+"Back-in-stock, on autopilot",
+"Waitlists that convert",
+"One sentence, zero code"
+]
+},
+"pal": [
+"#DB2777",
+"#43DB27",
+"#DB93B3",
+"#1E6312"
+]
+},
+{
+"id": "IMG-031",
+"r": "newspaper",
+"style": "Broadsheet Front Page",
+"aud": "accountants",
+"head": "BOOKKEEPER STOPS|COPYING RECEIPTS",
+"sub": "Receipts emailed in are read, filed and logged before breakfast.",
+"t": "when a receipt is emailed to receipts@, extract the total with AI, save the file to Dropbox and add a line to Xero",
+"apps": [
+"Gmail",
+"OpenAI",
+"Dropbox",
+"Xero"
+],
+"hero": "3d:file-text:clay",
+"font": "P",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"paper": "The Daily Ledger",
+"cols": [
+"Small firms are spending hours re-typing receipts that arrive by email.",
+"A plain-English instruction now reads, files and records each one.",
+"Accountants report quieter month-ends."
+]
+},
+"pal": [
+"#1F1F1F",
+"#4D8C60",
+"#1F1F1F",
+"#233F2B"
+]
+},
+{
+"id": "IMG-032",
+"r": "newspaper",
+"style": "Tabloid Extra",
+"aud": "e-commerce teams",
+"head": "RETURNS|TEAM STUNNED",
+"sub": "Return requests now arrive labelled, logged and answered.",
+"t": "when a return is requested in our Gorgias-linked form, create a Shippo return label and email it to the customer",
+"apps": [
+"Typeform",
+"Shippo",
+"Resend"
+],
+"hero": "3d:bag:clay",
+"font": "AB",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"paper": "THE WEEKLY SHIP",
+"cols": [
+"Label made in seconds.",
+"Customer emailed instantly.",
+"Spreadsheet updated without a human."
+]
+},
+"pal": [
+"#E11D48",
+"#1DE12B",
+"#E193A4",
+"#0D6513"
+]
+},
+{
+"id": "IMG-033",
+"r": "swiss",
+"style": "Swiss Grid Red",
+"aud": "operations managers",
+"head": "One|sentence.|Seven|apps.",
+"sub": "A grid of everything you no longer do by hand.",
+"t": "when a deal is won in HubSpot, create the project in ClickUp, the folder in Google Drive and the invoice in Xero",
+"apps": [
+"HubSpot",
+"ClickUp",
+"Google Drive",
+"Xero"
+],
+"hero": "apps",
+"font": "S",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"nums": [
+"01",
+"02",
+"03",
+"04"
+],
+"labels": [
+"Deal won",
+"Project created",
+"Folder made",
+"Invoice drafted"
+]
+},
+"pal": [
+"#E30613",
+"#06E339",
+"#E38B90",
+"#03661A"
+]
+},
+{
+"id": "IMG-034",
+"r": "swiss",
+"style": "Swiss Grid Blue",
+"aud": "product managers",
+"head": "Feedback|→ roadmap",
+"sub": "Every feature request lands in the right place, counted.",
+"t": "when a new Canny post gets 10 votes, create a Linear issue and post it in our product Discord channel",
+"apps": [
+"Canny",
+"Linear",
+"Discord"
+],
+"hero": "apps",
+"font": "S",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"nums": [
+"A",
+"B",
+"C"
+],
+"labels": [
+"Request voted",
+"Issue created",
+"Team told"
+]
+},
+"pal": [
+"#0047AB",
+"#AB0015",
+"#6783AB",
+"#4D000A"
+]
+},
+{
+"id": "IMG-035",
+"r": "bauhaus",
+"style": "Bauhaus Primary",
+"aud": "architects & studios",
+"head": "Form follows|*function.*",
+"sub": "So do your client files.",
+"t": "when a client uploads drawings to Box, notify the project lead and log the revision in Airtable",
+"apps": [
+"Box",
+"Airtable",
+"Telegram Bot"
+],
+"hero": "object",
+"font": "U",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#F4C430",
+"#30EBF4",
+"#F4E1A6",
+"#166A6E"
+]
+},
+{
+"id": "IMG-036",
+"r": "bauhaus",
+"style": "Bauhaus Night",
+"aud": "designers",
+"head": "Less admin,|more *design.*",
+"sub": "Figma comments become tasks you can actually close.",
+"t": "when someone comments on our Figma file, create a ClickUp task for the designer with the comment and link",
+"apps": [
+"Figma",
+"ClickUp"
+],
+"hero": "object",
+"font": "U",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#E4572E",
+"#2EE48C",
+"#E4AC9B",
+"#15673F"
+]
+},
+{
+"id": "IMG-037",
+"r": "neobrutal",
+"style": "Neo-Brutal Sticker",
+"aud": "Gen-Z founders",
+"head": "stop being the|human copy-paste button",
+"sub": "you have better things to do. like sleeping.",
+"t": "when someone fills our Fillout waitlist form, add them to Loops and ping me on Discord",
+"apps": [
+"Fillout Forms",
+"Loops",
+"Discord"
+],
+"hero": "object",
+"font": "AB",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#FFDE59",
+"#59F0FF",
+"#FFF2BD",
+"#286C73"
+]
+},
+{
+"id": "IMG-038",
+"r": "neobrutal",
+"style": "Neo-Brutal Mint",
+"aud": "YouTubers",
+"head": "if you upload weekly,|PAY ATTENTION",
+"sub": "every upload becomes a newsletter + community post.",
+"t": "when I publish a new YouTube video, send it to my Beehiiv subscribers and post it in my Discord",
+"apps": [
+"YouTube",
+"Beehiiv",
+"Discord"
+],
+"hero": "object",
+"font": "AB",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#7CF5C5",
+"#E87CF5",
+"#C5F5E2",
+"#69386E"
+]
+},
+{
+"id": "IMG-039",
+"r": "neobrutal",
+"style": "Neo-Brutal Coral",
+"aud": "HubSpot users",
+"head": "the reason your CRM|is a mess",
+"sub": "nobody types the meeting notes in. now nobody has to.",
+"t": "when a Fireflies.ai meeting transcript is ready, summarise it and add the notes to the HubSpot contact",
+"apps": [
+"Fireflies.ai",
+"OpenAI",
+"HubSpot"
+],
+"hero": "object",
+"font": "AB",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#FF7A59",
+"#59FFAA",
+"#FFCABD",
+"#28734D"
+]
+},
+{
+"id": "IMG-040",
+"r": "mythfact",
+"style": "Myth / Fact Split",
+"aud": "small teams",
+"head": "Myth:|Automation needs a developer.",
+"sub": "Fact: it needs one sentence in plain English.",
+"t": "when a new row is added to our Smartsheet, email the assigned person and set a reminder in Todoist",
+"apps": [
+"Smartsheet",
+"Resend",
+"Todoist"
+],
+"hero": "none",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-041",
+"r": "mythfact",
+"style": "Myth / Fact Dark",
+"aud": "non-technical founders",
+"head": "Myth:|You need to learn flowcharts.",
+"sub": "Fact: you describe it; FansaChat draws it.",
+"t": "when a Typeform lead says budget over $5k, add them to Attio and book a call link in Cal.com",
+"apps": [
+"Typeform",
+"Attio",
+"Cal.com"
+],
+"hero": "none",
+"font": "B",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#F43F5E",
+"#3FF455",
+"#F4ACB8",
+"#1C6E26"
+]
+},
+{
+"id": "IMG-042",
+"r": "beforeafter",
+"style": "Before/After Swipe",
+"aud": "real-estate agents",
+"head": "Before|After",
+"sub": "A portal enquiry used to sit for hours. Now it’s answered in a minute.",
+"t": "when a new lead arrives in Lofty from a property portal, text them a viewing link and add them to Google Calendar",
+"apps": [
+"Facebook Leads",
+"OpenPhone",
+"Google Calendar"
+],
+"hero": "ui",
+"font": "S",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"b": [
+"Lead arrives 9:12",
+"Seen at 14:40",
+"Called back 16:05",
+"Already viewed elsewhere"
+],
+"a": [
+"Lead arrives 9:12",
+"Text sent 9:13",
+"Viewing booked 9:20",
+"You show the house"
+]
+},
+"pal": [
+"#10B981",
+"#B210B9",
+"#75B9A3",
+"#500753"
+]
+},
+{
+"id": "IMG-043",
+"r": "beforeafter",
+"style": "Before/After Paper",
+"aud": "teachers & tutors",
+"head": "Sunday night|vs Sunday night",
+"sub": "Homework submissions sort themselves into the right folders.",
+"t": "when a student submits our Google Form homework, save the file to their Google Drive folder and log the mark sheet row",
+"apps": [
+"Google Forms",
+"Google Drive",
+"Google Sheets"
+],
+"hero": "ui",
+"font": "C",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"b": [
+"48 emails",
+"Download each file",
+"Rename, sort, log",
+"Bed at 1 am"
+],
+"a": [
+"48 submissions",
+"Auto-filed by student",
+"Logged automatically",
+"Bed at 10 pm"
+]
+},
+"pal": [
+"#F97316",
+"#16F9B5",
+"#F9C39E",
+"#0A7052"
+]
+},
+{
+"id": "IMG-044",
+"r": "beforeafter",
+"style": "Before/After Neon",
+"aud": "Discord community owners",
+"head": "Mod at 3 am|vs sleep at 3 am",
+"sub": "New members verified and roled while you’re offline.",
+"t": "when a new member pays on Ko-fi, give them the supporter role in Discord and send a thank-you DM",
+"apps": [
+"Ko-fi",
+"Discord"
+],
+"hero": "ui",
+"font": "S",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"b": [
+"New supporter pays",
+"You wake up",
+"Find their username",
+"Assign role by hand"
+],
+"a": [
+"New supporter pays",
+"Role assigned",
+"Thank-you sent",
+"You were asleep"
+]
+},
+"pal": [
+"#A855F7",
+"#F7D755",
+"#D7B6F7",
+"#6F6126"
+]
+},
+{
+"id": "IMG-045",
+"r": "lockscreen",
+"style": "Lock Screen Flood",
+"aud": "Shopify sellers",
+"head": "And it gets worse|after 9 pm.",
+"sub": "Order, order, refund, review… FansaChat sorts them so you don’t.",
+"t": "when a Shopify order is over $200, post it in our VIP Discord channel and tag the order in Airtable",
+"apps": [
+"Shopify",
+"Discord",
+"Airtable"
+],
+"hero": "ui",
+"font": "B",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"time": "21:47",
+"notifs": [
+[
+"Shopify",
+"New order #4821"
+],
+[
+"Stripe",
+"Payout initiated"
+],
+[
+"Shopify",
+"Refund requested #4790"
+],
+[
+"Gorgias",
+"New ticket"
+],
+[
+"Shopify",
+"New order #4822"
+],
+[
+"Klaviyo",
+"Flow error"
+]
+]
+},
+"pal": [
+"#1E293B",
+"#8C474D",
+"#2F343B",
+"#3F2023"
+]
+},
+{
+"id": "IMG-046",
+"r": "lockscreen",
+"style": "Lock Screen Calm",
+"aud": "consultants",
+"head": "One notification.|*Everything handled.*",
+"sub": "This is what the change feels like.",
+"t": "every evening at 6pm, summarise today’s new Calendly bookings and Stripe payments and send me one Telegram message",
+"apps": [
+"Schedule",
+"Calendly",
+"Stripe",
+"Telegram Bot"
+],
+"hero": "ui",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"time": "18:00",
+"notifs": [
+[
+"FansaChat",
+"3 calls booked · 2 payments in · nothing needs you"
+]
+]
+},
+"pal": [
+"#C7D2FE",
+"#FE968C",
+"#E8ECFE",
+"#72443F"
+]
+},
+{
+"id": "IMG-047",
+"r": "retroos",
+"style": "Retro OS Error",
+"aud": "office managers",
+"head": "Copy_Paste.exe|has stopped working",
+"sub": "Good. It was never meant to be a job.",
+"t": "when a supplier invoice arrives in Outlook, save the PDF to SharePoint and add it to our approvals Smartsheet",
+"apps": [
+"Microsoft Outlook",
+"Microsoft SharePoint",
+"Smartsheet"
+],
+"hero": "ui",
+"font": "X",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"title": "Copy_Paste.exe",
+"msg": "This program has performed an illegal operation: wasting your Tuesday.",
+"btns": [
+"Automate",
+"Keep suffering"
+]
+},
+"pal": [
+"#008080",
+"#8C0063",
+"#4D8080",
+"#3F002D"
+]
+},
+{
+"id": "IMG-048",
+"r": "retroos",
+"style": "Retro Mac Dialog",
+"aud": "translators",
+"head": "New document|detected.",
+"sub": "Translated, saved and delivered before the client checks in.",
+"t": "when a client drops a document into our Dropbox folder, translate it with DeepL and email the draft back",
+"apps": [
+"Dropbox",
+"DeepL",
+"Resend"
+],
+"hero": "ui",
+"font": "M",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"title": "FansaChat",
+"msg": "A client file arrived. It has been translated, saved, and sent back for review.",
+"btns": [
+"Nice",
+"Show me"
+]
+},
+"pal": [
+"#B8B8B8",
+"#65B87D",
+"#B8B8B8",
+"#2E5338"
+]
+},
+{
+"id": "IMG-049",
+"r": "terminal",
+"style": "Green Terminal",
+"aud": "indie developers",
+"head": "$ fansachat \"…\"",
+"sub": "Your cron jobs, in English.",
+"t": "every hour, check our UptimeRobot monitors and post anything down to our Telegram ops group",
+"apps": [
+"Schedule",
+"UptimeRobot",
+"Telegram Bot"
+],
+"hero": "ui",
+"font": "M",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"lines": [
+"$ fansachat \"every hour check uptime, alert ops on telegram\"",
+"> trigger   schedule · every 1h",
+"> step 1    uptimerobot · list monitors",
+"> step 2    filter · status = down",
+"> step 3    telegram · send to ops",
+"✓ workflow live"
+]
+},
+"pal": [
+"#22C55E",
+"#8E22C5",
+"#84C59C",
+"#400F59"
+]
+},
+{
+"id": "IMG-050",
+"r": "terminal",
+"style": "Amber Terminal",
+"aud": "data analysts",
+"head": "Query → chart → inbox",
+"sub": "Weekly numbers that build their own report.",
+"t": "every Monday at 7am, run our Postgres revenue query, chart it with InstaCharts and email the team",
+"apps": [
+"Schedule",
+"Postgres",
+"InstaCharts",
+"Resend"
+],
+"hero": "ui",
+"font": "M",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"lines": [
+"> parsing your sentence…",
+"> trigger   schedule · Mon 07:00",
+"> step 1    postgres · run \"weekly revenue\"",
+"> step 2    instacharts · line chart",
+"> step 3    email · team@",
+"✓ built from one sentence"
+]
+},
+"pal": [
+"#F59E0B",
+"#0BF5E2",
+"#F5D297",
+"#056E66"
+]
+},
+{
+"id": "IMG-051",
+"r": "bento",
+"style": "Bento Light",
+"aud": "everyone",
+"head": "What one|sentence|can do.",
+"sub": "",
+"t": "when a Calendly call ends, send the Fathom summary to the client and create follow-up tasks in Asana",
+"apps": [
+"Calendly",
+"Fathom",
+"Asana"
+],
+"hero": "apps",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"tiles": [
+"Plain English in",
+"700+ integrations",
+"Runs while you sleep",
+"From $15/mo",
+"478 templates",
+"Edit by chatting"
+]
+},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-052",
+"r": "bento",
+"style": "Bento Dark",
+"aud": "agencies",
+"head": "Your agency,|*automated.*",
+"sub": "",
+"t": "when a client approves a PandaDoc proposal, create the ClickUp project, the Slack channel and the first invoice in Xero",
+"apps": [
+"PandaDoc",
+"ClickUp",
+"Slack",
+"Xero"
+],
+"hero": "apps",
+"font": "B",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"tiles": [
+"Proposal signed",
+"Project spun up",
+"Channel created",
+"Invoice drafted",
+"Team notified",
+"Zero copy-paste"
+]
+},
+"pal": [
+"#E68C74",
+"#74E6AD",
+"#E6C2B8",
+"#34684E"
+]
+},
+{
+"id": "IMG-053",
+"r": "flow",
+"style": "Workflow Canvas Light",
+"aud": "e-commerce",
+"head": "The sentence|→ the workflow",
+"sub": "Exactly what FansaChat built from the line on the left.",
+"t": "when a WooCommerce order fails payment, email the customer a retry link and log it in Airtable",
+"apps": [
+"WooCommerce",
+"Resend",
+"Airtable"
+],
+"hero": "ui",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-054",
+"r": "flow",
+"style": "Workflow Canvas Dark",
+"aud": "SaaS teams",
+"head": "Churn alert,|built in a line.",
+"sub": "",
+"t": "when a Chargebee subscription is cancelled, ask the customer why in an email and create a HubSpot task for success",
+"apps": [
+"Chargebee",
+"Resend",
+"HubSpot"
+],
+"hero": "ui",
+"font": "B",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#22D3EE",
+"#EE2298",
+"#9CE3EE",
+"#6B0F44"
+]
+},
+{
+"id": "IMG-055",
+"r": "flow",
+"style": "Workflow Blueprint",
+"aud": "field service businesses",
+"head": "Job done →|invoice sent.",
+"sub": "No more invoicing from the van.",
+"t": "when a job is marked complete in our Jotform checklist, create the invoice in QuickBooks Online and text the customer the link",
+"apps": [
+"Jotform",
+"Quickbooks Online",
+"Twilio"
+],
+"hero": "ui",
+"font": "M",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#1E40AF",
+"#AF261E",
+"#7583AF",
+"#4F110E"
+]
+},
+{
+"id": "IMG-056",
+"r": "flow",
+"style": "Workflow Pastel",
+"aud": "coaches",
+"head": "New client,|fully onboarded.",
+"sub": "",
+"t": "when a coaching client pays on Stripe, send the welcome pack, book the kickoff in Cal.com and create their Notion page",
+"apps": [
+"Stripe",
+"Resend",
+"Cal.com",
+"Notion"
+],
+"hero": "ui",
+"font": "F",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#F0ABFC",
+"#ECFC8B",
+"#F7DCFC",
+"#6A713E"
+]
+},
+{
+"id": "IMG-057",
+"r": "calendar",
+"style": "Desk Calendar Monday",
+"aud": "operations managers",
+"head": "MONDAY|8:00",
+"sub": "The report is already in their inbox. You’re still making coffee.",
+"t": "every Monday at 8am, pull last week’s Pipedrive deals and Stripe revenue and send the leadership summary",
+"apps": [
+"Schedule",
+"Pipedrive",
+"Stripe",
+"Resend"
+],
+"hero": "object",
+"font": "BB",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"day": "MON",
+"num": "8:00"
+},
+"pal": [
+"#DC2626",
+"#26DC5B",
+"#DC9393",
+"#116329"
+]
+},
+{
+"id": "IMG-058",
+"r": "calendar",
+"style": "Wall Calendar Month End",
+"aud": "finance teams",
+"head": "Month-end,|minus the panic.",
+"sub": "Invoices reconciled while the month is still running.",
+"t": "when a Stripe payout lands, match it to the Xero invoices and flag anything missing to me on Telegram",
+"apps": [
+"Stripe",
+"Xero",
+"Telegram Bot"
+],
+"hero": "object",
+"font": "BB",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"day": "LAST DAY",
+"num": "31"
+},
+"pal": [
+"#0891B2",
+"#B2085F",
+"#6EA5B2",
+"#50042B"
+]
+},
+{
+"id": "IMG-059",
+"r": "checklist",
+"style": "Clipboard Checklist",
+"aud": "HR teams",
+"head": "Day-one onboarding,|*done before day one.*",
+"sub": "",
+"t": "when a candidate is marked hired in Greenhouse, create their BambooHR profile, send the welcome email and add them to Microsoft Teams",
+"apps": [
+"Greenhouse",
+"BambooHR",
+"Resend",
+"Microsoft Teams"
+],
+"hero": "object",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"items": [
+"Profile created",
+"Welcome email sent",
+"Laptop request filed",
+"Team channel added",
+"Buddy assigned"
+]
+},
+"pal": [
+"#16A34A",
+"#7316A3",
+"#6BA37F",
+"#340A49"
+]
+},
+{
+"id": "IMG-060",
+"r": "checklist",
+"style": "Launch Checklist",
+"aud": "product launches",
+"head": "Launch day|checklist",
+"sub": "Everything after \"publish\" happens on its own.",
+"t": "when our Webflow launch page is published, email the waitlist with Loops and post the link on Bluesky",
+"apps": [
+"Webflow",
+"Loops",
+"Bluesky"
+],
+"hero": "object",
+"font": "B",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"items": [
+"Waitlist emailed",
+"Social post queued",
+"Team pinged",
+"Analytics checked",
+"You: celebrating"
+]
+},
+"pal": [
+"#7C3AED",
+"#EDB03A",
+"#C0A5ED",
+"#6B4F1A"
+]
+},
+{
+"id": "IMG-061",
+"r": "quote",
+"style": "Serif Quote",
+"aud": "everyone",
+"head": "“You’re not buying software.|You’re buying your *evenings* back.”",
+"sub": "— the whole point of FansaChat",
+"t": "every weekday at 5pm, send me a list of anything still waiting on me across Trello and Help Scout",
+"apps": [
+"Schedule",
+"Trello",
+"Help Scout",
+"Telegram Bot"
+],
+"hero": "none",
+"font": "D",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#7C2D12",
+"#148C56",
+"#7C5C52",
+"#093F27"
+]
+},
+{
+"id": "IMG-062",
+"r": "quote",
+"style": "Italic Manifesto",
+"aud": "builders",
+"head": "“If you do it twice,|*describe it once.*”",
+"sub": "— the FansaChat rule",
+"t": "when I star an email in Missive, create a Todoist task with the email link",
+"apps": [
+"Missive",
+"Todoist"
+],
+"hero": "none",
+"font": "IS",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#0F172A",
+"#8C3233",
+"#1F222A",
+"#3F1717"
+]
+},
+{
+"id": "IMG-063",
+"r": "bignum",
+"style": "Giant 700+",
+"aud": "everyone",
+"head": "700+",
+"sub": "apps you can connect — by describing what you want.",
+"t": "when a Typeform is submitted, enrich the email with Hunter and add the lead to Close",
+"apps": [
+"Typeform",
+"Hunter",
+"Close"
+],
+"hero": "none",
+"font": "U",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"n": "700+",
+"label": "INTEGRATIONS"
+},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-064",
+"r": "bignum",
+"style": "Giant $15",
+"aud": "solo businesses",
+"head": "$15",
+"sub": "a month. Plain-English automation without hiring anyone.",
+"t": "when a client books on SimplyBook.me, add them to my Google Contacts and send a prep checklist",
+"apps": [
+"SimplyBook.me",
+"Google Contacts",
+"Brevo"
+],
+"hero": "none",
+"font": "U",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"n": "$15",
+"label": "FROM / MONTH"
+},
+"pal": [
+"#E68C74",
+"#74E6AD",
+"#E6C2B8",
+"#34684E"
+]
+},
+{
+"id": "IMG-065",
+"r": "bignum",
+"style": "Giant 478",
+"aud": "beginners",
+"head": "478",
+"sub": "ready-made templates if you’d rather not type at all.",
+"t": "when a new Tally response arrives, add it to Baserow and email me a copy",
+"apps": [
+"Tally",
+"Baserow",
+"Resend"
+],
+"hero": "none",
+"font": "U",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"n": "478",
+"label": "TEMPLATES"
+},
+"pal": [
+"#0EA5E9",
+"#E90E65",
+"#91CEE9",
+"#69062E"
+]
+},
+{
+"id": "IMG-066",
+"r": "faq",
+"style": "FAQ Card Plain",
+"aud": "searchers",
+"head": "Can I automate work|without code?",
+"sub": "Yes. Describe the job in plain English — FansaChat builds the workflow across 700+ apps.",
+"t": "when a new Calendly booking is made, add the person to Mailchimp and send them a prep email",
+"apps": [
+"Calendly",
+"Mailchimp"
+],
+"hero": "none",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-067",
+"r": "faq",
+"style": "FAQ Card Dark",
+"aud": "searchers",
+"head": "What is a plain-English|workflow tool?",
+"sub": "You type “when X happens, do Y” and it becomes a working automation.",
+"t": "when a GitHub issue is labelled bug, create a Linear issue and alert the on-call engineer on Telegram",
+"apps": [
+"GitHub",
+"Linear",
+"Telegram Bot"
+],
+"hero": "none",
+"font": "B",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#10B981",
+"#B210B9",
+"#75B9A3",
+"#500753"
+]
+},
+{
+"id": "IMG-068",
+"r": "faq",
+"style": "FAQ Accordion",
+"aud": "searchers",
+"head": "Do I need to|learn flowcharts?",
+"sub": "No. You can edit any workflow by chatting — “also email me a copy”.",
+"t": "when a Paperform order comes in, add a row in Airtable and also email me a copy",
+"apps": [
+"Paperform",
+"Airtable",
+"Resend"
+],
+"hero": "none",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#F59E0B",
+"#0BF5E2",
+"#F5D297",
+"#056E66"
+]
+},
+{
+"id": "IMG-069",
+"r": "appwall",
+"style": "Outline Mega Type Wall",
+"aud": "everyone",
+"head": "CONNECT",
+"sub": "Over 700 apps. Zero flowcharts.",
+"t": "when someone stars our GitHub repo, add them to Attio and thank them on Discord",
+"apps": [
+"GitHub",
+"Attio",
+"Discord"
+],
+"hero": "apps",
+"font": "U",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-070",
+"r": "appwall",
+"style": "Logo Grid Light",
+"aud": "everyone",
+"head": "Your stack,|in one sentence.",
+"sub": "",
+"t": "when a Webflow form is submitted, add the person to HubSpot and notify the team in Microsoft Teams",
+"apps": [
+"Webflow",
+"HubSpot",
+"Microsoft Teams"
+],
+"hero": "apps",
+"font": "U",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#E68C74",
+"#74E6AD",
+"#E6C2B8",
+"#34684E"
+]
+},
+{
+"id": "IMG-071",
+"r": "sticky",
+"style": "Sticky Note Chaos",
+"aud": "freelance designers",
+"head": "Your system|right now:",
+"sub": "Every sticky note is a workflow you haven’t built yet.",
+"t": "when a client approves a design in our Fillout form, send the final files from Dropbox and the invoice from Stripe",
+"apps": [
+"Fillout Forms",
+"Dropbox",
+"Stripe"
+],
+"hero": "object",
+"font": "C",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"notes": [
+"send files to Ana",
+"invoice #18??",
+"chase Mark",
+"upload to drive",
+"reply to brief",
+"follow up!!"
+]
+},
+"pal": [
+"#FDE047",
+"#47E5FD",
+"#FDF1B4",
+"#206772"
+]
+},
+{
+"id": "IMG-072",
+"r": "sticky",
+"style": "One Sticky Note",
+"aud": "busy parents running a business",
+"head": "The only note|you need now.",
+"sub": "",
+"t": "when an order comes in on Ko-fi, email the buyer the download and add them to MailerLite",
+"apps": [
+"Ko-fi",
+"Resend",
+"MailerLite"
+],
+"hero": "object",
+"font": "C",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"notes": [
+"“FansaChat, do it for me.”"
+]
+},
+"pal": [
+"#A7F3D0",
+"#E186F3",
+"#D5F3E5",
+"#653C6D"
+]
+},
+{
+"id": "IMG-073",
+"r": "sign",
+"style": "Road Sign",
+"aud": "small teams",
+"head": "COPY-PASTE|ENDS|HERE",
+"sub": "",
+"t": "when a row is added to our Coda doc, create a Trello card and assign it",
+"apps": [
+"Coda",
+"Trello"
+],
+"hero": "object",
+"font": "BB",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#FACC15",
+"#15E5FA",
+"#FAE89E",
+"#096770"
+]
+},
+{
+"id": "IMG-074",
+"r": "sign",
+"style": "Hazard Label",
+"aud": "ops leads",
+"head": "CAUTION:|manual work|ahead",
+"sub": "Detour available. One sentence long.",
+"t": "when a Jira issue is moved to Done, email the requester and update the Smartsheet tracker",
+"apps": [
+"Jira Cloud",
+"Resend",
+"Smartsheet"
+],
+"hero": "object",
+"font": "BB",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#F97316",
+"#16F9B5",
+"#F9C39E",
+"#0A7052"
+]
+},
+{
+"id": "IMG-075",
+"r": "label",
+"style": "Nutrition Facts",
+"aud": "health-conscious founders",
+"head": "Workflow Facts",
+"sub": "Serving size: one sentence.",
+"t": "when a Stripe payment fails, email the customer a card-update link and push an alert to my phone",
+"apps": [
+"Stripe",
+"Postmark",
+"Pushover"
+],
+"hero": "object",
+"font": "AB",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"rows": [
+[
+"Code",
+"0 g"
+],
+[
+"Flowcharts",
+"0 g"
+],
+[
+"Apps connected",
+"3"
+],
+[
+"Setup time",
+"one sentence"
+],
+[
+"Copy-paste",
+"0%"
+]
+]
+},
+"pal": [
+"#FFFFFF",
+"#8CFFAE",
+"#FFFFFF",
+"#3F734E"
+]
+},
+{
+"id": "IMG-076",
+"r": "label",
+"style": "Wine Label",
+"aud": "wine & craft shops",
+"head": "Grand Cru|*Automation*",
+"sub": "Aged in plain English. Notes of free time.",
+"t": "when a BigCommerce order includes a gift, send the recipient a message on their delivery date",
+"apps": [
+"BigCommerce",
+"Brevo"
+],
+"hero": "object",
+"font": "P",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"rows": [
+[
+"Vintage",
+"2026"
+],
+[
+"Region",
+"Plain English"
+],
+[
+"Body",
+"700+ apps"
+],
+[
+"Finish",
+"effortless"
+]
+]
+},
+"pal": [
+"#7F1D1D",
+"#208C40",
+"#7F5858",
+"#0E3F1D"
+]
+},
+{
+"id": "IMG-077",
+"r": "pixel",
+"style": "8-bit Quest",
+"aud": "gamer creators",
+"head": "LEVEL UP:|AUTOMATION",
+"sub": "Boss defeated: manual uploads.",
+"t": "when I go live on Twitch, post the link to my Discord and send a Telegram alert to my channel",
+"apps": [
+"Twitch",
+"Discord",
+"Telegram Bot"
+],
+"hero": "object",
+"font": "X",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"hud": [
+"HP ████████",
+"XP +700",
+"BOSS: COPY-PASTE"
+]
+},
+"pal": [
+"#22C55E",
+"#8E22C5",
+"#84C59C",
+"#400F59"
+]
+},
+{
+"id": "IMG-078",
+"r": "pixel",
+"style": "Game Over Screen",
+"aud": "everyone",
+"head": "GAME OVER",
+"sub": "for doing the same task twice.",
+"t": "when a Google Calendar event is cancelled, notify the attendees and free the slot in Cal.com",
+"apps": [
+"Google Calendar",
+"Resend",
+"Cal.com"
+],
+"hero": "object",
+"font": "X",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"hud": [
+"CONTINUE?",
+"> AUTOMATE",
+"  KEEP DOING IT"
+]
+},
+"pal": [
+"#EF4444",
+"#44EF76",
+"#EFABAB",
+"#1F6C35"
+]
+},
+{
+"id": "IMG-079",
+"r": "neon",
+"style": "Neon Open Sign",
+"aud": "bars & nightlife",
+"head": "OPEN|24/7",
+"sub": "Your workflows don’t close at night.",
+"t": "when someone books a table through our website Typeform after midnight, confirm it by SMS and add it to Airtable",
+"apps": [
+"Typeform",
+"ClickSend SMS",
+"Airtable"
+],
+"hero": "none",
+"font": "C",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#F472B6",
+"#90F472",
+"#F4C0DB",
+"#416E33"
+]
+},
+{
+"id": "IMG-080",
+"r": "neon",
+"style": "Neon Tube Script",
+"aud": "night-owl founders",
+"head": "it runs|while you sleep",
+"sub": "",
+"t": "every night at 2am, back up new Airtable records to Dropbox and send me a one-line report",
+"apps": [
+"Schedule",
+"Airtable",
+"Dropbox"
+],
+"hero": "none",
+"font": "C",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#38BDF8",
+"#F83885",
+"#ABE0F8",
+"#70193C"
+]
+},
+{
+"id": "IMG-081",
+"r": "cover",
+"style": "Vinyl Sleeve",
+"aud": "music teachers",
+"head": "Side A:|the lesson.|Side B:|*the admin, gone.*",
+"sub": "",
+"t": "when a student books a lesson on Acuity Scheduling, invoice them in Stripe and send the practice sheet",
+"apps": [
+"Acuity Scheduling",
+"Stripe",
+"Resend"
+],
+"hero": "3d:music:gradient",
+"font": "S",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#F97316",
+"#16F9B5",
+"#F9C39E",
+"#0A7052"
+]
+},
+{
+"id": "IMG-082",
+"r": "cover",
+"style": "Paperback Novel",
+"aud": "authors",
+"head": "The Assistant|Who Never Slept",
+"sub": "A novel about pre-orders, newsletters and a writer who finally wrote.",
+"t": "when a new reader joins my Buttondown list, send them the free chapter and tag them by genre",
+"apps": [
+"Buttondown",
+"Resend"
+],
+"hero": "3d:notebook:clay",
+"font": "P",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#1E3A5F",
+"#8C2C3A",
+"#45505F",
+"#3F141A"
+]
+},
+{
+"id": "IMG-083",
+"r": "subway",
+"style": "Metro Map",
+"aud": "B2B outbound teams",
+"head": "One line.|Every stop.",
+"sub": "",
+"t": "when a new company is added in Clay, find the contact with Hunter, add them to Lemlist and log it in Close",
+"apps": [
+"Clay",
+"Hunter",
+"Lemlist",
+"Close"
+],
+"hero": "apps",
+"font": "S",
+"ratio": 1.618,
+"dark": false,
+"x": {
+"stops": [
+"Clay",
+"Hunter",
+"Lemlist",
+"Close"
+]
+},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-084",
+"r": "subway",
+"style": "Night Line",
+"aud": "customer success",
+"head": "Signup to|first win.",
+"sub": "Every customer rides the same smooth line.",
+"t": "when a new user signs up in Supabase, send the welcome series in Loops and create a check-in task in Attio after 7 days",
+"apps": [
+"Supabase",
+"Loops",
+"Attio"
+],
+"hero": "apps",
+"font": "S",
+"ratio": 1.618,
+"dark": true,
+"x": {
+"stops": [
+"Signup",
+"Welcome",
+"Day 3 tip",
+"Day 7 check-in"
+]
+},
+"pal": [
+"#FACC15",
+"#15E5FA",
+"#FAE89E",
+"#096770"
+]
+},
+{
+"id": "IMG-085",
+"r": "whiteboard",
+"style": "Whiteboard Sketch",
+"aud": "team leads",
+"head": "The reason your|standup is 40 minutes:",
+"sub": "Half of it is status updates a workflow could post.",
+"t": "every weekday at 9am, post each person’s open ClickUp tasks to our Microsoft Teams standup channel",
+"apps": [
+"Schedule",
+"ClickUp",
+"Microsoft Teams"
+],
+"hero": "object",
+"font": "C",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#2563EB",
+"#EB2529",
+"#9CB5EB",
+"#6A1113"
+]
+},
+{
+"id": "IMG-086",
+"r": "whiteboard",
+"style": "Chalkboard Lesson",
+"aud": "school admins",
+"head": "Today’s lesson:|automate the register",
+"sub": "",
+"t": "when a parent submits the absence Google Form, notify the class teacher and log it in the attendance sheet",
+"apps": [
+"Google Forms",
+"Resend",
+"Google Sheets"
+],
+"hero": "object",
+"font": "C",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#F8FAFC",
+"#FC8BA2",
+"#FAFBFC",
+"#713E49"
+]
+},
+{
+"id": "IMG-087",
+"r": "sheet",
+"style": "Spreadsheet Hell",
+"aud": "marketing managers",
+"head": "You, every Friday:",
+"sub": "Copying campaign numbers into a sheet nobody reads.",
+"t": "every Friday at 3pm, pull this week’s Mailchimp campaign results and post a short summary in our Discord",
+"apps": [
+"Schedule",
+"Mailchimp",
+"Discord"
+],
+"hero": "ui",
+"font": "M",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#16A34A",
+"#7316A3",
+"#6BA37F",
+"#340A49"
+]
+},
+{
+"id": "IMG-088",
+"r": "sheet",
+"style": "Spreadsheet Fixed",
+"aud": "nonprofits",
+"head": "Donations,|thanked *instantly.*",
+"sub": "Every gift gets a receipt and a real thank-you.",
+"t": "when a donation comes in on Stripe, send the donor a receipt and a thank-you note and add them to Bloomerang",
+"apps": [
+"Stripe",
+"Resend",
+"Bloomerang"
+],
+"hero": "ui",
+"font": "M",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#0EA5E9",
+"#E90E65",
+"#91CEE9",
+"#69062E"
+]
+},
+{
+"id": "IMG-089",
+"r": "postcard",
+"style": "Postcard",
+"aud": "tour guides",
+"head": "Greetings from|*automation*",
+"sub": "Wish you were here (instead of in your inbox).",
+"t": "when a tour is booked through our Cal.com page, send the meeting point and weather tips the evening before",
+"apps": [
+"Cal.com",
+"Resend"
+],
+"hero": "object",
+"font": "P",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#EAB308",
+"#08DFEA",
+"#EAD490",
+"#046469"
+]
+},
+{
+"id": "IMG-090",
+"r": "postcard",
+"style": "Postage Stamp Sheet",
+"aud": "Etsy sellers",
+"head": "Shipped.|Stamped.|*Told.*",
+"sub": "",
+"t": "when an order is paid on WooCommerce, buy the label in Shippo and email the tracking link",
+"apps": [
+"WooCommerce",
+"Shippo",
+"Resend"
+],
+"hero": "object",
+"font": "P",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#DC2626",
+"#26DC5B",
+"#DC9393",
+"#116329"
+]
+},
+{
+"id": "IMG-091",
+"r": "card",
+"style": "Tarot Card",
+"aud": "creators",
+"head": "THE AUTOMATOR",
+"sub": "Your future: fewer tabs.",
+"t": "when someone buys on my Ko-fi shop, add them to Kit and send the bonus file",
+"apps": [
+"Ko-fi",
+"ConvertKit",
+"Resend"
+],
+"hero": "object",
+"font": "P",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#4C1D95",
+"#956F1D",
+"#786595",
+"#43320D"
+]
+},
+{
+"id": "IMG-092",
+"r": "card",
+"style": "Trading Card Holo",
+"aud": "sales reps",
+"head": "LEGENDARY|FOLLOW-UP",
+"sub": "ATK: instant reply · DEF: never forgets",
+"t": "when a Close lead goes quiet for 5 days, send a friendly follow-up and remind me",
+"apps": [
+"Close",
+"Resend",
+"Telegram Bot"
+],
+"hero": "object",
+"font": "AB",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#06B6D4",
+"#D4067A",
+"#82C8D4",
+"#5F0337"
+]
+},
+{
+"id": "IMG-093",
+"r": "glass",
+"style": "Aurora Glass",
+"aud": "everyone",
+"head": "Describe it.|*It runs.*",
+"sub": "",
+"t": "when a Help Scout conversation is tagged bug, create a Linear issue and reply that it is logged",
+"apps": [
+"Help Scout",
+"Linear"
+],
+"hero": "3d:magic-trick:gradient",
+"font": "U",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-094",
+"r": "glass",
+"style": "Fluted Glass",
+"aud": "wellness studios",
+"head": "Calm|admin.",
+"sub": "Class bookings, reminders and waitlists — breathing on their own.",
+"t": "when a class is fully booked on SimplyBook.me, open the waitlist form and text people when a spot frees up",
+"apps": [
+"SimplyBook.me",
+"Tally",
+"ClickSend SMS"
+],
+"hero": "3d:sun:clay",
+"font": "F",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#E68C74",
+"#74E6AD",
+"#E6C2B8",
+"#34684E"
+]
+},
+{
+"id": "IMG-095",
+"r": "collage",
+"style": "Ransom Note Collage",
+"aud": "everyone",
+"head": "we have your|SPREADSHEET",
+"sub": "Return it? Only if you promise never to update it by hand again.",
+"t": "when a new Airtable record is added, update the matching row in Google Sheets",
+"apps": [
+"Airtable",
+"Google Sheets"
+],
+"hero": "object",
+"font": "AB",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#111111",
+"#4D8C60",
+"#111111",
+"#233F2B"
+]
+},
+{
+"id": "IMG-096",
+"r": "collage",
+"style": "Scrapbook",
+"aud": "photographers",
+"head": "Shoot.|Deliver.|*Get booked again.*",
+"sub": "",
+"t": "when a gallery is delivered, wait 30 days and send the client a rebook offer with my Calendly link",
+"apps": [
+"Calendly",
+"Delay",
+"Resend"
+],
+"hero": "object",
+"font": "C",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#FB923C",
+"#3CFBCA",
+"#FBD1AF",
+"#1B715B"
+]
+},
+{
+"id": "IMG-097",
+"r": "maya",
+"style": "Maya Hero Pop",
+"aud": "first-time automators",
+"head": "Meet the teammate|who reads your mind",
+"sub": "Well — your sentences.",
+"t": "when someone fills the contact form on our WordPress site, reply within a minute and add them to Brevo",
+"apps": [
+"WordPress",
+"Resend",
+"Brevo"
+],
+"hero": "maya",
+"font": "B",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-098",
+"r": "maya",
+"style": "Maya Comic Panel",
+"aud": "busy founders",
+"head": "“Wait… that’s|*it?*”",
+"sub": "Yes. That was the whole setup.",
+"t": "when a new Stripe customer signs up, send the onboarding email and add them to Attio",
+"apps": [
+"Stripe",
+"Resend",
+"Attio"
+],
+"hero": "maya",
+"font": "AB",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#F43F5E",
+"#3FF455",
+"#F4ACB8",
+"#1C6E26"
+]
+},
+{
+"id": "IMG-099",
+"r": "iso",
+"style": "Isometric Office",
+"aud": "small offices",
+"head": "Your whole office,|*one chat.*",
+"sub": "Sales, support, finance, HR — each with its own flow.",
+"t": "when a support email comes into Front, assign it by topic and post urgent ones in Microsoft Teams",
+"apps": [
+"Front",
+"Microsoft Teams"
+],
+"hero": "apps",
+"font": "U",
+"ratio": 1.618,
+"dark": false,
+"x": {},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+},
+{
+"id": "IMG-100",
+"r": "cta",
+"style": "Waitlist Finale",
+"aud": "everyone",
+"head": "Join the|waitlist.",
+"sub": "Launching November. Early access goes to the waitlist first.",
+"t": "when I join the FansaChat waitlist, I get early access",
+"apps": [
+"Webhook"
+],
+"hero": "logo",
+"font": "U",
+"ratio": 1.618,
+"dark": true,
+"x": {},
+"pal": [
+"#6468D8",
+"#D88264",
+"#AAABD8",
+"#613A2D"
+]
+}
+]
