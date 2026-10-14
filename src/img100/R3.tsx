@@ -219,8 +219,9 @@ export const Collage: React.FC<RP> = ({s, th}) => {
       : <><div style={{position: 'absolute', left: 90, top: 120, width: 520, height: 640, background: '#fff', padding: 18, boxShadow: '0 20px 40px rgba(0,0,0,0.3)', transform: 'rotate(-5deg)'}}><div style={{width: '100%', height: 520, background: `linear-gradient(135deg, ${th.main}, ${th.con})`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}><Hero3D hero="3d:camera:clay" size={380} x={242} y={260} /></div><Txt f={F.cav} w={700} size={40} c="#333" s={{marginTop: 10, textAlign: 'center'}}>client gallery ✓</Txt></div>
         <div style={{position: 'absolute', left: 580, top: 200, width: 220, height: 50, background: '#F5E663AA', transform: 'rotate(20deg)'}} />
         <Rich s={s} text={s.head} size={fit(s, lines(s.head), 420, 110)} color="#1F1A14" acc={th.con} style={{position: 'absolute', left: 620, top: 300}} /></>}
-    <Txt w={600} size={32} c="#1F1A14" s={{position: 'absolute', left: M, right: M, top: ransom ? 640 : 830, textAlign: ransom ? 'center' : 'left'}}>{s.sub}</Txt>
-    <Prompt s={s} th={{...th, card: '#FFFFFF'}} size={21} style={{position: 'absolute', left: M, top: ransom ? 820 : 960}} />
+    <Txt w={600} size={32} c="#1F1A14" s={{position: 'absolute', left: M, right: M, top: ransom ? 700 : 830, textAlign: ransom ? 'center' : 'left'}}>{s.sub}</Txt>
+    {ransom && <div style={{position: 'absolute', left: 0, right: 0, top: 1040, display: 'flex', justifyContent: 'center'}}><AppRow apps={s.apps} size={80} c="#1F1A14" /></div>}
+    <Prompt s={s} th={{...th, card: '#FFFFFF'}} size={21} style={{position: 'absolute', left: M, top: ransom ? 860 : 960}} />
     <Brand c="#1F1A14" /><Grain o={0.16} />
   </AbsoluteFill>;
 };
@@ -244,11 +245,11 @@ export const Iso: React.FC<RP> = ({s, th}) => {
   const rooms = ['Sales', 'Support', 'Finance', 'HR']; const apps = ['HubSpot', 'Front', 'Xero', 'BambooHR'];
   return <AbsoluteFill style={{background: mix(th.neu, '#fff', 0.75)}}>
     <Rich s={s} text={s.head} size={fit(s, lines(s.head), W - 2 * M, 96)} color="#141414" acc={th.main} style={{position: 'absolute', left: M, top: 70}} />
-    <div style={{position: 'absolute', left: 540, top: 820, transform: 'rotateX(55deg) rotateZ(45deg)', transformStyle: 'preserve-3d'}}>
-      {rooms.map((r, i) => <div key={r} style={{position: 'absolute', left: (i % 2) * 300 - 300, top: Math.floor(i / 2) * 300 - 300, width: 280, height: 280, background: [th.main, th.acc, mix(th.main, '#fff', 0.4), mix(th.acc, '#fff', 0.4)][i], boxShadow: `14px 14px 0 ${mix(th.con, '#000', 0.2)}`, borderRadius: 16}} />)}
+    <div style={{position: 'absolute', left: 540, top: 760, width: 0, height: 0, transform: 'scaleY(0.58) rotate(45deg)'}}>
+      {rooms.map((r, i) => <div key={r} style={{position: 'absolute', left: (i % 2) * 300 - 290, top: Math.floor(i / 2) * 300 - 290, width: 280, height: 280, background: [th.main, th.acc, mix(th.main, '#fff', 0.4), mix(th.acc, '#fff', 0.4)][i], boxShadow: `14px 14px 0 ${mix(th.con, '#000', 0.2)}`, borderRadius: 16}} />)}
       <div style={{position: 'absolute', left: -60, top: -60, width: 120, height: 120, borderRadius: 60, background: '#fff', boxShadow: '0 0 0 10px #ffffff88'}} />
     </div>
-    <div style={{position: 'absolute', left: 498, top: 778}}><FLogo size={84} /></div>
+    <div style={{position: 'absolute', left: 498, top: 718}}><FLogo size={84} /></div>
     {rooms.map((r, i) => <div key={r} style={{position: 'absolute', left: [M, 760, 120, 700][i], top: [480, 480, 1020, 1020][i], display: 'flex', alignItems: 'center', gap: 12, padding: '12px 18px', borderRadius: 999, background: '#fff', boxShadow: '0 10px 24px rgba(0,0,0,0.12)'}}><Logo app={apps[i]} size={44} /><Txt w={700} size={24} c="#141414">{r}</Txt></div>)}
     <Txt size={26} c="#333" s={{position: 'absolute', left: M, top: 1140, width: W - 2 * M}}>{s.sub}</Txt>
     <Brand c="#141414" y={H - 84} /><Grain o={0.06} />

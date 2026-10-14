@@ -9,9 +9,9 @@ export const MythFact: React.FC<RP> = ({s, th}) => {
   return <AbsoluteFill style={{background: th.main}}>
     <div style={{position: 'absolute', left: 0, right: 0, top: 0, height: 560, background: top}} />
     <Meta c={s.dark ? '#aaa' : '#555'} s={{left: M, top: 70}}>Myth</Meta><Meta c={onC(th.main)} s={{left: M, top: 610}}>Fact</Meta>
-    <div style={{position: 'absolute', left: M, right: M, top: 130, fontFamily: PAIRS[s.font].d, fontWeight: 800, fontSize: fit(s, [m2], W - 2 * M, 96), lineHeight: 1.02, color: s.dark ? '#888' : '#777', textDecoration: `line-through 8px ${th.main}`}}>{m2}</div>
+    <div style={{position: 'absolute', left: M, right: M, top: 130, fontFamily: PAIRS[s.font].d, fontWeight: 800, fontSize: 72, lineHeight: 1.05, color: s.dark ? '#888' : '#777', textDecoration: `line-through 8px ${th.main}`}}>{m2}</div>
     <div style={{position: 'absolute', right: M, top: 380, fontFamily: F.anton, fontSize: 120, color: th.main, transform: 'rotate(-8deg)', border: `8px solid ${th.main}`, padding: '0 24px', borderRadius: 14}}>FALSE</div>
-    <Rich s={s} text={s.sub.replace('Fact: ', '')} size={fit(s, [s.sub], (W - 2 * M) * 2, 84)} color={onC(th.main)} acc={th.acc} style={{position: 'absolute', left: M, right: M, top: 670, whiteSpace: 'normal'}} />
+    <Txt f={PAIRS[s.font].d} w={800} size={66} c={onC(th.main)} s={{position: 'absolute', left: M, right: M, top: 660, lineHeight: 1.05, letterSpacing: '-0.02em'}}>{s.sub.replace('Fact: ', '')}</Txt>
     <Prompt s={s} th={{...th, card: '#FFFFFF'}} size={22} style={{position: 'absolute', left: M, top: 960}} />
     <Brand c={onC(th.main)} /><Grain o={0.08} />
   </AbsoluteFill>;
@@ -46,8 +46,8 @@ export const Lockscreen: React.FC<RP> = ({s, th}) => {
           <div style={{flex: 1}}><Txt w={700} size={17} c="#111">{appName(app)}</Txt><Txt size={18} c="#222">{msg}</Txt></div><Txt size={14} c="#555">now</Txt></div>)}</div>
       </div>
     </div>
-    <div style={{position: 'absolute', left: M, right: M, top: 1180}}><Rich s={s} text={s.head.replace('|', ' ')} size={fit(s, [s.head.replace('|', ' ')], W - 2 * M, 54)} color={calm ? '#111' : '#fff'} acc={calm ? th.con : th.acc} /></div>
-    <Brand c={calm ? '#111' : '#fff'} y={H - 80} /><Grain o={0.06} />
+    <div style={{position: 'absolute', left: M, right: M, top: 1170}}><Rich s={s} text={s.head.replace('|', ' ')} size={fit(s, [s.head.replace('|', ' ')], W - 2 * M, 50)} color={calm ? '#111' : '#fff'} acc={calm ? th.con : th.acc} /></div>
+    <Brand c={calm ? '#111' : '#fff'} y={H - 74} /><Grain o={0.06} />
   </AbsoluteFill>;
 };
 
@@ -164,7 +164,7 @@ export const BigNum: React.FC<RP> = ({s, th}) => {
   const dk = s.dark; const ink = th.ink;
   return <AbsoluteFill style={{background: dk ? th.bg : mix(th.main, '#fff', 0.88), overflow: 'hidden'}}>
     <Meta c={th.soft} s={{left: M, top: 70}}>{s.x.label}</Meta><Meta c={th.soft} s={{right: M, top: 70}}>FansaChat · 2026</Meta>
-    <div style={{position: 'absolute', left: -20, right: -20, top: 170, textAlign: 'center', fontFamily: F.unb, fontWeight: 800, fontSize: s.x.n.length > 3 ? 360 : 440, letterSpacing: '-0.07em', lineHeight: 1, color: th.main, textShadow: dk ? `0 0 80px ${th.main}66` : 'none'}}>{s.x.n}</div>
+    <div style={{position: 'absolute', left: -20, right: -20, top: 170, textAlign: 'center', fontFamily: F.unb, fontWeight: 800, fontSize: Math.min(440, Math.floor((W - 60) / (s.x.n.length * 0.8))), letterSpacing: '-0.07em', lineHeight: 1, color: th.main, textShadow: dk ? `0 0 80px ${th.main}66` : 'none'}}>{s.x.n}</div>
     <Txt f={F.serif} w={400} size={64} c={ink} s={{position: 'absolute', left: M, right: M, top: 690, textAlign: 'center', fontStyle: 'italic', lineHeight: 1.1}}>{s.sub}</Txt>
     <div style={{position: 'absolute', left: 0, right: 0, top: 900, display: 'flex', justifyContent: 'center'}}><AppRow apps={s.apps} size={70} c={th.soft} arrow="+" /></div>
     <Prompt s={s} th={th} size={20} style={{position: 'absolute', left: M, top: 1030}} />

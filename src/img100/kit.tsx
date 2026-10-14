@@ -47,12 +47,12 @@ type Pair = {d: string; w: number; b: string; a: string; up?: boolean; cw: numbe
 export const PAIRS: Record<string, Pair> = {
   A: {d: F.anton, w: 400, b: F.inter, a: F.serif, up: true, cw: 0.46, lh: 0.95},
   B: {d: F.brico, w: 800, b: F.inter, a: F.serif, cw: 0.6, lh: 0.98},
-  S: {d: F.syne, w: 800, b: F.space, a: F.serif, cw: 0.8, lh: 0.98},
+  S: {d: F.syne, w: 800, b: F.space, a: F.serif, cw: 0.9, lh: 0.98},
   U: {d: F.unb, w: 800, b: F.inter, a: F.serif, cw: 0.86, lh: 1.02},
-  D: {d: F.dms, w: 400, b: F.inter, a: F.dmsI, cw: 0.5, lh: 1.02},
+  D: {d: F.dms, w: 400, b: F.inter, a: F.dmsI, cw: 0.56, lh: 1.02},
   IS: {d: F.serifUp, w: 400, b: F.inter, a: F.serif, cw: 0.42, lh: 1.0},
   F: {d: F.frau, w: 800, b: F.inter, a: F.frauI, cw: 0.56, lh: 1.0},
-  P: {d: F.play, w: 900, b: F.mont, a: F.playI, cw: 0.56, lh: 1.0},
+  P: {d: F.play, w: 900, b: F.mont, a: F.playI, cw: 0.62, lh: 1.0},
   BB: {d: F.bebas, w: 400, b: F.inter, a: F.serif, up: true, cw: 0.4, lh: 0.92},
   AB: {d: F.arch, w: 400, b: F.inter, a: F.serif, cw: 0.74, lh: 0.98},
   M: {d: F.mono, w: 700, b: F.mono, a: F.serif, cw: 0.6, lh: 1.08},
@@ -64,7 +64,8 @@ export type Spec = {id: string; r: string; style: string; aud: string; head: str
 export const W = 1080, H = 1350, M = 64;
 
 // palette helpers
-const hx = (c: string) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
+const norm = (c: string) => (c.length === 4 ? '#' + c[1] + c[1] + c[2] + c[2] + c[3] + c[3] : c.slice(0, 7));
+const hx = (c: string) => [1, 3, 5].map((i) => parseInt(norm(c).slice(i, i + 2), 16));
 export const mix = (a: string, b: string, t: number) => '#' + hx(a).map((v, i) => Math.round(v + (hx(b)[i] - v) * t).toString(16).padStart(2, '0')).join('');
 export const lum = (c: string) => { const [r, g, b] = hx(c).map((v) => v / 255); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
 export const onC = (c: string) => (lum(c) > 0.55 ? '#121212' : '#F7F5F0');
@@ -118,7 +119,7 @@ export const Ring: React.FC<{x: number; y: number; c: string; ch?: string}> = ({
 // the plain-English sentence, as a typed prompt pill
 export const Prompt: React.FC<{s: Spec; th: Theme; w?: number; size?: number; style?: React.CSSProperties}> = ({s, th, w = W - 2 * M, size = 24, style}) => <div style={{width: w, padding: '18px 22px', borderRadius: 22, background: th.card, boxShadow: '0 14px 40px rgba(0,0,0,0.16)', display: 'flex', gap: 16, alignItems: 'center', ...style}}>
   <FLogo size={size * 1.8} />
-  <div style={{fontFamily: F.inter, fontWeight: 500, fontSize: size, lineHeight: 1.35, color: s.dark ? '#F5F3EE' : '#1A1A1A', flex: 1}}>“{s.t[0].toUpperCase() + s.t.slice(1)}.”</div>
+  <div style={{fontFamily: F.inter, fontWeight: 500, fontSize: size, lineHeight: 1.35, color: (th.card.length === 7 ? lum(th.card) < 0.5 : s.dark) ? '#F5F3EE' : '#1A1A1A', flex: 1}}>“{s.t[0].toUpperCase() + s.t.slice(1)}.”</div>
   <div style={{width: size * 1.7, height: size * 1.7, borderRadius: 999, background: th.main, color: onC(th.main), display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: F.inter, fontWeight: 800, fontSize: size}}>↑</div>
 </div>;
 export const AppRow: React.FC<{apps: string[]; size?: number; c: string; arrow?: string}> = ({apps, size = 64, c, arrow = '→'}) => <div style={{display: 'flex', alignItems: 'center', gap: 14}}>

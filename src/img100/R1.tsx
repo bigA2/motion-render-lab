@@ -41,8 +41,8 @@ export const Hero3d: React.FC<RP> = ({s, th}) => {
     return <AbsoluteFill style={{background: mix(th.neu, '#FFFFFF', 0.85)}}>
       <Meta c="#111" s={{left: M, top: 64}}>{vol(s)} — {s.aud}</Meta><Meta c="#111" s={{right: M, top: 64}}>2026</Meta>
       <Hero3D hero={s.hero} size={560} x={540} y={620} shadow={th.main + '55'} />
-      <div style={{position: 'absolute', left: M, top: 600, fontFamily: p.d, fontWeight: p.w, fontSize: 64, color: '#111', letterSpacing: '-0.02em'}}>{words[0]}</div>
-      <div style={{position: 'absolute', right: M, top: 600, fontFamily: p.a, fontStyle: 'italic', fontSize: 72, color: th.main}}>{words[1]}</div>
+      <div style={{position: 'absolute', left: M, top: 380, fontFamily: p.d, fontWeight: p.w, fontSize: 64, color: '#111', letterSpacing: '-0.02em'}}>{words[0]}</div>
+      <div style={{position: 'absolute', right: M, top: 720, fontFamily: p.a, fontStyle: 'italic', fontSize: 72, color: th.main}}>{words[1]}</div>
       <Txt f={F.serif} w={400} size={46} c="#111" s={{position: 'absolute', left: 120, right: 120, top: 980, textAlign: 'center', fontStyle: 'italic', lineHeight: 1.15}}>{s.sub}</Txt>
       <Ring x={518} y={1150} c="#111" /><Brand c="#111" /><Grain o={0.07} />
     </AbsoluteFill>;
@@ -63,8 +63,8 @@ export const Hero3d: React.FC<RP> = ({s, th}) => {
     return <AbsoluteFill style={{background: `radial-gradient(70% 55% at 50% 45%, ${mix(th.main, '#000', 0.6)}, #07070A 75%)`}}>
       <Meta c={mix(th.main, '#fff', 0.45)} s={{left: 0, right: 0, top: 60, textAlign: 'center'}}>A FansaChat original · {s.aud}</Meta>
       <Hero3D hero={s.hero} size={660} x={540} y={680} rot={14} filter="saturate(1.2)" shadow={th.main + '66'} />
-      <div style={{position: 'absolute', left: M, top: 140, fontFamily: p.d, fontWeight: p.w, fontSize: 240, lineHeight: 1, color: th.main, textTransform: 'uppercase'}}>{w[0]}</div>
-      <div style={{position: 'absolute', right: M, top: 760, fontFamily: p.d, fontWeight: p.w, fontSize: 240, lineHeight: 1, color: th.main, textTransform: 'uppercase'}}>{w[1]}</div>
+      <div style={{position: 'absolute', left: M, top: 140, fontFamily: p.d, fontWeight: p.w, fontSize: fit(s, [w[0]], W - 2 * M, 240), lineHeight: 1, color: th.main, textTransform: 'uppercase'}}>{w[0]}</div>
+      <div style={{position: 'absolute', right: M, top: 760, fontFamily: p.d, fontWeight: p.w, fontSize: fit(s, [w[1]], W - 2 * M, 240), lineHeight: 1, color: th.main, textTransform: 'uppercase'}}>{w[1]}</div>
       <div style={{position: 'absolute', left: M, top: 1040, fontFamily: F.serif, fontStyle: 'italic', fontSize: 60, color: '#F3E6D8'}}>{s.x.small}</div>
       <Txt size={24} c={mix(th.main, '#fff', 0.55)} s={{position: 'absolute', left: M, top: 1125, maxWidth: 640}}>{s.sub}</Txt>
       <Meta c={mix(th.main, '#fff', 0.45)} s={{right: M, top: 1060, textAlign: 'right'}}>2026<br />Now on the waitlist</Meta>
@@ -86,22 +86,22 @@ export const Hero3d: React.FC<RP> = ({s, th}) => {
 
 export const Receipt: React.FC<RP> = ({s, th}) => {
   const it = s.x.items as string[][];
-  return <AbsoluteFill style={{background: `linear-gradient(160deg, ${th.acc}, ${th.con})`}}>
-    <Rich s={s} text={s.head} size={fit(s, lines(s.head), 470, 92)} color={onC(th.acc)} acc={onC(th.acc)} style={{position: 'absolute', left: M, top: 90}} />
-    <Txt size={24} c={onC(th.acc)} s={{position: 'absolute', left: M, top: 470, width: 400, opacity: 0.85}}>{s.sub}</Txt>
-    <div style={{position: 'absolute', left: 560, top: 70, width: 440, padding: '44px 36px 60px', background: s.pal[0] === '#F2EFE8' ? '#FAF8F2' : mix(s.pal[0], '#FFFFFF', 0.4), transform: 'rotate(4deg)', boxShadow: '0 40px 80px rgba(0,0,0,0.35)', fontFamily: F.mono, color: '#1B1B1B', clipPath: 'polygon(0 0,100% 0,100% 96%,95% 100%,90% 96%,85% 100%,80% 96%,75% 100%,70% 96%,65% 100%,60% 96%,55% 100%,50% 96%,45% 100%,40% 96%,35% 100%,30% 96%,25% 100%,20% 96%,15% 100%,10% 96%,5% 100%,0 96%)'}}>
+  return <AbsoluteFill style={{background: `linear-gradient(160deg, ${th.main}, ${mix(th.main, '#000000', 0.45)})`}}>
+    <Rich s={s} text={s.head} size={fit(s, lines(s.head), 470, 92)} color={onC(th.main)} acc={onC(th.main)} style={{position: 'absolute', left: M, top: 90}} />
+    <Txt size={24} c={onC(th.main)} s={{position: 'absolute', left: M, top: 470, width: 400, opacity: 0.85}}>{s.sub}</Txt>
+    <div style={{position: 'absolute', left: 560, top: 70, width: 440, padding: '44px 36px 60px', background: '#FAF8F2', transform: 'rotate(4deg)', boxShadow: '0 40px 80px rgba(0,0,0,0.35)', fontFamily: F.mono, color: '#1B1B1B', clipPath: 'polygon(0 0,100% 0,100% 96%,95% 100%,90% 96%,85% 100%,80% 96%,75% 100%,70% 96%,65% 100%,60% 96%,55% 100%,50% 96%,45% 100%,40% 96%,35% 100%,30% 96%,25% 100%,20% 96%,15% 100%,10% 96%,5% 100%,0 96%)'}}>
       <div style={{textAlign: 'center', fontWeight: 700, fontSize: 30, letterSpacing: 2}}>FANSACHAT</div>
       <div style={{textAlign: 'center', fontSize: 17, marginTop: 6, opacity: 0.7}}>{s.aud.toUpperCase()} · {s.id}</div>
       <div style={{borderTop: '2px dashed #333', margin: '22px 0'}} />
       {it.map(([a, b], i) => <div key={i} style={{display: 'flex', justifyContent: 'space-between', fontSize: 20, margin: '14px 0'}}><span style={{maxWidth: 250}}>{a}</span><span>{b}</span></div>)}
       <div style={{borderTop: '2px dashed #333', margin: '22px 0'}} />
       <div style={{display: 'flex', justifyContent: 'space-between', fontWeight: 700, fontSize: 24}}><span>{s.x.total[0]}</span><span>{s.x.total[1]}</span></div>
-      <div style={{display: 'flex', justifyContent: 'space-between', fontWeight: 700, fontSize: 24, marginTop: 12, color: th.main === '#F2EFE8' ? th.acc : mix(th.acc, '#000', 0.3)}}><span>{s.x.after[0]}</span><span>{s.x.after[1]}</span></div>
+      <div style={{display: 'flex', justifyContent: 'space-between', fontWeight: 700, fontSize: 24, marginTop: 12, color: mix(th.main, '#000000', 0.2)}}><span>{s.x.after[0]}</span><span>{s.x.after[1]}</span></div>
       <div style={{marginTop: 30, height: 60, background: 'repeating-linear-gradient(90deg,#111 0 3px,transparent 3px 6px,#111 6px 7px,transparent 7px 11px)'}} />
       <div style={{textAlign: 'center', fontSize: 16, marginTop: 10}}>THANK YOU · NO CODE REQUIRED</div>
     </div>
     <Prompt s={s} th={{...th, card: '#FFFFFF'}} size={22} style={{position: 'absolute', left: M, top: 1000}} />
-    <Brand c={onC(th.con)} /><Grain o={0.14} />
+    <Brand c={onC(th.main)} /><Grain o={0.14} />
   </AbsoluteFill>;
 };
 
@@ -198,7 +198,7 @@ export const Ticket: React.FC<RP> = ({s, th}) => {
 export const Magazine: React.FC<RP> = ({s, th}) => {
   const p = PAIRS[s.font];
   return <AbsoluteFill style={{background: `linear-gradient(180deg, ${mix(th.main, '#fff', 0.15)}, ${th.main})`, overflow: 'hidden'}}>
-    <div style={{position: 'absolute', left: 0, right: 0, top: 30, textAlign: 'center', fontFamily: p.d, fontWeight: p.w, fontSize: fit(s, [s.x.mast], W - 60, 230), letterSpacing: '-0.04em', color: '#FFFFFF', lineHeight: 1}}>{s.x.mast}</div>
+    <div style={{position: 'absolute', left: 0, right: 0, top: 30, textAlign: 'center', fontFamily: p.d, fontWeight: p.w, fontSize: Math.floor(fit(s, [s.x.mast], W - 80, 230) * 0.8), letterSpacing: '-0.04em', color: '#FFFFFF', lineHeight: 1}}>{s.x.mast}</div>
     <Meta c="#fff" s={{left: M, top: 280}}>{s.aud} special</Meta><Meta c="#fff" s={{right: M, top: 280}}>{vol(s)} · 2026</Meta>
     <Hero3D hero={s.hero} size={700} x={600} y={760} rot={-10} shadow="rgba(0,0,0,0.45)" />
     <div style={{position: 'absolute', left: M, top: 360, width: 360}}>{(s.x.lines as string[]).map((l, i) => <div key={i} style={{marginBottom: 26}}><div style={{width: 40, height: 4, background: '#fff', marginBottom: 10}} /><Txt w={700} size={30} c="#fff" s={{lineHeight: 1.15}}>{l}</Txt></div>)}</div>
@@ -212,9 +212,9 @@ export const Magazine: React.FC<RP> = ({s, th}) => {
 export const Newspaper: React.FC<RP> = ({s, th}) => {
   const tab = s.style.includes('Tabloid');
   return <AbsoluteFill style={{background: '#EFEAE0'}}>
-    <div style={{position: 'absolute', left: M, right: M, top: 50, textAlign: 'center', fontFamily: tab ? F.arch : F.play, fontWeight: 900, fontSize: tab ? 96 : 88, color: tab ? th.main : '#111', letterSpacing: tab ? '-0.02em' : '0.01em', borderBottom: '6px double #111', paddingBottom: 12}}>{s.x.paper}</div>
+    <div style={{position: 'absolute', left: M, right: M, top: 50, textAlign: 'center', fontFamily: tab ? F.arch : F.play, fontWeight: 900, fontSize: tab ? 80 : 84, whiteSpace: 'nowrap', color: tab ? th.main : '#111', letterSpacing: tab ? '-0.02em' : '0.01em', borderBottom: '6px double #111', paddingBottom: 12}}>{s.x.paper}</div>
     <div style={{position: 'absolute', left: M, right: M, top: 190, display: 'flex', justifyContent: 'space-between', fontFamily: F.inter, fontSize: 18, color: '#333', borderBottom: '2px solid #111', paddingBottom: 8}}><span>VOL. {s.id.slice(4)}</span><span>EXTRA EDITION · 2026</span><span>FANSACHAT PRESS</span></div>
-    <Rich s={s} text={s.head} size={fit(s, lines(s.head), W - 2 * M, 150, tab ? PAIRS.AB : PAIRS.P)} color="#111" acc={th.main} pair={tab ? PAIRS.AB : PAIRS.P} align="center" upper style={{position: 'absolute', left: M, right: M, top: 240}} />
+    <Rich s={s} text={s.head} size={Math.floor(fit(s, lines(s.head), W - 2 * M, 150, tab ? PAIRS.AB : PAIRS.P) * 0.82)} color="#111" acc={th.main} pair={tab ? PAIRS.AB : PAIRS.P} align="center" upper style={{position: 'absolute', left: M, right: M, top: 240}} />
     <Txt f={F.serif} w={400} size={36} c="#222" s={{position: 'absolute', left: M + 40, right: M + 40, top: 560, textAlign: 'center', fontStyle: 'italic'}}>{s.sub}</Txt>
     <div style={{position: 'absolute', left: M, top: 690, width: 470, height: 470, background: '#E2DCCF', filter: 'grayscale(1) contrast(1.1)', overflow: 'hidden'}}><Hero3D hero={s.hero} size={420} x={235} y={235} shadow="rgba(0,0,0,0.3)" /></div>
     <div style={{position: 'absolute', left: 580, right: M, top: 690, columnCount: 1}}>{(s.x.cols as string[]).map((c, i) => <Txt key={i} f={F.play} w={700} size={26} c="#111" s={{marginBottom: 22, lineHeight: 1.3, borderBottom: '1px solid #999', paddingBottom: 16}}>{c}</Txt>)}<Txt size={18} c="#333">Continued on fansachat.com →</Txt></div>
@@ -227,7 +227,7 @@ export const Swiss: React.FC<RP> = ({s, th}) => {
   const nums = s.x.nums as string[]; const labels = s.x.labels as string[];
   return <AbsoluteFill style={{background: bg}}>
     {[1, 2, 3].map((i) => <div key={i} style={{position: 'absolute', left: (W / 4) * i, top: 0, bottom: 0, width: 1, background: s.dark ? '#ffffff22' : '#00000018'}} />)}
-    <Rich s={s} text={s.head} size={fit(s, lines(s.head), W / 2 + 120, 210)} color={ink} acc={th.main} style={{position: 'absolute', left: M, top: 70}} />
+    <Rich s={s} text={s.head} size={fit(s, lines(s.head), W * 0.75 - 2 * M, 210)} color={ink} acc={th.main} style={{position: 'absolute', left: M, top: 70}} />
     <div style={{position: 'absolute', right: 0, top: 0, width: W / 4, height: H * 0.55, background: th.main}} />
     <div style={{position: 'absolute', left: M, top: 830, right: M, display: 'grid', gridTemplateColumns: `repeat(${nums.length}, 1fr)`, gap: 0}}>
       {nums.map((n, i) => <div key={i} style={{borderTop: `6px solid ${i === 0 ? th.main : ink}`, paddingTop: 16, paddingRight: 16}}><Txt f={F.space} w={700} size={56} c={i === 0 ? th.main : ink}>{n}</Txt><Txt size={22} c={ink} s={{marginTop: 6}}>{labels[i]}</Txt><div style={{marginTop: 18}}>{s.apps[i] && <Logo app={[...new Set(s.apps)][Math.min(i, new Set(s.apps).size - 1)]} size={58} />}</div></div>)}
