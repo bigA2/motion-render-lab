@@ -27,9 +27,15 @@ CSS = f"""
 @font-face{{font-family:Sora;font-weight:700;src:url({F('Sora-700.woff2')})}}
 @font-face{{font-family:Playfair;src:url({F('PlayfairDisplay-700.woff2')})}}
 @font-face{{font-family:Grotesk;src:url({F('SpaceGrotesk-500.woff2')})}}
+@font-face{{font-family:BigS;src:url({F('BigShouldersDisplay-800.woff2')})}}
+@font-face{{font-family:DMSerif;src:url({F('DMSerifDisplay-400.woff2')})}}
+@font-face{{font-family:Bebas;src:url({F('BebasNeue-400.woff2')})}}
+@font-face{{font-family:Fraunces;src:url({F('Fraunces-600.woff2')})}}
+@font-face{{font-family:League;src:url({F('LeagueGothic-400.woff2')})}}
+@font-face{{font-family:Manrope;src:url({F('Manrope-500.woff2')})}}
 *{{box-sizing:border-box;margin:0;padding:0}}
 body{{font-variant-numeric:lining-nums;width:{W}px;height:{H}px;overflow:hidden;position:relative;font-family:Inter}}
-.abs{{position:absolute}}
+.abs{{position:absolute}} svg.abs{{pointer-events:none}}
 .anton{{font-family:Anton;line-height:.86;letter-spacing:-.01em;text-transform:uppercase}}
 .serif{{font-family:ISerif;font-style:italic;font-weight:400}}
 .inter{{font-family:Inter;font-weight:500}} .b{{font-weight:700}}
@@ -200,6 +206,89 @@ IMGS.append(("05_700_apps_one_sentence", f"""
 {brand(P['paper'], x=W - M - 190, y=1225)}
 </body>""", 1.618, 1))
 
+# ══ v2 (founder review 2026-10-16): 01 and 03 kept; 02, 04, 05 redesigned ══════════════════
+# 2 ── Hook: pain QUESTION (relatability-1 "If you're X struggling with Y") + indirect answer "You might need this."
+#      Background: Swiss diagonal colour bands (ref design_refs/swiss-design, MIT-style stripe poster); workflow diagram of 5 apps.
+def node(s, x, y, label, size=112, hi=False):
+    shadow = (f"box-shadow:0 0 0 8px {P['accent']},0 0 60px 18px rgba(216,130,100,.55),0 18px 30px rgba(0,0,0,.35);" if hi
+              else "box-shadow:0 0 0 5px #fff,0 16px 28px rgba(0,0,0,.35);")
+    img = LOGO if s == "fansa" else I(s)
+    return (f'<div class="abs" style="left:{x - size // 2}px;top:{y - size // 2}px;width:{size}px;height:{size}px;background:#fff;border-radius:26%;'
+            f'display:flex;align-items:center;justify-content:center;{shadow}"><img src="{img}" style="width:70%;height:70%;object-fit:contain"></div>'
+            f'<div class="abs" data-rank="5" style="font-family:Grotesk;left:{x - 120}px;top:{y + size // 2 + 14}px;width:240px;text-align:center;font-size:20px;color:{P["paper"]}"><span style="background:{P["ink"]};padding:4px 10px;border-radius:8px">{label}</span></div>')
+WF = [("fansa", 210, 800, "FansaChat builds it", 150, True), ("stripe", 520, 690, "Invoice 7 days overdue", 112, False),
+      ("gmail", 840, 690, "Email the client", 112, False), ("telegram-bot", 840, 950, "Tell me on Telegram", 112, False),
+      ("google-sheets", 520, 950, "Log it in Sheets", 112, False)]
+edges = [(0, 1), (1, 2), (2, 3), (1, 4)]
+wf_lines = "".join(f'<line x1="{WF[a][1]}" y1="{WF[a][2]}" x2="{WF[b][1]}" y2="{WF[b][2]}" stroke="{P["paper"]}" stroke-width="6" stroke-dasharray="2 16" stroke-linecap="round"/>' for a, b in edges)
+IMGS[1] = ("02_question_invoices_workflow", f"""
+<body style="font-family:Grotesk;background:{P['ink']}">
+<svg class="abs" style="left:0;top:0" width="{W}" height="{H}"><defs><clipPath id="band"><rect x="0" y="530" width="{W}" height="530"/></clipPath></defs>
+  <g clip-path="url(#band)"><polygon points="-260,1350 -90,1350 1230,30 1060,30" fill="{P['main']}" opacity=".55"/>
+  <polygon points="-90,1350 10,1350 1330,30 1230,30" fill="{P['accent']}" opacity=".55"/>
+  <polygon points="10,1350 60,1350 1380,30 1330,30" fill="{P['neutral']}" opacity=".5"/></g>
+  {wf_lines}</svg>
+<div class="halftone" style="left:0;top:0;width:{W}px;height:430px;color:rgba(240,240,247,.07)"></div>
+{meta_row("Invoices · freelancers", "fansachat.com", P['paper'])}
+<div class="abs" style="left:{M}px;top:140px;width:{W - 2 * M}px">
+  <div data-rank="1" style="font-family:BigS;font-size:137px;line-height:.9;color:{P['paper']};text-transform:uppercase">Too busy chasing invoices</div>
+  <div data-rank="2" style="font-family:DMSerif;font-size:85px;line-height:1.02;color:{P['accent']};margin-top:14px">and messaging clients?</div></div>
+{''.join(node(*n) for n in WF)}
+<div class="abs" style="left:{M}px;top:1110px;width:720px">
+  <div data-rank="2" style="font-family:Grotesk;font-size:52px;color:{P['paper']}">You might need this.</div>
+  <div data-rank="4" style="font-family:Grotesk;font-size:32px;color:{P['neutral']};margin-top:8px">One sentence. The whole chase, automated.</div></div>
+{brand(P['paper'], x=W - M - 190, y=1225)}
+</body>""", 1.618, "relatability-1 pain question")
+
+# 4 ── Hook: contrast "Your team grows. Your bill shouldn't." (authority-4 hidden cost). Bauhaus grid background
+#      (ref design_refs/bauhaus, Wiegand square/circle poster). No splash, no glass: solid Bauhaus blocks.
+tiers = [("Starter", "$15", "2,000 runs"), ("Pro", "$45", "10,000 runs"), ("Team", "$149", "30,000 runs"), ("Scale", "$299", "100,000 runs")]
+cols = [P['paper'], P['main'], P['accent'], P['ink']]; txt = [P['ink'], P['paper'], P['ink'], P['paper']]
+blocks = "".join(f"""<div class="abs" style="left:{M + (i % 2) * 476}px;top:{715 + (i // 2) * 236}px;width:460px;height:220px;background:{cols[i]};padding:22px 30px">
+  <div data-rank="4" style="font-family:Grotesk;font-size:32px;color:{txt[i]}">{n}</div>
+  <div data-rank="2" style="font-family:Bebas;font-size:137px;line-height:.9;color:{txt[i]}">{p}<span style="font-family:Grotesk;font-size:20px"> /mo</span></div>
+  <div data-rank="5" style="font-family:Grotesk;font-size:20px;color:{txt[i]}">{r} a month</div></div>""" for i, (n, p, r) in enumerate(tiers))
+bauhaus = "".join(f'<div class="abs" style="left:{x}px;top:{y}px;width:{s}px;height:{s}px;background:{c};{"border-radius:50%;" if circ else ""}"></div>'
+                  for x, y, s, c, circ in [(860, 330, 150, P['main'], True), (940, 440, 90, P['accent'], False)])
+grid = "".join(f'<line x1="{x}" y1="0" x2="{x}" y2="{H}"/>' for x in range(M, W, 78)) + "".join(f'<line x1="0" y1="{y}" x2="{W}" y2="{y}"/>' for y in range(M, H, 78))
+IMGS[3] = ("04_team_grows_bill_doesnt", f"""
+<body style="font-family:Grotesk;background:{P['cream']}">
+<div class="grain"></div>
+<svg class="abs" style="left:0;top:0" width="{W}" height="{H}"><g stroke="{P['ink']}" stroke-opacity=".10" stroke-width="1.5">{grid}</g></svg>
+{bauhaus}
+{meta_row("Pricing · launching November", "fansachat.com", P['ink'])}
+<div class="abs" style="left:{M}px;top:140px;width:{W - 2 * M}px">
+  <div data-rank="1" style="font-family:Bebas;font-size:222px;line-height:.86;color:{P['ink']}">Your team grows.</div>
+  <div data-rank="2" style="font-family:Fraunces;font-size:85px;line-height:1;color:{P['main']};margin-top:16px">Your bill shouldn't.</div></div>
+{blocks}
+<div class="abs" data-rank="4" style="left:{M}px;top:1205px;width:600px;font-family:Grotesk;font-size:32px;color:{P['ink']}">Unlimited users on every plan.</div>
+{brand(P['ink'], x=W - M - 190, y=1225)}
+</body>""", 1.618, "authority-4 hidden-cost contrast")
+
+# 5 ── Hook: "If you use any of these, pay attention." (ad hook 1 PAY ATTENTION). Sunburst background
+#      (ref design_refs/maximalism ray poster) radiating from our highlighted logo; icons on an orbit; text zones kept clear.
+rays = "".join(f'<polygon points="540,760 {540 + math.cos(a) * 1600:.0f},{760 + math.sin(a) * 1600:.0f} {540 + math.cos(a + .13) * 1600:.0f},{760 + math.sin(a + .13) * 1600:.0f}" fill="{P["paper"]}" opacity=".10"/>'
+               for a in [k * .26 for k in range(25)])
+ring5 = ["gmail", "slack", "shopify", "notion", "hubspot", "stripe", "google-sheets", "calendly", "airtable", "trello", "asana", "discord", "mailchimp", "typeform", "clickup", "github"]
+icons5 = "".join(sticker(s, int(540 + math.cos(k / len(ring5) * 6.283) * 360 - 45), int(760 + math.sin(k / len(ring5) * 6.283) * 220 - 45), 90, (k % 5 - 2) * 5)
+                 for k, s in enumerate(ring5))
+IMGS[4] = ("05_if_you_use_these", f"""
+<body style="font-family:Grotesk;background:radial-gradient(70% 55% at 50% 56%,#8A8DEB 0%,{P['main']} 60%,#34378F 100%)">
+<svg class="abs" style="left:0;top:0" width="{W}" height="{H}">{rays}</svg>
+<div class="grain" style="opacity:.25"></div>
+{meta_row("700+ integrations", "fansachat.com", P['paper'])}
+<div class="abs" style="left:{M}px;top:140px;width:{W - 2 * M}px">
+  <div data-rank="1" style="font-family:League;font-size:137px;line-height:.9;color:{P['paper']};text-transform:uppercase">If you use any of these,</div>
+  <div data-rank="2" style="font-family:DMSerif;font-size:85px;line-height:1;color:{P['ink']};margin-top:10px">pay attention.</div></div>
+<div class="abs" style="left:415px;top:635px;width:250px;height:250px;border-radius:50%;background:#fff;box-shadow:0 0 0 10px {P['accent']},0 0 90px 30px rgba(216,130,100,.6)"></div>
+<img class="abs" src="{LOGO}" style="left:440px;top:660px;width:200px;height:200px">
+{icons5}
+<div class="abs" style="left:{M}px;top:1070px;width:{W - 2 * M}px">
+  <div data-rank="2" style="font-family:Grotesk;font-size:52px;color:{P['paper']};line-height:1.1">700+ apps. One sentence.</div>
+  <div data-rank="4" style="font-family:Grotesk;font-size:32px;color:{P['paper']};margin-top:10px">Join the waitlist: fansachat.com</div></div>
+{brand(P['paper'], x=W - M - 190, y=1240)}
+</body>""", 1.618, "ad-hook-1 PAY ATTENTION")
+
 # ── QA (framework section 9) ──────────────────────────────────────────────
 QA = """([m, allowed, W, H]) => {
  const out = [], els = [...document.querySelectorAll('[data-rank]')];
@@ -218,6 +307,9 @@ QA = """([m, allowed, W, H]) => {
  const fams = new Set([...document.querySelectorAll('body *')].filter(e => e.childNodes.length && [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()))
    .map(e => getComputedStyle(e).fontFamily.split(',')[0].replace(/"/g,'')));
  if (fams.size < 2 || fams.size > 4) out.push(`font families ${fams.size} (${[...fams].join(', ')}), want 2-3 (+mono)`);
+ for (const b of B.filter(b => b.rank <= 2 && !b.behind)) { const r = b.r; let hit = 0, n = 0;
+   for (let fx = .1; fx < 1; fx += .2) for (let fy = .3; fy < .8; fy += .2) { n++; const el = document.elementFromPoint(r.left + r.width * fx, r.top + r.height * fy); if (el && !b.e.contains(el) && !el.contains(b.e)) hit++; }
+   if (hit / n > .15) out.push(`main text covered ${Math.round(hit / n * 100)}%: "${b.e.textContent.trim().slice(0,20)}"`); }
  return {issues: out, fonts: [...fams]}; }"""
 
 def allowed_sizes(ratio):
@@ -242,7 +334,7 @@ with sync_playwright() as pw:
         # thumbnail test: render at feed size for eyeballing
         from PIL import Image; Image.open(png).resize((270, 338)).save(OUT / f"{name}_thumb.png")
         fails += bool(res["issues"])
-        line = f"{name}: hook H{hook} · fonts {res['fonts']} · {'PASS' if not res['issues'] else 'FAIL ' + '; '.join(res['issues'])}"
+        line = f"{name}: hook {hook} · fonts {res['fonts']} · {'PASS' if not res['issues'] else 'FAIL ' + '; '.join(res['issues'])}"
         print(line); report.append(line); pg.close()
     br.close()
 (OUT / "QA.txt").write_text("\n".join(report), encoding="utf-8")
