@@ -289,6 +289,142 @@ IMGS[4] = ("05_if_you_use_these", f"""
 {brand(P['paper'], x=W - M - 190, y=1240)}
 </body>""", 1.618, "ad-hook-1 PAY ATTENTION")
 
+# ══ v3 (founder 2026-10-16): 5 more, particle backgrounds, colour marks on the value words ══════════
+MK = f"background:linear-gradient(transparent 16%,{P['accent']} 16%,{P['accent']} 90%,transparent 90%);color:{P['ink']};padding:0 .1em;-webkit-box-decoration-break:clone;box-decoration-break:clone"
+MK2 = f"background:linear-gradient(transparent 58%,{P['main']} 58%,{P['main']} 92%,transparent 92%);padding:0 .06em"
+MK3 = f"color:{P['accent']};text-decoration:underline;text-decoration-thickness:.09em;text-underline-offset:.12em"
+s4 = IMGS[3][1].replace("Your bill shouldn't.", f"Your <span style=\"{MK}\">bill</span> shouldn't.")
+IMGS[3] = (IMGS[3][0], s4, IMGS[3][2], IMGS[3][3])
+
+def constellation(seed, n=70, color="#F0F0F7", top=0, bottom=H):
+    r = random.Random(seed); pts = [(r.uniform(0, W), r.uniform(top, bottom)) for _ in range(n)]
+    ln = "".join(f'<line x1="{a[0]:.0f}" y1="{a[1]:.0f}" x2="{b[0]:.0f}" y2="{b[1]:.0f}" stroke="{color}" stroke-opacity="{.35 - d / 600:.2f}" stroke-width="1.2"/>'
+                 for i, a in enumerate(pts) for b in pts[i + 1:] if (d := math.dist(a, b)) < 170)
+    dots = "".join(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{r.uniform(1.5, 4.5):.1f}" fill="{color}" opacity="{r.uniform(.4, .9):.2f}"/>' for x, y in pts)
+    return f'<svg class="abs" style="left:0;top:0" width="{W}" height="{H}">{ln}{dots}</svg>'
+
+def bokeh(seed, n=40, colors=(P['accent'], P['main'], P['neutral'])):
+    r = random.Random(seed)
+    c = "".join(f'<circle cx="{r.uniform(0, W):.0f}" cy="{r.uniform(0, H):.0f}" r="{r.uniform(10, 70):.0f}" fill="{r.choice(colors)}" opacity="{r.uniform(.12, .45):.2f}"/>' for _ in range(n))
+    return f'<svg class="abs" style="left:0;top:0;filter:blur(3px)" width="{W}" height="{H}">{c}</svg>'
+
+def confetti(seed, n=90, colors=(P['accent'], P['main'], P['ink'], P['neutral'])):
+    r = random.Random(seed); out = []
+    for _ in range(n):
+        x, y, s, rot, c = r.uniform(0, W), r.uniform(0, H), r.uniform(8, 22), r.uniform(0, 180), r.choice(colors)
+        out.append(r.choice([f'<rect x="{x:.0f}" y="{y:.0f}" width="{s:.0f}" height="{s * .45:.0f}" fill="{c}" transform="rotate({rot:.0f} {x:.0f} {y:.0f})" opacity=".8"/>',
+                             f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{s / 3:.0f}" fill="{c}" opacity=".8"/>',
+                             f'<polygon points="{x:.0f},{y:.0f} {x + s:.0f},{y:.0f} {x + s / 2:.0f},{y - s:.0f}" fill="{c}" opacity=".8" transform="rotate({rot:.0f} {x:.0f} {y:.0f})"/>']))
+    return f'<svg class="abs" style="left:0;top:0" width="{W}" height="{H}">{"".join(out)}</svg>'
+
+def dotwave(color, rows=16, top=600):
+    return f'<svg class="abs" style="left:0;top:0" width="{W}" height="{H}">' + "".join(
+        f'<circle cx="{x}" cy="{top + j * 36 + math.sin(x / 90 + j * .5) * 26:.0f}" r="{2 + j * .18:.1f}" fill="{color}" opacity="{.15 + j * .03:.2f}"/>'
+        for j in range(rows) for x in range(0, W + 30, 30)) + "</svg>"
+
+def starfield(seed, n=160):
+    r = random.Random(seed)
+    return f'<svg class="abs" style="left:0;top:0" width="{W}" height="{H}">' + "".join(
+        f'<circle cx="{r.uniform(0, W):.0f}" cy="{r.uniform(0, H):.0f}" r="{r.choice([.8, 1.2, 1.8, 2.6]):.1f}" fill="#fff" opacity="{r.uniform(.3, 1):.2f}"/>' for _ in range(n)) + "</svg>"
+
+def bubble(text, x, y, w, bg, fg, size=32):
+    return (f'<div class="abs" style="left:{x}px;top:{y}px;width:{w}px;background:{bg};border-radius:30px 30px 30px 8px;padding:22px 28px;box-shadow:0 18px 40px rgba(14,14,26,.3)">'
+            f'<div data-rank="4" style="font-family:Mono;font-size:{size}px;line-height:1.35;color:{fg}">{text}</div></div>')
+
+def chain(apps, x, y, size=96, gap=70, color=P['paper']):
+    out = []
+    for k, s in enumerate(apps):
+        cx = x + k * (size + gap)
+        out.append(sticker(s, cx, y, size, 0))
+        if k < len(apps) - 1:
+            out.append(f'<svg class="abs" style="left:{cx + size + 8}px;top:{y + size // 2 - 12}px" width="{gap - 16}" height="24"><line x1="0" y1="12" x2="{gap - 30}" y2="12" stroke="{color}" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/><polygon points="{gap - 30},4 {gap - 16},12 {gap - 30},20" fill="{color}"/></svg>')
+    return "".join(out)
+
+# 6 ── WARN (re-hook 10): "Don't build another flowchart until you read this." Particle constellation (network) background.
+IMGS.append(("06_warn_flowchart", f"""
+<body style="font-family:Grotesk;background:radial-gradient(90% 70% at 30% 20%,#23255E 0%,{P['ink']} 70%)">
+{constellation(61)}
+{meta_row("Before you automate", "fansachat.com", P['paper'])}
+<div class="abs" style="left:{M}px;top:140px;width:{W - 2 * M}px">
+  <div data-rank="1" style="font-family:Anton;font-size:137px;line-height:1.02;color:{P['paper']};text-transform:uppercase">Don't build another <span style="{MK}">flowchart</span></div>
+  <div data-rank="2" style="font-family:Fraunces;font-size:85px;line-height:1.05;color:{P['neutral']};margin-top:18px">until you <span style="{MK3}">read this.</span></div></div>
+{bubble('"When a new lead fills my Typeform, add them to HubSpot and post in Slack."', M, 760, 760, '#fff', P['ink'])}
+{chain(['typeform', 'hubspot', 'slack'], M, 990)}
+<div class="abs" data-rank="4" style="left:{M}px;top:1130px;width:{W - 2 * M}px;font-size:32px;color:{P['paper']}">Type it. <span style="{MK2}">FansaChat</span> builds the workflow.</div>
+{brand(P['paper'], y=1225)}
+</body>""", 1.618, "re-hook-10 WARN"))
+
+# 7 ── REASON (ad hook 3): "The reason you work at 11 PM is copy-paste." Bokeh particles background.
+IMGS.append(("07_reason_11pm_copy_paste", f"""
+<body style="font-family:Grotesk;background:linear-gradient(180deg,#14153A 0%,{P['ink']} 100%)">
+{bokeh(71)}
+<div class="grain" style="opacity:.3;mix-blend-mode:screen"></div>
+{meta_row("Small teams · ops", "fansachat.com", P['paper'])}
+<div class="abs" style="left:{M}px;top:140px;width:{W - 2 * M}px">
+  <div data-rank="2" style="font-family:DMSerif;font-size:85px;line-height:1;color:{P['neutral']}">The reason you work at</div>
+  <div data-rank="1" style="font-family:BigS;font-size:359px;line-height:1;margin-top:40px;color:{P['paper']}"><span style="{MK}">11 PM</span></div>
+  <div data-rank="2" style="font-family:DMSerif;font-size:85px;line-height:1.05;color:{P['paper']};margin-top:10px">is <span style="{MK3}">copy-paste.</span></div></div>
+{chain(['gmail', 'google-sheets', 'slack', 'notion'], M, 860, 104, 64)}
+<div class="abs" style="left:{M}px;top:1020px;width:{W - 2 * M}px">
+  <div data-rank="3" style="font-size:52px;color:{P['paper']};line-height:1.1">Say it once. <span style="{MK2}">FansaChat</span> moves it for you.</div>
+  <div data-rank="4" style="font-size:32px;color:{P['neutral']};margin-top:12px">700+ apps. Plain English.</div></div>
+{brand(P['paper'], y=1225)}
+</body>""", 1.618, "ad-hook-3 REASON"))
+
+# 8 ── THIS OR THAT (relatability 8): "Do you want another app, or your evenings back?" Confetti particles.
+IMGS.append(("08_another_app_or_evenings", f"""
+<body style="font-family:Grotesk;background:{P['cream']}">
+{confetti(81)}
+<div class="grain"></div>
+{meta_row("Freelancers · agencies", "fansachat.com", P['ink'])}
+<div class="abs" style="left:{M}px;top:140px;width:{W - 2 * M}px">
+  <div data-rank="2" style="font-family:Fraunces;font-size:52px;line-height:1.1;color:{P['ink']}">Do you want <span style="text-decoration:line-through;text-decoration-color:{P['accent']};text-decoration-thickness:.08em">another app,</span></div>
+  <div data-rank="1" style="font-family:Bebas;font-size:222px;line-height:.95;color:{P['ink']};margin-top:40px">or your <span style="{MK2};color:{P['ink']}">evenings</span> <span style="{MK}">back?</span></div></div>
+<div class="abs" style="left:{M}px;top:880px;width:430px;height:240px;background:#E2E0EA;border-radius:28px;padding:26px;transform:rotate(-3deg)">
+  <div data-rank="4" style="font-size:32px;color:#5A5A70">✕ Another dashboard</div>
+  <div style="display:flex;gap:10px;margin-top:22px;opacity:.55">{''.join(f'<img src="{I(s)}" style="width:62px;height:62px;filter:grayscale(1)">' for s in ['trello', 'asana', 'clickup', 'monday'])}</div></div>
+<div class="abs" style="left:540px;top:860px;width:468px;height:270px;background:{P['ink']};border-radius:28px;padding:26px;box-shadow:0 0 0 6px {P['accent']},0 24px 50px rgba(14,14,26,.35)">
+  <div data-rank="4" style="font-size:32px;color:{P['paper']}">✓ One sentence</div>
+  <div data-rank="4" style="font-family:Mono;font-size:32px;color:{P['neutral']};margin-top:14px;line-height:1.3">"Every Friday, send me this week's invoices."</div></div>
+<div class="abs" data-rank="4" style="left:{M}px;top:1165px;width:{W - 2 * M}px;font-size:32px;color:{P['ink']}">FansaChat: workflows by chat. Waitlist open.</div>
+{brand(P['ink'], y=1225)}
+</body>""", 1.618, "relatability-8 THIS-OR-THAT"))
+
+# 9 ── CORRECT YOURSELF / MYTH (re-hook 15): "Automation needs code? Actually, no." Dot-wave particle field.
+IMGS.append(("09_myth_needs_code", f"""
+<body style="font-family:Grotesk;background:{P['paper']}">
+{dotwave(P['main'], 18, 640)}
+<div class="grain"></div>
+{meta_row("Myth vs fact", "fansachat.com", P['ink'])}
+<div class="abs" style="left:{M}px;top:140px;width:{W - 2 * M}px">
+  <div data-rank="1" style="font-family:League;font-size:222px;line-height:1;color:{P['ink']};text-transform:uppercase">Automation needs <span style="{MK}">code?</span></div>
+  <div data-rank="2" style="font-family:DMSerif;font-size:137px;line-height:1;color:{P['main']};margin-top:8px">Actually, <span style="{MK2};color:{P['ink']}">no.</span></div></div>
+{bubble('"When someone books on Calendly, add them to my Google Sheet."', M, 800, 820, P['ink'], P['paper'])}
+{chain(['calendly', 'google-sheets'], M, 990, 100, 80, P['ink'])}
+<div class="abs" data-rank="4" style="left:{M}px;top:1130px;width:{W - 2 * M}px;font-size:32px;color:{P['ink']}">If you can write a sentence, you can build a <span style="{MK3}">workflow</span>.</div>
+{brand(P['ink'], y=1225)}
+</body>""", 1.618, "re-hook-15 CORRECT-YOURSELF"))
+
+# 10 ── IF YOU ARE X (relatability 1): "If you run an online shop, this is for you." Starfield particles + Swiss grid.
+IMGS.append(("10_online_shop_for_you", f"""
+<body style="font-family:Grotesk;background:radial-gradient(80% 60% at 70% 30%,#2B2E7A 0%,{P['ink']} 75%)">
+{starfield(91)}
+<svg class="abs" style="left:0;top:0" width="{W}" height="{H}"><g stroke="#fff" stroke-opacity=".06">{''.join(f'<line x1="{x}" y1="0" x2="{x}" y2="{H}"/>' for x in range(M, W, 78))}</g></svg>
+{meta_row("Shop owners", "fansachat.com", P['paper'])}
+<div class="abs" style="left:{M}px;top:140px;width:{W - 2 * M}px">
+  <div data-rank="1" style="font-family:Anton;font-size:137px;line-height:1.02;color:{P['paper']};text-transform:uppercase">If you run an <span style="{MK}">online shop,</span></div>
+  <div data-rank="2" style="font-family:Fraunces;font-size:85px;line-height:1.05;color:{P['neutral']};margin-top:16px">this is <span style="{MK2};color:{P['paper']}">for you.</span></div></div>
+<div class="abs" style="left:{M}px;top:700px;width:{W - 2 * M}px">
+  {''.join(f'<div style="display:flex;align-items:center;gap:22px;margin-bottom:26px"><span data-rank="3" style="font-family:Bebas;font-size:85px;line-height:1;color:{P["accent"]};width:70px">{n}</span>'
+          f'<span data-rank="4" style="font-size:32px;color:{P["paper"]};flex:1">{t}</span>{"".join(f"<img src={chr(34)}{I(a)}{chr(34)} style={chr(34)}width:56px;height:56px;background:#fff;border-radius:14px;padding:8px{chr(34)}>" for a in apps)}</div>'
+          for n, t, apps in [("01", "New order → thank-you email + a row in Sheets", ["shopify", "gmail", "google-sheets"]),
+                             ("02", "Low stock → a message on Telegram", ["shopify", "telegram-bot"]),
+                             ("03", "Refund request → a ticket for support", ["shopify", "zendesk"])])}
+</div>
+<div class="abs" data-rank="4" style="left:{M}px;top:1140px;width:{W - 2 * M}px;font-size:32px;color:{P['paper']}">Each one is a single sentence in <span style="{MK3}">FansaChat</span>.</div>
+{brand(P['paper'], y=1225)}
+</body>""", 1.618, "relatability-1 IF-YOU-ARE-X"))
+
 # ── QA (framework section 9) ──────────────────────────────────────────────
 QA = """([m, allowed, W, H]) => {
  const out = [], els = [...document.querySelectorAll('[data-rank]')];
