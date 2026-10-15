@@ -1,0 +1,17 @@
+# Render the 5 glass promo images (glass5/build.py) with Playwright + QA. Free on public runners.
+name: glass5
+on: { workflow_dispatch: {} }
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install playwright pillow && playwright install --with-deps chromium
+      - run: python glass5/build.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: glass5, path: 'glass5/out/*.png', retention-days: 7 }
+      - if: always()
+        run: cat glass5/out/QA.txt
