@@ -19,7 +19,7 @@ QA = re.search(r'QA = """(.*?)"""', (HERE / "build.py").read_text(encoding="utf-
 
 # 1. trace the logo silhouette (alpha) into an SVG path, coordinates normalised to 0..1
 N = 512
-a = np.array(Image.open(HERE / "logo-fansa.png").convert("RGBA").resize((N, N), Image.LANCZOS))[:, :, 3] > 110
+a = np.array(Image.open(HERE / "logo-fansa.png").convert("RGBA").resize((N, N), Image.LANCZOS))[:, :, 3] <= 110   # potracer traces the falsy pixels, so pass the inverse
 d = []
 for curve in potrace.Bitmap(a).trace(turdsize=8, alphamax=1.0, opttolerance=0.2):
     p = lambda pt: f"{pt.x / N:.5f} {pt.y / N:.5f}"
