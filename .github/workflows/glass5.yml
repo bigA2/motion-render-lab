@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
-      - run: pip install playwright pillow && playwright install --with-deps chromium
+      - run: pip install playwright pillow potracer numpy && playwright install --with-deps chromium
       - run: python glass5/${{ inputs.script }}
       - if: always()
         uses: actions/upload-artifact@v4
