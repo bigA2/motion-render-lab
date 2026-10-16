@@ -1,0 +1,1253 @@
+[
+ {
+  "id": "s01",
+  "day": 2,
+  "tier": "Scale",
+  "who": "E-COMMERCE BRANDS",
+  "file": "ecommerce-orders",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run an e-commerce brand? If growth means more manual orders, **this is for you.**",
+    "b": "Here's how scaling brands keep operations light →"
+   },
+   {
+    "t": "obst",
+    "h": "Every new channel adds sales. **And a new place to check orders.**",
+    "l": [
+     "Orders checked across store and 3PL",
+     "\"Where's my order?\" flooding support",
+     "Returns approved by email"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "The busier the brand gets, **the more people it takes to stand still.**",
+    "l": [
+     "Support cost rising with revenue",
+     "Peak season run on heroics",
+     "Repeat buyers never asked back"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **let operations scale with sales.**",
+    "lab": "YOUR OPERATIONS LEAD WRITES IT ONCE",
+    "b": "When a customer asks on WhatsApp where their order is, look it up in Shopify, get the Shippo tracking and reply."
+   },
+   {
+    "t": "team",
+    "h": "Fulfilment, support, marketing, finance. **One order table.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "SUPPORT",
+      "apps": [
+       "respond-io",
+       "shopify",
+       "shippo"
+      ],
+      "out": "Order questions answered"
+     },
+     {
+      "role": "FULFILMENT",
+      "apps": [
+       "shopify",
+       "fansa",
+       "shippo"
+      ],
+      "out": "Labels created on order"
+     },
+     {
+      "role": "MARKETING",
+      "apps": [
+       "shopify",
+       "fansa",
+       "klaviyo"
+      ],
+      "out": "High-value carts followed up"
+     },
+     {
+      "role": "FINANCE",
+      "apps": [
+       "stripe",
+       "fansa",
+       "xero"
+      ],
+      "out": "Disputes caught in time"
+     }
+    ]
+   },
+   {
+    "t": "sol",
+    "h": "Zoom into one department: **support answers itself.**",
+    "b": "Asked on WhatsApp → Shopify order → Shippo tracking → reply sent. WhatsApp connects via Respond.io."
+   },
+   {
+    "t": "cta",
+    "h": "Growth that **doesn't need more hands first.**",
+    "save": "Save this for your next ops planning."
+   }
+  ],
+  "shot": "i08"
+ },
+ {
+  "id": "s02",
+  "day": 4,
+  "tier": "Scale",
+  "who": "MULTI-LOCATION CLINIC GROUPS",
+  "file": "clinic-group",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run a multi-site clinic group? If every location runs differently, **this is for you.**",
+    "b": "Here's how clinic groups set one standard →"
+   },
+   {
+    "t": "obst",
+    "h": "Each site does its best. **That's why no two sites match.**",
+    "l": [
+     "No-shows rebooked by some sites",
+     "Recalls left to front-desk memory",
+     "Intake forms chased at the desk"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Empty chairs don't show on one site's report. **They show across the group.**",
+    "l": [
+     "Revenue lost daily per chair",
+     "Patients drifting elsewhere",
+     "Leadership blind across sites"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **give every site the same quiet discipline.**",
+    "lab": "YOUR GROUP OPERATIONS LEAD WRITES IT ONCE",
+    "b": "When a patient misses an appointment in OnceHub, text a rebooking link with Twilio and log it for the site manager."
+   },
+   {
+    "t": "team",
+    "h": "Front desk, clinicians, managers. **Every site, one standard.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "FRONT DESK",
+      "apps": [
+       "oncehub",
+       "fansa",
+       "twilio"
+      ],
+      "out": "No-shows rebooked"
+     },
+     {
+      "role": "RECALLS",
+      "apps": [
+       "fansa",
+       "twilio",
+       "google-calendar"
+      ],
+      "out": "Due patients invited"
+     },
+     {
+      "role": "INTAKE",
+      "apps": [
+       "jotform",
+       "fansa",
+       "microsoft-sharepoint"
+      ],
+      "out": "Forms done before arrival"
+     },
+     {
+      "role": "GROUP OPS",
+      "apps": [
+       "airtable",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "All sites, one weekly view"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the missed appointment.**",
+    "b": "No-show in OnceHub → rebooking link by Twilio → logged for the site manager.",
+    "apps": [
+     "oncehub",
+     "twilio",
+     "airtable"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Every site, **run like your best one.**",
+    "save": "Save this for your next site managers' meeting.",
+    "price": "Scale plan · $299/month, built for multi-department, multi-site teams"
+   }
+  ]
+ },
+ {
+  "id": "s03",
+  "day": 6,
+  "tier": "Scale",
+  "who": "REAL ESTATE BROKERAGES",
+  "file": "brokerage-routing",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run a brokerage? If portal leads wait for the right agent, **this is for you.**",
+    "b": "Here's how leading brokerages route in minutes →"
+   },
+   {
+    "t": "obst",
+    "h": "The lead arrives in seconds. **The right agent hears about it hours later.**",
+    "l": [
+     "Leads shared in a group chat",
+     "Top agents swamped, others idle",
+     "Signed offers starting a paper chase"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "In property, **the first agent to call usually gets the listing.**",
+    "l": [
+     "Listings won by faster firms",
+     "Agents leaving for better leads",
+     "Deadlines missed in transactions"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **put every lead with the right agent, fast.**",
+    "lab": "YOUR BROKERAGE OPS LEAD WRITES IT ONCE",
+    "b": "When a new lead comes in, route it by area and price to the right agent, add it to LeadConnector and text the lead from that agent."
+   },
+   {
+    "t": "team",
+    "h": "Lead intake, agents, transactions, marketing. **One pipeline.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "LEAD INTAKE",
+      "apps": [
+       "leadconnector",
+       "fansa",
+       "twilio"
+      ],
+      "out": "Routed and texted fast"
+     },
+     {
+      "role": "AGENTS",
+      "apps": [
+       "calendly",
+       "fansa",
+       "leadconnector"
+      ],
+      "out": "Viewings booked, logged"
+     },
+     {
+      "role": "TRANSACTIONS",
+      "apps": [
+       "docusign",
+       "box",
+       "google-calendar"
+      ],
+      "out": "Signed → key dates set"
+     },
+     {
+      "role": "MARKETING",
+      "apps": [
+       "leadconnector",
+       "bannerbear",
+       "mailchimp"
+      ],
+      "out": "New listing → campaign"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the right agent, first.**",
+    "b": "New lead → routed by area and price → LeadConnector contact → texted from the agent's number.",
+    "apps": [
+     "leadconnector",
+     "fansa",
+     "twilio"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Leads that **reach the right agent while they're warm.**",
+    "save": "Save this for your next sales meeting."
+   }
+  ]
+ },
+ {
+  "id": "s04",
+  "day": 9,
+  "tier": "Scale",
+  "who": "FRANCHISE OPERATORS",
+  "file": "franchise-standard",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run a franchise network? If HQ learns about issues last, **this is for you.**",
+    "b": "Here's how franchise teams keep every unit aligned →"
+   },
+   {
+    "t": "obst",
+    "h": "Every unit reports. **Just in a different format, on a different day.**",
+    "l": [
+     "Compliance checks on paper",
+     "Royalty reports keyed by hand",
+     "Local leads sent to the wrong site"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Inconsistency doesn't stay local. **It becomes the brand.**",
+    "l": [
+     "Audit failures at single units",
+     "Royalty disputes and delays",
+     "Franchisees losing trust in HQ"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **make every unit report the same way.**",
+    "lab": "YOUR NETWORK OPERATIONS LEAD WRITES IT ONCE",
+    "b": "When a unit submits its weekly compliance form in Jotform, check it against the standard, log it in Airtable and alert the area manager on any gap."
+   },
+   {
+    "t": "team",
+    "h": "HQ, area managers, units, finance. **One network view.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "UNITS",
+      "apps": [
+       "jotform",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Weekly checks submitted"
+     },
+     {
+      "role": "AREA MANAGERS",
+      "apps": [
+       "airtable",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Gaps flagged same day"
+     },
+     {
+      "role": "FINANCE",
+      "apps": [
+       "square",
+       "fansa",
+       "xero"
+      ],
+      "out": "Royalties calculated"
+     },
+     {
+      "role": "MARKETING",
+      "apps": [
+       "typeform",
+       "fansa",
+       "hubspot"
+      ],
+      "out": "Leads to the nearest unit"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the compliance check.**",
+    "b": "Weekly form → checked against the standard → logged in Airtable → area manager alerted on gaps.",
+    "apps": [
+     "jotform",
+     "fansa",
+     "airtable",
+     "microsoft-teams"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "A network that **feels like one business.**",
+    "save": "Save this for your next franchise review."
+   }
+  ]
+ },
+ {
+  "id": "s05",
+  "day": 11,
+  "tier": "Scale",
+  "who": "HOSPITALITY GROUPS",
+  "file": "hospitality-group",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run several venues? If big bookings wait for a reply, **this is for you.**",
+    "b": "Here's how hospitality groups win the high-value table →"
+   },
+   {
+    "t": "obst",
+    "h": "The most valuable enquiries **arrive at the busiest hour.**",
+    "l": [
+     "Group bookings sitting in inboxes",
+     "Guest feedback never reaching the venue",
+     "Rotas built against yesterday's demand"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Meanwhile, **the event books with whoever answered first.**",
+    "l": [
+     "High-value covers lost",
+     "The same complaint, every week",
+     "Labour cost spiking on quiet nights"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **answer the big enquiry first.**",
+    "lab": "YOUR GROUP OPERATIONS LEAD WRITES IT ONCE",
+    "b": "When a group booking request comes in through Typeform, send it to the right venue manager in Teams and reply to the guest with available dates."
+   },
+   {
+    "t": "team",
+    "h": "Events, venues, guest experience, finance. **One group rhythm.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "EVENTS",
+      "apps": [
+       "typeform",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Group enquiry → right venue"
+     },
+     {
+      "role": "GUEST EXPERIENCE",
+      "apps": [
+       "google-my-business",
+       "fansa",
+       "microsoft-todo"
+      ],
+      "out": "Reviews answered by venue"
+     },
+     {
+      "role": "VENUE MANAGERS",
+      "apps": [
+       "tenzo",
+       "fansa",
+       "clicksend-sms"
+      ],
+      "out": "Short shifts flagged early"
+     },
+     {
+      "role": "FINANCE",
+      "apps": [
+       "square",
+       "fansa",
+       "xero"
+      ],
+      "out": "Daily takings reconciled"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the high-value table.**",
+    "b": "Group request → right venue manager in Teams → guest gets dates the same hour.",
+    "apps": [
+     "typeform",
+     "fansa",
+     "microsoft-teams"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Every venue, **ready for its best booking.**",
+    "save": "Save this for your next venue meeting."
+   }
+  ]
+ },
+ {
+  "id": "s06",
+  "day": 13,
+  "tier": "Scale",
+  "who": "DISTRIBUTORS & WHOLESALERS",
+  "file": "distributor-o2c",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run a distribution business? If orders cross five systems, **this is for you.**",
+    "b": "Here's how distributors shorten order-to-cash →"
+   },
+   {
+    "t": "obst",
+    "h": "An order is placed in a minute. **Getting paid for it takes weeks.**",
+    "l": [
+     "Quote requests in a shared inbox",
+     "Purchase orders re-keyed",
+     "Invoicing waiting on dispatch"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Every manual step **sits between the sale and the cash.**",
+    "l": [
+     "Buyers ordering from competitors",
+     "Errors in every batch",
+     "Cash arriving weeks late"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **shorten the road from order to cash.**",
+    "lab": "YOUR OPERATIONS DIRECTOR WRITES IT ONCE",
+    "b": "When a purchase order arrives by email, read it with AI, create the order in QuickBooks and notify the warehouse in Teams."
+   },
+   {
+    "t": "team",
+    "h": "Sales, warehouse, finance, service. **One order flow.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "SALES",
+      "apps": [
+       "microsoft-outlook",
+       "fansa",
+       "hubspot"
+      ],
+      "out": "Quote requests answered"
+     },
+     {
+      "role": "ORDERS",
+      "apps": [
+       "microsoft-outlook",
+       "fansa",
+       "quickbooks"
+      ],
+      "out": "PO → order, no re-keying"
+     },
+     {
+      "role": "WAREHOUSE",
+      "apps": [
+       "quickbooks",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Picking list on order"
+     },
+     {
+      "role": "FINANCE",
+      "apps": [
+       "quickbooks",
+       "fansa",
+       "microsoft-outlook"
+      ],
+      "out": "Overdue accounts chased"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the purchase order.**",
+    "b": "PO arrives by email → read by AI → order in QuickBooks → warehouse told in Teams.",
+    "apps": [
+     "microsoft-outlook",
+     "fansa",
+     "quickbooks",
+     "microsoft-teams"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Cash that arrives **as fast as the order did.**",
+    "save": "Save this for your next ops review.",
+    "price": "Scale plan · $299/month, built for multi-department operations"
+   }
+  ]
+ },
+ {
+  "id": "s07",
+  "day": 16,
+  "tier": "Scale",
+  "who": "SAAS COMPANIES",
+  "file": "saas-mrr",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run a SaaS company? If MRR leaks without a single cancellation, **this is for you.**",
+    "b": "Here's how SaaS teams protect recurring revenue →"
+   },
+   {
+    "t": "obst",
+    "h": "The quietest churn **is the payment nobody noticed failing.**",
+    "l": [
+     "Failed payments retrying silently",
+     "Trial users with no timely nudge",
+     "Expansion signals nobody sees"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Recurring revenue **leaks in recurring ways.**",
+    "l": [
+     "Customers lost without a decision",
+     "Conversion stuck at the same rate",
+     "Upgrades left on the table"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **keep revenue from slipping quietly.**",
+    "lab": "YOUR REVOPS LEAD WRITES IT ONCE",
+    "b": "When a Stripe payment fails, update the customer in HubSpot, send an Intercom message with a fix link and alert their account owner."
+   },
+   {
+    "t": "team",
+    "h": "Billing, success, sales, product. **One customer view.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "BILLING",
+      "apps": [
+       "stripe",
+       "fansa",
+       "intercom"
+      ],
+      "out": "Failed payment → recovered"
+     },
+     {
+      "role": "GROWTH",
+      "apps": [
+       "stripe",
+       "fansa",
+       "intercom"
+      ],
+      "out": "Trials nudged on time"
+     },
+     {
+      "role": "SUCCESS",
+      "apps": [
+       "intercom",
+       "fansa",
+       "hubspot"
+      ],
+      "out": "Expansion signals flagged"
+     },
+     {
+      "role": "LEADERSHIP",
+      "apps": [
+       "stripe",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "MRR movements weekly"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the failed payment.**",
+    "b": "Payment fails → HubSpot updated → Intercom fix link sent → owner alerted.",
+    "apps": [
+     "stripe",
+     "hubspot",
+     "intercom",
+     "microsoft-teams"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Recurring revenue that **actually recurs.**",
+    "save": "Save this for your next revenue review."
+   }
+  ]
+ },
+ {
+  "id": "s08",
+  "day": 18,
+  "tier": "Scale",
+  "who": "FIELD SERVICE COMPANIES",
+  "file": "field-service",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run a field service company? If jobs are won by phone and lost by phone, **this is for you.**",
+    "b": "Here's how service businesses keep every job →"
+   },
+   {
+    "t": "obst",
+    "h": "The phone rings while the team is on site. **Nobody calls back in time.**",
+    "l": [
+     "Missed calls never returned",
+     "Jobs dispatched by phone",
+     "Billing waiting for paperwork"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Every missed call **is advertising you paid for twice.**",
+    "l": [
+     "Jobs booked with competitors",
+     "Technicians idle or double-booked",
+     "Cash delayed by days"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **catch every job, even mid-shift.**",
+    "lab": "YOUR DISPATCH MANAGER WRITES IT ONCE",
+    "b": "When we miss a call in VoIPstudio, text the caller back with a booking link using Twilio and create a job request in Housecall Pro."
+   },
+   {
+    "t": "team",
+    "h": "Office, dispatch, technicians, billing. **One job flow.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "OFFICE",
+      "apps": [
+       "voipstudio",
+       "twilio",
+       "housecall-pro"
+      ],
+      "out": "Missed call → job request"
+     },
+     {
+      "role": "DISPATCH",
+      "apps": [
+       "housecall-pro",
+       "fansa",
+       "twilio"
+      ],
+      "out": "Technician told on assign"
+     },
+     {
+      "role": "BILLING",
+      "apps": [
+       "square",
+       "fansa",
+       "quickbooks"
+      ],
+      "out": "Paid on site → recorded"
+     },
+     {
+      "role": "REPUTATION",
+      "apps": [
+       "square",
+       "twilio",
+       "google-my-business"
+      ],
+      "out": "Review asked after payment"
+     }
+    ]
+   },
+   {
+    "t": "sol",
+    "h": "Zoom into one lane: **the missed call.**",
+    "b": "Missed call → text-back with booking link → job request in Housecall Pro."
+   },
+   {
+    "t": "cta",
+    "h": "Every call, **a booked job.**",
+    "save": "Save this for your next team briefing."
+   }
+  ],
+  "shot": "i09"
+ },
+ {
+  "id": "s09",
+  "day": 20,
+  "tier": "Scale",
+  "who": "PROPERTY MANAGEMENT FIRMS",
+  "file": "property-maintenance",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Manage hundreds of units? If repairs get lost between tenant and vendor, **this is for you.**",
+    "b": "Here's how property managers keep tenants →"
+   },
+   {
+    "t": "obst",
+    "h": "A repair request has three people waiting on it. **Nobody owns the middle.**",
+    "l": [
+     "Requests sent by text and email",
+     "Vendors briefed by phone",
+     "Tenants chasing for updates"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Slow repairs **turn into vacancies.**",
+    "l": [
+     "Tenant satisfaction falling",
+     "Renewals lost quietly",
+     "Staff time spent on status calls"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **give every request an owner.**",
+    "lab": "YOUR PROPERTY OPS LEAD WRITES IT ONCE",
+    "b": "When a tenant submits a repair form in Jotform, classify it, assign the right vendor, create the work order in Airtable and text the tenant an update."
+   },
+   {
+    "t": "team",
+    "h": "Leasing, maintenance, accounts, owners. **One property table.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "MAINTENANCE",
+      "apps": [
+       "jotform",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Request → work order"
+     },
+     {
+      "role": "TENANTS",
+      "apps": [
+       "airtable",
+       "fansa",
+       "twilio"
+      ],
+      "out": "Status texts, unasked"
+     },
+     {
+      "role": "LEASING",
+      "apps": [
+       "typeform",
+       "fansa",
+       "google-calendar"
+      ],
+      "out": "Enquiries → viewings"
+     },
+     {
+      "role": "OWNERS",
+      "apps": [
+       "airtable",
+       "fansa",
+       "microsoft-outlook"
+      ],
+      "out": "Monthly owner report"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the repair request.**",
+    "b": "Tenant form → classified → vendor assigned → work order created → tenant updated by text.",
+    "apps": [
+     "jotform",
+     "fansa",
+     "airtable",
+     "twilio"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Tenants who **stay because it just works.**",
+    "save": "Save this for your next portfolio review."
+   }
+  ]
+ },
+ {
+  "id": "s10",
+  "day": 23,
+  "tier": "Scale",
+  "who": "EDUCATION GROUPS",
+  "file": "education-enrolment",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run several campuses? If enquiries cool before anyone calls, **this is for you.**",
+    "b": "Here's how education groups lift enrolment →"
+   },
+   {
+    "t": "obst",
+    "h": "A parent enquires once. **They rarely enquire twice.**",
+    "l": [
+     "Trial requests answered next day",
+     "Campuses reporting differently",
+     "Parents chasing updates by phone"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Every slow reply **is an enrolment another school gains.**",
+    "l": [
+     "Places left unfilled",
+     "The board unable to compare",
+     "Staff time drained by calls"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **answer while interest is warm.**",
+    "lab": "YOUR ADMISSIONS LEAD WRITES IT ONCE",
+    "b": "When a parent requests a trial in Paperform, match the nearest campus, send a Calendly booking link and log the enquiry in HubSpot."
+   },
+   {
+    "t": "team",
+    "h": "Admissions, campuses, teachers, leadership. **One standard.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "ADMISSIONS",
+      "apps": [
+       "paperform",
+       "calendly",
+       "hubspot"
+      ],
+      "out": "Trial booked same day"
+     },
+     {
+      "role": "CAMPUSES",
+      "apps": [
+       "hubspot",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "New family introduced"
+     },
+     {
+      "role": "PARENTS",
+      "apps": [
+       "airtable",
+       "fansa",
+       "mailchimp"
+      ],
+      "out": "Progress updates sent"
+     },
+     {
+      "role": "LEADERSHIP",
+      "apps": [
+       "hubspot",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Campus numbers weekly"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the trial request.**",
+    "b": "Trial request → nearest campus → Calendly link → logged in HubSpot.",
+    "apps": [
+     "paperform",
+     "fansa",
+     "calendly",
+     "hubspot"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Enquiries that **become enrolments.**",
+    "save": "Save this for your next admissions meeting."
+   }
+  ]
+ },
+ {
+  "id": "s11",
+  "day": 25,
+  "tier": "Scale",
+  "who": "MULTI-STORE RETAILERS",
+  "file": "retail-stock",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run several stores and an online shop? If stock never adds up, **this is for you.**",
+    "b": "Here's how retailers keep one version of stock →"
+   },
+   {
+    "t": "obst",
+    "h": "Every store knows its stock. **Nobody knows the whole picture.**",
+    "l": [
+     "Online selling what stores lack",
+     "Transfers arranged by phone",
+     "Reorders placed on instinct"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Stockouts in one place, **dead stock in another.**",
+    "l": [
+     "Sales lost at the shelf",
+     "Cash tied up in slow lines",
+     "Customers refunded, not served"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **give every channel the same stock truth.**",
+    "lab": "YOUR RETAIL OPERATIONS LEAD WRITES IT ONCE",
+    "b": "When a product drops below its minimum in Shopify, alert the buyer in Teams and draft the reorder in Airtable."
+   },
+   {
+    "t": "team",
+    "h": "Stores, online, buying, finance. **One stock table.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "BUYING",
+      "apps": [
+       "shopify",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Low stock → reorder draft"
+     },
+     {
+      "role": "STORES",
+      "apps": [
+       "airtable",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Transfers requested"
+     },
+     {
+      "role": "ONLINE",
+      "apps": [
+       "shopify",
+       "fansa",
+       "klaviyo"
+      ],
+      "out": "Back in stock → customers told"
+     },
+     {
+      "role": "FINANCE",
+      "apps": [
+       "shopify",
+       "fansa",
+       "xero"
+      ],
+      "out": "Sales reconciled daily"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the reorder.**",
+    "b": "Below minimum in Shopify → buyer alerted in Teams → reorder drafted in Airtable.",
+    "apps": [
+     "shopify",
+     "fansa",
+     "microsoft-teams",
+     "airtable"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Stock that's **where the customer is.**",
+    "save": "Save this for your next buying meeting."
+   }
+  ]
+ },
+ {
+  "id": "s12",
+  "day": 27,
+  "tier": "Scale",
+  "who": "ACCOUNTING & LEGAL FIRMS",
+  "file": "firm-close",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run a growing firm? If every client document starts a manual chain, **this is for you.**",
+    "b": "Here's how firms free their senior hours →"
+   },
+   {
+    "t": "obst",
+    "h": "Every upload, every intake, every deadline **waits for a person to notice it.**",
+    "l": [
+     "Client files sorted by hand",
+     "Intake forms in the inbox",
+     "Deadlines tracked in calendars"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "The firm grows. **So does the admin under every fee earner.**",
+    "l": [
+     "Senior time on filing",
+     "Deadlines at risk",
+     "Clients waiting for status"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **route the work before anyone opens it.**",
+    "lab": "YOUR PRACTICE MANAGER WRITES IT ONCE",
+    "b": "When a client uploads a document to OneDrive, classify it with AI, file it in SharePoint and create a Teamwork task for the right person."
+   },
+   {
+    "t": "team",
+    "h": "Intake, fee earners, billing, compliance. **One client file.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "INTAKE",
+      "apps": [
+       "cognito-forms",
+       "fansa",
+       "mycase"
+      ],
+      "out": "New client → matter opened"
+     },
+     {
+      "role": "DOCUMENTS",
+      "apps": [
+       "microsoft-onedrive",
+       "fansa",
+       "microsoft-sharepoint"
+      ],
+      "out": "Uploads filed and assigned"
+     },
+     {
+      "role": "DEADLINES",
+      "apps": [
+       "teamwork",
+       "fansa",
+       "microsoft-outlook"
+      ],
+      "out": "Due dates escalated early"
+     },
+     {
+      "role": "COMPLIANCE",
+      "apps": [
+       "docusign",
+       "fansa",
+       "microsoft-sharepoint"
+      ],
+      "out": "Engagement letters on file"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the client upload.**",
+    "b": "Upload in OneDrive → classified by AI → filed in SharePoint → task for the right person.",
+    "apps": [
+     "microsoft-onedrive",
+     "fansa",
+     "microsoft-sharepoint",
+     "teamwork"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Senior hours **back on client work.**",
+    "save": "Save this for your next partners' meeting."
+   }
+  ]
+ },
+ {
+  "id": "s13",
+  "day": 30,
+  "tier": "Scale",
+  "who": "MANAGING DIRECTORS",
+  "file": "md-visibility",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Managing director? If decisions wait for someone's spreadsheet, **this is for you.**",
+    "b": "Here's how leaders run on current numbers →"
+   },
+   {
+    "t": "obst",
+    "h": "The numbers exist. **They just arrive after the meeting.**",
+    "l": [
+     "KPIs compiled by hand each week",
+     "Every department, a different format",
+     "Board packs taking days"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Leading on last week's numbers **means reacting to last week's business.**",
+    "l": [
+     "Small issues found expensive",
+     "Forecasts lagging reality",
+     "Leadership time spent assembling"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **put today's numbers on your desk.**",
+    "lab": "YOUR OPERATIONS LEAD WRITES IT ONCE",
+    "b": "Every Monday at 8, pull sales from HubSpot, cash from Xero and support from Zendesk, summarise the week and send it to the leadership team."
+   },
+   {
+    "t": "team",
+    "h": "Sales, finance, support, operations. **One Monday brief.**",
+    "legend": "Example setup · each lane is one sentence · departments share one table",
+    "lanes": [
+     {
+      "role": "SALES",
+      "apps": [
+       "hubspot",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Pipeline numbers, Monday"
+     },
+     {
+      "role": "FINANCE",
+      "apps": [
+       "xero",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Cash position, Monday"
+     },
+     {
+      "role": "SUPPORT",
+      "apps": [
+       "zendesk",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Service levels, Monday"
+     },
+     {
+      "role": "LEADERSHIP",
+      "apps": [
+       "airtable",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "One brief at 8 AM"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the leadership brief.**",
+    "b": "Monday 8 AM → HubSpot, Xero, Zendesk → AI summary → leadership brief in Teams.",
+    "apps": [
+     "hubspot",
+     "xero",
+     "zendesk",
+     "microsoft-teams"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Decisions **on today's numbers.**",
+    "save": "Save this for your next leadership meeting.",
+    "price": "Scale plan · $299/month, built for multi-department businesses"
+   }
+  ]
+ }
+]

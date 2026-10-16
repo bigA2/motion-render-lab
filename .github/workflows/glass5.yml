@@ -20,6 +20,9 @@ jobs:
           path: |
             glass5/out/*.png
             glass5/out/car/*.png
+            glass5/out/month/*.png
+            glass5/out/month/*.md
+            glass5/out/month/*.txt
             glass5/out/*.md
       - if: always()
         run: cat glass5/out/QA*.txt || true

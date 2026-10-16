@@ -1,0 +1,1249 @@
+[
+ {
+  "id": "t01",
+  "day": 1,
+  "tier": "Team",
+  "who": "AGENCY OWNERS",
+  "file": "agency-margin",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Agency owner? If revenue grows but margin doesn't, **this is for you.**",
+    "b": "Here's how profitable agencies hold the line →"
+   },
+   {
+    "t": "obst",
+    "h": "Scope rarely explodes. **It drifts, one small yes at a time.**",
+    "l": [
+     "Change requests agreed on a call",
+     "Extra rounds nobody logs",
+     "Hours that never reach billing"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "It rarely shows on a report, **but it shows in the margin.**",
+    "l": [
+     "Retainers priced on old scope",
+     "Senior hours given away",
+     "Profit found too late to fix"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **keep scope where it was sold.**",
+    "lab": "YOUR ACCOUNT LEAD WRITES IT ONCE",
+    "b": "When a client submits a change request, price it against the scope, send a PandaDoc quote and log it on the HubSpot deal."
+   },
+   {
+    "t": "team",
+    "h": "Every role guards the margin. **Nobody has to chase it.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one client table",
+    "lanes": [
+     {
+      "role": "ACCOUNT LEAD",
+      "apps": [
+       "typeform",
+       "fansa",
+       "pandadoc",
+       "hubspot"
+      ],
+      "out": "Every extra priced and signed"
+     },
+     {
+      "role": "PROJECT LEAD",
+      "apps": [
+       "clickup",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Over-scope flagged same day"
+     },
+     {
+      "role": "FINANCE",
+      "apps": [
+       "toggl-track",
+       "fansa",
+       "xero"
+      ],
+      "out": "Tracked hours, billed monthly"
+     },
+     {
+      "role": "LEADERSHIP",
+      "apps": [
+       "fansa",
+       "airtable",
+       "microsoft-teams"
+      ],
+      "out": "Monday: margin per client"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **every extra, priced.**",
+    "b": "Change request in → priced against scope → PandaDoc quote → logged on the HubSpot deal.",
+    "apps": [
+     "typeform",
+     "fansa",
+     "pandadoc",
+     "hubspot"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Margin you can see **while it's still yours.**",
+    "save": "Save this for your next margin review.",
+    "price": "Team plan · $149/month, built for agencies running the whole team on it"
+   }
+  ]
+ },
+ {
+  "id": "t02",
+  "day": 3,
+  "tier": "Team",
+  "who": "SUPPORT LEADERS",
+  "file": "support-sla",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run a support team? If SLA breaches surface after the fact, **this is for you.**",
+    "b": "Here's how serious support teams stay ahead →"
+   },
+   {
+    "t": "obst",
+    "h": "Breaches don't announce themselves. **They're found in the monthly report.**",
+    "l": [
+     "VIP tickets in the standard queue",
+     "Bugs retyped for engineering",
+     "Escalations bouncing between teams"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "By the time it's on a dashboard, **it's on the renewal call.**",
+    "l": [
+     "Key accounts feel ignored",
+     "Fixes wait on hand-offs",
+     "Contracts quietly at risk"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **see the breach before it happens.**",
+    "lab": "YOUR SUPPORT LEAD WRITES IT ONCE",
+    "b": "When a high-priority Zendesk ticket has no reply in two hours, alert the on-call lead in Teams and flag the account in HubSpot."
+   },
+   {
+    "t": "team",
+    "h": "Support, engineering, success. **One hand-off, no retyping.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one account table",
+    "lanes": [
+     {
+      "role": "SUPPORT LEAD",
+      "apps": [
+       "zendesk",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "SLA risk flagged early"
+     },
+     {
+      "role": "AGENTS",
+      "apps": [
+       "zendesk",
+       "fansa",
+       "jira-cloud"
+      ],
+      "out": "Bug → Jira, steps written"
+     },
+     {
+      "role": "ENGINEERING",
+      "apps": [
+       "jira-cloud",
+       "fansa",
+       "zendesk"
+      ],
+      "out": "Fixed → customer told"
+     },
+     {
+      "role": "CUSTOMER SUCCESS",
+      "apps": [
+       "zendesk",
+       "fansa",
+       "hubspot"
+      ],
+      "out": "VIP issues on the account"
+     }
+    ]
+   },
+   {
+    "t": "sol",
+    "h": "Zoom into one lane: **the bug hand-off.**",
+    "b": "Tagged bug in Zendesk → repro steps written → Jira issue opened → link back on the ticket."
+   },
+   {
+    "t": "cta",
+    "h": "Your best accounts **never wait in line.**",
+    "save": "Save this for your next support review."
+   }
+  ],
+  "shot": "i07"
+ },
+ {
+  "id": "t03",
+  "day": 5,
+  "tier": "Team",
+  "who": "ACCOUNT DIRECTORS",
+  "file": "agency-churn",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Account director? If clients leave \"suddenly\", **this is for you.**",
+    "b": "Here's how agencies read the signals early →"
+   },
+   {
+    "t": "obst",
+    "h": "Churn is never sudden. **The signals just live in five places.**",
+    "l": [
+     "Missed deadlines the client saw first",
+     "Sentiment buried in email threads",
+     "Reports that arrived late"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Meanwhile, the renewal conversation **starts three months too late.**",
+    "l": [
+     "Retainers lost without a fight",
+     "Upsell moments missed",
+     "Revenue that never stabilises"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **bring the signals into one view.**",
+    "lab": "YOUR ACCOUNT TEAM WRITES IT ONCE",
+    "b": "When a ClickUp deadline is missed or a client email reads negative, log it on the client's health record and alert the account director."
+   },
+   {
+    "t": "team",
+    "h": "Every signal, **one account-health view.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one client table",
+    "lanes": [
+     {
+      "role": "DELIVERY",
+      "apps": [
+       "clickup",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Missed dates logged"
+     },
+     {
+      "role": "ACCOUNT MANAGER",
+      "apps": [
+       "microsoft-outlook",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Client tone tracked"
+     },
+     {
+      "role": "REPORTING",
+      "apps": [
+       "google-search-console",
+       "fansa",
+       "google-docs"
+      ],
+      "out": "Reports out on time"
+     },
+     {
+      "role": "DIRECTOR",
+      "apps": [
+       "airtable",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "At-risk clients each Monday"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **at-risk accounts, every Monday.**",
+    "b": "Every Monday → health scores read → at-risk clients listed → director briefed in Teams.",
+    "apps": [
+     "airtable",
+     "fansa",
+     "microsoft-teams"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Renewals that start **with evidence, not surprise.**",
+    "save": "Save this for your next account review."
+   }
+  ]
+ },
+ {
+  "id": "t04",
+  "day": 8,
+  "tier": "Team",
+  "who": "SALES LEADERS",
+  "file": "sales-forecast",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Sales leader? If the forecast changes every Friday, **this is for you.**",
+    "b": "Here's how sales teams get to one truth →"
+   },
+   {
+    "t": "obst",
+    "h": "The forecast is only as current as **the last CRM update.**",
+    "l": [
+     "Interested replies sitting in inboxes",
+     "Call notes that never reach the deal",
+     "Stalled deals nobody flags"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Every week of lag **compounds into a missed quarter.**",
+    "l": [
+     "Coaching built on guesses",
+     "Deals change hands blind",
+     "Pipeline that looks full, closes thin"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **keep the pipeline honest.**",
+    "lab": "YOUR SALES OPS LEAD WRITES IT ONCE",
+    "b": "When a prospect replies interested in Woodpecker, enrich the company with Apollo, create the Pipedrive deal and ping the right rep in Teams."
+   },
+   {
+    "t": "team",
+    "h": "SDRs, AEs, managers. **The CRM updates itself.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one pipeline",
+    "lanes": [
+     {
+      "role": "SDR",
+      "apps": [
+       "woodpecker",
+       "apollo",
+       "pipedrive"
+      ],
+      "out": "Interested → deal, enriched"
+     },
+     {
+      "role": "ACCOUNT EXEC",
+      "apps": [
+       "aircall",
+       "fansa",
+       "pipedrive"
+      ],
+      "out": "Call notes on the deal"
+     },
+     {
+      "role": "SALES MANAGER",
+      "apps": [
+       "pipedrive",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Stalled deals flagged"
+     },
+     {
+      "role": "REVOPS",
+      "apps": [
+       "pipedrive",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Friday forecast, automatic"
+     }
+    ]
+   },
+   {
+    "t": "sol",
+    "h": "Zoom into one lane: **interested, then instantly a deal.**",
+    "b": "Woodpecker reply → Apollo enrichment → Pipedrive person and deal → rep pinged in Teams."
+   },
+   {
+    "t": "cta",
+    "h": "Forecast on **today's pipeline, not last week's.**",
+    "save": "Save this for your next pipeline review.",
+    "price": "Team plan · $149/month, built for whole sales teams"
+   }
+  ],
+  "shot": "i06"
+ },
+ {
+  "id": "t05",
+  "day": 10,
+  "tier": "Team",
+  "who": "NEW BUSINESS LEADS",
+  "file": "agency-pipeline",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Leading new business? If proposals stall after the pitch, **this is for you.**",
+    "b": "Here's how winning agencies keep momentum →"
+   },
+   {
+    "t": "obst",
+    "h": "Most deals aren't lost in the pitch. **They're lost in the silence after.**",
+    "l": [
+     "Inbound enquiries waiting hours",
+     "Proposals sent, never followed",
+     "Discovery notes stuck with sales"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Meanwhile, **a faster agency is already following up.**",
+    "l": [
+     "Warm prospects going cold",
+     "Pitch effort without return",
+     "Promises delivery never heard"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **close the silence.**",
+    "lab": "YOUR NEW-BUSINESS LEAD WRITES IT ONCE",
+    "b": "When a PandaDoc proposal is viewed but not signed in three days, remind the owner in Teams and log the follow-up in HubSpot."
+   },
+   {
+    "t": "team",
+    "h": "From enquiry to kickoff, **no gap in the chain.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one deal table",
+    "lanes": [
+     {
+      "role": "INBOUND",
+      "apps": [
+       "typeform",
+       "calendly",
+       "hubspot"
+      ],
+      "out": "Enquiry → booked call"
+     },
+     {
+      "role": "PROPOSALS",
+      "apps": [
+       "pandadoc",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Viewed, unsigned → nudged"
+     },
+     {
+      "role": "HAND-OFF",
+      "apps": [
+       "docusign",
+       "fansa",
+       "clickup"
+      ],
+      "out": "Signed → delivery briefed"
+     },
+     {
+      "role": "WIN/LOSS",
+      "apps": [
+       "hubspot",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Every outcome recorded"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **no proposal left unanswered.**",
+    "b": "Proposal viewed → three quiet days → owner reminded in Teams → follow-up logged in HubSpot.",
+    "apps": [
+     "pandadoc",
+     "fansa",
+     "microsoft-teams",
+     "hubspot"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Pipeline that **moves while you pitch the next one.**",
+    "save": "Save this for your next new-business meeting."
+   }
+  ]
+ },
+ {
+  "id": "t06",
+  "day": 12,
+  "tier": "Team",
+  "who": "AGENCY OPERATIONS DIRECTORS",
+  "file": "agency-tools",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run agency operations? If every hand-off is a retype, **this is for you.**",
+    "b": "Here's how agencies connect the stack →"
+   },
+   {
+    "t": "obst",
+    "h": "Ten tools, **and every one of them waits on a person.**",
+    "l": [
+     "Approvals living in email chains",
+     "Status collected by meeting",
+     "Assets with three versions"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Nobody decided to work this way. **It just grew with every client.**",
+    "l": [
+     "Launches slipping weekly",
+     "Leaders spending hours asking",
+     "Quality varying by team"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **turn hand-offs into a system.**",
+    "lab": "YOUR OPS DIRECTOR WRITES IT ONCE",
+    "b": "When a ClickUp task moves to Ready for review, send it to the client for approval in Wrike and post the decision back to the project."
+   },
+   {
+    "t": "team",
+    "h": "Strategy, creative, media. **One flow between them.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one project table",
+    "lanes": [
+     {
+      "role": "CREATIVE",
+      "apps": [
+       "frame",
+       "fansa",
+       "wrike"
+      ],
+      "out": "Comments → change list"
+     },
+     {
+      "role": "APPROVALS",
+      "apps": [
+       "clickup",
+       "fansa",
+       "wrike"
+      ],
+      "out": "Review → client decision"
+     },
+     {
+      "role": "ASSETS",
+      "apps": [
+       "box",
+       "fansa",
+       "dropbox"
+      ],
+      "out": "Finals in one place"
+     },
+     {
+      "role": "STATUS",
+      "apps": [
+       "clickup",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Friday status, unasked"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **reviews that route themselves.**",
+    "b": "Ready for review → client approval in Wrike → decision posted back on the ClickUp task.",
+    "apps": [
+     "clickup",
+     "fansa",
+     "wrike",
+     "clickup"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "An agency that **scales without more meetings.**",
+    "save": "Save this for your next ops review."
+   }
+  ]
+ },
+ {
+  "id": "t07",
+  "day": 15,
+  "tier": "Team",
+  "who": "PEOPLE & HR LEADERS",
+  "file": "hr-onboarding",
+  "s": [
+   {
+    "t": "hook",
+    "h": "People leader? If day one starts with missing access, **this is for you.**",
+    "b": "Here's how growing teams onboard properly →"
+   },
+   {
+    "t": "obst",
+    "h": "A new hire touches six systems **before they touch the work.**",
+    "l": [
+     "Accounts requested by message",
+     "Policies signed whenever",
+     "Training nobody tracks"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "And when someone leaves, **their access often doesn't.**",
+    "l": [
+     "A slow, uneven first week",
+     "Audit gaps in sign-offs",
+     "Security exposure at exit"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **make day one and the last day consistent.**",
+    "lab": "YOUR PEOPLE LEAD WRITES IT ONCE",
+    "b": "When a new hire is added in BambooHR, create their Okta account, send the Docusign policy pack and enrol them in onboarding training."
+   },
+   {
+    "t": "team",
+    "h": "HR, IT, managers. **Every start, every exit, the same.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one people table",
+    "lanes": [
+     {
+      "role": "HR",
+      "apps": [
+       "bamboohr",
+       "fansa",
+       "docusign"
+      ],
+      "out": "Policies signed day one"
+     },
+     {
+      "role": "IT",
+      "apps": [
+       "bamboohr",
+       "okta",
+       "microsoft-teams"
+      ],
+      "out": "Access ready on arrival"
+     },
+     {
+      "role": "MANAGERS",
+      "apps": [
+       "bamboohr",
+       "fansa",
+       "asana"
+      ],
+      "out": "First-week plan assigned"
+     },
+     {
+      "role": "OFFBOARDING",
+      "apps": [
+       "bamboohr",
+       "okta",
+       "fansa"
+      ],
+      "out": "Leavers lose access same day"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **access that leaves with them.**",
+    "b": "Leaver recorded in BambooHR → Okta access removed → IT confirms in Teams.",
+    "apps": [
+     "bamboohr",
+     "okta",
+     "microsoft-teams"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "A first week that **feels like you planned it.**",
+    "save": "Save this for your next onboarding."
+   }
+  ]
+ },
+ {
+  "id": "t08",
+  "day": 17,
+  "tier": "Team",
+  "who": "FINANCE & REVOPS LEADS",
+  "file": "finance-leakage",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Finance or RevOps lead? If billing and CRM disagree, **this is for you.**",
+    "b": "Here's how teams stop the quiet leaks →"
+   },
+   {
+    "t": "obst",
+    "h": "Revenue doesn't vanish. **It slips between systems.**",
+    "l": [
+     "Failed payments retrying silently",
+     "Plan changes that never reach billing",
+     "Numbers that differ by tool"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Small gaps, **every month, on every account.**",
+    "l": [
+     "Churn nobody chose",
+     "Board packs with conflicting numbers",
+     "Close that takes days"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **close the gap between systems.**",
+    "lab": "YOUR REVOPS LEAD WRITES IT ONCE",
+    "b": "When a Stripe payment fails, update the HubSpot account, send the customer a Resend reminder and alert the account owner in Teams."
+   },
+   {
+    "t": "team",
+    "h": "Billing, sales, finance. **One version of revenue.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one revenue table",
+    "lanes": [
+     {
+      "role": "BILLING",
+      "apps": [
+       "stripe",
+       "fansa",
+       "resend"
+      ],
+      "out": "Failed payment → recovered"
+     },
+     {
+      "role": "SALES",
+      "apps": [
+       "hubspot",
+       "fansa",
+       "stripe"
+      ],
+      "out": "Plan change → billing updated"
+     },
+     {
+      "role": "FINANCE",
+      "apps": [
+       "stripe",
+       "fansa",
+       "xero"
+      ],
+      "out": "Payments reconciled daily"
+     },
+     {
+      "role": "LEADERSHIP",
+      "apps": [
+       "xero",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Weekly revenue, one number"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **failed doesn't mean lost.**",
+    "b": "Payment fails in Stripe → account flagged in HubSpot → reminder sent → owner told in Teams.",
+    "apps": [
+     "stripe",
+     "hubspot",
+     "resend",
+     "microsoft-teams"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Revenue that **stays where it was earned.**",
+    "save": "Save this for your next close."
+   }
+  ]
+ },
+ {
+  "id": "t09",
+  "day": 19,
+  "tier": "Team",
+  "who": "MARKETING LEADERS",
+  "file": "marketing-reporting",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Marketing leader? If budget follows opinions, not results, **this is for you.**",
+    "b": "Here's how marketing teams report on facts →"
+   },
+   {
+    "t": "obst",
+    "h": "Results exist. **They just arrive after the decision.**",
+    "l": [
+     "Campaign numbers compiled by hand",
+     "Event leads uploaded days late",
+     "Webinar no-shows never followed"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "When reporting lags, **the loudest opinion sets the budget.**",
+    "l": [
+     "Strong channels cut",
+     "Warm leads gone cold",
+     "Half the audience missed"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **put the numbers in the room first.**",
+    "lab": "YOUR MARKETING OPS LEAD WRITES IT ONCE",
+    "b": "Every Monday, pull last week's campaign results from HubSpot and Mailchimp, summarise them and post the brief to the marketing channel in Teams."
+   },
+   {
+    "t": "team",
+    "h": "Campaigns, events, content. **One weekly truth.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one results table",
+    "lanes": [
+     {
+      "role": "CAMPAIGNS",
+      "apps": [
+       "hubspot",
+       "mailchimp",
+       "fansa"
+      ],
+      "out": "Monday results brief"
+     },
+     {
+      "role": "EVENTS",
+      "apps": [
+       "sessions-us",
+       "fansa",
+       "hubspot"
+      ],
+      "out": "Attendees → CRM same day"
+     },
+     {
+      "role": "WEBINARS",
+      "apps": [
+       "sessions-us",
+       "fansa",
+       "mailchimp"
+      ],
+      "out": "No-shows get the recording"
+     },
+     {
+      "role": "CONTENT",
+      "apps": [
+       "wordpress",
+       "fansa",
+       "buffer"
+      ],
+      "out": "Published → shared everywhere"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **the Monday brief.**",
+    "b": "Every Monday → HubSpot and Mailchimp results → AI summary → posted for the team in Teams.",
+    "apps": [
+     "hubspot",
+     "mailchimp",
+     "fansa",
+     "microsoft-teams"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "Budget that **follows what actually worked.**",
+    "save": "Save this for your next planning cycle."
+   }
+  ]
+ },
+ {
+  "id": "t10",
+  "day": 22,
+  "tier": "Team",
+  "who": "IT LEADERS",
+  "file": "it-access",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Lead IT? If access requests outnumber real issues, **this is for you.**",
+    "b": "Here's how IT teams take back the queue →"
+   },
+   {
+    "t": "obst",
+    "h": "The urgent tickets are never the loud ones. **They're the ones waiting behind them.**",
+    "l": [
+     "Password resets flooding the queue",
+     "Access granted by message",
+     "Alerts landing in email"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Every manual grant **is also a manual removal someone forgets.**",
+    "l": [
+     "Real incidents wait longer",
+     "Licences paid for leavers",
+     "Audit questions without answers"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **clear the routine so the real work surfaces.**",
+    "lab": "YOUR IT LEAD WRITES IT ONCE",
+    "b": "When a Freshservice access request is approved, add the user to the right Okta group, close the ticket and log the change for audit."
+   },
+   {
+    "t": "team",
+    "h": "Helpdesk, security, on-call. **Routine handled, risk visible.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one access log",
+    "lanes": [
+     {
+      "role": "HELPDESK",
+      "apps": [
+       "freshservice",
+       "okta",
+       "fansa"
+      ],
+      "out": "Approved access, granted"
+     },
+     {
+      "role": "SECURITY",
+      "apps": [
+       "okta",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Every change logged"
+     },
+     {
+      "role": "ON-CALL",
+      "apps": [
+       "pagerduty",
+       "fansa",
+       "freshservice"
+      ],
+      "out": "Critical alert → ticket"
+     },
+     {
+      "role": "LICENCES",
+      "apps": [
+       "okta",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Unused seats flagged"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **approved means done.**",
+    "b": "Request approved in Freshservice → Okta group updated → ticket closed → change logged.",
+    "apps": [
+     "freshservice",
+     "okta",
+     "airtable"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "A queue that **shows what actually matters.**",
+    "save": "Save this for your next IT review."
+   }
+  ]
+ },
+ {
+  "id": "t11",
+  "day": 24,
+  "tier": "Team",
+  "who": "PRODUCT LEADERS",
+  "file": "product-feedback",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Lead product? If priorities rest on the loudest request, **this is for you.**",
+    "b": "Here's how product teams hear every customer →"
+   },
+   {
+    "t": "obst",
+    "h": "Customer feedback arrives daily. **It just never arrives together.**",
+    "l": [
+     "Requests in support tickets",
+     "Ideas buried in sales calls",
+     "Bugs reported in three places"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "The roadmap drifts from demand **one quarter at a time.**",
+    "l": [
+     "Features nobody asked for",
+     "Deals closed on promises",
+     "Support blindsided by releases"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **bring every voice to one board.**",
+    "lab": "YOUR PRODUCT OPS LEAD WRITES IT ONCE",
+    "b": "When an Intercom conversation is tagged feature request, summarise it, find the matching Productboard feature and attach the customer to it."
+   },
+   {
+    "t": "team",
+    "h": "Support, sales, engineering. **One feedback loop.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one feedback table",
+    "lanes": [
+     {
+      "role": "SUPPORT",
+      "apps": [
+       "intercom",
+       "fansa",
+       "productboard"
+      ],
+      "out": "Requests attached to features"
+     },
+     {
+      "role": "SALES",
+      "apps": [
+       "fireflies-ai",
+       "fansa",
+       "productboard"
+      ],
+      "out": "Call insights captured"
+     },
+     {
+      "role": "ENGINEERING",
+      "apps": [
+       "linear",
+       "fansa",
+       "intercom"
+      ],
+      "out": "Shipped → customers told"
+     },
+     {
+      "role": "PRODUCT",
+      "apps": [
+       "productboard",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Top demand each sprint"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **every request, counted.**",
+    "b": "Tagged in Intercom → AI summary → matched Productboard feature → customer attached.",
+    "apps": [
+     "intercom",
+     "fansa",
+     "productboard"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "A roadmap **your customers would recognise.**",
+    "save": "Save this for your next roadmap review."
+   }
+  ]
+ },
+ {
+  "id": "t12",
+  "day": 26,
+  "tier": "Team",
+  "who": "RECRUITMENT AGENCY OWNERS",
+  "file": "recruitment-speed",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run a recruitment agency? If top candidates accept elsewhere, **this is for you.**",
+    "b": "Here's how faster agencies win the placement →"
+   },
+   {
+    "t": "obst",
+    "h": "In recruitment, **the first credible reply usually wins.**",
+    "l": [
+     "Applicants waiting days for contact",
+     "Interview feedback chased by phone",
+     "Placed candidates' contracts chased"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Every day of silence **hands the candidate to a competitor.**",
+    "l": [
+     "Fees lost after the work",
+     "Clients trusting other agencies",
+     "Recruiters doing admin, not calls"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **reply first, every time.**",
+    "lab": "YOUR RECRUITMENT LEAD WRITES IT ONCE",
+    "b": "When a new applicant comes in through Fountain, score them against the job, text a SavvyCal screening link with Twilio and add them to Attio."
+   },
+   {
+    "t": "team",
+    "h": "Sourcing, client side, compliance. **No candidate left waiting.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one candidate table",
+    "lanes": [
+     {
+      "role": "RECRUITERS",
+      "apps": [
+       "fountain",
+       "fansa",
+       "twilio",
+       "attio"
+      ],
+      "out": "Scored and booked same day"
+     },
+     {
+      "role": "CLIENT LEADS",
+      "apps": [
+       "greenhouse",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Feedback chased for you"
+     },
+     {
+      "role": "PLACEMENTS",
+      "apps": [
+       "greenhouse",
+       "docusign",
+       "attio"
+      ],
+      "out": "Hired → contract out"
+     },
+     {
+      "role": "COMPLIANCE",
+      "apps": [
+       "docusign",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Every document on file"
+     }
+    ]
+   },
+   {
+    "t": "sol",
+    "h": "Zoom into one lane: **applied, then booked.**",
+    "b": "Fountain applicant → scored against the job → SavvyCal link by Twilio → added to Attio."
+   },
+   {
+    "t": "cta",
+    "h": "Placements won **on speed, not luck.**",
+    "save": "Save this for your next team meeting.",
+    "price": "Team plan · $149/month, built for recruitment teams"
+   }
+  ],
+  "shot": "i05"
+ },
+ {
+  "id": "t13",
+  "day": 29,
+  "tier": "Team",
+  "who": "PARTNERSHIP LEADERS",
+  "file": "partner-activation",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Lead partnerships? If signed partners never produce revenue, **this is for you.**",
+    "b": "Here's how partner teams activate the network →"
+   },
+   {
+    "t": "obst",
+    "h": "Partners sign with enthusiasm. **Then hear nothing for weeks.**",
+    "l": [
+     "No onboarding after the agreement",
+     "Referrals tracked in spreadsheets",
+     "Payouts calculated by hand"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "An unactivated partner **is a channel you paid for and never used.**",
+    "l": [
+     "Co-selling that never starts",
+     "Partner trust eroding",
+     "Revenue left on the table"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **activate every partner from day one.**",
+    "lab": "YOUR PARTNER MANAGER WRITES IT ONCE",
+    "b": "When a partner agreement is signed in Docusign, add them to Attio, create their tracked Dub link and start the Lemlist welcome sequence."
+   },
+   {
+    "t": "team",
+    "h": "Partner managers, marketing, finance. **Activation on rails.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one partner table",
+    "lanes": [
+     {
+      "role": "PARTNER MANAGER",
+      "apps": [
+       "docusign",
+       "attio",
+       "lemlist"
+      ],
+      "out": "Signed → onboarded"
+     },
+     {
+      "role": "MARKETING",
+      "apps": [
+       "attio",
+       "dub",
+       "fansa"
+      ],
+      "out": "Tracked link for each partner"
+     },
+     {
+      "role": "FINANCE",
+      "apps": [
+       "stripe",
+       "fansa",
+       "airtable"
+      ],
+      "out": "Payouts calculated monthly"
+     },
+     {
+      "role": "LEADERSHIP",
+      "apps": [
+       "airtable",
+       "fansa",
+       "microsoft-teams"
+      ],
+      "out": "Partner revenue weekly"
+     }
+    ]
+   },
+   {
+    "t": "flow",
+    "h": "Zoom into one lane: **signed means started.**",
+    "b": "Agreement signed → partner in Attio → tracked Dub link → Lemlist welcome sequence begins.",
+    "apps": [
+     "docusign",
+     "attio",
+     "dub",
+     "lemlist"
+    ]
+   },
+   {
+    "t": "cta",
+    "h": "A partner network **that actually sells.**",
+    "save": "Save this for your next partner review."
+   }
+  ]
+ }
+]

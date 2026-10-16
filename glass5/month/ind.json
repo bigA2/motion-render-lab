@@ -1,0 +1,71 @@
+[
+ {
+  "id": "p01", "day": 7, "tier": "Individual", "who": "SOCIAL MEDIA MANAGERS", "pal": 1, "shot": "i03",
+  "file": "social-media-manager-individual-carousel",
+  "s": [
+   {"t": "hook", "h": "Social media manager? If \"approved\" means another evening's work, **this is for you.**", "b": "Here's how solo social managers close that gap →"},
+   {"t": "obst", "h": "Approval should be the finish line. **For most of us, it's the start.**",
+    "l": ["Each caption rewritten per channel", "Each graphic exported once more", "Each post queued one network at a time"]},
+   {"t": "cost", "h": "Now multiply one approved post by **every client, every week.**",
+    "l": ["Evenings that never get billed", "Posts that miss their best hour", "New ideas waiting behind the queue"]},
+   {"t": "intro", "h": "Here's how we **close the gap after approval.**", "lab": "YOU WRITE IT ONCE",
+    "b": "When a card moves to Client Approved in Trello, write captions for each channel, render the graphic in Bannerbear and queue it in Buffer."},
+   {"t": "sol", "h": "Approved in Trello. **Queued in Buffer.** Nothing in between.",
+    "b": "Captions per channel and a Bannerbear graphic, made on the way. You approve it, then it runs."},
+   {"t": "cta", "h": "Built for one person **running many accounts.**", "save": "Save this for your next content day.",
+    "price": "Pro plan · $45/month for individuals running client accounts"}
+  ]
+ },
+ {
+  "id": "p02", "day": 14, "tier": "Individual", "who": "INDEPENDENT RECRUITERS", "pal": 2,
+  "file": "independent-recruiter-individual-carousel",
+  "s": [
+   {"t": "hook", "h": "Independent recruiter? If call details fade before the client call, **this is for you.**", "b": "Here's how solo recruiters keep every detail →"},
+   {"t": "obst", "h": "The best details come up on the call. **Few of them reach the tracker.**",
+    "l": ["Notes scribbled while still listening", "Salary and notice period half-remembered", "The next call already ringing"]},
+   {"t": "cost", "h": "The more candidates you speak to, **the less of each one you keep.**",
+    "l": ["Client calls with gaps in the story", "The same questions asked twice", "Strong people pitched a little flat"]},
+   {"t": "intro", "h": "Here's how we **keep every call on record.**", "lab": "YOU WRITE IT ONCE",
+    "b": "When a candidate call ends on OpenPhone, transcribe it and add the key notes to their Airtable record."},
+   {"t": "flow", "h": "Call ends. **Notes are already on the candidate.**",
+    "b": "OpenPhone hands the recording over, AssemblyAI transcribes it, and the summary lands in Airtable before your next call.",
+    "apps": ["open-phone", "assemblyai", "fansa", "airtable"]},
+   {"t": "cta", "h": "Walk into every client call **with the full picture.**", "save": "Save this for your next shortlist."}
+  ]
+ },
+ {
+  "id": "p03", "day": 21, "tier": "Individual", "who": "COACHES", "pal": 3,
+  "file": "coach-individual-carousel",
+  "s": [
+   {"t": "hook", "h": "Coach? If sessions end with thirty minutes of write-up, **this is for you.**", "b": "Here's how independent coaches hand that back →"},
+   {"t": "obst", "h": "The session ends at the hour. **The follow-up runs well past it.**",
+    "l": ["Notes typed from memory afterwards", "Actions rewritten into a message", "The recap posted when time allows"]},
+   {"t": "cost", "h": "Meanwhile, the momentum from the call **cools a little more each hour.**",
+    "l": ["Clients unsure what they agreed", "Recaps that arrive the next day", "Fewer sessions fit into the week"]},
+   {"t": "intro", "h": "Here's how we **clean up the after-session admin.**", "lab": "YOU WRITE IT ONCE",
+    "b": "When a coaching session is recorded in Fathom, write the summary in Google Docs and share it with the client in Circle."},
+   {"t": "flow", "h": "Session recorded. **Summary with the client** before they log off.",
+    "b": "Fathom captures the call, the AI drafts the summary in Google Docs, and Circle delivers it to the client.",
+    "apps": ["fathom", "fansa", "google-docs", "circle"]},
+   {"t": "cta", "h": "Hours back for **the coaching only you can do.**", "save": "Save this for your next client week."}
+  ]
+ },
+ {
+  "id": "p04", "day": 28, "tier": "Individual", "who": "SOLO CREATORS", "pal": 0,
+  "file": "solo-creator-individual-carousel",
+  "s": [
+   {"t": "hook", "h": "Solo creator? If each upload means sharing it by hand, **this is for you.**", "b": "Here's how one-person channels share every video →"},
+   {"t": "obst", "h": "The video is live. **The announcing has only just begun.**",
+    "l": ["A link pasted into Discord", "A post written again for Bluesky", "A thank-you to the regulars, later"]},
+   {"t": "cost", "h": "The first hours after posting matter most. **That's when you're busiest.**",
+    "l": ["Fans finding the video a day late", "Announcements skipped on tired days", "Editing time spent on posting"]},
+   {"t": "intro", "h": "Here's how we **remove the sharing round.**", "lab": "YOU WRITE IT ONCE",
+    "b": "When a new video goes live on YouTube, post it to my Discord and write a short Bluesky post with the link."},
+   {"t": "flow", "h": "Published on YouTube. **Announced everywhere** within the minute.",
+    "b": "The AI writes a short post for each place, then Discord and Bluesky go out together. Nothing waits for you to remember.",
+    "apps": ["youtube", "fansa", "discord", "bluesky"]},
+   {"t": "cta", "h": "Spend launch day **with your audience, not your tabs.**", "save": "Save this for your next upload.",
+    "price": "Starter from $15/month, built for one-person channels"}
+  ]
+ }
+]
