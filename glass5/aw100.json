@@ -1,0 +1,1482 @@
+[
+{
+"i": 1,
+"s": 1,
+"y": "sym",
+"w": "ACCOUNT MANAGERS",
+"g": "9:40 PM",
+"h": "Copying client form answers into ClickUp. **Again.**",
+"a": [
+"typeform",
+"clickup"
+],
+"t": 3,
+"k": "H4"
+},
+{
+"i": 2,
+"s": 1,
+"y": "check",
+"w": "AGENCY OWNERS",
+"h": "Do you do this **every Monday?**",
+"l": [
+"Pull numbers for each client",
+"Paste them into a report",
+"Email it before 10 AM"
+],
+"t": 5,
+"k": "H12"
+},
+{
+"i": 3,
+"s": 1,
+"y": "sym",
+"w": "SHOP OWNERS",
+"g": "NEW ORDER",
+"h": "Same clicks. Same tabs. **Every single order.**",
+"a": [
+"shopify",
+"shippo"
+],
+"t": 1,
+"k": "H9"
+},
+{
+"i": 4,
+"s": 1,
+"y": "num",
+"w": "RECRUITERS",
+"g": "3",
+"h": "things you retype for **every applicant**",
+"l": [
+"Name and role into Attio",
+"A booking link by text",
+"A note for the client"
+],
+"a": [
+"attio",
+"twilio"
+],
+"t": 5,
+"k": "H1"
+},
+{
+"i": 5,
+"s": 1,
+"y": "sym",
+"w": "SALON OWNERS",
+"g": "EMPTY CHAIR",
+"h": "A client cancels. You find out **when the chair is empty.**",
+"a": [
+"simplybook-me"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 6,
+"s": 1,
+"y": "check",
+"w": "SUPPORT AGENTS",
+"h": "Count how often you do this **this week.**",
+"l": [
+"Copy a bug ticket into Jira",
+"Paste the customer's steps",
+"Link it back by hand"
+],
+"a": [
+"zendesk",
+"jira-cloud"
+],
+"t": 5,
+"k": "H12"
+},
+{
+"i": 7,
+"s": 1,
+"y": "sym",
+"w": "PLUMBERS & HVAC",
+"g": "MISSED CALL",
+"h": "You were under a sink. **They called the next plumber.**",
+"a": [
+"voipstudio"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 8,
+"s": 1,
+"y": "num",
+"w": "SOCIAL MEDIA MANAGERS",
+"g": "4",
+"h": "tabs open to post **one** approved graphic",
+"l": [
+"Trello for the approval",
+"Canva for the graphic",
+"Buffer for the queue",
+"A doc for the caption"
+],
+"a": [
+"trello",
+"canva",
+"buffer"
+],
+"t": 3,
+"k": "H1"
+},
+{
+"i": 9,
+"s": 1,
+"y": "sym",
+"w": "REAL ESTATE AGENTS",
+"g": "2 HOURS",
+"h": "How long your website lead **waited for a call** today.",
+"a": [
+"leadconnector"
+],
+"t": 3,
+"k": "H4"
+},
+{
+"i": 10,
+"s": 1,
+"y": "check",
+"w": "OPERATIONS MANAGERS",
+"h": "If this is your Friday, **read twice.**",
+"l": [
+"Chase three teams for updates",
+"Copy them into one sheet",
+"Send the same summary again"
+],
+"t": 2,
+"k": "H7"
+},
+{
+"i": 11,
+"s": 1,
+"y": "sym",
+"w": "RESTAURANT OWNERS",
+"g": "1★",
+"h": "A bad review sat there **all weekend.** Everyone saw it but you.",
+"a": [
+"google-my-business"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 12,
+"s": 1,
+"y": "num",
+"w": "SALES REPS",
+"g": "5",
+"h": "minutes per lead. **Every lead.** Every day.",
+"l": [
+"Find the company",
+"Create the contact",
+"Create the deal",
+"Tell your manager",
+"Set a reminder"
+],
+"a": [
+"pipedrive",
+"apollo"
+],
+"t": 5,
+"k": "H1"
+},
+{
+"i": 13,
+"s": 1,
+"y": "sym",
+"w": "CLINIC MANAGERS",
+"g": "NO-SHOW",
+"h": "The patient didn't come. **Nobody texted to rebook.**",
+"a": [
+"oncehub",
+"twilio"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 14,
+"s": 1,
+"y": "check",
+"w": "HR MANAGERS",
+"h": "A new hire starts Monday. **Did you remember all of it?**",
+"l": [
+"Accounts and logins",
+"The welcome email",
+"The policy pack to sign"
+],
+"a": [
+"okta",
+"docusign"
+],
+"t": 4,
+"k": "H7"
+},
+{
+"i": 15,
+"s": 1,
+"y": "sym",
+"w": "EVENT PLANNERS",
+"g": "REGISTERED",
+"h": "Someone signed up. You still have to **copy them in four places.**",
+"a": [
+"airtable",
+"google-calendar"
+],
+"t": 1,
+"k": "H9"
+},
+{
+"i": 16,
+"s": 1,
+"y": "num",
+"w": "PROJECT MANAGERS",
+"g": "0",
+"h": "tasks came out of **an hour-long call**",
+"l": [
+"Everyone agreed",
+"Nobody wrote it down",
+"Next week: same call"
+],
+"a": [
+"zoom",
+"asana"
+],
+"t": 4,
+"k": "H1"
+},
+{
+"i": 17,
+"s": 1,
+"y": "sym",
+"w": "GYM OWNERS",
+"g": "CANCELLED",
+"h": "A member left. **Nobody asked why.**",
+"a": [
+"chargebee"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 18,
+"s": 1,
+"y": "check",
+"w": "BOOKKEEPERS",
+"h": "Is this **your first hour** every day?",
+"l": [
+"Open every client upload",
+"Rename and file it",
+"Make a task for each one"
+],
+"a": [
+"microsoft-onedrive",
+"microsoft-sharepoint"
+],
+"t": 3,
+"k": "H12"
+},
+{
+"i": 19,
+"s": 1,
+"y": "sym",
+"w": "SEO WRITERS",
+"g": "DROP",
+"h": "Your best page lost clicks **a month ago.** You found out today.",
+"a": [
+"google-search-console"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 20,
+"s": 1,
+"y": "num",
+"w": "VIDEO EDITORS",
+"g": "1",
+"h": "last job after every cut: **the subtitles.** By hand.",
+"l": [
+"Transcribe",
+"Fix the timing",
+"Send to the client"
+],
+"a": [
+"frame",
+"dropbox"
+],
+"t": 3,
+"k": "H1"
+},
+{
+"i": 21,
+"s": 1,
+"y": "sym",
+"w": "LAW FIRMS",
+"g": "INTAKE",
+"h": "A new client filled the form. **It's still in the inbox.**",
+"a": [
+"cognito-forms",
+"mycase"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 22,
+"s": 1,
+"y": "check",
+"w": "CUSTOMER SUCCESS",
+"h": "Which of these did you **forget this month?**",
+"l": [
+"The check-in after onboarding",
+"The renewal reminder",
+"The thank-you after a 5★"
+],
+"t": 4,
+"k": "H12"
+},
+{
+"i": 23,
+"s": 1,
+"y": "sym",
+"w": "TUTORING CENTRES",
+"g": "TRIAL",
+"h": "A parent asked for a trial class. **They waited two days.**",
+"a": [
+"paperform"
+],
+"t": 3,
+"k": "H3"
+},
+{
+"i": 24,
+"s": 1,
+"y": "num",
+"w": "PR TEAMS",
+"g": "6",
+"h": "news sites you check **by hand** for each client",
+"l": [
+"Every morning",
+"For every client",
+"Then log it somewhere"
+],
+"a": [
+"airtable",
+"microsoft-teams"
+],
+"t": 1,
+"k": "H1"
+},
+{
+"i": 25,
+"s": 1,
+"y": "sym",
+"w": "IT HELPDESK",
+"g": "PASSWORD",
+"h": "The same reset ticket. **The fifth time today.**",
+"a": [
+"freshservice",
+"okta"
+],
+"t": 1,
+"k": "H9"
+},
+{
+"i": 26,
+"s": 1,
+"y": "check",
+"w": "WEB AGENCIES",
+"h": "Client feedback lives in **how many places?**",
+"l": [
+"Figma comments",
+"Email threads",
+"A call you half-remember"
+],
+"a": [
+"figma",
+"linear"
+],
+"t": 3,
+"k": "H12"
+},
+{
+"i": 27,
+"s": 1,
+"y": "sym",
+"w": "ONLINE SHOPS",
+"g": "CART",
+"h": "They left a full cart. **You never followed up.**",
+"a": [
+"shopify",
+"klaviyo"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 28,
+"s": 1,
+"y": "num",
+"w": "TEAM LEADS",
+"g": "1",
+"h": "person on your team **knows how the automations work**",
+"l": [
+"They're on holiday",
+"Something broke",
+"Everyone waits"
+],
+"t": 15,
+"k": "H1"
+},
+{
+"i": 29,
+"s": 1,
+"y": "sym",
+"w": "PARTNERSHIP MANAGERS",
+"g": "NEW PARTNER",
+"h": "They signed up to promote you. **No one said hello.**",
+"a": [
+"attio",
+"lemlist"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 30,
+"s": 1,
+"y": "check",
+"w": "FINANCE TEAMS",
+"h": "How many bills did you **type in by hand** this week?",
+"l": [
+"Open the attachment",
+"Copy the numbers",
+"Create the draft bill"
+],
+"a": [
+"microsoft-outlook",
+"xero"
+],
+"t": 5,
+"k": "H12"
+},
+{
+"i": 31,
+"s": 2,
+"y": "still",
+"w": "ACCOUNT MANAGERS",
+"h": "Still setting up every new client **by hand?**",
+"l": [
+"Make the project, the folder, move the deal. Every time.",
+"Contract signed → everything set up."
+],
+"a": [
+"docusign",
+"clickup",
+"hubspot"
+],
+"t": 2,
+"k": "H5"
+},
+{
+"i": 32,
+"s": 2,
+"y": "loss",
+"w": "SALES TEAMS",
+"h": "The follow-up you forgot **is the customer you lost.**",
+"a": [
+"pipedrive",
+"aircall"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 33,
+"s": 2,
+"y": "myth",
+"w": "SMALL BUSINESS OWNERS",
+"h": "Automation is only for **big companies.**",
+"b": "Actually, no. If you can write one sentence, you can automate it.",
+"t": 14,
+"k": "H8"
+},
+{
+"i": 34,
+"s": 2,
+"y": "loss",
+"w": "PLUMBERS & HVAC",
+"h": "Every missed call is **a job you paid to advertise.**",
+"a": [
+"voipstudio",
+"housecall-pro"
+],
+"t": 1,
+"k": "H9"
+},
+{
+"i": 35,
+"s": 2,
+"y": "still",
+"w": "SUPPORT TEAMS",
+"h": "Still retyping bug tickets **for the developers?**",
+"l": [
+"Copy, paste, link back, update the customer.",
+"Tag it bug → the issue writes itself."
+],
+"a": [
+"zendesk",
+"jira-cloud"
+],
+"t": 2,
+"k": "H5"
+},
+{
+"i": 36,
+"s": 2,
+"y": "num",
+"w": "AGENCY TEAMS",
+"g": "3",
+"h": "handoffs where **client work gets lost**",
+"l": [
+"Sales → onboarding",
+"Call → tasks",
+"Done → client told"
+],
+"a": [
+"hubspot",
+"clickup",
+"fireflies-ai"
+],
+"t": 15,
+"k": "H1"
+},
+{
+"i": 37,
+"s": 2,
+"y": "loss",
+"w": "SALON & SPA OWNERS",
+"h": "An empty slot you could have **filled in five minutes.**",
+"a": [
+"simplybook-me",
+"heymarket-sms"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 38,
+"s": 2,
+"y": "myth",
+"w": "TEAM LEADS",
+"h": "We need to hire **an automation person.**",
+"b": "Or every person on your team describes their own flow.",
+"t": 15,
+"k": "H8"
+},
+{
+"i": 39,
+"s": 2,
+"y": "still",
+"w": "ONLINE SHOPS",
+"h": "Still answering **\"where's my order?\"** one by one?",
+"l": [
+"Find the order, find the tracking, reply.",
+"Asked on WhatsApp → answered with tracking."
+],
+"a": [
+"respond-io",
+"shopify",
+"shippo"
+],
+"t": 2,
+"k": "H5",
+"note": "WhatsApp connects via Respond.io"
+},
+{
+"i": 40,
+"s": 2,
+"y": "loss",
+"w": "RECRUITERS",
+"h": "The best applicant **didn't wait for your reply.**",
+"a": [
+"fountain",
+"greenhouse"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 41,
+"s": 2,
+"y": "num",
+"w": "MARKETING TEAMS",
+"g": "5",
+"h": "jobs that happen **after every new post**",
+"l": [
+"Thread on X",
+"Card for LinkedIn",
+"Newsletter line",
+"Team heads-up",
+"Log it"
+],
+"a": [
+"wordpress",
+"buffer",
+"mailchimp"
+],
+"t": 1,
+"k": "H1"
+},
+{
+"i": 42,
+"s": 2,
+"y": "still",
+"w": "REAL ESTATE AGENTS",
+"h": "Still calling web leads **hours later?**",
+"l": [
+"See it, find it, call it, log it.",
+"New lead → texted in a minute."
+],
+"a": [
+"leadconnector",
+"twilio"
+],
+"t": 2,
+"k": "H5"
+},
+{
+"i": 43,
+"s": 2,
+"y": "loss",
+"w": "RESTAURANT OWNERS",
+"h": "An unanswered review **talks to every new customer.**",
+"a": [
+"google-my-business"
+],
+"t": 4,
+"k": "H9"
+},
+{
+"i": 44,
+"s": 2,
+"y": "myth",
+"w": "OPERATIONS MANAGERS",
+"h": "Copy-paste is **just part of the job.**",
+"b": "It's the part of the job a sentence can do.",
+"t": 14,
+"k": "H8"
+},
+{
+"i": 45,
+"s": 2,
+"y": "still",
+"w": "SOCIAL MEDIA AGENCIES",
+"h": "Still scheduling approved posts **at 11 PM?**",
+"l": [
+"Approve, write, design, queue. By hand.",
+"Approved → captioned → queued."
+],
+"a": [
+"trello",
+"bannerbear",
+"buffer"
+],
+"t": 2,
+"k": "H5"
+},
+{
+"i": 46,
+"s": 2,
+"y": "loss",
+"w": "GYM OWNERS",
+"h": "The member who left **would have stayed for one message.**",
+"a": [
+"chargebee",
+"activecampaign"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 47,
+"s": 2,
+"y": "num",
+"w": "HR TEAMS",
+"g": "7",
+"h": "things every new starter needs **on day one**",
+"l": [
+"Account",
+"Laptop ticket",
+"Welcome note",
+"Policy pack",
+"Course",
+"Calendar invites",
+"Buddy intro"
+],
+"a": [
+"okta",
+"docusign"
+],
+"t": 4,
+"k": "H1"
+},
+{
+"i": 48,
+"s": 2,
+"y": "still",
+"w": "SEO AGENCIES",
+"h": "Still finding ranking drops **when the client does?**",
+"l": [
+"Check every page, every week, by hand.",
+"Lost clicks → a refresh task, every Monday."
+],
+"a": [
+"google-search-console",
+"teamwork"
+],
+"t": 2,
+"k": "H5"
+},
+{
+"i": 49,
+"s": 2,
+"y": "loss",
+"w": "LAW FIRMS",
+"h": "A slow reply to an intake form **is a client for the firm next door.**",
+"a": [
+"cognito-forms",
+"mycase"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 50,
+"s": 2,
+"y": "myth",
+"w": "FOUNDERS",
+"h": "Automation means **learning a builder.**",
+"b": "Drag boxes. Connect lines. Debug. Or: type what you want.",
+"t": 14,
+"k": "H8"
+},
+{
+"i": 51,
+"s": 2,
+"y": "still",
+"w": "CLINICS & DENTISTS",
+"h": "Still phoning **every no-show** yourself?",
+"l": [
+"Notice, look up, call, rebook.",
+"No-show → a rebooking text."
+],
+"a": [
+"oncehub",
+"twilio"
+],
+"t": 2,
+"k": "H5"
+},
+{
+"i": 52,
+"s": 2,
+"y": "loss",
+"w": "AGENCY OWNERS",
+"h": "The report that's late **is the client asking questions.**",
+"a": [
+"google-search-console",
+"google-docs"
+],
+"t": 4,
+"k": "H9"
+},
+{
+"i": 53,
+"s": 2,
+"y": "num",
+"w": "PROJECT MANAGERS",
+"g": "4",
+"h": "places one decision **has to be written**",
+"l": [
+"The task",
+"The client note",
+"The team channel",
+"The calendar"
+],
+"a": [
+"asana",
+"hubspot",
+"microsoft-teams"
+],
+"t": 1,
+"k": "H1"
+},
+{
+"i": 54,
+"s": 2,
+"y": "still",
+"w": "EVENT TEAMS",
+"h": "Still copying registrations **into the guest list?**",
+"l": [
+"Copy, add to the list, send the invite.",
+"Registered → listed → invited."
+],
+"a": [
+"airtable",
+"addevent"
+],
+"t": 2,
+"k": "H5"
+},
+{
+"i": 55,
+"s": 2,
+"y": "loss",
+"w": "ONLINE SHOPS",
+"h": "A happy buyer **you never asked for a review.**",
+"a": [
+"shopify",
+"klaviyo"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 56,
+"s": 2,
+"y": "myth",
+"w": "SMALL TEAMS",
+"h": "We're too small **to automate.**",
+"b": "Small teams feel every copy-paste the most.",
+"t": 8,
+"k": "H8"
+},
+{
+"i": 57,
+"s": 2,
+"y": "still",
+"w": "SALES TEAMS",
+"h": "Still typing call notes **into the CRM?**",
+"l": [
+"Listen back, write up, paste in.",
+"Call ends → notes in the deal."
+],
+"a": [
+"aircall",
+"pipedrive"
+],
+"t": 2,
+"k": "H5"
+},
+{
+"i": 58,
+"s": 2,
+"y": "loss",
+"w": "IT TEAMS",
+"h": "The alert nobody saw **became the outage everyone saw.**",
+"a": [
+"pagerduty",
+"freshservice"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 59,
+"s": 2,
+"y": "num",
+"w": "ACCOUNTANTS",
+"g": "3",
+"h": "steps for **every document** a client sends",
+"l": [
+"Read it",
+"File it",
+"Make the task"
+],
+"a": [
+"microsoft-onedrive",
+"microsoft-sharepoint"
+],
+"t": 5,
+"k": "H1"
+},
+{
+"i": 60,
+"s": 2,
+"y": "still",
+"w": "CONTENT TEAMS",
+"h": "Still sharing every new post **one network at a time?**",
+"l": [
+"Publish, then post it 4 times.",
+"Published → shared everywhere."
+],
+"a": [
+"wordpress",
+"buffer"
+],
+"t": 2,
+"k": "H5"
+},
+{
+"i": 61,
+"s": 2,
+"y": "loss",
+"w": "TUTORING CENTRES",
+"h": "The parent who waited **booked somewhere else.**",
+"a": [
+"paperform",
+"calendly"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 62,
+"s": 2,
+"y": "myth",
+"w": "AGENCY TEAMS",
+"h": "Our tools **don't talk to each other.**",
+"b": "They can. 700+ apps, joined by one sentence.",
+"t": 9,
+"k": "H8"
+},
+{
+"i": 63,
+"s": 2,
+"y": "still",
+"w": "FINANCE TEAMS",
+"h": "Still entering **supplier bills** by hand?",
+"l": [
+"Open, read, type, save.",
+"Bill arrives → draft is ready."
+],
+"a": [
+"microsoft-outlook",
+"xero"
+],
+"t": 2,
+"k": "H5"
+},
+{
+"i": 64,
+"s": 2,
+"y": "loss",
+"w": "CREATIVE STUDIOS",
+"h": "One lost comment **becomes one more revision round.**",
+"a": [
+"frame",
+"wrike"
+],
+"t": 4,
+"k": "H3"
+},
+{
+"i": 65,
+"s": 2,
+"y": "num",
+"w": "CUSTOMER SUPPORT",
+"g": "2",
+"h": "stars. **And nobody read why.**",
+"l": [
+"Low rating comes in",
+"Lead never sees it",
+"Same problem next week"
+],
+"a": [
+"intercom",
+"help-scout"
+],
+"t": 4,
+"k": "H1"
+},
+{
+"i": 66,
+"s": 3,
+"y": "old",
+"w": "AGENCY TEAMS",
+"h": "Drag boxes. Connect lines. Debug.",
+"b": "Or **type what you want.**",
+"l": [
+"Learn a builder",
+"Map every field",
+"Fix it when it breaks"
+],
+"t": 14,
+"k": "H6"
+},
+{
+"i": 67,
+"s": 3,
+"y": "sent",
+"w": "ACCOUNT MANAGERS",
+"h": "One sentence. **A new client, fully set up.**",
+"b": "When a contract is signed in Docusign, create the ClickUp project and Drive folder and move the HubSpot deal.",
+"a": [
+"docusign",
+"clickup",
+"google-drive",
+"hubspot"
+],
+"t": 6,
+"k": "H10"
+},
+{
+"i": 68,
+"s": 3,
+"y": "vs",
+"w": "SMALL BUSINESS OWNERS",
+"h": "Hire help, learn a builder, **or describe it?**",
+"l": [
+"Hire: weeks and a salary",
+"Builder: evenings of setup",
+"Describe it: one sentence"
+],
+"t": 14,
+"k": "H11"
+},
+{
+"i": 69,
+"s": 3,
+"y": "sent",
+"w": "SALON OWNERS",
+"h": "One sentence. **No more empty chairs.**",
+"b": "When a booking is cancelled in SimplyBook.me, text the waitlist clients that a slot just opened.",
+"a": [
+"simplybook-me",
+"heymarket-sms"
+],
+"t": 6,
+"k": "H10"
+},
+{
+"i": 70,
+"s": 3,
+"y": "old",
+"w": "OPERATIONS TEAMS",
+"h": "40 boxes on a canvas.",
+"b": "Or **one line in a chat.**",
+"l": [
+"Find the trigger",
+"Wire every step",
+"Test, fix, retest"
+],
+"t": 14,
+"k": "H6"
+},
+{
+"i": 71,
+"s": 3,
+"y": "sent",
+"w": "SALES TEAMS",
+"h": "One sentence. **Every \"interested\" becomes a deal.**",
+"b": "When a Woodpecker prospect replies interested, enrich it with Apollo, create the Pipedrive deal and ping the rep in Teams.",
+"a": [
+"woodpecker",
+"apollo",
+"pipedrive",
+"microsoft-teams"
+],
+"t": 6,
+"k": "H10"
+},
+{
+"i": 72,
+"s": 3,
+"y": "vs",
+"w": "TEAM LEADS",
+"h": "One automation person, **or everyone builds their own?**",
+"l": [
+"One person: a queue",
+"Everyone: their own flow",
+"Same shared data"
+],
+"t": 15,
+"k": "H11"
+},
+{
+"i": 73,
+"s": 3,
+"y": "sent",
+"w": "RESTAURANT OWNERS",
+"h": "One sentence. **Every review answered in your tone.**",
+"b": "When we get a new Google review, draft a reply in our tone and give the manager a To Do task to approve it.",
+"a": [
+"google-my-business",
+"microsoft-todo"
+],
+"t": 6,
+"k": "H10"
+},
+{
+"i": 74,
+"s": 3,
+"y": "old",
+"w": "SUPPORT LEADS",
+"h": "Write a spec. Wait for IT. Wait again.",
+"b": "Or **describe the flow yourself.**",
+"l": [
+"Ticket to IT",
+"A week in a queue",
+"Not quite what you meant"
+],
+"t": 15,
+"k": "H6"
+},
+{
+"i": 75,
+"s": 3,
+"y": "sent",
+"w": "PLUMBERS & HVAC",
+"h": "One sentence. **No missed call goes unanswered.**",
+"b": "When we miss a call, text the caller a booking link and create a job request in Housecall Pro.",
+"a": [
+"voipstudio",
+"twilio",
+"housecall-pro"
+],
+"t": 6,
+"k": "H10"
+},
+{
+"i": 76,
+"s": 3,
+"y": "vs",
+"w": "AGENCY OWNERS",
+"h": "Another app, **or your evenings back?**",
+"l": [
+"Another app: another login",
+"Your evenings: one sentence",
+"Same 700+ apps you use"
+],
+"t": 6,
+"k": "H11"
+},
+{
+"i": 77,
+"s": 3,
+"y": "sent",
+"w": "RECRUITERS",
+"h": "One sentence. **Applicants hear back the moment they apply.**",
+"b": "When a new applicant comes in through Fountain, score them, text a SavvyCal link with Twilio and add them to Attio.",
+"a": [
+"fountain",
+"twilio",
+"savvycal",
+"attio"
+],
+"t": 6,
+"k": "H10"
+},
+{
+"i": 78,
+"s": 3,
+"y": "old",
+"w": "MARKETING TEAMS",
+"h": "Watch a 40-minute tutorial.",
+"b": "Or **write one sentence.**",
+"l": [
+"Pause, rewind",
+"Copy the settings",
+"Hope it matches yours"
+],
+"t": 14,
+"k": "H6"
+},
+{
+"i": 79,
+"s": 3,
+"y": "sent",
+"w": "ONLINE SHOPS",
+"h": "One sentence. **\"Where's my order?\" answers itself.**",
+"b": "When a customer asks on WhatsApp where their order is, look it up in Shopify, get the Shippo tracking and reply.",
+"a": [
+"respond-io",
+"shopify",
+"shippo"
+],
+"t": 6,
+"k": "H10",
+"note": "WhatsApp connects via Respond.io"
+},
+{
+"i": 80,
+"s": 3,
+"y": "vs",
+"w": "FOUNDERS",
+"h": "Build the flow, **or say the flow?**",
+"l": [
+"Build: hours in a canvas",
+"Say it: one sentence",
+"Then edit it by chat"
+],
+"t": 14,
+"k": "H11"
+},
+{
+"i": 81,
+"s": 3,
+"y": "sent",
+"w": "SUPPORT TEAMS",
+"h": "One sentence. **Bug tickets reach Jira by themselves.**",
+"b": "When a Zendesk ticket gets the bug tag, write the steps, open a Jira issue and link it back.",
+"a": [
+"zendesk",
+"jira-cloud"
+],
+"t": 6,
+"k": "H10"
+},
+{
+"i": 82,
+"s": 3,
+"y": "old",
+"w": "SMALL TEAMS",
+"h": "Ask the developer. **Wait two weeks.**",
+"b": "Or **ask in one sentence.**",
+"l": [
+"Explain the idea",
+"Wait for a slot",
+"Explain it again"
+],
+"t": 14,
+"k": "H6"
+},
+{
+"i": 83,
+"s": 3,
+"y": "sent",
+"w": "SEO AGENCIES",
+"h": "One sentence. **Ranking drops become tasks.**",
+"b": "Every Monday, find each client's pages that lost clicks in Search Console and create a refresh task in Teamwork.",
+"a": [
+"google-search-console",
+"teamwork"
+],
+"t": 6,
+"k": "H10"
+},
+{
+"i": 84,
+"s": 3,
+"y": "vs",
+"w": "HR MANAGERS",
+"h": "A checklist you might forget, **or a flow that won't?**",
+"l": [
+"Checklist: on you",
+"Flow: runs on day one",
+"You approve it first"
+],
+"t": 6,
+"k": "H11"
+},
+{
+"i": 85,
+"s": 3,
+"y": "sent",
+"w": "EVENT TEAMS",
+"h": "One sentence. **Every registration, everywhere.**",
+"b": "When someone registers in Sessions.us, add them to our Airtable guest list and send an AddEvent invite.",
+"a": [
+"sessions-us",
+"airtable",
+"addevent"
+],
+"t": 6,
+"k": "H10"
+},
+{
+"i": 86,
+"s": 4,
+"y": "fact",
+"w": "DOES IT WORK WITH MY TOOLS?",
+"h": "**700+ apps.** The ones your team already uses.",
+"a": [
+"hubspot",
+"shopify",
+"pipedrive",
+"zendesk",
+"clickup",
+"stripe"
+],
+"t": 9,
+"k": "H8"
+},
+{
+"i": 87,
+"s": 4,
+"y": "fact",
+"w": "WHERE DO I START?",
+"h": "**478 templates.** Sorted by the job you do.",
+"l": [
+"Agencies",
+"Sales & support teams",
+"Shops, clinics, salons"
+],
+"t": 9,
+"k": "H1"
+},
+{
+"i": 88,
+"s": 4,
+"y": "story",
+"w": "WHO BUILT IT?",
+"h": "**Bangladesh's first** AI workflow builder.",
+"b": "Built by one founder. Ask anything in the community.",
+"t": 10,
+"k": "H10"
+},
+{
+"i": 89,
+"s": 4,
+"y": "fact",
+"w": "WILL IT RUN WITHOUT ME CHECKING?",
+"h": "Nothing runs **until you approve it.**",
+"l": [
+"See every step first",
+"Change it by chat",
+"Then approve"
+],
+"t": 9,
+"k": "H8"
+},
+{
+"i": 90,
+"s": 4,
+"y": "fact",
+"w": "WHOSE LOGINS DOES IT USE?",
+"h": "**Your own** app logins. You stay in control.",
+"l": [
+"Bring your own credentials",
+"Open-source engine core",
+"You control every connection"
+],
+"t": 9,
+"k": "H8"
+},
+{
+"i": 91,
+"s": 4,
+"y": "fact",
+"w": "CAN MY WHOLE TEAM USE IT?",
+"h": "**Each role** gets its own flow.",
+"l": [
+"Sales starts theirs",
+"Ops starts theirs",
+"Same shared tables"
+],
+"t": 15,
+"k": "H8"
+},
+{
+"i": 92,
+"s": 4,
+"y": "fact",
+"w": "WHAT IF IT GETS IT WRONG?",
+"h": "**Change it by chat.** It edits, not restarts.",
+"l": [
+"\"Also tell the manager\"",
+"\"Wait 2 days first\"",
+"\"Only for big orders\""
+],
+"t": 9,
+"k": "H8"
+},
+{
+"i": 93,
+"s": 4,
+"y": "fact",
+"w": "WHAT DOES IT LOOK LIKE?",
+"h": "See your flow **four ways.** Pick the one you read best.",
+"l": [
+"Left to right",
+"Top to bottom",
+"Snake and radial"
+],
+"t": 9,
+"k": "H10"
+},
+{
+"i": 94,
+"s": 4,
+"y": "story",
+"w": "WHY ONE SENTENCE?",
+"h": "Because the people who need automation **aren't builders.**",
+"b": "Shop owners, agents, recruiters. They know the job. Now they can describe it.",
+"t": 8,
+"k": "H10"
+},
+{
+"i": 95,
+"s": 4,
+"y": "fact",
+"w": "WHAT KINDS OF WORK?",
+"h": "From **missed calls** to **client onboarding.**",
+"a": [
+"voipstudio",
+"docusign",
+"shopify",
+"zendesk",
+"fountain",
+"google-my-business"
+],
+"t": 9,
+"k": "H1"
+},
+{
+"i": 96,
+"s": 5,
+"y": "cta",
+"w": "EARLY ACCESS",
+"h": "The waitlist **goes first.** That's the perk, and it's real.",
+"t": 7,
+"k": "H10"
+},
+{
+"i": 97,
+"s": 5,
+"y": "cta",
+"w": "COMMUNITY",
+"h": "Tell us the one task **you'd automate first.**",
+"b": "We'll show you the sentence for it in the community.",
+"t": 12,
+"k": "H11"
+},
+{
+"i": 98,
+"s": 5,
+"y": "cta",
+"w": "FOR TEAMS",
+"h": "Bring your team in **early.**",
+"b": "Every role gets its own flow on day one.",
+"t": 8,
+"k": "H10"
+},
+{
+"i": 99,
+"s": 5,
+"y": "cta",
+"w": "ASK US ANYTHING",
+"h": "Questions? **The founder answers them.**",
+"b": "Join the FansaChat Community on Telegram.",
+"t": 10,
+"k": "H11"
+},
+{
+"i": 100,
+"s": 5,
+"y": "cta",
+"w": "FANSACHAT",
+"h": "Describe it. **We build it.** You approve it.",
+"b": "700+ apps · 478 templates · one sentence",
+"t": 9,
+"k": "H10"
+}
+]
