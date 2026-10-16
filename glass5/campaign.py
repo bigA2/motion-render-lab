@@ -93,11 +93,11 @@ BODY = f"""<body>
 <!-- left column -->
 <div class="abs" style="left:56px;top:44px;display:flex;align-items:center;gap:12px"><img src="{LOGO}" style="width:40px;height:40px">
  <span data-rank="5" style="font-family:Sora;font-weight:300;font-size:18px;letter-spacing:.28em;color:{DEEP}">FANSACHAT</span></div>
-<div class="abs" data-rank="5" style="left:56px;top:112px;width:680px;font-size:14px;font-weight:700;letter-spacing:.16em;color:{VIO}">FOR CUSTOMER SUPPORT AGENTS · SOCIAL MEDIA MANAGERS · AGENCIES · ONLINE SHOPS</div>
+<div class="abs" data-rank="5" style="left:56px;top:112px;width:780px;font-size:13px;font-weight:700;letter-spacing:.1em;white-space:nowrap;color:{VIO}">FOR CUSTOMER SUPPORT AGENTS · SOCIAL MEDIA MANAGERS · AGENCIES · ONLINE SHOPS</div>
 <div class="abs" data-rank="1" style="left:52px;top:146px;width:700px;font-family:Sora;font-weight:300;font-size:70px;line-height:1.04;letter-spacing:.02em;color:{INK}">ANSWERING DMs<br>
  <span style="font-weight:700;background:linear-gradient(90deg,{VIO},{MAIN});-webkit-background-clip:text;background-clip:text;color:transparent">ALL DAY?</span></div>
 <div class="abs" data-rank="3" style="left:56px;top:306px;width:640px;font-family:DMSerif;font-size:32px;line-height:1.18;color:{INK}">Here's how to run <span style="background:linear-gradient(transparent 58%,#D9CFFF 58%,#D9CFFF 92%,transparent 92%);color:{DEEP}">Instagram &amp; Messenger</span> on autopilot.</div>
-<div class="abs" data-rank="4" style="left:56px;top:394px;width:640px;font-size:17px;line-height:1.45;color:#4A4A66">FansaChat links Instagram, Messenger and WhatsApp to Shopify, Zendesk, HubSpot and Slack. Describe it in one sentence; it builds the workflow.</div>
+<div class="abs" data-rank="4" style="left:56px;top:394px;width:640px;font-size:18px;line-height:1.45;color:#4A4A66">FansaChat links Instagram, Messenger and WhatsApp to Shopify, Zendesk, HubSpot and Slack. Describe it in one sentence; it builds the workflow.</div>
 <div class="abs" style="left:56px;top:460px;width:560px">
  {callout(['instagram-business', 'facebook-pages', 'whatsapp'], 'New DM on Instagram, Messenger or WhatsApp')}
  {callout(['openai'], 'AI drafts the reply in your brand words')}
@@ -113,7 +113,7 @@ BODY = f"""<body>
 <div class="abs" style="left:1070px;top:704px;width:530px;height:146px;background:linear-gradient(160deg,#FFFFFF,#ECEBF7);border-left:1px solid rgba(43,34,102,.1);text-align:center">
  <div data-rank="5" style="display:inline-block;margin-top:16px;font-size:12px;font-weight:700;letter-spacing:.18em;color:{VIO};border:1.5px solid {VIO};border-radius:99px;padding:4px 14px">EARLY ACCESS</div>
  <div data-rank="2" style="font-family:Sora;font-weight:700;font-size:34px;letter-spacing:.12em;color:{VIO};margin-top:10px">JOIN THE WAITLIST</div>
- <div data-rank="5" style="font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.36em;color:{DEEP};margin-top:8px">LAUNCHING NOVEMBER 2026 · FANSACHAT.COM</div></div>
+ <div data-rank="5" style="font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.16em;color:{DEEP};margin-top:8px;white-space:nowrap">LAUNCHING NOVEMBER 2026 · FANSACHAT.COM</div></div>
 <div class="abs" style="left:0;top:850px;width:{W}px;height:50px;background:{NIGHT};display:flex;align-items:center;justify-content:space-between;padding:0 56px">
  <span data-rank="5" style="font-size:14px;letter-spacing:.2em;color:#E4E4F4">700+ APPS · 478 TEMPLATES · PLAIN-ENGLISH SETUP · EDIT BY CHATTING</span>
  <span data-rank="5" style="font-size:12px;letter-spacing:.06em;color:#9C9DBC">Instagram &amp; Messenger connect via Respond.io</span></div>
