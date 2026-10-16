@@ -68,7 +68,7 @@ def slide(c, n, s):
                             f'<span style="width:56px;height:56px;border-radius:14px;background:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.18)">'
                             f'<img src="{(HERE / "icons" / (a + ".png")).as_uri() if a != "fansa" else LOGO}" style="width:68%;height:68%;object-fit:contain"></span>' for j, a in enumerate(L["apps"]))
             lanes += (f'<div class="abs" style="left:64px;top:{y}px;width:800px">'
-                      f'<div data-rank="4" style="font-size:24px;font-weight:700;letter-spacing:.1em;color:{acc}">{L["role"]}</div>'
+                      f'<div data-rank="4" style="font-size:28px;font-weight:700;letter-spacing:.1em;color:{acc}">{L["role"]}</div>'
                       f'<div style="display:flex;align-items:center;gap:14px;margin-top:8px"><span style="display:flex;align-items:center">{icons}</span>'
                       f'<span data-rank="4" style="font-size:28px;font-weight:700;color:{ink};line-height:1.15">{L["out"]}</span></div></div>'
                       f'<div class="abs" style="left:870px;top:{y + 66}px;width:70px;border-top:3px dotted {acc}"></div>')
