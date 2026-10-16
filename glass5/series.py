@@ -81,9 +81,9 @@ def body(s):
                 f'{shot(s, 780, 260, 770, -9)}{cta(56, 760, fs=32, dark=dark)}')
     else:  # calm: centred statement + screenshot under it
         main = (f'<div class="abs" style="left:56px;top:48px;width:{W - 112}px;text-align:center">{kick}<div style="height:14px"></div>{head}</div>'
-                f'<div class="abs" style="left:56px;top:{s.get("at", 228)}px;width:{W - 112}px;text-align:center">{ans}</div>'
-                f'<div class="abs" style="left:110px;top:360px;display:flex;flex-direction:column;gap:14px">{"".join(f"<span class=app><img src={I(a)}></span>" for a in s["apps"])}</div>'
-                f'{shot(s, 230, 330, 700, 0)}{steps(s, 990, 380, 560, ink, acc)}{cta(56, 770, fs=32, dark=dark)}')
+                f'<div class="abs" style="left:56px;top:{s.get("at", 158)}px;width:{W - 112}px;text-align:center">{ans}</div>'
+                f'<div class="abs" style="left:110px;top:290px;display:flex;flex-direction:column;gap:14px">{"".join(f"<span class=app><img src={I(a)}></span>" for a in s["apps"])}</div>'
+                f'{shot(s, 230, 240, 740, 0)}{steps(s, 1030, 320, 560, ink, acc)}{cta(56, 770, fs=32, dark=dark)}')
     return f'<body style="background:{bg};color:{ink}"><div class="grain"></div><img class="abs" src="{LOGO}" style="right:56px;top:48px;width:52px;height:52px">{main}{note}{foot}</body>'
 
 allowed = {str(k): list(range(18, 430)) for k in range(1, 6)}
