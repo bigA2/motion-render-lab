@@ -68,11 +68,9 @@ BODY = f"""<body>
   box-shadow:0 50px 80px rgba(22,22,42,.45),0 0 0 6px #fff">
  <img src="{SHOT}" style="width:100%;height:100%;object-fit:cover;display:block"></div>
 <div class="abs note" style="left:1022px;top:76px;width:300px;color:{INK}">Real FansaChat screen.<br>Built from one sentence,<br>4 steps, no flowchart.</div>
-<div class="abs note" style="left:1060px;top:700px;width:330px">AI reads which client<br>+ how urgent → ClickUp task<br>→ reply in the Slack thread.</div>
+<div class="abs" data-rank="4" style="left:1060px;top:690px;width:480px;font-size:24px;line-height:1.35;font-weight:700;color:#fff">AI reads which client + how urgent<br>→ ClickUp task → reply in the Slack thread</div>
 <!-- top bar + badge (like the series label / AM1 badge) -->
-<div class="abs" style="left:56px;top:40px;display:flex;align-items:center;gap:12px"><img src="{LOGO}" style="width:34px;height:34px">
- <span data-rank="5" style="font-size:14px;font-weight:700;letter-spacing:.2em;color:{DEEP}">FANSACHAT · AGENCY SERIES 01/10</span>
- <span style="width:120px;height:1.5px;background:{DEEP};display:inline-block"></span></div>
+<div class="abs" style="left:56px;top:40px;display:flex;align-items:center;gap:12px"><img src="{LOGO}" style="width:34px;height:34px"></div>
 <div class="abs" style="left:1410px;top:36px;width:134px;border:2px solid {DEEP};border-radius:10px;text-align:center;padding:6px 0;background:rgba(255,255,255,.7)">
  <div data-rank="3" style="font-family:League;font-size:46px;line-height:1;color:{DEEP}">700+</div>
  <div data-rank="5" style="font-size:11px;font-weight:700;letter-spacing:.16em;color:{DEEP}">APPS · ONE PLACE</div></div>
@@ -83,16 +81,11 @@ BODY = f"""<body>
 {row(1, 378, 'Client requests scattered across Slack, email and forms', ['slack', 'fansa', 'clickup', 'slack'], 'Logged in ClickUp, answered in the thread')}
 {row(2, 492, 'A full day per client on the monthly report', ['google-search-console', 'google-sheets', 'fansa', 'google-docs'], 'AI writes it in Google Docs on the 1st')}
 {row(3, 606, 'New leads wait hours for a reply', ['typeform', 'calendly', 'hubspot', 'slack'], 'HubSpot deal + Slack ping when they book')}
-<!-- ticket (like the "10 best" card) -->
-<div class="abs" style="left:56px;top:734px;width:300px;height:110px;background:{INK};border-radius:10px;display:flex;align-items:center;gap:16px;padding:0 18px;transform:rotate(-2deg);box-shadow:0 14px 24px rgba(22,22,42,.3)">
- <div data-rank="3" style="font-family:League;font-size:72px;line-height:1;color:#fff">10</div>
- <div><div data-rank="5" style="font-size:13px;font-weight:700;letter-spacing:.14em;color:#fff">AGENCY PROBLEMS</div>
-  <div data-rank="5" style="font-size:13px;color:#B9B6E8;margin-top:4px">one workspace · 3 solved here</div></div></div>
-<div class="abs" style="left:390px;top:748px;width:300px">
+<div class="abs" style="left:56px;top:748px;width:600px">
  <div data-rank="3" style="font-family:Playfair;font-size:30px;color:{INK}">Join the waitlist →</div>
  <div data-rank="5" style="font-size:13px;font-weight:700;letter-spacing:.16em;color:{DEEP};margin-top:8px">LAUNCHING NOVEMBER 2026</div>
  <div data-rank="5" style="font-size:13px;color:#4A4A66;margin-top:4px">fansachat.com · 478 templates</div></div>
-<div class="abs note" style="left:1290px;top:842px;width:260px;text-align:right;font-size:11px;color:#CFCBFF">Real screenshot · fansachat.com</div>
+<div class="abs" style="left:1350px;top:770px;width:200px;text-align:center"><img src="{LOGO}" style="width:44px;height:44px"><div data-rank="5" style="font-size:16px;font-weight:700;letter-spacing:.06em;color:#fff;margin-top:6px">fansachat.com</div></div>
 </body>"""
 
 NAME = "digital-marketing-agency-automation-clickup-slack-hubspot-fansachat"

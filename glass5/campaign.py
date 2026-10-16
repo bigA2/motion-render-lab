@@ -65,7 +65,7 @@ BODY = f"""<body>
  <div class="abs" style="left:66px;top:28px;width:608px;height:374px;border-radius:20px;background:{NIGHT};overflow:hidden;box-shadow:inset 0 0 0 2px #0A0A1A">
   {screen}</div>
 </div>
-<div class="abs" style="left:1150px;top:648px;transform:translateX(-50%);font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.24em;white-space:nowrap;color:#8A8BA6">REAL SCREENSHOT · BUILT FROM ONE SENTENCE</div>
+<div class="abs" style="left:1150px;top:648px;transform:translateX(-50%);font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.24em;white-space:nowrap;color:#8A8BA6">BUILT FROM ONE SENTENCE</div>
 <!-- left column -->
 <div class="abs" style="left:56px;top:44px;display:flex;align-items:center;gap:12px"><img src="{LOGO}" style="width:40px;height:40px">
  <span data-rank="5" style="font-family:Sora;font-weight:300;font-size:18px;letter-spacing:.28em;color:{DEEP}">FANSACHAT</span></div>
@@ -125,7 +125,7 @@ BODY45 = f"""<body style="background:radial-gradient(800px 700px at 540px 720px,
  <div class="abs" style="left:872px;top:223px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#55557a,#1d1d33);box-shadow:0 0 0 4px #fff,0 0 16px {VIO}"></div>
  <div class="abs" style="left:62px;top:26px;width:796px;height:424px;border-radius:20px;background:{NIGHT};overflow:hidden;box-shadow:inset 0 0 0 2px #0A0A1A">{screen}</div>
 </div>
-<div class="abs" style="left:540px;top:992px;transform:translateX(-50%);font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.24em;white-space:nowrap;color:#8A8BA6">REAL SCREENSHOT · BUILT FROM ONE SENTENCE</div>
+<div class="abs" style="left:540px;top:992px;transform:translateX(-50%);font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.24em;white-space:nowrap;color:#8A8BA6">BUILT FROM ONE SENTENCE</div>
 <div class="abs" style="left:56px;top:1022px;width:968px;display:grid;grid-template-columns:1fr 1fr;column-gap:28px">
  {chip(['instagram-business', 'facebook-pages', 'respond-io'], 'DMs arrive via Respond.io')}
  {chip(['fansa'], 'AI sorts: order, complaint, sale')}
