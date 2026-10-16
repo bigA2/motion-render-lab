@@ -123,7 +123,7 @@ def body(x):
         main = head(x, 150, 70, ink, acc, mark) + f'<div class="abs" style="left:64px;top:500px;width:952px">{cards}</div>'
     elif st == "fact":
         q = (f'<div class="abs" style="left:64px;top:150px;padding:18px 28px;border-radius:24px 24px 24px 6px;background:{card};border:2px solid {mark}">'
-             f'<span data-rank="2" style="font-size:36px;font-weight:700;color:{ink}">“{x["w"].capitalize()}”</span></div>')
+             f'<span data-rank="2" style="font-size:42px;font-weight:700;color:{ink}">“{x["w"].capitalize()}”</span></div>')
         rows = "".join(f'<div data-rank="3" style="font-size:40px;font-weight:700;color:{ink};margin-bottom:18px">✓ {r}</div>' for r in l)
         main = q + head(x, 320, 74, ink, acc, mark) + (f'<div class="abs" style="left:64px;top:700px">{rows}</div>' if l else chips(a, 700, ink, acc))
         kick = ""
