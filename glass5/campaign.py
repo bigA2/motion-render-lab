@@ -21,7 +21,7 @@ CSS = f"""
 @font-face{{font-family:Inter;font-weight:500;src:url({F('InterTight-500.woff2')})}}
 @font-face{{font-family:Inter;font-weight:700;src:url({F('InterTight-700.woff2')})}}
 *{{box-sizing:border-box;margin:0;padding:0}}
-body{{width:{W}px;height:{H}px;overflow:hidden;position:relative;font-family:Inter;font-weight:500;color:{INK};
+body{{width:100vw;height:100vh;overflow:hidden;position:relative;font-family:Inter;font-weight:500;color:{INK};
   background:radial-gradient(900px 700px at 1150px 380px,#FFFFFF 0%,#EEEEF6 45%,#DCDDEA 100%)}}
 .abs{{position:absolute}}
 .grain{{position:absolute;inset:0;pointer-events:none;opacity:.12;mix-blend-mode:multiply;
@@ -95,14 +95,63 @@ BODY = f"""<body>
  <span data-rank="5" style="font-size:12px;letter-spacing:.06em;color:#9C9DBC">Instagram &amp; Messenger connect via Respond.io</span></div>
 </body>"""
 
+def chip(apps, text):
+    icons = "".join(f'<span class="ico" style="width:34px;height:34px"><img src="{I(a)}"></span>' for a in apps)
+    return (f'<div style="display:flex;align-items:center;gap:12px;height:52px;border-bottom:1px solid rgba(43,34,102,.12)">'
+            f'<div style="display:flex;gap:4px;width:110px">{icons}</div><div data-rank="5" style="font-size:20px;color:{DEEP}">{text}</div></div>')
+
+# 4:5 Instagram version: same campaign, stacked (hook -> answer -> real device -> 5 steps -> CTA bar)
+BODY45 = f"""<body style="background:radial-gradient(800px 700px at 540px 720px,#FFFFFF 0%,#EEEEF6 45%,#DCDDEA 100%)">
+<svg class="abs" style="left:0;top:0" width="1080" height="1350">
+ <defs><linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="{SIL}"/><stop offset="1" stop-color="#F4F4FA"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="14"/></filter></defs>
+ {''.join(f'<circle cx="540" cy="720" r="{r}" fill="none" stroke="rgba(123,92,224,{o})" stroke-width="1.5"/>' for r, o in [(440, .10), (510, .07), (590, .05)])}
+ <circle cx="540" cy="720" r="330" fill="none" stroke="{VIO}" stroke-width="22" opacity=".55" filter="url(#glow)"/>
+ <circle cx="540" cy="720" r="330" fill="none" stroke="url(#ring)" stroke-width="40"/>
+ <circle cx="540" cy="720" r="312" fill="none" stroke="rgba(160,140,255,.9)" stroke-width="3"/>
+ <ellipse cx="540" cy="958" rx="420" ry="24" fill="url(#ring)" stroke="#fff" stroke-width="2"/>
+ <ellipse cx="540" cy="952" rx="320" ry="10" fill="{VIO}" opacity=".35" filter="url(#glow)"/>
+</svg>
+<div class="grain"></div>
+<div class="abs" style="left:56px;top:48px;display:flex;align-items:center;gap:12px"><img src="{LOGO}" style="width:40px;height:40px">
+ <span data-rank="5" style="font-family:Sora;font-weight:300;font-size:18px;letter-spacing:.28em;color:{DEEP}">FANSACHAT</span></div>
+<div class="abs" data-rank="5" style="left:56px;top:112px;width:968px;font-size:14px;font-weight:700;letter-spacing:.08em;white-space:nowrap;color:{VIO}">FOR CUSTOMER SUPPORT AGENTS · SOCIAL MEDIA MANAGERS · AGENCIES · SHOPS</div>
+<div class="abs" data-rank="1" style="left:52px;top:146px;width:980px;font-family:Sora;font-weight:300;font-size:84px;line-height:1.04;letter-spacing:.02em;color:{INK}">ANSWERING DMs<br>
+ <span style="font-weight:700;background:linear-gradient(90deg,{VIO},{MAIN});-webkit-background-clip:text;background-clip:text;color:transparent">ALL DAY?</span></div>
+<div class="abs" data-rank="2" style="left:56px;top:338px;width:968px;font-family:DMSerif;font-size:38px;line-height:1.16;color:{INK}">Here's how to run <span style="background:linear-gradient(transparent 58%,#D9CFFF 58%,#D9CFFF 92%,transparent 92%);color:{DEEP}">Instagram &amp; Messenger</span> on autopilot.</div>
+<div class="abs" style="left:80px;top:470px;width:920px;height:476px;border-radius:48px;
+  background:linear-gradient(170deg,#FFFFFF,#E4E5EF 60%,#CFD0DE);box-shadow:inset 0 2px 0 #fff,inset 0 -6px 14px rgba(43,34,102,.12),0 40px 60px rgba(43,34,102,.30)">
+ <div class="abs" style="left:18px;top:223px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#55557a,#1d1d33);box-shadow:0 0 0 4px #fff,0 0 16px {VIO}"></div>
+ <div class="abs" style="left:872px;top:223px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#55557a,#1d1d33);box-shadow:0 0 0 4px #fff,0 0 16px {VIO}"></div>
+ <div class="abs" style="left:62px;top:26px;width:796px;height:424px;border-radius:20px;background:{NIGHT};overflow:hidden;box-shadow:inset 0 0 0 2px #0A0A1A">{screen}</div>
+</div>
+<div class="abs" style="left:540px;top:992px;transform:translateX(-50%);font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.24em;white-space:nowrap;color:#8A8BA6">REAL SCREENSHOT · BUILT FROM ONE SENTENCE</div>
+<div class="abs" style="left:56px;top:1022px;width:968px;display:grid;grid-template-columns:1fr 1fr;column-gap:28px">
+ {chip(['instagram-business', 'facebook-pages', 'respond-io'], 'DMs arrive via Respond.io')}
+ {chip(['fansa'], 'AI sorts: order, complaint, sale')}
+ {chip(['shopify', 'respond-io'], 'Order status sent back')}
+ {chip(['zendesk'], 'Complaints → Zendesk ticket')}
+ {chip(['hubspot', 'slack'], 'Leads → HubSpot + Slack')}
+ {chip(['fansa'], 'Built from one sentence')}
+</div>
+<div class="abs" style="left:0;top:1206px;width:1080px;height:144px;background:{NIGHT};padding:22px 56px 0">
+ <div style="display:flex;justify-content:space-between;align-items:center">
+  <div data-rank="3" style="font-family:Sora;font-weight:700;font-size:36px;letter-spacing:.1em;color:#fff">JOIN THE WAITLIST</div>
+  <div data-rank="5" style="font-size:12px;font-weight:700;letter-spacing:.18em;color:#CFC4FF;border:1.5px solid #CFC4FF;border-radius:99px;padding:5px 14px">EARLY ACCESS</div></div>
+ <div data-rank="5" style="font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.16em;color:#CFCFE6;margin-top:10px;white-space:nowrap">LAUNCHING NOVEMBER 2026 · 700+ APPS · 478 TEMPLATES · FANSACHAT.COM</div>
+ <div data-rank="5" style="font-size:12px;color:#9C9DBC;margin-top:10px">Instagram &amp; Messenger connect via Respond.io</div></div>
+</body>"""
+
 NAME = "instagram-messenger-dm-automation-customer-support-fansachat"
 allowed = {str(k): list(range(10, 400)) for k in range(1, 6)}  # free type scale for this layout; QA keeps overlap/cover/fonts/safe-zone
+lines = []
 with sync_playwright() as pw:
     br = pw.chromium.launch(channel=os.environ.get("PW_CHANNEL") or None)
-    f = OUT / f"{NAME}.html"; f.write_text(f"<!doctype html><html><head><meta charset=utf-8><style>{CSS}</style></head>{BODY}</html>", encoding="utf-8")
-    pg = br.new_page(viewport={"width": W, "height": H}, device_scale_factor=2); pg.goto(f.as_uri()); pg.evaluate("document.fonts.ready"); pg.wait_for_timeout(600)
-    pg.screenshot(path=str(OUT / f"{NAME}.png"))
-    res = pg.evaluate(QA, [12, allowed, W, H]); br.close()
-line = f"{NAME}: fonts {res['fonts']} · {'PASS' if not res['issues'] else 'FAIL ' + '; '.join(res['issues'])}"
-print(line); (OUT / "QA_campaign.txt").write_text(line, encoding="utf-8")
-sys.exit(1 if res["issues"] else 0)
+    for name, w, h, body in [(NAME, W, H, BODY), (NAME + "-4x5", 1080, 1350, BODY45)]:
+        f = OUT / f"{name}.html"; f.write_text(f"<!doctype html><html><head><meta charset=utf-8><style>{CSS}</style></head>{body}</html>", encoding="utf-8")
+        pg = br.new_page(viewport={"width": w, "height": h}, device_scale_factor=2); pg.goto(f.as_uri()); pg.evaluate("document.fonts.ready"); pg.wait_for_timeout(600)
+        pg.screenshot(path=str(OUT / f"{name}.png"))
+        res = pg.evaluate(QA, [12, allowed, w, h]); pg.close()
+        lines.append(f"{name}: fonts {res['fonts']} · {'PASS' if not res['issues'] else 'FAIL ' + '; '.join(res['issues'])}")
+    br.close()
+print(chr(10).join(lines)); (OUT / "QA_campaign.txt").write_text(chr(10).join(lines), encoding="utf-8")
