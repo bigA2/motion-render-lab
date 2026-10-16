@@ -65,7 +65,7 @@ BODY = f"""<body>
  <div class="abs" style="left:66px;top:28px;width:608px;height:374px;border-radius:20px;background:{NIGHT};overflow:hidden;box-shadow:inset 0 0 0 2px #0A0A1A">
   {screen}</div>
 </div>
-<div class="abs" style="left:1150px;top:648px;transform:translateX(-50%);font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.24em;color:#8A8BA6">REAL SCREENSHOT · BUILT FROM ONE SENTENCE</div>
+<div class="abs" style="left:1150px;top:648px;transform:translateX(-50%);font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.24em;white-space:nowrap;color:#8A8BA6">REAL SCREENSHOT · BUILT FROM ONE SENTENCE</div>
 <!-- left column -->
 <div class="abs" style="left:56px;top:44px;display:flex;align-items:center;gap:12px"><img src="{LOGO}" style="width:40px;height:40px">
  <span data-rank="5" style="font-family:Sora;font-weight:300;font-size:18px;letter-spacing:.28em;color:{DEEP}">FANSACHAT</span></div>
