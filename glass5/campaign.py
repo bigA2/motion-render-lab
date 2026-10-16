@@ -105,10 +105,10 @@ BODY45 = f"""<body style="background:radial-gradient(800px 700px at 540px 720px,
 <svg class="abs" style="left:0;top:0" width="1080" height="1350">
  <defs><linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="{SIL}"/><stop offset="1" stop-color="#F4F4FA"/></linearGradient>
   <filter id="glow"><feGaussianBlur stdDeviation="14"/></filter></defs>
- {''.join(f'<circle cx="540" cy="720" r="{r}" fill="none" stroke="rgba(123,92,224,{o})" stroke-width="1.5"/>' for r, o in [(440, .10), (510, .07), (590, .05)])}
- <circle cx="540" cy="720" r="330" fill="none" stroke="{VIO}" stroke-width="22" opacity=".55" filter="url(#glow)"/>
- <circle cx="540" cy="720" r="330" fill="none" stroke="url(#ring)" stroke-width="40"/>
- <circle cx="540" cy="720" r="312" fill="none" stroke="rgba(160,140,255,.9)" stroke-width="3"/>
+ {''.join(f'<circle cx="540" cy="690" r="{r}" fill="none" stroke="rgba(123,92,224,{o})" stroke-width="1.5"/>' for r, o in [(440, .10), (510, .07), (590, .05)])}
+ <circle cx="540" cy="690" r="280" fill="none" stroke="{VIO}" stroke-width="22" opacity=".55" filter="url(#glow)"/>
+ <circle cx="540" cy="690" r="280" fill="none" stroke="url(#ring)" stroke-width="40"/>
+ <circle cx="540" cy="690" r="263" fill="none" stroke="rgba(160,140,255,.9)" stroke-width="3"/>
  <ellipse cx="540" cy="958" rx="420" ry="24" fill="url(#ring)" stroke="#fff" stroke-width="2"/>
  <ellipse cx="540" cy="952" rx="320" ry="10" fill="{VIO}" opacity=".35" filter="url(#glow)"/>
 </svg>
