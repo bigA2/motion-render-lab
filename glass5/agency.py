@@ -4,6 +4,7 @@ Run: python glass5/agency.py -> glass5/out/<name>.png + QA (reuses the QA from b
 """
 import os, pathlib, re
 from playwright.sync_api import sync_playwright
+from cta import cta
 
 HERE = pathlib.Path(__file__).parent.resolve()
 OUT = HERE / "out"; OUT.mkdir(exist_ok=True)
@@ -81,10 +82,7 @@ BODY = f"""<body>
 {row(1, 378, 'Client requests scattered across Slack, email and forms', ['slack', 'fansa', 'clickup', 'slack'], 'Logged in ClickUp, answered in the thread')}
 {row(2, 492, 'A full day per client on the monthly report', ['google-search-console', 'google-sheets', 'fansa', 'google-docs'], 'AI writes it in Google Docs on the 1st')}
 {row(3, 606, 'New leads wait hours for a reply', ['typeform', 'calendly', 'hubspot', 'slack'], 'HubSpot deal + Slack ping when they book')}
-<div class="abs" style="left:56px;top:748px;width:600px">
- <div data-rank="3" style="font-family:Playfair;font-size:30px;color:{INK}">Join the waitlist →</div>
- <div data-rank="5" style="font-size:13px;font-weight:700;letter-spacing:.16em;color:{DEEP};margin-top:8px">LAUNCHING NOVEMBER 2026</div>
- <div data-rank="5" style="font-size:13px;color:#4A4A66;margin-top:4px">fansachat.com · 478 templates</div></div>
+{cta(56, 752, fs=26)}
 <div class="abs" style="left:1350px;top:770px;width:200px;text-align:center"><img src="{LOGO}" style="width:44px;height:44px"><div data-rank="5" style="font-size:16px;font-weight:700;letter-spacing:.06em;color:#fff;margin-top:6px">fansachat.com</div></div>
 </body>"""
 

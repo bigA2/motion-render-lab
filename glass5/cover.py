@@ -7,6 +7,7 @@ import os, pathlib, re
 import numpy as np, potrace
 from PIL import Image
 from playwright.sync_api import sync_playwright
+from cta import cta
 
 HERE = pathlib.Path(__file__).parent.resolve()
 OUT = HERE / "out"; OUT.mkdir(exist_ok=True)
@@ -57,14 +58,6 @@ const rim = new THREE.DirectionalLight(0xFFB8E8, 1.4); rim.position.set(3, 4, -4
 r.render(scene, cam); window.done = true;
 </script>"""
 
-def barcode(x, y):
-    rnd = np.random.default_rng(7); bars, cx = [], 0
-    for _ in range(46):
-        w = int(rnd.integers(1, 4)); bars.append(f'<rect x="{cx}" y="0" width="{w}" height="54" fill="{INK}"/>'); cx += w + int(rnd.integers(1, 3))
-    return (f'<div class="abs" style="left:{x}px;top:{y}px;background:#fff;padding:8px 10px 4px;border-radius:2px">'
-            f'<svg width="{cx}" height="54">{"".join(bars)}</svg>'
-            f'<div style="font-family:Mono;font-size:11px;letter-spacing:.18em;color:{INK}">0 11 2026 0001</div></div>')
-
 def teaser(top, num, title, line, fam):
     return (f'<div class="abs" style="left:56px;top:{top}px;width:450px">'
             f'<div data-rank="4" style="font-family:{fam};font-size:30px;letter-spacing:.1em;color:{VIO};font-weight:700">{num} · {title}</div>'
@@ -89,16 +82,13 @@ BODY = f"""<body>
 <div class="abs" style="left:560px;top:820px;width:420px;height:60px;border-radius:50%;background:radial-gradient(closest-side,rgba(43,34,102,.35),transparent);filter:blur(6px)"></div>
 <canvas id="gl" class="abs" style="left:0;top:0;width:{W}px;height:{H}px"></canvas>
 <div class="abs" data-rank="2" style="left:0;top:30px;width:{W}px;text-align:center;font-family:Playfair;font-size:150px;line-height:1;letter-spacing:-.01em;color:{INK}">FANSACHAT</div>
-<div class="abs" style="left:56px;top:196px;width:968px;display:flex;justify-content:space-between;font-family:Mono;font-size:13px;letter-spacing:.2em;color:{DEEP}">
- <span data-rank="5">ISSUE 01</span><span data-rank="5">THE WORKFLOW AUTOMATION ISSUE</span><span data-rank="5">NOVEMBER 2026</span></div>
+
 {teaser(280, '01', 'ONE SENTENCE', 'Type what you want.<br>Get a working workflow.', 'Inter')}
 {teaser(450, '02', '700+ APPS', 'Plus 478 ready templates<br>to start from.', 'Inter')}
 {teaser(620, '03', 'YOU APPROVE', 'Check every step before<br>anything runs.', 'Inter')}
-<div class="abs" data-rank="1" style="left:52px;top:900px;width:760px;font-family:League;font-size:150px;line-height:.88;color:{INK}">STOP DOING IT<br><span style="color:{VIO}">BY HAND.</span></div>
-<div class="abs" data-rank="3" style="left:56px;top:1178px;width:640px;font-family:Playfair;font-size:32px;line-height:1.2;color:{DEEP}">One sentence. A completely different Monday.</div>
-{barcode(820, 1210)}
-<div class="abs" data-rank="5" style="left:820px;top:1170px;font-family:Mono;font-size:12px;letter-spacing:.14em;color:{DEEP}">WAITLIST OPEN</div>
-<div class="abs" data-rank="5" style="left:56px;top:1268px;font-family:Mono;font-size:12px;letter-spacing:.16em;color:{DEEP}">FANSACHAT.COM</div>
+<div class="abs" data-rank="1" style="left:52px;top:850px;width:760px;font-family:League;font-size:150px;line-height:.88;color:{INK}">STOP DOING IT<br><span style="color:{VIO}">BY HAND.</span></div>
+<div class="abs" data-rank="3" style="left:56px;top:1124px;width:900px;font-family:Playfair;font-size:32px;line-height:1.2;color:{DEEP}">One sentence. A completely different Monday.</div>
+{cta(56, 1222, fs=28)}
 {THREE}
 </body>"""
 

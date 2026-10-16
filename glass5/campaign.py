@@ -4,6 +4,7 @@ Run: python glass5/campaign.py -> glass5/out/<name>.png + QA (reuses the QA from
 """
 import os, pathlib, re, sys
 from playwright.sync_api import sync_playwright
+from cta import cta
 
 HERE = pathlib.Path(__file__).parent.resolve()
 OUT = HERE / "out"; OUT.mkdir(exist_ok=True)
@@ -86,10 +87,8 @@ BODY = f"""<body>
  <div data-rank="5" style="position:absolute;left:0;right:0;top:14px;text-align:center;font-size:13px;font-weight:700;letter-spacing:.24em;color:{VIO}">BUILT FOR</div>
  <div style="position:absolute;left:40px;right:40px;top:44px;display:flex">
   {sector(['shopify', 'instagram-business'], 'ONLINE SHOPS')}{sector(['respond-io', 'clickup', 'slack'], 'AGENCIES')}{sector(['whatsapp', 'calendly'], 'CLINICS &amp; SALONS')}{sector(['zendesk', 'intercom'], 'SUPPORT TEAMS')}</div></div>
-<div class="abs" style="left:1070px;top:704px;width:530px;height:146px;background:linear-gradient(160deg,#FFFFFF,#ECEBF7);border-left:1px solid rgba(43,34,102,.1);text-align:center">
- <div data-rank="5" style="display:inline-block;margin-top:16px;font-size:12px;font-weight:700;letter-spacing:.18em;color:{VIO};border:1.5px solid {VIO};border-radius:99px;padding:4px 14px">EARLY ACCESS</div>
- <div data-rank="2" style="font-family:Sora;font-weight:700;font-size:34px;letter-spacing:.12em;color:{VIO};margin-top:10px">JOIN THE WAITLIST</div>
- <div data-rank="5" style="font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.16em;color:{DEEP};margin-top:8px;white-space:nowrap">LAUNCHING NOVEMBER 2026 · FANSACHAT.COM</div></div>
+<div class="abs" style="left:1070px;top:704px;width:530px;height:146px;background:linear-gradient(160deg,#FFFFFF,#ECEBF7);border-left:1px solid rgba(43,34,102,.1)"></div>
+{cta(1100, 714, fs=22, stack=True, gap=12)}
 <div class="abs" style="left:0;top:850px;width:{W}px;height:50px;background:{NIGHT};display:flex;align-items:center;justify-content:space-between;padding:0 56px">
  <span data-rank="5" style="font-size:14px;letter-spacing:.2em;color:#E4E4F4">700+ APPS · 478 TEMPLATES · PLAIN-ENGLISH SETUP · EDIT BY CHATTING</span>
  <span data-rank="5" style="font-size:12px;letter-spacing:.06em;color:#9C9DBC">Instagram &amp; Messenger connect via Respond.io</span></div>
@@ -134,12 +133,9 @@ BODY45 = f"""<body style="background:radial-gradient(800px 700px at 540px 720px,
  {chip(['hubspot', 'slack'], 'Leads → HubSpot + Slack')}
  {chip(['fansa'], 'Built from one sentence')}
 </div>
-<div class="abs" style="left:0;top:1206px;width:1080px;height:144px;background:{NIGHT};padding:22px 56px 0">
- <div style="display:flex;justify-content:space-between;align-items:center">
-  <div data-rank="3" style="font-family:Sora;font-weight:700;font-size:36px;letter-spacing:.1em;color:#fff">JOIN THE WAITLIST</div>
-  <div data-rank="5" style="font-size:12px;font-weight:700;letter-spacing:.18em;color:#CFC4FF;border:1.5px solid #CFC4FF;border-radius:99px;padding:5px 14px">EARLY ACCESS</div></div>
- <div data-rank="5" style="font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.16em;color:#CFCFE6;margin-top:10px;white-space:nowrap">LAUNCHING NOVEMBER 2026 · 700+ APPS · 478 TEMPLATES · FANSACHAT.COM</div>
- <div data-rank="5" style="font-size:12px;color:#9C9DBC;margin-top:10px">Instagram &amp; Messenger connect via Respond.io</div></div>
+<div class="abs" style="left:0;top:1196px;width:1080px;height:154px;background:{NIGHT}"></div>
+{cta(56, 1214, fs=26, dark=True)}
+<div class="abs" data-rank="5" style="left:56px;top:1300px;font-size:14px;letter-spacing:.08em;color:#BDBDDA">700+ apps · 478 templates · fansachat.com · Instagram &amp; Messenger connect via Respond.io</div>
 </body>"""
 
 NAME = "instagram-messenger-dm-automation-customer-support-fansachat"
