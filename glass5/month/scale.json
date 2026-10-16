@@ -725,11 +725,11 @@
      {
       "role": "DISPATCH",
       "apps": [
-       "housecall-pro",
+       "airtable",
        "fansa",
        "twilio"
       ],
-      "out": "Technician told on assign"
+      "out": "Job assigned → tech texted"
      },
      {
       "role": "BILLING",
