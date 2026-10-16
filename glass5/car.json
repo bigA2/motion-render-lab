@@ -36,8 +36,64 @@
     "lab": "YOUR ACCOUNT MANAGER WRITES ONCE"
    },
    {
+    "t": "team",
+    "h": "One sentence per role. **The whole agency covered.**",
+    "legend": "Example setup · each lane is one sentence · lanes share one client table",
+    "lanes": [
+     {
+      "role": "ACCOUNT MANAGER",
+      "apps": [
+       "docusign",
+       "fansa",
+       "clickup",
+       "google-drive",
+       "hubspot"
+      ],
+      "out": "Contract signed → client set up"
+     },
+     {
+      "role": "PROJECT MANAGER",
+      "apps": [
+       "fireflies-ai",
+       "fansa",
+       "clickup",
+       "hubspot"
+      ],
+      "out": "Every call → owned, dated tasks"
+     },
+     {
+      "role": "SEO & CONTENT",
+      "apps": [
+       "google-search-console",
+       "fansa",
+       "clickup"
+      ],
+      "out": "Mondays: lost pages → refresh tasks"
+     },
+     {
+      "role": "NEW BUSINESS",
+      "apps": [
+       "typeform",
+       "calendly",
+       "hubspot",
+       "microsoft-teams"
+      ],
+      "out": "Enquiry → call → deal → owner told"
+     },
+     {
+      "role": "CLIENT REPUTATION",
+      "apps": [
+       "google-my-business",
+       "fansa",
+       "clickup"
+      ],
+      "out": "New review → reply ready to approve"
+     }
+    ]
+   },
+   {
     "t": "sol",
-    "h": "Signed → **set up before anyone opens a tab.**",
+    "h": "Zoom into one lane: **the account manager's.**",
     "b": "ClickUp project, Drive folder and HubSpot stage, straight from the contract."
    },
    {

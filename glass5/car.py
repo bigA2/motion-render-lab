@@ -60,6 +60,22 @@ def slide(c, n, s):
         main = (head(64, 170) + f'<div class="abs" style="left:64px;top:420px;width:952px;height:588px;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.25),0 0 0 6px #fff">'
                 f'<img src="{shot}" style="width:100%;height:100%;object-fit:cover;object-position:left top"></div>'
                 f'<div class="abs" data-rank="3" style="left:64px;top:1040px;width:900px;font-size:34px;font-weight:700;line-height:1.3;color:{ink}">{s["b"]}</div>')
+    elif t == "team":
+        lanes = ""
+        for k, L in enumerate(s["lanes"]):
+            y = 470 + k * 136
+            icons = "".join((f'<span style="color:{acc};font-size:30px;font-weight:700;margin:0 4px">→</span>' if j else "") +
+                            f'<span style="width:56px;height:56px;border-radius:14px;background:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.18)">'
+                            f'<img src="{(HERE / "icons" / (a + ".png")).as_uri() if a != "fansa" else LOGO}" style="width:68%;height:68%;object-fit:contain"></span>' for j, a in enumerate(L["apps"]))
+            lanes += (f'<div class="abs" style="left:64px;top:{y}px;width:800px">'
+                      f'<div data-rank="4" style="font-size:24px;font-weight:700;letter-spacing:.1em;color:{acc}">{L["role"]}</div>'
+                      f'<div style="display:flex;align-items:center;gap:14px;margin-top:8px"><span style="display:flex;align-items:center">{icons}</span>'
+                      f'<span data-rank="4" style="font-size:28px;font-weight:700;color:{ink};line-height:1.15">{L["out"]}</span></div></div>'
+                      f'<div class="abs" style="left:870px;top:{y + 66}px;width:70px;border-top:3px dotted {acc}"></div>')
+        bar = (f'<div class="abs" style="left:944px;top:470px;width:76px;height:{len(s["lanes"]) * 136 - 30}px;border-radius:20px;background:{acc};display:flex;align-items:center;justify-content:center">'
+               f'<span data-rank="5" style="writing-mode:vertical-rl;transform:rotate(180deg);color:#fff;font-size:26px;font-weight:700;letter-spacing:.1em">SHARED CLIENT TABLE</span></div>')
+        main = (head(66, 170) + lanes + bar +
+                f'<div class="abs" data-rank="5" style="left:64px;top:{470 + len(s["lanes"]) * 136}px;font-size:22px;color:{mut}">{s["legend"]}</div>')
     else:  # cta
         price = (f'<div class="abs" style="left:64px;top:520px;width:952px;padding:26px 32px;border-radius:22px;background:{card};border:2px solid {acc}">'
                  f'<span data-rank="3" style="font-size:36px;font-weight:700;color:{ink}">{s["price"]}</span></div>' if s.get("price") else "")
