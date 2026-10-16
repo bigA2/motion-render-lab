@@ -41,7 +41,7 @@ def chain(apps):
 
 def row(n, top, problem, apps, fix):
     return (f'<div class="abs" style="left:56px;top:{top}px;width:700px;display:flex;gap:22px;align-items:flex-start">'
-            f'<div data-rank="2" style="font-family:League;font-size:104px;line-height:.82;color:{VIO};width:52px;text-align:center">{n}</div>'
+            f'<div data-rank="1" style="font-family:League;font-size:104px;line-height:.82;color:{VIO};width:52px;text-align:center">{n}</div>'
             f'<div style="padding-top:4px"><div data-rank="4" style="font-size:20px;font-weight:700;color:{INK};line-height:1.25">{problem}</div>'
             f'<div style="display:flex;align-items:center;gap:6px;margin-top:10px">{chain(apps)}'
             f'<span data-rank="5" style="font-size:16px;color:#4A4A66;margin-left:10px">{fix}</span></div></div></div>')
@@ -60,7 +60,7 @@ BODY = f"""<body>
  {''.join(f'<line x1="{x}" y1="868" x2="{x}" y2="{876 if x % 40 else 884}" stroke="rgba(255,255,255,.5)"/>' for x in range(700, 1600, 10))}
  <!-- annotation leader lines -->
  <path d="M 1010 120 C 980 150, 980 180, 1000 205" fill="none" stroke="{INK}" stroke-width="1.4"/>
- <path d="M 1290 640 C 1300 610, 1290 585, 1270 560" fill="none" stroke="#fff" stroke-width="1.4"/>
+ <path d="M 1050 712 C 1020 700, 1010 690, 1012 668" fill="none" stroke="#fff" stroke-width="1.4"/>
 </svg>
 <div class="grain"></div>
 <!-- hero: the REAL builder screenshot as the product shot -->
@@ -68,7 +68,7 @@ BODY = f"""<body>
   box-shadow:0 50px 80px rgba(22,22,42,.45),0 0 0 6px #fff">
  <img src="{SHOT}" style="width:100%;height:100%;object-fit:cover;display:block"></div>
 <div class="abs note" style="left:1022px;top:76px;width:300px;color:{INK}">Real FansaChat screen.<br>Built from one sentence,<br>4 steps, no flowchart.</div>
-<div class="abs note" style="left:1140px;top:652px;width:330px">AI reads which client<br>+ how urgent → ClickUp task<br>→ reply in the Slack thread.</div>
+<div class="abs note" style="left:1060px;top:700px;width:330px">AI reads which client<br>+ how urgent → ClickUp task<br>→ reply in the Slack thread.</div>
 <!-- top bar + badge (like the series label / AM1 badge) -->
 <div class="abs" style="left:56px;top:40px;display:flex;align-items:center;gap:12px"><img src="{LOGO}" style="width:34px;height:34px">
  <span data-rank="5" style="font-size:14px;font-weight:700;letter-spacing:.2em;color:{DEEP}">FANSACHAT · AGENCY SERIES 01/10</span>
@@ -92,7 +92,7 @@ BODY = f"""<body>
  <div data-rank="3" style="font-family:Playfair;font-size:30px;color:{INK}">Join the waitlist →</div>
  <div data-rank="5" style="font-size:13px;font-weight:700;letter-spacing:.16em;color:{DEEP};margin-top:8px">LAUNCHING NOVEMBER 2026</div>
  <div data-rank="5" style="font-size:13px;color:#4A4A66;margin-top:4px">fansachat.com · 478 templates</div></div>
-<div class="abs note" style="left:1290px;top:866px;width:260px;text-align:right;font-size:11px;color:#CFCBFF">Real screenshot · fansachat.com</div>
+<div class="abs note" style="left:1290px;top:842px;width:260px;text-align:right;font-size:11px;color:#CFCBFF">Real screenshot · fansachat.com</div>
 </body>"""
 
 NAME = "digital-marketing-agency-automation-clickup-slack-hubspot-fansachat"
