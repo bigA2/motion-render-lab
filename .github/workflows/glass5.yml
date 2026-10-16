@@ -19,6 +19,7 @@ jobs:
           retention-days: 7
           path: |
             glass5/out/*.png
+            glass5/out/car/*.png
             glass5/out/*.md
       - if: always()
         run: cat glass5/out/QA*.txt || true
