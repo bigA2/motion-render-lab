@@ -252,11 +252,11 @@
      {
       "role": "REPORTING",
       "apps": [
-       "google-search-console",
        "fansa",
+       "google-search-console",
        "google-docs"
       ],
-      "out": "Reports out on time"
+      "out": "Monthly: reports out on time"
      },
      {
       "role": "DIRECTOR",
