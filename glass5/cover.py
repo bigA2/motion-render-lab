@@ -66,9 +66,9 @@ def barcode(x, y):
             f'<div style="font-family:Mono;font-size:11px;letter-spacing:.18em;color:{INK}">0 11 2026 0001</div></div>')
 
 def teaser(top, num, title, line, fam):
-    return (f'<div class="abs" style="left:56px;top:{top}px;width:340px">'
-            f'<div data-rank="5" style="font-family:{fam};font-size:20px;letter-spacing:.14em;color:{VIO};font-weight:700">{num} · {title}</div>'
-            f'<div data-rank="5" style="font-size:20px;line-height:1.35;color:#3B3558;margin-top:6px">{line}</div></div>')
+    return (f'<div class="abs" style="left:56px;top:{top}px;width:450px">'
+            f'<div data-rank="4" style="font-family:{fam};font-size:30px;letter-spacing:.1em;color:{VIO};font-weight:700">{num} · {title}</div>'
+            f'<div data-rank="4" style="font-size:30px;line-height:1.25;color:#2E2848;margin-top:6px">{line}</div></div>')
 
 CSS = f"""
 @font-face{{font-family:Playfair;src:url({F('PlayfairDisplay-700.woff2')})}}
@@ -91,9 +91,9 @@ BODY = f"""<body>
 <div class="abs" data-rank="2" style="left:0;top:30px;width:{W}px;text-align:center;font-family:Playfair;font-size:150px;line-height:1;letter-spacing:-.01em;color:{INK}">FANSACHAT</div>
 <div class="abs" style="left:56px;top:196px;width:968px;display:flex;justify-content:space-between;font-family:Mono;font-size:13px;letter-spacing:.2em;color:{DEEP}">
  <span data-rank="5">ISSUE 01</span><span data-rank="5">THE WORKFLOW AUTOMATION ISSUE</span><span data-rank="5">NOVEMBER 2026</span></div>
-{teaser(300, '01', 'ONE SENTENCE', 'Type what you want.<br>Get a working workflow.', 'Inter')}
-{teaser(420, '02', '700+ APPS', 'Plus 478 ready templates<br>to start from.', 'Inter')}
-{teaser(540, '03', 'YOU APPROVE', 'Check every step before<br>anything runs.', 'Inter')}
+{teaser(280, '01', 'ONE SENTENCE', 'Type what you want.<br>Get a working workflow.', 'Inter')}
+{teaser(450, '02', '700+ APPS', 'Plus 478 ready templates<br>to start from.', 'Inter')}
+{teaser(620, '03', 'YOU APPROVE', 'Check every step before<br>anything runs.', 'Inter')}
 <div class="abs" data-rank="1" style="left:52px;top:900px;width:760px;font-family:League;font-size:150px;line-height:.88;color:{INK}">STOP DOING IT<br><span style="color:{VIO}">BY HAND.</span></div>
 <div class="abs" data-rank="3" style="left:56px;top:1178px;width:640px;font-family:Playfair;font-size:32px;line-height:1.2;color:{DEEP}">One sentence. A completely different Monday.</div>
 {barcode(820, 1210)}
