@@ -9,7 +9,7 @@ HERE = pathlib.Path(__file__).parent.resolve()
 OUT = HERE / "out"; OUT.mkdir(exist_ok=True)
 W, H = 1600, 900
 F = lambda n: (HERE / "fonts" / n).as_uri()
-I = lambda s: (HERE / "icons" / f"{s}.png").as_uri()
+I = lambda s: (HERE / "logo-fansa.png").as_uri() if s == 'fansa' else (HERE / "icons" / f"{s}.png").as_uri()
 LOGO = (HERE / "logo-fansa.png").as_uri()
 VIO, MAIN, DEEP, NIGHT, INK, SIL = "#7B5CE0", "#6468D8", "#2B2266", "#14142E", "#1B1B2E", "#C9CAD8"
 QA = re.search(r'QA = """(.*?)"""', (HERE / "build.py").read_text(encoding="utf-8"), re.S).group(1)
@@ -37,37 +37,13 @@ def callout(apps, text):
     return (f'<div style="display:flex;align-items:center;gap:14px;height:44px;border-bottom:1px solid rgba(43,34,102,.12)">'
             f'<div style="display:flex;gap:4px;width:98px">{icons}</div><div data-rank="5" style="font-size:18px;color:{DEEP}">{text}</div></div>')
 
-def queue(app, who, msg, tag, col):
-    return (f'<div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 12px;margin-bottom:10px">'
-            f'<div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#A9AACB"><span class="app" style="width:20px;height:20px"><img src="{I(app)}"></span>{who}</div>'
-            f'<div style="font-size:14px;color:#fff;margin:6px 0">{msg}</div>'
-            f'<div style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;color:{col};border:1px solid {col};border-radius:99px;padding:2px 8px">{tag}</div></div>')
-
 def sector(apps, label):
     icons = "".join(f'<span class="app" style="width:44px;height:44px;border-radius:12px;box-shadow:0 6px 14px rgba(43,34,102,.18)"><img src="{I(a)}"></span>' for a in apps)
     return (f'<div style="flex:1;text-align:center"><div style="display:flex;justify-content:center;gap:10px;align-items:center">{icons}'
             f'</div><div data-rank="5" style="font-size:14px;letter-spacing:.14em;color:{DEEP};margin-top:12px">{label}</div></div>')
 
-screen = f"""
-<div class="abs" style="left:0;top:0;width:100%;height:30px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:12px;color:#A9AACB;letter-spacing:.08em">
- <span style="display:flex;align-items:center;gap:8px"><img src="{LOGO}" style="width:16px;height:16px">FANSACHAT INBOX</span><span>AUTOPILOT ● ON</span></div>
-<div class="abs" style="left:16px;top:40px;width:400px;height:300px;border-radius:14px;padding:18px;
-  background:radial-gradient(400px 240px at 30% 0%,rgba(123,92,224,.45),transparent 70%),linear-gradient(160deg,#1E1E44,#121230)">
- <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#C9CAE8"><span class="app"><img src="{I('instagram-business')}"></span>@rina.styles · Instagram DM</div>
- <div style="margin-top:16px;background:#2A2A55;color:#fff;font-size:16px;border-radius:16px 16px 16px 4px;padding:12px 14px;width:290px">Is the black dress back in size M?</div>
- <div style="margin:12px 0 0 auto;background:linear-gradient(135deg,{VIO},{MAIN});color:#fff;font-size:16px;border-radius:16px 16px 4px 16px;padding:12px 14px;width:300px">Yes, size M is back! Here's the link 🖤</div>
- <div style="margin-top:10px;text-align:right;font-size:11px;color:#A9AACB;letter-spacing:.06em">
-  <span class="app" style="width:18px;height:18px"><img src="{I('shopify')}"></span> stock checked in Shopify · auto-reply</div>
- <div style="position:absolute;left:18px;bottom:16px;right:18px;display:flex;gap:8px;font-size:12px;color:#C9CAE8">
-  <span style="border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:5px 12px">↺ Replied by FansaChat</span>
-  <span style="border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:5px 12px">Edit by chatting</span></div>
-</div>
-<div class="abs" style="left:428px;top:40px;width:236px">
- <div style="font-size:12px;color:#A9AACB;letter-spacing:.08em;margin-bottom:8px">NEXT IN QUEUE</div>
- {queue('facebook-pages', 'Messenger', 'Do you ship to Dubai?', 'REPLIED ✓', '#7FE0B0')}
- {queue('whatsapp', 'WhatsApp', 'Refund for order #2041', 'ZENDESK TICKET', '#FFB38A')}
- {queue('instagram-business', 'Instagram', 'Price for 50 pieces?', 'LEAD → HUBSPOT', '#B9A8FF')}
-</div>"""
+SHOT = (HERE / "assets" / "real_builder_dm.jpg").as_uri()  # real FansaChat builder, built from one sentence (no mock-up)
+screen = f'<img src="{SHOT}" style="width:100%;height:100%;object-fit:cover;object-position:left top;display:block">'
 
 BODY = f"""<body>
 <svg class="abs" style="left:0;top:0" width="{W}" height="{H}">
@@ -87,9 +63,9 @@ BODY = f"""<body>
  <div class="abs" style="left:24px;top:190px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#55557a,#1d1d33);box-shadow:0 0 0 4px #fff,0 0 16px {VIO}"></div>
  <div class="abs" style="left:686px;top:190px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#55557a,#1d1d33);box-shadow:0 0 0 4px #fff,0 0 16px {VIO}"></div>
  <div class="abs" style="left:66px;top:28px;width:608px;height:374px;border-radius:20px;background:{NIGHT};overflow:hidden;box-shadow:inset 0 0 0 2px #0A0A1A">
-  <div class="abs" style="left:0;top:0;width:680px;height:356px;transform:scale(.894);transform-origin:0 0">{screen}</div></div>
+  {screen}</div>
 </div>
-<div class="abs" style="left:1150px;top:648px;transform:translateX(-50%);font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.5em;color:#8A8BA6">FANSACHAT</div>
+<div class="abs" style="left:1150px;top:648px;transform:translateX(-50%);font-family:Sora;font-weight:300;font-size:14px;letter-spacing:.24em;color:#8A8BA6">REAL SCREENSHOT · BUILT FROM ONE SENTENCE</div>
 <!-- left column -->
 <div class="abs" style="left:56px;top:44px;display:flex;align-items:center;gap:12px"><img src="{LOGO}" style="width:40px;height:40px">
  <span data-rank="5" style="font-family:Sora;font-weight:300;font-size:18px;letter-spacing:.28em;color:{DEEP}">FANSACHAT</span></div>
@@ -97,13 +73,13 @@ BODY = f"""<body>
 <div class="abs" data-rank="1" style="left:52px;top:146px;width:700px;font-family:Sora;font-weight:300;font-size:70px;line-height:1.04;letter-spacing:.02em;color:{INK}">ANSWERING DMs<br>
  <span style="font-weight:700;background:linear-gradient(90deg,{VIO},{MAIN});-webkit-background-clip:text;background-clip:text;color:transparent">ALL DAY?</span></div>
 <div class="abs" data-rank="3" style="left:56px;top:306px;width:640px;font-family:DMSerif;font-size:32px;line-height:1.18;color:{INK}">Here's how to run <span style="background:linear-gradient(transparent 58%,#D9CFFF 58%,#D9CFFF 92%,transparent 92%);color:{DEEP}">Instagram &amp; Messenger</span> on autopilot.</div>
-<div class="abs" data-rank="4" style="left:56px;top:394px;width:640px;font-size:18px;line-height:1.45;color:#4A4A66">FansaChat links Instagram, Messenger and WhatsApp to Shopify, Zendesk, HubSpot and Slack. Describe it in one sentence; it builds the workflow.</div>
+<div class="abs" data-rank="4" style="left:56px;top:394px;width:640px;font-size:18px;line-height:1.45;color:#4A4A66">Type one sentence. FansaChat links Instagram and Messenger to Shopify, Zendesk, HubSpot and Slack, and builds the workflow you see here.</div>
 <div class="abs" style="left:56px;top:460px;width:560px">
- {callout(['instagram-business', 'facebook-pages', 'whatsapp'], 'New DM on Instagram, Messenger or WhatsApp')}
- {callout(['openai'], 'AI drafts the reply in your brand words')}
- {callout(['shopify'], 'Order questions checked in Shopify')}
+ {callout(['instagram-business', 'facebook-pages', 'respond-io'], 'Instagram &amp; Messenger DMs arrive via Respond.io')}
+ {callout(['fansa'], 'AI sorts each one: order, complaint or sale')}
+ {callout(['shopify', 'respond-io'], 'Order status from Shopify, reply sent back')}
  {callout(['zendesk'], 'Complaints become a Zendesk ticket')}
- {callout(['hubspot', 'slack'], 'Hot leads go to HubSpot and ping Slack')}
+ {callout(['hubspot', 'slack'], 'Sales leads become a HubSpot deal + Slack ping')}
 </div>
 <!-- bottom strip -->
 <div class="abs" style="left:0;top:704px;width:1070px;height:146px;background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(240,240,248,.9));border-top:1px solid #fff;box-shadow:0 -10px 30px rgba(43,34,102,.06)">
