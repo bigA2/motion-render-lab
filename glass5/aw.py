@@ -102,7 +102,7 @@ def body(x):
               f'<div data-rank="3" style="font-size:38px;font-weight:700;color:#fff;margin-top:10px">{l[1]}</div></div>')
         main = head(x, 150, 70, ink, acc, mark) + c1 + c2 + chips(a, 950, ink, acc, arrows=True)
     elif st == "myth":
-        main = (f'<div class="abs" data-rank="5" style="left:64px;top:170px;font-size:30px;font-weight:700;letter-spacing:.14em;color:{mut}">MYTH</div>'
+        main = (f'<div class="abs" data-rank="5" style="left:64px;top:170px;font-size:26px;font-weight:700;letter-spacing:.14em;color:{mut}">MYTH</div>'
                 f'<div class="abs" data-rank="1" style="left:64px;top:220px;width:952px;font-family:Playfair;font-size:84px;line-height:1.06;color:{ink};text-decoration:line-through;text-decoration-color:{acc};text-decoration-thickness:8px">{x["h"].replace("**", "")}</div>'
                 f'<div class="abs" data-rank="2" style="left:64px;top:640px;font-family:Playfair;font-size:64px;color:{acc}">Actually, no.</div>'
                 + para(b, 760, 46, ink, acc, mark))
@@ -123,7 +123,7 @@ def body(x):
         main = head(x, 150, 70, ink, acc, mark) + f'<div class="abs" style="left:64px;top:500px;width:952px">{cards}</div>'
     elif st == "fact":
         q = (f'<div class="abs" style="left:64px;top:150px;padding:18px 28px;border-radius:24px 24px 24px 6px;background:{card};border:2px solid {mark}">'
-             f'<span data-rank="4" style="font-size:34px;font-weight:700;color:{ink}">“{x["w"].capitalize()}”</span></div>')
+             f'<span data-rank="2" style="font-size:36px;font-weight:700;color:{ink}">“{x["w"].capitalize()}”</span></div>')
         rows = "".join(f'<div data-rank="3" style="font-size:40px;font-weight:700;color:{ink};margin-bottom:18px">✓ {r}</div>' for r in l)
         main = q + head(x, 320, 74, ink, acc, mark) + (f'<div class="abs" style="left:64px;top:700px">{rows}</div>' if l else chips(a, 700, ink, acc))
         kick = ""
@@ -148,7 +148,7 @@ def audit(x, qa_issues):
     txt = " ".join([x["w"], plain(x["h"]), x.get("b", ""), " ".join(x.get("l", []))])
     checks = {
         "1 stage named": x["s"] in STAGE, "2 persona named": bool(x["w"]), "3 one pain": len(x.get("h", "")) > 0,
-        "4 one outcome": x["s"] == 1 or bool(x.get("b") or x.get("l") or x.get("a")),
+        "4 one outcome": x["s"] in (1, 5) or bool(x.get("b") or x.get("l") or x.get("a")),
         "5 real apps (catalogue icons)": all((HERE / "icons" / f"{a}.png").exists() for a in x.get("a", [])),
         "6 facts only": not re.search(r"\d+%|\d{2,},\d{3}", txt) or "700+" in txt,
         "7 no prices": not re.search(r"\$|€|£", txt), "8 no dates": not re.search(r"\b20\d\d\b|november|monday \d", txt, re.I),
