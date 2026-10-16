@@ -61,8 +61,9 @@ def slide(c, n, s, T):
     al = "center" if T["center"] and t in ("hook", "cta") else "left"
     head = lambda size, tp: (f'<div class="abs" data-rank="1" style="left:64px;top:{tp}px;width:952px;text-align:{al};font-family:HF;'
                              f'font-size:{round(size * T["hk"])}px;line-height:1.08;color:{ink}">{mk(s["h"], T)}</div>')
-    bleed = (f'<div class="abs" style="left:{W - 90}px;top:{300 + n * 70}px;width:180px;height:180px;border-radius:50%;background:{T["mark"]}"></div>' if n < N else "")
-    bleed += (f'<div class="abs" style="left:-90px;top:{300 + (n - 1) * 70}px;width:180px;height:180px;border-radius:50%;background:{T["mark"]}"></div>' if n > 1 else "")
+    # bleed disc: cut by the right edge, continues on the next slide's left edge; sits in a text-free band (x<60 / x>1020)
+    bleed = (f'<div class="abs" style="left:{W - 60}px;top:1050px;width:120px;height:120px;border-radius:50%;background:{T["mark"]}"></div>' if n < N else "")
+    bleed += (f'<div class="abs" style="left:-60px;top:1050px;width:120px;height:120px;border-radius:50%;background:{T["mark"]}"></div>' if n > 1 else "")
     top = (f'<div class="abs b" data-rank="5" style="left:64px;top:60px;font-size:26px;letter-spacing:.12em;color:{acc}">{c["who"]}</div>'
            f'<img class="abs" src="{LOGO}" style="right:64px;top:50px;width:56px;height:56px">'
            f'<div class="abs b" data-rank="5" style="right:64px;top:118px;font-size:24px;color:{mut}">{n}/{N}</div>')
