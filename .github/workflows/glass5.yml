@@ -14,8 +14,11 @@ jobs:
       - run: python glass5/${{ inputs.script }}
       - if: always()
         uses: actions/upload-artifact@v4
-        with: { name: glass5, path: |
+        with:
+          name: glass5
+          retention-days: 7
+          path: |
             glass5/out/*.png
-            glass5/out/*.md, retention-days: 7 }
+            glass5/out/*.md
       - if: always()
-        run: cat glass5/out/QA*.txt
+        run: cat glass5/out/QA*.txt || true
