@@ -12,7 +12,8 @@ HERE = pathlib.Path(__file__).parent.resolve()
 OUT = HERE / "out"; OUT.mkdir(exist_ok=True)
 W, H = 1080, 1350
 F = lambda n: (HERE / "fonts" / n).as_uri()
-LOGO = (HERE / "logo-fansa.png").as_uri()
+import base64
+LOGO = "data:image/png;base64," + base64.b64encode((HERE / "logo-fansa.png").read_bytes()).decode()  # data URI: WebGL textures cannot load file:// (CORS)
 VIO, DEEP, INK = "#7B5CE0", "#2B2266", "#16122C"
 QA = re.search(r'QA = """(.*?)"""', (HERE / "build.py").read_text(encoding="utf-8"), re.S).group(1)
 
