@@ -1,0 +1,50 @@
+FansaChat version of the founder's "Cahier de Controles" editorial prompt (2026-10-16): purple palette, polished FansaChat logo instead of the pen, workflow diagram instead of the book, no QR codes. Only approved facts.
+
+PHASE 1: CONCEPTUAL FRAMEWORK
+Act as a Social Media Art Director and Editorial Product Photographer specialising in high-conversion SaaS product visuals for Instagram and digital campaigns.
+Create a premium digital editorial composition that positions FansaChat as the smartest way to automate work.
+This is not "another app." This is "your work, running itself."
+Visual strategy: blend tech precision with calm confidence. Minimal composition with maximum visual authority. Workflow diagram + polished logo + key facts as the triple hero.
+Aesthetic: refined editorial calm, MUJI meets Apple product photography, colour-anchored to the FansaChat purple palette.
+
+PHASE 2: SUBJECT & PHOTOGRAPHY
+Subject: a premium printed-card workflow diagram (Stripe "invoice overdue" -> Gmail "email the client" -> Telegram "tell me"), app icons as glossy enamel tiles joined by fine dotted connectors.
+Pose energy: card tilted ~15 degrees, slight 3/4 top-front angle, soft natural shadow.
+Hero prop: the FansaChat logo as a polished glass-and-enamel object resting diagonally beside the diagram (replaces the fountain pen): minimal, aspirational.
+Photography style: clean, high resolution, Hasselblad-inspired. Full diagram visible with generous breathing room.
+
+PHASE 3: COLOUR BLOCKING
+Palette: indigo #6468D8, violet #7B5CE0, deep purple #2B2266, lavender #ACADD8, near-white lavender #F0F0F7, one coral accent #D88264 used once.
+Primary colour blob: violet/indigo organic soft paper-tear shape, ~45% of the composition, diagonal behind the diagram (bottom-left -> top-right).
+Texture: subtle paper grain, 10-15% opacity.
+
+PHASE 4: GRAPHIC ELEMENTS
+Fact badges (primary graphic layer, upper-left column, stacked): number large bold, label small regular below.
+Minimal horizontal rules framing the diagram. Soft shadow beneath the diagram card and the logo.
+No QR codes.
+
+PHASE 5: TYPOGRAPHY & INFORMATION
+Logo + name: top-left, small.
+Headline: "SAY IT. IT RUNS."
+Sub-headline: "Type one sentence. FansaChat builds the workflow."
+Fact badges: 700+ integrations | 478 templates | 4 plans, from $15/mo | Unlimited users on every plan
+Supporting copy: "Edit by chatting · Plain English · Launching November"
+CTA: "JOIN THE WAITLIST -> fansachat.com"
+Type: clean bold sans-serif, horizontal. Hierarchy: headline -> fact badges -> diagram -> logo -> supporting copy -> CTA.
+
+PHASE 6: BACKGROUND
+Base: near-white lavender with controlled paper grain and a faint linen suggestion beneath the diagram. No digital noise.
+
+PHASE 7: COMPOSITION
+Diagram centre-left/right, fact badges left column, logo lower-right, CTA lower area. 25% breathing room.
+Layering: background -> texture -> colour blob -> shadow -> diagram -> logo -> badges -> typography.
+Eye flow: headline -> badges -> diagram -> logo -> CTA.
+
+PHASE 8: BRAND INTELLIGENCE
+Premium tech-tool aesthetic: ultra-clean, strong trust signals (exact, true numbers only: 700+, 478, $15). Treat the numbers like a price tag in a car ad: impossible to miss. Zero clutter.
+
+PHASE 9: FOOTER
+Bottom strip in near-white lavender with a thin violet divider: "700+ integrations · 478 templates · from $15/mo · fansachat.com"
+
+TECHNICAL SPECS: 4:5 (1080x1350 render, 2160x2700 at 2x), sRGB, badges legible at thumbnail size, grain max 12%.
+FINAL MOOD: Prestigious. Trustworthy. Data-rich. The automation tool smart teams choose, and the numbers prove it.

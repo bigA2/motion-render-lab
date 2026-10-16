@@ -425,6 +425,43 @@ IMGS.append(("10_online_shop_for_you", f"""
 {brand(P['paper'], y=1225)}
 </body>""", 1.618, "relatability-1 IF-YOU-ARE-X"))
 
+# 11 ── Editorial "product photography" layout from the founder's prompt (glass5/prompts/editorial_purple_fansachat.txt):
+#       purple blob, workflow-diagram card as the hero object, polished FansaChat logo in place of the pen, fact badges, no QR.
+VIO, DEEP = "#7B5CE0", "#2B2266"
+def wf_tile(s, x, y, label, sub):
+    return (f'<div class="abs" style="left:{x}px;top:{y}px;display:flex;align-items:center;gap:18px">'
+            f'<div style="width:84px;height:84px;border-radius:22px;background:linear-gradient(160deg,#fff,#ECEAF6);box-shadow:inset 0 2px 0 #fff,0 8px 16px rgba(43,34,102,.25);display:flex;align-items:center;justify-content:center"><img src="{I(s)}" style="width:58%;height:58%"></div>'
+            f'<div><div data-rank="5" style="font-size:20px;letter-spacing:.12em;color:{VIO}">{label}</div><div data-rank="4" style="font-size:32px;color:{DEEP}">{sub}</div></div></div>')
+badges = "".join(f'<div style="background:#fff;border-radius:18px;padding:16px 22px;margin-bottom:16px;box-shadow:0 10px 24px rgba(43,34,102,.12);border-left:6px solid {VIO}">'
+                 f'<div data-rank="2" style="font-family:Bebas;font-size:85px;line-height:.9;color:{DEEP}">{n}</div><div data-rank="5" style="font-size:20px;color:{DEEP}">{l}</div></div>'
+                 for n, l in [("700+", "integrations"), ("478", "ready templates"), ("$15", "4 plans, from /mo"), ("∞", "users on every plan")])
+IMGS.append(("11_editorial_say_it_it_runs", f"""
+<body style="font-family:Grotesk;background:{P['paper']}">
+<svg class="abs" style="left:0;top:0" width="{W}" height="{H}"><defs><linearGradient id="vb" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="{DEEP}"/><stop offset=".55" stop-color="{VIO}"/><stop offset="1" stop-color="{P['main']}"/></linearGradient>
+ <filter id="tear"><feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="3" seed="4"/><feDisplacementMap in="SourceGraphic" scale="40"/></filter></defs>
+ <path d="M -40 1180 C 180 900, 260 760, 520 600 S 980 300, 1140 180 L 1140 1060 C 900 1120, 600 1180, 300 1240 Z" fill="url(#vb)" filter="url(#tear)"/></svg>
+<div class="grain" style="opacity:.14"></div>
+<div class="abs" style="left:{M}px;top:{M}px;display:flex;align-items:center;gap:12px"><img src="{LOGO}" style="width:44px;height:44px"><span data-rank="5" style="font-size:20px;font-weight:700;color:{DEEP};letter-spacing:.06em">FANSACHAT</span></div>
+<div class="abs" style="left:{M}px;top:150px;width:{W - 2 * M}px">
+  <div data-rank="1" style="font-family:Anton;font-size:137px;line-height:1.02;color:{DEEP};text-transform:uppercase">Say it. <span style="{MK2};color:{DEEP}">It runs.</span></div>
+  <div data-rank="4" style="font-size:32px;color:{DEEP};margin-top:14px">Type one sentence. <span style="{MK3}">FansaChat</span> builds the workflow.</div></div>
+<div class="abs" style="left:{M}px;top:430px;width:250px">{badges}</div>
+<div class="abs" style="left:370px;top:470px;width:610px;height:520px;background:linear-gradient(170deg,#FFFFFF,#F4F2FB);border-radius:26px;padding:34px 38px;
+  box-shadow:0 50px 70px rgba(43,34,102,.38),0 4px 0 #fff inset">
+  <div data-rank="5" style="font-size:20px;letter-spacing:.14em;color:{VIO};border-bottom:1.5px solid {P['neutral']};padding-bottom:12px">WORKFLOW · BUILT FROM ONE SENTENCE</div>
+  <svg class="abs" style="left:80px;top:150px" width="20" height="300"><line x1="10" y1="0" x2="10" y2="300" stroke="{P['neutral']}" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
+  {wf_tile('stripe', 38, 100, "WHEN", "Invoice 7 days overdue")}{wf_tile('gmail', 38, 230, "THEN", "Email the client")}{wf_tile('telegram-bot', 38, 360, "AND", "Tell me on Telegram")}
+</div>
+<img class="abs" src="{LOGO}" style="left:770px;top:880px;width:240px;height:240px;transform:rotate(-24deg);filter:drop-shadow(0 26px 22px rgba(43,34,102,.45)) saturate(1.2)">
+<div class="abs" style="left:770px;top:880px;width:240px;height:240px;transform:rotate(-24deg);background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.7) 48%,transparent 60%);mix-blend-mode:screen;
+  -webkit-mask:url({LOGO}) center/contain no-repeat;mask:url({LOGO}) center/contain no-repeat"></div>
+<div class="abs" style="left:{M}px;top:1110px;width:640px">
+  <div data-rank="4" style="font-size:32px;color:#fff">Edit by chatting · Plain English</div>
+  <div data-rank="3" style="font-size:52px;font-weight:700;color:#fff;margin-top:6px">Join the waitlist →</div></div>
+<div class="abs" style="left:0;top:1262px;width:{W}px;height:88px;background:{P['paper']};border-top:2px solid {VIO}"></div>
+<div class="abs" data-rank="5" data-layer="behind" style="left:{M}px;top:1294px;width:{W - 2 * M}px;text-align:center;font-size:20px;color:{DEEP};letter-spacing:.06em">700+ integrations · 478 templates · from $15/mo · fansachat.com</div>
+</body>""", 1.618, "authority (spec/proof) editorial"))
+
 # ── QA (framework section 9) ──────────────────────────────────────────────
 QA = """([m, allowed, W, H]) => {
  const out = [], els = [...document.querySelectorAll('[data-rank]')];
