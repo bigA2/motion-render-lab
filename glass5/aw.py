@@ -77,11 +77,11 @@ def body(x):
     kick = f'<div class="abs" data-rank="5" style="left:64px;top:60px;font-size:26px;font-weight:700;letter-spacing:.12em;color:{acc}">{x["w"]}</div>'
     main = ""
     if st == "sym":
-        main = (f'<div class="abs" data-rank="1" data-layer="behind" style="left:52px;top:150px;font-family:League;font-size:{230 if len(x["g"]) < 9 else 170}px;line-height:.9;color:{mark};white-space:nowrap">{x["g"]}</div>'
+        main = (f'<div class="abs" data-rank="1" data-layer="behind" style="left:52px;top:150px;font-family:League;font-size:{230 if len(x["g"]) < 9 else 170}px;line-height:.9;color:{acc};opacity:.28;white-space:nowrap">{x["g"]}</div>'
                 + head(x, 470, 66, ink, acc, mark) + chips(a, 860, ink, acc))
     elif st == "check":
         rows = "".join(f'<div style="display:flex;align-items:center;gap:22px;margin-bottom:26px"><span style="width:52px;height:52px;border-radius:12px;border:4px solid {acc};display:inline-flex;align-items:center;justify-content:center;color:{acc};font-size:34px;font-weight:700;flex:none">✓</span>'
-                       f'<span data-rank="3" style="font-size:40px;font-weight:700;color:{ink}">{r}</span></div>' for r in l)
+                       f'<span data-rank="3" style="font-size:46px;font-weight:700;color:{ink}">{r}</span></div>' for r in l)
         main = head(x, 150, 70, ink, acc, mark) + f'<div class="abs" style="left:64px;top:480px;width:952px">{rows}</div>' + (chips(a, 900, ink, acc) if a else "")
     elif st == "num":
         two = len(l) > 4
@@ -166,6 +166,7 @@ def caption(x):
             "Join the waitlist → fansachat.com · Community → t.me/fansachat #Automation #NoCode #AIWorkflow")
 
 first, last = (int(sys.argv[1]), int(sys.argv[2])) if len(sys.argv) > 2 else (1, 100)
+ONLY = set(sys.argv[1].split(",")) if len(sys.argv) == 2 else None
 allowed = {str(k): list(range(18, 400)) for k in range(1, 6)}
 SMALL = """() => [...document.querySelectorAll('[data-rank]')].filter(e => parseFloat(getComputedStyle(e).fontSize) < (+e.dataset.rank === 5 ? 20 : 28))
   .map(e => `too small ${getComputedStyle(e).fontSize}: "${e.textContent.trim().slice(0,24)}"`)"""
@@ -173,7 +174,7 @@ rows, fails = [], 0
 with sync_playwright() as pw:
     br = pw.chromium.launch(channel=os.environ.get("PW_CHANNEL") or None)
     pg = br.new_page(viewport={"width": W, "height": H}, device_scale_factor=1)
-    for x in [d for d in DATA if first <= d["i"] <= last]:
+    for x in [d for d in DATA if first <= d["i"] <= last and (not ONLY or d["y"] in ONLY)]:
         n = fname(x); f = OUT / f"{n}.html"
         f.write_text(f"<!doctype html><html><head><meta charset=utf-8><style>{CSS}</style></head>{body(x)}</html>", encoding="utf-8")
         pg.goto(f.as_uri()); pg.evaluate("document.fonts.ready"); pg.wait_for_timeout(250)
