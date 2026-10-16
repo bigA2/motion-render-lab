@@ -53,8 +53,8 @@ def slide(c, n, s):
         main = head(72) + rows(s["l"], 600, "✕")
     elif t == "intro":
         main = (head(80, 220) + f'<div class="abs" style="left:64px;top:620px;width:900px;padding:36px 40px;border-radius:28px 28px 28px 8px;background:{card};border:2px solid {mark}">'
-                f'<div data-rank="5" style="font-size:24px;font-weight:700;letter-spacing:.12em;color:{acc}">FANSACHAT</div>'
-                f'<div data-rank="3" style="font-size:40px;line-height:1.35;font-weight:500;color:{ink};margin-top:12px">{s["b"]}</div></div>')
+                f'<div style="display:flex;align-items:center;gap:12px"><img src="{LOGO}" style="width:36px;height:36px"><span data-rank="5" style="font-size:24px;font-weight:700;letter-spacing:.12em;color:{acc}">{s["lab"]}</span></div>'
+                f'<div data-rank="3" style="font-size:40px;line-height:1.35;font-weight:500;color:{ink};margin-top:14px">“{s["b"]}”</div></div>')
     elif t == "sol":
         shot = (HERE / "assets" / f'{c["shot"]}.jpg').as_uri()
         main = (head(64, 170) + f'<div class="abs" style="left:64px;top:420px;width:952px;height:588px;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.25),0 0 0 6px #fff">'

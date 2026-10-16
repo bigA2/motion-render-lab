@@ -1,38 +1,196 @@
 [
-{"id":"c01","who":"AGENCY OWNERS","pal":0,"shot":"i01","file":"agency-owner-automation-carousel",
- "s":[
-  {"t":"hook","h":"Agency owner? If your team's hours go to admin instead of clients, **this is for you.**","b":"Here's how agency teams remove it →"},
-  {"t":"obst","h":"The 4 obstacles slowing **every agency** down","l":["New clients set up by hand in 4 tools","Call action items that never become tasks","Monthly reports that eat a full day","Leads waiting hours for a reply"]},
-  {"t":"cost","h":"What leaving them costs: **hours that should be client work.**","l":["Every new client: 4 set-up jobs","Every call: tasks lost in notes","Every month: a day per client on reports"]},
-  {"t":"intro","h":"What if your team **just described the work?**","b":"FansaChat turns one sentence into a working automation across 700+ apps. You approve every step before it runs."},
-  {"t":"sol","h":"One sentence. **A new client, fully set up.**","b":"Contract signed → ClickUp project, Drive folder, HubSpot stage."},
-  {"t":"cta","h":"Each role on your team gets **its own flow.**","price":"Team plan · $149/month, built for agencies automating the whole team","save":"Save this for your next team meeting."}
- ]},
-{"id":"c02","who":"SOCIAL MEDIA MANAGERS","pal":1,"shot":"i03","file":"social-media-manager-automation-carousel",
- "s":[
-  {"t":"hook","h":"Social media manager? If approved posts still eat your evenings, **this is for you.**","b":"Here's how to get them back →"},
-  {"t":"obst","h":"3 obstacles between **\"approved\"** and **\"posted\"**","l":["Captions rewritten for every channel","Graphics exported by hand","Queued one network at a time"]},
-  {"t":"cost","h":"Every approved post: **4 tabs and your evening.**","l":["Times every client","Times every week","Time you never bill for"]},
-  {"t":"intro","h":"What if the approval **did the rest?**","b":"FansaChat turns one sentence into a working automation across 700+ apps. You approve every step before it runs."},
-  {"t":"sol","h":"Approved in Trello → **queued in Buffer.**","b":"Captions written, Bannerbear graphic made, post queued. One sentence."},
-  {"t":"cta","h":"Built for one person **running many accounts.**","price":"Pro plan · $45/month for individuals","save":"Save this for your next content day."}
- ]},
-{"id":"c03","who":"ONLINE SHOP OWNERS","pal":3,"shot":"i08","file":"online-shop-owner-automation-carousel",
- "s":[
-  {"t":"hook","h":"Run an online shop? If \"where's my order?\" fills your day, **this is for you.**","b":"Here's how shops answer it without lifting a finger →"},
-  {"t":"obst","h":"The obstacles behind **every order message**","l":["The same question from a new customer","The order looked up by hand","Tracking copied from Shippo"]},
-  {"t":"cost","h":"Every minute on order questions is **a minute not selling.**","l":["A slow reply feels like no reply","It returns with every order","It grows as you grow"]},
-  {"t":"intro","h":"What if the answer **sent itself?**","b":"FansaChat turns one sentence into a working automation across 700+ apps. You approve every step before it runs."},
-  {"t":"sol","h":"Asked on WhatsApp → **answered with tracking.**","b":"Shopify order found, Shippo tracking added, reply sent. WhatsApp connects via Respond.io."},
-  {"t":"cta","h":"Spend your day **on the shop, not the inbox.**","save":"Save this for your next busy week."}
- ]},
-{"id":"c04","who":"SUPPORT LEADS","pal":2,"shot":"i07","file":"support-lead-automation-carousel",
- "s":[
-  {"t":"hook","h":"Lead a support team? If bug tickets get retyped for developers, **this is for you.**","b":"Here's how support teams hand them off →"},
-  {"t":"obst","h":"The hand-off obstacles **between support and dev**","l":["Ticket copied into Jira","Steps rewritten from the chat","Link pasted back by hand"]},
-  {"t":"cost","h":"Every retyped ticket **delays the fix and the reply.**","l":["Agents leave the queue","Details get lost in the copy","Customers wait longer"]},
-  {"t":"intro","h":"What if the tag **did the hand-off?**","b":"FansaChat turns one sentence into a working automation across 700+ apps. You approve every step before it runs."},
-  {"t":"sol","h":"Tagged \"bug\" in Zendesk → **Jira issue opened.**","b":"AI writes the repro steps, the issue opens, the link goes back to the ticket."},
-  {"t":"cta","h":"Keep your agents **in the queue, not in Jira.**","save":"Save this for your next team review."}
- ]}
+ {
+  "id": "c01",
+  "who": "AGENCY OWNERS",
+  "pal": 0,
+  "shot": "i01",
+  "file": "agency-owner-automation-carousel",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Agency owner? If your best people spend their hours on admin, **this is for you.**",
+    "b": "Here's how agency teams take it back →"
+   },
+   {
+    "t": "obst",
+    "h": "Between **\"signed\"** and **\"kicked off\"**, a week quietly disappears.",
+    "l": [
+     "A project built by hand in ClickUp",
+     "A folder made, a deal moved",
+     "A kickoff waiting on all of it"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Meanwhile, the client is **already judging the first week.**",
+    "l": [
+     "Momentum lost before the work starts",
+     "Senior time spent on set-up",
+     "The same delay with every new client"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **remove that week.**",
+    "b": "When a contract is signed in Docusign, create the ClickUp project and Drive folder and move the HubSpot deal to Onboarding.",
+    "lab": "YOUR ACCOUNT MANAGER WRITES ONCE"
+   },
+   {
+    "t": "sol",
+    "h": "Signed → **set up before anyone opens a tab.**",
+    "b": "ClickUp project, Drive folder and HubSpot stage, straight from the contract."
+   },
+   {
+    "t": "cta",
+    "h": "Each role on your team gets **its own flow.**",
+    "price": "Team plan · $149/month, built for agencies automating the whole team",
+    "save": "Save this for your next team meeting."
+   }
+  ]
+ },
+ {
+  "id": "c02",
+  "who": "SOCIAL MEDIA MANAGERS",
+  "pal": 1,
+  "shot": "i03",
+  "file": "social-media-manager-automation-carousel",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Social media manager? If \"approved\" still means another evening of work, **this is for you.**",
+    "b": "Here's how to close that gap →"
+   },
+   {
+    "t": "obst",
+    "h": "Approval should be the finish line. **For most teams, it's the start.**",
+    "l": [
+     "Each caption rewritten per channel",
+     "Each graphic exported again",
+     "Each post queued one network at a time"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Now multiply one approved post by **every client, every week.**",
+    "l": [
+     "Evenings that never get billed",
+     "Posts that go out late",
+     "Ideas waiting behind admin"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **close that gap.**",
+    "b": "When a card moves to Client Approved in Trello, write captions for each channel, render the graphic in Bannerbear and queue it in Buffer.",
+    "lab": "YOU WRITE IT ONCE"
+   },
+   {
+    "t": "sol",
+    "h": "Approved in Trello. **Queued in Buffer.** Nothing in between.",
+    "b": "Captions per channel and a Bannerbear graphic, made on the way."
+   },
+   {
+    "t": "cta",
+    "h": "Built for one person **running many accounts.**",
+    "price": "Pro plan · $45/month for individuals",
+    "save": "Save this for your next content day."
+   }
+  ]
+ },
+ {
+  "id": "c03",
+  "who": "ONLINE SHOP OWNERS",
+  "pal": 3,
+  "shot": "i08",
+  "file": "online-shop-owner-automation-carousel",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Run an online shop? If \"where's my order?\" fills your inbox, **this is for you.**",
+    "b": "Here's how growing shops handle it →"
+   },
+   {
+    "t": "obst",
+    "h": "Every order brings **one more conversation** you didn't plan for.",
+    "l": [
+     "The order found by hand",
+     "The tracking copied across",
+     "The same reply typed again"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "The busier the shop gets, **the louder that inbox gets.**",
+    "l": [
+     "Hours away from product and marketing",
+     "Slower replies on the busiest days",
+     "Customers asking twice"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **quiet that inbox.**",
+    "b": "When a customer asks on WhatsApp where their order is, look it up in Shopify, get the Shippo tracking and reply.",
+    "lab": "YOU WRITE IT ONCE"
+   },
+   {
+    "t": "sol",
+    "h": "Asked on WhatsApp. **Answered with tracking.**",
+    "b": "Shopify order and Shippo tracking, sent back on their own. WhatsApp connects via Respond.io."
+   },
+   {
+    "t": "cta",
+    "h": "Spend your day **on the shop, not the inbox.**",
+    "save": "Save this for your next busy week."
+   }
+  ]
+ },
+ {
+  "id": "c04",
+  "who": "SUPPORT LEADS",
+  "pal": 2,
+  "shot": "i07",
+  "file": "support-lead-automation-carousel",
+  "s": [
+   {
+    "t": "hook",
+    "h": "Lead a support team? If agents rewrite tickets for developers, **this is for you.**",
+    "b": "Here's how support teams hand off cleanly →"
+   },
+   {
+    "t": "obst",
+    "h": "A bug report arrives in one message. **Handing it over takes several.**",
+    "l": [
+     "Copied into Jira",
+     "Steps rewritten from the chat",
+     "Link pasted back to the ticket"
+    ]
+   },
+   {
+    "t": "cost",
+    "h": "Every manual hand-off **slows the fix and the reply.**",
+    "l": [
+     "Agents away from the queue",
+     "Details lost in the copy",
+     "Customers waiting on both"
+    ]
+   },
+   {
+    "t": "intro",
+    "h": "Here's how we **make the hand-off clean.**",
+    "b": "When a Zendesk ticket gets the bug tag, write the steps to reproduce, open a Jira issue and link it back.",
+    "lab": "YOUR TEAM WRITES IT ONCE"
+   },
+   {
+    "t": "sol",
+    "h": "Tagged \"bug\". **The Jira issue is already open.**",
+    "b": "Repro steps written by AI, the link added back to the Zendesk ticket."
+   },
+   {
+    "t": "cta",
+    "h": "Keep your agents **in the queue, not in Jira.**",
+    "save": "Save this for your next team review."
+   }
+  ]
+ }
 ]
