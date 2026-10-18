@@ -182,7 +182,7 @@ const F3: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
   const fly = ez(f, t.crm - 8, t.crm + 8, Easing.inOut(Easing.cubic));
   return <Plate tint={C.lilac} seed={4}>
     <Center dir={w ? 'row' : 'column'} gap={60 * u}>
-      <div style={{transform: w ? `translateX(${fly * 330 * u}px) scale(${1 - 0.3 * fly})` : `translateY(${fly * 300 * u}px) scale(${1 - 0.3 * fly})`, opacity: 1 - fly * 0.9, zIndex: 3}}><Card icon="calendly" title="Intro call booked" sub="Thu · 10:00" u={u} at={t.cal} f={f} width={500} /></div>
+      <div style={{transform: w ? `translateX(${fly * 330 * u}px) scale(${1 - 0.3 * fly})` : `translateY(${fly * 300 * u}px) scale(${1 - 0.3 * fly})`, opacity: 1 - fly, zIndex: 3}}><Card icon="calendly" title="Intro call booked" sub="Thu · 10:00" u={u} at={t.cal} f={f} width={500} /></div>
       <Rise at={t.cal + 4} f={f}><div style={{...glass, width: 460 * u, padding: 22 * u}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 12 * u, fontFamily: F.ui, fontWeight: 800, fontSize: 26 * u, color: C.ink, marginBottom: 14 * u}}><Tile k="pipedrive" size={50 * u} />Pipedrive · New deals</div>
         {['Rhea · brand refresh', 'Kai · landing page'].map((d) => <div key={d} style={{padding: 14 * u, borderRadius: 16 * u, background: '#F5F4FA', fontFamily: F.ui, fontWeight: 600, fontSize: 22 * u, color: C.sub, marginBottom: 10 * u}}>{d}</div>)}
@@ -207,7 +207,7 @@ const A2: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
   const Wc = 560 * u, Hc = 260 * u; const d = pts.map((p, i) => `${i ? 'L' : 'M'}${(i / (pts.length - 1)) * Wc},${p * Hc}`).join(' ');
   return <Plate tint={C.cream} seed={6}>
     <Center dir={w ? 'row' : 'column'} gap={44 * u}>
-      <Rise at={t.mon - 6} f={f}><div style={{...glass, width: 220 * u, overflow: 'hidden', textAlign: 'center'}}><div style={{background: C.bad, color: '#fff', fontFamily: F.ui, fontWeight: 800, fontSize: 30 * u, padding: 10 * u}}>MON</div><div style={{fontFamily: F.head, fontWeight: 800, fontSize: 84 * u, color: C.ink, padding: 12 * u}}>08:00</div></div></Rise>
+      <Rise at={t.mon - 6} f={f}><div style={{...glass, width: 300 * u, overflow: 'hidden', textAlign: 'center'}}><div style={{background: C.bad, color: '#fff', fontFamily: F.ui, fontWeight: 800, fontSize: 30 * u, padding: 10 * u}}>MON</div><div style={{fontFamily: F.head, fontWeight: 800, fontSize: 84 * u, color: C.ink, padding: 12 * u}}>08:00</div></div></Rise>
       <Rise at={t.search - 6} f={f}><div style={{...glass, padding: 24 * u, width: Wc + 48 * u, position: 'relative'}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 12 * u, fontFamily: F.ui, fontWeight: 800, fontSize: 24 * u, color: C.ink, marginBottom: 10 * u}}><Tile k={toSlide > 0.5 ? 'slides' : 'gsc'} size={46 * u} />{toSlide > 0.5 ? 'Client report · week 42' : 'Search Console · clicks'}</div>
         <svg width={Wc} height={Hc} style={{overflow: 'visible'}}><path d={d} stroke={C.accent} strokeWidth={7 * u} fill="none" strokeLinecap="round" strokeLinejoin="round" pathLength={1} strokeDasharray={`${draw} 1`} /></svg>
