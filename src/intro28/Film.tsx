@@ -78,7 +78,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
       // one shape: Copy button → Paste field → Chase toast → Repeat loader → shrinks to a ball → the ball stretches open into the sentence
       const LINE = ["That's", 'not', 'the', 'job', 'you', 'signed', 'up', 'for.'];
       const wt = [t.that, wf(0, ['not']), wf(0, ['the']), wf(0, ['job']), wf(0, ['you']), wf(0, ['signed']), wf(0, ['up']), wf(0, ['for'])];
-      const fs = (w ? 92 : 66) * u, cw = fs * 0.5; // char-width estimate for camera framing
+      const fs = (w ? 92 : 66) * u, cw = fs * 0.62; // char-width estimate for camera framing
       const chars = LINE.reduce((n, x) => n + x.length + 1, -1); const textW = chars * cw;
       const wordX = (i: number) => { let c = 0; for (let j = 0; j < i; j++) c += LINE[j].length + 1; return W / 2 - textW / 2 + (c + LINE[i].length / 2) * cw; };
       const ball = t.that - 8, open = t.that - 2;
@@ -102,14 +102,14 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
       return <AbsoluteFill>
         <Liquid f={f} a="rgba(139,143,232,0.35)" b="rgba(244,184,168,0.35)" c="rgba(200,205,255,0.4)" base={PAPER} />
         <AbsoluteFill style={{transform: `translate(${W / 2 - camX * camZ}px, ${H / 2 - (H / 2) * camZ}px) scale(${camZ})`, transformOrigin: '0 0'}}>
-          <div style={{position: 'absolute', left: W / 2, top: H / 2, width: swU, height: sh, marginLeft: -swU / 2, marginTop: -sh / 2, borderRadius: rad, background: bg, boxShadow: fill > 0.02 ? `0 ${30 * u}px ${60 * u}px -30px rgba(34,30,48,${0.55 * fill})` : 'none', border: lightness > 0.5 ? `1.5px solid ${INK}` : 'none', transform: `scale(${0.6 + 0.4 * intro})`, opacity: intro, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'}}>
+          <div style={{position: 'absolute', left: W / 2, top: H / 2, width: swU, height: sh, marginLeft: -swU / 2, marginTop: -sh / 2, borderRadius: rad, background: bg, boxShadow: fill > 0.02 ? `0 ${30 * u}px ${60 * u}px -30px rgba(34,30,48,${0.55 * fill})` : 'none', border: lightness > 0.5 ? `1.5px solid ${INK}` : 'none', transform: `scale(${0.6 + 0.4 * intro})`, opacity: intro, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: f >= open + 6 ? 'visible' : 'hidden'}}>
             <div style={{position: 'absolute', display: 'flex', alignItems: 'center', gap: 14 * u, color: '#fff', fontFamily: FONT.ui, fontWeight: 600, fontSize: 38 * u, whiteSpace: 'nowrap', ...swap(0, t.paste)}}><span style={{fontSize: 30 * u}}>⧉</span>Copy</div>
             <div style={{position: 'absolute', left: 30 * u, right: 30 * u, display: 'flex', alignItems: 'center', gap: 16 * u, color: INK, fontFamily: FONT.ui, fontSize: 34 * u, whiteSpace: 'nowrap', ...swap(t.paste, t.chase)}}><span style={{color: LO, fontSize: 24 * u, fontWeight: 600}}>PASTE</span><span style={{fontWeight: 600}}>INV-0142 · $1,200</span><span style={{width: 3, height: 40 * u, background: PERI_D, opacity: Math.floor(f / 20) % 2 ? 0.2 : 1}} /></div>
             <div style={{position: 'absolute', left: 34 * u, right: 34 * u, display: 'flex', alignItems: 'center', gap: 20 * u, color: '#fff', fontFamily: FONT.ui, whiteSpace: 'nowrap', ...swap(t.chase, t.repeat)}}><div style={{width: 64 * u, height: 64 * u, borderRadius: 20 * u, background: 'rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 34 * u}}>🔔</div><div><div style={{fontWeight: 700, fontSize: 32 * u}}>Chasing invoice #3…</div><div style={{fontSize: 24 * u, opacity: 0.7}}>still unpaid · sent by hand</div></div></div>
             <div style={{position: 'absolute', ...swap(t.repeat, ball)}}><svg width={90 * u} height={90 * u} viewBox="0 0 40 40" style={{transform: `rotate(${spin}deg)`}}><circle cx="20" cy="20" r="15" stroke="rgba(255,255,255,0.25)" strokeWidth="4" fill="none" /><path d="M20 5 A15 15 0 0 1 35 20" stroke="#fff" strokeWidth="4" fill="none" strokeLinecap="round" /></svg></div>
             {/* the sentence comes OUT of the ball: revealed inside the stretching capsule, white on ink → ink on paper */}
             {f >= open - 2 ? <div style={{position: 'absolute', whiteSpace: 'nowrap', fontFamily: FONT.clash, fontWeight: 600, fontSize: fs, letterSpacing: '-0.025em', opacity: textK, filter: `blur(${(1 - textK) * 10}px)`, transform: `scale(${0.92 + 0.08 * textK})`}}>
-              {LINE.map((wd, i) => { const on = f >= wt[i] - 2; const c = wd === 'job' ? PERI_D : INK; const col = fill > 0.5 ? '#FFFFFF' : c; return <span key={i} style={{color: col, opacity: on ? 1 : 0.28, marginRight: i < LINE.length - 1 ? cw : 0}}>{wd}</span>; })}
+              {LINE.map((wd, i) => { const on = f >= wt[i] - 2; const c = wd === 'job' ? PERI_D : INK; const col = fill > 0.5 ? '#FFFFFF' : c; return <span key={i} style={{color: col, opacity: on ? 1 : 0.28, marginRight: i < LINE.length - 1 ? fs * 0.26 : 0}}>{wd}</span>; })}
             </div> : null}
           </div>
           {/* the spoken word under the shape (Copy. Paste. Chase. Repeat.) */}
@@ -173,9 +173,9 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
               <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 18 * u}}><span style={{fontFamily: FONT.ui, fontSize: 24 * u, color: 'rgba(255,255,255,0.8)'}}>FansaChat · new workflow</span><div style={{width: 60 * u, height: 60 * u, borderRadius: 99, background: PERI_D, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 30 * u}}>↑</div></div>
             </div>
             <Cursor x={springTo(f, [[cut2, W * 0.66], [cut2 + 2, W / 2 + 160 * u]], 11)} y={springTo(f, [[cut2, H * 0.9], [cut2 + 2, H * 0.16 + 40 * u]], 11)} press={Math.max(0, 1 - Math.abs(f - cut2 - 14) / 4)} s={u * 1.1} />
-            <AbsoluteFill style={{background: `rgba(220,222,255,${flash})`}} />
           </AbsoluteFill>;
         })() : null}
+        {f >= whip ? <AbsoluteFill style={{background: `rgba(220,222,255,${ez(f, whip + 6, S2[1])})`}} /> : null}
       </AbsoluteFill>;
     })() : null}
 
