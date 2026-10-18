@@ -96,7 +96,14 @@ const Arrow: React.FC<{at: number; f: number; u: number; vertical?: boolean; len
     {vertical ? <line x1={15 * u} y1={0} x2={15 * u} y2={L * k} stroke={C.accent} strokeWidth={6 * u} strokeLinecap="round" strokeDasharray={`${2 * u} ${14 * u}`} /> : <line x1={0} y1={15 * u} x2={L * k} y2={15 * u} stroke={C.accent} strokeWidth={6 * u} strokeLinecap="round" strokeDasharray={`${2 * u} ${14 * u}`} />}
   </svg>;
 };
-const Plate: React.FC<{children: React.ReactNode; tint?: string}> = ({children, tint = '#FFFFFF'}) => <AbsoluteFill style={{borderRadius: 64, background: `linear-gradient(160deg, ${tint}, #FFFFFF 60%)`, boxShadow: '0 80px 140px -60px rgba(40,20,80,0.45)', overflow: 'hidden', border: '2px solid rgba(255,255,255,0.9)'}}>{children}</AbsoluteFill>;
+const AMB = ['stripe', 'hubspot', 'shopify', 'xero', 'figma', 'calendly', 'gsc', 'slack', 'acuity', 'drive', 'meta', 'pipedrive'];
+const Plate: React.FC<{children: React.ReactNode; tint?: string; seed?: number}> = ({children, tint = '#FFFFFF', seed = 0}) => {
+  const f = useCurrentFrame();
+  return <AbsoluteFill style={{borderRadius: 64, background: `linear-gradient(160deg, ${tint}, #FFFFFF 60%)`, boxShadow: '0 80px 140px -60px rgba(40,20,80,0.45)', overflow: 'hidden', border: '2px solid rgba(255,255,255,0.9)'}}>
+    {[0, 1, 2, 3, 4, 5].map((i) => { const r = (q: number) => ((Math.sin((seed + 1) * 91.7 + i * 37.3 + q * 13.1) + 1) / 2); const x = (i % 3) * 33 + r(1) * 20 + (i < 3 ? 2 : 8); const y = i < 3 ? 4 + r(2) * 12 : 80 + r(3) * 10; return <div key={i} style={{position: 'absolute', left: `${x}%`, top: `${y + Math.sin(f / (40 + i * 7) + i) * 2.2}%`, opacity: 0.16, transform: `rotate(${(r(4) - 0.5) * 24 + Math.sin(f / 50 + i) * 4}deg)`}}><Tile k={AMB[(seed * 5 + i) % AMB.length]} size={70 + r(5) * 40} /></div>; })}
+    <AbsoluteFill style={{transform: `translate(${Math.sin(f / 45 + seed) * 6}px, ${Math.cos(f / 52 + seed) * 5}px)`}}>{children}</AbsoluteFill>
+  </AbsoluteFill>;
+};
 const Center: React.FC<{children: React.ReactNode; dir?: 'row' | 'column'; gap?: number; style?: React.CSSProperties}> = ({children, dir = 'column', gap = 24, style}) => <AbsoluteFill style={{display: 'flex', flexDirection: dir, alignItems: 'center', justifyContent: 'center', gap, ...style}}>{children}</AbsoluteFill>;
 
 // ---------------- scenes (each is a W×H stage) ----------------
@@ -105,14 +112,14 @@ const Hook: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
   const loop = f > t.repeat + 8 ? Math.floor((f - t.repeat - 8) / Math.max(2, 7 - Math.floor((f - t.repeat) / 12))) % 4 : -1;
   const seamK = ez(f, t.seam, t.seam + 16);
   return <AbsoluteFill>
-    <Center gap={34 * u} style={{paddingBottom: 120 * u}}>
+    <Center gap={34 * u}>
       <div style={{display: 'flex', flexDirection: w ? 'row' : 'column', gap: 22 * u, alignItems: 'center'}}>
         {words.map(([wd, at, ic], i) => { const k = ez(f, at - 2, at + 6, Easing.out(Easing.cubic)); const hot = loop === i; return <div key={wd} style={{display: 'flex', alignItems: 'center', gap: 14 * u, padding: `${16 * u}px ${30 * u}px ${16 * u}px ${16 * u}px`, borderRadius: 999, background: hot || (loop < 0 && f >= at && f < at + 10) ? C.ink : '#FFFFFF', color: hot || (loop < 0 && f >= at && f < at + 10) ? '#fff' : C.ink, boxShadow: '0 24px 40px -20px rgba(40,20,80,0.45)', opacity: k, transform: `scale(${1.35 - 0.35 * k})`, filter: k < 1 ? `blur(${(1 - k) * 8}px)` : undefined, fontFamily: F.head, fontWeight: 800, fontSize: 84 * u, letterSpacing: '-0.03em'}}><Tile k={ic} size={86 * u} />{wd}.</div>; })}
       </div>
-      <div style={{maxWidth: 1500 * u, textAlign: 'center'}}><Words text="That's not the job you signed up for." at={t.that} f={f} size={92 * u} em={['job']} /></div>
     </Center>
+    <div style={{position: 'absolute', left: 0, right: 0, top: w ? '66%' : '70%', textAlign: 'center', padding: `0 ${60 * u}px`}}><Words text="That's not the job you signed up for." at={t.that} f={f} size={(w ? 92 : 80) * u} em={['job']} /></div>
     {/* the seam: a red strike that becomes a light slit the camera flies through */}
-    <div style={{position: 'absolute', left: '50%', top: '62%', width: 1500 * u * ez(f, t.strike, t.strike + 10), height: 10 * u + seamK * 22 * u, marginLeft: -750 * u * ez(f, t.strike, t.strike + 10), marginTop: -(5 * u + seamK * 11 * u), borderRadius: 999, background: seamK > 0 ? `linear-gradient(90deg, transparent, #FFFFFF 20%, #FFFFFF 80%, transparent)` : C.bad, boxShadow: seamK > 0 ? `0 0 ${60 * u}px ${20 * u}px rgba(255,255,255,0.9)` : undefined}} />
+    <div style={{position: 'absolute', left: '50%', top: w ? '80%' : '84%', width: 1500 * u * ez(f, t.strike, t.strike + 10), height: 10 * u + seamK * 22 * u, marginLeft: -750 * u * ez(f, t.strike, t.strike + 10), marginTop: -(5 * u + seamK * 11 * u), borderRadius: 999, background: seamK > 0 ? `linear-gradient(90deg, transparent, #FFFFFF 20%, #FFFFFF 80%, transparent)` : C.bad, boxShadow: seamK > 0 ? `0 0 ${60 * u}px ${20 * u}px rgba(255,255,255,0.9)` : undefined}} />
   </AbsoluteFill>;
 };
 
@@ -122,7 +129,7 @@ const Intro: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
   const count = Math.round(700 * ez(f, t.n700 - 10, t.n700 + 16, Easing.out(Easing.cubic)));
   const ring = ['shopify', 'hubspot', 'xero', 'calendly', 'figma', 'gsc', 'slides', 'meta', 'acuity', 'twilio', 'pipedrive', 'slack', 'notion', 'zendesk', 'mailchimp', 'asana', 'webflow', 'quickbooks'];
   const R = (w ? 820 : 470) * u; const ringK = ez(f, t.n700 - 14, t.n700 + 20);
-  return <Plate tint={C.lilac}>
+  return <Plate tint={C.lilac} seed={1}>
     {ring.map((k, i) => { const a = (i / ring.length) * Math.PI * 2 + f * 0.006; const r = R * (0.55 + 0.45 * ringK); return <div key={k} style={{position: 'absolute', left: '50%', top: '50%', transform: `translate(${Math.cos(a) * r - 40 * u}px, ${Math.sin(a) * r * (w ? 0.48 : 0.62) - 40 * u}px) scale(${0.7 + 0.3 * Math.sin(a)})`, opacity: ringK * (0.55 + 0.45 * Math.sin(a)), zIndex: Math.sin(a) > 0 ? 3 : 0}}><Tile k={k} size={80 * u} /></div>; })}
     <Center gap={30 * u}>
       <Rise at={t.fansa - 4} f={f}><div style={{display: 'flex', alignItems: 'center', gap: 18 * u}}><Img src={staticFile('logo-fansa.png')} style={{width: 92 * u, height: 92 * u, objectFit: 'contain'}} /><span style={{fontFamily: F.head, fontWeight: 800, fontSize: 96 * u, color: C.ink, letterSpacing: '-0.04em'}}>FansaChat</span><Chip text="Coming soon" color={C.accent} u={u} at={t.fansa + 8} f={f} /></div></Rise>
@@ -145,7 +152,7 @@ const Intro: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
 };
 
 // Freelancer payoffs
-const F1: React.FC<S & {t: Record<string, number>}> = ({f, u, t}) => <Plate tint={C.peach}>
+const F1: React.FC<S & {t: Record<string, number>}> = ({f, u, t}) => <Plate tint={C.peach} seed={2}>
   <div style={{position: 'absolute', left: 70 * u, top: 60 * u}}><Label text="FREELANCERS" at={t.free} f={f} u={u} /></div>
   <Center gap={22 * u} style={{paddingTop: 60 * u}}>
     <Rise at={t.stripe} f={f}><div style={{...glass, background: C.ink, color: '#fff', padding: `${18 * u}px ${28 * u}px`, display: 'flex', gap: 16 * u, alignItems: 'center', fontFamily: F.ui, fontWeight: 800, fontSize: 32 * u}}><Tile k="stripe" size={60 * u} />Payment received · Lumen Studio</div></Rise>
@@ -156,7 +163,7 @@ const F1: React.FC<S & {t: Record<string, number>}> = ({f, u, t}) => <Plate tint
 </Plate>;
 const F2: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
   const wait = ez(f, t.remind - 14, t.remind + 4);
-  return <Plate tint={C.cream}>
+  return <Plate tint={C.cream} seed={3}>
     <Center dir={w ? 'row' : 'column'} gap={40 * u}>
       <div style={{position: 'relative'}}>
         <Card icon="xero" title="Invoice INV-0142" sub="Due 12 days ago" u={u} at={t.xero} f={f} width={560} />
@@ -171,7 +178,7 @@ const F2: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
 };
 const F3: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
   const fly = ez(f, t.crm - 8, t.crm + 8, Easing.inOut(Easing.cubic));
-  return <Plate tint={C.lilac}>
+  return <Plate tint={C.lilac} seed={4}>
     <Center dir={w ? 'row' : 'column'} gap={60 * u}>
       <div style={{transform: w ? `translateX(${fly * 330 * u}px) scale(${1 - 0.3 * fly})` : `translateY(${fly * 300 * u}px) scale(${1 - 0.3 * fly})`, opacity: 1 - fly * 0.9, zIndex: 3}}><Card icon="calendly" title="Intro call booked" sub="Thu · 10:00" u={u} at={t.cal} f={f} width={500} /></div>
       <Rise at={t.cal + 4} f={f}><div style={{...glass, width: 460 * u, padding: 22 * u}}>
@@ -184,7 +191,7 @@ const F3: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
 };
 
 // Agency payoffs
-const A1: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => <Plate tint={C.lilac}>
+const A1: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => <Plate tint={C.lilac} seed={5}>
   <div style={{position: 'absolute', left: 70 * u, top: 60 * u}}><Label text="AGENCIES" at={t.ag} f={f} u={u} /></div>
   <Center dir={w ? 'row' : 'column'} gap={26 * u} style={{paddingTop: 60 * u}}>
     <Card icon="meta" title="New ad lead" sub="Spring campaign · lead form" u={u} at={t.meta} f={f} width={520} />
@@ -196,7 +203,7 @@ const A2: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
   const draw = ez(f, t.search - 4, t.search + 22, Easing.inOut(Easing.cubic)); const toSlide = ez(f, t.search + 22, t.search + 34);
   const pts = [0.62, 0.55, 0.58, 0.44, 0.47, 0.33, 0.28, 0.18];
   const Wc = 560 * u, Hc = 260 * u; const d = pts.map((p, i) => `${i ? 'L' : 'M'}${(i / (pts.length - 1)) * Wc},${p * Hc}`).join(' ');
-  return <Plate tint={C.cream}>
+  return <Plate tint={C.cream} seed={6}>
     <Center dir={w ? 'row' : 'column'} gap={44 * u}>
       <Rise at={t.mon - 6} f={f}><div style={{...glass, width: 220 * u, overflow: 'hidden', textAlign: 'center'}}><div style={{background: C.bad, color: '#fff', fontFamily: F.ui, fontWeight: 800, fontSize: 30 * u, padding: 10 * u}}>MON</div><div style={{fontFamily: F.head, fontWeight: 800, fontSize: 84 * u, color: C.ink, padding: 12 * u}}>08:00</div></div></Rise>
       <Rise at={t.search - 6} f={f}><div style={{...glass, padding: 24 * u, width: Wc + 48 * u, position: 'relative'}}>
@@ -209,7 +216,7 @@ const A2: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
 };
 const A3: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
   const lanes: [string, string[]][] = [['Account manager', ['hubspot', 'gcal', 'mail']], ['Designer', ['figma', 'drive', 'slack']], ['Project lead', ['asana', 'clickup', 'slides']]];
-  return <Plate tint={C.peach}>
+  return <Plate tint={C.peach} seed={7}>
     <Center gap={18 * u}>
       {lanes.map(([role, apps], i) => { const at = t.role + i * 6; const k = ez(f, at, at + 12); return <div key={role} style={{...glass, display: 'flex', alignItems: 'center', gap: 18 * u, padding: `${16 * u}px ${24 * u}px`, width: (w ? 1080 : 900) * u, opacity: k, transform: `translateX(${(1 - k) * -80 * u}px)`}}>
         <div style={{width: (w ? 300 : 260) * u, fontFamily: F.ui, fontWeight: 800, fontSize: 28 * u, color: C.ink}}>{role}</div>
@@ -222,7 +229,7 @@ const A3: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
 };
 const A4: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
   const split = ez(f, t.figma + 6, t.figma + 18);
-  return <Plate tint={C.lilac}>
+  return <Plate tint={C.lilac} seed={8}>
     <Center dir={w ? 'row' : 'column'} gap={30 * u}>
       <Rise at={t.feed - 4} f={f}><div style={{...glass, padding: 22 * u, width: 440 * u}}><div style={{display: 'flex', gap: 12 * u, alignItems: 'center', fontFamily: F.ui, fontWeight: 800, fontSize: 24 * u, color: C.ink}}><Tile k="figma" size={50 * u} />Homepage v3 · comment</div><div style={{marginTop: 12 * u, padding: 14 * u, borderRadius: 16 * u, background: '#F5F4FA', fontFamily: F.ui, fontSize: 24 * u, color: C.ink}}>“Can we try the blue logo?”</div></div></Rise>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 * u, opacity: ez(f, t.figma, t.figma + 10)}}>
@@ -238,13 +245,13 @@ const A4: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
 const PHONE = {x: 0.68, y: 0.52}; // phone screen centre inside B1 (stage fraction) = zoom-through target
 const B1: React.FC<S & {t: Record<string, number>}> = ({f, u, w, W, H, t}) => {
   const pw = 330 * u, ph = 640 * u;
-  return <Plate tint={C.peach}>
+  return <Plate tint={C.peach} seed={9}>
     <div style={{position: 'absolute', left: 70 * u, top: 60 * u}}><Label text="SMALL BUSINESSES" at={t.small} f={f} u={u} /></div>
     <div style={{position: 'absolute', left: w ? W * 0.12 : W * 0.06, top: w ? H * 0.38 : H * 0.2}}><Card icon="acuity" title="Haircut · tomorrow 10:00" sub="Acuity Scheduling" u={u} at={t.book} f={f} width={w ? 600 : 560} /></div>
     <div style={{position: 'absolute', left: W * PHONE.x - pw / 2, top: H * PHONE.y - ph / 2, width: pw, height: ph, borderRadius: 54 * u, background: '#121212', padding: 10 * u, boxShadow: '0 50px 90px -40px rgba(0,0,0,0.6)', transform: `translateY(${(1 - sp(f, t.book + 4)) * 300 * u}px)`}}>
       <div style={{width: '100%', height: '100%', borderRadius: 46 * u, background: 'linear-gradient(170deg,#FFF3EA,#F2EEFF)', position: 'relative', overflow: 'hidden'}}>
         <div style={{position: 'absolute', top: 60 * u, width: '100%', textAlign: 'center', fontFamily: F.ui, fontWeight: 300, fontSize: 70 * u, color: C.ink}}>9:41</div>
-        <div style={{position: 'absolute', left: 14 * u, right: 14 * u, top: 200 * u, padding: 16 * u, borderRadius: 22 * u, background: '#fff', boxShadow: '0 10px 20px -10px rgba(0,0,0,0.3)', opacity: ez(f, t.noshow - 10, t.noshow - 2), transform: `translateY(${(1 - ez(f, t.noshow - 10, t.noshow - 2)) * -40 * u}px)`}}>
+        <div style={{position: 'absolute', left: 14 * u, right: 14 * u, top: 200 * u, padding: 16 * u, borderRadius: 22 * u, background: '#fff', boxShadow: '0 10px 20px -10px rgba(0,0,0,0.3)', opacity: ez(f, t.book + 12, t.book + 20), transform: `translateY(${(1 - ez(f, t.book + 12, t.book + 20)) * -40 * u}px)`}}>
           <div style={{display: 'flex', gap: 8 * u, alignItems: 'center', fontFamily: F.ui, fontSize: 16 * u, color: C.sub}}><Icon k="twilio" size={22 * u} />SMS · now</div>
           <div style={{fontFamily: F.ui, fontWeight: 700, fontSize: 21 * u, color: C.ink, marginTop: 6 * u}}>See you tomorrow at 10. Reply C to confirm.</div>
         </div>
@@ -254,7 +261,7 @@ const B1: React.FC<S & {t: Record<string, number>}> = ({f, u, w, W, H, t}) => {
 };
 const B2: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
   const steps: [string, string, number][] = [['shopify', 'Order #1048 fulfilled', t.orders], ['shippo', 'Out for delivery', t.orders + 8], ['mail', 'Wait 5 days → review request', t.review - 4]];
-  return <Plate tint={C.cream}>
+  return <Plate tint={C.cream} seed={10}>
     <Center gap={18 * u}>
       {steps.map(([k, label, at]) => <Card key={label} icon={k} title={label} u={u} at={at} f={f} done={at + 10} width={w ? 680 : 640} />)}
       <Rise at={t.review + 4} f={f}><div style={{fontSize: 64 * u, letterSpacing: 8 * u, color: '#FFB020'}}>{'★★★★★'.split('').map((s, i) => <span key={i} style={{opacity: ez(f, t.review + 4 + i * 2, t.review + 10 + i * 2)}}>{s}</span>)}</div></Rise>
@@ -264,7 +271,7 @@ const B2: React.FC<S & {t: Record<string, number>}> = ({f, u, w, t}) => {
 const B3: React.FC<S & {t: Record<string, number>}> = ({f, u, w, W, H, t}) => {
   const press = Math.max(0, 1 - Math.abs(f - t.approve) / 4); const approved = f >= t.approve;
   const cx = interpolate(f, [t.approve - 20, t.approve - 2], [W * 0.85, W * (w ? 0.6 : 0.62)], {...clamp, easing: EXPO}); const cy = interpolate(f, [t.approve - 20, t.approve - 2], [H * 0.9, H * (w ? 0.6 : 0.64)], {...clamp, easing: EXPO});
-  return <Plate tint={C.lilac}>
+  return <Plate tint={C.lilac} seed={11}>
     <Center gap={26 * u}>
       <Card icon="key" title="Your own logins" sub="Connections stay yours" u={u} at={t.own} f={f} width={620} done={t.own + 10} />
       <Rise at={t.own + 6} f={f}><div style={{...glass, padding: 24 * u, width: 620 * u, display: 'flex', alignItems: 'center', gap: 18 * u}}>
@@ -311,7 +318,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
   // ---- world layout (units = px at zoom 1) ----
   const s6 = 1 / 6, s36 = 1 / 36;
   const P0: [number, number] = [0, H * 0.12]; // seam point in the hook stage
-  const gx = W * s6 * 1.16, gy = H * s6 * 1.28;
+  const gx = W * s6 * 1.07, gy = H * s6 * 1.12;
   const pos = {
     intro: P0,
     f1: [P0[0] + gx, P0[1]], f2: [P0[0] + gx * 2, P0[1]], f3: [P0[0] + gx * 3, P0[1]],
@@ -343,11 +350,26 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
     [T(total), boardZ * 0.84, ...board],
   ];
   const [, z, cx, cy] = camAt(kfs, f);
+  const m = Math.min;
+  const d: Record<string, number> = {...t};
+  const arr = (x: number) => x + 2;
+  d.stripe = m(t.stripe, arr(t.free) + 4); d.folder = m(t.folder, d.stripe + 12);
+  d.xero = arr(t.xero) - 10; d.remind = m(t.remind, d.xero + 16); d.paid = d.remind + 16;
+  d.cal = arr(t.cal) - 10; d.crm = m(t.crm, d.cal + 22);
+  d.ag = arr(t.ag) - 4; d.meta = arr(t.ag) - 8; d.hub = m(t.hub, d.meta + 14);
+  d.mon = arr(t.mon) - 10; d.search = m(t.search, d.mon + 10);
+  d.role = arr(t.role) - 8;
+  d.feed = arr(t.feed) - 10; d.figma = m(t.figma, d.feed + 12); d.slack = m(t.slack, d.figma + 18);
+  d.book = t.small + 14; d.noshow = d.book + 16;
+  d.review = m(t.review, t.orders + 30);
+  d.own = arr(t.own) - 10; d.approve = m(t.approve, d.own + 30);
+  const UIW: Record<string, number> = {intro: 1.25, f1: 1.6, f2: 1.6, f3: 1.6, a1: 1.35, a2: 1.6, a3: 1.5, a4: 1.3, b1: 1.4, b2: 1.55, b3: 1.6};
+  const pp = (id: string) => ({...props, u: u * (w ? UIW[id] : id === 'intro' ? 1 : 1.15), t: d});
   const scenes: {id: string; at: [number, number]; s: number; el: React.ReactNode}[] = [
-    {id: 'intro', at: pos.intro, s: s6, el: <Intro {...props} t={t} />},
-    {id: 'f1', at: pos.f1, s: s6, el: <F1 {...props} t={t} />}, {id: 'f2', at: pos.f2, s: s6, el: <F2 {...props} t={t} />}, {id: 'f3', at: pos.f3, s: s6, el: <F3 {...props} t={t} />},
-    {id: 'a1', at: pos.a1, s: s6, el: <A1 {...props} t={t} />}, {id: 'a2', at: pos.a2, s: s6, el: <A2 {...props} t={t} />}, {id: 'a3', at: pos.a3, s: s6, el: <A3 {...props} t={t} />}, {id: 'a4', at: pos.a4, s: s6, el: <A4 {...props} t={t} />},
-    {id: 'b1', at: pos.b1, s: s6, el: <B1 {...props} t={t} />}, {id: 'b2', at: pos.b2, s: s36, el: <B2 {...props} t={t} />}, {id: 'b3', at: pos.b3, s: s36, el: <B3 {...props} t={t} />},
+    {id: 'intro', at: pos.intro, s: s6, el: <Intro {...pp('intro')} />},
+    {id: 'f1', at: pos.f1, s: s6, el: <F1 {...pp('f1')} />}, {id: 'f2', at: pos.f2, s: s6, el: <F2 {...pp('f2')} />}, {id: 'f3', at: pos.f3, s: s6, el: <F3 {...pp('f3')} />},
+    {id: 'a1', at: pos.a1, s: s6, el: <A1 {...pp('a1')} />}, {id: 'a2', at: pos.a2, s: s6, el: <A2 {...pp('a2')} />}, {id: 'a3', at: pos.a3, s: s6, el: <A3 {...pp('a3')} />}, {id: 'a4', at: pos.a4, s: s6, el: <A4 {...pp('a4')} />},
+    {id: 'b1', at: pos.b1, s: s6, el: <B1 {...pp('b1')} />}, {id: 'b2', at: pos.b2, s: s36, el: <B2 {...pp('b2')} />}, {id: 'b3', at: pos.b3, s: s36, el: <B3 {...pp('b3')} />},
   ];
   const gateOf = (id: string) => (id === 'intro' ? 0 : id === 'b2' || id === 'b3' ? t.orders - 16 : t.seam + 14);
   // screen rect culling
@@ -361,15 +383,15 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
     <AbsoluteFill style={{filter: blur > 0.8 ? `blur(${blur}px)` : undefined, opacity: 1 - 0.75 * outro}}>
       <div style={{position: 'absolute', left: W / 2, top: H / 2, transform: `scale(${z}) translate(${-cx}px, ${-cy}px)`, transformOrigin: '0 0'}}>
         {/* hook stage = the world origin, full size */}
-        <div style={{position: 'absolute', left: -W / 2, top: -H / 2, width: W, height: H}}><Hook {...props} t={t} /></div>
+        {f < t.free ? <div style={{position: 'absolute', left: -W / 2, top: -H / 2, width: W, height: H, opacity: 1 - ez(f, t.seam + 16, t.seam + 30)}}><Hook {...props} t={t} /></div> : null}
         {scenes.map((sc) => vis(sc.at, sc.s) && f >= gateOf(sc.id) ? <div key={sc.id} style={{opacity: sc.id === 'b2' || sc.id === 'b3' ? ez(f, t.orders - 16, t.orders - 6) : sc.id === 'intro' ? 1 : ez(f, t.seam + 14, t.seam + 26), position: 'absolute', left: sc.at[0] - (W * sc.s) / 2, top: sc.at[1] - (H * sc.s) / 2, width: W, height: H, transform: `scale(${sc.s})`, transformOrigin: '0 0', clipPath: sc.id === 'intro' ? `inset(${50 - 50 * ez(f, t.seam, t.seam + 14)}% 0 ${50 - 50 * ez(f, t.seam, t.seam + 14)}% 0 round 64px)` : undefined}}>{sc.el}</div> : null)}
       </div>
     </AbsoluteFill>
     {/* business types carousel + "Your workday, back." */}
-    {f >= t.end ? <Outro f={f} u={u} w={w} t={t} /> : null}
+    {f >= t.end && f < t.join + 4 ? <Outro f={f} u={u} w={w} t={t} /> : null}
     {/* end card */}
-    {f >= t.join - 6 ? <AbsoluteFill style={{background: `rgba(255,248,242,${0.92 * endK})`}}><End f={f} u={u} t={t} /></AbsoluteFill> : null}
-    <AudioTrack vo={vo} st={st} total={total} t={t} />
+    {f >= t.join - 6 ? <AbsoluteFill style={{background: `rgba(255,248,242,${endK})`}}><End f={f} u={u} t={t} /></AbsoluteFill> : null}
+    <AudioTrack vo={vo} st={st} total={total} t={d} />
   </AbsoluteFill>;
 };
 
