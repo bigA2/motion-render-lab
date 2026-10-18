@@ -115,7 +115,7 @@ const Builder: React.FC<{f: number; W: number; H: number; w: boolean; th: Theme;
             <div style={{opacity: n.swap, transform: `scale(${0.7 + 0.3 * n.swap})`}}><Glyph k={n.st.k} size={R * 0.95} color={n.st.k === 'ai' ? th.accent : th.ink} /></div>
           </div>
           <div style={{position: 'absolute', left: -R - 6, top: -R - 8, width: 26, height: 26, borderRadius: 999, background: th.accent, color: '#fff', fontFamily: FONT.ui, fontWeight: 700, fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>{n.i + 1}</div>
-          <div style={{position: 'absolute', left: -120, width: 240, top: R + 12, textAlign: 'center', overflow: 'hidden'}}>
+          <div style={w ? {position: 'absolute', left: -120, width: 240, top: R + 12, textAlign: 'center', overflow: 'hidden'} : {position: 'absolute', left: R + 14, width: 230, top: -14, textAlign: 'left', overflow: 'hidden'}}>
             <div style={{fontFamily: FONT.ui, fontWeight: 600, fontSize: w ? 19 : 17, lineHeight: 1.3, color: th.ink, transform: `translateY(${(1 - Math.min(n.kin, n.swap === 1 ? 1 : n.swap)) * 100}%)`}}>{n.st.label}</div>
           </div>
         </div>;
@@ -166,9 +166,9 @@ export const Film: React.FC<{vo: Vo; theme?: 'light' | 'dark'}> = ({vo, theme = 
   const kfs: KF[] = [
     [t.l1end, 1.0, cx, cy], [t.fansa + 70, 1.02, cx, cy],
     [t.sentence - 30, 0.98, cx, cy], [t.free - 20, 1.0, cx, cy],
-    [t.free + 10, 1.06, cx + (w ? W * 0.05 : 0), cy + (w ? 0 : H * 0.06)], [t.ag - 20, 1.08, cx + (w ? W * 0.05 : 0), cy + (w ? 0 : H * 0.06)],
+    [t.free + 10, 1.06, cx + (w ? W * 0.05 : 0), cy], [t.ag - 20, 1.08, cx + (w ? W * 0.05 : 0), cy],
     [t.ag + 10, 1.03, cx + (w ? W * 0.03 : 0), cy], [t.small - 20, 1.06, cx + (w ? W * 0.04 : 0), cy],
-    [t.small + 10, 1.02, cx, cy], [t.approve - 50, 1.05, cx + (w ? W * 0.025 : 0), cy - H * 0.03], [t.biz - 10, 1.06, cx + (w ? W * 0.025 : 0), cy - H * 0.03],
+    [t.small + 10, 1.02, cx, cy], [t.approve - 50, 1.04, cx, cy], [t.biz - 10, 1.05, cx, cy],
   ];
   const [z, X, Y] = cam(kfs, f);
   const showBuilder = f >= t.fansa + 40 && f < t.workday + 30;
@@ -192,7 +192,7 @@ export const Film: React.FC<{vo: Vo; theme?: 'light' | 'dark'}> = ({vo, theme = 
     </AbsoluteFill> : null}
     {/* PRODUCT SURFACE */}
     {showBuilder ? <AbsoluteFill style={{transform: `translate(${W / 2 - X * z}px, ${H / 2 - Y * z}px) scale(${z})`, transformOrigin: '0 0'}}>
-      <AbsoluteFill style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: w ? H * 0.08 : H * 0.06, opacity: intoK * (1 - outK), transform: `perspective(2600px) rotateX(${(1 - intoK) * 12 + (w ? 3 : 2)}deg) rotateY(${w ? -3 + Math.sin(f / 420) * 1.2 : 0}deg) scale(${(0.86 + 0.14 * intoK) * (1 - 0.45 * outK)}) translateY(${-outK * H * 0.2}px)`}}>
+      <AbsoluteFill style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: w ? H * 0.09 : H * 0.1, opacity: intoK * (1 - outK), transform: `perspective(2600px) rotateX(${(1 - intoK) * 12 + (w ? 3 : 2)}deg) rotateY(${w ? -3 + Math.sin(f / 420) * 1.2 : 0}deg) scale(${(0.86 + 0.14 * intoK) * (1 - 0.45 * outK)}) translateY(${-outK * H * 0.2}px)`}}>
         <Builder f={f} W={W} H={H} w={w} th={th} s={bs} buildAt={buildAt} />
       </AbsoluteFill>
     </AbsoluteFill> : null}
