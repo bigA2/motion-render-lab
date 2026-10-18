@@ -140,7 +140,7 @@ const cam = (k: KF[], f: number): [number, number, number] => {
 };
 
 export const Film: React.FC<{vo: Vo; theme?: 'light' | 'dark'}> = ({vo, theme = 'light'}) => {
-  const f = useCurrentFrame(); const {width: W, height: H} = useVideoConfig(); const w = W > H; const th = THEMES[theme];
+  const f = useCurrentFrame(); const {width: W, height: H} = useVideoConfig(); const w = W > H;
   const {st, total} = timeline(vo); const wf = makeWf(vo, st);
   const t = {
     copy: wf(0, ['copy']), paste: wf(0, ['paste']), chase: wf(0, ['chase']), repeat: wf(0, ['repeat']), that: wf(0, ['that']), l1end: st[1] - 30,
@@ -178,7 +178,21 @@ export const Film: React.FC<{vo: Vo; theme?: 'light' | 'dark'}> = ({vo, theme = 
   const eyebrow = f < t.free - 10 ? null : f < t.ag - 10 ? ['For freelancers', t.free - 10] : f < t.small - 10 ? ['For agencies', t.ag - 10] : f < t.biz - 6 ? ['For small businesses', t.small - 10] : null;
   // background: off-white field with two slow pastel streaks (the builder's look)
   const streak = (a: number, c: string) => <div style={{position: 'absolute', left: '-30%', right: '-30%', top: `${30 + a * 30 + Math.sin(f / 200 + a * 3) * 6}%`, height: '26%', background: `linear-gradient(90deg, transparent, ${c}, transparent)`, filter: 'blur(60px)', transform: `rotate(${-14 + a * 10}deg) translateX(${Math.sin(f / 260 + a) * 6}%)`}} />;
-  return <AbsoluteFill style={{background: th.bg, overflow: 'hidden'}}>
+  // ---- colour story: light → dark → light → dark → light → brand gradient → dark, joined by round iris reveals and gradient sweeps ----
+  const TR: {at: number; to: keyof typeof THEMES | 'brand'; kind: 'iris' | 'sweep'; o: [number, number]}[] = theme === 'dark' ? [] : [
+    {at: t.l1end - 4, to: 'dark', kind: 'iris', o: [0.5, 0.56]},
+    {at: t.sentence - 40, to: 'light', kind: 'iris', o: [0.5, 0.42]},
+    {at: t.ag - 22, to: 'dark', kind: 'sweep', o: [0, 0]},
+    {at: t.small - 22, to: 'light', kind: 'iris', o: [0.12, 0.08]},
+    {at: t.biz - 10, to: 'brand', kind: 'sweep', o: [0, 0]},
+    {at: t.join - 18, to: 'dark', kind: 'iris', o: [0.5, 0.5]},
+  ];
+  const TD = 40; const BRAND: Theme = {...THEMES.light, bg: 'linear-gradient(135deg, #E9E8FF 0%, #D9DBFF 35%, #FFE3DA 75%, #FFF1EC 100%)', streakA: 'rgba(100,104,216,0.22)', streakB: 'rgba(230,140,116,0.22)'};
+  const themeOf = (k: string): Theme => (k === 'brand' ? BRAND : THEMES[k as 'light' | 'dark']);
+  let ti = -1; TR.forEach((x, i) => { if (f >= x.at) ti = i; });
+  const thNow = ti < 0 ? THEMES[theme] : themeOf(TR[ti].to); const thPrev = ti <= 0 ? THEMES[theme] : themeOf(TR[ti - 1].to);
+  const inTr = ti >= 0 && f < TR[ti].at + TD; const kTr = inTr ? ez(f, TR[ti].at, TR[ti].at + TD, Easing.inOut(Easing.cubic)) : 1;
+  const Stage = (th: Theme) => <AbsoluteFill style={{background: th.bg, overflow: 'hidden'}}>
     {streak(0, th.streakA)}{streak(1, th.streakB)}
     {/* HOOK */}
     {f < t.fansa + 10 ? <AbsoluteFill style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 18, opacity: 1 - ez(f, t.l1end + 4, t.l1end + 26)}}>
@@ -216,13 +230,22 @@ export const Film: React.FC<{vo: Vo; theme?: 'light' | 'dark'}> = ({vo, theme = 
         <div style={{fontFamily: FONT.ui, fontWeight: 500, fontSize: 22, color: th.lo}}>fansachat.com · t.me/fansachat</div>
       </div>} />
     </AbsoluteFill> : null}
+  </AbsoluteFill>;
+  const RAD = Math.hypot(W, H) * 1.05;
+  const tr = inTr ? TR[ti] : null;
+  const clip = tr ? (tr.kind === 'iris' ? `circle(${RAD * kTr}px at ${tr.o[0] * W}px ${tr.o[1] * H}px)` : `polygon(0 0, ${kTr * 220 - 40}% 0, ${kTr * 220 - 120}% 100%, 0 100%)`) : undefined;
+  return <AbsoluteFill style={{overflow: 'hidden'}}>
+    {tr ? Stage(thPrev) : Stage(thNow)}
+    {tr ? <AbsoluteFill style={{clipPath: clip}}>{Stage(thNow)}</AbsoluteFill> : null}
+    {/* the colour edge: a thin periwinkle→blush ring / band riding the reveal */}
+    {tr && tr.kind === 'iris' ? <div style={{position: 'absolute', left: tr.o[0] * W - RAD * kTr, top: tr.o[1] * H - RAD * kTr, width: 2 * RAD * kTr, height: 2 * RAD * kTr, borderRadius: '50%', boxShadow: `0 0 0 ${10 + 14 * (1 - kTr)}px rgba(139,143,232,${0.55 * (1 - kTr)}), 0 0 0 ${24 + 30 * (1 - kTr)}px rgba(244,184,168,${0.4 * (1 - kTr)})`, pointerEvents: 'none'}} /> : null}
+    {tr && tr.kind === 'sweep' ? <div style={{position: 'absolute', top: '-20%', bottom: '-20%', width: W * 0.22, left: `${(kTr * 220 - 80) / 100 * W - W * 0.11}px`, transform: 'skewX(-21deg)', background: 'linear-gradient(90deg, rgba(244,184,168,0), rgba(244,184,168,0.55), rgba(139,143,232,0.6), rgba(139,143,232,0))', filter: 'blur(18px)', pointerEvents: 'none'}} /> : null}
     <Mix vo={vo} st={st} total={total} t={t} sched={sched} />
   </AbsoluteFill>;
 };
 
 // ---------- audio: music ducked under the VO, one quiet tactile SFX per event (Kenney CC0) ----------
 const Mix: React.FC<{vo: Vo; st: number[]; total: number; t: Record<string, number>; sched: [number, number][]}> = ({vo, st, total, t, sched}) => {
-  const talk = (x: number) => vo.some((l, i) => x >= st[i] && x <= st[i] + l.dur * FPS);
   const sfx: [number, string, number][] = [
     [t.copy, 'k_tick_001', 0.25], [t.paste, 'k_tick_001', 0.25], [t.chase, 'k_tick_001', 0.25], [t.repeat, 'k_tick_001', 0.28],
     [t.l1end + 14, 'k_glass_002', 0.28], [t.sentence + 40, 'k_select_003', 0.18],
@@ -230,7 +253,7 @@ const Mix: React.FC<{vo: Vo; st: number[]; total: number; t: Record<string, numb
     [t.approve, 'k_click_002', 0.35], [t.approve + 6, 'k_confirmation_002', 0.2], [t.join, 'k_glass_002', 0.28],
   ];
   return <>
-    <Audio src={staticFile('audio/02_calm-minimal_once-more-with-you_loyalty-freak-music.mp3')} volume={(x) => interpolate(x, [0, 30, total - 90, total], [0, 1, 1, 0], clamp) * (talk(x) ? 0.1 : 0.22)} />
+    {/* music is NOT in the render: the dry VO+SFX mix is variant A; music is side-chain mixed afterwards (variant B) */}
     {vo.map((l, i) => <Sequence key={i} from={st[i]}><Audio src={staticFile(l.file)} /></Sequence>)}
     {sfx.map(([at, s, v], i) => <Sequence key={'s' + i} from={Math.max(0, Math.round(at))}><Audio src={staticFile(`audio/sfx/${s}.ogg`)} volume={v} /></Sequence>)}
   </>;
