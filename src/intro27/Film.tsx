@@ -168,7 +168,7 @@ export const Film: React.FC<{vo: Vo; theme?: 'light' | 'dark'}> = ({vo, theme = 
     [t.sentence - 30, 0.98, cx, cy], [t.free - 20, 1.0, cx, cy],
     [t.free + 10, 1.06, cx + (w ? W * 0.05 : 0), cy + (w ? 0 : H * 0.06)], [t.ag - 20, 1.08, cx + (w ? W * 0.05 : 0), cy + (w ? 0 : H * 0.06)],
     [t.ag + 10, 1.03, cx + (w ? W * 0.03 : 0), cy], [t.small - 20, 1.06, cx + (w ? W * 0.04 : 0), cy],
-    [t.small + 10, 1.02, cx, cy], [t.approve - 50, 1.05, cx + (w ? W * 0.08 : 0), cy - H * 0.06], [t.biz - 10, 1.06, cx + (w ? W * 0.08 : 0), cy - H * 0.06],
+    [t.small + 10, 1.02, cx, cy], [t.approve - 50, 1.05, cx + (w ? W * 0.025 : 0), cy - H * 0.03], [t.biz - 10, 1.06, cx + (w ? W * 0.025 : 0), cy - H * 0.03],
   ];
   const [z, X, Y] = cam(kfs, f);
   const showBuilder = f >= t.fansa + 40 && f < t.workday + 30;
@@ -192,7 +192,7 @@ export const Film: React.FC<{vo: Vo; theme?: 'light' | 'dark'}> = ({vo, theme = 
     </AbsoluteFill> : null}
     {/* PRODUCT SURFACE */}
     {showBuilder ? <AbsoluteFill style={{transform: `translate(${W / 2 - X * z}px, ${H / 2 - Y * z}px) scale(${z})`, transformOrigin: '0 0'}}>
-      <AbsoluteFill style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: w ? H * 0.08 : H * 0.06, opacity: intoK * (1 - outK), transform: `perspective(2400px) rotateX(${(1 - intoK) * 12}deg) scale(${(0.86 + 0.14 * intoK) * (1 - 0.45 * outK)}) translateY(${-outK * H * 0.2}px)`}}>
+      <AbsoluteFill style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: w ? H * 0.08 : H * 0.06, opacity: intoK * (1 - outK), transform: `perspective(2600px) rotateX(${(1 - intoK) * 12 + (w ? 3 : 2)}deg) rotateY(${w ? -3 + Math.sin(f / 420) * 1.2 : 0}deg) scale(${(0.86 + 0.14 * intoK) * (1 - 0.45 * outK)}) translateY(${-outK * H * 0.2}px)`}}>
         <Builder f={f} W={W} H={H} w={w} th={th} s={bs} buildAt={buildAt} />
       </AbsoluteFill>
     </AbsoluteFill> : null}

@@ -11,10 +11,13 @@ export const FONT = {
   clash: 'Clash Display',
 };
 // Clash Display = the landing's display face (public/fonts, same files fansachat.com serves)
-if (typeof document !== 'undefined' && !document.fonts.check('600 20px "Clash Display"')) {
-  const h = delayRender('clash');
-  Promise.all([500, 600].map((w) => new FontFace('Clash Display', `url(${staticFile(`fonts/clash-display-${w}.woff2`)})`, {weight: String(w)}).load().then((f) => document.fonts.add(f))))
-    .then(() => continueRender(h)).catch(() => continueRender(h));
+if (typeof document !== 'undefined' && !document.getElementById('clash-ff')) {
+  // NB: document.fonts.check() returns true for unknown families, so always register + wait explicitly
+  const h = delayRender('clash display');
+  const st = document.createElement('style'); st.id = 'clash-ff';
+  st.textContent = [500, 600].map((w) => `@font-face{font-family:'Clash Display';font-weight:${w};font-style:normal;src:url('${staticFile(`fonts/clash-display-${w}.woff2`)}') format('woff2');}`).join('');
+  document.head.appendChild(st);
+  Promise.all([document.fonts.load('500 40px "Clash Display"'), document.fonts.load('600 40px "Clash Display"')]).then(() => continueRender(h)).catch(() => continueRender(h));
 }
 
 export type Theme = {bg: string; ink: string; lo: string; panel: string; panel2: string; line: string; edge: string; node: string; accent: string; streakA: string; streakB: string; dark: boolean};
