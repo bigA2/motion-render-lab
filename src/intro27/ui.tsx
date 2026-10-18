@@ -72,7 +72,7 @@ export const Line: React.FC<{text: string; f: number; at: number; size: number; 
 // a word that rolls in place (outgoing goes up, incoming comes from below), one mask
 export const Roll: React.FC<{words: string[]; ats: number[]; f: number; size: number; color: string}> = ({words, ats, f, size, color}) => {
   let i = -1; ats.forEach((a, j) => { if (f >= a) i = j; });
-  return <div style={{position: 'relative', overflow: 'hidden', height: size * 1.2, minWidth: size * 4}}>
+  return <div style={{position: 'relative', overflow: 'hidden', height: size * 1.2, width: size * 9, maxWidth: '96vw'}}>
     {words.map((w, j) => { if (j < i - 1 || j > i) return null; const kin = ez(f, ats[j], ats[j] + 22); const kout = j < i ? ez(f, ats[i], ats[i] + 22) : 0; return <div key={j} style={{position: 'absolute', left: 0, right: 0, top: 0, textAlign: 'center', transform: `translateY(${(1 - kin) * 105 - kout * 105}%)`, fontFamily: FONT.clash, fontWeight: 600, fontSize: size, lineHeight: 1.2, color, letterSpacing: '-0.025em', whiteSpace: 'nowrap'}}>{w}</div>; })}
   </div>;
 };
