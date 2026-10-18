@@ -75,7 +75,9 @@ const Chip: React.FC<{text: string; color: string; u: number; at?: number; f?: n
 };
 const Card: React.FC<{icon: string; title: string; sub?: string; u: number; at: number; f: number; done?: number; width?: number; chip?: React.ReactNode}> = ({icon, title, sub, u, at, f, done, width = 600, chip}) => {
   const k = sp(f, at); const ok = done !== undefined && f >= done; const kd = done !== undefined ? ez(f, done, done + 8) : 0;
-  return <div style={{...glass, width: width * u, padding: 22 * u, display: 'flex', gap: 18 * u, alignItems: 'center', opacity: Math.min(1, k * 1.5), transform: `translateY(${(1 - k) * 50 * u}px) scale(${0.92 + 0.08 * k})`}}>
+  const sh = ((f - at + 400) % 54) / 54;
+  return <div style={{...glass, width: width * u, padding: 22 * u, display: 'flex', gap: 18 * u, alignItems: 'center', opacity: Math.min(1, k * 1.5), transform: `translateY(${(1 - k) * 50 * u}px) scale(${0.92 + 0.08 * k})`, position: 'relative', overflow: 'hidden'}}>
+    <div style={{position: 'absolute', top: 0, bottom: 0, width: '30%', left: `${-40 + sh * 180}%`, background: 'linear-gradient(100deg, transparent, rgba(255,255,255,0.75), transparent)', pointerEvents: 'none'}} />
     <Tile k={icon} size={78 * u} />
     <div style={{flex: 1, minWidth: 0}}>
       <div style={{fontFamily: F.ui, fontWeight: 800, fontSize: 30 * u, color: C.ink, lineHeight: 1.15}}>{title}</div>
@@ -333,19 +335,19 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
   const T = (x: number) => Math.round(x);
   const kfs: KF[] = [
     [0, 1, 0, 0], [T(t.seam), 1.08, 0, P0[1] * 0.3],
-    [T(t.seam + 18), 6, ...P0], [T(t.free - 12), 6.25, ...P0],                                   // zoom-through the seam into the intro plate
-    [T(t.free + 2), 6, ...pos.f1], [T(t.xero - 12), 6.15, ...pos.f1],                            // zoom-aside →
-    [T(t.xero + 2), 6, ...pos.f2], [T(t.cal - 12), 6.15, ...pos.f2],
-    [T(t.cal + 2), 6, ...pos.f3], [T(t.ag - 12), 6.15, ...pos.f3],
-    [T(t.ag + 2), 6, ...pos.a1], [T(t.mon - 12), 6.15, ...pos.a1],                               // aside ↓
-    [T(t.mon + 2), 6, ...pos.a2], [T(t.role - 12), 6.15, ...pos.a2],
-    [T(t.role + 2), 6, ...pos.a3], [T(t.feed - 12), 6.15, ...pos.a3],
-    [T(t.feed + 2), 6, ...pos.a4], [T(t.small - 30), 6.1, ...pos.a4],
+    [T(t.seam + 18), 6, ...P0], [T(t.free - 12), 6.6, ...P0],                                   // zoom-through the seam into the intro plate
+    [T(t.free + 2), 6, ...pos.f1], [T(t.xero - 12), 6.5, ...pos.f1],                            // zoom-aside →
+    [T(t.xero + 6), 6, ...pos.f2], [T(t.cal - 12), 6.5, ...pos.f2],
+    [T(t.cal + 6), 6, ...pos.f3], [T(t.ag - 12), 6.5, ...pos.f3],
+    [T(t.ag + 6), 6, ...pos.a1], [T(t.mon - 12), 6.5, ...pos.a1],                               // aside ↓
+    [T(t.mon + 6), 6, ...pos.a2], [T(t.role - 12), 6.5, ...pos.a2],
+    [T(t.role + 6), 6, ...pos.a3], [T(t.feed - 12), 6.5, ...pos.a3],
+    [T(t.feed + 6), 6, ...pos.a4], [T(t.small - 30), 6.5, ...pos.a4],
     [T(t.small - 6), boardZ, ...board],                                                          // zoom-out: the whole board
     [T(t.small + 10), boardZ * 1.02, ...board],
     [T(t.small + 30), 6, ...pos.b1], [T(t.orders - 16), 6.3, ...phone],
-    [T(t.orders + 2), 36, ...pos.b2], [T(t.own - 12), 37, ...pos.b2],                            // zoom-through the phone screen
-    [T(t.own + 2), 36, ...pos.b3], [T(t.end - 4), 37, ...pos.b3],
+    [T(t.orders + 2), 36, ...pos.b2], [T(t.own - 12), 39, ...pos.b2],                            // zoom-through the phone screen
+    [T(t.own + 6), 36, ...pos.b3], [T(t.end - 4), 39, ...pos.b3],
     [T(t.end + 20), boardZ * 0.8, ...board],                                                     // big pull-back reveal
     [T(total), boardZ * 0.84, ...board],
   ];
@@ -353,6 +355,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
   const m = Math.min;
   const d: Record<string, number> = {...t};
   const arr = (x: number) => x + 2;
+  d.workflow = m(t.workflow, t.fansa + 26); d.n700 = m(t.n700, d.workflow + 30);
   d.stripe = m(t.stripe, arr(t.free) + 4); d.folder = m(t.folder, d.stripe + 12);
   d.xero = arr(t.xero) - 10; d.remind = m(t.remind, d.xero + 16); d.paid = d.remind + 16;
   d.cal = arr(t.cal) - 10; d.crm = m(t.crm, d.cal + 22);
@@ -363,7 +366,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
   d.book = t.small + 14; d.noshow = d.book + 16;
   d.review = m(t.review, t.orders + 30);
   d.own = arr(t.own) - 10; d.approve = m(t.approve, d.own + 30);
-  const UIW: Record<string, number> = {intro: 1.25, f1: 1.6, f2: 1.6, f3: 1.6, a1: 1.35, a2: 1.6, a3: 1.5, a4: 1.3, b1: 1.4, b2: 1.55, b3: 1.6};
+  const UIW: Record<string, number> = {intro: 1.3, f1: 1.6, f2: 1.6, f3: 1.6, a1: 1.35, a2: 1.6, a3: 1.6, a4: 1.4, b1: 1.4, b2: 1.55, b3: 1.6};
   const pp = (id: string) => ({...props, u: u * (w ? UIW[id] : id === 'intro' ? 1 : 1.15), t: d});
   const scenes: {id: string; at: [number, number]; s: number; el: React.ReactNode}[] = [
     {id: 'intro', at: pos.intro, s: s6, el: <Intro {...pp('intro')} />},
