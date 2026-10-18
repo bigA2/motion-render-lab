@@ -1,0 +1,17 @@
+name: record-one
+on:
+  workflow_dispatch:
+    inputs:
+      url: { description: "public page with the clip", required: true }
+      name: { description: "output file name (.mp4)", required: true }
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: tools/record_one.py, sparse-checkout-cone-mode: false }
+      - run: pip install playwright && python -m playwright install ffmpeg && sudo apt-get install -y ffmpeg >/dev/null
+      - run: python tools/record_one.py "${{ inputs.url }}" "${{ inputs.name }}"
+      - uses: actions/upload-artifact@v4
+        with: { name: "${{ inputs.name }}", path: "${{ inputs.name }}", retention-days: 1 }
