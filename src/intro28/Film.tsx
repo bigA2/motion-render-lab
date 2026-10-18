@@ -75,33 +75,50 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
   return <AbsoluteFill style={{background: PAPER, overflow: 'hidden'}}>
     {/* ================= S1 · ref 2: ONE shape morphs through the copy-paste loop ================= */}
     {inS(S1) ? (() => {
-      const ks: [number, number][] = [[0, 0], [t.paste, 1], [t.chase, 2], [t.repeat, 3], [t.that - 4, 4]];
-      const st_ = (i: number) => ez(f, ks[i][0], ks[i][0] + 20); void st_;
-      const sw = springTo(f, [[0, 300], [t.paste, 640], [t.chase, 720], [t.repeat, 150], [t.that - 4, 40]]) * u;
-      const sh = springTo(f, [[0, 96], [t.paste, 110], [t.chase, 170], [t.repeat, 150], [t.that - 4, 40]]) * u;
-      const rad = springTo(f, [[0, 48], [t.paste, 30], [t.chase, 36], [t.repeat, 75], [t.that - 4, 20]]) * u;
+      // one shape: Copy button → Paste field → Chase toast → Repeat loader → shrinks to a ball → the ball stretches open into the sentence
+      const LINE = ["That's", 'not', 'the', 'job', 'you', 'signed', 'up', 'for.'];
+      const wt = [t.that, wf(0, ['not']), wf(0, ['the']), wf(0, ['job']), wf(0, ['you']), wf(0, ['signed']), wf(0, ['up']), wf(0, ['for'])];
+      const fs = (w ? 92 : 66) * u, cw = fs * 0.5; // char-width estimate for camera framing
+      const chars = LINE.reduce((n, x) => n + x.length + 1, -1); const textW = chars * cw;
+      const wordX = (i: number) => { let c = 0; for (let j = 0; j < i; j++) c += LINE[j].length + 1; return W / 2 - textW / 2 + (c + LINE[i].length / 2) * cw; };
+      const ball = t.that - 8, open = t.that - 2;
+      const swU = springTo(f, [[0, 300 * u], [t.paste, 640 * u], [t.chase, 720 * u], [t.repeat, 150 * u], [ball, 56 * u], [open, textW + 90 * u]], 12);
+      const sh = springTo(f, [[0, 96 * u], [t.paste, 110 * u], [t.chase, 170 * u], [t.repeat, 150 * u], [ball, 56 * u], [open, fs * 1.5]], 12);
+      const rad = Math.min(sh / 2, springTo(f, [[0, 48], [t.paste, 30], [t.chase, 36], [t.repeat, 75], [ball, 28], [open, 999]], 12) * u);
       const lightness = springTo(f, [[0, 0], [t.paste, 1], [t.chase, 0], [t.repeat, 0]]);
-      const bg = `rgb(${lerp(34, 255, lightness)},${lerp(30, 255, lightness)},${lerp(48, 255, lightness)})`;
+      const fill = 1 - ez(f, open + 14, open + 44); // the ink capsule dissolves, leaving the words
+      const bg = `rgba(${lerp(34, 255, lightness)},${lerp(30, 255, lightness)},${lerp(48, 255, lightness)},${fill})`;
       const intro = spr(f, 6, 10);
-      const swap = (at: number, next: number) => ({opacity: ez(f, at, at + 10) * (1 - ez(f, next - 4, next + 4)), filter: `blur(${(1 - ez(f, at, at + 10)) * 8 + ez(f, next - 4, next + 4) * 8}px)`});
-      const curX = springTo(f, [[0, W * 0.72], [t.copy - 30, W / 2 + 40 * u], [t.paste - 6, W / 2 + 240 * u], [t.chase - 6, W / 2 + 280 * u], [t.repeat - 6, W / 2 + 60 * u], [t.that, W * 0.8]], 9);
-      const curY = springTo(f, [[0, H * 0.8], [t.copy - 30, H / 2 + 10 * u], [t.paste - 6, H / 2 + 20 * u], [t.chase - 6, H / 2 + 40 * u], [t.repeat - 6, H / 2 + 50 * u], [t.that, H * 0.9]], 9);
-      const press = [t.copy, t.paste, t.chase, t.repeat].reduce((m, a) => Math.max(m, 1 - Math.abs(f - a) / 6), 0);
+      const swap = (a0: number, next: number) => ({opacity: ez(f, a0, a0 + 10) * (1 - ez(f, next - 4, next + 4)), filter: `blur(${(1 - ez(f, a0, a0 + 10)) * 8 + ez(f, next - 4, next + 4) * 8}px)`});
+      // camera: zoom toward "That's", track word by word to "for", then come back to the same framing
+      const back = wt[7] + 8;
+      const camZ = springTo(f, [[0, 1], [open + 6, 1.9], [back, 1]], 7);
+      const camX = springTo(f, [[0, W / 2], [open + 6, wordX(0)], ...wt.slice(1).map((x, i) => [x, wordX(i + 1)] as [number, number]), [back, W / 2]], 6);
+      const curX = springTo(f, [[0, W * 0.72], [t.copy - 30, W / 2 + 40 * u], [t.paste - 6, W / 2 + 240 * u], [t.chase - 6, W / 2 + 280 * u], [t.repeat - 6, W / 2 + 60 * u], [ball, W * 0.86]], 9);
+      const curY = springTo(f, [[0, H * 0.8], [t.copy - 30, H / 2 + 10 * u], [t.paste - 6, H / 2 + 20 * u], [t.chase - 6, H / 2 + 40 * u], [t.repeat - 6, H / 2 + 50 * u], [ball, H * 1.08]], 9);
+      const press = [t.copy, t.paste, t.chase, t.repeat].reduce((m, x) => Math.max(m, 1 - Math.abs(f - x) / 6), 0);
       const spin = f >= t.repeat ? (f - t.repeat) * (6 + (f - t.repeat) * 0.25) : 0;
+      const textK = ez(f, open + 4, open + 22);
       return <AbsoluteFill>
         <Liquid f={f} a="rgba(139,143,232,0.35)" b="rgba(244,184,168,0.35)" c="rgba(200,205,255,0.4)" base={PAPER} />
-        <div style={{position: 'absolute', left: W / 2, top: H / 2, width: sw, height: sh, marginLeft: -sw / 2, marginTop: -sh / 2, borderRadius: rad, background: bg, boxShadow: `0 ${30 * u}px ${60 * u}px -30px rgba(34,30,48,0.55)`, border: lightness > 0.5 ? `1.5px solid ${INK}` : 'none', transform: `scale(${0.6 + 0.4 * intro})`, opacity: intro * (1 - ez(f, t.that + 30, t.that + 50)), display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'}}>
-          <div style={{position: 'absolute', display: 'flex', alignItems: 'center', gap: 14 * u, color: '#fff', fontFamily: FONT.ui, fontWeight: 600, fontSize: 38 * u, ...swap(0, t.paste)}}><span style={{fontSize: 30 * u}}>⧉</span>Copy</div>
-          <div style={{position: 'absolute', left: 30 * u, right: 30 * u, display: 'flex', alignItems: 'center', gap: 16 * u, color: INK, fontFamily: FONT.ui, fontSize: 34 * u, whiteSpace: 'nowrap', ...swap(t.paste, t.chase)}}><span style={{color: LO, fontSize: 24 * u, fontWeight: 600}}>PASTE</span><span style={{fontWeight: 600}}>INV-0142 · $1,200</span><span style={{width: 3, height: 40 * u, background: PERI_D, opacity: Math.floor(f / 20) % 2 ? 0.2 : 1}} /></div>
-          <div style={{position: 'absolute', left: 34 * u, right: 34 * u, display: 'flex', alignItems: 'center', gap: 20 * u, color: '#fff', fontFamily: FONT.ui, ...swap(t.chase, t.repeat)}}><div style={{width: 64 * u, height: 64 * u, borderRadius: 20 * u, background: 'rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 34 * u}}>🔔</div><div><div style={{fontWeight: 700, fontSize: 32 * u}}>Chasing invoice #3…</div><div style={{fontSize: 24 * u, opacity: 0.7}}>still unpaid · sent by hand</div></div></div>
-          <div style={{position: 'absolute', ...swap(t.repeat, t.that - 4)}}><svg width={90 * u} height={90 * u} viewBox="0 0 40 40" style={{transform: `rotate(${spin}deg)`}}><circle cx="20" cy="20" r="15" stroke="rgba(255,255,255,0.25)" strokeWidth="4" fill="none" /><path d="M20 5 A15 15 0 0 1 35 20" stroke="#fff" strokeWidth="4" fill="none" strokeLinecap="round" /></svg></div>
-        </div>
-        {/* the spoken words as one designed line under the shape */}
-        <div style={{position: 'absolute', left: 0, right: 0, top: H / 2 + 130 * u, display: 'flex', justifyContent: 'center'}}>
-          {f < t.that - 4 ? <LineIn key={f < t.paste ? 'a' : f < t.chase ? 'b' : f < t.repeat ? 'c' : 'd'} text={f < t.paste ? 'Copy.' : f < t.chase ? 'Paste.' : f < t.repeat ? 'Chase.' : 'Repeat.'} f={f} at={f < t.paste ? t.copy : f < t.chase ? t.paste : f < t.repeat ? t.chase : t.repeat} size={64 * u} color={INK} /> : null}
-        </div>
-        <div style={{position: 'absolute', left: 0, right: 0, top: H / 2 - 60 * u, display: 'flex', justifyContent: 'center'}}><LineIn text={<>That's not the <span style={{color: PERI_D}}>job</span> you signed up for.</>} f={f} at={t.that} size={(w ? 96 : 70) * u} color={INK} /></div>
-        {f < t.that + 40 ? <Cursor x={curX} y={curY} press={press} hover={0.2} s={u * 1.2} /> : null}
+        <AbsoluteFill style={{transform: `translate(${W / 2 - camX * camZ}px, ${H / 2 - (H / 2) * camZ}px) scale(${camZ})`, transformOrigin: '0 0'}}>
+          <div style={{position: 'absolute', left: W / 2, top: H / 2, width: swU, height: sh, marginLeft: -swU / 2, marginTop: -sh / 2, borderRadius: rad, background: bg, boxShadow: fill > 0.02 ? `0 ${30 * u}px ${60 * u}px -30px rgba(34,30,48,${0.55 * fill})` : 'none', border: lightness > 0.5 ? `1.5px solid ${INK}` : 'none', transform: `scale(${0.6 + 0.4 * intro})`, opacity: intro, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'}}>
+            <div style={{position: 'absolute', display: 'flex', alignItems: 'center', gap: 14 * u, color: '#fff', fontFamily: FONT.ui, fontWeight: 600, fontSize: 38 * u, whiteSpace: 'nowrap', ...swap(0, t.paste)}}><span style={{fontSize: 30 * u}}>⧉</span>Copy</div>
+            <div style={{position: 'absolute', left: 30 * u, right: 30 * u, display: 'flex', alignItems: 'center', gap: 16 * u, color: INK, fontFamily: FONT.ui, fontSize: 34 * u, whiteSpace: 'nowrap', ...swap(t.paste, t.chase)}}><span style={{color: LO, fontSize: 24 * u, fontWeight: 600}}>PASTE</span><span style={{fontWeight: 600}}>INV-0142 · $1,200</span><span style={{width: 3, height: 40 * u, background: PERI_D, opacity: Math.floor(f / 20) % 2 ? 0.2 : 1}} /></div>
+            <div style={{position: 'absolute', left: 34 * u, right: 34 * u, display: 'flex', alignItems: 'center', gap: 20 * u, color: '#fff', fontFamily: FONT.ui, whiteSpace: 'nowrap', ...swap(t.chase, t.repeat)}}><div style={{width: 64 * u, height: 64 * u, borderRadius: 20 * u, background: 'rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 34 * u}}>🔔</div><div><div style={{fontWeight: 700, fontSize: 32 * u}}>Chasing invoice #3…</div><div style={{fontSize: 24 * u, opacity: 0.7}}>still unpaid · sent by hand</div></div></div>
+            <div style={{position: 'absolute', ...swap(t.repeat, ball)}}><svg width={90 * u} height={90 * u} viewBox="0 0 40 40" style={{transform: `rotate(${spin}deg)`}}><circle cx="20" cy="20" r="15" stroke="rgba(255,255,255,0.25)" strokeWidth="4" fill="none" /><path d="M20 5 A15 15 0 0 1 35 20" stroke="#fff" strokeWidth="4" fill="none" strokeLinecap="round" /></svg></div>
+            {/* the sentence comes OUT of the ball: revealed inside the stretching capsule, white on ink → ink on paper */}
+            {f >= open - 2 ? <div style={{position: 'absolute', whiteSpace: 'nowrap', fontFamily: FONT.clash, fontWeight: 600, fontSize: fs, letterSpacing: '-0.025em', opacity: textK, filter: `blur(${(1 - textK) * 10}px)`, transform: `scale(${0.92 + 0.08 * textK})`}}>
+              {LINE.map((wd, i) => { const on = f >= wt[i] - 2; const c = wd === 'job' ? PERI_D : INK; const col = fill > 0.5 ? '#FFFFFF' : c; return <span key={i} style={{color: col, opacity: on ? 1 : 0.28, marginRight: i < LINE.length - 1 ? cw : 0}}>{wd}</span>; })}
+            </div> : null}
+          </div>
+          {/* the spoken word under the shape (Copy. Paste. Chase. Repeat.) */}
+          {f < ball ? <div style={{position: 'absolute', left: 0, right: 0, top: H / 2 + 130 * u, display: 'flex', justifyContent: 'center'}}>
+            <LineIn key={f < t.paste ? 'a' : f < t.chase ? 'b' : f < t.repeat ? 'c' : 'd'} text={f < t.paste ? 'Copy.' : f < t.chase ? 'Paste.' : f < t.repeat ? 'Chase.' : 'Repeat.'} f={f} at={f < t.paste ? t.copy : f < t.chase ? t.paste : f < t.repeat ? t.chase : t.repeat} size={64 * u} color={INK} out={ball - 20} />
+          </div> : null}
+        </AbsoluteFill>
+        {f < ball + 30 ? <Cursor x={curX} y={curY} press={press} hover={0.2} s={u * 1.2} /> : null}
+        <AbsoluteFill style={{background: `rgba(183,188,245,${0.85 * ez(f, S1[1] - 20, S1[1], Easing.inOut(Easing.cubic))})`}} />
       </AbsoluteFill>;
     })() : null}
 
@@ -165,6 +182,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
     {/* ================= S3–S5 · ref 1: 3D land view, arches rise out of the mockup ================= */}
     {inS(S3) ? <AbsoluteFill>
       <Liquid f={f} a={th.bg[1]} b={th.bg[2]} c={th.bg[3]} base={th.bg[0]} />
+      <AbsoluteFill style={{background: `rgba(220,222,255,${1 - ez(f, S3[0], S3[0] + 26, Easing.out(Easing.cubic))})`, zIndex: 70}} />
       <Floor f={f} W={W} H={H} camY={camY} camZ={camZ + (w ? 0 : 900)} rows={rows} th={th} />
       <div style={{position: 'absolute', left: 0, right: 0, top: 0, height: H * 0.42, background: `linear-gradient(180deg, ${th.bg[0]} 0%, ${th.bg[0]}E6 38%, ${th.bg[0]}00 100%)`}} />
       {/* floating logo tiles that stay with the film (ref 1) */}
@@ -191,7 +209,6 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
       <ArcFlood f={f} at={t.l4 - 40} W={W} H={H} color="#14111C" />
       <ArcFlood f={f} at={t.l5 - 40} W={W} H={H} color="#C9CCF8" dir={-1} />
     </AbsoluteFill> : null}
-    <ArcFlood f={f} at={t.workflow - 8} W={W} H={H} color="#DCDEFF" />
 
     {/* ================= S6 · ref 4: stacked cards with giant frosted-glass titles ================= */}
     {inS(S6) ? (() => {

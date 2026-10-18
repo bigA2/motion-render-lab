@@ -41,10 +41,11 @@ export const Cursor: React.FC<{x: number; y: number; rot?: number; hover?: numbe
 
 // arc flood: a curved-edge colour plate that sweeps across (cover then reveal)
 export const ArcFlood: React.FC<{f: number; at: number; W: number; H: number; color: string; dir?: 1 | -1; dur?: number}> = ({f, at, W, H, color, dir = 1, dur = 46}) => {
-  if (f < at || f > at + dur) return null;
+  if (f < at || f >= at + dur) return null;
   const kin = ez(f, at, at + dur * 0.5, Easing.inOut(Easing.cubic)), kout = ez(f, at + dur * 0.5, at + dur, Easing.inOut(Easing.cubic));
   const R = H * 1.6; // big circle = curved leading edge
-  const lead = lerp(-R * 2, W + R * 0.2, kin), trail = lerp(-R * 2, W + R * 2.2, kout);
+  // the reveal mask follows the SAME path as the flood, so it ends fully covering it (no re-exposure = no flicker)
+  const lead = lerp(-R * 2, W + R * 0.2, kin), trail = lerp(-R * 2, W + R * 0.2, kout);
   const x0 = dir === 1 ? lead : W - lead, x1 = dir === 1 ? trail : W - trail;
   return <svg width={W} height={H} style={{position: 'absolute', inset: 0, zIndex: 80}}>
     <defs><mask id={`af${at}`}><rect width={W} height={H} fill="#fff" /><circle cx={dir === 1 ? x1 - R : x1 + R} cy={H / 2} r={R} fill="#000" /></mask></defs>
