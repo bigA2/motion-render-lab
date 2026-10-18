@@ -6,7 +6,7 @@ import {FONT, Glyph} from '../intro27/ui';
 export const FPS = 60;
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 export const EXPO = Easing.bezier(0.16, 1, 0.3, 1);
-export const ez = (f: number, a: number, b: number, e = EXPO) => interpolate(f, [a, b], [0, 1], {...clamp, easing: e});
+export const ez = (f: number, a: number, b: number, e = EXPO) => (b <= a ? (f >= a ? 1 : 0) : interpolate(f, [a, b], [0, 1], {...clamp, easing: e}));
 export const lerp = (a: number, b: number, k: number) => a + (b - a) * k;
 // critically damped spring step response (pure function of frame, ~0 overshoot)
 export const spr = (f: number, at: number, w = 14) => { const t = Math.max(0, (f - at) / FPS); return 1 - (1 + w * t) * Math.exp(-w * t); };
