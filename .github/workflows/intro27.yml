@@ -1,0 +1,78 @@
+# FansaChat intro v5 (I27). mode=stills -> storyboard stills sheets (founder approval first); mode=full -> 60 fps render + QA.
+# VO is committed in public/v/I26 (reused from intro26). Helper scripts live in scripts/i27_*.py.
+name: intro27
+permissions: { contents: read }
+on:
+  workflow_dispatch:
+    inputs:
+      mode: { description: 'stills | full', required: false, default: 'stills' }
+      secs: { description: 'still times (s)', required: false, default: '0.8 2.6 5.0 8.0 12 18 25 31 40 46 51 56' }
+      parts: { description: 'chunks per format', required: false, default: '[0,1,2,3,4,5,6,7]' }
+jobs:
+  stills:
+    if: inputs.mode == 'stills'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure && pip install --quiet pillow
+      - run: |
+          mkdir -p stills
+          for C in I27-16x9 I27D-16x9 I27-4x5; do for s in ${{ inputs.secs }}; do
+            F=$(python3 -c "import sys; print(int(float(sys.argv[1])*60))" "$s")
+            npx remotion still src/intro27/index.ts "$C" "stills/${C}_${s}.png" --frame=$F --log=error --timeout=120000 || echo "fail $C $s"
+          done; done
+          python3 scripts/i27_sheet.py stills
+      - uses: actions/upload-artifact@v4
+        with: { name: stills-I27, path: stills/, retention-days: 3 }
+  render:
+    if: inputs.mode == 'full'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix: { fmt: ['16x9', '4x5'], part: '${{ fromJSON(inputs.parts) }}' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - run: |
+          C="I27-${{ matrix.fmt }}"
+          npx remotion compositions src/intro27/index.ts > comps.txt 2>&1 || (cat comps.txt; exit 1)
+          N=$(grep -E "^[[:space:]]*$C[[:space:]]" comps.txt | grep -oE "[0-9]+ \([0-9.]+ sec\)" | grep -oE "^[0-9]+" | head -1)
+          K=$(python3 -c "print(len(${{ inputs.parts }}))"); P=${{ matrix.part }}
+          A=$(( N * P / K )); B=$(( N * (P + 1) / K - 1 ))
+          npx remotion render src/intro27/index.ts "$C" "part$P.mp4" --frames=$A-$B --muted --gl=swangle --concurrency=100% --crf=16 --log=error --timeout=120000
+          if [ "$P" = "0" ]; then npx remotion render src/intro27/index.ts "$C" audio.wav --codec=wav --log=error --timeout=120000; fi
+      - uses: actions/upload-artifact@v4
+        with: { name: 'part-${{ matrix.fmt }}-${{ matrix.part }}', path: 'part${{ matrix.part }}.mp4', retention-days: 1 }
+      - if: matrix.part == 0
+        uses: actions/upload-artifact@v4
+        with: { name: 'audio-${{ matrix.fmt }}', path: audio.wav, retention-days: 1 }
+  join:
+    needs: render
+    if: inputs.mode == 'full'
+    runs-on: ubuntu-latest
+    strategy: { fail-fast: false, matrix: { fmt: ['16x9', '4x5'] } }
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get -qq install -y ffmpeg >/dev/null && pip install --quiet numpy pillow
+      - uses: actions/download-artifact@v4
+        with: { path: parts, pattern: 'part-${{ matrix.fmt }}-*', merge-multiple: true }
+      - uses: actions/download-artifact@v4
+        with: { name: 'audio-${{ matrix.fmt }}', path: . }
+      - run: |
+          for p in $(python3 -c "print(' '.join(str(x) for x in ${{ inputs.parts }}))"); do echo "file 'parts/part$p.mp4'" >> list.txt; done
+          ffmpeg -v error -f concat -safe 0 -i list.txt -c copy video.mp4
+          mkdir -p out qa f
+          O="out/FansaChat_Intro_v5_${{ matrix.fmt }}.mp4"
+          ffmpeg -v error -i video.mp4 -i audio.wav -map 0:v -map 1:a -c:v copy -af loudnorm=I=-14:TP=-1:LRA=7 -ar 48000 -c:a aac -b:a 192k -shortest "$O"
+          ffmpeg -hide_banner -i "$O" -af ebur128=peak=true -f null - 2>&1 | tail -12 > qa/loudness.txt
+          ffmpeg -v error -i "$O" -vf "fps=4,scale=480:-2" f/%04d.png
+          python3 scripts/i27_qa.py f qa
+      - uses: actions/upload-artifact@v4
+        with: { name: 'final-I27-${{ matrix.fmt }}', path: out/*.mp4, retention-days: 3 }
+      - uses: actions/upload-artifact@v4
+        with: { name: 'qa-I27-${{ matrix.fmt }}', path: qa/, retention-days: 3 }
