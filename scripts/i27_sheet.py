@@ -2,7 +2,7 @@
 import glob, sys
 from PIL import Image, ImageDraw
 d = sys.argv[1]
-for C in ['I27-16x9', 'I27D-16x9', 'I27-4x5']:
+for C in ['I27-16x9', 'I27D-16x9', 'I27-4x5', 'I28-16x9', 'I28-4x5']:
     fs = sorted(glob.glob(f'{d}/{C}_*.png'), key=lambda p: float(p.rsplit('_', 1)[1][:-4]))
     if not fs:
         continue
