@@ -92,7 +92,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
         <Liquid f={f} a="rgba(139,143,232,0.35)" b="rgba(244,184,168,0.35)" c="rgba(200,205,255,0.4)" base={PAPER} />
         <div style={{position: 'absolute', left: W / 2, top: H / 2, width: sw, height: sh, marginLeft: -sw / 2, marginTop: -sh / 2, borderRadius: rad, background: bg, boxShadow: `0 ${30 * u}px ${60 * u}px -30px rgba(34,30,48,0.55)`, border: lightness > 0.5 ? `1.5px solid ${INK}` : 'none', transform: `scale(${0.6 + 0.4 * intro})`, opacity: intro * (1 - ez(f, t.that + 30, t.that + 50)), display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'}}>
           <div style={{position: 'absolute', display: 'flex', alignItems: 'center', gap: 14 * u, color: '#fff', fontFamily: FONT.ui, fontWeight: 600, fontSize: 38 * u, ...swap(0, t.paste)}}><span style={{fontSize: 30 * u}}>⧉</span>Copy</div>
-          <div style={{position: 'absolute', left: 30 * u, right: 30 * u, display: 'flex', alignItems: 'center', gap: 16 * u, color: INK, fontFamily: FONT.ui, fontSize: 34 * u, ...swap(t.paste, t.chase)}}><span style={{color: LO, fontSize: 24 * u, fontWeight: 600}}>PASTE</span><span style={{fontWeight: 600}}>INV-0142 · $1,200</span><span style={{width: 3, height: 40 * u, background: PERI_D, opacity: Math.floor(f / 20) % 2 ? 0.2 : 1}} /></div>
+          <div style={{position: 'absolute', left: 30 * u, right: 30 * u, display: 'flex', alignItems: 'center', gap: 16 * u, color: INK, fontFamily: FONT.ui, fontSize: 34 * u, whiteSpace: 'nowrap', ...swap(t.paste, t.chase)}}><span style={{color: LO, fontSize: 24 * u, fontWeight: 600}}>PASTE</span><span style={{fontWeight: 600}}>INV-0142 · $1,200</span><span style={{width: 3, height: 40 * u, background: PERI_D, opacity: Math.floor(f / 20) % 2 ? 0.2 : 1}} /></div>
           <div style={{position: 'absolute', left: 34 * u, right: 34 * u, display: 'flex', alignItems: 'center', gap: 20 * u, color: '#fff', fontFamily: FONT.ui, ...swap(t.chase, t.repeat)}}><div style={{width: 64 * u, height: 64 * u, borderRadius: 20 * u, background: 'rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 34 * u}}>🔔</div><div><div style={{fontWeight: 700, fontSize: 32 * u}}>Chasing invoice #3…</div><div style={{fontSize: 24 * u, opacity: 0.7}}>still unpaid · sent by hand</div></div></div>
           <div style={{position: 'absolute', ...swap(t.repeat, t.that - 4)}}><svg width={90 * u} height={90 * u} viewBox="0 0 40 40" style={{transform: `rotate(${spin}deg)`}}><circle cx="20" cy="20" r="15" stroke="rgba(255,255,255,0.25)" strokeWidth="4" fill="none" /><path d="M20 5 A15 15 0 0 1 35 20" stroke="#fff" strokeWidth="4" fill="none" strokeLinecap="round" /></svg></div>
         </div>
@@ -107,7 +107,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
 
     {/* ================= S2 · ref 4: logo click → icon orbit → menu bar → glass prompt → whip ================= */}
     {inS(S2) ? (() => {
-      const a = S2[0]; const cut1 = t.one - 2, cut2 = t.plain + 14, whip = t.workflow - 14;
+      const a = S2[0]; const cut1 = t.one - 2, cut2 = Math.max(t.one + 60, t.sentence - 4), whip = t.workflow - 14;
       const p1 = f < cut1, p2 = f >= cut1 && f < cut2, p3 = f >= cut2;
       const haze = 1 - ez(f, a, a + 40);
       return <AbsoluteFill>
@@ -151,7 +151,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
               {[PERI, BLUSH, '#FFFFFF'].map((c, i) => <span key={i} style={{width: 30 * u, height: 30 * u, borderRadius: 99, background: c}} />)}
               <span>Mon 9:41 AM</span>
             </div>
-            <div style={{position: 'absolute', left: W / 2 - 520 * u, top: H * 0.16 + 100 * u, width: 1040 * u, transformOrigin: '80% 0', transform: `scale(${0.3 + 0.7 * pop}, ${0.1 + 0.9 * pop})`, opacity: pop, ...glass('rgba(255,255,255,0.32)'), borderRadius: 52 * u, padding: `${34 * u}px ${40 * u}px`}}>
+            <div style={{position: 'absolute', left: W / 2 - 520 * u, top: H * 0.16 + 100 * u, width: 1040 * u, transformOrigin: '80% 0', transform: `scale(${0.3 + 0.7 * pop}, ${0.1 + 0.9 * pop})`, opacity: pop, ...glass('rgba(30,27,62,0.42)', true), borderRadius: 52 * u, padding: `${34 * u}px ${40 * u}px`}}>
               <div style={{fontFamily: FONT.ui, fontWeight: 500, fontSize: 40 * u, color: '#fff', minHeight: 110 * u, lineHeight: 1.35}}>{typed}<span style={{display: 'inline-block', width: 3, height: 40 * u, background: '#fff', marginLeft: 3, verticalAlign: 'middle'}} /></div>
               <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 18 * u}}><span style={{fontFamily: FONT.ui, fontSize: 24 * u, color: 'rgba(255,255,255,0.8)'}}>FansaChat · new workflow</span><div style={{width: 60 * u, height: 60 * u, borderRadius: 99, background: PERI_D, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 30 * u}}>↑</div></div>
             </div>
@@ -166,6 +166,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
     {inS(S3) ? <AbsoluteFill>
       <Liquid f={f} a={th.bg[1]} b={th.bg[2]} c={th.bg[3]} base={th.bg[0]} />
       <Floor f={f} W={W} H={H} camY={camY} camZ={camZ + (w ? 0 : 900)} rows={rows} th={th} />
+      <div style={{position: 'absolute', left: 0, right: 0, top: 0, height: H * 0.42, background: `linear-gradient(180deg, ${th.bg[0]} 0%, ${th.bg[0]}E6 38%, ${th.bg[0]}00 100%)`}} />
       {/* floating logo tiles that stay with the film (ref 1) */}
       {[0, 1, 2].map((i) => { const k = ez(f, S3[0] + 10 + i * 8, S3[0] + 40 + i * 8); return <div key={i} style={{position: 'absolute', left: [W * 0.06, W * 0.9, W * 0.82][i], top: [H * 0.72, H * 0.12, H * 0.84][i] + Math.sin(f / 70 + i) * 10, opacity: k * 0.9, transform: `scale(${0.6 + 0.4 * k}) rotate(${[-8, 10, -4][i]}deg)`, filter: i === 2 ? 'blur(6px)' : undefined}}><div style={{...glass(th.dark ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.7)', th.dark), width: [110, 90, 170][i] * u, height: [110, 90, 170][i] * u, borderRadius: 30 * u, display: 'flex', alignItems: 'center', justifyContent: 'center'}}><Img src={staticFile('logo-fansa.png')} style={{width: '70%', height: '70%', objectFit: 'contain'}} /></div></div>; })}
       {/* app tiles drifting past near the lens, blurred (700+ apps) */}
@@ -202,7 +203,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
         return <div style={{width: (w ? 760 : 820) * u, height: (w ? 400 : 440) * u, borderRadius: 60 * u, position: 'relative', overflow: 'hidden', background: `linear-gradient(140deg, ${a[0]}, ${a[1]})`, transform: `translateY(${(1 - k) * 300 * u - out * 120 * u}px) scale(${lerp(1.08, 1, k)})`, opacity: k * (1 - out), filter: `blur(${(1 - k) * 12 + out * 8}px)`, boxShadow: '0 50px 90px -40px rgba(40,30,80,0.5)'}}>
           <svg width="100%" height="100%" style={{position: 'absolute', inset: 0, opacity: 0.35}}><circle cx="78%" cy="20%" r={180 * u} stroke="#fff" strokeWidth={1.5} fill="none" /><line x1="0" y1="62%" x2="100%" y2="62%" stroke="#fff" /></svg>
           <div style={{position: 'absolute', left: 28 * u, top: 26 * u, ...glass('rgba(255,255,255,0.3)'), borderRadius: 99, padding: `${8 * u}px ${18 * u}px`, fontFamily: FONT.ui, fontWeight: 600, fontSize: 22 * u, color: '#fff'}}>Built for</div>
-          <div style={{position: 'absolute', left: 30 * u, bottom: -36 * u, fontFamily: FONT.clash, fontWeight: 600, fontSize: 180 * u, letterSpacing: '-0.04em', lineHeight: 1, color: 'rgba(255,255,255,0.55)', textShadow: '0 1px 0 rgba(255,255,255,0.8)', WebkitTextStroke: '1.5px rgba(255,255,255,0.75)', whiteSpace: 'nowrap'}}>{title}</div>
+          <div style={{position: 'absolute', left: 30 * u, bottom: -36 * u, fontFamily: FONT.clash, fontWeight: 600, fontSize: Math.min(180, 1180 / Math.max(5, title.length)) * u * (w ? 1 : 1.05), letterSpacing: '-0.04em', lineHeight: 1, color: 'rgba(255,255,255,0.55)', textShadow: '0 1px 0 rgba(255,255,255,0.8)', WebkitTextStroke: '1.5px rgba(255,255,255,0.75)', whiteSpace: 'nowrap'}}>{title}</div>
         </div>; };
       return <AbsoluteFill>
         <Liquid f={f} a="rgba(139,143,232,0.35)" b="rgba(244,184,168,0.4)" c="rgba(230,232,255,0.6)" base={PAPER} />
@@ -228,7 +229,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
 
     {/* dry audio: VO + one SFX per event (music is mixed afterwards = variant B) */}
     {vo.map((l, i) => <Sequence key={i} from={st[i]}><Audio src={staticFile(l.file)} /></Sequence>)}
-    {([[t.copy, 'k_click_002', 0.3], [t.paste, 'k_click_002', 0.3], [t.chase, 'k_click_002', 0.3], [t.repeat, 'k_click_002', 0.32], [t.turns, 'k_click_002', 0.35], [t.one - 2, 'k_glass_002', 0.35], [t.plain + 28, 'k_click_002', 0.3], [t.workflow - 8, 'k_select_003', 0.25], ...rowAt.map((x) => [x + 30, 'k_pluck_001', 0.18]), [t.approve, 'k_click_002', 0.4], [t.approve + 6, 'k_confirmation_002', 0.22], [S7[0] + 30, 'k_glass_002', 0.32]] as [number, string, number][]).map(([at, s, v], i) => <Sequence key={'s' + i} from={Math.max(0, Math.round(at))}><Audio src={staticFile(`audio/sfx/${s}.ogg`)} volume={v} /></Sequence>)}
+    {([[t.copy, 'k_click_002', 0.3], [t.paste, 'k_click_002', 0.3], [t.chase, 'k_click_002', 0.3], [t.repeat, 'k_click_002', 0.32], [t.turns, 'k_click_002', 0.35], [t.one - 2, 'k_glass_002', 0.35], [Math.max(t.one + 60, t.sentence - 4) + 14, 'k_click_002', 0.3], [t.workflow - 8, 'k_select_003', 0.25], ...rowAt.map((x) => [x + 30, 'k_pluck_001', 0.18]), [t.approve, 'k_click_002', 0.4], [t.approve + 6, 'k_confirmation_002', 0.22], [S7[0] + 30, 'k_glass_002', 0.32]] as [number, string, number][]).map(([at, s, v], i) => <Sequence key={'s' + i} from={Math.max(0, Math.round(at))}><Audio src={staticFile(`audio/sfx/${s}.ogg`)} volume={v} /></Sequence>)}
     {void Glyph}
   </AbsoluteFill>;
 };

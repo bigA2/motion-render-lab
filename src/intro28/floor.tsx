@@ -44,7 +44,7 @@ const Node: React.FC<{x: number; y: number; s: FStep; i: number; up: number; blu
 export const Floor: React.FC<{f: number; W: number; H: number; camY: number; camZ: number; rows: FRow[]; th: FTheme; logoTiles?: boolean}> = ({f, W, H, camY, camZ, rows, th}) => {
   const w = W > H;
   return <div style={{position: 'absolute', inset: 0, perspective: 1700, perspectiveOrigin: `50% ${w ? 30 : 34}%`, overflow: 'hidden'}}>
-    <div style={{position: 'absolute', left: W / 2, top: H * (w ? 0.6 : 0.58), transformStyle: 'preserve-3d', transform: `translateZ(${-camZ}px) rotateX(${TILT}deg) translate3d(0, ${-camY}px, 0)`}}>
+    <div style={{position: 'absolute', left: W / 2, top: H * (w ? 0.74 : 0.7), transformStyle: 'preserve-3d', transform: `translateZ(${-camZ}px) rotateX(${TILT}deg) translate3d(0, ${-camY}px, 0)`}}>
       {rows.map((row, ri) => {
         const y0 = rowY(ri); const cols = Math.max(...row.steps.map((s) => s.c)) + 1; const x0 = -((cols - 1) * GX) / 2;
         const dist = Math.abs(y0 - camY);
