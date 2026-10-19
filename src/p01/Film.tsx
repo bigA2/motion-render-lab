@@ -117,7 +117,7 @@ const Particles: React.FC<{f: number}> = ({f}) => {
       const [sx, sy] = toScreen(CAM_A, T.scatter, wx, wy);
       const a = hash(i, 3) * Math.PI * 2, d = 160 + hash(i, 4) * 520;
       const bx = sx + Math.cos(a) * d * burst, by = sy + Math.sin(a) * d * burst * 0.8;
-      let p = (i / N) * per * zb; let tx: number, ty: number; const [L, Tp] = toScreen(CAM_B, T.iris, CHAT.cx - CHAT.w / 2, CHAT.cy - CHAT.h / 2); const zb = camAt(CAM_B, T.iris)[0]; // chat box perimeter in screen space
+      const [L, Tp] = toScreen(CAM_B, T.iris, CHAT.cx - CHAT.w / 2, CHAT.cy - CHAT.h / 2); const zb = camAt(CAM_B, T.iris)[0]; let p = (i / N) * per * zb; let tx: number, ty: number; // chat box perimeter in screen space
       const cw = CHAT.w * zb, ch = CHAT.h * zb; if (p < cw) { tx = L + p; ty = Tp; } else if ((p -= cw) < ch) { tx = L + cw; ty = Tp + p; } else if ((p -= ch) < cw) { tx = L + cw - p; ty = Tp + ch; } else { p -= cw; tx = L; ty = Tp + ch - p; }
       const dl = hash(i, 5) * 0.25, ck = Math.min(1, Math.max(0, (conv - dl) / (1 - dl)));
       const x = lerp(bx, tx, ck), y = lerp(by, ty, ck);
