@@ -27,7 +27,7 @@ const camAt = (k: K[], f: number): [number, number, number] => {
   }
   const l = k[k.length - 1]; return [l[1], l[2], l[3]];
 };
-const CAM_A: K[] = [[0, 1.02, 540, 1000], [90, 1.1, 540, 985], [T.crash - 4, 1.14, 540, 975], [T.crash + 10, 2.15, 440, 1020, 'c'], [T.scatter + 14, 2.3, 445, 1015]];
+const CAM_A: K[] = [[0, 1.08, 540, 960], [90, 1.15, 540, 955], [T.crash, 1.16, 540, 975], [T.crash + 10, 2.15, 440, 1020, 'c'], [T.scatter + 14, 2.3, 445, 1015]];
 const B0Y = 880; // camera B focus y at the iris (chat box centre lands at screen y 720)
 const CAM_B: K[] = [[T.iris - 6, 1.0, 540, B0Y], [T.typeAt, 1.0, 540, B0Y], [T.typeAt + 30, 1.0, 540, 870], [T.typeAt + 38, 1.05, 540, 850, 'c'], [T.typeAt + 60, 1.05, 540, 850], [T.typeAt + 68, 1.1, 540, 840, 'c'], [T.send, 1.1, 540, 840], [T.lift + 24, 1.1, 540, 760, 'r'], [T.pull, 1.12, 540, 770], [T.pull + 18, 0.92, 540, 780, 'r'], [T.run - 8, 0.94, 540, 790], [T.run + 6, 1.15, 540, 1064, 'c'], [T.pushDone - 2, 1.17, 540, 1064], [T.pushDone + 11, 1.6, 540, 1290, 'c'], [T.end, 1.66, 540, 1292]];
 
