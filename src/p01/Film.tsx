@@ -7,6 +7,9 @@ import {FONT, Glyph, Lockup} from '../intro27/ui';
 import {Cursor, ez, glass, lerp, Liquid} from '../intro28/kit';
 import {BUILDER, CHECK, END, KEYWORDS, NODES, PLAN, SENTENCE, TURN, VO} from './copy';
 import {FPS, T, VO_WIN} from './timeline';
+import {Backdrop} from './backdrop';
+
+const BEATS = [T.morph, ...T.cross, T.send, T.run, T.done];
 
 const W = 1080, H = 1920;
 const INK = '#221E30', LO = '#6A6580', PERI = '#8B8FE8', PERI_D = '#6468D8', PAPER = '#F7F6F9', DARK = '#100D16';
@@ -250,9 +253,9 @@ export const Film: React.FC = () => {
   const f = useCurrentFrame();
   const endOn = f >= T.end, irisR = lerp(0, 1500, ez(f, T.iris, T.iris + 14, Easing.in(Easing.quad)));
   return <AbsoluteFill style={{background: PAPER, overflow: 'hidden'}}>
-    {f < T.scatter + 14 ? <AbsoluteFill><Liquid f={f} a="rgba(139,143,232,0.34)" b="rgba(244,184,168,0.36)" c="rgba(139,143,232,0.18)" base={PAPER} /><World f={f} keys={CAM_A}><WorldA f={f} /></World></AbsoluteFill> : null}
+    {f < T.scatter + 14 ? <AbsoluteFill><Backdrop f={f} beats={BEATS} base={PAPER} /><World f={f} keys={CAM_A}><WorldA f={f} /></World></AbsoluteFill> : null}
     {f >= T.scatter - 4 && f < T.iris + 16 ? <Turn f={f} /> : null}
-    {f >= T.iris && !endOn ? <AbsoluteFill style={{clipPath: f < T.iris + 14 ? `circle(${irisR}px at 46% 39%)` : undefined}}><Liquid f={f} a="rgba(139,143,232,0.34)" b="rgba(244,184,168,0.36)" c="rgba(139,143,232,0.18)" base={PAPER} /><World f={f} keys={CAM_B}><WorldB f={f} /></World></AbsoluteFill> : null}
+    {f >= T.iris && !endOn ? <AbsoluteFill style={{clipPath: f < T.iris + 14 ? `circle(${irisR}px at 46% 39%)` : undefined}}><Backdrop f={f} beats={BEATS} base={PAPER} /><World f={f} keys={CAM_B}><WorldB f={f} /></World></AbsoluteFill> : null}
     {!endOn ? <Particles f={f} /> : null}
     {endOn ? <AbsoluteFill>
       <Liquid f={f} a="rgba(100,104,216,0.45)" b="rgba(244,184,168,0.14)" c="rgba(139,143,232,0.22)" base={DARK} />
