@@ -1,0 +1,45 @@
+# P01 "Stop copying leads by hand" (9:16, 30 fps). Storyboard stills + contact sheet for founder review.
+name: p01
+permissions: { contents: read }
+on:
+  workflow_dispatch:
+    inputs:
+      secs: { description: 'still times (s), sheet order', required: false, default: '0.5 2.5 6 10 14 18 23 28' }
+      extra: { description: 'extra check stills (s), not on the sheet', required: false, default: '8.5' }
+jobs:
+  stills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure && pip install --quiet pillow
+      - run: |
+          mkdir -p stills
+          for s in ${{ inputs.secs }} ${{ inputs.extra }}; do
+            F=$(python3 -c "import sys; print(round(float(sys.argv[1])*30))" "$s")
+            npx remotion still src/p01/index.ts P01 "stills/p01_${s}s.png" --frame=$F --log=error --timeout=120000 || echo "fail $s"
+          done
+      - name: contact sheet
+        env: { SECS: '${{ inputs.secs }}' }
+        run: |
+          python3 - <<'EOF'
+          import os
+          from PIL import Image, ImageDraw, ImageFont
+          ts = os.environ['SECS'].split()
+          tw, th, cols = 405, 720, 4
+          rows = (len(ts) + cols - 1) // cols
+          sheet = Image.new('RGB', (tw * cols + 50, (th + 50) * rows + 10), (20, 18, 26))
+          dr = ImageDraw.Draw(sheet)
+          try: fnt = ImageFont.truetype('DejaVuSans.ttf', 30)
+          except Exception: fnt = ImageFont.load_default()
+          for i, t in enumerate(ts):
+              p = f'stills/p01_{t}s.png'
+              if not os.path.exists(p): continue
+              x, y = 10 + (i % cols) * (tw + 10), 10 + (i // cols) * (th + 50)
+              sheet.paste(Image.open(p).convert('RGB').resize((tw, th), Image.LANCZOS), (x, y + 40))
+              dr.text((x, y + 2), f'{t} s', fill=(230, 230, 240), font=fnt)
+          sheet.save('stills/SHEET.jpg', quality=90)
+          EOF
+      - uses: actions/upload-artifact@v4
+        with: { name: stills-P01, path: stills/, retention-days: 3 }
