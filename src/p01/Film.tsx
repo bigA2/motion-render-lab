@@ -27,9 +27,9 @@ const camAt = (k: K[], f: number): [number, number, number] => {
   }
   const l = k[k.length - 1]; return [l[1], l[2], l[3]];
 };
-const CAM_A: K[] = [[0, 1.08, 540, 960], [90, 1.15, 540, 955], [T.crash, 1.16, 540, 975], [T.crash + 10, 2.15, 440, 1020, 'c'], [T.scatter + 14, 2.3, 445, 1015]];
+const CAM_A: K[] = [[0, 1.0, 580, 960], [90, 1.06, 578, 955], [T.crash, 1.07, 578, 975], [T.crash + 10, 2.15, 440, 1020, 'c'], [T.scatter + 14, 2.3, 445, 1015]];
 const B0Y = 880; // camera B focus y at the iris (chat box centre lands at screen y 720)
-const CAM_B: K[] = [[T.iris - 6, 1.0, 540, B0Y], [T.typeAt, 1.0, 540, B0Y], [T.typeAt + 30, 1.0, 540, 870], [T.typeAt + 38, 1.05, 540, 850, 'c'], [T.typeAt + 60, 1.05, 540, 850], [T.typeAt + 68, 1.1, 540, 840, 'c'], [T.send, 1.1, 540, 840], [T.lift + 24, 1.1, 540, 760, 'r'], [T.pull, 1.12, 540, 770], [T.pull + 18, 0.92, 540, 780, 'r'], [T.run - 8, 0.94, 540, 790], [T.run + 6, 1.15, 540, 1064, 'c'], [T.pushDone - 2, 1.17, 540, 1064], [T.pushDone + 11, 1.6, 540, 1290, 'c'], [T.end, 1.66, 540, 1292]];
+const CAM_B: K[] = [[T.iris - 6, 0.9, 583, B0Y], [T.typeAt, 0.9, 583, B0Y], [T.typeAt + 30, 0.9, 583, 870], [T.typeAt + 38, 0.92, 583, 860, 'c'], [T.typeAt + 60, 0.92, 583, 860], [T.typeAt + 68, 0.936, 583, 850, 'c'], [T.send, 0.936, 583, 850], [T.lift + 24, 1.04, 607, 861, 'r'], [T.pull, 1.05, 607, 861], [T.pull + 18, 0.92, 588, 800, 'r'], [T.run - 8, 0.94, 588, 810], [T.run + 6, 0.98, 588, 961, 'c'], [T.pushDone - 2, 0.99, 588, 961], [T.pushDone + 11, 1.6, 565, 1290, 'c'], [T.end, 1.66, 565, 1292]];
 
 const World: React.FC<{f: number; keys: K[]; children: React.ReactNode}> = ({f, keys, children}) => {
   const [z, x, y] = camAt(keys, f), [z0, x0, y0] = camAt(keys, f - 1);
@@ -93,8 +93,8 @@ const Turn: React.FC<{f: number}> = ({f}) => {
   return <>
     <AbsoluteFill style={{clipPath: `circle(${rIn}px at 50% 50%)`}}>
       <Liquid f={f} a="rgba(100,104,216,0.55)" b="rgba(244,184,168,0.18)" c="rgba(139,143,232,0.30)" base={DARK} />
-      <div style={{position: 'absolute', left: 0, right: 0, top: 820, display: 'flex', justifyContent: 'center', gap: 36, opacity: 1 - out, filter: out > 0 ? `blur(${out * 18}px)` : undefined, transform: `scale(${1 + out * 0.15})`}}>
-        {words.map(({w, k}) => <div key={w} style={{position: 'relative', opacity: k, transform: `translateY(${(1 - k) * 24}px)`, filter: `blur(${(1 - k) * 12}px)`, fontFamily: FONT.clash, fontWeight: 600, fontSize: 150, letterSpacing: '-0.03em', color: w === 'fix' ? PERI : '#EDEBF5', lineHeight: 1}}>
+      <div style={{position: 'absolute', left: 0, right: 80, top: 830, display: 'flex', justifyContent: 'center', gap: 30, opacity: 1 - out, filter: out > 0 ? `blur(${out * 18}px)` : undefined, transform: `scale(${1 + out * 0.15})`}}>
+        {words.map(({w, k}) => <div key={w} style={{position: 'relative', opacity: k, transform: `translateY(${(1 - k) * 24}px)`, filter: `blur(${(1 - k) * 12}px)`, fontFamily: FONT.clash, fontWeight: 600, fontSize: 128, letterSpacing: '-0.03em', color: w === 'fix' ? PERI : '#EDEBF5', lineHeight: 1}}>
           {w === 'fix' && g ? <>
             <span style={{position: 'absolute', left: j(1), top: j(2) * 0.3, color: 'rgba(255,60,90,0.85)', mixBlendMode: 'screen'}}>{w}</span>
             <span style={{position: 'absolute', left: -j(3), top: -j(4) * 0.3, color: 'rgba(60,220,255,0.85)', mixBlendMode: 'screen'}}>{w}</span>
@@ -110,15 +110,15 @@ const Turn: React.FC<{f: number}> = ({f}) => {
 const Particles: React.FC<{f: number}> = ({f}) => {
   if (f < T.scatter || f > T.iris + 14) return null;
   const burst = ez(f, T.scatter, T.scatter + 26), conv = ez(f, T.converge, T.iris + 2, Easing.inOut(Easing.cubic)), fade = 1 - ez(f, T.iris + 2, T.iris + 14);
-  const per = 2 * (CHAT.w + CHAT.h);
+  const per = 2 * (CHAT.w + CHAT.h); // world units; scaled by zb below
   return <svg width={W} height={H} style={{position: 'absolute', inset: 0}}>
     {Array.from({length: N}, (_, i) => {
       const row = i % 3, wx = 300 + hash(i, 1) * 420, wy = 760 - 330 + 120 + row * 210 + (hash(i, 2) - 0.5) * 50; // checklist glyph area (world A)
       const [sx, sy] = toScreen(CAM_A, T.scatter, wx, wy);
       const a = hash(i, 3) * Math.PI * 2, d = 160 + hash(i, 4) * 520;
       const bx = sx + Math.cos(a) * d * burst, by = sy + Math.sin(a) * d * burst * 0.8;
-      let p = (i / N) * per; let tx: number, ty: number; const L = CHAT.cx - CHAT.w / 2, Tp = CHAT.cy - CHAT.h / 2 + (H / 2 - B0Y); // chat box perimeter in screen space (camera B at the iris, zoom 1)
-      if (p < CHAT.w) { tx = L + p; ty = Tp; } else if ((p -= CHAT.w) < CHAT.h) { tx = L + CHAT.w; ty = Tp + p; } else if ((p -= CHAT.h) < CHAT.w) { tx = L + CHAT.w - p; ty = Tp + CHAT.h; } else { p -= CHAT.w; tx = L; ty = Tp + CHAT.h - p; }
+      let p = (i / N) * per * zb; let tx: number, ty: number; const [L, Tp] = toScreen(CAM_B, T.iris, CHAT.cx - CHAT.w / 2, CHAT.cy - CHAT.h / 2); const zb = camAt(CAM_B, T.iris)[0]; // chat box perimeter in screen space
+      const cw = CHAT.w * zb, ch = CHAT.h * zb; if (p < cw) { tx = L + p; ty = Tp; } else if ((p -= cw) < ch) { tx = L + cw; ty = Tp + p; } else if ((p -= ch) < cw) { tx = L + cw - p; ty = Tp + ch; } else { p -= cw; tx = L; ty = Tp + ch - p; }
       const dl = hash(i, 5) * 0.25, ck = Math.min(1, Math.max(0, (conv - dl) / (1 - dl)));
       const x = lerp(bx, tx, ck), y = lerp(by, ty, ck);
       const op = (f < T.converge ? lerp(1, 0.45, burst) : lerp(0.45, 1, ck)) * fade;
@@ -145,11 +145,11 @@ const WorldB: React.FC<{f: number}> = ({f}) => {
   const runPress = Math.max(0, 1 - Math.abs(f - T.run) / 5), ran = f >= T.run;
   return <>
     {/* builder window chrome, revealed by the pull-back */}
-    <div style={{position: 'absolute', left: 40, top: 130, width: 1000, height: 1215, opacity: winK, transform: `scale(${lerp(1.04, 1, winK)})`}}>
+    <div style={{position: 'absolute', left: 40, top: 130, width: 1000, height: 1095, opacity: winK, transform: `scale(${lerp(1.04, 1, winK)})`}}>
       <div style={{...glass('rgba(255,255,255,0.55)'), position: 'absolute', inset: 0, borderRadius: 56}} />
       <div style={{position: 'absolute', left: 64, right: 56, top: 392, height: 64, display: 'flex', alignItems: 'center', gap: 18}}>
         <div style={{fontFamily: FONT.sora, fontWeight: 600, fontSize: 34, color: INK, whiteSpace: 'nowrap'}}>{BUILDER.title}</div>
-        <div style={{fontFamily: FONT.ui, fontSize: 28, color: LO, whiteSpace: 'nowrap'}}>{BUILDER.meta}</div>
+        <div style={{fontFamily: FONT.ui, fontSize: 32, color: LO, whiteSpace: 'nowrap'}}>{BUILDER.planMeta}</div>
         <div style={{marginLeft: 'auto', padding: '12px 24px', borderRadius: 999, background: ran ? PERI_D : '#fff', color: ran ? '#fff' : INK, border: '1px solid rgba(32,28,46,0.10)', fontFamily: FONT.ui, fontWeight: 600, fontSize: 32, whiteSpace: 'nowrap', transform: `scale(${1 - 0.08 * runPress})`}}>▷ {BUILDER.run}</div>
       </div>
     </div>
@@ -170,13 +170,13 @@ const WorldB: React.FC<{f: number}> = ({f}) => {
     </div>
     {/* agent flow under the lifted message: "Thinking…" shimmer → reply */}
     {f >= T.think && f < T.reply + 6 ? (() => { const k = ez(f, T.think, T.think + 8) * (1 - ez(f, T.reply - 4, T.reply + 4)); const sh = ((f - T.think) * 14) % 700;
-      return <div style={{position: 'absolute', left: 120, top: 458, opacity: k, display: 'flex', gap: 14, alignItems: 'baseline'}}>
-        <span style={{fontFamily: FONT.ui, fontWeight: 700, fontSize: 26, letterSpacing: '0.08em', color: PERI_D}}>FANSACHAT</span>
+      return <div style={{position: 'absolute', left: 164, top: 458, opacity: k, display: 'flex', gap: 14, alignItems: 'baseline'}}>
+        <span style={{width: 22, height: 22, borderRadius: 99, background: `radial-gradient(circle at 35% 30%, #fff, ${PERI} 45%, ${PERI_D})`, flex: 'none', alignSelf: 'center'}} />
         <span style={{fontFamily: FONT.ui, fontWeight: 600, fontSize: 34, backgroundImage: `linear-gradient(90deg, ${LO} 0px, ${LO} ${sh - 120}px, ${PERI} ${sh}px, ${LO} ${sh + 120}px, ${LO} 900px)`, WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent'}}>{BUILDER.thinking}</span>
       </div>; })() : null}
-    <div style={{position: 'absolute', left: 120, top: 462, opacity: ez(f, T.reply, T.reply + 12), transform: `translateY(${(1 - ez(f, T.reply, T.reply + 12)) * 14}px)`, display: 'flex', gap: 14, alignItems: 'baseline'}}>
-      <span style={{fontFamily: FONT.ui, fontWeight: 700, fontSize: 26, letterSpacing: '0.08em', color: PERI_D}}>FANSACHAT</span>
-      <span style={{fontFamily: FONT.ui, fontWeight: 500, fontSize: 30, color: LO}}>{BUILDER.reply}</span>
+    <div style={{position: 'absolute', left: 164, top: 462, opacity: ez(f, T.reply, T.reply + 12), transform: `translateY(${(1 - ez(f, T.reply, T.reply + 12)) * 14}px)`, display: 'flex', gap: 14, alignItems: 'baseline'}}>
+      <span style={{width: 22, height: 22, borderRadius: 99, background: `radial-gradient(circle at 35% 30%, #fff, ${PERI} 45%, ${PERI_D})`, flex: 'none', alignSelf: 'center'}} />
+      <span style={{fontFamily: FONT.ui, fontWeight: 500, fontSize: 32, color: LO, whiteSpace: 'nowrap'}}>{BUILDER.reply}</span>
     </div>
     {/* plan card with a checklist; each row then morphs into its node */}
     {f >= T.plan && f < T.morphPlan + 14 ? (() => { const k = settle(f, T.plan), out = ez(f, T.morphPlan, T.morphPlan + 10);
@@ -240,7 +240,7 @@ const Captions: React.FC<{f: number; dark: boolean}> = ({f, dark}) => {
   const c = CHUNKS[ci], next = CHUNKS[ci + 1], lineEnd = VO_WIN[c[0].line][1] + 8; if (f > lineEnd && !(next && f >= next[0].s)) return null;
   const vis = c.filter((w) => !(w.line === 2 && SKIP.has(w.w))); if (!vis.length) return null;
   const last = c.filter((w) => f >= w.s).pop();
-  return <div style={{position: 'absolute', left: 60, right: 60, top: 1235, height: 175, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center', columnGap: 20, rowGap: 0}}>
+  return <div style={{position: 'absolute', left: 60, right: 140, top: 1235, height: 175, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center', columnGap: 20, rowGap: 0}}>
     {vis.map((w) => { const k = ez(f, w.s, w.s + 10); return <span key={w.w + w.s} style={{fontFamily: FONT.clash, fontWeight: 600, fontSize: 66, lineHeight: 1.18, letterSpacing: '-0.015em', opacity: k, transform: `translateY(${(1 - k) * 16}px)`, filter: `blur(${(1 - k) * 12}px)`, color: w === last ? (dark ? PERI : PERI_D) : dark ? '#EDEBF5' : INK, textShadow: dark ? '0 2px 18px rgba(0,0,0,0.5)' : '0 2px 18px rgba(247,246,249,0.9)'}}>{w.w}</span>; })}
   </div>;
 };
@@ -252,7 +252,7 @@ export const Film: React.FC = () => {
   return <AbsoluteFill style={{background: PAPER, overflow: 'hidden'}}>
     {f < T.scatter + 14 ? <AbsoluteFill><Liquid f={f} a="rgba(139,143,232,0.34)" b="rgba(244,184,168,0.36)" c="rgba(139,143,232,0.18)" base={PAPER} /><World f={f} keys={CAM_A}><WorldA f={f} /></World></AbsoluteFill> : null}
     {f >= T.scatter - 4 && f < T.iris + 16 ? <Turn f={f} /> : null}
-    {f >= T.iris && !endOn ? <AbsoluteFill style={{clipPath: f < T.iris + 14 ? `circle(${irisR}px at 50% 37.5%)` : undefined}}><Liquid f={f} a="rgba(139,143,232,0.34)" b="rgba(244,184,168,0.36)" c="rgba(139,143,232,0.18)" base={PAPER} /><World f={f} keys={CAM_B}><WorldB f={f} /></World></AbsoluteFill> : null}
+    {f >= T.iris && !endOn ? <AbsoluteFill style={{clipPath: f < T.iris + 14 ? `circle(${irisR}px at 46% 39%)` : undefined}}><Liquid f={f} a="rgba(139,143,232,0.34)" b="rgba(244,184,168,0.36)" c="rgba(139,143,232,0.18)" base={PAPER} /><World f={f} keys={CAM_B}><WorldB f={f} /></World></AbsoluteFill> : null}
     {!endOn ? <Particles f={f} /> : null}
     {endOn ? <AbsoluteFill>
       <Liquid f={f} a="rgba(100,104,216,0.45)" b="rgba(244,184,168,0.14)" c="rgba(139,143,232,0.22)" base={DARK} />
