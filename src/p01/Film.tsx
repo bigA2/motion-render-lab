@@ -65,7 +65,7 @@ const WorldA: React.FC<{f: number}> = ({f}) => {
           <div style={{marginLeft: 'auto', width: 22, height: 22, borderRadius: 99, background: PERI_D, boxShadow: `0 0 0 ${8 + 6 * Math.abs(Math.sin(f / 9))}px rgba(100,104,216,0.18)`}} />
         </div>
         <div style={{height: 1, background: 'rgba(32,28,46,0.10)', margin: '40px 0 30px'}} />
-        {['Name', 'Email', 'Company'].map((l, i) => { const k = ez(f, 8 + i * 5, 22 + i * 5); return <div key={l} style={{marginBottom: 26, opacity: k, transform: `translateY(${(1 - k) * 14}px)`}}>
+        {['Name', 'Email', 'Company'].map((l, i) => { const fa = 10 + i * Math.max(5, (T.morph - 40) / 3), k = ez(f, fa, fa + 14); // fields fill in across the hook line return <div key={l} style={{marginBottom: 26, opacity: k, transform: `translateY(${(1 - k) * 14}px)`}}>
           <div style={{fontFamily: FONT.ui, fontWeight: 600, fontSize: 28, color: LO}}>{l}</div>
           <div style={{height: 24, width: `${[62, 84, 48][i]}%`, borderRadius: 12, background: '#E7E4F0', marginTop: 10}} />
         </div>; })}
