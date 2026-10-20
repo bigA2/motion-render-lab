@@ -6,7 +6,7 @@ import {AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame} fro
 import {FONT, Glyph, Lockup} from '../intro27/ui';
 import {Cursor, ez, glass, lerp, Liquid} from '../intro28/kit';
 import {BUILDER, CHECK, END, KEYWORDS, NODES, PLAN, SENTENCE, TURN, VO} from './copy';
-import {FPS, T, VO_WIN} from './timeline';
+import {FPS, T, VO_AT, VOL} from './timeline';
 import {Backdrop} from './backdrop';
 
 const BEATS = [T.morph, ...T.cross, T.send, T.run, T.done];
@@ -234,13 +234,17 @@ const WorldB: React.FC<{f: number}> = ({f}) => {
 
 // ================= captions: word by word, fixed band (y 1380–1560), chunks of ≤4 words =================
 type Wd = {w: string; s: number; line: number};
-const WORDS: Wd[] = VO.flatMap((l, li) => { const [a, b] = VO_WIN[li]; if (a < 0) return []; const toks = l.split(' ').reduce<string[]>((acc, t) => { if (t === '—' && acc.length) acc[acc.length - 1] += ' —'; else acc.push(t); return acc; }, []);
-  const tot = toks.reduce((s2, t) => s2 + t.length + 2, 0); let c = 0; return toks.map((t) => { const s2 = a + ((b - a) * c) / tot; c += t.length + 2; return {w: t, s: s2, line: li}; }); });
+// script words (exact spelling) timed by the Whisper word timings of the real VO; proportional fallback if counts differ
+const WORDS: Wd[] = VO.flatMap((l, li) => { if (li === 3) return []; const toks = l.split(' ').reduce<string[]>((acc, t) => { if (t === '—' && acc.length) acc[acc.length - 1] += ' —'; else acc.push(t); return acc; }, []);
+  const ws = VOL[li].words, at = VO_AT[li];
+  if (ws.length === toks.length) return toks.map((t, j) => ({w: t, s: at + ws[j].s * FPS, line: li}));
+  const a = ws.length ? ws[0].s : 0, b = ws.length ? ws[ws.length - 1].e : VOL[li].dur;
+  const tot = toks.reduce((s2, t) => s2 + t.length + 2, 0); let c = 0; return toks.map((t) => { const s2 = at + (a + ((b - a) * c) / tot) * FPS; c += t.length + 2; return {w: t, s: s2, line: li}; }); });
 const CHUNKS: Wd[][] = []; WORDS.forEach((w, i) => { const cur = CHUNKS[CHUNKS.length - 1]; const prev = WORDS[i - 1]; if (!cur || cur.length >= 4 || prev.line !== w.line || /[.,—]$/.test(prev.w)) CHUNKS.push([w]); else cur.push(w); });
 const SKIP = new Set(["Let's", 'fix', 'that —']); // the big kinetic "let's fix that" is the caption for those words
 const Captions: React.FC<{f: number; dark: boolean}> = ({f, dark}) => {
   let ci = -1; CHUNKS.forEach((c, i) => { if (f >= c[0].s) ci = i; }); if (ci < 0) return null;
-  const c = CHUNKS[ci], next = CHUNKS[ci + 1], lineEnd = VO_WIN[c[0].line][1] + 8; if (f > lineEnd && !(next && f >= next[0].s)) return null;
+  const c = CHUNKS[ci], next = CHUNKS[ci + 1], lineEnd = VO_AT[c[0].line] + VOL[c[0].line].dur * FPS + 8; if (f > lineEnd && !(next && f >= next[0].s)) return null;
   const vis = c.filter((w) => !(w.line === 2 && SKIP.has(w.w))); if (!vis.length) return null;
   const last = c.filter((w) => f >= w.s).pop();
   return <div style={{position: 'absolute', left: 60, right: 140, top: 1235, height: 175, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center', columnGap: 20, rowGap: 0}}>
