@@ -18,7 +18,7 @@ jobs:
         with: { node-version: 22, cache: npm }
       - run: npm ci --no-audit --no-fund && npx remotion browser ensure
       - run: mkdir -p out && npx remotion render src/p01/index.ts P01 out/P01_9x16_silent.mp4 --muted --crf=16 --pixel-format=yuv420p --concurrency=100% --log=error --timeout=120000
-      - run: ffmpeg -y -loglevel error -i out/P01_9x16_silent.mp4 -vf scale=540:960 -c:v libx264 -crf 22 -pix_fmt yuv420p out/P01_preview_540.mp4
+      - run: npx remotion ffmpeg -y -loglevel error -i out/P01_9x16_silent.mp4 -vf scale=540:960 -c:v libx264 -crf 22 -pix_fmt yuv420p out/P01_preview_540.mp4
       - uses: actions/upload-artifact@v4
         with: { name: video-P01, path: out/, retention-days: 7 }
   stills:
