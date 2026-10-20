@@ -6,8 +6,23 @@ on:
     inputs:
       secs: { description: 'still times (s), sheet order', required: false, default: '0.5 2.5 6 10 14 18 23 28' }
       extra: { description: 'extra check stills (s), not on the sheet', required: false, default: '8.5' }
+      mode: { description: 'stills | video (silent 1080x1920 mp4 + half-size preview)', required: false, default: 'stills' }
 jobs:
+  video:
+    if: inputs.mode == 'video'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - run: mkdir -p out && npx remotion render src/p01/index.ts P01 out/P01_9x16_silent.mp4 --muted --crf=16 --pixel-format=yuv420p --concurrency=100% --log=error --timeout=120000
+      - run: ffmpeg -y -loglevel error -i out/P01_9x16_silent.mp4 -vf scale=540:960 -c:v libx264 -crf 22 -pix_fmt yuv420p out/P01_preview_540.mp4
+      - uses: actions/upload-artifact@v4
+        with: { name: video-P01, path: out/, retention-days: 7 }
   stills:
+    if: inputs.mode != 'video'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
