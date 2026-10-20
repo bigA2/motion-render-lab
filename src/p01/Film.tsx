@@ -32,7 +32,7 @@ const camAt = (k: K[], f: number): [number, number, number] => {
 };
 const CAM_A: K[] = [[0, 1.0, 580, 960], [90, 1.06, 578, 955], [T.crash, 1.07, 578, 975], [T.crash + 10, 2.15, 440, 1020, 'c'], [T.scatter + 14, 2.3, 445, 1015]];
 const B0Y = 880; // camera B focus y at the iris (chat box centre lands at screen y 720)
-const CAM_B: K[] = [[T.iris - 6, 0.9, 583, B0Y], [T.typeAt, 0.9, 583, B0Y], [T.typeAt + 30, 0.9, 583, 870], [T.typeAt + 38, 0.92, 583, 860, 'c'], [T.typeAt + 60, 0.92, 583, 860], [T.typeAt + 68, 0.936, 583, 850, 'c'], [T.send, 0.936, 583, 850], [T.lift + 24, 1.04, 607, 861, 'r'], [T.pull, 1.05, 607, 861], [T.pull + 18, 0.92, 588, 800, 'r'], [T.run - 8, 0.94, 588, 810], [T.run + 6, 0.98, 588, 961, 'c'], [T.pushDone - 2, 0.99, 588, 961], [T.pushDone + 11, 1.6, 565, 1290, 'c'], [T.end, 1.66, 565, 1292]];
+const CAM_B: K[] = [[T.iris - 6, 0.9, 583, B0Y], [T.typeAt, 0.9, 583, B0Y], [T.typeAt + 30, 0.9, 583, 870], [T.typeAt + 38, 0.92, 583, 860, 'c'], [T.typeAt + 60, 0.92, 583, 860], [T.typeAt + 68, 0.936, 583, 850, 'c'], [T.send, 0.936, 583, 850], [T.lift + 24, 1.04, 607, 861, 'r'], [T.pull, 1.05, 607, 861], [T.pull + 18, 0.92, 588, 935, 'r'], [T.run - 8, 0.94, 588, 945], [T.run + 6, 0.98, 588, 961, 'c'], [T.pushDone - 2, 0.99, 588, 961], [T.pushDone + 11, 1.6, 565, 1290, 'c'], [T.end, 1.66, 565, 1292]];
 
 const World: React.FC<{f: number; keys: K[]; children: React.ReactNode}> = ({f, keys, children}) => {
   const [z, x, y] = camAt(keys, f), [z0, x0, y0] = camAt(keys, f - 1);

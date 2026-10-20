@@ -7,7 +7,7 @@ export const T = {
   // hook
   speck: 0, cardIn: 14,
   // problem: card becomes the checklist; rows write in, red crosses draw on the VO stress words
-  morph: s(3), rows: [s(3.5), s(5), s(6.5)], cross: [s(4.4), s(5.9), s(7.6)], crash: s(8.6),
+  morph: s(3), rows: [s(3.25), s(5), s(6.5)], cross: [s(4.4), s(5.9), s(7.6)], crash: s(8.6),
   // turn: list scatters → "let's fix that" → particles form the chat box
   scatter: s(8.95), turnText: s(9.25), glitch: s(9.7), converge: s(10.15), iris: s(10.6), body: s(11),
   // body
