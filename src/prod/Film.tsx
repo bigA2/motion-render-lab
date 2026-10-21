@@ -96,7 +96,8 @@ export const Film: React.FC<{tl: TL}> = ({tl}) => {
           {a.lead ? <div style={{position: 'absolute', left: lay.vx, top: lay.vy, width: VW * lay.vs, height: VH * lay.vs, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 1 - ez(fl, lockAt - 10, lockAt + 4), filter: `blur(${ez(fl, lockAt - 10, lockAt + 4) * 16}px)`}}>
             <div style={{fontFamily: FONT.clash, fontWeight: 600, fontSize: lay.land ? 140 : 124, letterSpacing: '-0.03em', color: '#EDEBF5', transform: `translateY(${(1 - ez(fl, 4, 20)) * 24}px)`, opacity: ez(fl, 4, 20)}}>{a.lead}</div>
           </div> : null}
-          <div style={{position: 'absolute', left: lay.vx, top: lay.vy, width: VW * lay.vs, height: VH * lay.vs, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${1.04 - 0.04 * ez(fl, lockAt, lockAt + 40)})`}}>
+          <div style={{position: 'absolute', left: lay.vx, top: lay.vy, width: VW * lay.vs, height: VH * lay.vs, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${1.04 - 0.04 * ez(fl, lockAt, lockAt + 40)})`, filter: `drop-shadow(0 0 ${46 * ez(fl, lockAt, lockAt + 30)}px rgba(139,143,232,0.55))`}}>
+            <div style={{position: 'absolute', width: 900, height: 900, borderRadius: '50%', background: 'radial-gradient(circle, rgba(120,124,230,0.32) 0%, rgba(120,124,230,0) 65%)', opacity: ez(fl, lockAt, lockAt + 30)}} />
             <Lockup f={fl} at={lockAt} size={lay.land ? 270 : 250} th={THEME_D} sub={<div style={{fontFamily: FONT.ui, fontWeight: 500, fontSize: lay.land ? 54 : 48, color: '#C9C5DA', letterSpacing: '0.01em'}}>fansachat.com</div>} />
           </div>
         </> : null}
