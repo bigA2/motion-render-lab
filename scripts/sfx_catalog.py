@@ -1,6 +1,6 @@
 # Catalogue every SFX: duration, peak, brightness, event tag -> public/sfx/catalog.json
 import os, json, numpy as np, soundfile as sf
-TAGS = [('impact', 'hook/hit'), ('hit', 'hook/hit'), ('riser', 'build-up'), ('flash', 'transition'), ('whoosh', 'transition'), ('swoosh', 'transition'),
+TAGS = [('data_loop', 'thinking-loop'), ('stutter', 'typing-stutter'), ('charge_data', 'run-charge'), ('mechanical', 'plan-nodes'), ('impact', 'hook/hit'), ('hit', 'hook/hit'), ('riser', 'build-up'), ('flash', 'transition'), ('whoosh', 'transition'), ('swoosh', 'transition'),
         ('pop', 'text/pop'), ('typing', 'typing'), ('key', 'typing'), ('click', 'ui-click'), ('tick', 'ui-tick'), ('select', 'ui-click'), ('switch', 'ui-click'),
         ('toggle', 'ui-click'), ('confirm', 'success'), ('chime', 'success'), ('success', 'success'), ('error', 'error'), ('glitch', 'glitch'), ('laser', 'sci-fi'),
         ('zap', 'sci-fi'), ('drop', 'drop'), ('scroll', 'scroll'), ('maximize', 'open'), ('minimize', 'close'), ('open', 'open'), ('close', 'close'),
