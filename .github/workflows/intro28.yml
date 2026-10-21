@@ -72,12 +72,12 @@ jobs:
           # variant A: voice + SFX only
           ffmpeg -v error -i video.mp4 -i audio.wav -map 0:v -map 1:a -c:v copy -af loudnorm=I=-14:TP=-1.6:LRA=9 -ar 48000 -c:a aac -b:a 192k -shortest "$O"
           ffmpeg -hide_banner -i "$O" -af ebur128=peak=true -f null - 2>&1 | tail -12 > qa/loudness_no-music.txt
-          # variant B: + background music, bed ~9 dB under the voice, side-chain ducked ~6 dB more while someone speaks
+          # variant B: + background music, bed ~15 dB under the voice (locked 14-16 dB rule), side-chain ducked while someone speaks
           M="public/audio/music/${{ inputs.music }}"
           if [ -n "${{ inputs.music }}" ] && [ -f "$M" ]; then
             D=$(ffprobe -v error -show_entries format=duration -of csv=p=0 audio.wav)
             FO=$(python3 -c "print(max(0.0, float('$D') - 3.0))")
-            ffmpeg -v error -i video.mp4 -i audio.wav -stream_loop -1 -i "$M" -filter_complex "[1:a]aresample=48000,loudnorm=I=-14:TP=-1.5:LRA=9,asplit=2[v][sc];[2:a]aresample=48000,atrim=0:$D,asetpts=PTS-STARTPTS,afade=t=in:d=1.5,afade=t=out:st=$FO:d=3,loudnorm=I=-23:TP=-3:LRA=7[m];[m][sc]sidechaincompress=threshold=0.04:ratio=4:attack=25:release=500[md];[v][md]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.6:LRA=9[a]" -map 0:v -map "[a]" -c:v copy -ar 48000 -c:a aac -b:a 192k -shortest "out/FansaChat_Intro_v7_${{ matrix.fmt }}_music.mp4"
+            ffmpeg -v error -i video.mp4 -i audio.wav -stream_loop -1 -i "$M" -filter_complex "[1:a]aresample=48000,loudnorm=I=-14:TP=-1.5:LRA=9,asplit=2[v][sc];[2:a]aresample=48000,atrim=0:$D,asetpts=PTS-STARTPTS,afade=t=in:d=1.5,afade=t=out:st=$FO:d=3,loudnorm=I=-29:TP=-6:LRA=7[m];[m][sc]sidechaincompress=threshold=0.04:ratio=4:attack=25:release=500[md];[v][md]amix=inputs=2:duration=first:normalize=0,loudnorm=I=-14:TP=-1.6:LRA=9[a]" -map 0:v -map "[a]" -c:v copy -ar 48000 -c:a aac -b:a 192k -shortest "out/FansaChat_Intro_v7_${{ matrix.fmt }}_music.mp4"
             ffmpeg -hide_banner -i "out/FansaChat_Intro_v7_${{ matrix.fmt }}_music.mp4" -af ebur128=peak=true -f null - 2>&1 | tail -12 > qa/loudness_music.txt
           else echo "no music file: $M" > qa/loudness_music.txt; fi
           ffmpeg -v error -i "$O" -vf "fps=4,scale=480:-2" f/%04d.png
