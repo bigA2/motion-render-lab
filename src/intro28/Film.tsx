@@ -107,7 +107,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
       const press = [t.copy, t.paste, t.chase, t.repeat].reduce((m, x) => Math.max(m, 1 - Math.abs(f - x) / 6), 0);
       const spin = f >= t.repeat ? (f - t.repeat) * (6 + (f - t.repeat) * 0.25) : 0;
       const textK = ez(f, open + 4, open + 22);
-      return <AbsoluteFill style={{opacity: s6k}}>
+      return <AbsoluteFill>
         <Liquid f={f} a="rgba(139,143,232,0.35)" b="rgba(244,184,168,0.35)" c="rgba(200,205,255,0.4)" base={PAPER} />
         <AbsoluteFill style={{transform: `translate(${W / 2 - camXk * camZ}px, ${H / 2 - camYk * camZ}px) scale(${camZ})`, transformOrigin: '0 0'}}>
           <div style={{position: 'absolute', left: W / 2, top: H / 2, width: swU, height: sh, marginLeft: -swU / 2, marginTop: -sh / 2, borderRadius: rad, background: bg, boxShadow: fill > 0.02 ? `0 ${30 * u}px ${60 * u}px -30px rgba(34,30,48,${0.55 * fill})` : 'none', border: lightness > 0.5 ? `1.5px solid ${INK}` : 'none', transform: `scale(${0.6 + 0.4 * intro})`, opacity: intro, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: f >= open + 6 ? 'visible' : 'hidden'}}>
@@ -277,7 +277,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
           <div style={{position: 'absolute', left: 28 * u, top: 26 * u, ...glass('rgba(255,255,255,0.3)'), borderRadius: 99, padding: `${8 * u}px ${18 * u}px`, fontFamily: FONT.ui, fontWeight: 600, fontSize: 22 * u, color: '#fff', opacity: 1 - titleOut}}>Built for</div>
           <div style={{position: 'absolute', left: 30 * u, bottom: 22 * u, fontFamily: FONT.clash, fontWeight: 600, fontSize: Math.min(160, 1100 / Math.max(5, title.length)) * u, letterSpacing: '-0.04em', lineHeight: 1, color: 'rgba(255,255,255,0.6)', textShadow: '0 1px 0 rgba(255,255,255,0.8)', WebkitTextStroke: '1.5px rgba(255,255,255,0.8)', whiteSpace: 'nowrap', opacity: tin * (1 - tout) * (1 - titleOut), filter: `blur(${(1 - tin) * 10 + tout * 10}px)`, transform: `translateY(${(1 - tin) * 24 * u - tout * 24 * u}px)`}}>{title}</div>
         </div>; };
-      return <AbsoluteFill>
+      return <AbsoluteFill style={{opacity: s6k}}>
         <Liquid f={f} a="rgba(139,143,232,0.35)" b="rgba(244,184,168,0.4)" c="rgba(230,232,255,0.6)" base={PAPER} />
         <Card i={1} /><Card i={0} />
         {f >= t.workday - 8 ? <AbsoluteFill style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}><LineIn text={<>Your workday, <span style={{color: PERI_D}}>back.</span></>} f={f} at={t.workday - 8} size={(w ? 120 : 74) * u} color={INK} /></AbsoluteFill> : null}
