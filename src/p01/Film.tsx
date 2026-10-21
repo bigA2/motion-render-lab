@@ -234,7 +234,7 @@ const WorldB: React.FC<{f: number}> = ({f}) => {
         <span style={{width: 22, height: 22, borderRadius: 99, background: `radial-gradient(circle at 35% 30%, #fff, ${PERI} 45%, ${PERI_D})`, flex: 'none', alignSelf: 'center'}} />
         <span style={{fontFamily: FONT.ui, fontWeight: 600, fontSize: L.talk.think, backgroundImage: `linear-gradient(90deg, ${LO} 0px, ${LO} ${sh - 120}px, ${PERI} ${sh}px, ${LO} ${sh + 120}px, ${LO} 900px)`, WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent'}}>{BUILDER.thinking}</span>
       </div>; })() : null}
-    <div style={{position: 'absolute', left: L.talk.x, top: L.talk.replyY, opacity: ez(f, T.reply, T.reply + 12), transform: `translateY(${(1 - ez(f, T.reply, T.reply + 12)) * 14}px)`, display: 'flex', gap: 14, alignItems: 'baseline'}}>
+    <div style={{position: 'absolute', left: L.talk.x, top: L.talk.replyY, opacity: ez(f, T.reply, T.reply + 12) * (L.wide ? 1 - ez(f, T.done - 8, T.done) : 1), transform: `translateY(${(1 - ez(f, T.reply, T.reply + 12)) * 14}px)`, display: 'flex', gap: 14, alignItems: 'baseline'}}>
       <span style={{width: 22, height: 22, borderRadius: 99, background: `radial-gradient(circle at 35% 30%, #fff, ${PERI} 45%, ${PERI_D})`, flex: 'none', alignSelf: 'center'}} />
       <span style={{fontFamily: FONT.ui, fontWeight: 500, fontSize: L.talk.reply, color: LO, whiteSpace: 'nowrap'}}>{BUILDER.reply}</span>
     </div>
