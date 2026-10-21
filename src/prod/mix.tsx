@@ -19,13 +19,13 @@ const events = (tl: TL): Ev[] => {
       case 'chatflash': add(S + 2, P + 'node_pop_2.ogg', 0.4); break;
       case 'myth': {
         [tl.w(1, 'stripe'), tl.w(1, 'sheet'), tl.w(1, 'miss')].forEach((x) => add(x + 6, K + 'error_004.ogg', 0.34));
-        [tl.w(1, 'check'), tl.w(1, 'update'), tl.w(1, 'hope')].forEach((x) => add(x, P + 'typing_keyboard_0.6s.ogg', 0.2));
+        [0, 1, 2].forEach((i) => add(tl.S[1] + 8 + i * 10, P + 'typing_keyboard_0.6s.ogg', 0.2));
         add(tl.S[2], P + 'hook_bass_impact_0.8s.ogg', 0.4); add(tl.S[2] + 2, P + 'ui_click_2.ogg', 0.45); break; }
       case 'split': add(tl.S[1], P + 'transition_whoosh_0.45s.ogg', 0.3); add(tl.w(1, 'day') + 2, K + 'error_004.ogg', 0.36); add(tl.S[2], P + 'transition_camera_flash_1.ogg', 0.22); break;
       case 'inbox': {
         add(tl.S[0] + 20, P + 'ui_tick_1.ogg', 0.2);
         [tl.w(1, 'everything'), tl.w(1, 'spot'), tl.w(1, 'task'), tl.w(1, 'team')].forEach((x) => add(x + 8, K + 'error_004.ogg', 0.34));
-        [tl.w(1, 'read'), tl.w(1, 'spot'), tl.w(1, 'make'), tl.w(1, 'tell')].forEach((x) => add(x - 6, P + 'typing_keyboard_0.6s.ogg', 0.2)); break; }
+        [0, 1, 2, 3].forEach((i) => add(tl.S[1] + 8 + i * 9, P + 'typing_keyboard_0.6s.ogg', 0.2)); break; }
       case 'brief': {
         [tl.w(1, 'dm'), tl.w(1, 'email'), tl.w(1, 'form'), tl.w(1, 'rebuild')].forEach((x) => add(x + 8, K + 'error_004.ogg', 0.34));
         add(tl.S[2], K + 'glass_002.ogg', 0.34); add(a.end - 16, P + 'transition_whoosh_0.25s.ogg', 0.28); break; }

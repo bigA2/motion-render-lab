@@ -33,7 +33,7 @@ export const ListHook: React.FC<{f: number; a: A; tl: TL}> = ({f, a}) => {
         <Pill size={26} bg="rgba(139,143,232,0.18)" fg="#CFD0FA" style={{border: '1px solid rgba(139,143,232,0.4)'}}>5-person agency</Pill>
       </div>
       <div style={{position: 'absolute', left: 48, top: 126, right: 48, fontFamily: FONT.sora, fontWeight: 600, fontSize: 54, color: '#EDEBF5', lineHeight: 1.12}}>Automate these 3 first</div>
-      {a.items.map((it: {n: string; t: string}, i: number) => { const ik = ez(f, 6 + i * 5, 20 + i * 5); const blur = i === 0 ? 0 : 15;
+      {a.items.map((it: {n: string; t: string}, i: number) => { const ik = ez(f, -10 + i * 3, 4 + i * 3); const blur = i === 0 ? 0 : 15;
         return <div key={it.n} style={{position: 'absolute', left: 48, right: 48, top: 290 + i * 150, height: 124, display: 'flex', alignItems: 'center', gap: 34, opacity: ik, transform: `translateY(${(1 - ik) * 16}px)`, borderRadius: 30, background: i === 0 ? 'rgba(139,143,232,0.16)' : 'rgba(255,255,255,0.05)', border: `1px solid ${i === 0 ? 'rgba(139,143,232,0.5)' : 'rgba(255,255,255,0.10)'}`, padding: '0 34px'}}>
           <div style={{fontFamily: FONT.clash, fontWeight: 600, fontSize: 76, color: i === 0 ? PERI : 'rgba(237,235,245,0.4)', letterSpacing: '-0.03em'}}>{it.n}</div>
           <div style={{fontFamily: FONT.sora, fontWeight: 600, fontSize: 52, color: '#EDEBF5', filter: blur ? `blur(${blur}px)` : undefined, opacity: i === 0 ? 1 : 0.55, whiteSpace: 'nowrap'}}>{it.t}</div>
@@ -60,7 +60,7 @@ export const MythCard: React.FC<{f: number; a: A; tl: TL}> = ({f, a, tl}) => {
   const pop = ez(f, t2 + 3, t2 + 15, CRASH), press = Math.max(0, 1 - Math.abs(f - (t2 + 2)) / 3);
   const red = ez(f, t2 + 2, t2 + 8);
   const cues = [tl.w(1, 'stripe'), tl.w(1, 'sheet'), tl.w(1, 'miss')].map((x) => rel(a, x) + 6);
-  const rowAt = [rel(a, tl.w(1, 'check')), rel(a, tl.w(1, 'update')), rel(a, tl.w(1, 'hope'))];
+  const rowAt = [rel(a, tl.w(1, 'check')), rel(a, tl.w(1, 'update')), rel(a, tl.w(1, 'hope'))].map((x, i) => Math.min(x, t1 + 8 + i * 10));
   const wall = 1 - 0.6 * p1;
   return <div style={{position: 'absolute', inset: 0}}>
     {/* wall of code drifting behind (rack-focus blur) */}
@@ -100,7 +100,7 @@ export const SplitScene: React.FC<{f: number; a: A; tl: TL}> = ({f, a, tl}) => {
     {/* left: sticky notes */}
     <div style={{position: 'absolute', left: Lx, top: 100, width: Wp, height: Hp, opacity: k, filter: focus > 0 ? undefined : undefined}}>
       <div style={card({inset: 0, borderRadius: 40})} />
-      {NOTES.slice(0, notesVis).map(([t, fx, fy, rot], i) => { const isPrep = t === 'prep call??'; const nk = settle(f, 4 + i * 4 + (f > t1 ? 0 : 0), 14); const fall = i === 3 ? ez(f, t1 + 30, t1 + 60, Easing.in(Easing.cubic)) : 0;
+      {NOTES.slice(0, notesVis).map(([t, fx, fy, rot], i) => { const isPrep = t === 'prep call??'; const nk = settle(f, -10 + i * 3, 14); const fall = i === 3 ? ez(f, t1 + 30, t1 + 60, Easing.in(Easing.cubic)) : 0;
         const nW = 210, nH = 150; const x = fx * (Wp - nW - 20) + 10, y = fy * (Hp - nH - 20) + 10 + fall * 160;
         const blurOthers = isPrep ? 0 : focus * 9; const big = isPrep ? focus : 0;
         return <div key={t} style={{position: 'absolute', left: lerp(x, Wp / 2 - nW / 2, big), top: lerp(y, Hp / 2 - nH / 2, big), width: nW, height: nH, transform: `rotate(${lerp(rot, 0, big)}deg) scale(${(0.7 + 0.3 * nk) * (1 + 0.55 * big)})`, opacity: Math.min(1, nk * 1.5) * (1 - fall * 0.6) * (isPrep ? 1 - ez(f, t2 + 44, t2 + 60) : 1 - focus * 0.55 * fade2), filter: blurOthers ? `blur(${blurOthers}px)` : undefined, background: AMBERS[i % AMBERS.length], borderRadius: 10, boxShadow: '0 14px 30px -14px rgba(40,30,80,0.45)', padding: 16, boxSizing: 'border-box', fontFamily: FONT.ui, fontWeight: 600, fontSize: 30, color: '#4B4636', lineHeight: 1.15}}>
@@ -111,7 +111,7 @@ export const SplitScene: React.FC<{f: number; a: A; tl: TL}> = ({f, a, tl}) => {
     {/* right: automatic */}
     <div style={{position: 'absolute', left: Rx, top: 100, width: 424, height: 660, opacity: k * (1 - ex), transform: `scale(${1 - 0.12 * ex})`, filter: ex > 0 ? `blur(${ex * 10}px)` : undefined}}>
       <div style={card({inset: 0, borderRadius: 40})} />
-      {[['calendly', 'New booking'], ['pipedrive', 'Deal created'], ['trello', 'Prep card ready']].map(([app, t], i) => { const ik = ez(f, 8 + i * 6, 24 + i * 6);
+      {[['calendly', 'New booking'], ['pipedrive', 'Deal created'], ['trello', 'Prep card ready']].map(([app, t], i) => { const ik = ez(f, -8 + i * 5, 8 + i * 5);
         return <div key={app} style={{position: 'absolute', left: 24, right: 24, top: 44 + i * 196, height: 150, borderRadius: 30, background: '#F7F6FB', border: '1px solid rgba(32,28,46,0.08)', opacity: ik, transform: `translateY(${(1 - ik) * 14}px)`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10}}>
           <Tile k={app} size={64} on />
           <div style={{fontFamily: FONT.ui, fontWeight: 600, fontSize: 28, color: INK}}>{t}</div>
@@ -127,7 +127,7 @@ const HUES = ['#C9CBF5', '#F4C9BE', '#D6E8DA', '#EBD9F2', '#F7E2B8', '#C9E2F2', 
 export const InboxScene: React.FC<{f: number; a: A; tl: TL}> = ({f, a, tl}) => {
   const t1 = rel(a, tl.S[1]), k = ez(f, -8, 10), p1 = ez(f, t1, t1 + 16), push = 1 + 0.06 * ez(f, 0, t1, Easing.linear);
   const cues = [tl.w(1, 'everything'), tl.w(1, 'spot'), tl.w(1, 'task'), tl.w(1, 'team')].map((x) => rel(a, x) + 8);
-  const rowAt = [rel(a, tl.w(1, 'read')), rel(a, tl.w(1, 'spot')) - 6, rel(a, tl.w(1, 'make')) - 4, rel(a, tl.w(1, 'tell')) - 4];
+  const rowAt = [rel(a, tl.w(1, 'read')), rel(a, tl.w(1, 'spot')) - 6, rel(a, tl.w(1, 'make')) - 4, rel(a, tl.w(1, 'tell')) - 4].map((x, i) => Math.min(x, t1 + 8 + i * 9));
   return <div style={{position: 'absolute', inset: 0, transform: `scale(${push})`, transformOrigin: '50% 40%'}}>
     <div style={{position: 'absolute', left: 20, top: 30, width: 860, height: 790, transform: `scale(${lerp(0.95, 1, k)})`, filter: k < 1 ? `blur(${(1 - k) * 6}px)` : undefined}}>
       <div style={card({inset: 0})} />
@@ -135,7 +135,7 @@ export const InboxScene: React.FC<{f: number; a: A; tl: TL}> = ({f, a, tl}) => {
         <Tile k="intercom" size={64} /><div style={{fontFamily: FONT.sora, fontWeight: 600, fontSize: 44, color: INK}}>Client inbox</div>
       </div>
       <div style={{position: 'absolute', inset: 0, opacity: 1 - p1, filter: `blur(${p1 * 14}px)`}}>
-        {INBOX.map(([who, msg], i) => { const urgent = who === 'URGENT'; const ik = ez(f, 2 + i * 2, 14 + i * 2);
+        {INBOX.map(([who, msg], i) => { const urgent = who === 'URGENT'; const ik = ez(f, -10 + i * 1.5, 4 + i * 1.5);
           return <div key={i} style={{position: 'absolute', left: 36, right: 36, top: 122 + i * 94, height: 82, borderRadius: 22, background: urgent ? 'rgba(229,72,77,0.10)' : '#F7F6FB', border: `2px solid ${urgent ? 'rgba(229,72,77,0.55)' : 'rgba(32,28,46,0.06)'}`, opacity: ik, transform: `translateX(${(1 - ik) * 30}px)`, display: 'flex', alignItems: 'center', gap: 22, padding: '0 26px', boxSizing: 'border-box'}}>
             <div style={{width: 46, height: 46, borderRadius: 99, background: HUES[i], flex: 'none'}} />
             <div style={{minWidth: 0}}>
@@ -156,7 +156,7 @@ export const BriefScene: React.FC<{f: number; a: A; tl: TL}> = ({f, a, tl}) => {
   const k = ez(f, -8, 10), p1 = ez(f, t1, t1 + 16), p2 = ez(f, t2, t2 + 12), push = 1 + 0.05 * ez(f, 0, t1, Easing.linear);
   const flip = ez(f, end - 14, end, Easing.in(Easing.cubic));
   const cues = [tl.w(1, 'dm'), tl.w(1, 'email'), tl.w(1, 'form'), tl.w(1, 'rebuild')].map((x) => rel(a, x) + 8);
-  const rowAt = [rel(a, tl.w(1, 'briefs')), rel(a, tl.w(1, 'dm')) + 2, rel(a, tl.w(1, 'email')) + 2, rel(a, tl.w(1, 'rebuild')) - 6];
+  const rowAt = [rel(a, tl.w(1, 'briefs')), rel(a, tl.w(1, 'dm')) + 2, rel(a, tl.w(1, 'email')) + 2, rel(a, tl.w(1, 'rebuild')) - 6].map((x, i) => Math.min(x, t1 + 8 + i * 9));
   const bub = [['DM', 'dm', 0], ['Email', 'mail', 2.1], ['Form', 'tally', 4.2]] as [string, string, number][];
   return <div style={{position: 'absolute', inset: 0, transform: `scale(${push}) scaleX(${1 - flip})`, transformOrigin: '50% 50%'}}>
     {/* message bubbles swirling around the card */}

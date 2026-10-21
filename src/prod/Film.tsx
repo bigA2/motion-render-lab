@@ -67,7 +67,7 @@ const THEME_D = {bg: DARK, ink: '#EDEBF5', lo: '#9A95B0', panel: '', panel2: '',
 
 export const Film: React.FC<{tl: TL}> = ({tl}) => {
   const f = useCurrentFrame(); const {width, height} = useVideoConfig(); const lay = layout(width, height);
-  const cx = lay.vx + (VW * lay.vs) / 2, cy = lay.vy + (VH * lay.vs) / 2, R = Math.hypot(width, height) * 0.62;
+  const cx = lay.vx + (VW * lay.vs) / 2, cy = lay.vy + (VH * lay.vs) / 2, R = Math.hypot(Math.max(cx, width - cx), Math.max(cy, height - cy)) * 1.05;
   let darkK = 0;
   const lines = tl.spec.lines; let curLine = 0; tl.S.forEach((s, i) => { if (f >= s - 2) curLine = i; });
   const label = tl.spec.labels?.[curLine];

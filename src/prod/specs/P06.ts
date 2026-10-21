@@ -7,7 +7,7 @@ export const P06: Spec = {
   id: 'P06', slug: 'agency-requests', music: 'public/audio/05_lofi-warm_roof-tops_holiznacc0.mp3',
   lines: L,
   pre: {1: 10, 2: 16, 3: 14, 4: 72, 5: 22, 6: 10},
-  nocap: [2],
+  nocap: [2, 5],
   capUntil: {3: 'when'},
   labels: {0: 'The hook', 1: 'The problem', 2: 'The turn', 3: 'The fix', 4: 'The result', 5: 'One sentence', 6: 'Join us'},
   acts: [
