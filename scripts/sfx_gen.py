@@ -38,4 +38,73 @@ save('success_chime_C', chime([523.25, 659.25, 783.99], 1.6))
 save('success_chime_G', chime([392.0, 493.88, 587.33], 1.6))
 # COUNTER: riser for number rolls
 for d in (0.8, 1.5): save(f'counter_roll_riser_{d}s', riser(d, 400, 3000), -8)
+# ---- Wave 1 product-UI set (numpy, own seeded RNG so the sounds above never shift) ----
+R = np.random.default_rng(2610)
+def edge(x, ms=6):  # raised-cosine fade in/out: no DC click at either end (one-shots only)
+    x = np.asarray(x, float).copy(); k = int(ms * SR / 1000); w = 0.5 - 0.5 * np.cos(np.linspace(0, np.pi, k))
+    x[:k] *= w; x[-k:] *= w[::-1]; return x
+def nband(n, lo, hi):  # white noise band-limited in the FFT domain (periodic over n samples)
+    S = np.fft.rfft(R.standard_normal(n)); f = np.fft.rfftfreq(n, 1 / SR); S[(f < lo) | (f > hi)] = 0
+    y = np.fft.irfft(S, n); return y / (np.abs(y).max() or 1)
+def tick(f, tau, n_ms=40, noise=0.5, lo=2000, hi=12000):  # resonant click: decaying sine + noise transient
+    n = int(n_ms * SR / 1000); t = np.arange(n) / SR
+    return np.sin(2 * np.pi * f * t) * np.exp(-t / tau) + nband(n, lo, hi) * np.exp(-t / 0.0012) * noise
+def thump(f0, n_ms=60, tau=0.012):  # low body under a click (pitch drops 40%)
+    n = int(n_ms * SR / 1000); t = np.arange(n) / SR; ph = 2 * np.pi * np.cumsum(f0 * (0.6 + 0.4 * np.exp(-t / 0.01))) / SR
+    return np.sin(ph) * np.exp(-t / tau) * np.minimum(1, t / 0.0005)
+def put(y, x, s, g=1.0, wrap=False):  # add x into y at sample s (mod len(y) for loops)
+    idx = np.arange(s, s + len(x)); idx = idx % len(y) if wrap else idx[idx < len(y)]; np.add.at(y, idx, np.asarray(x)[: len(idx)] * g)
+def loop_cut(y):  # rotate a periodic buffer so the seam is the smallest-step zero crossing in its quietest 10%
+    w = int(0.02 * SR); e = np.convolve(np.abs(y), np.ones(w) / w, 'same')
+    z = np.where(np.signbit(y[:-1]) != np.signbit(y[1:]))[0]; z = z[e[z] <= np.percentile(e, 10)]
+    return np.roll(y, -int(z[np.argmin(np.abs(y[z + 1] - y[z]))] + 1))
+# THINKING / PLAN: data loop = low hum bed + gated bursts of digital chatter; periodic by construction -> seamless loop
+def data_loop(L, density):
+    n = int(L * SR); t = np.arange(n) / SR; q = lambda f: round(f * L) / L  # every freq a multiple of 1/L
+    bed = sum(a * np.sin(2 * np.pi * q(f) * t) for f, a in ((55, 1.0), (110, 0.45), (165, 0.2), (220, 0.08)))
+    bed *= 0.8 + 0.2 * np.sin(2 * np.pi * q(6) * t)  # slow pulse
+    y = bed * 0.35 + nband(n, 60, 400) * 0.05
+    hiss = nband(n, 6000, 14000); gate = (np.sin(2 * np.pi * q(1.5) * t + 1.3) > 0.2).astype(float)
+    gate = np.convolve(np.concatenate([gate[-480:], gate]), np.ones(480) / 480, 'valid')[: n]  # 10 ms soft gate
+    y += hiss * gate * 0.06
+    tt = 0.0
+    while tt < L:  # chatter: short bright square-ish blips in clusters
+        f = R.choice((2400, 3200, 4000, 4800, 6000, 7200)); m = int(R.uniform(0.012, 0.035) * SR); u = np.arange(m) / SR
+        b = np.sign(np.sin(2 * np.pi * f * u)) * 0.5 + np.sin(2 * np.pi * f * u) * 0.5
+        put(y, b * np.sin(np.pi * np.arange(m) / m) ** 2 * R.uniform(0.08, 0.18), int(tt * SR), wrap=True)
+        tt += R.uniform(0.03, 0.09) / density if R.random() > 0.15 else R.uniform(0.15, 0.3)
+    return loop_cut(y)
+for L, d in ((1.0, 1.4), (2.0, 1.0), (3.0, 0.8)): save(f'data_loop_{L}s', data_loop(L, d))
+# TYPING: stutter clicks = sparse groups of rapid low-heavy clicks with a bright edge
+def stutter(dur, busy):
+    y = np.zeros(int((dur + 0.08) * SR)); tt = 0.01
+    while tt < dur:
+        for _ in range(R.integers(2, 6)):
+            c = thump(R.uniform(90, 140), 50, 0.008) * 0.9 + tick(R.uniform(2600, 4800), 0.002, 50, 0.7) * 0.45
+            put(y, c * R.uniform(0.6, 1.0), int(tt * SR)); tt += R.uniform(0.012, 0.03)
+        tt += R.uniform(0.08, 0.22) / busy
+    return edge(y)
+for name, d, b in (('short', 0.6, 1.2), ('long', 1.5, 1.0)): save(f'stutter_clicks_{name}', stutter(d, b))
+# RUN + ROWS: charge (rising tone + air) with clicks that accelerate and brighten, ends on a bright data hit
+def charge_data(dur):
+    n = int(dur * SR); t = np.arange(n) / SR; x = t / dur
+    ph = 2 * np.pi * np.cumsum(180 * 6.0 ** x) / SR
+    y = (np.sin(ph) + 0.3 * np.sin(2 * ph)) * x ** 1.8 * 0.25 + nband(n, 3000, 12000) * x ** 3 * 0.12
+    tt = 0.03
+    while tt < dur - 0.02:
+        p = tt / dur; put(y, thump(110 + 60 * p, 40, 0.006) * 0.6 + tick(2500 + 5000 * p, 0.0025, 40, 0.6) * (0.3 + 0.4 * p), int(tt * SR))
+        tt += 0.12 * (0.015 / 0.12) ** p  # 120 ms gaps tightening to 15 ms
+    tail = np.zeros(int(0.18 * SR)); u = 0
+    for f in (6000, 7200, 4800, 8000, 6000):  # bright data burst on the hit
+        m = int(0.02 * SR); put(tail, np.sin(2 * np.pi * f * np.arange(m) / SR) * np.sin(np.pi * np.arange(m) / m) * 0.35, u); u += int(0.025 * SR)
+    put(tail, tick(7000, 0.004, 60, 0.8) * 0.8, 0)
+    return edge(np.concatenate([y, tail]))
+for d in (0.8, 1.5): save(f'charge_data_{d}s', charge_data(d))
+# PLAN -> NODES: mechanical click one-shots = bright ~8 kHz tick + low thunk (relay / latch)
+MECH = [((8200,), 1500, 0.04), ((7600, 8800), 1200, 0.035), ((8000, 8400, 9000), 1800, 0.03), ((7000,), 1000, 0.05)]
+for i, (ticks, tf, gap) in enumerate(MECH):
+    y = np.zeros(int(0.32 * SR)); s = 0
+    for f in ticks: put(y, tick(f, 0.0015, 25, 0.9, 5000, 14000), s); s += int(0.018 * SR)
+    put(y, tick(tf, 0.006, 70, 0.4, 800, 3000) * 0.8 + thump(130, 70, 0.012) * 0.7, s + int(gap * SR))
+    save(f'mechanical_click_{i+1}', edge(y))
 print(len(os.listdir(OUT)), 'procedural sounds')

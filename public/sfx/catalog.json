@@ -3808,6 +3808,22 @@
 "source": "procedural (code)"
 },
 {
+"file": "sfx/proc/charge_data_0.8s.ogg",
+"tag": "run-charge",
+"dur": 0.98,
+"peak_db": -3.1,
+"bright_hz": 4081,
+"source": "procedural (code)"
+},
+{
+"file": "sfx/proc/charge_data_1.5s.ogg",
+"tag": "run-charge",
+"dur": 1.68,
+"peak_db": -3.0,
+"bright_hz": 3403,
+"source": "procedural (code)"
+},
+{
 "file": "sfx/proc/counter_roll_riser_0.8s.ogg",
 "tag": "build-up",
 "dur": 0.8,
@@ -3821,6 +3837,30 @@
 "dur": 1.5,
 "peak_db": -8.4,
 "bright_hz": 4902,
+"source": "procedural (code)"
+},
+{
+"file": "sfx/proc/data_loop_1.0s.ogg",
+"tag": "thinking-loop",
+"dur": 1.0,
+"peak_db": -2.8,
+"bright_hz": 6379,
+"source": "procedural (code)"
+},
+{
+"file": "sfx/proc/data_loop_2.0s.ogg",
+"tag": "thinking-loop",
+"dur": 2.0,
+"peak_db": -2.8,
+"bright_hz": 6333,
+"source": "procedural (code)"
+},
+{
+"file": "sfx/proc/data_loop_3.0s.ogg",
+"tag": "thinking-loop",
+"dur": 3.0,
+"peak_db": -2.7,
+"bright_hz": 5867,
 "source": "procedural (code)"
 },
 {
@@ -3845,6 +3885,38 @@
 "dur": 1.8,
 "peak_db": -2.7,
 "bright_hz": 2979,
+"source": "procedural (code)"
+},
+{
+"file": "sfx/proc/mechanical_click_1.ogg",
+"tag": "plan-nodes",
+"dur": 0.32,
+"peak_db": -3.3,
+"bright_hz": 1622,
+"source": "procedural (code)"
+},
+{
+"file": "sfx/proc/mechanical_click_2.ogg",
+"tag": "plan-nodes",
+"dur": 0.32,
+"peak_db": -3.0,
+"bright_hz": 5049,
+"source": "procedural (code)"
+},
+{
+"file": "sfx/proc/mechanical_click_3.ogg",
+"tag": "plan-nodes",
+"dur": 0.32,
+"peak_db": -3.6,
+"bright_hz": 5571,
+"source": "procedural (code)"
+},
+{
+"file": "sfx/proc/mechanical_click_4.ogg",
+"tag": "plan-nodes",
+"dur": 0.32,
+"peak_db": -2.9,
+"bright_hz": 1547,
 "source": "procedural (code)"
 },
 {
@@ -3885,6 +3957,22 @@
 "dur": 0.14,
 "peak_db": -2.6,
 "bright_hz": 1331,
+"source": "procedural (code)"
+},
+{
+"file": "sfx/proc/stutter_clicks_long.ogg",
+"tag": "typing-stutter",
+"dur": 1.58,
+"peak_db": -2.9,
+"bright_hz": 2734,
+"source": "procedural (code)"
+},
+{
+"file": "sfx/proc/stutter_clicks_short.ogg",
+"tag": "typing-stutter",
+"dur": 0.68,
+"peak_db": -2.9,
+"bright_hz": 2966,
 "source": "procedural (code)"
 },
 {

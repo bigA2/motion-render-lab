@@ -1,0 +1,111 @@
+# Production reels P03-P07 (30 fps). p01.yml parameterised by `vid`; compositions come from src/prod (<vid>-4x5 = 1080x1350, <vid>-16x9 = native 1920x1080).
+name: prod
+permissions: { contents: read }
+on:
+  workflow_dispatch:
+    inputs:
+      vid: { description: 'video id (P03 P04 P05 P06 P07)', required: true, default: 'P03' }
+      mode: { description: 'voice (Chatterbox takes + Whisper pick -> vo-<vid>) | stills (contact sheets, 4x5 + 16x9) | full (4x5 + 16x9 with VO + SFX, music and no-music)', required: false, default: 'stills' }
+      secs: { description: 'stills: times in seconds (blank = 12 evenly spaced incl. frame 0)', required: false, default: '' }
+env:
+  VID: ${{ inputs.vid }}
+jobs:
+  voice:
+    if: inputs.mode == 'voice'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy: { fail-fast: false, matrix: { shard: [0, 1, 2, 3] } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: |
+          pip install --quiet torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install --quiet chatterbox-tts==0.1.7
+      - uses: actions/cache@v4
+        with: { path: ~/.cache/huggingface, key: chatterbox-std-v1 }
+      - env: { CB_THREADS: '4', SHARD: '${{ matrix.shard }}' }
+        run: |
+          python scripts/mkjobs.py "$VID"
+          python - <<'EOF'
+          import json, os
+          vid=os.environ["VID"]; s=int(os.environ["SHARD"])
+          j=json.load(open(f"voices/jobs/{vid}.json"))
+          json.dump([x for i,x in enumerate(j) if i%4==s],open("shard.json","w"))
+          EOF
+          python voices/cb_std_batch.py shard.json
+      - uses: actions/upload-artifact@v4
+        with: { name: 'voice-${{ inputs.vid }}-${{ matrix.shard }}', path: out/, retention-days: 1 }
+  pick:
+    needs: voice
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install --quiet faster-whisper==1.1.1 numpy requests && sudo apt-get -qq install -y ffmpeg >/dev/null
+      - uses: actions/download-artifact@v4
+        with: { path: gen, pattern: 'voice-${{ inputs.vid }}-*', merge-multiple: true }
+      - run: python scripts/pick.py "$VID"
+      - uses: actions/upload-artifact@v4
+        with: { name: 'vo-${{ inputs.vid }}', path: 'public/v/${{ inputs.vid }}/', retention-days: 7 }
+  render:
+    if: inputs.mode == 'full'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix: { fmt: ['4x5', '16x9'], part: [0, 1, 2, 3, 4, 5] }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - run: |
+          C="${VID}-${{ matrix.fmt }}"; K=6; P=${{ matrix.part }}
+          npx remotion compositions src/prod/index.ts > comps.txt 2>&1 || (cat comps.txt; exit 1)
+          N=$(grep -E "^[[:space:]]*$C[[:space:]]" comps.txt | grep -oE "[0-9]+ \([0-9.]+ sec\)" | grep -oE "^[0-9]+" | head -1)
+          A=$(( N * P / K )); B=$(( N * (P + 1) / K - 1 ))
+          npx remotion render src/prod/index.ts "$C" "part$P.mp4" --frames=$A-$B --muted --crf=16 --pixel-format=yuv420p --concurrency=100% --log=error --timeout=120000
+          if [ "$P" = "0" ]; then npx remotion render src/prod/index.ts "$C" audio.wav --codec=wav --log=error --timeout=120000; fi
+      - uses: actions/upload-artifact@v4
+        with: { name: 'part-${{ inputs.vid }}-${{ matrix.fmt }}-${{ matrix.part }}', path: 'part${{ matrix.part }}.mp4', retention-days: 1 }
+      - if: matrix.part == 0
+        uses: actions/upload-artifact@v4
+        with: { name: 'audio-${{ inputs.vid }}-${{ matrix.fmt }}', path: audio.wav, retention-days: 1 }
+  join:
+    needs: render
+    if: inputs.mode == 'full'
+    runs-on: ubuntu-latest
+    strategy: { fail-fast: false, matrix: { fmt: ['4x5', '16x9'] } }
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get -qq install -y ffmpeg >/dev/null && pip install --quiet numpy pillow
+      - uses: actions/download-artifact@v4
+        with: { path: parts, pattern: 'part-${{ inputs.vid }}-${{ matrix.fmt }}-*', merge-multiple: true }
+      - uses: actions/download-artifact@v4
+        with: { name: 'audio-${{ inputs.vid }}-${{ matrix.fmt }}', path: . }
+      - run: |
+          for p in 0 1 2 3 4 5; do echo "file 'parts/part$p.mp4'" >> list.txt; done
+          ffmpeg -v error -f concat -safe 0 -i list.txt -c copy video.mp4
+          mkdir -p out qa f
+          python3 scripts/prod_mix.py "$VID" "${{ matrix.fmt }}" video.mp4 audio.wav out qa
+          ffmpeg -v error -i "out/FansaChat_${VID}_${{ matrix.fmt }}_no-music.mp4" -vf "fps=4,scale=360:-2" f/%04d.png
+          python3 scripts/i27_qa.py f qa || true
+      - uses: actions/upload-artifact@v4
+        with: { name: 'final-${{ inputs.vid }}-${{ matrix.fmt }}', path: out/*.mp4, retention-days: 7 }
+      - uses: actions/upload-artifact@v4
+        with: { name: 'qa-${{ inputs.vid }}-${{ matrix.fmt }}', path: qa/, retention-days: 7 }
+  stills:
+    if: inputs.mode == 'stills'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure && pip install --quiet pillow
+      - env: { SECS: '${{ inputs.secs }}' }
+        run: mkdir -p stills && node scripts/prod_stills.mjs "$VID" "$SECS"
+      - uses: actions/upload-artifact@v4
+        with: { name: 'stills-${{ inputs.vid }}', path: stills/, retention-days: 3 }

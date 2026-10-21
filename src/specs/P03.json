@@ -1,0 +1,16 @@
+{
+ "id": "P03",
+ "ex": 0.45,
+ "lines": [
+  "If I ran a 5-person agency, these are the 3 automations I'd build first.",
+  "And each one takes one sentence.",
+  "One: client onboarding.",
+  "When a new client fills my Jotform, create their project in ClickUp with every starter task.",
+  "Two: sales calls.",
+  "When someone books a call on Calendly, create a deal in Pipedrive so nothing slips.",
+  "Three: getting paid.",
+  "When a project is marked done in ClickUp, draft the invoice in Xero.",
+  "Three sentences, three automations.",
+  "Join the waitlist — link in bio."
+ ]
+}
