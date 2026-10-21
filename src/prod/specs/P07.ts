@@ -6,7 +6,7 @@ const L = J.lines;
 export const P07: Spec = {
   id: 'P07', slug: 'freelance-brief', music: 'public/audio/06_warm-emotional_washed-up_holiznacc0.mp3',
   lines: L,
-  pre: {1: 10, 2: 12, 3: 30, 4: 64, 5: 12},
+  pre: {1: 10, 2: 12, 3: 30, 4: 52, 5: 12},
   capUntil: {3: 'when'},
   labels: {0: 'The hook', 1: 'The problem', 2: 'The reveal', 3: 'The fix', 4: 'The result', 5: 'Join us'},
   acts: [

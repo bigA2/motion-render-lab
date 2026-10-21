@@ -11,7 +11,7 @@ const ITEMS = [
 export const P03: Spec = {
   id: 'P03', slug: 'agency-first-3', music: 'public/audio/02_calm-minimal_once-more-with-you_loyalty-freak-music.mp3',
   lines: L,
-  pre: {4: 66, 6: 66, 8: 66, 9: 12},
+  pre: {4: 54, 6: 54, 8: 54, 9: 12},
   capUntil: {3: 'when', 5: 'when', 7: 'when'},
   labels: {0: 'The hook', 1: 'The promise', 2: 'Automation 01', 4: 'Automation 02', 6: 'Automation 03', 8: 'The recap', 9: 'Join us'},
   acts: [

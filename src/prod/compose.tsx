@@ -16,8 +16,8 @@ export const composeTimes = (a: any, tl: TL) => {
   const n = a.nodes.length;
   const tType = a.typeFrom ? rel(tl.w(a.typeLine, a.typeFrom)) : rel(tl.S[a.typeLine]);
   const tEnd = Math.max(tType + 30, rel(tl.lineEnd(a.typeLine)) - 8);
-  const send = tEnd + 4, lift = send + 6, think = lift + 6, reply = lift + 20, nodesAt = lift + 24;
-  const ready = nodesAt + 7 * n + 10;
+  const send = tEnd + 4, lift = send + 6, think = lift + 6, reply = lift + 14, nodesAt = lift + 16;
+  const ready = nodesAt + 7 * n + 6;
   const runF = a.runAt ? Math.max(ready, rel(tl.w(a.runAt[0], a.runAt[1])) - 2) : ready;
   const step = a.litStep ?? (a.runAt ? 12 : 7);
   const lit = a.nodes.map((_: unknown, i: number) => runF + 10 + step * i);

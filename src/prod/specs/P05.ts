@@ -6,7 +6,7 @@ const L = J.lines;
 export const P05: Spec = {
   id: 'P05', slug: 'call-followup', music: 'public/audio/03_calm-minimal_one-cool-minute_loyalty-freak-music.mp3',
   lines: L,
-  pre: {1: 12, 2: 14, 3: 22, 4: 60, 5: 16, 6: 10},
+  pre: {1: 12, 2: 14, 3: 22, 4: 48, 5: 16, 6: 10},
   capUntil: {3: 'when'},
   labels: {0: 'This or that', 1: 'The problem', 2: 'The cost', 3: 'The fix', 4: 'The result', 5: 'Your pick', 6: 'Join us'},
   acts: [

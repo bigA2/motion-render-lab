@@ -40,12 +40,10 @@ export const Write: React.FC<{text: string; f: number; at: number; style: React.
 // text measure + greedy wrap (browser canvas; estimate when there is no DOM)
 let ctx: CanvasRenderingContext2D | null = null;
 export const textW = (t: string, px: number, wt = 500, fam = FONT.ui) => { if (typeof document === 'undefined') return t.length * px * 0.53; ctx = ctx ?? document.createElement('canvas').getContext('2d'); ctx!.font = `${wt} ${px}px ${fam}`; return ctx!.measureText(t).width; };
-const wrapCache = new Map<string, string[]>();
 export const wrap = (text: string, maxW: number, px: number): string[] => {
-  const key = `${text}|${maxW}|${px}`; const hit = wrapCache.get(key); if (hit) return hit;
-  const out: string[] = []; let cur = '';
+    const out: string[] = []; let cur = '';
   for (const wd of text.split(' ')) { const nx = cur ? cur + ' ' + wd : wd; if (cur && textW(nx, px) > maxW) { out.push(cur); cur = wd; } else cur = nx; }
-  if (cur) out.push(cur); wrapCache.set(key, out); return out;
+  if (cur) out.push(cur); return out;
 };
 
 // ---------- backdrop: soft periwinkle/blush aurora + dot grid lit by a travelling wave + faint connectors ----------

@@ -180,7 +180,7 @@ export const BriefScene: React.FC<{f: number; a: A; tl: TL}> = ({f, a, tl}) => {
 
 // ================= P04 payoff: Telegram ping + Airtable row =================
 export const PingScene: React.FC<{f: number; a: A; tl: TL}> = ({f, a, tl}) => {
-  const tPing = Math.max(8, rel(a, tl.w(a.line, 'ping')) - 6), k = settle(f, tPing, 14), rowK = settle(f, tPing + 8, 14), glow = ez(f, tPing + 10, tPing + 26);
+  const tPing = Math.max(8, rel(a, tl.w(a.line, 'you')) - 4), k = settle(f, tPing, 14), rowK = settle(f, tPing + 8, 14), glow = ez(f, tPing + 10, tPing + 26);
   const base = ez(f, -8, 10);
   return <div style={{position: 'absolute', inset: 0}}>
     <div style={{position: 'absolute', left: 20, top: 330, width: 860, height: 470, opacity: base}}>

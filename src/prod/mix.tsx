@@ -42,7 +42,7 @@ const events = (tl: TL): Ev[] => {
         a.nodes.forEach((_: unknown, i: number) => { add(S + T.lit[i] - 5, P + 'charge_data_0.8s.ogg', 0.2); add(S + T.lit[i], K + 'confirmation_001.ogg', 0.24); });
         add(S + T.lit[a.nodes.length - 1] + 2, P + 'data_loop_1.0s.ogg', 0.16, 20, true);
         add(S + T.done, P + 'success_chime_G.ogg', 0.45); break; }
-      case 'ping': { const t = Math.max(8, tl.w(a.line, 'ping') - S - 6); add(S + t - 4, P + 'transition_whoosh_0.25s.ogg', 0.3); add(S + t + 2, P + 'node_pop_3.ogg', 0.4); add(S + t + 10, P + 'success_chime_C.ogg', 0.4); break; }
+      case 'ping': { const t = Math.max(8, tl.w(a.line, 'you') - S - 4); add(S + t - 4, P + 'transition_whoosh_0.25s.ogg', 0.3); add(S + t + 2, P + 'node_pop_3.ogg', 0.4); add(S + t + 10, P + 'success_chime_C.ogg', 0.4); break; }
       case 'recap': [0, 1, 2].forEach((i) => add(S + 24 + i * 8, P + `node_pop_${3 + i}.ogg`, 0.3)); add(S + 52, P + 'success_chime_G.ogg', 0.4); break;
       case 'poll': add(S + 30, P + 'ui_click_1.ogg', 0.45); add(S + 34, P + 'success_chime_C.ogg', 0.3); break;
       case 'end': { const lock = a.lead ? tl.S[a.to] - 4 : S + 6; add(lock, P + 'hook_bass_impact_1.2s.ogg', 0.4); add(lock + 30, K + 'glass_002.ogg', 0.32); break; }

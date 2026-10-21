@@ -6,7 +6,7 @@ const L = J.lines;
 export const P04: Spec = {
   id: 'P04', slug: 'myth-code', music: 'public/audio/04_lofi-future_traveling-in-your-mind_loyalty-freak-music.mp3',
   lines: L,
-  pre: {3: 34, 4: 78, 5: 24, 6: 10},
+  pre: {3: 34, 4: 66, 5: 24, 6: 10},
   nocap: [5],
   capUntil: {3: 'when'},
   labels: {0: 'Myth or fact', 1: 'The problem', 2: 'The verdict', 3: 'The fix', 4: 'The result', 5: 'No code', 6: 'Join us'},
