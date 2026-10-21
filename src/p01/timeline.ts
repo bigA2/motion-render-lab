@@ -27,7 +27,7 @@ const morph = Math.max(90, AT0 + D[0] + 6);
 // ---- problem ----
 const AT1 = morph + 6;
 const cross = [AT1 + w(1, 'name') + 6, AT1 + w(1, 'hubspot') + 8, AT1 + w(1, 'anyway') + 6];
-const rows = [morph + 8, Math.max(morph + 30, cross[1] - 30), Math.max(morph + 52, cross[2] - 36)];
+const rows = [morph + 8, morph + 24, morph + 40]; // the checklist writes in right after the morph (card never sits empty); the crosses still follow the voice
 const crash = Math.max(cross[2] + 30, AT1 + D[1] + 2);
 const scatter = crash + 10;
 // ---- turn ----
