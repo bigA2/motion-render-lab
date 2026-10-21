@@ -4,7 +4,6 @@
 // headline stacks, checklist counter, iris → dot → logo. Liquid-glass colouring, a colour change between every scene. 60 fps.
 import React from 'react';
 import {AbsoluteFill, Audio, Easing, Img, Sequence, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
-import {CameraMotionBlur} from '@remotion/motion-blur';
 import SPEC from '../intro26/I26.json';
 import {FONT, Glyph, Lockup} from '../intro27/ui';
 import {AppTile, ArcFlood, BLUSH, Cursor, ez, FPS, glass, INK, lerp, LineIn, Liquid, LO, mix, PAPER, PERI, PERI_D, sky, spr, springTo} from './kit';
@@ -42,7 +41,7 @@ const TH: Record<'light' | 'dark' | 'brand', FTheme & {bg: [string, string, stri
   brand: {plate: 'rgba(255,255,255,0.62)', plateLine: 'rgba(100,104,216,0.18)', ink: INK, lo: LO, arch: PERI_D, archGlow: BLUSH, node: '#FFFFFF', dark: false, bg: ['#ECEBFF', '#C9CCF8', '#FFD6CA', '#F7E8FF']},
 };
 
-const Visual: React.FC<{vo: Vo; mode: 'video' | 'audio'}> = ({vo, mode}) => {
+export const Film: React.FC<{vo: Vo}> = ({vo}) => {
   const f = useCurrentFrame(); const {width: W, height: H} = useVideoConfig(); const w = W > H; const u = w ? W / 1920 : W / 1080;
   const {st, total} = timeline(vo); const wf = makeWf(vo, st);
   const t = {
@@ -73,11 +72,6 @@ const Visual: React.FC<{vo: Vo; mode: 'video' | 'audio'}> = ({vo, mode}) => {
   const secAt = f < t.l4 - 16 ? t.l3 - 8 : f < t.l5 - 16 ? t.l4 - 8 : t.l5 - 8;
   const done = (sectionLabel[4] as number[]).filter((a) => f >= a + 40).length;
 
-  if (mode === 'audio') return <>
-    {/* dry audio: VO + one SFX per event (music is mixed afterwards = variant B) */}
-    {vo.map((l, i) => <Sequence key={i} from={st[i]}><Audio src={staticFile(l.file)} /></Sequence>)}
-    {([[t.copy, 'k_click_002', 0.3], [t.paste, 'k_click_002', 0.3], [t.chase, 'k_click_002', 0.3], [t.repeat, 'k_click_002', 0.32], [t.turns, 'k_click_002', 0.35], [t.one - 2, 'k_glass_002', 0.35], [Math.max(t.one + 60, t.sentence - 4) + 14, 'k_click_002', 0.3], [t.workflow - 8, 'k_select_003', 0.25], ...rowAt.map((x) => [x + 30, 'k_pluck_001', 0.18]), [t.approve, 'k_click_002', 0.4], [t.approve + 6, 'k_confirmation_002', 0.22], [S7[0] + 30, 'k_glass_002', 0.32]] as [number, string, number][]).map(([at, s, v], i) => <Sequence key={'s' + i} from={Math.max(0, Math.round(at))}><Audio src={staticFile(`audio/sfx/${s}.ogg`)} volume={v} /></Sequence>)}
-  </>;
   return <AbsoluteFill style={{background: sky(f, PAPER, '#EEEEFC', '#FBF1EE'), overflow: 'hidden'}}>
     {/* ================= S1 · ref 2: ONE shape morphs through the copy-paste loop ================= */}
     {inS(S1) ? (() => {
@@ -103,9 +97,11 @@ const Visual: React.FC<{vo: Vo; mode: 'video' | 'audio'}> = ({vo, mode}) => {
       const swap = (a0: number, next: number) => ({opacity: ez(f, a0, a0 + 10) * (1 - ez(f, next - 4, next + 4)), filter: `blur(${(1 - ez(f, a0, a0 + 10)) * 8 + ez(f, next - 4, next + 4) * 8}px)`});
       // camera: zoom toward "That's", track word by word to "for", then come back to the same framing
       const back = wt[7] + 8;
-      const camZ = springTo(f, [[0, 1], [open + 6, 1.3], [back, 1]], 7);
+      const camZ = springTo(f, [[0, 1], [open + 6, Math.min(1.3, (W * 0.94) / textW)], [back, 1]], 7); // push in only as far as the whole sentence still fits
       const camX = springTo(f, [[0, W / 2], [open + 6, wordX(0)], ...wt.slice(1).map((x, i) => [x, wordX(i + 1)] as [number, number]), [back, W / 2]], 6);
       const camY = springTo(f, [[0, H / 2], [open + 6, wordY(0)], [wt[4], wordY(4)], [back, H / 2]], 6);
+      const keep = (c: number, half: number, ext: number) => { const mo = Math.max(0, (half * 2 * 0.94 - ext * camZ) / 2) / camZ; return half + Math.max(-mo, Math.min(mo, c - half)); };
+      const camXk = keep(camX, W / 2, textW), camYk = keep(camY, H / 2, nR * LH);
       const curX = springTo(f, [[0, W * 0.72], [t.copy - 30, W / 2 + 40 * u], [t.paste - 6, W / 2 + 240 * u], [t.chase - 6, W / 2 + 280 * u], [t.repeat - 6, W / 2 + 60 * u], [ball, W * 0.86]], 9);
       const curY = springTo(f, [[0, H * 0.8], [t.copy - 30, H / 2 + 10 * u], [t.paste - 6, H / 2 + 20 * u], [t.chase - 6, H / 2 + 40 * u], [t.repeat - 6, H / 2 + 50 * u], [ball, H * 1.08]], 9);
       const press = [t.copy, t.paste, t.chase, t.repeat].reduce((m, x) => Math.max(m, 1 - Math.abs(f - x) / 6), 0);
@@ -113,7 +109,7 @@ const Visual: React.FC<{vo: Vo; mode: 'video' | 'audio'}> = ({vo, mode}) => {
       const textK = ez(f, open + 4, open + 22);
       return <AbsoluteFill>
         <Liquid f={f} a="rgba(139,143,232,0.35)" b="rgba(244,184,168,0.35)" c="rgba(200,205,255,0.4)" base={PAPER} />
-        <AbsoluteFill style={{transform: `translate(${W / 2 - camX * camZ}px, ${H / 2 - camY * camZ}px) scale(${camZ})`, transformOrigin: '0 0'}}>
+        <AbsoluteFill style={{transform: `translate(${W / 2 - camXk * camZ}px, ${H / 2 - camYk * camZ}px) scale(${camZ})`, transformOrigin: '0 0'}}>
           <div style={{position: 'absolute', left: W / 2, top: H / 2, width: swU, height: sh, marginLeft: -swU / 2, marginTop: -sh / 2, borderRadius: rad, background: bg, boxShadow: fill > 0.02 ? `0 ${30 * u}px ${60 * u}px -30px rgba(34,30,48,${0.55 * fill})` : 'none', border: lightness > 0.5 ? `1.5px solid ${INK}` : 'none', transform: `scale(${0.6 + 0.4 * intro})`, opacity: intro, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: f >= open + 6 ? 'visible' : 'hidden'}}>
             <div style={{position: 'absolute', display: 'flex', alignItems: 'center', gap: 14 * u, color: '#fff', fontFamily: FONT.ui, fontWeight: 600, fontSize: 38 * u, whiteSpace: 'nowrap', ...swap(0, t.paste)}}><span style={{fontSize: 30 * u}}>⧉</span>Copy</div>
             <div style={{position: 'absolute', left: 30 * u, right: 30 * u, display: 'flex', alignItems: 'center', gap: 16 * u, color: INK, fontFamily: FONT.ui, fontSize: 34 * u, whiteSpace: 'nowrap', ...swap(t.paste, t.chase)}}><span style={{color: LO, fontSize: 24 * u, fontWeight: 600}}>PASTE</span><span style={{fontWeight: 600}}>INV-0142 · $1,200</span><span style={{width: 3, height: 40 * u, background: PERI_D, opacity: Math.floor(f / 20) % 2 ? 0.2 : 1}} /></div>
@@ -193,13 +189,15 @@ const Visual: React.FC<{vo: Vo; mode: 'video' | 'audio'}> = ({vo, mode}) => {
           const rad = lerp(lerp(size / 2, size * 0.28, m1), 12 * u, m2);
           const darkK = m1 * (1 - m2); // white circle → dark icon → white tile
           const discK = Math.min(m1, 1 - m2);
+          // motion blur from the shape's own speed (px/frame) — fast moves smear, holds stay sharp
+          const pm1 = spr(f - 1, cut1, 12), pm2 = ez(f - 1, cut2 - 24, cut2); const mb = Math.min(10, Math.hypot(cx - lerp(lerp(sx1, W / 2, pm1), TX, pm2), cy - lerp(H / 2, TY, pm2)) * 0.12);
           return <AbsoluteFill>
             <div style={{position: 'absolute', left: W / 2 - lerp(120, 165, lock) * u, top: H / 2 - lerp(120, 165, lock) * u, width: lerp(240, 330, lock) * u, height: lerp(240, 330, lock) * u, borderRadius: '50%', background: '#E9E9EF', opacity: discK, transform: `scale(${0.6 + 0.4 * discK})`}} />
             {sq.map(([c, ang], i) => { const A = ((ang + (1 - lock) * 260) * Math.PI) / 180; const r = lerp(320, 218, lock) * u; const k = m1;
               const ox = W / 2 + Math.cos(A) * r, oy = H / 2 + Math.sin(A) * r; const tx = i < 3 ? dotX[i] : TX, ty = TY;
               const x = lerp(ox, tx, m2), y = lerp(oy, ty, m2); const s = lerp(92, 30, m2) * u;
-              return <div key={i} style={{position: 'absolute', left: x - s / 2, top: y - s / 2, width: s, height: s, borderRadius: lerp(26 * u, s / 2, m2), background: c, border: c === '#FFFFFF' ? '1px solid #E3E8EF' : 'none', boxShadow: '0 10px 24px -12px rgba(0,0,0,0.35)', opacity: k * (i === 3 ? 1 - m2 : 1), transform: `scale(${0.5 + 0.5 * k})`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}><div style={{opacity: 1 - ez(m2, 0, 0.5, Easing.linear)}}><Glyph k={['stripe', 'gmail', 'hubspot', 'slack'][i]} size={s * 0.5} color={i === 0 ? INK : '#FFFFFF'} /></div></div>; })}
-            <div style={{position: 'absolute', left: cx - size / 2, top: cy - size / 2, width: size, height: size, borderRadius: rad, background: '#FBFCFE', border: '1px solid #E8E8EA', overflow: 'hidden', boxShadow: `0 ${30 * (1 - m2)}px 60px -24px rgba(0,0,0,${0.6 * darkK})`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              return <div key={i} style={{position: 'absolute', left: x - s / 2, top: y - s / 2, width: s, height: s, borderRadius: lerp(26 * u, s / 2, m2), background: c, border: c === '#FFFFFF' ? '1px solid #E3E8EF' : 'none', boxShadow: '0 10px 24px -12px rgba(0,0,0,0.35)', opacity: k * (i === 3 ? 1 - m2 : 1), transform: `scale(${0.5 + 0.5 * k})`, filter: mb > 0.5 ? `blur(${mb}px)` : undefined, display: 'flex', alignItems: 'center', justifyContent: 'center'}}><div style={{opacity: 1 - ez(m2, 0, 0.5, Easing.linear)}}><Glyph k={['stripe', 'gmail', 'hubspot', 'slack'][i]} size={s * 0.5} color={i === 0 ? INK : '#FFFFFF'} /></div></div>; })}
+            <div style={{position: 'absolute', left: cx - size / 2, top: cy - size / 2, width: size, height: size, borderRadius: rad, background: '#FBFCFE', border: '1px solid #E8E8EA', overflow: 'hidden', boxShadow: `0 ${30 * (1 - m2)}px 60px -24px rgba(0,0,0,${0.6 * darkK})`, filter: mb > 0.5 ? `blur(${mb}px)` : undefined, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
               <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(160deg,#2C2950,#1A1730)', opacity: darkK}} />
               <Img src={staticFile('logo-fansa.png')} style={{position: 'relative', width: `${lerp(77, 74, m1)}%`, height: `${lerp(77, 74, m1)}%`, objectFit: 'contain'}} />
             </div>
@@ -236,14 +234,14 @@ const Visual: React.FC<{vo: Vo; mode: 'video' | 'audio'}> = ({vo, mode}) => {
       {/* ref 2 morph: approval card — apps connected once, then the Approve & Run pill box-morphs (width + colour on one spring) into "Approved" */}
       {f >= t.own - 20 ? (() => {
         const k = spr(f, t.own - 20, 11); const con = spr(f, t.own + 10, 12); const ok = spr(f, t.approve + 2, 12);
-        const cw = (w ? 960 : 900) * u, pad = 30 * u, bh = 88 * u, bw = lerp(420 * u, cw - pad * 2, ok);
+        const cw = (w ? 1180 : 900) * u, pad = 30 * u, bh = 88 * u, bw = lerp(420 * u, cw - pad * 2, ok);
         const press = 1 - 0.06 * Math.max(0, 1 - Math.abs(f - t.approve) / 6);
         return <div style={{position: 'absolute', left: W / 2 - cw / 2, bottom: H * 0.06, width: cw, ...glass('rgba(255,255,255,0.86)'), borderRadius: 44 * u, padding: pad, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 * u, opacity: k, transform: `translateY(${(1 - k) * 80 * u}px)`, filter: k < 0.98 ? `blur(${(1 - k) * 10}px)` : undefined}}>
           <div style={{display: 'flex', alignItems: 'center', gap: 12 * u, opacity: con, transform: `translateY(${(1 - con) * 14 * u}px)`}}>
             {['shopify', 'shippo', 'gmail'].map((g) => <AppTile key={g} k={g} size={50 * u} />)}
             <span style={{marginLeft: 6 * u, padding: `${8 * u}px ${18 * u}px`, borderRadius: 99, background: 'rgba(25,165,90,0.12)', color: '#127A43', fontFamily: FONT.ui, fontWeight: 700, fontSize: 26 * u}}>Connected ✓</span>
           </div>
-          <div style={{fontFamily: FONT.ui, fontWeight: 600, fontSize: 32 * u, lineHeight: 1.3, color: INK, textAlign: 'center', maxWidth: cw - pad * 2, opacity: con}}>Connect your apps once — nothing runs until you approve it</div>
+          <div style={{fontFamily: FONT.ui, fontWeight: 600, fontSize: 32 * u, lineHeight: 1.3, color: INK, textAlign: 'center', maxWidth: cw - pad * 2, opacity: con, ...({textWrap: 'balance'} as React.CSSProperties)}}>Connect your apps once — nothing runs until you approve it</div>
           <div style={{position: 'relative', width: bw, height: bh, borderRadius: bh / 2, background: mix(PERI_D, '#19A55A', ok), color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: FONT.ui, fontWeight: 700, fontSize: 32 * u, transform: `scale(${press})`, boxShadow: '0 24px 48px -24px rgba(40,30,80,0.5)'}}>
             <span style={{position: 'absolute', opacity: 1 - ok, filter: `blur(${ok * 8}px)`, whiteSpace: 'nowrap'}}>▷ Approve &amp; Run</span><span style={{position: 'absolute', opacity: ok, filter: `blur(${(1 - ok) * 8}px)`, whiteSpace: 'nowrap'}}>✓ Approved · running</span>
           </div>
@@ -271,9 +269,9 @@ const Visual: React.FC<{vo: Vo; mode: 'video' | 'audio'}> = ({vo, mode}) => {
         const c0 = mix(P[0], A[0], cb), c1 = mix(P[1], A[1], cb);
         const ox = w ? W / 2 + (i ? 1 : -1) * (cw / 2 + gap / 2) : W / 2, oy = w ? H / 2 : H / 2 + (i ? 1 : -1) * (ch / 2 + gap / 2);
         const x = lerp(ox, W / 2, mk), y = lerp(oy, H / 2, mk), bw = lerp(cw, fw, mk), bh = lerp(ch, fh, mk), r = lerp(60 * u, fh / 2, mk);
-        const title = pairs[p][i];
-        return <div style={{position: 'absolute', left: x - bw / 2, top: y - bh / 2, width: bw, height: bh, borderRadius: r, overflow: 'hidden', background: `linear-gradient(${140 + 10 * Math.sin(f / 120 + i)}deg, ${c0}, ${c1})`, transform: `translateY(${(1 - k) * 300 * u}px) scale(${lerp(1.08, 1, k)})`, opacity: Math.min(1, k * 1.4), filter: k < 0.98 ? `blur(${(1 - k) * 12}px)` : undefined, boxShadow: `0 50px 90px -40px rgba(40,30,80,${0.5 * (1 - mk) + 0.25})`}}>
-          <div style={{position: 'absolute', inset: 0, ...glass('rgba(255,255,255,0.92)'), border: 'none', opacity: mk}} />
+        const title = pairs[p][i]; const pk = spr(f - 1, mAt, 11); const mb = Math.min(8, (Math.hypot(lerp(ox, W / 2, mk) - lerp(ox, W / 2, pk), lerp(oy, H / 2, mk) - lerp(oy, H / 2, pk)) + Math.abs(lerp(cw, fw, mk) - lerp(cw, fw, pk)) / 2) * 0.12);
+        return <div style={{position: 'absolute', left: x - bw / 2, top: y - bh / 2, width: bw, height: bh, borderRadius: r, overflow: 'hidden', background: `linear-gradient(${140 + 10 * Math.sin(f / 120 + i)}deg, ${c0}, ${c1})`, transform: `translateY(${(1 - k) * 300 * u}px) scale(${lerp(1.08, 1, k)})`, opacity: Math.min(1, k * 1.4), filter: k < 0.98 || mb > 0.5 ? `blur(${(1 - k) * 12 + mb}px)` : undefined, boxShadow: `0 50px 90px -40px rgba(${lerp(40, 100, mk)},${lerp(30, 104, mk)},${lerp(80, 216, mk)},${0.5 - 0.1 * mk})`}}>
+          <div style={{position: 'absolute', inset: 0, background: sky(f, '#FFFFFF', '#F4F3FF', '#FFF3EF', 110), boxShadow: 'inset 0 1.5px 0 #fff, inset 0 -12px 30px rgba(139,143,232,0.14)', opacity: mk}} />
           <svg width="100%" height="100%" style={{position: 'absolute', inset: 0, opacity: 0.35 * (1 - mk)}}><circle cx="78%" cy="20%" r={180 * u} stroke="#fff" strokeWidth={1.5} fill="none" /><line x1="0" y1="62%" x2="100%" y2="62%" stroke="#fff" /></svg>
           <div style={{position: 'absolute', left: 28 * u, top: 26 * u, ...glass('rgba(255,255,255,0.3)'), borderRadius: 99, padding: `${8 * u}px ${18 * u}px`, fontFamily: FONT.ui, fontWeight: 600, fontSize: 22 * u, color: '#fff', opacity: 1 - titleOut}}>Built for</div>
           <div style={{position: 'absolute', left: 30 * u, bottom: 22 * u, fontFamily: FONT.clash, fontWeight: 600, fontSize: Math.min(160, 1100 / Math.max(5, title.length)) * u, letterSpacing: '-0.04em', lineHeight: 1, color: 'rgba(255,255,255,0.6)', textShadow: '0 1px 0 rgba(255,255,255,0.8)', WebkitTextStroke: '1.5px rgba(255,255,255,0.8)', whiteSpace: 'nowrap', opacity: tin * (1 - tout) * (1 - titleOut), filter: `blur(${(1 - tin) * 10 + tout * 10}px)`, transform: `translateY(${(1 - tin) * 24 * u - tout * 24 * u}px)`}}>{title}</div>
@@ -300,18 +298,10 @@ const Visual: React.FC<{vo: Vo; mode: 'video' | 'audio'}> = ({vo, mode}) => {
       </AbsoluteFill>;
     })() : null}
 
+    {/* dry audio: VO + one SFX per event (music is mixed afterwards = variant B) */}
+    {vo.map((l, i) => <Sequence key={i} from={st[i]}><Audio src={staticFile(l.file)} /></Sequence>)}
+    {([[t.copy, 'k_click_002', 0.3], [t.paste, 'k_click_002', 0.3], [t.chase, 'k_click_002', 0.3], [t.repeat, 'k_click_002', 0.32], [t.turns, 'k_click_002', 0.35], [t.one - 2, 'k_glass_002', 0.35], [Math.max(t.one + 60, t.sentence - 4) + 14, 'k_click_002', 0.3], [t.workflow - 8, 'k_select_003', 0.25], ...rowAt.map((x) => [x + 30, 'k_pluck_001', 0.18]), [t.approve, 'k_click_002', 0.4], [t.approve + 6, 'k_confirmation_002', 0.22], [S7[0] + 30, 'k_glass_002', 0.32]] as [number, string, number][]).map(([at, s, v], i) => <Sequence key={'s' + i} from={Math.max(0, Math.round(at))}><Audio src={staticFile(`audio/sfx/${s}.ogg`)} volume={v} /></Sequence>)}
     {void Glyph}
   </AbsoluteFill>;
 };
 
-// v7: real motion blur (sub-frame samples) only on the fast moves — morphs, whip, iris, floods — so the render stays affordable
-export const Film: React.FC<{vo: Vo}> = ({vo}) => {
-  const f = useCurrentFrame(); const {st} = timeline(vo); const wf = makeWf(vo, st);
-  const one = wf(1, ['one']), cut1 = one - 2, cut2 = Math.max(one + 60, wf(1, ['sentence']) - 4), wfl = wf(1, ['workflow']), that = wf(0, ['that']), wd = wf(5, ['work']);
-  const fast: [number, number][] = [[that - 10, that + 30], [cut1 - 4, cut1 + 30], [cut2 - 26, cut2 + 4], [wfl - 14, wfl + 24], [st[3] - 40, st[3] + 8], [st[4] - 40, st[4] + 8], [wd - 30, wd], [st[6] - 12, st[6] + 20]];
-  const on = fast.some(([a, b]) => f >= a && f < b);
-  return <AbsoluteFill>
-    {on ? <CameraMotionBlur samples={6} shutterAngle={180}><Visual vo={vo} mode="video" /></CameraMotionBlur> : <Visual vo={vo} mode="video" />}
-    <Visual vo={vo} mode="audio" />
-  </AbsoluteFill>;
-};
