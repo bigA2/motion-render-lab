@@ -107,7 +107,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
       const press = [t.copy, t.paste, t.chase, t.repeat].reduce((m, x) => Math.max(m, 1 - Math.abs(f - x) / 6), 0);
       const spin = f >= t.repeat ? (f - t.repeat) * (6 + (f - t.repeat) * 0.25) : 0;
       const textK = ez(f, open + 4, open + 22);
-      return <AbsoluteFill>
+      return <AbsoluteFill style={{opacity: s6k}}>
         <Liquid f={f} a="rgba(139,143,232,0.35)" b="rgba(244,184,168,0.35)" c="rgba(200,205,255,0.4)" base={PAPER} />
         <AbsoluteFill style={{transform: `translate(${W / 2 - camXk * camZ}px, ${H / 2 - camYk * camZ}px) scale(${camZ})`, transformOrigin: '0 0'}}>
           <div style={{position: 'absolute', left: W / 2, top: H / 2, width: swU, height: sh, marginLeft: -swU / 2, marginTop: -sh / 2, borderRadius: rad, background: bg, boxShadow: fill > 0.02 ? `0 ${30 * u}px ${60 * u}px -30px rgba(34,30,48,${0.55 * fill})` : 'none', border: lightness > 0.5 ? `1.5px solid ${INK}` : 'none', transform: `scale(${0.6 + 0.4 * intro})`, opacity: intro, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: f >= open + 6 ? 'visible' : 'hidden'}}>
@@ -132,7 +132,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
 
     {/* ================= S2 · ref 4: logo click → icon orbit → menu bar → glass prompt → whip ================= */}
     {/* v7: no cuts — the logo circle box-morphs into the app icon; the icon + squares morph into the menu-bar tile + dots while the prompt world irises open */}
-    {inS(S2) ? (() => {
+    {f >= S2[0] && f < S2[1] + 24 ? (() => {
       const a = S2[0]; const cut1 = t.one - 2, cut2 = Math.max(t.one + 60, t.sentence - 4), whip = t.workflow - 14;
       const haze = 1 - ez(f, a, a + 40);
       // shared geometry for the two morphs
@@ -203,13 +203,13 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
             </div>
           </AbsoluteFill>;
         })() : null}
-        {f >= whip ? <AbsoluteFill style={{background: `rgba(220,222,255,${ez(f, whip + 6, S2[1])})`}} /> : null}
+        {f >= whip ? <AbsoluteFill style={{background: `rgba(220,222,255,${0.6 * ez(f, whip + 6, S2[1])})`}} /> : null}
       </AbsoluteFill>;
     })() : null}
     {/* ================= S3–S5 · ref 1: 3D land view, arches rise out of the mockup ================= */}
-    {inS(S3) ? <AbsoluteFill>
+    {f >= S3[0] && f < S3[1] + 28 ? <AbsoluteFill style={{opacity: ez(f, S3[0], S3[0] + 24, Easing.inOut(Easing.cubic))}}>
       <Liquid f={f} a={th.bg[1]} b={th.bg[2]} c={th.bg[3]} base={th.bg[0]} />
-      <AbsoluteFill style={{background: `rgba(220,222,255,${1 - ez(f, S3[0], S3[0] + 16, Easing.out(Easing.cubic))})`, zIndex: 70}} />
+      <AbsoluteFill style={{background: `rgba(220,222,255,${0.6 * (1 - ez(f, S3[0], S3[0] + 24, Easing.inOut(Easing.cubic)))})`, zIndex: 70}} />
       <Floor f={f} W={W} H={H} camY={camY} camZ={camZ + (w ? 0 : 900)} rows={rows} th={th} />
       <div style={{position: 'absolute', left: 0, right: 0, top: 0, height: H * 0.42, background: `linear-gradient(180deg, ${th.bg[0]} 0%, ${th.bg[0]}E6 38%, ${th.bg[0]}00 100%)`}} />
       {/* floating logo tiles that stay with the film (ref 1) */}
@@ -255,6 +255,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
     {/* ================= S6 · ref 4: two persistent cards with giant frosted-glass titles ================= */}
     {/* v7: the cards never leave — titles swap inside them, colours morph, then both cards box-morph into the "Your workday, back." pill. 16:9 = side by side. */}
     {inS(S6) ? (() => {
+      const s6k = ez(f, S6[0], S6[0] + 24, Easing.inOut(Easing.cubic));
       const pairs: [string, string][] = [['Clinics', 'Salons'], ['Law firms', 'Online shops'], ['Recruiters', 'Studios']];
       const seg = (t.workday - 10 - S6[0]) / 3; const mAt = t.workday - 30; const mk = spr(f, mAt, 11);
       const arts = [['#6468D8', '#B9BCF6'], ['#E68C74', '#FFD6CA'], ['#2C2950', '#8B8FE8']];
@@ -270,8 +271,8 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
         const ox = w ? W / 2 + (i ? 1 : -1) * (cw / 2 + gap / 2) : W / 2, oy = w ? H / 2 : H / 2 + (i ? 1 : -1) * (ch / 2 + gap / 2);
         const x = lerp(ox, W / 2, mk), y = lerp(oy, H / 2, mk), bw = lerp(cw, fw, mk), bh = lerp(ch, fh, mk), r = lerp(60 * u, fh / 2, mk);
         const title = pairs[p][i]; const pk = spr(f - 1, mAt, 11); const mb = Math.min(8, (Math.hypot(lerp(ox, W / 2, mk) - lerp(ox, W / 2, pk), lerp(oy, H / 2, mk) - lerp(oy, H / 2, pk)) + Math.abs(lerp(cw, fw, mk) - lerp(cw, fw, pk)) / 2) * 0.12);
-        return <div style={{position: 'absolute', left: x - bw / 2, top: y - bh / 2, width: bw, height: bh, borderRadius: r, overflow: 'hidden', background: `linear-gradient(${140 + 10 * Math.sin(f / 120 + i)}deg, ${c0}, ${c1})`, transform: `translateY(${(1 - k) * 300 * u}px) scale(${lerp(1.08, 1, k)})`, opacity: Math.min(1, k * 1.4), filter: k < 0.98 || mb > 0.5 ? `blur(${(1 - k) * 12 + mb}px)` : undefined, boxShadow: `0 50px 90px -40px rgba(${lerp(40, 100, mk)},${lerp(30, 104, mk)},${lerp(80, 216, mk)},${0.5 - 0.1 * mk})`}}>
-          <div style={{position: 'absolute', inset: 0, background: sky(f, '#FFFFFF', '#F4F3FF', '#FFF3EF', 110), boxShadow: 'inset 0 1.5px 0 #fff, inset 0 -12px 30px rgba(139,143,232,0.14)', opacity: Math.min(1, mk * 1.6)}} />
+        return <div style={{position: 'absolute', left: x - bw / 2, top: y - bh / 2, width: bw, height: bh, borderRadius: r, overflow: 'hidden', background: `linear-gradient(${140 + 10 * Math.sin(f / 120 + i)}deg, ${c0}, ${c1})`, transform: `translateY(${(1 - k) * 300 * u}px) scale(${lerp(1.08, 1, k)})`, opacity: Math.min(1, k * 1.4) * (i === 1 ? 1 - ez(mk, 0.9, 1, Easing.linear) : 1), filter: k < 0.98 || mb > 0.5 ? `blur(${(1 - k) * 12 + mb}px)` : undefined, boxShadow: `0 50px 90px -40px rgba(${lerp(40, 100, mk)},${lerp(30, 104, mk)},${lerp(80, 216, mk)},${0.5 - 0.1 * mk})`}}>
+          <div style={{position: 'absolute', inset: 0, background: sky(f, '#FFFFFF', '#F4F3FF', '#FFF3EF', 110), boxShadow: 'inset 0 1.5px 0 #fff, inset 0 -12px 30px rgba(139,143,232,0.14)', opacity: Math.min(1, mk * 3)}} />
           <svg width="100%" height="100%" style={{position: 'absolute', inset: 0, opacity: 0.35 * (1 - mk)}}><circle cx="78%" cy="20%" r={180 * u} stroke="#fff" strokeWidth={1.5} fill="none" /><line x1="0" y1="62%" x2="100%" y2="62%" stroke="#fff" /></svg>
           <div style={{position: 'absolute', left: 28 * u, top: 26 * u, ...glass('rgba(255,255,255,0.3)'), borderRadius: 99, padding: `${8 * u}px ${18 * u}px`, fontFamily: FONT.ui, fontWeight: 600, fontSize: 22 * u, color: '#fff', opacity: 1 - titleOut}}>Built for</div>
           <div style={{position: 'absolute', left: 30 * u, bottom: 22 * u, fontFamily: FONT.clash, fontWeight: 600, fontSize: Math.min(160, 1100 / Math.max(5, title.length)) * u, letterSpacing: '-0.04em', lineHeight: 1, color: 'rgba(255,255,255,0.6)', textShadow: '0 1px 0 rgba(255,255,255,0.8)', WebkitTextStroke: '1.5px rgba(255,255,255,0.8)', whiteSpace: 'nowrap', opacity: tin * (1 - tout) * (1 - titleOut), filter: `blur(${(1 - tin) * 10 + tout * 10}px)`, transform: `translateY(${(1 - tin) * 24 * u - tout * 24 * u}px)`}}>{title}</div>
