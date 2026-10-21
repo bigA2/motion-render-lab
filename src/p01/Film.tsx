@@ -150,7 +150,7 @@ const Turn: React.FC<{f: number}> = ({f}) => {
   const g = f >= T.glitch && f < T.glitch + 10; const j = (s: number) => (hash(f, s) - 0.5) * 18;
   const p = plateAt(L, f), clip = f < T.converge ? `circle(${rIn}px at 50% 50%)` : `inset(${p.t}px ${L.W - p.r}px ${L.H - p.b}px ${p.l}px round ${p.rad}px)`;
   return <>
-    <AbsoluteFill style={{clipPath: clip, opacity: 1 - ez(f, T.iris + 4, T.iris + 12)}}>
+    <AbsoluteFill style={{clipPath: clip, opacity: 1 - ez(f, T.iris, T.iris + 10)}}>
       <Liquid f={f} a="rgba(100,104,216,0.55)" b="rgba(244,184,168,0.18)" c="rgba(139,143,232,0.30)" base={DARK} />
       <div style={{position: 'absolute', left: 0, right: L.turn.right, top: L.turn.top, display: 'flex', justifyContent: 'center', gap: 30, opacity: 1 - out, filter: out > 0 ? `blur(${out * 18}px)` : undefined, transform: `scale(${1 + out * 0.15})`}}>
         {words.map(({w, k}) => <div key={w} style={{position: 'relative', opacity: k, transform: `translateY(${(1 - k) * 24}px)`, filter: `blur(${(1 - k) * 12}px)`, fontFamily: FONT.clash, fontWeight: 600, fontSize: L.turn.font, letterSpacing: '-0.03em', color: w === 'fix' ? PERI : '#EDEBF5', lineHeight: 1}}>
@@ -163,7 +163,7 @@ const Turn: React.FC<{f: number}> = ({f}) => {
         </div>)}
       </div>
       {/* on landing, the plate's colour turns into the chat box glass; then it hands over to the real chat box underneath */}
-      <AbsoluteFill style={{background: CHAT_BG, opacity: ez(f, T.iris - 6, T.iris + 4)}} />
+      <AbsoluteFill style={{background: 'linear-gradient(100deg, #E8E9FB, #FDECE7)', opacity: ez(f, T.iris - 9, T.iris - 1, Easing.inOut(Easing.quad))}} />
     </AbsoluteFill>
   </>;
 };
@@ -187,7 +187,7 @@ const Particles: React.FC<{f: number}> = ({f}) => {
 // ================= world B: chat box → sentence types → words become 3 nodes → zoom-out → run =================
 let measureCtx: CanvasRenderingContext2D | null = null;
 const textW = (t: string, px: number) => { if (typeof document === 'undefined') return t.length * px * 0.52; measureCtx = measureCtx ?? document.createElement('canvas').getContext('2d'); measureCtx!.font = `500 ${px}px ${FONT.ui}`; return measureCtx!.measureText(t).width; };
-const NodeAction: React.FC<{text: string}> = ({text}) => text.includes('{name}') ? <>{text.split('{name}')[0].split('“')[0]}<span style={{whiteSpace: 'nowrap'}}>“{text.split('{name}')[0].split('“')[1]}<span style={{fontWeight: 600, color: PERI_D, background: 'rgba(100,104,216,0.14)', borderRadius: 8, padding: '0 8px'}}>{'{name}'}</span>{text.split('{name}')[1]}</span></> : <>{text}</>;
+const NodeAction: React.FC<{text: string; wrap?: boolean}> = ({text, wrap}) => text.includes('{name}') ? <>{text.split('{name}')[0].split('“')[0]}<span style={{whiteSpace: wrap ? 'normal' : 'nowrap'}}>“{text.split('{name}')[0].split('“')[1]}<span style={{fontWeight: 600, color: PERI_D, background: 'rgba(100,104,216,0.14)', borderRadius: 8, padding: '0 8px'}}>{'{name}'}</span>{text.split('{name}')[1]}</span></> : <>{text}</>;
 const WorldB: React.FC<{f: number}> = ({f}) => {
   const L = useL(), CH = L.chat, PL = L.plan, ND = L.nodes;
   const TXT = CH.txt, LH = CH.lh, PADX = CH.pad, PADY = CH.pad;
@@ -272,7 +272,7 @@ const WorldB: React.FC<{f: number}> = ({f}) => {
               <Tile k={n.app} size={ND.tile} on={lit} />
               <div style={{fontFamily: FONT.sora, fontWeight: 600, fontSize: ND.name, color: INK, lineHeight: 1.1}}>{n.name}</div>
             </div>
-            <div style={{fontFamily: FONT.ui, fontWeight: 500, fontSize: ND.action, lineHeight: 1.22, color: LO, marginTop: 18}}><NodeAction text={n.action} /></div>
+            <div style={{fontFamily: FONT.ui, fontWeight: 500, fontSize: ND.action, lineHeight: 1.22, color: LO, marginTop: 18}}><NodeAction text={n.action} wrap /></div>
             {badge}
           </div> : <div style={{position: 'absolute', inset: 0, padding: '0 80px 0 34px', display: 'flex', alignItems: 'center', gap: 26, opacity: nodeOp}}>
             <Tile k={n.app} size={ND.tile} on={lit} />
@@ -310,7 +310,7 @@ const WORDS: Wd[] = VO.flatMap((l, li) => { if (li === 3) return []; const toks 
 const CHUNKS: Wd[][] = []; WORDS.forEach((w, i) => { const cur = CHUNKS[CHUNKS.length - 1]; const prev = WORDS[i - 1]; if (!cur || cur.length >= 4 || prev.line !== w.line || /[.,—]$/.test(prev.w)) CHUNKS.push([w]); else cur.push(w); });
 const SKIP = new Set(["Let's", 'fix', 'that —']); // the big kinetic "let's fix that" is the caption for those words
 // stress words keep the keyword colour once spoken (the hook's "owners" is coloured from frame 0)
-const STRESS = new Set(['owners', 'hand.', 'HubSpot.', 'anyway.', 'sentence.', 'automatically.']);
+const STRESS = new Set(['owners —', 'hand.', 'HubSpot.', 'anyway.', 'sentence.', 'automatically.']);
 const Captions: React.FC<{f: number; dark: boolean}> = ({f, dark}) => {
   const {cap} = useL();
   // the first chunk (the hook line) is on screen from frame 0 (words rise in over the first frames); the highlight still follows the voice
