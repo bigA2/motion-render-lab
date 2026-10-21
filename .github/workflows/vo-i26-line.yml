@@ -3,9 +3,10 @@
 name: vo-i26-line
 permissions: { contents: read }
 on:
+  push: { branches: ['wave1/intro-v7'], paths: ['.github/workflows/vo-i26-line.yml'] }
   workflow_dispatch:
     inputs:
-      line: { description: '1-based line number in src/intro26/I26.json', required: true }
+      line: { description: '1-based line number in src/intro26/I26.json', required: false, default: '5' }
 jobs:
   voice:
     runs-on: ubuntu-latest
@@ -26,7 +27,7 @@ jobs:
           python scripts/mkjobs.py I26
           python - <<'EOF2'
           import json, copy
-          L=int("${{ inputs.line }}"); s=${{ matrix.shard }}
+          L=int("${{ inputs.line || 5 }}"); s=${{ matrix.shard }}
           j=[x for x in json.load(open("voices/jobs/I26.json")) if x["out"].split("/")[-1].startswith(f"{L:02d}_take")]
           extra=[]
           for x in j:
@@ -48,6 +49,6 @@ jobs:
       - run: pip install --quiet faster-whisper==1.1.1 numpy requests && sudo apt-get -qq install -y ffmpeg >/dev/null
       - uses: actions/download-artifact@v4
         with: { path: gen, pattern: 'voice-line-*', merge-multiple: true }
-      - run: cp src/intro26/I26.json src/specs/I26.json && python scripts/pick.py I26 ${{ inputs.line }}
+      - run: cp src/intro26/I26.json src/specs/I26.json && python scripts/pick.py I26 ${{ inputs.line || 5 }}
       - uses: actions/upload-artifact@v4
         with: { name: 'vo-line', path: 'public/v/I26/', retention-days: 3 }
