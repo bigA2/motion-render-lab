@@ -246,7 +246,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
             <span style={{position: 'absolute', opacity: 1 - ok, filter: `blur(${ok * 8}px)`, whiteSpace: 'nowrap'}}>▷ Approve &amp; Run</span><span style={{position: 'absolute', opacity: ok, filter: `blur(${(1 - ok) * 8}px)`, whiteSpace: 'nowrap'}}>✓ Approved · running</span>
           </div>
         </div>; })() : null}
-      {f >= t.own - 30 ? <Cursor x={springTo(f, [[t.own - 30, W * 0.8], [t.approve - 22, W / 2 + 40 * u]], 10)} y={springTo(f, [[t.own - 30, H * 1.05], [t.approve - 22, H * 0.94 - 74 * u]], 10)} press={Math.max(0, 1 - Math.abs(f - t.approve) / 5)} hover={ez(f, t.approve - 16, t.approve - 6)} s={u * 1.15} /> : null}
+      {f >= t.own - 30 ? <Cursor x={springTo(f, [[t.own - 30, W * 0.8], [t.approve - 22, W / 2 + 150 * u], [t.approve + 8, W / 2 + 300 * u]], 10)} y={springTo(f, [[t.own - 30, H * 1.05], [t.approve - 22, H * 0.94 - 74 * u], [t.approve + 8, H * 0.94 - 40 * u]], 10)} press={Math.max(0, 1 - Math.abs(f - t.approve) / 5)} hover={ez(f, t.approve - 16, t.approve - 6)} s={u * 1.15} /> : null}
       {/* colour changes between sections (ref 3 arc floods) */}
       <ArcFlood f={f} at={t.l4 - 40} W={W} H={H} color="#14111C" />
       <ArcFlood f={f} at={t.l5 - 40} W={W} H={H} color="#C9CCF8" dir={-1} />
@@ -259,7 +259,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
       const seg = (t.workday - 10 - S6[0]) / 3; const mAt = t.workday - 30; const mk = spr(f, mAt, 11);
       const arts = [['#6468D8', '#B9BCF6'], ['#E68C74', '#FFD6CA'], ['#2C2950', '#8B8FE8']];
       const cw = (w ? 760 : 820) * u, ch = (w ? 400 : 440) * u, gap = 36 * u;
-      const fw = (w ? 1500 : 1000) * u, fh = (w ? 240 : 200) * u; // final pill that holds the line
+      const fw = (w ? 1500 : 960) * u, fh = (w ? 240 : 190) * u; // final pill that holds the line
       const titleOut = ez(f, mAt, mAt + 12);
       const Card = ({i}: {i: number}) => {
         const k = spr(f, S6[0] - 10 + i * 8, 10);
@@ -271,7 +271,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
         const x = lerp(ox, W / 2, mk), y = lerp(oy, H / 2, mk), bw = lerp(cw, fw, mk), bh = lerp(ch, fh, mk), r = lerp(60 * u, fh / 2, mk);
         const title = pairs[p][i]; const pk = spr(f - 1, mAt, 11); const mb = Math.min(8, (Math.hypot(lerp(ox, W / 2, mk) - lerp(ox, W / 2, pk), lerp(oy, H / 2, mk) - lerp(oy, H / 2, pk)) + Math.abs(lerp(cw, fw, mk) - lerp(cw, fw, pk)) / 2) * 0.12);
         return <div style={{position: 'absolute', left: x - bw / 2, top: y - bh / 2, width: bw, height: bh, borderRadius: r, overflow: 'hidden', background: `linear-gradient(${140 + 10 * Math.sin(f / 120 + i)}deg, ${c0}, ${c1})`, transform: `translateY(${(1 - k) * 300 * u}px) scale(${lerp(1.08, 1, k)})`, opacity: Math.min(1, k * 1.4), filter: k < 0.98 || mb > 0.5 ? `blur(${(1 - k) * 12 + mb}px)` : undefined, boxShadow: `0 50px 90px -40px rgba(${lerp(40, 100, mk)},${lerp(30, 104, mk)},${lerp(80, 216, mk)},${0.5 - 0.1 * mk})`}}>
-          <div style={{position: 'absolute', inset: 0, background: sky(f, '#FFFFFF', '#F4F3FF', '#FFF3EF', 110), boxShadow: 'inset 0 1.5px 0 #fff, inset 0 -12px 30px rgba(139,143,232,0.14)', opacity: mk}} />
+          <div style={{position: 'absolute', inset: 0, background: sky(f, '#FFFFFF', '#F4F3FF', '#FFF3EF', 110), boxShadow: 'inset 0 1.5px 0 #fff, inset 0 -12px 30px rgba(139,143,232,0.14)', opacity: Math.min(1, mk * 1.6)}} />
           <svg width="100%" height="100%" style={{position: 'absolute', inset: 0, opacity: 0.35 * (1 - mk)}}><circle cx="78%" cy="20%" r={180 * u} stroke="#fff" strokeWidth={1.5} fill="none" /><line x1="0" y1="62%" x2="100%" y2="62%" stroke="#fff" /></svg>
           <div style={{position: 'absolute', left: 28 * u, top: 26 * u, ...glass('rgba(255,255,255,0.3)'), borderRadius: 99, padding: `${8 * u}px ${18 * u}px`, fontFamily: FONT.ui, fontWeight: 600, fontSize: 22 * u, color: '#fff', opacity: 1 - titleOut}}>Built for</div>
           <div style={{position: 'absolute', left: 30 * u, bottom: 22 * u, fontFamily: FONT.clash, fontWeight: 600, fontSize: Math.min(160, 1100 / Math.max(5, title.length)) * u, letterSpacing: '-0.04em', lineHeight: 1, color: 'rgba(255,255,255,0.6)', textShadow: '0 1px 0 rgba(255,255,255,0.8)', WebkitTextStroke: '1.5px rgba(255,255,255,0.8)', whiteSpace: 'nowrap', opacity: tin * (1 - tout) * (1 - titleOut), filter: `blur(${(1 - tin) * 10 + tout * 10}px)`, transform: `translateY(${(1 - tin) * 24 * u - tout * 24 * u}px)`}}>{title}</div>
@@ -279,7 +279,7 @@ export const Film: React.FC<{vo: Vo}> = ({vo}) => {
       return <AbsoluteFill>
         <Liquid f={f} a="rgba(139,143,232,0.35)" b="rgba(244,184,168,0.4)" c="rgba(230,232,255,0.6)" base={PAPER} />
         <Card i={1} /><Card i={0} />
-        {f >= t.workday - 8 ? <AbsoluteFill style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}><LineIn text={<>Your workday, <span style={{color: PERI_D}}>back.</span></>} f={f} at={t.workday - 8} size={(w ? 120 : 80) * u} color={INK} /></AbsoluteFill> : null}
+        {f >= t.workday - 8 ? <AbsoluteFill style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}><LineIn text={<>Your workday, <span style={{color: PERI_D}}>back.</span></>} f={f} at={t.workday - 8} size={(w ? 120 : 74) * u} color={INK} /></AbsoluteFill> : null}
       </AbsoluteFill>;
     })() : null}
     {/* ================= S7 · ref 3/4: iris closes to a dot → dot becomes the logo → glowing wordmark end card ================= */}
