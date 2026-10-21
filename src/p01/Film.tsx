@@ -148,10 +148,11 @@ const Turn: React.FC<{f: number}> = ({f}) => {
   const words = TURN.map((w, i) => ({w, k: ez(f, T.turnText + i * 3, T.turnText + i * 3 + 10)}));
   const out = ez(f, T.converge - 2, T.converge + 10);
   const g = f >= T.glitch && f < T.glitch + 10; const j = (s: number) => (hash(f, s) - 0.5) * 18;
+  const gk = ez(f, T.iris - 9, T.iris - 1, Easing.inOut(Easing.quad)); // plate colour → chat-box glass (lighten through periwinkle, not grey)
   const p = plateAt(L, f), clip = f < T.converge ? `circle(${rIn}px at 50% 50%)` : `inset(${p.t}px ${L.W - p.r}px ${L.H - p.b}px ${p.l}px round ${p.rad}px)`;
   return <>
     <AbsoluteFill style={{clipPath: clip, opacity: 1 - ez(f, T.iris, T.iris + 10)}}>
-      <Liquid f={f} a="rgba(100,104,216,0.55)" b="rgba(244,184,168,0.18)" c="rgba(139,143,232,0.30)" base={DARK} />
+      <AbsoluteFill style={{filter: gk > 0 ? `brightness(${1 + 7 * gk}) saturate(${1 + 0.6 * gk})` : undefined}}><Liquid f={f} a="rgba(100,104,216,0.55)" b="rgba(244,184,168,0.18)" c="rgba(139,143,232,0.30)" base={DARK} /></AbsoluteFill>
       <div style={{position: 'absolute', left: 0, right: L.turn.right, top: L.turn.top, display: 'flex', justifyContent: 'center', gap: 30, opacity: 1 - out, filter: out > 0 ? `blur(${out * 18}px)` : undefined, transform: `scale(${1 + out * 0.15})`}}>
         {words.map(({w, k}) => <div key={w} style={{position: 'relative', opacity: k, transform: `translateY(${(1 - k) * 24}px)`, filter: `blur(${(1 - k) * 12}px)`, fontFamily: FONT.clash, fontWeight: 600, fontSize: L.turn.font, letterSpacing: '-0.03em', color: w === 'fix' ? PERI : '#EDEBF5', lineHeight: 1}}>
           {w === 'fix' && g ? <>
@@ -163,7 +164,7 @@ const Turn: React.FC<{f: number}> = ({f}) => {
         </div>)}
       </div>
       {/* on landing, the plate's colour turns into the chat box glass; then it hands over to the real chat box underneath */}
-      <AbsoluteFill style={{background: 'linear-gradient(100deg, #E8E9FB, #FDECE7)', opacity: ez(f, T.iris - 9, T.iris - 1, Easing.inOut(Easing.quad))}} />
+      <AbsoluteFill style={{background: 'linear-gradient(100deg, #E8E9FB, #FDECE7)', opacity: gk * gk}} />
     </AbsoluteFill>
   </>;
 };
