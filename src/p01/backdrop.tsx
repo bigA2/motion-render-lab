@@ -4,7 +4,6 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 
-const W = 1080, H = 1920;
 const PERI = '139,143,232', PERI_D = '100,104,216', BLUSH = '244,184,168';
 
 // cubic bezier point
@@ -17,8 +16,9 @@ const CURVES = [
   {y0: 1880, y1: 120, c: PERI_D, sp: 0.7, ph: 4.4},
 ];
 
-export const Backdrop: React.FC<{f: number; beats: number[]; base: string}> = ({f, beats, base}) => {
-  const t = f / 30;
+// W/H: frame size (tall 1080x1920 or wide 1920x1080); the curves are laid out on the tall canvas and scaled to fit
+export const Backdrop: React.FC<{f: number; beats: number[]; base: string; W?: number; H?: number}> = ({f, beats, base, W = 1080, H = 1920}) => {
+  const t = f / 30, sx = W / 1080, sy = H / 1920;
   const blob = (x: number, y: number, c: string, a: number, r: number) => `radial-gradient(circle at ${x}% ${y}%, rgba(${c},${a}) 0%, rgba(${c},0) ${r}%)`;
   const aurora = [
     blob(22 + 14 * Math.sin(t * 0.42), 24 + 10 * Math.cos(t * 0.31), PERI, 0.42, 42),
@@ -35,8 +35,8 @@ export const Backdrop: React.FC<{f: number; beats: number[]; base: string}> = ({
     <svg width={W} height={H} style={{position: 'absolute', inset: 0}}>
       <defs><filter id="bdglow"><feGaussianBlur stdDeviation="5" /></filter></defs>
       {CURVES.map((c, i) => {
-        const sw = Math.sin(t * 0.35 * c.sp + c.ph) * 120;
-        const P = [[-80, c.y0], [360, c.y0 + sw], [720, c.y1 - sw], [W + 80, c.y1]];
+        const sw = Math.sin(t * 0.35 * c.sp + c.ph) * 120 * sy;
+        const P = [[-80, c.y0 * sy], [360 * sx, c.y0 * sy + sw], [720 * sx, c.y1 * sy - sw], [W + 80, c.y1 * sy]];
         const d = `M${P[0][0]} ${P[0][1]} C ${P[1][0]} ${P[1][1]}, ${P[2][0]} ${P[2][1]}, ${P[3][0]} ${P[3][1]}`;
         return <g key={i}>
           <path d={d} fill="none" stroke={`rgba(${c.c},0.16)`} strokeWidth={2.5} />

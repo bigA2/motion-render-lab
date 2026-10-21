@@ -6,6 +6,7 @@ on:
     inputs:
       secs: { description: 'still times (s), sheet order', required: false, default: '0.5 2.5 6 10 14 18 23 28' }
       extra: { description: 'extra check stills (s), not on the sheet', required: false, default: '8.5' }
+      comps: { description: 'stills: compositions to render (space separated)', required: false, default: 'P01-4x5 P01-16x9' }
       mode: { description: 'stills | voice (Chatterbox takes + Whisper pick -> vo-P01) | full (4x5 + 16x9 with VO + SFX, music and no-music) | video (silent 1080x1920 mp4 + half-size preview)', required: false, default: 'stills' }
 jobs:
   voice:
@@ -123,30 +124,31 @@ jobs:
       - run: npm ci --no-audit --no-fund && npx remotion browser ensure && pip install --quiet pillow
       - run: |
           mkdir -p stills
-          for s in ${{ inputs.secs }} ${{ inputs.extra }}; do
+          for c in ${{ inputs.comps }}; do for s in ${{ inputs.secs }} ${{ inputs.extra }}; do
             F=$(python3 -c "import sys; print(round(float(sys.argv[1])*30))" "$s")
-            npx remotion still src/p01/index.ts P01 "stills/p01_${s}s.png" --frame=$F --log=error --timeout=120000 || echo "fail $s"
-          done
-      - name: contact sheet
-        env: { SECS: '${{ inputs.secs }}' }
+            echo "still $c $s (frame $F)"
+            npx remotion still src/p01/index.ts "$c" "stills/${c}_${s}s.png" --frame=$F --log=error --timeout=120000 || echo "fail $c $s"
+          done; done
+      - name: contact sheets (one per composition, thumbs sized from the real frames)
+        env: { SECS: '${{ inputs.secs }}', COMPS: '${{ inputs.comps }}' }
         run: |
           python3 - <<'EOF'
           import os
           from PIL import Image, ImageDraw, ImageFont
           ts = os.environ['SECS'].split()
-          tw, th, cols = 405, 720, 4
-          rows = (len(ts) + cols - 1) // cols
-          sheet = Image.new('RGB', (tw * cols + 50, (th + 50) * rows + 10), (20, 18, 26))
-          dr = ImageDraw.Draw(sheet)
           try: fnt = ImageFont.truetype('DejaVuSans.ttf', 30)
           except Exception: fnt = ImageFont.load_default()
-          for i, t in enumerate(ts):
-              p = f'stills/p01_{t}s.png'
-              if not os.path.exists(p): continue
-              x, y = 10 + (i % cols) * (tw + 10), 10 + (i // cols) * (th + 50)
-              sheet.paste(Image.open(p).convert('RGB').resize((tw, th), Image.LANCZOS), (x, y + 40))
-              dr.text((x, y + 2), f'{t} s', fill=(230, 230, 240), font=fnt)
-          sheet.save('stills/SHEET.jpg', quality=90)
+          for c in os.environ['COMPS'].split():
+              ps = [(t, f'stills/{c}_{t}s.png') for t in ts if os.path.exists(f'stills/{c}_{t}s.png')]
+              if not ps: continue
+              w0, h0 = Image.open(ps[0][1]).size; tw = 480; th = round(h0 * tw / w0); cols = 4
+              rows = (len(ps) + cols - 1) // cols
+              sheet = Image.new('RGB', (tw * cols + 50, (th + 50) * rows + 10), (20, 18, 26)); dr = ImageDraw.Draw(sheet)
+              for i, (t, p) in enumerate(ps):
+                  x, y = 10 + (i % cols) * (tw + 10), 10 + (i // cols) * (th + 50)
+                  sheet.paste(Image.open(p).convert('RGB').resize((tw, th), Image.LANCZOS), (x, y + 40))
+                  dr.text((x, y + 2), f'{c} {t} s', fill=(230, 230, 240), font=fnt)
+              sheet.save(f'stills/SHEET_{c}.jpg', quality=90)
           EOF
       - uses: actions/upload-artifact@v4
         with: { name: stills-P01, path: stills/, retention-days: 3 }
