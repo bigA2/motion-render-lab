@@ -13,7 +13,12 @@ export const spr = (f: number, at: number, w = 14) => { const t = Math.max(0, (f
 // a value that retargets many times = sum of one spring per change
 export const springTo = (f: number, keys: [number, number][], w = 14) => { let v = keys[0][1]; for (let i = 1; i < keys.length; i++) v += (keys[i][1] - keys[i - 1][1]) * spr(f, keys[i][0], w); return v; };
 
-export const INK = '#221E30', LO = '#6A6580', PERI = '#8B8FE8', PERI_D = '#6468D8', BLUSH = '#F4B8A8', BLUSH_D = '#E68C74', PAPER = '#F7F6F9';
+// animated gradient sky: the angle and the middle stop drift slowly, so no fill is ever flat
+export const sky = (f: number, a: string, b: string, c: string, ang = 165) => `linear-gradient(${ang + 12 * Math.sin(f / 230)}deg, ${a} 0%, ${b} ${52 + 9 * Math.sin(f / 170)}%, ${c} 100%)`;
+// mix two #rrggbb colours (for shapes whose fill morphs together with their box)
+export const mix = (a: string, b: string, k: number) => { const p = (s: string, i: number) => parseInt(s.slice(1 + i * 2, 3 + i * 2), 16); return `rgb(${[0, 1, 2].map((i) => Math.round(lerp(p(a, i), p(b, i), k))).join(',')})`; };
+
+export const INK ='#221E30', LO = '#6A6580', PERI = '#8B8FE8', PERI_D = '#6468D8', BLUSH = '#F4B8A8', BLUSH_D = '#E68C74', PAPER = '#F7F6F9';
 
 // liquid glass: frosted body, bright rim, top sheen, soft lift shadow; tint optional
 export const glass = (tint = 'rgba(255,255,255,0.55)', dark = false): React.CSSProperties => ({
