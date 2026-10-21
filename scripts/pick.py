@@ -1,11 +1,12 @@
 # Whisper-pick the best take per line -> public/v/<id>/NN.wav + vo.json (word timings). Runs on GitHub.
 import glob, re, difflib, subprocess, numpy as np, json, shutil, sys, os
 from faster_whisper import WhisperModel
-vid=sys.argv[1]; S=json.load(open(f'src/specs/{vid}.json',encoding='utf-8')); DST=f'public/v/{vid}'; os.makedirs(DST,exist_ok=True)
+vid=sys.argv[1]; only=int(sys.argv[2]) if len(sys.argv)>2 else 0; S=json.load(open(f'src/specs/{vid}.json',encoding='utf-8')); DST=f'public/v/{vid}'; os.makedirs(DST,exist_ok=True)
 BAD=['fonsa','fans of','fans to','fanta','fan of','fansad','fansat','fonza','phansa']
 norm=lambda s: re.sub(r'[^a-z0-9 ]',' ',s.lower().replace('fansa chat','fansachat').replace('fans a chat','fansachat').replace('-',' ')).split()
 m=WhisperModel('base.en',device='cpu',compute_type='int8'); out=[]
 for i,t in enumerate(S['lines'],1):
+    if only and i!=only: continue
     best=None
     for f in sorted(glob.glob(f'gen/{vid}/{i:02d}_take*.wav')):
         tr=f.replace('.wav','_t.wav'); subprocess.run(['ffmpeg','-v','error','-y','-i',f,'-af','silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,apad=pad_dur=0.05','-ar','48000',tr],check=True)
@@ -19,4 +20,4 @@ for i,t in enumerate(S['lines'],1):
         if best is None or cost<best[0]: best=(cost,tr,dur,[{'w':w.word.strip(),'s':round(w.start,2),'e':round(w.end,2)} for w in ws],got)
     shutil.copy(best[1], f'{DST}/{i:02d}.wav')
     out.append({'file':f'v/{vid}/{i:02d}.wav','dur':round(best[2],2),'words':best[3]}); print(vid,i,round(best[0],2),'|',best[4])
-json.dump(out,open(f'{DST}/vo.json','w'),indent=1)
+json.dump(out,open(f'{DST}/'+('vo_line.json' if only else 'vo.json'),'w'),indent=1)
