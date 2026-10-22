@@ -1,64 +1,149 @@
-// 1:1 recreation of "Learn Apple Style Motion Graphics" (Bart_VFX): ONE container that morphs (size, radius, colour)
-// from state to state at 60 fps with a smooth in-out curve, while its content cross-fades. That's the whole trick.
+// v2 — Apple-style morph, matched to the reference at 3 fps (E:\reel_study\wl\cpQzSKuEAkM\ref16.jpg).
+// What v1 missed: there are NO static holds. A camera is always moving (follows the typing caret, zooms into the card,
+// zooms 3x into the tiny search pill then pans across the words), every state has live content (typing, picker
+// scrolling, timer counting, bubbles growing), and one black container morphs between widget -> pill -> note card.
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, interpolateColors, staticFile, useCurrentFrame} from 'remotion';
 
 const FONT = 'MorphFont';
 const css = `@font-face{font-family:${FONT};src:url(${staticFile('fonts/InterTight-500.woff2')}) format('woff2');}`;
-const MORPH = Easing.bezier(0.65, 0, 0.35, 1); // AE "easy ease" at ~75% influence: the Apple feel
-type State = {at: number; w: number; h: number; r: number; bg: string; bd?: string; page: string; c: React.ReactNode};
+const M = Easing.bezier(0.65, 0, 0.35, 1), OUT = Easing.bezier(0.16, 1, 0.3, 1);
+const k = (f: number, i: number[], o: number[], e = M) => interpolate(f, i, o, {easing: e, extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+const T = (s: number, c = '#111', w = 600): React.CSSProperties => ({fontFamily: FONT, fontSize: s, color: c, fontWeight: w, whiteSpace: 'nowrap'});
+const typed = (t: string, f: number, a: number, b: number) => t.slice(0, Math.round(k(f, [a, b], [0, t.length], Easing.linear)));
 
-const T: React.CSSProperties = {fontFamily: FONT, whiteSpace: 'nowrap'};
-const Ring: React.FC<{c: string}> = ({c}) => <div style={{width: 64, height: 64, borderRadius: 99, border: `5px solid ${c}`, flex: '0 0 auto'}} />;
-const Bubble: React.FC<{c: string; t: string; x: number; y: number; o: number}> = ({c, t, x, y, o}) => (
-  <div style={{position: 'absolute', left: x, top: y, opacity: o, transform: `translateY(${(1 - o) * 30}px) scale(${0.9 + 0.1 * o})`, background: c, color: '#fff', padding: '18px 34px', borderRadius: 40, ...T, fontSize: 34}}>{t}</div>
-);
+// 60 fps timeline (frames)
+const S1 = 0, S2 = 100, S3 = 160, S4 = 250, S5 = 350, S6 = 480, S7 = 580, S8 = 700, END = 800;
 
-const S: State[] = [
-  {at: 0, w: 760, h: 120, r: 60, bg: '#ffffff', page: '#f4f4f6', c: <span style={{...T, fontSize: 56, color: '#111'}}>Is it possible to learn</span>},
-  {at: 60, w: 520, h: 120, r: 60, bg: '#ffffff', page: '#f4f4f6', c: <span style={{...T, fontSize: 52, color: '#111'}}>● Motion Graphics</span>},
-  {at: 110, w: 330, h: 330, r: 70, bg: '#0b0b0d', page: '#f4f4f6', c: <span style={{...T, fontSize: 64, color: '#fff'}}>20 min</span>},
-  {at: 160, w: 360, h: 130, r: 30, bg: '#0b0b0d', page: '#f4f4f6', c: <div style={{display: 'flex', gap: 26, alignItems: 'center'}}><Ring c="#ff8a1f" /><span style={{...T, fontSize: 56, color: '#ffb340'}}>Well</span></div>},
-  {at: 200, w: 360, h: 130, r: 30, bg: '#0b0b0d', page: '#f4f4f6', c: <div style={{display: 'flex', gap: 26, alignItems: 'center'}}><Ring c="#ff8a1f" /><span style={{...T, fontSize: 56, color: '#ffb340'}}>Yes</span></div>},
-  {at: 240, w: 1000, h: 560, r: 60, bg: '#0b0b0d', page: '#f4f4f6', c: <span style={{...T, fontSize: 62, color: '#fff', whiteSpace: 'normal', padding: 60, lineHeight: 1.2}}>Most people don't realize how simple it is</span>},
-  {at: 320, w: 880, h: 120, r: 60, bg: '#ffffff', page: '#050505', c: <span style={{...T, fontSize: 56, color: '#111'}}>2 components   ⌕</span>},
-  {at: 380, w: 1100, h: 140, r: 0, bg: 'rgba(0,0,0,0)', page: '#050505', c: <div style={{display: 'flex', gap: 120}}><span style={{...T, fontSize: 80, color: '#2b5cff', textDecoration: 'underline'}}>Expressions</span><span style={{...T, fontSize: 80, color: '#2b5cff', textDecoration: 'underline'}}>Timing</span></div>},
-  {at: 450, w: 700, h: 120, r: 60, bg: 'rgba(0,0,0,0)', page: '#f4f4f6', c: <span style={{...T, fontSize: 70, color: '#111'}}>and if you add <b style={{color: '#ff8a1f'}}>60 FPS</b></span>},
-  {at: 520, w: 1, h: 1, r: 0, bg: 'rgba(0,0,0,0)', page: '#eef1f6', c: null},
-  {at: 600, w: 1200, h: 220, r: 0, bg: 'rgba(0,0,0,0)', page: '#f4f4f6', c: <span style={{...T, fontSize: 190, color: '#2b2b2b', letterSpacing: 4, fontWeight: 800}}>MORPHING</span>},
-  {at: 660, w: 520, h: 560, r: 56, bg: '#ffffff', bd: '#e3e3e8', page: '#e6e6ea', c: <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 26}}><div style={{width: 120, height: 200, borderRadius: 26, background: 'linear-gradient(160deg,#ff9a4a,#e0621d)'}} /><span style={{...T, fontSize: 40, color: '#111'}}>iPhone 17 Pro</span><div style={{width: 400, height: 76, borderRadius: 40, background: '#111', color: '#fff', ...T, fontSize: 34, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Pay</div></div>},
-  {at: 730, w: 440, h: 120, r: 60, bg: '#1f6bff', page: '#e6e6ea', c: <span style={{...T, fontSize: 46, color: '#fff'}}>▮ Track Order</span>},
-  {at: 790, w: 120, h: 120, r: 60, bg: '#1f6bff', page: '#e6e6ea', c: <span style={{...T, fontSize: 60, color: '#fff'}}>→</span>},
-  {at: 840, w: 720, h: 120, r: 60, bg: '#ffffff', bd: '#dcdce2', page: '#e6e6ea', c: <span style={{...T, fontSize: 44, color: '#888'}}>Ask FansaChat anything…</span>},
-  {at: 930, w: 720, h: 120, r: 60, bg: '#ffffff', bd: '#dcdce2', page: '#e6e6ea', c: <span style={{...T, fontSize: 44, color: '#888'}}>Ask FansaChat anything…</span>},
-];
+const Typing: React.FC<{f: number}> = ({f}) => {
+  const line = typed('Is it possible to learn', f, 0, 70);
+  const logo = k(f, [72, 84], [0, 1], OUT);
+  const swap = k(f, [84, 96], [0, 1]);
+  const camX = k(f, [0, 70], [260, -260], Easing.linear) * (1 - swap) + swap * 0; // follow caret
+  return (
+    <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `translateX(${camX}px)`}}>
+      <div style={{display: 'flex', alignItems: 'center', gap: 26}}>
+        <span style={{...T(110), opacity: 1 - swap, filter: `blur(${swap * 8}px)`, position: swap > 0.5 ? 'absolute' : 'relative'}}>{line}</span>
+        <div style={{width: 120 * logo, height: 120 * logo, borderRadius: 99, background: '#111', flex: '0 0 auto'}} />
+        <span style={{...T(80), opacity: swap, transform: `translateX(${(1 - swap) * 40}px)`}}>Motion Graphics</span>
+      </div>
+    </AbsoluteFill>
+  );
+};
 
+// one black container that morphs: timer widget (S2) -> pill (S3) -> note card (S4)
+const Morph: React.FC<{f: number}> = ({f}) => {
+  const a = k(f, [S3 - 14, S3 + 4], [0, 1]), b = k(f, [S4 - 10, S4 + 14], [0, 1]);
+  const w = 300 + (520 - 300) * a + (900 - 520) * b, h = 300 + (140 - 300) * a + (620 - 140) * b, r = 64 + (70 - 64) * a + (60 - 70) * b;
+  const zoom = 1 + k(f, [S4, S5 - 20], [0, 0.55]);
+  const enter = k(f, [S2, S2 + 16], [0, 1], OUT);
+  const pick = k(f, [S2, S3 - 10], [0, 1]);
+  const secs = Math.floor(k(f, [S3, S4 - 20], [1200, 1185], Easing.linear));
+  return (
+    <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `scale(${zoom * (0.7 + 0.3 * enter)})`, opacity: enter}}>
+      <div style={{width: w, height: h, borderRadius: r, background: '#0b0b0d', position: 'relative', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,.18)'}}>
+        {/* timer widget */}
+        <div style={{position: 'absolute', inset: 0, opacity: 1 - a, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18}}>
+          <div style={{height: 150, overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div style={{transform: `translateY(${-pick * 50}px)`}}>{[19, 20, 21, 22].map((n, i) => <div key={n} style={{...T(i === 1 + Math.round(pick) - 1 + 1 ? 56 : 40, i === Math.round(pick) + 1 ? '#fff' : '#555'), height: 50, textAlign: 'center'}}>{n}</div>)}</div>
+          </div>
+          <span style={T(34, '#fff')}>min</span>
+          <div style={{position: 'absolute', right: 24, bottom: 24, width: 54, height: 54, borderRadius: 99, background: '#1f6b3a', color: '#4cff8a', ...T(26, '#4cff8a'), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>▶</div>
+        </div>
+        {/* pill */}
+        <div style={{position: 'absolute', inset: 0, opacity: a * (1 - b), display: 'flex', alignItems: 'center', gap: 26, padding: '0 30px'}}>
+          <div style={{width: 92, height: 92, borderRadius: 99, border: '6px solid #ff8a1f', ...T(22, '#ff8a1f'), display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${f * 2}deg)`}}><span style={{transform: `rotate(${-f * 2}deg)`}}>{Math.floor(secs / 60)}:{String(secs % 60).padStart(2, '0')}</span></div>
+          <span style={{...T(64, '#ffb340'), position: 'relative', width: 140}}>
+            <span style={{position: 'absolute', opacity: 1 - k(f, [205, 215], [0, 1]), filter: `blur(${k(f, [205, 215], [0, 6])}px)`}}>Well</span>
+            <span style={{position: 'absolute', opacity: k(f, [210, 220], [0, 1])}}>Yes</span></span>
+          <div style={{marginLeft: 'auto', width: 60, height: 60, borderRadius: 99, background: '#ff8a1f33', ...T(40, '#ff8a1f'), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>−</div>
+        </div>
+        {/* note card */}
+        <div style={{position: 'absolute', inset: 0, opacity: b, padding: 46}}>
+          <div style={{display: 'flex', alignItems: 'center', gap: 22}}><span style={T(46, '#fff')}>‹</span><span style={{marginLeft: 'auto', ...T(34, '#aaa')}}>⇪ ⋯</span>
+            <span style={{width: 56, height: 56, borderRadius: 99, background: '#f5c400', ...T(30, '#111'), display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${k(f, [S4 + 70, S4 + 80], [0, 1], OUT)})`}}>✓</span></div>
+          <div style={{...T(64, '#fff', 500), whiteSpace: 'normal', marginTop: 40, lineHeight: 1.25}}>{typed("Most people don't realize how simple it is", f, S4 + 10, S4 + 75)}<span style={{opacity: Math.floor(f / 15) % 2}}>|</span></div>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const Search: React.FC<{f: number}> = ({f}) => {
+  const lf = f - S5;
+  const z = k(lf, [0, 40], [1, 3.2]);
+  const pan = k(lf, [50, 120], [0, -1500]);
+  return (
+    <AbsoluteFill style={{background: '#050505', overflow: 'hidden'}}>
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `translateX(${pan}px) scale(${z})`}}>
+        <div style={{width: 380, height: 52, borderRadius: 30, background: '#fff', display: 'flex', alignItems: 'center', padding: '0 20px', boxSizing: 'border-box', ...T(24)}}>{typed('2 components', lf, 6, 30)}<span style={{marginLeft: 'auto', ...T(22, '#444')}}>⌕</span></div>
+        <div style={{position: 'absolute', left: 'calc(50% + 330px)', top: 'calc(50% + 50px)', display: 'flex', gap: 120}}>
+          <span style={{...T(40, '#2b5cff'), textDecoration: 'underline', opacity: k(lf, [56, 66], [0, 1])}}>Expressions</span>
+          <span style={{...T(40, '#2b5cff'), textDecoration: 'underline', opacity: k(lf, [84, 94], [0, 1])}}>Timing</span></div>
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
+const Fps: React.FC<{f: number}> = ({f}) => {
+  const lf = f - S6;
+  const words = ['and', 'if', 'you', 'add'];
+  const solo = k(lf, [55, 70], [0, 1]);
+  return (
+    <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `translateX(${k(lf, [0, 100], [120, -120], Easing.linear)}px)`}}>
+      <div style={{display: 'flex', gap: 26, alignItems: 'center'}}>
+        {words.map((w, i) => { const a = k(lf, [i * 6, i * 6 + 12], [0, 1], OUT); return <span key={w} style={{...T(72), opacity: a * (1 - solo), transform: `translateY(${(1 - a) * 30}px)`}}>{w}</span>; })}
+        <span style={{...T(72 + 40 * solo, '#ff8a1f', 800), opacity: k(lf, [26, 36], [0, 1]), transform: `translateX(${-solo * 250}px)`}}>60 FPS</span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const Bubbles: React.FC<{f: number}> = ({f}) => {
+  const lf = f - S7;
+  const g = k(lf, [0, 30], [0, 1], OUT), gt = typed('Buttery Smooth', lf, 14, 40), bl = k(lf, [40, 60], [0, 1], OUT);
+  const bub = (bg: string, w: number, tail: 'l' | 'r', node: React.ReactNode, s: number): React.ReactNode => (
+    <div style={{position: 'relative', background: bg, borderRadius: 50, padding: '22px 40px', width: w, ...T(40, '#fff'), transform: `scale(${s})`, transformOrigin: tail === 'r' ? 'right bottom' : 'left bottom'}}>
+      {node}<div style={{position: 'absolute', bottom: -6, [tail === 'r' ? 'right' : 'left']: -6, width: 30, height: 30, background: bg, borderRadius: tail === 'r' ? '0 0 0 30px' : '0 0 30px 0'}} /></div>
+  );
+  return (
+    <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `translateY(${k(lf, [0, 120], [40, -40], Easing.linear)}px)`}}>
+      <div style={{position: 'relative', width: 1000, height: 400}}>
+        <div style={{position: 'absolute', right: 40, top: 60}}>{bub('#34c759', undefined as unknown as number, 'r', <span>● ● ●  {gt}</span>, g)}</div>
+        <div style={{position: 'absolute', left: 60, top: 210}}>{bub('#1f6bff', undefined as unknown as number, 'l', <span>Apple Style Animations</span>, bl)}</div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const Ask: React.FC<{f: number}> = ({f}) => {
+  const lf = f - S8;
+  const w = k(lf, [0, 24], [120, 900]);
+  return (
+    <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `scale(${k(lf, [0, 100], [1.15, 1])})`}}>
+      <div style={{width: w, height: 120, borderRadius: 60, background: interpolateColors(lf, [0, 24], ['#1f6bff', '#ffffff']), border: '2px solid #dcdce2', boxShadow: '0 20px 50px rgba(0,0,0,.1)', display: 'flex', alignItems: 'center', padding: '0 44px', boxSizing: 'border-box', overflow: 'hidden'}}>
+        <span style={{...T(46, '#888', 500)}}>{typed('Ask FansaChat anything…', lf, 20, 70)}</span>
+        <div style={{marginLeft: 'auto', width: 76, height: 76, borderRadius: 99, background: '#1f6bff', ...T(40, '#fff'), display: 'flex', alignItems: 'center', justifyContent: 'center', flex: '0 0 auto'}}>↑</div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+export const APPLE_FRAMES = END;
 export const AppleMorph: React.FC = () => {
   const f = useCurrentFrame();
-  let i = S.findIndex((s, j) => j === S.length - 1 || f < S[j + 1].at);
-  i = Math.min(i, S.length - 2);
-  const a = S[i], b = S[i + 1];
-  const MT = 18; // morph duration (frames @60fps) right before the next state
-  const t = interpolate(f, [b.at - MT, b.at], [0, 1], {easing: MORPH, extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  const mix = (x: number, y: number) => x + (y - x) * t;
-  const fadeOut = interpolate(t, [0, 0.45], [1, 0], {extrapolateRight: 'clamp'});
-  const fadeIn = interpolate(t, [0.55, 1], [0, 1], {extrapolateLeft: 'clamp'});
-  const iMsg = interpolate(f, [520, 545, 600, 612], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const page = f < S5 ? '#f4f4f6' : f < S6 ? '#050505' : '#f4f4f6';
+  const cut = (at: number) => k(f, [at - 6, at, at + 6], [0, 1, 0], Easing.linear); // tiny blur on scene changes
+  const blur = [S2, S5, S6, S7, S8].reduce((s, a) => s + cut(a) * 8, 0);
   return (
-    <AbsoluteFill style={{background: interpolateColors(t, [0, 1], [a.page, b.page]), alignItems: 'center', justifyContent: 'center'}}>
-      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: 'scale(1.4)'}}>
+    <AbsoluteFill style={{background: page, filter: `blur(${blur}px)`}}>
       <style>{css}</style>
-      <div style={{width: mix(a.w, b.w), height: mix(a.h, b.h), borderRadius: mix(a.r, b.r), background: interpolateColors(t, [0, 1], [a.bg, b.bg]),
-        border: `2px solid ${interpolateColors(t, [0, 1], [a.bd ?? 'rgba(0,0,0,0)', b.bd ?? 'rgba(0,0,0,0)'])}`, boxShadow: a.bg === '#ffffff' || b.bg === '#ffffff' ? '0 18px 50px rgba(0,0,0,.10)' : 'none',
-        display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden', filter: `blur(${Math.sin(t * Math.PI) * 3}px)`}}>
-        <div style={{position: 'absolute', opacity: fadeOut, transform: `scale(${1 - 0.06 * t})`}}>{a.c}</div>
-        <div style={{position: 'absolute', opacity: fadeIn, transform: `scale(${0.94 + 0.06 * t})`}}>{b.c}</div>
-      </div>
-      </AbsoluteFill>
-      {iMsg > 0 && <>
-        <Bubble c="#34c759" t="🟢 🟢 🟢  Buttery Smooth" x={1000} y={380} o={iMsg} />
-        <Bubble c="#1f6bff" t="Apple Style Animations" x={620} y={520} o={interpolate(f, [530, 555, 600, 612], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} />
-      </>}
+      {f < S2 && <Typing f={f} />}
+      {f >= S2 && f < S5 && <Morph f={f} />}
+      {f >= S5 && f < S6 && <Search f={f} />}
+      {f >= S6 && f < S7 && <Fps f={f} />}
+      {f >= S7 && f < S8 && <Bubbles f={f} />}
+      {f >= S8 && <Ask f={f} />}
     </AbsoluteFill>
   );
 };
