@@ -1,1 +1,1 @@
-{"entry":"src/templates/index.ts","comps":["Lottie-16x9","AM-16x9"],"stills":[0,0.5,1,1.5,2,2.5,2.9]}
+{"entry":"src/templates/index.ts","comps":["Lottie-16x9","AM-16x9"],"stills":[0,0.5,1,1.5,2,2.5,2.9],"prep":"python3 scripts/am2json.py public/templates/am/sample.xml -o public/templates/am/sample.json"}

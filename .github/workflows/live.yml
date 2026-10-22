@@ -29,6 +29,10 @@ jobs:
         with: { node-version: 22, cache: npm }
       - run: npm ci --no-audit --no-fund
       - run: npx remotion browser ensure
+      - name: Prep (live.json "prep" shell command, optional)
+        run: |
+          P=$(python3 -c "import json,os;print(json.load(open('live.json')).get('prep',''))" 2>/dev/null || true)
+          if [ -n "$P" ]; then bash -ec "$P"; fi
       - name: Render stills + preview
         run: |
           python3 - <<'PY'
