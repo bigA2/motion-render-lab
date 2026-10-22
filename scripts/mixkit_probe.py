@@ -3,6 +3,7 @@
 import io, json, re, sys, time, urllib.error, urllib.request, zipfile, collections
 UA = {"User-Agent": "Mozilla/5.0"}
 BASE = "https://mixkit.co/free-after-effects-templates/"
+HEAVY = {"ADBE Glo2", "ADBE Fractal Noise", "ADBE Lens Flare", "ADBE Turbulent Displace", "ADBE Displacement Map", "ADBE Exposure2", "ADBE Optics Compensation", "ADBE Echo", "ADBE Particle Playground", "ADBE CurvesCustom", "ADBE 4ColorGradient"}
 SAFE = {"ADBE Fill", "ADBE Gaussian Blur 2", "ADBE Fast Blur", "ADBE Tint", "ADBE Ramp", "ADBE Drop Shadow", "ADBE Stroke", "ADBE Linear Wipe", "ADBE Radial Wipe", "ADBE Venetian Blinds"}
 
 def get(url, tries=6):
@@ -39,16 +40,18 @@ def probe(t):
     t["footage"] = sum(n.lower().endswith((".mp4", ".mov", ".png", ".jpg", ".psd", ".ai")) for n in names)
     if not aeps: t["error"] = "no .aep"; return t
     b = z.read(aeps[0]); t["aep_mb"] = round(len(b) / 1e6, 1)
-    effects = collections.Counter(m.decode() for m in re.findall(rb"ADBE [A-Za-z0-9 ]{2,30}", b) if not m.startswith((b"ADBE Transform", b"ADBE Vector", b"ADBE Text", b"ADBE Root", b"ADBE Mask", b"ADBE Effect Parade", b"ADBE Layer", b"ADBE Marker", b"ADBE Time", b"ADBE Audio", b"ADBE Material", b"ADBE Position", b"ADBE Scale", b"ADBE Opacity", b"ADBE Rotat", b"ADBE Anchor", b"ADBE Orientation")))
-    plug = sorted({m.decode() for m in re.findall(rb"(?:CC |VC |Trapcode|Element|Saber|Deep Glow|Optical Flares)[A-Za-z0-9 ]{2,25}", b)})
-    t["layers"] = len(re.findall(rb"Ldta", b)); t["comps"] = len(re.findall(rb"cdta", b))
-    t["effects"] = dict(effects.most_common(12)); t["third_party"] = plug[:8]
-    t["fonts"] = sorted({m.decode() for m in re.findall(rb"[A-Z][A-Za-z]+-(?:Bold|Regular|Medium|Light|Black|SemiBold)", b)})[:6]
+    names = collections.Counter(m.decode() for m in re.findall(rb"ADBE [A-Za-z0-9]+(?: [A-Za-z0-9]+)?", b))
+    effects = {k: v for k, v in names.items() if k in HEAVY or k in SAFE}
+    heavy = [k for k in effects if k in HEAVY]
+    plug = sorted({m.decode().strip() for m in re.findall(rb"(?:Element 3D|Trapcode [A-Za-z]+|Saber|Deep Glow|Optical Flares|Twitch|Universe [A-Za-z]+)", b)})
+    cc = sorted({m.decode().strip() for m in re.findall(rb"CC [A-Z][a-z]+(?: [A-Z][a-z]+)?", b)} - {"CC Composite"})
+    t["layers"] = len(re.findall(rb"ldta", b)); t["comps"] = len(re.findall(rb"cdta", b))
+    t["effects"] = effects; t["third_party"] = plug; t["cc_effects"] = cc[:6]
+    t["has_3d_camera"] = b"ADBE Camera Options Group" in b and len(re.findall(rb"ADBE Camera Options Group", b)) > 1
     t["expressions"] = len(re.findall(rb"wiggle\(|loopOut\(|valueAtTime\(|thisComp\.", b))
-    bad = [e for e in effects if e not in SAFE]
-    score = 100 - 6 * len(bad) - 25 * bool(plug) - min(30, t["expressions"]) - 10 * (t["footage"] > 0)
+    score = 100 - 12 * len(heavy) - 40 * bool(plug) - 4 * len(cc) - min(25, t["expressions"]) - 10 * (t["footage"] > 0) - 10 * t["has_3d_camera"]
     t["convert_score"] = max(0, score)
-    t["route"] = "remotion-rebuild (aep2json)" if score >= 60 else ("lottiefiles-aep2lottie then fix" if score >= 30 else "skip / study motion only")
+    t["route"] = "remotion-rebuild (aep2json)" if score >= 60 else ("lottiefiles-aep2lottie then fix" if score >= 35 else "study motion only")
     return t
 
 if __name__ == "__main__":
@@ -59,5 +62,5 @@ if __name__ == "__main__":
     rows = sorted(out, key=lambda x: -x.get("convert_score", -1))
     md = ["# Mixkit free After Effects templates — convertibility (auto-generated on GitHub Actions)", "", "| score | template | category | layers | effects (non-basic) | 3rd-party | expressions | route |", "|---|---|---|---|---|---|---|---|"]
     for t in rows:
-        md.append(f"| {t.get('convert_score','-')} | [{t['slug']}]({t['page']}) ([preview]({t['preview']})) | {t['category']} | {t.get('layers','-')} | {', '.join(k for k in t.get('effects',{}) if k not in SAFE)[:80]} | {', '.join(t.get('third_party',[]))} | {t.get('expressions','-')} | {t.get('route', t.get('error',''))} |")
+        md.append(f"| {t.get('convert_score','-')} | [{t['slug']}]({t['page']}) ([preview]({t['preview']})) | {t['category']} | {t.get('layers','-')} | {', '.join(k for k in t.get('effects',{}) if k in HEAVY)[:80]} {' '.join(t.get('cc_effects',[]))[:60]} | {', '.join(t.get('third_party',[]))} | {t.get('expressions','-')} | {t.get('route', t.get('error',''))} |")
     open("research/MIXKIT_AE_REPORT.md", "w").write("\n".join(md) + "\n")
