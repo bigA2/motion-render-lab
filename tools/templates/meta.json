@@ -1,1 +1,1 @@
-{"branch": "tools/templates", "time": "2026-10-22 21:03:39", "msg": "clones: GlassUI 1:1 recreation (3D glass UI explainer)", "sha": "86141d78536db0b0e8a9c01bfac2801adc6af0a9", "ts": 1792681419}
+{"branch": "tools/templates", "time": "2026-10-22 21:06:42", "msg": "clones: GlassUI scale to match reference, fix hidden Start Now button, readable URL", "sha": "bac51c615d02067dd0f8934de2b973b81b57e4e3", "ts": 1792681602}
