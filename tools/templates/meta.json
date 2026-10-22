@@ -1,1 +1,1 @@
-{"branch": "tools/templates", "time": "2026-10-22 12:04:49", "msg": "research: fix convertibility scoring (real layer chunks, heavy/3rd-party effects only)", "sha": "8c128d17487057fbdd350186035ec35b00bc685d", "ts": 1792649089}
+{"branch": "tools/templates", "time": "2026-10-22 13:12:35", "msg": "study: fix artifact paths (multi-line)", "sha": "a274925bc0242f28da9c724c105cbff6c7472be2", "ts": 1792653155}
