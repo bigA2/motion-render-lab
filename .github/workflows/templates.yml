@@ -10,11 +10,12 @@ on:
       replace: { description: 'JSON {"text":{"old":"new"},"colors":{"#hex":"#hex"}}', required: false, default: '{}' }
 jobs:
   render:
+    if: github.event_name == 'push' || inputs.kind == matrix.kind
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
       fail-fast: false
-      matrix: { kind: '${{ fromJSON(github.event_name == ''push'' && ''["lottie","am"]'' || format(''["{0}"]'', inputs.kind)) }}' }
+      matrix: { kind: [lottie, am] }
     env:
       KIND: ${{ matrix.kind }}
       NAME: ${{ inputs.name || 'sample' }}
