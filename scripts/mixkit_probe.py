@@ -1,19 +1,26 @@
 # Crawl Mixkit's free After Effects templates, download each zip on the runner, and score how convertible it is
 # (by scanning the .aep binary for layer chunks, effect match-names, fonts and footage). Nothing from Mixkit is committed.
-import io, json, re, sys, urllib.request, zipfile, collections
+import io, json, re, sys, time, urllib.error, urllib.request, zipfile, collections
 UA = {"User-Agent": "Mozilla/5.0"}
 BASE = "https://mixkit.co/free-after-effects-templates/"
 SAFE = {"ADBE Fill", "ADBE Gaussian Blur 2", "ADBE Fast Blur", "ADBE Tint", "ADBE Ramp", "ADBE Drop Shadow", "ADBE Stroke", "ADBE Linear Wipe", "ADBE Radial Wipe", "ADBE Venetian Blinds"}
 
-def get(url):
-    return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60).read()
+def get(url, tries=6):
+    for k in range(tries):  # polite: pause between requests, back off on 429
+        time.sleep(1.5)
+        try:
+            return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60).read()
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or k == tries - 1: raise
+            time.sleep(30 * (k + 1))
 
 def catalog(limit):
     seen = collections.OrderedDict()
     cats = set(re.findall(r'href="/free-after-effects-templates/([a-z-]+)/"', get(BASE).decode("utf-8", "ignore")))
     for cat in sorted(cats | {""}):
         for page in range(1, 20):
-            html = get(f"{BASE}{cat + '/' if cat else ''}?page={page}").decode("utf-8", "ignore")
+            try: html = get(f"{BASE}{cat + '/' if cat else ''}?page={page}").decode("utf-8", "ignore")
+            except Exception: break
             items = re.findall(r'href="/free-after-effects-templates/([a-z0-9-]+)-(\d+)/"', html)
             new = [(s, i) for s, i in items if i not in seen]
             for s, i in new: seen[i] = {"id": i, "slug": s, "category": cat or "all"}
