@@ -16,3 +16,16 @@ jobs:
           git config user.name bigA2; git config user.email "293160669+bigA2@users.noreply.github.com"
           git add research/MIXKIT_AE_REPORT.md research/mixkit_ae.json
           git commit -m "research: Mixkit AE convertibility report" && git pull --rebase -q && git push
+  gallery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p site && python scripts/asset_gallery.py site/index.html
+      - name: Publish gallery to gh-pages /assets/
+        run: |
+          git config user.name bigA2; git config user.email "293160669+bigA2@users.noreply.github.com"
+          cp research/asset_gallery.json site/
+          git fetch -q origin gh-pages && git worktree add -q ../pages origin/gh-pages
+          rm -rf ../pages/assets && mkdir -p ../pages/assets && cp -r site/* ../pages/assets/
+          cd ../pages && git add -A assets && git commit -qm "assets gallery" && git push -q origin HEAD:gh-pages
