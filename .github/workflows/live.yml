@@ -37,7 +37,7 @@ jobs:
           entry = os.environ.get('IN_ENTRY') or cfg.get('entry') or 'src/templates/index.ts'
           comps = [os.environ['IN_COMP']] if os.environ.get('IN_COMP') else cfg.get('comps')
           stills = (cfg.get('stills') or [0, 0.5, 1, 1.5, 2, 2.5])[:10]
-          out = subprocess.run(['npx','remotion','compositions',entry], capture_output=True, text=True); out = re.sub(r'\[[0-9;]*m', '', out.stdout + out.stderr)
+          out = subprocess.run(['npx','remotion','compositions',entry], capture_output=True, text=True); out = re.sub(r'.\[[0-9;]*m', '', out.stdout + out.stderr)
           info = {}
           for line in out.splitlines():
               m = re.match(r'^\s*(\S+)\s+(\d+)\s+(\d+)x(\d+)\s+(\d+)', line)
