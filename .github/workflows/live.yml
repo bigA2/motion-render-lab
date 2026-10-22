@@ -1,0 +1,125 @@
+# Live board: on every push, render stills + low-bitrate preview and publish to gh-pages under /<branch>/.
+# Config: live.json at repo root = {"entry":"src/x/index.ts","comps":["A","B"],"stills":[0,1,2,3,4,5]}
+name: live
+on:
+  push:
+    branches-ignore: [gh-pages]
+  workflow_dispatch:
+    inputs:
+      entry: { required: false }
+      comp: { required: false }
+concurrency:
+  group: live-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      BRANCH: ${{ github.ref_name }}
+      SHA: ${{ github.sha }}
+      REPO: ${{ github.repository }}
+      IN_ENTRY: ${{ inputs.entry }}
+      IN_COMP: ${{ inputs.comp }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - run: npx remotion browser ensure
+      - name: Render stills + preview
+        run: |
+          python3 - <<'PY'
+          import json, os, re, subprocess
+          cfg = json.load(open('live.json')) if os.path.exists('live.json') else {}
+          entry = os.environ.get('IN_ENTRY') or cfg.get('entry') or 'src/templates/index.ts'
+          comps = [os.environ['IN_COMP']] if os.environ.get('IN_COMP') else cfg.get('comps')
+          stills = (cfg.get('stills') or [0, 0.5, 1, 1.5, 2, 2.5])[:10]
+          out = subprocess.run(['npx','remotion','compositions',entry], capture_output=True, text=True).stdout
+          info = {}
+          for line in out.splitlines():
+              m = re.match(r'^\s*(\S+)\s+(\d+)\s+(\d+)x(\d+)\s+(\d+)', line)
+              if m: info[m[1]] = dict(fps=int(m[2]), w=int(m[3]), h=int(m[4]), n=int(m[5]))
+          print(out); print(info)
+          if not comps: comps = list(info)[:1]
+          os.makedirs('site', exist_ok=True)
+          meta = {'entry': entry, 'comps': []}
+          for c in comps:
+              i = info.get(c)
+              if not i:
+                  print('SKIP unknown comp', c); continue
+              d = f'site/{c}'; os.makedirs(d, exist_ok=True)
+              sc = 480 / i['w']
+              items = []
+              for k, s in enumerate(stills):
+                  f = max(0, min(i['n'] - 1, round(s * i['fps'])))
+                  p = f'{d}/s{k:02d}.jpg'
+                  r = subprocess.run(['npx','remotion','still',entry,c,p,f'--frame={f}',f'--scale={sc:.4f}','--image-format=jpeg','--jpeg-quality=80','--gl=swangle','--log=error','--timeout=120000'])
+                  if r.returncode == 0: items.append({'file': f's{k:02d}.jpg', 'sec': s})
+              vs = 540 / min(i['w'], i['h'])
+              subprocess.run(['npx','remotion','render',entry,c,f'{d}/preview.mp4','--codec=h264',f'--scale={vs:.4f}','--crf=32','--x264-preset=veryfast','--gl=swangle','--log=error','--timeout=120000'])
+              meta['comps'].append({'id': c, 'stills': items, 'video': os.path.exists(f'{d}/preview.mp4')})
+          json.dump(meta, open('site/comps.json', 'w'))
+          PY
+      - name: Build page and publish to gh-pages
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess, html
+          e = os.environ
+          msg = subprocess.run(['git','log','-1','--format=%B',e['SHA']], capture_output=True, text=True).stdout.strip()
+          t = subprocess.run(['date','+%Y-%m-%d %H:%M:%S'], capture_output=True, text=True, env={**e,'TZ':'Asia/Dhaka'}).stdout.strip()
+          meta = json.load(open('site/comps.json'))
+          h = html.escape
+          repo = e['REPO']; sha = e['SHA']
+          body = ''
+          for c in meta['comps']:
+              body += '<section><h2>' + h(c['id']) + '</h2>'
+              if c['video']:
+                  body += '<video src="' + h(c['id']) + '/preview.mp4" autoplay muted loop controls playsinline></video>'
+              body += '<div class="g">' + ''.join('<figure><img loading="lazy" src="%s/%s"><figcaption>%ss</figcaption></figure>' % (h(c['id']), s['file'], s['sec']) for s in c['stills']) + '</div></section>'
+          css = 'body{background:#0d0f14;color:#e8eaf0;font:16px/1.5 system-ui,sans-serif;margin:auto;padding:16px;max-width:1100px}a{color:#8ab4ff}h1{font-size:20px;margin:0}.m{color:#9aa3b5;font-size:14px;white-space:pre-wrap}video{width:100%;max-height:70vh;background:#000;border-radius:8px}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:8px}img{width:100%;border-radius:6px;display:block}figure{margin:0}figcaption{font-size:13px;color:#9aa3b5;text-align:center}section{margin-top:24px}'
+          js = 'var v="%s";setInterval(function(){fetch("v.txt?"+Date.now()).then(function(r){return r.text()}).then(function(x){if(x.trim()!==v)location.reload()}).catch(function(){})},30000)' % sha
+          page = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>%s - live</title><style>%s</style></head><body>'
+                  '<p><a href="%s">&larr; all branches</a></p><h1>%s</h1><div class="m">%s</div>'
+                  '<div class="m">%s (Asia/Dhaka) &middot; <a href="https://github.com/%s/commit/%s">commit diff %s</a></div>%s<script>%s</script></body></html>') % (
+                  h(e['BRANCH']), css, '../' * (e['BRANCH'].count('/') + 1), h(e['BRANCH']), h(msg), t, repo, sha, sha[:7], body, js)
+          open('site/index.html','w').write(page)
+          open('site/v.txt','w').write(sha)
+          ts = int(subprocess.run(['date','+%s'], capture_output=True, text=True).stdout)
+          json.dump({'branch': e['BRANCH'], 'time': t, 'msg': msg.splitlines()[0] if msg else '', 'sha': sha, 'ts': ts}, open('site/meta.json','w'))
+          PY
+          cat > "$RUNNER_TEMP/root.py" <<'PY'
+          import json, glob, html
+          rows = []
+          for p in glob.glob('**/meta.json', recursive=True):
+              try: rows.append(json.load(open(p)))
+              except Exception: pass
+          rows.sort(key=lambda r: -r['ts'])
+          h = html.escape
+          li = ''.join('<li><a href="%s/">%s</a><br><span>%s Dhaka &middot; %s</span></li>' % (h(r['branch']), h(r['branch']), h(r['time']), h(r['msg'])) for r in rows)
+          key = ','.join('%s@%s' % (r['branch'], r['sha'][:7]) for r in rows)
+          css = 'body{background:#0d0f14;color:#e8eaf0;font:16px/1.5 system-ui,sans-serif;max-width:800px;margin:auto;padding:16px}a{color:#8ab4ff;font-size:18px}span{color:#9aa3b5;font-size:14px}li{margin:12px 0}ul{padding-left:18px}'
+          js = 'var k=%s;setInterval(function(){fetch("keys.txt?"+Date.now()).then(function(r){return r.text()}).then(function(x){if(x.trim()!==k)location.reload()}).catch(function(){})},30000)' % json.dumps(key)
+          open('index.html','w').write('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Live board</title><style>%s</style></head><body><h1>Live board</h1><ul>%s</ul><script>%s</script></body></html>' % (css, li, js))
+          open('keys.txt','w').write(key)
+          PY
+          git config --global user.name live-bot
+          git config --global user.email live-bot@users.noreply.github.com
+          URL="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          for try in 1 2 3 4 5 6; do
+            rm -rf pages; mkdir pages; cd pages; git init -q
+            OLD=""
+            if git fetch -q --depth=1 "$URL" gh-pages; then git checkout -q FETCH_HEAD; OLD=$(git rev-parse HEAD); fi
+            rm -rf "./$BRANCH"; mkdir -p "./$BRANCH"; cp -r ../site/. "./$BRANCH/"; touch .nojekyll
+            python3 "$RUNNER_TEMP/root.py"
+            git add -A; git commit -q -m "live: $BRANCH ${SHA::7}"; git branch -M gh-pages
+            if [ -n "$OLD" ]; then
+              git push -q --force-with-lease=gh-pages:$OLD "$URL" gh-pages && exit 0
+            else
+              git push -q "$URL" gh-pages && exit 0
+            fi
+            cd ..; sleep $((try*3))
+          done
+          exit 1
