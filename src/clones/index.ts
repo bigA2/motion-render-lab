@@ -2,7 +2,9 @@
 import React from 'react';
 import {Composition, registerRoot} from 'remotion';
 import {GlassUI} from './GlassUI';
+import {TextAnim} from './TextAnim';
 
 registerRoot(() => React.createElement(React.Fragment, null,
   React.createElement(Composition, {id: 'GlassUI-16x9', component: GlassUI, durationInFrames: 300, fps: 30, width: 1920, height: 1080}),
+  React.createElement(Composition, {id: 'TextAnim-4x5', component: TextAnim, durationInFrames: 330, fps: 30, width: 1080, height: 1350}),
 ));
