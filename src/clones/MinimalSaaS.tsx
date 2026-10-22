@@ -14,7 +14,7 @@ const G = '#22a447', DG = '#0d4a24', RED = '#e3342f';
 const T = (s: number, c = '#151515'): React.CSSProperties => ({fontFamily: FONT, fontSize: s, color: c, whiteSpace: 'nowrap'});
 
 const Words: React.FC<{f: number; t: string; hot?: string[]; hotColor?: string; size?: number; align?: 'center' | 'left'}> = ({f, t, hot = [], hotColor = RED, size = 40, align = 'center'}) => (
-  <div style={{display: 'flex', gap: size * 0.26, justifyContent: align === 'left' ? 'flex-start' : 'center', flexWrap: 'wrap', maxWidth: 1300}}>
+  <div style={{display: 'flex', gap: size * 0.26, justifyContent: align === 'left' ? 'flex-start' : 'center', flexWrap: 'wrap', maxWidth: 1300, width: 'fit-content'}}>
     {t.split(' ').map((w, i) => {
       const a = k(f, [i * 2.5, i * 2.5 + 9], [0, 1]);
       const isHot = hot.includes(w.replace(/[.,?]/g, ''));
@@ -149,7 +149,7 @@ export const MinimalSaaS: React.FC = () => {
       <div style={{position: 'absolute', right: -300, top: -420, width: 1500, height: 1100, transform: `rotate(-28deg) scale(${wash})`, background: 'radial-gradient(closest-side, rgba(60,200,100,.75), rgba(60,200,100,.25) 55%, rgba(60,200,100,0))', filter: 'blur(30px)'}} />
       <div style={{position: 'absolute', left: -380, bottom: -420, width: 1000, height: 800, background: 'radial-gradient(closest-side, rgba(60,200,100,.55), rgba(60,200,100,0))', filter: 'blur(30px)'}} />
       <div style={{position: 'absolute', top: 18, width: '100%', textAlign: 'center', ...T(22, '#111'), letterSpacing: 2, fontWeight: 700}}>IN THIS VIDEO...</div>
-      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', filter: `blur(${pop * 7}px)`, transform: `scale(${1 + pop * 0.04})`}}>{b.node(lf)}</AbsoluteFill>
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', filter: `blur(${pop * 7}px)`, transform: `scale(${1.38 + pop * 0.05})`}}>{b.node(lf)}</AbsoluteFill>
     </AbsoluteFill>
   );
 };
