@@ -7,6 +7,7 @@ import {AppleMorph, APPLE_FRAMES} from './AppleMorph';
 import {CameraFly, CAMERA_FRAMES} from './CameraFly';
 import {MinimalSaaS, MINIMAL_SAAS_FRAMES} from './MinimalSaaS';
 import {LogoField} from './LogoField';
+import {KineticType, KINETIC_FRAMES} from './KineticType';
 
 registerRoot(() => React.createElement(React.Fragment, null,
   React.createElement(Composition, {id: 'GlassUI-16x9', component: GlassUI, durationInFrames: 300, fps: 30, width: 1920, height: 1080}),
@@ -14,5 +15,6 @@ registerRoot(() => React.createElement(React.Fragment, null,
   React.createElement(Composition, {id: 'CameraFly-16x9', component: CameraFly, durationInFrames: CAMERA_FRAMES, fps: 30, width: 1920, height: 1080}),
   React.createElement(Composition, {id: 'MinimalSaaS-16x9', component: MinimalSaaS, durationInFrames: MINIMAL_SAAS_FRAMES, fps: 30, width: 1920, height: 1080}),
   React.createElement(Composition, {id: 'LogoField-16x9', component: LogoField, durationInFrames: 240, fps: 30, width: 1920, height: 1080}),
+  React.createElement(Composition, {id: 'KineticType-16x9', component: KineticType, durationInFrames: KINETIC_FRAMES, fps: 30, width: 1920, height: 1080}),
   React.createElement(Composition, {id: 'TextAnim-4x5', component: TextAnim, durationInFrames: 330, fps: 30, width: 1080, height: 1350}),
 ));
