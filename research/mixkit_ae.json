@@ -7,30 +7,18 @@
   "preview": "https://assets.mixkit.co/video-templates/546/mixkit-546-360.mp4",
   "footage": 0,
   "aep_mb": 2.0,
-  "layers": 0,
+  "layers": 158,
   "comps": 10,
   "effects": {
-   "ADBE Group End": 1893,
-   "ADBE Envir Appear in Reflect": 158,
    "ADBE Fill": 102,
-   "ADBE Camera Options Group": 93,
-   "ADBE Ramp": 85,
-   "ADBE Camera Zoom": 72,
-   "ADBE Blend Options Group": 65,
-   "ADBE Adv Blend Group": 65,
-   "ADBE Extrsn Options Group": 65,
-   "ADBE Bevel Direction": 65,
-   "ADBE Appears in Reflections": 65,
-   "ADBE Reflection Coefficient": 65
+   "ADBE Ramp": 85
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 14,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 76,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "593",
@@ -40,34 +28,26 @@
   "preview": "https://assets.mixkit.co/video-templates/593/mixkit-593-360.mp4",
   "footage": 12,
   "aep_mb": 7.9,
-  "layers": 0,
+  "layers": 891,
   "comps": 53,
   "effects": {
-   "ADBE Group End": 11320,
-   "ADBE Envir Appear in Reflect": 891,
-   "ADBE Camera Options Group": 487,
-   "ADBE Effect Built In Params": 420,
-   "ADBE Blend Options Group": 404,
-   "ADBE Adv Blend Group": 404,
-   "ADBE Extrsn Options Group": 404,
-   "ADBE Bevel Direction": 404,
-   "ADBE Appears in Reflections": 404,
-   "ADBE Reflection Coefficient": 404,
-   "ADBE Glossiness Coefficient": 404,
-   "ADBE Fresnel Coefficient": 404
+   "ADBE CurvesCustom": 43,
+   "ADBE Fill": 104,
+   "ADBE Ramp": 22,
+   "ADBE Tint": 70,
+   "ADBE Drop Shadow": 47,
+   "ADBE Fast Blur": 200
   },
-  "third_party": [
-   "CC 2018 ",
-   "CC Composite",
-   "CC CompositeLIST",
+  "third_party": [],
+  "cc_effects": [
    "CC Compositepdnm",
    "CC Compositepjef",
    "CC Compositetdmn"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 200,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 31,
+  "route": "study motion only"
  },
  {
   "id": "565",
@@ -77,36 +57,24 @@
   "preview": "https://assets.mixkit.co/video-templates/565/mixkit-565-360.mp4",
   "footage": 1,
   "aep_mb": 5.8,
-  "layers": 0,
+  "layers": 122,
   "comps": 7,
   "effects": {
-   "ADBE Group End": 1775,
-   "ADBE Envir Appear in Reflect": 122,
    "ADBE Fill": 88,
-   "ADBE Camera Options Group": 63,
-   "ADBE Blend Options Group": 59,
-   "ADBE Adv Blend Group": 59,
-   "ADBE Extrsn Options Group": 59,
-   "ADBE Bevel Direction": 59,
-   "ADBE Appears in Reflections": 59,
-   "ADBE Reflection Coefficient": 59,
-   "ADBE Glossiness Coefficient": 59,
-   "ADBE Fresnel Coefficient": 59
+   "ADBE Turbulent Displace": 39,
+   "ADBE Tint": 11
   },
-  "third_party": [
-   "CC 2015 ",
-   "CC 2018 ",
-   "CC Radial BlLIST",
+  "third_party": [],
+  "cc_effects": [
+   "CC Radial Bl",
    "CC Radial Blpdnm",
    "CC Radial Bltdmn",
-   "CC Radial Blur",
-   "Element 02",
-   "Elements 01"
+   "CC Radial Blur"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 18,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 34,
+  "route": "study motion only"
  },
  {
   "id": "547",
@@ -116,27 +84,17 @@
   "preview": "https://assets.mixkit.co/video-templates/547/mixkit-547-360.mp4",
   "footage": 0,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 54,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 581,
-   "ADBE Envir Appear in Reflect": 54,
-   "ADBE Slider Control": 47,
-   "ADBE Camera Options Group": 36,
-   "ADBE Fill": 34,
-   "ADBE Effect Built In Params": 21,
-   "ADBE Blend Options Group": 18,
-   "ADBE Adv Blend Group": 18,
-   "ADBE Extrsn Options Group": 18,
-   "ADBE Bevel Direction": 18,
-   "ADBE Appears in Reflections": 18,
-   "ADBE Reflection Coefficient": 18
+   "ADBE Fill": 34
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 20,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 70,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "545",
@@ -146,31 +104,20 @@
   "preview": "https://assets.mixkit.co/video-templates/545/mixkit-545-360.mp4",
   "footage": 0,
   "aep_mb": 1.4,
-  "layers": 0,
+  "layers": 202,
   "comps": 16,
   "effects": {
-   "ADBE Group End": 1753,
-   "ADBE Envir Appear in Reflect": 202,
-   "ADBE Camera Options Group": 145,
-   "ADBE Blend Options Group": 57,
-   "ADBE Adv Blend Group": 57,
-   "ADBE Extrsn Options Group": 57,
-   "ADBE Bevel Direction": 57,
-   "ADBE Appears in Reflections": 57,
-   "ADBE Reflection Coefficient": 57,
-   "ADBE Glossiness Coefficient": 57,
-   "ADBE Fresnel Coefficient": 57,
-   "ADBE Transparency Coefficient": 57
+   "ADBE Fill": 39
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Tiler",
-   "CC TilerLIST",
    "CC Tilerqtlg"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 4,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 78,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "627",
@@ -180,30 +127,17 @@
   "preview": "https://assets.mixkit.co/video-templates/627/mixkit-627-360.mp4",
   "footage": 0,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 20,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 314,
-   "ADBE Fill": 38,
-   "ADBE Color Control": 25,
-   "ADBE Envir Appear in Reflect": 20,
-   "ADBE Effect Built In Params": 12,
-   "ADBE Blend Options Group": 11,
-   "ADBE Adv Blend Group": 11,
-   "ADBE Extrsn Options Group": 11,
-   "ADBE Bevel Direction": 11,
-   "ADBE Appears in Reflections": 11,
-   "ADBE Reflection Coefficient": 11,
-   "ADBE Glossiness Coefficient": 11
+   "ADBE Fill": 38
   },
   "third_party": [],
-  "fonts": [
-   "Candara-Bold",
-   "Montserrat-Bold"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 15,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 75,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "561",
@@ -213,35 +147,23 @@
   "preview": "https://assets.mixkit.co/video-templates/561/mixkit-561-360.mp4",
   "footage": 2,
   "aep_mb": 2.0,
-  "layers": 0,
+  "layers": 137,
   "comps": 8,
   "effects": {
-   "ADBE Group End": 1618,
-   "ADBE Exposure2": 254,
-   "ADBE Envir Appear in Reflect": 137,
-   "ADBE Camera Options Group": 73,
-   "ADBE Blend Options Group": 64,
-   "ADBE Adv Blend Group": 64,
-   "ADBE Extrsn Options Group": 64,
-   "ADBE Bevel Direction": 64,
-   "ADBE Appears in Reflections": 64,
-   "ADBE Reflection Coefficient": 64,
-   "ADBE Glossiness Coefficient": 64,
-   "ADBE Fresnel Coefficient": 64
+   "ADBE Fill": 34,
+   "ADBE Ramp": 32,
+   "ADBE Exposure2": 254
   },
-  "third_party": [
-   "CC 2015 ",
-   "CC 2018 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Radial Fapdnm",
-   "CC Radial Fast Blur",
-   "CC Radial Fatdmn",
-   "Element Color 01",
-   "Element Color 02"
+   "CC Radial Fast",
+   "CC Radial Fatdmn"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 8,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 48,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "738",
@@ -251,31 +173,19 @@
   "preview": "https://assets.mixkit.co/video-templates/738/mixkit-738-360.mp4",
   "footage": 0,
   "aep_mb": 3.6,
-  "layers": 0,
+  "layers": 122,
   "comps": 9,
   "effects": {
-   "ADBE Group End": 1291,
-   "ADBE Envir Appear in Reflect": 122,
    "ADBE Fill": 92,
-   "ADBE Camera Options Group": 81,
    "ADBE Stroke": 47,
-   "ADBE Effect Built In Params": 47,
-   "ADBE Blend Options Group": 41,
-   "ADBE Adv Blend Group": 41,
-   "ADBE Extrsn Options Group": 41,
-   "ADBE Bevel Direction": 41,
-   "ADBE Appears in Reflections": 41,
-   "ADBE Reflection Coefficient": 41
+   "ADBE Drop Shadow": 24
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2017 ",
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 10,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "741",
@@ -285,31 +195,19 @@
   "preview": "https://assets.mixkit.co/video-templates/741/mixkit-741-360.mp4",
   "footage": 1,
   "aep_mb": 3.3,
-  "layers": 0,
+  "layers": 93,
   "comps": 7,
   "effects": {
-   "ADBE Group End": 960,
-   "ADBE Envir Appear in Reflect": 93,
-   "ADBE Fractal Noise": 88,
-   "ADBE Camera Options Group": 63,
-   "ADBE Geometry2": 41,
-   "ADBE Fill": 38,
-   "ADBE Effect Built In Params": 37,
    "ADBE Displacement Map": 34,
-   "ADBE Minimax": 34,
-   "ADBE Blend Options Group": 30,
-   "ADBE Adv Blend Group": 30,
-   "ADBE Extrsn Options Group": 30
+   "ADBE Fill": 38,
+   "ADBE Fractal Noise": 88
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2017 ",
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 3,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 53,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "611",
@@ -319,27 +217,18 @@
   "preview": "https://assets.mixkit.co/video-templates/611/mixkit-611-360.mp4",
   "footage": 0,
   "aep_mb": 0.6,
-  "layers": 0,
+  "layers": 105,
   "comps": 9,
   "effects": {
-   "ADBE Group End": 732,
-   "ADBE Envir Appear in Reflect": 105,
-   "ADBE Camera Options Group": 81,
-   "ADBE Camera Zoom": 81,
-   "ADBE AudSpect": 53,
-   "ADBE Blend Options Group": 24,
-   "ADBE Adv Blend Group": 24,
-   "ADBE Extrsn Options Group": 24,
-   "ADBE Bevel Direction": 24,
-   "ADBE Appears in Reflections": 24,
-   "ADBE Reflection Coefficient": 24,
-   "ADBE Glossiness Coefficient": 24
+   "ADBE Drop Shadow": 17,
+   "ADBE Fill": 17
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 2,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 88,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "596",
@@ -349,30 +238,19 @@
   "preview": "https://assets.mixkit.co/video-templates/596/mixkit-596-360.mp4",
   "footage": 17,
   "aep_mb": 8.5,
-  "layers": 0,
+  "layers": 305,
   "comps": 21,
   "effects": {
-   "ADBE Group End": 3107,
-   "ADBE Envir Appear in Reflect": 305,
-   "ADBE Camera Options Group": 194,
-   "ADBE Fill": 143,
-   "ADBE Blend Options Group": 111,
-   "ADBE Adv Blend Group": 111,
-   "ADBE Extrsn Options Group": 111,
-   "ADBE Bevel Direction": 111,
-   "ADBE Appears in Reflections": 111,
-   "ADBE Reflection Coefficient": 111,
-   "ADBE Glossiness Coefficient": 111,
-   "ADBE Fresnel Coefficient": 111
+   "ADBE Fill": 143
   },
-  "third_party": [
-   "CC 2019 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Profile"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 2,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 74,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "562",
@@ -382,30 +260,18 @@
   "preview": "https://assets.mixkit.co/video-templates/562/mixkit-562-360.mp4",
   "footage": 1,
   "aep_mb": 1.1,
-  "layers": 0,
+  "layers": 187,
   "comps": 14,
   "effects": {
-   "ADBE Group End": 1754,
-   "ADBE Envir Appear in Reflect": 187,
-   "ADBE Camera Options Group": 126,
    "ADBE Fill": 85,
-   "ADBE Blend Options Group": 61,
-   "ADBE Adv Blend Group": 61,
-   "ADBE Extrsn Options Group": 61,
-   "ADBE Bevel Direction": 61,
-   "ADBE Appears in Reflections": 61,
-   "ADBE Reflection Coefficient": 61,
-   "ADBE Glossiness Coefficient": 61,
-   "ADBE Fresnel Coefficient": 61
+   "ADBE Drop Shadow": 19
   },
-  "third_party": [
-   "CC 2015 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "771",
@@ -415,27 +281,19 @@
   "preview": "https://assets.mixkit.co/video-templates/771/mixkit-771-360.mp4",
   "footage": 10,
   "aep_mb": 0.9,
-  "layers": 0,
+  "layers": 151,
   "comps": 10,
   "effects": {
-   "ADBE Group End": 1423,
-   "ADBE Envir Appear in Reflect": 151,
-   "ADBE Fractal Noise": 111,
-   "ADBE Camera Options Group": 103,
-   "ADBE Blend Options Group": 48,
-   "ADBE Adv Blend Group": 48,
-   "ADBE Extrsn Options Group": 48,
-   "ADBE Bevel Direction": 48,
-   "ADBE Appears in Reflections": 48,
-   "ADBE Reflection Coefficient": 48,
-   "ADBE Glossiness Coefficient": 48,
-   "ADBE Fresnel Coefficient": 48
+   "ADBE CurvesCustom": 19,
+   "ADBE Tint": 23,
+   "ADBE Fractal Noise": 111
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 56,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "784",
@@ -445,31 +303,22 @@
   "preview": "https://assets.mixkit.co/video-templates/784/mixkit-784-360.mp4",
   "footage": 1,
   "aep_mb": 8.0,
-  "layers": 0,
+  "layers": 876,
   "comps": 53,
   "effects": {
-   "ADBE Group End": 11510,
-   "ADBE Envir Appear in Reflect": 876,
-   "ADBE Camera Options Group": 488,
-   "ADBE Effect Built In Params": 451,
-   "ADBE Blend Options Group": 388,
-   "ADBE Adv Blend Group": 388,
-   "ADBE Extrsn Options Group": 388,
-   "ADBE Bevel Direction": 388,
-   "ADBE Appears in Reflections": 388,
-   "ADBE Reflection Coefficient": 388,
-   "ADBE Glossiness Coefficient": 388,
-   "ADBE Fresnel Coefficient": 388
+   "ADBE CurvesCustom": 49,
+   "ADBE Fill": 104,
+   "ADBE Ramp": 29,
+   "ADBE Tint": 77,
+   "ADBE Fast Blur": 208,
+   "ADBE Drop Shadow": 46
   },
-  "third_party": [
-   "CC 2018 ",
-   "CC Composite",
-   "CC CompositeLIST"
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 200,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 43,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "595",
@@ -479,34 +328,23 @@
   "preview": "https://assets.mixkit.co/video-templates/595/mixkit-595-360.mp4",
   "footage": 38,
   "aep_mb": 9.0,
-  "layers": 0,
+  "layers": 1046,
   "comps": 73,
   "effects": {
-   "ADBE Group End": 10614,
-   "ADBE Envir Appear in Reflect": 1046,
-   "ADBE Camera Options Group": 667,
-   "ADBE Blend Options Group": 379,
-   "ADBE Adv Blend Group": 379,
-   "ADBE Extrsn Options Group": 379,
-   "ADBE Bevel Direction": 379,
-   "ADBE Appears in Reflections": 379,
-   "ADBE Reflection Coefficient": 379,
-   "ADBE Glossiness Coefficient": 379,
-   "ADBE Fresnel Coefficient": 379,
-   "ADBE Transparency Coefficient": 379
+   "ADBE CurvesCustom": 37,
+   "ADBE Fill": 287,
+   "ADBE Stroke": 23
   },
-  "third_party": [
-   "CC 2018 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Cross Blur",
    "CC Profile",
-   "CC RepeTile",
-   "Elements Color",
-   "Elements Colortdmn"
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 38,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 31,
+  "route": "study motion only"
  },
  {
   "id": "831",
@@ -516,27 +354,18 @@
   "preview": "https://assets.mixkit.co/video-templates/831/mixkit-831-360.mp4",
   "footage": 16,
   "aep_mb": 0.8,
-  "layers": 0,
+  "layers": 153,
   "comps": 11,
   "effects": {
-   "ADBE Group End": 1258,
-   "ADBE Envir Appear in Reflect": 153,
-   "ADBE Camera Options Group": 111,
-   "ADBE Drop Shadow": 74,
    "ADBE 4ColorGradient": 47,
-   "ADBE Blend Options Group": 42,
-   "ADBE Adv Blend Group": 42,
-   "ADBE Extrsn Options Group": 42,
-   "ADBE Bevel Direction": 42,
-   "ADBE Appears in Reflections": 42,
-   "ADBE Reflection Coefficient": 42,
-   "ADBE Glossiness Coefficient": 42
+   "ADBE Drop Shadow": 74
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 68,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "617",
@@ -546,27 +375,19 @@
   "preview": "https://assets.mixkit.co/video-templates/617/mixkit-617-360.mp4",
   "footage": 0,
   "aep_mb": 3.1,
-  "layers": 0,
+  "layers": 319,
   "comps": 22,
   "effects": {
-   "ADBE Group End": 3677,
-   "ADBE Envir Appear in Reflect": 319,
-   "ADBE Camera Options Group": 198,
-   "ADBE Blend Options Group": 121,
-   "ADBE Adv Blend Group": 121,
-   "ADBE Extrsn Options Group": 121,
-   "ADBE Bevel Direction": 121,
-   "ADBE Appears in Reflections": 121,
-   "ADBE Reflection Coefficient": 121,
-   "ADBE Glossiness Coefficient": 121,
-   "ADBE Fresnel Coefficient": 121,
-   "ADBE Transparency Coefficient": 121
+   "ADBE Fill": 35,
+   "ADBE Tint": 26,
+   "ADBE Fast Blur": 23
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "748",
@@ -576,27 +397,15 @@
   "preview": "https://assets.mixkit.co/video-templates/748/mixkit-748-360.mp4",
   "footage": 0,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 24,
   "comps": 2,
-  "effects": {
-   "ADBE Group End": 213,
-   "ADBE Envir Appear in Reflect": 24,
-   "ADBE Camera Options Group": 18,
-   "ADBE Blend Options Group": 6,
-   "ADBE Adv Blend Group": 6,
-   "ADBE Extrsn Options Group": 6,
-   "ADBE Bevel Direction": 6,
-   "ADBE Appears in Reflections": 6,
-   "ADBE Reflection Coefficient": 6,
-   "ADBE Glossiness Coefficient": 6,
-   "ADBE Fresnel Coefficient": 6,
-   "ADBE Transparency Coefficient": 6
-  },
+  "effects": {},
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "567",
@@ -606,30 +415,19 @@
   "preview": "https://assets.mixkit.co/video-templates/567/mixkit-567-360.mp4",
   "footage": 0,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 25,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 303,
-   "ADBE Glo2": 41,
    "ADBE Fill": 37,
-   "ADBE Envir Appear in Reflect": 25,
-   "ADBE Optics Compensation": 22,
-   "ADBE Effect Built In Params": 18,
-   "ADBE Camera Options Group": 18,
-   "ADBE Camera Zoom": 9,
-   "ADBE Blend Options Group": 7,
-   "ADBE Adv Blend Group": 7,
-   "ADBE Extrsn Options Group": 7,
-   "ADBE Bevel Direction": 7
+   "ADBE Glo2": 41,
+   "ADBE Optics Compensation": 22
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2015 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 66,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "591",
@@ -639,35 +437,28 @@
   "preview": "https://assets.mixkit.co/video-templates/591/mixkit-591-360.mp4",
   "footage": 15,
   "aep_mb": 18.3,
-  "layers": 0,
+  "layers": 2014,
   "comps": 131,
   "effects": {
-   "ADBE Group End": 23253,
-   "ADBE Envir Appear in Reflect": 2014,
-   "ADBE Camera Options Group": 1179,
-   "ADBE Effect Built In Params": 840,
-   "ADBE Blend Options Group": 835,
-   "ADBE Adv Blend Group": 835,
-   "ADBE Extrsn Options Group": 835,
-   "ADBE Bevel Direction": 835,
-   "ADBE Appears in Reflections": 835,
-   "ADBE Reflection Coefficient": 835,
-   "ADBE Glossiness Coefficient": 835,
-   "ADBE Fresnel Coefficient": 835
+   "ADBE CurvesCustom": 37,
+   "ADBE Displacement Map": 185,
+   "ADBE Fill": 416,
+   "ADBE Glo2": 63,
+   "ADBE Ramp": 59,
+   "ADBE Tint": 268,
+   "ADBE Drop Shadow": 62,
+   "ADBE Venetian Blinds": 61,
+   "ADBE Fractal Noise": 652,
+   "ADBE Fast Blur": 90
   },
-  "third_party": [
-   "CC 2015 ",
-   "CC 2018 ",
-   "CC Profile",
-   "Elements Color",
-   "Elements Opacity",
-   "Elements Opacitytdmn",
-   "Elementssfdt"
+  "third_party": [],
+  "cc_effects": [
+   "CC Profile"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 479,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 3,
+  "route": "study motion only"
  },
  {
   "id": "775",
@@ -677,27 +468,18 @@
   "preview": "https://assets.mixkit.co/video-templates/775/mixkit-775-360.mp4",
   "footage": 2,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 34,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 344,
-   "ADBE Ramp": 37,
-   "ADBE Envir Appear in Reflect": 34,
    "ADBE Lens Flare": 21,
-   "ADBE Camera Options Group": 20,
-   "ADBE Blend Options Group": 12,
-   "ADBE Adv Blend Group": 12,
-   "ADBE Extrsn Options Group": 12,
-   "ADBE Bevel Direction": 12,
-   "ADBE Appears in Reflections": 12,
-   "ADBE Reflection Coefficient": 12,
-   "ADBE Glossiness Coefficient": 12
+   "ADBE Ramp": 37
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 2,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 66,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "563",
@@ -707,36 +489,30 @@
   "preview": "https://assets.mixkit.co/video-templates/563/mixkit-563-360.mp4",
   "footage": 2,
   "aep_mb": 2.7,
-  "layers": 0,
+  "layers": 30,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 326,
-   "ADBE Glo2": 38,
-   "ADBE Envir Appear in Reflect": 30,
-   "ADBE HUE SATURATION": 25,
-   "ADBE Ramp": 25,
-   "ADBE Brightness ": 19,
-   "ADBE Camera Options Group": 18,
    "ADBE Fill": 16,
-   "ADBE Blend Options Group": 12,
-   "ADBE Adv Blend Group": 12,
-   "ADBE Extrsn Options Group": 12,
-   "ADBE Bevel Direction": 12
+   "ADBE CurvesCustom": 12,
+   "ADBE Glo2": 38,
+   "ADBE Lens Flare": 10,
+   "ADBE Venetian Blinds": 11,
+   "ADBE Tint": 10,
+   "ADBE Ramp": 25
   },
-  "third_party": [
-   "CC 2015 ",
-   "CC 2018 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Image Wipe",
    "CC Image Wippdnm",
    "CC Image Wiptdmn",
-   "CC Light BurLIST",
+   "CC Light Bur",
    "CC Light Burpdnm",
-   "CC Light Burst 2"
+   "CC Light Burst"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 5,
   "convert_score": 0,
-  "route": "skip / study motion only"
+  "route": "study motion only"
  },
  {
   "id": "798",
@@ -746,27 +522,19 @@
   "preview": "https://assets.mixkit.co/video-templates/798/mixkit-798-360.mp4",
   "footage": 2,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 57,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 520,
-   "ADBE Fractal Noise": 84,
+   "ADBE CurvesCustom": 13,
    "ADBE Glo2": 60,
-   "ADBE Envir Appear in Reflect": 57,
-   "ADBE Camera Options Group": 41,
-   "ADBE Effect Built In Params": 33,
-   "ADBE Box Blur2": 22,
-   "ADBE Compound Blur": 18,
-   "ADBE Blend Options Group": 16,
-   "ADBE Adv Blend Group": 16,
-   "ADBE Extrsn Options Group": 16,
-   "ADBE Bevel Direction": 16
+   "ADBE Fractal Noise": 84
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 2,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 42,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "836",
@@ -776,29 +544,15 @@
   "preview": "https://assets.mixkit.co/video-templates/836/mixkit-836-360.mp4",
   "footage": 0,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 19,
   "comps": 1,
-  "effects": {
-   "ADBE Group End": 232,
-   "ADBE Envir Appear in Reflect": 19,
-   "ADBE Gaussian Blur 2": 14,
-   "ADBE Camera Options Group": 10,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9,
-   "ADBE Bevel Direction": 9,
-   "ADBE Appears in Reflections": 9,
-   "ADBE Reflection Coefficient": 9,
-   "ADBE Glossiness Coefficient": 9,
-   "ADBE Fresnel Coefficient": 9
-  },
+  "effects": {},
   "third_party": [],
-  "fonts": [
-   "PingFangHK-Medium"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "837",
@@ -808,27 +562,18 @@
   "preview": "https://assets.mixkit.co/video-templates/837/mixkit-837-360.mp4",
   "footage": 4,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 73,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 691,
-   "ADBE Envir Appear in Reflect": 73,
-   "ADBE Camera Options Group": 50,
-   "ADBE Drop Shadow": 39,
    "ADBE Fill": 29,
-   "ADBE Blend Options Group": 23,
-   "ADBE Adv Blend Group": 23,
-   "ADBE Extrsn Options Group": 23,
-   "ADBE Bevel Direction": 23,
-   "ADBE Appears in Reflections": 23,
-   "ADBE Reflection Coefficient": 23,
-   "ADBE Glossiness Coefficient": 23
+   "ADBE Drop Shadow": 39
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 3,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 77,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "773",
@@ -838,27 +583,21 @@
   "preview": "https://assets.mixkit.co/video-templates/773/mixkit-773-360.mp4",
   "footage": 4,
   "aep_mb": 1.2,
-  "layers": 0,
+  "layers": 185,
   "comps": 13,
   "effects": {
-   "ADBE Group End": 1747,
-   "ADBE Envir Appear in Reflect": 185,
-   "ADBE Camera Options Group": 132,
-   "ADBE Drop Shadow": 85,
+   "ADBE Glo2": 43,
    "ADBE Ramp": 67,
+   "ADBE Tint": 31,
    "ADBE Turbulent Displace": 60,
-   "ADBE Blend Options Group": 53,
-   "ADBE Adv Blend Group": 53,
-   "ADBE Extrsn Options Group": 53,
-   "ADBE Bevel Direction": 53,
-   "ADBE Appears in Reflections": 53,
-   "ADBE Reflection Coefficient": 53
+   "ADBE Drop Shadow": 85
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 56,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "639",
@@ -868,31 +607,17 @@
   "preview": "https://assets.mixkit.co/video-templates/639/mixkit-639-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 28,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 570,
-   "ADBE Geometry2": 71,
-   "ADBE Color Control": 61,
-   "ADBE Effect Built In Params": 49,
-   "ADBE Fill": 38,
-   "ADBE Envir Appear in Reflect": 28,
-   "ADBE Blend Options Group": 19,
-   "ADBE Adv Blend Group": 19,
-   "ADBE Extrsn Options Group": 19,
-   "ADBE Bevel Direction": 19,
-   "ADBE Appears in Reflections": 19,
-   "ADBE Reflection Coefficient": 19
+   "ADBE Fill": 38
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "Montserrat-Black"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 23,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 67,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "630",
@@ -902,32 +627,18 @@
   "preview": "https://assets.mixkit.co/video-templates/630/mixkit-630-360.mp4",
   "footage": 0,
   "aep_mb": 0.7,
-  "layers": 0,
+  "layers": 51,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 795,
-   "ADBE Color Control": 60,
-   "ADBE Envir Appear in Reflect": 51,
-   "ADBE Geometry2": 40,
-   "ADBE Camera Options Group": 27,
    "ADBE Fill": 26,
-   "ADBE Blend Options Group": 24,
-   "ADBE Adv Blend Group": 24,
-   "ADBE Extrsn Options Group": 24,
-   "ADBE Bevel Direction": 24,
-   "ADBE Appears in Reflections": 24,
-   "ADBE Reflection Coefficient": 24
+   "ADBE Tint": 21
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "BebasNeue-Bold",
-   "Montserrat-Bold"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 9,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 81,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "585",
@@ -937,27 +648,17 @@
   "preview": "https://assets.mixkit.co/video-templates/585/mixkit-585-360.mp4",
   "footage": 0,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 63,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 569,
-   "ADBE Envir Appear in Reflect": 63,
-   "ADBE Camera Options Group": 45,
-   "ADBE Fill": 29,
-   "ADBE Camera Zoom": 27,
-   "ADBE Color Control": 24,
-   "ADBE Blend Options Group": 18,
-   "ADBE Adv Blend Group": 18,
-   "ADBE Extrsn Options Group": 18,
-   "ADBE Bevel Direction": 18,
-   "ADBE Appears in Reflections": 18,
-   "ADBE Reflection Coefficient": 18
+   "ADBE Fill": 29
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 1,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 89,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "581",
@@ -967,27 +668,17 @@
   "preview": "https://assets.mixkit.co/video-templates/581/mixkit-581-360.mp4",
   "footage": 0,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 76,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 709,
-   "ADBE Envir Appear in Reflect": 76,
-   "ADBE Camera Options Group": 54,
-   "ADBE Geometry2": 39,
-   "ADBE Color Control": 28,
-   "ADBE Fill": 26,
-   "ADBE Blend Options Group": 22,
-   "ADBE Adv Blend Group": 22,
-   "ADBE Extrsn Options Group": 22,
-   "ADBE Bevel Direction": 22,
-   "ADBE Appears in Reflections": 22,
-   "ADBE Reflection Coefficient": 22
+   "ADBE Fill": 26
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 1,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 89,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "618",
@@ -997,32 +688,20 @@
   "preview": "https://assets.mixkit.co/video-templates/618/mixkit-618-360.mp4",
   "footage": 0,
   "aep_mb": 3.4,
-  "layers": 0,
+  "layers": 201,
   "comps": 14,
   "effects": {
-   "ADBE Group End": 2426,
-   "ADBE Envir Appear in Reflect": 201,
-   "ADBE Camera Options Group": 126,
-   "ADBE Fill": 120,
-   "ADBE Blend Options Group": 75,
-   "ADBE Adv Blend Group": 75,
-   "ADBE Extrsn Options Group": 75,
-   "ADBE Bevel Direction": 75,
-   "ADBE Appears in Reflections": 75,
-   "ADBE Reflection Coefficient": 75,
-   "ADBE Glossiness Coefficient": 75,
-   "ADBE Fresnel Coefficient": 75
+   "ADBE Fill": 120
   },
-  "third_party": [
-   "CC 2019 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Slant",
-   "CC SlantLIST",
    "CC Slantqtlg"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 82,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "736",
@@ -1032,31 +711,24 @@
   "preview": "https://assets.mixkit.co/video-templates/736/mixkit-736-360.mp4",
   "footage": 0,
   "aep_mb": 5.7,
-  "layers": 0,
+  "layers": 992,
   "comps": 79,
   "effects": {
-   "ADBE Group End": 8679,
-   "ADBE Envir Appear in Reflect": 992,
-   "ADBE Camera Options Group": 711,
-   "ADBE Blend Options Group": 281,
-   "ADBE Adv Blend Group": 281,
-   "ADBE Extrsn Options Group": 281,
-   "ADBE Bevel Direction": 281,
-   "ADBE Appears in Reflections": 281,
-   "ADBE Reflection Coefficient": 281,
-   "ADBE Glossiness Coefficient": 281,
-   "ADBE Fresnel Coefficient": 281,
-   "ADBE Transparency Coefficient": 281
+   "ADBE CurvesCustom": 37,
+   "ADBE Fill": 85,
+   "ADBE Venetian Blinds": 10,
+   "ADBE Fast Blur": 8,
+   "ADBE Exposure2": 35
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Tiler",
-   "CC TilerLIST",
    "CC Tilerqtlg"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 58,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "625",
@@ -1066,32 +738,21 @@
   "preview": "https://assets.mixkit.co/video-templates/625/mixkit-625-360.mp4",
   "footage": 0,
   "aep_mb": 9.6,
-  "layers": 0,
+  "layers": 1252,
   "comps": 81,
   "effects": {
-   "ADBE Group End": 15042,
-   "ADBE Envir Appear in Reflect": 1252,
-   "ADBE Camera Options Group": 729,
-   "ADBE Blend Options Group": 523,
-   "ADBE Adv Blend Group": 523,
-   "ADBE Extrsn Options Group": 523,
-   "ADBE Bevel Direction": 523,
-   "ADBE Appears in Reflections": 523,
-   "ADBE Reflection Coefficient": 523,
-   "ADBE Glossiness Coefficient": 523,
-   "ADBE Fresnel Coefficient": 523,
-   "ADBE Transparency Coefficient": 523
+   "ADBE Fill": 320,
+   "ADBE Glo2": 45,
+   "ADBE Ramp": 37,
+   "ADBE Fractal Noise": 125,
+   "ADBE Fast Blur": 20
   },
-  "third_party": [
-   "CC 2015 ",
-   "CC 2019 "
-  ],
-  "fonts": [
-   "Montserrat-Black"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 457,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 41,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "780",
@@ -1101,27 +762,15 @@
   "preview": "https://assets.mixkit.co/video-templates/780/mixkit-780-360.mp4",
   "footage": 564,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 27,
   "comps": 2,
-  "effects": {
-   "ADBE Group End": 256,
-   "ADBE HUE SATURATION": 31,
-   "ADBE Envir Appear in Reflect": 27,
-   "ADBE Camera Options Group": 18,
-   "ADBE Gaussian Blur 2": 14,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9,
-   "ADBE Bevel Direction": 9,
-   "ADBE Appears in Reflections": 9,
-   "ADBE Reflection Coefficient": 9,
-   "ADBE Glossiness Coefficient": 9
-  },
+  "effects": {},
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "582",
@@ -1131,27 +780,17 @@
   "preview": "https://assets.mixkit.co/video-templates/582/mixkit-582-360.mp4",
   "footage": 1,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 66,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 656,
-   "ADBE Envir Appear in Reflect": 66,
-   "ADBE Camera Options Group": 45,
-   "ADBE Color Control": 32,
-   "ADBE Fill": 26,
-   "ADBE Blend Options Group": 21,
-   "ADBE Adv Blend Group": 21,
-   "ADBE Extrsn Options Group": 21,
-   "ADBE Bevel Direction": 21,
-   "ADBE Appears in Reflections": 21,
-   "ADBE Reflection Coefficient": 21,
-   "ADBE Glossiness Coefficient": 21
+   "ADBE Fill": 26
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 4,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 76,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "569",
@@ -1161,31 +800,19 @@
   "preview": "https://assets.mixkit.co/video-templates/569/mixkit-569-360.mp4",
   "footage": 0,
   "aep_mb": 3.0,
-  "layers": 0,
+  "layers": 100,
   "comps": 8,
   "effects": {
-   "ADBE Group End": 908,
-   "ADBE Fractal Noise": 112,
-   "ADBE Envir Appear in Reflect": 100,
-   "ADBE Camera Options Group": 72,
-   "ADBE Minimax": 71,
    "ADBE Displacement Map": 54,
-   "ADBE Effect Built In Params": 51,
-   "ADBE Block Dissolve": 43,
-   "ADBE Set Matte3": 40,
-   "ADBE Slider Control": 32,
-   "ADBE Blend Options Group": 28,
-   "ADBE Adv Blend Group": 28
+   "ADBE Fill": 26,
+   "ADBE Fractal Noise": 112
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2017 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 66,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "637",
@@ -1195,27 +822,17 @@
   "preview": "https://assets.mixkit.co/video-templates/637/mixkit-637-360.mp4",
   "footage": 0,
   "aep_mb": 1.8,
-  "layers": 0,
+  "layers": 68,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 717,
-   "ADBE Fill": 110,
-   "ADBE Envir Appear in Reflect": 68,
-   "ADBE Camera Options Group": 45,
-   "ADBE Geometry2": 44,
-   "ADBE Camera Zoom": 36,
-   "ADBE Blend Options Group": 23,
-   "ADBE Adv Blend Group": 23,
-   "ADBE Extrsn Options Group": 23,
-   "ADBE Bevel Direction": 23,
-   "ADBE Appears in Reflections": 23,
-   "ADBE Reflection Coefficient": 23
+   "ADBE Fill": 110
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 6,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 84,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "713",
@@ -1225,31 +842,19 @@
   "preview": "https://assets.mixkit.co/video-templates/713/mixkit-713-360.mp4",
   "footage": 0,
   "aep_mb": 4.2,
-  "layers": 0,
+  "layers": 444,
   "comps": 29,
   "effects": {
-   "ADBE Group End": 5292,
-   "ADBE Envir Appear in Reflect": 444,
-   "ADBE Camera Options Group": 261,
-   "ADBE Blend Options Group": 183,
-   "ADBE Adv Blend Group": 183,
-   "ADBE Extrsn Options Group": 183,
-   "ADBE Bevel Direction": 183,
-   "ADBE Appears in Reflections": 183,
-   "ADBE Reflection Coefficient": 183,
-   "ADBE Glossiness Coefficient": 183,
-   "ADBE Fresnel Coefficient": 183,
-   "ADBE Transparency Coefficient": 183
+   "ADBE Fill": 96
   },
-  "third_party": [
-   "CC 2017 ",
-   "CC 2019 ",
-   "CC RepeTile"
+  "third_party": [],
+  "cc_effects": [
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 15,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 71,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "756",
@@ -1259,38 +864,19 @@
   "preview": "https://assets.mixkit.co/video-templates/756/mixkit-756-360.mp4",
   "footage": 0,
   "aep_mb": 0.6,
-  "layers": 0,
+  "layers": 79,
   "comps": 7,
   "effects": {
-   "ADBE Group End": 581,
-   "ADBE Envir Appear in Reflect": 79,
-   "ADBE Color Control": 64,
-   "ADBE Camera Options Group": 63,
-   "ADBE Glo2": 43,
-   "ADBE Effect Built In Params": 28,
    "ADBE Fill": 27,
-   "ADBE Drop Shadow": 22,
-   "ADBE Blend Options Group": 16,
-   "ADBE Adv Blend Group": 16,
-   "ADBE Extrsn Options Group": 16,
-   "ADBE Bevel Direction": 16
+   "ADBE Glo2": 43,
+   "ADBE Drop Shadow": 22
   },
-  "third_party": [
-   "CC 2015 ",
-   "CC 2018 ",
-   "CC 2019 ",
-   "ElementLIST",
-   "Elements 1",
-   "Elements 2",
-   "Elements Color 1Utf8",
-   "Elements Color 1tdmn"
-  ],
-  "fonts": [
-   "Subscribe-Regular"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 1,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 77,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "799",
@@ -1300,27 +886,17 @@
   "preview": "https://assets.mixkit.co/video-templates/799/mixkit-799-360.mp4",
   "footage": 2,
   "aep_mb": 0.1,
-  "layers": 0,
+  "layers": 16,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 154,
-   "ADBE AudSpect": 81,
-   "ADBE Venetian Blinds": 20,
-   "ADBE Envir Appear in Reflect": 16,
-   "ADBE Polar Coordinates": 14,
-   "ADBE Effect Built In Params": 12,
-   "ADBE Camera Options Group": 11,
-   "ADBE Blend Options Group": 5,
-   "ADBE Adv Blend Group": 5,
-   "ADBE Extrsn Options Group": 5,
-   "ADBE Bevel Direction": 5,
-   "ADBE Appears in Reflections": 5
+   "ADBE Venetian Blinds": 20
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "715",
@@ -1330,31 +906,19 @@
   "preview": "https://assets.mixkit.co/video-templates/715/mixkit-715-360.mp4",
   "footage": 0,
   "aep_mb": 4.5,
-  "layers": 0,
+  "layers": 497,
   "comps": 33,
   "effects": {
-   "ADBE Group End": 5804,
-   "ADBE Envir Appear in Reflect": 497,
-   "ADBE Camera Options Group": 297,
-   "ADBE Blend Options Group": 200,
-   "ADBE Adv Blend Group": 200,
-   "ADBE Extrsn Options Group": 200,
-   "ADBE Bevel Direction": 200,
-   "ADBE Appears in Reflections": 200,
-   "ADBE Reflection Coefficient": 200,
-   "ADBE Glossiness Coefficient": 200,
-   "ADBE Fresnel Coefficient": 200,
-   "ADBE Transparency Coefficient": 200
+   "ADBE Fill": 90
   },
-  "third_party": [
-   "CC 2017 ",
-   "CC 2019 ",
-   "CC RepeTile"
+  "third_party": [],
+  "cc_effects": [
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 9,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 77,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "571",
@@ -1364,36 +928,27 @@
   "preview": "https://assets.mixkit.co/video-templates/571/mixkit-571-360.mp4",
   "footage": 0,
   "aep_mb": 19.9,
-  "layers": 0,
+  "layers": 1853,
   "comps": 84,
   "effects": {
-   "ADBE Group End": 25715,
-   "ADBE Envir Appear in Reflect": 1853,
-   "ADBE Blend Options Group": 1096,
-   "ADBE Adv Blend Group": 1096,
-   "ADBE Extrsn Options Group": 1096,
-   "ADBE Bevel Direction": 1096,
-   "ADBE Appears in Reflections": 1096,
-   "ADBE Reflection Coefficient": 1096,
-   "ADBE Glossiness Coefficient": 1096,
-   "ADBE Fresnel Coefficient": 1096,
-   "ADBE Transparency Coefficient": 1096,
-   "ADBE Transp Rolloff": 1096
+   "ADBE CurvesCustom": 7,
+   "ADBE Displacement Map": 19,
+   "ADBE Fill": 308,
+   "ADBE Tint": 11,
+   "ADBE Turbulent Displace": 37,
+   "ADBE Drop Shadow": 221,
+   "ADBE Radial Wipe": 22,
+   "ADBE Fractal Noise": 377,
+   "ADBE Venetian Blinds": 37
   },
-  "third_party": [
-   "CC 2019 ",
-   "CC Scale Wipe",
-   "Elements A Color",
-   "Elements B Color",
-   "Elements Color",
-   "Elements Color A",
-   "Elements Color B",
-   "Elements Color C"
+  "third_party": [],
+  "cc_effects": [
+   "CC Scale Wipe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 208,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 13,
+  "route": "study motion only"
  },
  {
   "id": "573",
@@ -1403,36 +958,27 @@
   "preview": "https://assets.mixkit.co/video-templates/573/mixkit-573-360.mp4",
   "footage": 0,
   "aep_mb": 19.9,
-  "layers": 0,
+  "layers": 1853,
   "comps": 84,
   "effects": {
-   "ADBE Group End": 25715,
-   "ADBE Envir Appear in Reflect": 1853,
-   "ADBE Blend Options Group": 1096,
-   "ADBE Adv Blend Group": 1096,
-   "ADBE Extrsn Options Group": 1096,
-   "ADBE Bevel Direction": 1096,
-   "ADBE Appears in Reflections": 1096,
-   "ADBE Reflection Coefficient": 1096,
-   "ADBE Glossiness Coefficient": 1096,
-   "ADBE Fresnel Coefficient": 1096,
-   "ADBE Transparency Coefficient": 1096,
-   "ADBE Transp Rolloff": 1096
+   "ADBE CurvesCustom": 7,
+   "ADBE Displacement Map": 19,
+   "ADBE Fill": 308,
+   "ADBE Tint": 11,
+   "ADBE Turbulent Displace": 37,
+   "ADBE Drop Shadow": 221,
+   "ADBE Radial Wipe": 22,
+   "ADBE Fractal Noise": 377,
+   "ADBE Venetian Blinds": 37
   },
-  "third_party": [
-   "CC 2019 ",
-   "CC Scale Wipe",
-   "Elements A Color",
-   "Elements B Color",
-   "Elements Color",
-   "Elements Color A",
-   "Elements Color B",
-   "Elements Color C"
+  "third_party": [],
+  "cc_effects": [
+   "CC Scale Wipe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 208,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 13,
+  "route": "study motion only"
  },
  {
   "id": "838",
@@ -1442,29 +988,20 @@
   "preview": "https://assets.mixkit.co/video-templates/838/mixkit-838-360.mp4",
   "footage": 16,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 65,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 723,
-   "ADBE Envir Appear in Reflect": 65,
-   "ADBE Camera Options Group": 40,
    "ADBE Fill": 35,
-   "ADBE Blend Options Group": 25,
-   "ADBE Adv Blend Group": 25,
-   "ADBE Extrsn Options Group": 25,
-   "ADBE Bevel Direction": 25,
-   "ADBE Appears in Reflections": 25,
-   "ADBE Reflection Coefficient": 25,
-   "ADBE Glossiness Coefficient": 25,
-   "ADBE Fresnel Coefficient": 25
+   "ADBE Drop Shadow": 18
   },
-  "third_party": [
-   "CC RepeTile"
+  "third_party": [],
+  "cc_effects": [
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 2,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 74,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "814",
@@ -1474,27 +1011,15 @@
   "preview": "https://assets.mixkit.co/video-templates/814/mixkit-814-360.mp4",
   "footage": 1,
   "aep_mb": 0.1,
-  "layers": 0,
+  "layers": 17,
   "comps": 1,
-  "effects": {
-   "ADBE Group End": 232,
-   "ADBE Envir Appear in Reflect": 17,
-   "ADBE Camera Options Group": 9,
-   "ADBE Blend Options Group": 8,
-   "ADBE Adv Blend Group": 8,
-   "ADBE Extrsn Options Group": 8,
-   "ADBE Bevel Direction": 8,
-   "ADBE Appears in Reflections": 8,
-   "ADBE Reflection Coefficient": 8,
-   "ADBE Glossiness Coefficient": 8,
-   "ADBE Fresnel Coefficient": 8,
-   "ADBE Transparency Coefficient": 8
-  },
+  "effects": {},
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "818",
@@ -1504,29 +1029,19 @@
   "preview": "https://assets.mixkit.co/video-templates/818/mixkit-818-360.mp4",
   "footage": 6,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 32,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 309,
-   "ADBE Ramp": 37,
-   "ADBE Envir Appear in Reflect": 32,
-   "ADBE Camera Options Group": 21,
-   "ADBE Blend Options Group": 11,
-   "ADBE Adv Blend Group": 11,
-   "ADBE Extrsn Options Group": 11,
-   "ADBE Bevel Direction": 11,
-   "ADBE Appears in Reflections": 11,
-   "ADBE Reflection Coefficient": 11,
-   "ADBE Glossiness Coefficient": 11,
-   "ADBE Fresnel Coefficient": 11
+   "ADBE Ramp": 37
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Particle World"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 76,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "829",
@@ -1536,36 +1051,22 @@
   "preview": "https://assets.mixkit.co/video-templates/829/mixkit-829-360.mp4",
   "footage": 0,
   "aep_mb": 2.8,
-  "layers": 0,
+  "layers": 124,
   "comps": 9,
   "effects": {
-   "ADBE Group End": 1403,
-   "ADBE Envir Appear in Reflect": 124,
-   "ADBE Camera Options Group": 91,
-   "ADBE Color Control": 68,
-   "ADBE Effect Built In Params": 58,
    "ADBE 4ColorGradient": 47,
-   "ADBE Turbulent Displace": 47,
-   "ADBE Drop Shadow": 46,
    "ADBE Fill": 44,
-   "ADBE Matte Choker": 37,
-   "ADBE Blend Options Group": 33,
-   "ADBE Adv Blend Group": 33
+   "ADBE Turbulent Displace": 47,
+   "ADBE Drop Shadow": 46
   },
-  "third_party": [
-   "CC Particle World",
-   "Elements 2",
-   "Elements Color 1",
-   "Elements Color 1Utf8",
-   "Elements Color 1tdb4",
-   "Elements Color 1tdmn",
-   "Elements Color 2",
-   "Elements Color 2Utf8"
+  "third_party": [],
+  "cc_effects": [
+   "CC Particle World"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 3,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 59,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "584",
@@ -1575,27 +1076,17 @@
   "preview": "https://assets.mixkit.co/video-templates/584/mixkit-584-360.mp4",
   "footage": 0,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 66,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 657,
-   "ADBE Envir Appear in Reflect": 66,
-   "ADBE Camera Options Group": 45,
-   "ADBE Fill": 29,
-   "ADBE Color Control": 28,
-   "ADBE Camera Zoom": 27,
-   "ADBE Blend Options Group": 21,
-   "ADBE Adv Blend Group": 21,
-   "ADBE Extrsn Options Group": 21,
-   "ADBE Bevel Direction": 21,
-   "ADBE Appears in Reflections": 21,
-   "ADBE Reflection Coefficient": 21
+   "ADBE Fill": 29
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 2,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 88,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "790",
@@ -1605,31 +1096,24 @@
   "preview": "https://assets.mixkit.co/video-templates/790/mixkit-790-360.mp4",
   "footage": 6,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 74,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 754,
-   "ADBE Envir Appear in Reflect": 74,
-   "ADBE Effect Built In Params": 55,
-   "ADBE Camera Options Group": 50,
-   "ADBE Turbulent Displace": 45,
-   "ADBE Ramp": 37,
    "ADBE Fill": 26,
-   "ADBE Blend Options Group": 24,
-   "ADBE Adv Blend Group": 24,
-   "ADBE Extrsn Options Group": 24,
-   "ADBE Bevel Direction": 24,
-   "ADBE Appears in Reflections": 24
+   "ADBE Ramp": 37,
+   "ADBE Turbulent Displace": 45,
+   "ADBE Linear Wipe": 18,
+   "ADBE Venetian Blinds": 23
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Lens",
-   "CC Pixel Polly",
-   "CC Pixel PollyLIST"
+   "CC Pixel Polly"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 2,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 58,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "819",
@@ -1639,33 +1123,25 @@
   "preview": "https://assets.mixkit.co/video-templates/819/mixkit-819-360.mp4",
   "footage": 4,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 58,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 549,
-   "ADBE Envir Appear in Reflect": 58,
    "ADBE 4ColorGradient": 47,
-   "ADBE Glo2": 46,
-   "ADBE Camera Options Group": 41,
-   "ADBE Effect Built In Params": 39,
-   "ADBE Ripple": 29,
    "ADBE CurvesCustom": 19,
-   "ADBE Tint": 19,
-   "ADBE Box Blur2": 18,
-   "ADBE Blend Options Group": 17,
-   "ADBE Adv Blend Group": 17
+   "ADBE Glo2": 46,
+   "ADBE Tint": 19
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Blobbylize",
    "CC Radial Blur",
-   "CC Radial BlurLIST",
    "CC Radial Blurpjef",
-   "CC RepeTile"
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 28,
+  "route": "study motion only"
  },
  {
   "id": "752",
@@ -1675,31 +1151,18 @@
   "preview": "https://assets.mixkit.co/video-templates/752/mixkit-752-360.mp4",
   "footage": 0,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 13,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 131,
-   "ADBE Tint": 25,
    "ADBE Fill": 23,
-   "ADBE Envir Appear in Reflect": 13,
-   "ADBE Camera Options Group": 9,
-   "ADBE Effect Built In Params": 8,
-   "ADBE Blend Options Group": 4,
-   "ADBE Adv Blend Group": 4,
-   "ADBE Extrsn Options Group": 4,
-   "ADBE Bevel Direction": 4,
-   "ADBE Appears in Reflections": 4,
-   "ADBE Reflection Coefficient": 4
+   "ADBE Tint": 25
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "FuturaPT-Medium"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "560",
@@ -1709,31 +1172,17 @@
   "preview": "https://assets.mixkit.co/video-templates/560/mixkit-560-360.mp4",
   "footage": 0,
   "aep_mb": 1.6,
-  "layers": 0,
+  "layers": 56,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 850,
-   "ADBE Envir Appear in Reflect": 56,
-   "ADBE Fill": 42,
-   "ADBE Blend Options Group": 29,
-   "ADBE Adv Blend Group": 29,
-   "ADBE Extrsn Options Group": 29,
-   "ADBE Bevel Direction": 29,
-   "ADBE Appears in Reflections": 29,
-   "ADBE Reflection Coefficient": 29,
-   "ADBE Glossiness Coefficient": 29,
-   "ADBE Fresnel Coefficient": 29,
-   "ADBE Transparency Coefficient": 29
+   "ADBE Fill": 42
   },
-  "third_party": [
-   "Element Color",
-   "Element On",
-   "Element01"
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 13,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 77,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "842",
@@ -1743,27 +1192,17 @@
   "preview": "https://assets.mixkit.co/video-templates/842/mixkit-842-360.mp4",
   "footage": 485,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 52,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 473,
-   "ADBE Envir Appear in Reflect": 52,
-   "ADBE 4ColorGradient": 47,
-   "ADBE Camera Options Group": 36,
-   "ADBE Black": 25,
-   "ADBE Gaussian Blur 2": 16,
-   "ADBE Blend Options Group": 16,
-   "ADBE Adv Blend Group": 16,
-   "ADBE Extrsn Options Group": 16,
-   "ADBE Bevel Direction": 16,
-   "ADBE Appears in Reflections": 16,
-   "ADBE Reflection Coefficient": 16
+   "ADBE 4ColorGradient": 47
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 68,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "624",
@@ -1773,31 +1212,15 @@
   "preview": "https://assets.mixkit.co/video-templates/624/mixkit-624-360.mp4",
   "footage": 0,
   "aep_mb": 0.6,
-  "layers": 0,
+  "layers": 54,
   "comps": 4,
-  "effects": {
-   "ADBE Group End": 612,
-   "ADBE Slider Control": 169,
-   "ADBE Color Control": 78,
-   "ADBE Envir Appear in Reflect": 54,
-   "ADBE Laser": 50,
-   "ADBE Checkbox Control": 47,
-   "ADBE Effect Built In Params": 40,
-   "ADBE Camera Options Group": 36,
-   "ADBE Blend Options Group": 18,
-   "ADBE Adv Blend Group": 18,
-   "ADBE Extrsn Options Group": 18,
-   "ADBE Bevel Direction": 18
-  },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "OpenSans-Bold"
-  ],
+  "effects": {},
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 15,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 75,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "640",
@@ -1807,31 +1230,17 @@
   "preview": "https://assets.mixkit.co/video-templates/640/mixkit-640-360.mp4",
   "footage": 0,
   "aep_mb": 1.4,
-  "layers": 0,
+  "layers": 19,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 321,
-   "ADBE Color Control": 52,
-   "ADBE Geometry2": 46,
-   "ADBE Effect Built In Params": 38,
-   "ADBE Fill": 32,
-   "ADBE Slider Control": 21,
-   "ADBE Point Control": 20,
-   "ADBE Envir Appear in Reflect": 19,
-   "ADBE Angle Control": 14,
-   "ADBE Blend Options Group": 10,
-   "ADBE Adv Blend Group": 10,
-   "ADBE Extrsn Options Group": 10
+   "ADBE Fill": 32
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "Montserrat-Black"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 15,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 75,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "821",
@@ -1841,27 +1250,18 @@
   "preview": "https://assets.mixkit.co/video-templates/821/mixkit-821-360.mp4",
   "footage": 4,
   "aep_mb": 0.7,
-  "layers": 0,
+  "layers": 104,
   "comps": 7,
   "effects": {
-   "ADBE Group End": 1061,
-   "ADBE Envir Appear in Reflect": 104,
-   "ADBE Camera Options Group": 70,
-   "ADBE Easy Levels2": 40,
-   "ADBE Blend Options Group": 34,
-   "ADBE Adv Blend Group": 34,
-   "ADBE Extrsn Options Group": 34,
-   "ADBE Bevel Direction": 34,
-   "ADBE Appears in Reflections": 34,
-   "ADBE Reflection Coefficient": 34,
-   "ADBE Glossiness Coefficient": 34,
-   "ADBE Fresnel Coefficient": 34
+   "ADBE Tint": 21,
+   "ADBE Drop Shadow": 20
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "830",
@@ -1871,27 +1271,19 @@
   "preview": "https://assets.mixkit.co/video-templates/830/mixkit-830-360.mp4",
   "footage": 6,
   "aep_mb": 0.9,
-  "layers": 0,
+  "layers": 90,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 1699,
-   "ADBE Envir Appear in Reflect": 90,
-   "ADBE Camera Options Group": 50,
-   "ADBE Blend Options Group": 40,
-   "ADBE Adv Blend Group": 40,
-   "ADBE Extrsn Options Group": 40,
-   "ADBE Bevel Direction": 40,
-   "ADBE Appears in Reflections": 40,
-   "ADBE Reflection Coefficient": 40,
-   "ADBE Glossiness Coefficient": 40,
-   "ADBE Fresnel Coefficient": 40,
-   "ADBE Transparency Coefficient": 40
+   "ADBE CurvesCustom": 13,
+   "ADBE Tint": 31,
+   "ADBE Drop Shadow": 26
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 68,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "806",
@@ -1901,31 +1293,15 @@
   "preview": "https://assets.mixkit.co/video-templates/806/mixkit-806-360.mp4",
   "footage": 1,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 53,
   "comps": 4,
-  "effects": {
-   "ADBE Group End": 581,
-   "ADBE Slider Control": 148,
-   "ADBE Color Control": 68,
-   "ADBE Envir Appear in Reflect": 53,
-   "ADBE Laser": 50,
-   "ADBE Checkbox Control": 48,
-   "ADBE Effect Built In Params": 37,
-   "ADBE Camera Options Group": 36,
-   "ADBE Blend Options Group": 17,
-   "ADBE Adv Blend Group": 17,
-   "ADBE Extrsn Options Group": 17,
-   "ADBE Bevel Direction": 17
-  },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "OpenSans-Bold"
-  ],
+  "effects": {},
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 11,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 69,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "826",
@@ -1935,29 +1311,21 @@
   "preview": "https://assets.mixkit.co/video-templates/826/mixkit-826-360.mp4",
   "footage": 4,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 17,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 217,
-   "ADBE Camera Lens Blur": 65,
    "ADBE 4ColorGradient": 47,
    "ADBE Glo2": 39,
-   "ADBE Drop Shadow": 26,
-   "ADBE Effect Built In Params": 20,
-   "ADBE Envir Appear in Reflect": 17,
-   "ADBE Camera Options Group": 10,
-   "ADBE Blend Options Group": 7,
-   "ADBE Adv Blend Group": 7,
-   "ADBE Extrsn Options Group": 7,
-   "ADBE Bevel Direction": 7
+   "ADBE Drop Shadow": 26
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Particle World"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 52,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "783",
@@ -1967,38 +1335,27 @@
   "preview": "https://assets.mixkit.co/video-templates/783/mixkit-783-360.mp4",
   "footage": 0,
   "aep_mb": 21.1,
-  "layers": 0,
+  "layers": 1853,
   "comps": 84,
   "effects": {
-   "ADBE Group End": 27916,
-   "ADBE Envir Appear in Reflect": 1853,
-   "ADBE Blend Options Group": 1096,
-   "ADBE Adv Blend Group": 1096,
-   "ADBE Extrsn Options Group": 1096,
-   "ADBE Bevel Direction": 1096,
-   "ADBE Appears in Reflections": 1096,
-   "ADBE Reflection Coefficient": 1096,
-   "ADBE Glossiness Coefficient": 1096,
-   "ADBE Fresnel Coefficient": 1096,
-   "ADBE Transparency Coefficient": 1096,
-   "ADBE Transp Rolloff": 1096
+   "ADBE CurvesCustom": 13,
+   "ADBE Displacement Map": 37,
+   "ADBE Fill": 310,
+   "ADBE Tint": 21,
+   "ADBE Turbulent Displace": 59,
+   "ADBE Drop Shadow": 234,
+   "ADBE Radial Wipe": 32,
+   "ADBE Fractal Noise": 429,
+   "ADBE Venetian Blinds": 46
   },
-  "third_party": [
-   "CC 2019 ",
-   "CC Scale Wipe",
-   "Elements A Color",
-   "Elements A Colortdmn",
-   "Elements B Color",
-   "Elements B Colortdmn",
-   "Elements Color",
-   "Elements Color A"
+  "third_party": [],
+  "cc_effects": [
+   "CC Scale Wipe"
   ],
-  "fonts": [
-   "Montserrat-Regular"
-  ],
+  "has_3d_camera": true,
   "expressions": 212,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 13,
+  "route": "study motion only"
  },
  {
   "id": "809",
@@ -2008,29 +1365,18 @@
   "preview": "https://assets.mixkit.co/video-templates/809/mixkit-809-360.mp4",
   "footage": 2,
   "aep_mb": 7.0,
-  "layers": 0,
+  "layers": 133,
   "comps": 8,
   "effects": {
-   "ADBE Group End": 2045,
-   "ADBE Envir Appear in Reflect": 133,
-   "ADBE Camera Options Group": 72,
    "ADBE Fill": 68,
-   "ADBE Blend Options Group": 61,
-   "ADBE Adv Blend Group": 61,
-   "ADBE Extrsn Options Group": 61,
-   "ADBE Bevel Direction": 61,
-   "ADBE Appears in Reflections": 61,
-   "ADBE Reflection Coefficient": 61,
-   "ADBE Glossiness Coefficient": 61,
-   "ADBE Fresnel Coefficient": 61
+   "ADBE Drop Shadow": 38
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "559",
@@ -2040,31 +1386,18 @@
   "preview": "https://assets.mixkit.co/video-templates/559/mixkit-559-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 47,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 587,
-   "ADBE Envir Appear in Reflect": 47,
    "ADBE 4ColorGradient": 40,
-   "ADBE Camera Options Group": 27,
-   "ADBE Fill": 21,
-   "ADBE Effect Built In Params": 21,
-   "ADBE Blend Options Group": 20,
-   "ADBE Adv Blend Group": 20,
-   "ADBE Extrsn Options Group": 20,
-   "ADBE Bevel Direction": 20,
-   "ADBE Appears in Reflections": 20,
-   "ADBE Reflection Coefficient": 20
+   "ADBE Fill": 21
   },
-  "third_party": [
-   "Element Color",
-   "Element On",
-   "Element01"
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 13,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 65,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "760",
@@ -2074,27 +1407,20 @@
   "preview": "https://assets.mixkit.co/video-templates/760/mixkit-760-360.mp4",
   "footage": 0,
   "aep_mb": 0.9,
-  "layers": 0,
+  "layers": 140,
   "comps": 12,
   "effects": {
-   "ADBE Group End": 1089,
-   "ADBE Envir Appear in Reflect": 140,
-   "ADBE Camera Options Group": 109,
-   "ADBE Camera Zoom": 90,
    "ADBE 4ColorGradient": 79,
-   "ADBE Turbulent Displace": 55,
    "ADBE Glo2": 53,
-   "ADBE Effect Built In Params": 37,
-   "ADBE Wave Warp": 34,
    "ADBE Ramp": 33,
-   "ADBE Blend Options Group": 31,
-   "ADBE Adv Blend Group": 31
+   "ADBE Turbulent Displace": 55
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 54,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "714",
@@ -2104,30 +1430,17 @@
   "preview": "https://assets.mixkit.co/video-templates/714/mixkit-714-360.mp4",
   "footage": 0,
   "aep_mb": 3.6,
-  "layers": 0,
+  "layers": 351,
   "comps": 22,
   "effects": {
-   "ADBE Group End": 4363,
-   "ADBE Envir Appear in Reflect": 351,
-   "ADBE Camera Options Group": 198,
-   "ADBE Blend Options Group": 153,
-   "ADBE Adv Blend Group": 153,
-   "ADBE Extrsn Options Group": 153,
-   "ADBE Bevel Direction": 153,
-   "ADBE Appears in Reflections": 153,
-   "ADBE Reflection Coefficient": 153,
-   "ADBE Glossiness Coefficient": 153,
-   "ADBE Fresnel Coefficient": 153,
-   "ADBE Transparency Coefficient": 153
+   "ADBE Fill": 93
   },
-  "third_party": [
-   "CC 2017 ",
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 6,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 84,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "628",
@@ -2137,30 +1450,17 @@
   "preview": "https://assets.mixkit.co/video-templates/628/mixkit-628-360.mp4",
   "footage": 0,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 20,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 300,
-   "ADBE Fill": 35,
-   "ADBE Color Control": 25,
-   "ADBE Envir Appear in Reflect": 20,
-   "ADBE Effect Built In Params": 13,
-   "ADBE Blend Options Group": 11,
-   "ADBE Adv Blend Group": 11,
-   "ADBE Extrsn Options Group": 11,
-   "ADBE Bevel Direction": 11,
-   "ADBE Appears in Reflections": 11,
-   "ADBE Reflection Coefficient": 11,
-   "ADBE Glossiness Coefficient": 11
+   "ADBE Fill": 35
   },
   "third_party": [],
-  "fonts": [
-   "Montserrat-Bold",
-   "Montserrat-Light"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 16,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 74,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "574",
@@ -2170,36 +1470,27 @@
   "preview": "https://assets.mixkit.co/video-templates/574/mixkit-574-360.mp4",
   "footage": 1,
   "aep_mb": 19.9,
-  "layers": 0,
+  "layers": 1854,
   "comps": 84,
   "effects": {
-   "ADBE Group End": 25735,
-   "ADBE Envir Appear in Reflect": 1854,
-   "ADBE Blend Options Group": 1097,
-   "ADBE Adv Blend Group": 1097,
-   "ADBE Extrsn Options Group": 1097,
-   "ADBE Bevel Direction": 1097,
-   "ADBE Appears in Reflections": 1097,
-   "ADBE Reflection Coefficient": 1097,
-   "ADBE Glossiness Coefficient": 1097,
-   "ADBE Fresnel Coefficient": 1097,
-   "ADBE Transparency Coefficient": 1097,
-   "ADBE Transp Rolloff": 1097
+   "ADBE CurvesCustom": 7,
+   "ADBE Displacement Map": 19,
+   "ADBE Fill": 308,
+   "ADBE Tint": 11,
+   "ADBE Turbulent Displace": 37,
+   "ADBE Drop Shadow": 221,
+   "ADBE Radial Wipe": 22,
+   "ADBE Fractal Noise": 377,
+   "ADBE Venetian Blinds": 37
   },
-  "third_party": [
-   "CC 2019 ",
-   "CC Scale Wipe",
-   "Elements A Color",
-   "Elements B Color",
-   "Elements Color",
-   "Elements Color A",
-   "Elements Color B",
-   "Elements Color C"
+  "third_party": [],
+  "cc_effects": [
+   "CC Scale Wipe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 208,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 3,
+  "route": "study motion only"
  },
  {
   "id": "636",
@@ -2209,33 +1500,17 @@
   "preview": "https://assets.mixkit.co/video-templates/636/mixkit-636-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 37,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 580,
-   "ADBE Slider Control": 78,
-   "ADBE Color Control": 51,
-   "ADBE Fill": 44,
-   "ADBE Geometry2": 42,
-   "ADBE Effect Built In Params": 41,
-   "ADBE Envir Appear in Reflect": 37,
-   "ADBE Checkbox Control": 27,
-   "ADBE Blend Options Group": 19,
-   "ADBE Adv Blend Group": 19,
-   "ADBE Extrsn Options Group": 19,
-   "ADBE Bevel Direction": 19
+   "ADBE Fill": 44
   },
-  "third_party": [
-   "CC 2017 ",
-   "CC 2018 "
-  ],
-  "fonts": [
-   "AcuminPro-Bold",
-   "AcuminPro-Regular"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 40,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 65,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "605",
@@ -2245,27 +1520,17 @@
   "preview": "https://assets.mixkit.co/video-templates/605/mixkit-605-360.mp4",
   "footage": 0,
   "aep_mb": 1.7,
-  "layers": 0,
+  "layers": 80,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 770,
-   "ADBE Envir Appear in Reflect": 80,
-   "ADBE Camera Options Group": 54,
-   "ADBE Camera Zoom": 54,
-   "ADBE Blend Options Group": 26,
-   "ADBE Adv Blend Group": 26,
-   "ADBE Extrsn Options Group": 26,
-   "ADBE Bevel Direction": 26,
-   "ADBE Appears in Reflections": 26,
-   "ADBE Reflection Coefficient": 26,
-   "ADBE Glossiness Coefficient": 26,
-   "ADBE Fresnel Coefficient": 26
+   "ADBE Fill": 21
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 6,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 84,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "543",
@@ -2275,27 +1540,17 @@
   "preview": "https://assets.mixkit.co/video-templates/543/mixkit-543-360.mp4",
   "footage": 0,
   "aep_mb": 2.5,
-  "layers": 0,
+  "layers": 130,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 2510,
-   "ADBE Fill": 195,
-   "ADBE Envir Appear in Reflect": 130,
-   "ADBE Blend Options Group": 85,
-   "ADBE Adv Blend Group": 85,
-   "ADBE Extrsn Options Group": 85,
-   "ADBE Bevel Direction": 85,
-   "ADBE Appears in Reflections": 85,
-   "ADBE Reflection Coefficient": 85,
-   "ADBE Glossiness Coefficient": 85,
-   "ADBE Fresnel Coefficient": 85,
-   "ADBE Transparency Coefficient": 85
+   "ADBE Fill": 195
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 28,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 65,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "568",
@@ -2305,31 +1560,19 @@
   "preview": "https://assets.mixkit.co/video-templates/568/mixkit-568-360.mp4",
   "footage": 1,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 49,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 435,
-   "ADBE Exposure2": 76,
-   "ADBE Envir Appear in Reflect": 49,
-   "ADBE Glo2": 47,
-   "ADBE Channel Combiner": 40,
-   "ADBE Camera Options Group": 36,
-   "ADBE Effect Built In Params": 32,
-   "ADBE Solid Composite": 20,
-   "ADBE Remove Color Matting": 16,
    "ADBE CurvesCustom": 13,
-   "ADBE Blend Options Group": 13,
-   "ADBE Adv Blend Group": 13
+   "ADBE Glo2": 47,
+   "ADBE Exposure2": 76
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2015 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 44,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "840",
@@ -2339,29 +1582,19 @@
   "preview": "https://assets.mixkit.co/video-templates/840/mixkit-840-360.mp4",
   "footage": 8,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 32,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 341,
-   "ADBE Ramp": 37,
-   "ADBE Envir Appear in Reflect": 32,
-   "ADBE Box Blur": 21,
-   "ADBE Effect Built In Params": 20,
-   "ADBE Camera Options Group": 20,
-   "ADBE Solid Composite": 18,
-   "ADBE Blend Options Group": 12,
-   "ADBE Adv Blend Group": 12,
-   "ADBE Extrsn Options Group": 12,
-   "ADBE Bevel Direction": 12,
-   "ADBE Appears in Reflections": 12
+   "ADBE Ramp": 37
   },
-  "third_party": [
-   "CC Radial Fast Blur"
+  "third_party": [],
+  "cc_effects": [
+   "CC Radial Fast"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 76,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "615",
@@ -2371,29 +1604,23 @@
   "preview": "https://assets.mixkit.co/video-templates/615/mixkit-615-360.mp4",
   "footage": 0,
   "aep_mb": 3.6,
-  "layers": 0,
+  "layers": 182,
   "comps": 15,
   "effects": {
-   "ADBE Group End": 1775,
-   "ADBE Envir Appear in Reflect": 182,
-   "ADBE Camera Options Group": 135,
-   "ADBE Minimax": 120,
-   "ADBE Effect Built In Params": 103,
-   "ADBE AIF Perlin Noise 3D": 99,
+   "ADBE CurvesCustom": 16,
+   "ADBE Fill": 46,
+   "ADBE Ramp": 31,
    "ADBE Turbulent Displace": 94,
-   "ADBE Exposure2": 68,
-   "ADBE Blend Options Group": 47,
-   "ADBE Adv Blend Group": 47,
-   "ADBE Extrsn Options Group": 47,
-   "ADBE Bevel Direction": 47
+   "ADBE Exposure2": 68
   },
-  "third_party": [
-   "CC RepeTile"
+  "third_party": [],
+  "cc_effects": [
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 50,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "619",
@@ -2403,29 +1630,18 @@
   "preview": "https://assets.mixkit.co/video-templates/619/mixkit-619-360.mp4",
   "footage": 1,
   "aep_mb": 7.1,
-  "layers": 0,
+  "layers": 135,
   "comps": 8,
   "effects": {
-   "ADBE Group End": 2139,
-   "ADBE Envir Appear in Reflect": 135,
-   "ADBE Camera Options Group": 72,
-   "ADBE Blend Options Group": 63,
-   "ADBE Adv Blend Group": 63,
-   "ADBE Extrsn Options Group": 63,
-   "ADBE Bevel Direction": 63,
-   "ADBE Appears in Reflections": 63,
-   "ADBE Reflection Coefficient": 63,
-   "ADBE Glossiness Coefficient": 63,
-   "ADBE Fresnel Coefficient": 63,
-   "ADBE Transparency Coefficient": 63
+   "ADBE Fill": 54,
+   "ADBE Drop Shadow": 25
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "816",
@@ -2435,30 +1651,21 @@
   "preview": "https://assets.mixkit.co/video-templates/816/mixkit-816-360.mp4",
   "footage": 6,
   "aep_mb": 3.3,
-  "layers": 0,
+  "layers": 351,
   "comps": 22,
   "effects": {
-   "ADBE Group End": 3945,
-   "ADBE Envir Appear in Reflect": 351,
-   "ADBE Camera Options Group": 220,
-   "ADBE Effect Built In Params": 174,
-   "ADBE Color Control": 171,
-   "ADBE Blend Options Group": 131,
-   "ADBE Adv Blend Group": 131,
-   "ADBE Extrsn Options Group": 131,
-   "ADBE Bevel Direction": 131,
-   "ADBE Appears in Reflections": 131,
-   "ADBE Reflection Coefficient": 131,
-   "ADBE Glossiness Coefficient": 131
+   "ADBE Glo2": 79,
+   "ADBE Tint": 59,
+   "ADBE Drop Shadow": 18
   },
-  "third_party": [
-   "CC 2017 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Particle World"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 114,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 39,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "603",
@@ -2468,27 +1675,17 @@
   "preview": "https://assets.mixkit.co/video-templates/603/mixkit-603-360.mp4",
   "footage": 0,
   "aep_mb": 1.1,
-  "layers": 0,
+  "layers": 178,
   "comps": 14,
   "effects": {
-   "ADBE Group End": 1535,
-   "ADBE Envir Appear in Reflect": 178,
-   "ADBE Camera Options Group": 126,
-   "ADBE Blend Options Group": 52,
-   "ADBE Adv Blend Group": 52,
-   "ADBE Extrsn Options Group": 52,
-   "ADBE Bevel Direction": 52,
-   "ADBE Appears in Reflections": 52,
-   "ADBE Reflection Coefficient": 52,
-   "ADBE Glossiness Coefficient": 52,
-   "ADBE Fresnel Coefficient": 52,
-   "ADBE Transparency Coefficient": 52
+   "ADBE Tint": 29
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "601",
@@ -2498,27 +1695,18 @@
   "preview": "https://assets.mixkit.co/video-templates/601/mixkit-601-360.mp4",
   "footage": 0,
   "aep_mb": 1.7,
-  "layers": 0,
+  "layers": 63,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 745,
-   "ADBE Envir Appear in Reflect": 63,
-   "ADBE Fill": 53,
    "ADBE Displacement Map": 43,
-   "ADBE Grid": 43,
-   "ADBE Camera Options Group": 36,
-   "ADBE Effect Built In Params": 28,
-   "ADBE Set Matte3": 27,
-   "ADBE Blend Options Group": 27,
-   "ADBE Adv Blend Group": 27,
-   "ADBE Extrsn Options Group": 27,
-   "ADBE Bevel Direction": 27
+   "ADBE Fill": 53
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 4,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 74,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "835",
@@ -2528,29 +1716,15 @@
   "preview": "https://assets.mixkit.co/video-templates/835/mixkit-835-360.mp4",
   "footage": 0,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 19,
   "comps": 1,
-  "effects": {
-   "ADBE Group End": 246,
-   "ADBE Envir Appear in Reflect": 19,
-   "ADBE Camera Options Group": 10,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9,
-   "ADBE Bevel Direction": 9,
-   "ADBE Appears in Reflections": 9,
-   "ADBE Reflection Coefficient": 9,
-   "ADBE Glossiness Coefficient": 9,
-   "ADBE Fresnel Coefficient": 9,
-   "ADBE Transparency Coefficient": 9
-  },
+  "effects": {},
   "third_party": [],
-  "fonts": [
-   "Montserrat-Light"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "644",
@@ -2560,31 +1734,17 @@
   "preview": "https://assets.mixkit.co/video-templates/644/mixkit-644-360.mp4",
   "footage": 0,
   "aep_mb": 5.0,
-  "layers": 0,
+  "layers": 20,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 383,
-   "ADBE Color Control": 78,
-   "ADBE Fill": 43,
-   "ADBE Effect Built In Params": 24,
-   "ADBE Slider Control": 20,
-   "ADBE Envir Appear in Reflect": 20,
-   "ADBE Blend Options Group": 11,
-   "ADBE Adv Blend Group": 11,
-   "ADBE Extrsn Options Group": 11,
-   "ADBE Bevel Direction": 11,
-   "ADBE Appears in Reflections": 11,
-   "ADBE Reflection Coefficient": 11
+   "ADBE Fill": 43
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "SFProDisplay-Bold"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 11,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 79,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "632",
@@ -2594,31 +1754,18 @@
   "preview": "https://assets.mixkit.co/video-templates/632/mixkit-632-360.mp4",
   "footage": 2,
   "aep_mb": 3.6,
-  "layers": 0,
+  "layers": 337,
   "comps": 15,
   "effects": {
-   "ADBE Group End": 7409,
-   "ADBE Envir Appear in Reflect": 337,
-   "ADBE Geometry2": 318,
-   "ADBE Blend Options Group": 202,
-   "ADBE Adv Blend Group": 202,
-   "ADBE Extrsn Options Group": 202,
-   "ADBE Bevel Direction": 202,
-   "ADBE Appears in Reflections": 202,
-   "ADBE Reflection Coefficient": 202,
-   "ADBE Glossiness Coefficient": 202,
-   "ADBE Fresnel Coefficient": 202,
-   "ADBE Transparency Coefficient": 202
+   "ADBE Fill": 50,
+   "ADBE Glo2": 75
   },
-  "third_party": [
-   "Elements 1"
-  ],
-  "fonts": [
-   "KelsonSans-Light"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 71,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 43,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "588",
@@ -2628,32 +1775,20 @@
   "preview": "https://assets.mixkit.co/video-templates/588/mixkit-588-360.mp4",
   "footage": 0,
   "aep_mb": 5.0,
-  "layers": 0,
+  "layers": 17,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 269,
-   "ADBE Laser": 68,
-   "ADBE Color Control": 36,
-   "ADBE Effect Built In Params": 30,
-   "ADBE Fill": 26,
-   "ADBE Envir Appear in Reflect": 17,
-   "ADBE Camera Options Group": 9,
-   "ADBE Camera Zoom": 9,
-   "ADBE Blend Options Group": 8,
-   "ADBE Adv Blend Group": 8,
-   "ADBE Extrsn Options Group": 8,
-   "ADBE Bevel Direction": 8
+   "ADBE Fill": 26
   },
-  "third_party": [
-   "CC Composite",
-   "CC CompositeLIST",
+  "third_party": [],
+  "cc_effects": [
    "CC Compositepjef",
-   "CC RepeTile"
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 13,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 69,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "804",
@@ -2663,31 +1798,19 @@
   "preview": "https://assets.mixkit.co/video-templates/804/mixkit-804-360.mp4",
   "footage": 6,
   "aep_mb": 0.9,
-  "layers": 0,
+  "layers": 121,
   "comps": 8,
   "effects": {
-   "ADBE Group End": 1225,
-   "ADBE Envir Appear in Reflect": 121,
-   "ADBE Camera Options Group": 81,
-   "ADBE Blend Options Group": 40,
-   "ADBE Adv Blend Group": 40,
-   "ADBE Extrsn Options Group": 40,
-   "ADBE Bevel Direction": 40,
-   "ADBE Appears in Reflections": 40,
-   "ADBE Reflection Coefficient": 40,
-   "ADBE Glossiness Coefficient": 40,
-   "ADBE Fresnel Coefficient": 40,
-   "ADBE Transparency Coefficient": 40
+   "ADBE Ramp": 35
   },
-  "third_party": [
-   "CC Particle World",
-   "Element 1",
-   "Element 2"
+  "third_party": [],
+  "cc_effects": [
+   "CC Particle World"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 17,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 59,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "712",
@@ -2697,31 +1820,19 @@
   "preview": "https://assets.mixkit.co/video-templates/712/mixkit-712-360.mp4",
   "footage": 1,
   "aep_mb": 4.8,
-  "layers": 0,
+  "layers": 476,
   "comps": 29,
   "effects": {
-   "ADBE Group End": 6593,
-   "ADBE Envir Appear in Reflect": 476,
-   "ADBE Camera Options Group": 261,
-   "ADBE Blend Options Group": 215,
-   "ADBE Adv Blend Group": 215,
-   "ADBE Extrsn Options Group": 215,
-   "ADBE Bevel Direction": 215,
-   "ADBE Appears in Reflections": 215,
-   "ADBE Reflection Coefficient": 215,
-   "ADBE Glossiness Coefficient": 215,
-   "ADBE Fresnel Coefficient": 215,
-   "ADBE Transparency Coefficient": 215
+   "ADBE Fill": 210
   },
-  "third_party": [
-   "CC 2017 ",
-   "CC 2019 ",
-   "CC RepeTile"
+  "third_party": [],
+  "cc_effects": [
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 10,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 66,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "646",
@@ -2731,27 +1842,17 @@
   "preview": "https://assets.mixkit.co/video-templates/646/mixkit-646-360.mp4",
   "footage": 0,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 15,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 183,
-   "ADBE Fill": 77,
-   "ADBE Envir Appear in Reflect": 15,
-   "ADBE Camera Options Group": 9,
-   "ADBE Camera Zoom": 9,
-   "ADBE Effect Built In Params": 8,
-   "ADBE Blend Options Group": 6,
-   "ADBE Adv Blend Group": 6,
-   "ADBE Extrsn Options Group": 6,
-   "ADBE Bevel Direction": 6,
-   "ADBE Appears in Reflections": 6,
-   "ADBE Reflection Coefficient": 6
+   "ADBE Fill": 77
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "757",
@@ -2761,30 +1862,19 @@
   "preview": "https://assets.mixkit.co/video-templates/757/mixkit-757-360.mp4",
   "footage": 1,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 70,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 542,
-   "ADBE Envir Appear in Reflect": 70,
    "ADBE 4ColorGradient": 67,
-   "ADBE Camera Options Group": 54,
-   "ADBE Glo2": 41,
-   "ADBE Camera Zoom": 36,
    "ADBE Fill": 25,
-   "ADBE Effect Built In Params": 17,
-   "ADBE Blend Options Group": 16,
-   "ADBE Adv Blend Group": 16,
-   "ADBE Extrsn Options Group": 16,
-   "ADBE Bevel Direction": 16
+   "ADBE Glo2": 41
   },
   "third_party": [],
-  "fonts": [
-   "Code-Bold",
-   "Gilroy-Light"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 12,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 44,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "649",
@@ -2794,30 +1884,18 @@
   "preview": "https://assets.mixkit.co/video-templates/649/mixkit-649-360.mp4",
   "footage": 2,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 29,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 613,
-   "ADBE Color Control": 77,
-   "ADBE Fill": 63,
-   "ADBE Effect Built In Params": 31,
-   "ADBE Envir Appear in Reflect": 29,
    "ADBE Echo": 25,
-   "ADBE Blend Options Group": 20,
-   "ADBE Adv Blend Group": 20,
-   "ADBE Extrsn Options Group": 20,
-   "ADBE Bevel Direction": 20,
-   "ADBE Appears in Reflections": 20,
-   "ADBE Reflection Coefficient": 20
+   "ADBE Fill": 63
   },
   "third_party": [],
-  "fonts": [
-   "Montserrat-Bold",
-   "Montserrat-Medium"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 18,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 50,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "552",
@@ -2827,31 +1905,19 @@
   "preview": "https://assets.mixkit.co/video-templates/552/mixkit-552-360.mp4",
   "footage": 3,
   "aep_mb": 5.2,
-  "layers": 0,
+  "layers": 60,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 687,
-   "ADBE Envir Appear in Reflect": 60,
-   "ADBE Camera Options Group": 36,
    "ADBE Fill": 30,
-   "ADBE Blend Options Group": 24,
-   "ADBE Adv Blend Group": 24,
-   "ADBE Extrsn Options Group": 24,
-   "ADBE Bevel Direction": 24,
-   "ADBE Appears in Reflections": 24,
-   "ADBE Reflection Coefficient": 24,
-   "ADBE Glossiness Coefficient": 24,
-   "ADBE Fresnel Coefficient": 24
+   "ADBE Ramp": 19,
+   "ADBE Tint": 11
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2017 ",
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 1,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 79,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "554",
@@ -2861,34 +1927,20 @@
   "preview": "https://assets.mixkit.co/video-templates/554/mixkit-554-360.mp4",
   "footage": 0,
   "aep_mb": 5.5,
-  "layers": 0,
+  "layers": 79,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 1011,
-   "ADBE Envir Appear in Reflect": 79,
-   "ADBE Fill": 48,
-   "ADBE Camera Options Group": 45,
-   "ADBE Blend Options Group": 34,
-   "ADBE Adv Blend Group": 34,
-   "ADBE Extrsn Options Group": 34,
-   "ADBE Bevel Direction": 34,
-   "ADBE Appears in Reflections": 34,
-   "ADBE Reflection Coefficient": 34,
-   "ADBE Glossiness Coefficient": 34,
-   "ADBE Fresnel Coefficient": 34
+   "ADBE Fill": 48
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2017 ",
-   "CC 2019 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Page Turn",
-   "CC Page TurnLIST",
    "CC Page Turnqtlg"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 11,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 71,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "848",
@@ -2898,27 +1950,15 @@
   "preview": "https://assets.mixkit.co/video-templates/848/mixkit-848-360.mp4",
   "footage": 2,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 39,
   "comps": 2,
-  "effects": {
-   "ADBE Group End": 549,
-   "ADBE Laser": 51,
-   "ADBE Envir Appear in Reflect": 39,
-   "ADBE Camera Options Group": 20,
-   "ADBE Blend Options Group": 19,
-   "ADBE Adv Blend Group": 19,
-   "ADBE Extrsn Options Group": 19,
-   "ADBE Bevel Direction": 19,
-   "ADBE Appears in Reflections": 19,
-   "ADBE Reflection Coefficient": 19,
-   "ADBE Glossiness Coefficient": 19,
-   "ADBE Fresnel Coefficient": 19
-  },
+  "effects": {},
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 8,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 72,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "648",
@@ -2928,29 +1968,19 @@
   "preview": "https://assets.mixkit.co/video-templates/648/mixkit-648-360.mp4",
   "footage": 0,
   "aep_mb": 1.0,
-  "layers": 0,
+  "layers": 130,
   "comps": 10,
   "effects": {
-   "ADBE Group End": 1230,
-   "ADBE Envir Appear in Reflect": 130,
-   "ADBE Camera Options Group": 90,
-   "ADBE Camera Zoom": 81,
-   "ADBE Ramp": 64,
    "ADBE Fill": 41,
-   "ADBE Blend Options Group": 37,
-   "ADBE Adv Blend Group": 37,
-   "ADBE Extrsn Options Group": 37,
-   "ADBE Bevel Direction": 37,
-   "ADBE Transparency Coefficient": 37,
-   "ADBE Transp Rolloff": 37
+   "ADBE Ramp": 64,
+   "ADBE Drop Shadow": 30
   },
   "third_party": [],
-  "fonts": [
-   "Gilroy-Light"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 15,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 75,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "642",
@@ -2960,32 +1990,17 @@
   "preview": "https://assets.mixkit.co/video-templates/642/mixkit-642-360.mp4",
   "footage": 0,
   "aep_mb": 5.1,
-  "layers": 0,
+  "layers": 33,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 493,
-   "ADBE Color Control": 69,
-   "ADBE Fill": 41,
-   "ADBE Envir Appear in Reflect": 33,
-   "ADBE Effect Built In Params": 23,
-   "ADBE Slider Control": 19,
-   "ADBE Camera Options Group": 18,
-   "ADBE Camera Zoom": 18,
-   "ADBE Blend Options Group": 15,
-   "ADBE Adv Blend Group": 15,
-   "ADBE Extrsn Options Group": 15,
-   "ADBE Bevel Direction": 15
+   "ADBE Fill": 41
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "SFProDisplay-Bold",
-   "SFProDisplay-Medium"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 10,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "555",
@@ -2995,31 +2010,18 @@
   "preview": "https://assets.mixkit.co/video-templates/555/mixkit-555-360.mp4",
   "footage": 0,
   "aep_mb": 5.5,
-  "layers": 0,
+  "layers": 90,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 1121,
-   "ADBE Envir Appear in Reflect": 90,
    "ADBE Fill": 69,
-   "ADBE Color Control": 65,
-   "ADBE Camera Options Group": 54,
-   "ADBE Effect Built In Params": 42,
-   "ADBE Stroke": 37,
-   "ADBE Blend Options Group": 36,
-   "ADBE Adv Blend Group": 36,
-   "ADBE Extrsn Options Group": 36,
-   "ADBE Bevel Direction": 36,
-   "ADBE Appears in Reflections": 36
+   "ADBE Stroke": 37
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2017 ",
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 21,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 69,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "566",
@@ -3029,27 +2031,19 @@
   "preview": "https://assets.mixkit.co/video-templates/566/mixkit-566-360.mp4",
   "footage": 0,
   "aep_mb": 3.0,
-  "layers": 0,
+  "layers": 72,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 924,
-   "ADBE Exposure2": 102,
-   "ADBE Effect Built In Params": 74,
-   "ADBE Envir Appear in Reflect": 72,
-   "ADBE Slider Control": 68,
-   "ADBE Ramp": 61,
-   "ADBE Geometry2": 50,
-   "ADBE Camera Options Group": 45,
    "ADBE Fill": 35,
-   "ADBE Set Matte3": 33,
-   "ADBE Channel Blur": 30,
-   "ADBE Blend Options Group": 27
+   "ADBE Ramp": 61,
+   "ADBE Exposure2": 102
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 15,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 63,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "645",
@@ -3059,29 +2053,19 @@
   "preview": "https://assets.mixkit.co/video-templates/645/mixkit-645-360.mp4",
   "footage": 0,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 51,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 519,
-   "ADBE Envir Appear in Reflect": 51,
-   "ADBE Camera Options Group": 36,
-   "ADBE Ramp": 33,
-   "ADBE Effect Built In Params": 27,
    "ADBE Fill": 26,
-   "ADBE Drop Shadow": 24,
-   "ADBE Slider Control": 20,
-   "ADBE Camera Zoom": 18,
-   "ADBE Color Control": 17,
-   "ADBE Blend Options Group": 15,
-   "ADBE Adv Blend Group": 15
+   "ADBE Ramp": 33,
+   "ADBE Drop Shadow": 24
   },
   "third_party": [],
-  "fonts": [
-   "Gilroy-Light"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 9,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 81,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "768",
@@ -3091,37 +2075,21 @@
   "preview": "https://assets.mixkit.co/video-templates/768/mixkit-768-360.mp4",
   "footage": 3,
   "aep_mb": 0.8,
-  "layers": 0,
+  "layers": 71,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 1354,
-   "ADBE Envir Appear in Reflect": 71,
    "ADBE Fill": 68,
-   "ADBE Fractal Noise": 62,
-   "ADBE Effect Built In Params": 44,
-   "ADBE Blend Options Group": 44,
-   "ADBE Adv Blend Group": 44,
-   "ADBE Extrsn Options Group": 44,
-   "ADBE Bevel Direction": 44,
-   "ADBE Appears in Reflections": 44,
-   "ADBE Reflection Coefficient": 44,
-   "ADBE Glossiness Coefficient": 44
+   "ADBE Ramp": 30,
+   "ADBE Tint": 23,
+   "ADBE Drop Shadow": 34,
+   "ADBE Fractal Noise": 62
   },
-  "third_party": [
-   "Element 01",
-   "Element 02",
-   "Element 03",
-   "Element 04",
-   "Element 05",
-   "Element Rec L",
-   "Element Rec R"
-  ],
-  "fonts": [
-   "SourceSansPro-Regular"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 88,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 43,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "548",
@@ -3131,32 +2099,25 @@
   "preview": "https://assets.mixkit.co/video-templates/548/mixkit-548-360.mp4",
   "footage": 0,
   "aep_mb": 1.4,
-  "layers": 0,
+  "layers": 142,
   "comps": 8,
   "effects": {
-   "ADBE Group End": 2318,
-   "ADBE Envir Appear in Reflect": 142,
-   "ADBE AudSpect": 127,
+   "ADBE Fill": 39,
+   "ADBE Glo2": 28,
    "ADBE Ramp": 80,
-   "ADBE Effect Built In Params": 80,
-   "ADBE Camera Options Group": 72,
-   "ADBE Blend Options Group": 70,
-   "ADBE Adv Blend Group": 70,
-   "ADBE Extrsn Options Group": 70,
-   "ADBE Bevel Direction": 70,
-   "ADBE Transparency Coefficient": 70,
-   "ADBE Transp Rolloff": 70
+   "ADBE Turbulent Displace": 52,
+   "ADBE Drop Shadow": 66
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Glass",
-   "CC GlassLIST",
    "CC Glasspjef",
    "CC Sphere"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 38,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 29,
+  "route": "study motion only"
  },
  {
   "id": "550",
@@ -3166,29 +2127,24 @@
   "preview": "https://assets.mixkit.co/video-templates/550/mixkit-550-360.mp4",
   "footage": 0,
   "aep_mb": 0.9,
-  "layers": 0,
+  "layers": 94,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 1288,
-   "ADBE AudSpect": 127,
-   "ADBE Ramp": 122,
-   "ADBE Envir Appear in Reflect": 94,
-   "ADBE Effect Built In Params": 75,
+   "ADBE Fill": 27,
    "ADBE Glo2": 72,
-   "ADBE Camera Options Group": 54,
-   "ADBE Blend Options Group": 40,
-   "ADBE Adv Blend Group": 40,
-   "ADBE Extrsn Options Group": 40,
-   "ADBE Bevel Direction": 40,
-   "ADBE Appears in Reflections": 40
+   "ADBE Ramp": 122,
+   "ADBE Turbulent Displace": 26,
+   "ADBE Drop Shadow": 15,
+   "ADBE Venetian Blinds": 35
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Particle World"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 44,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 37,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "549",
@@ -3198,30 +2154,23 @@
   "preview": "https://assets.mixkit.co/video-templates/549/mixkit-549-360.mp4",
   "footage": 0,
   "aep_mb": 1.3,
-  "layers": 0,
+  "layers": 157,
   "comps": 10,
   "effects": {
-   "ADBE Group End": 2130,
-   "ADBE AudSpect": 185,
-   "ADBE Envir Appear in Reflect": 157,
    "ADBE Fill": 105,
-   "ADBE Effect Built In Params": 96,
-   "ADBE Camera Options Group": 90,
-   "ADBE Blend Options Group": 67,
-   "ADBE Adv Blend Group": 67,
-   "ADBE Extrsn Options Group": 67,
-   "ADBE Bevel Direction": 67,
-   "ADBE Appears in Reflections": 67,
-   "ADBE Reflection Coefficient": 67
+   "ADBE Glo2": 46,
+   "ADBE Ramp": 24,
+   "ADBE Turbulent Displace": 54
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Particle World",
-   "CC RepeTile"
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 40,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 33,
+  "route": "study motion only"
  },
  {
   "id": "621",
@@ -3231,27 +2180,22 @@
   "preview": "https://assets.mixkit.co/video-templates/621/mixkit-621-360.mp4",
   "footage": 0,
   "aep_mb": 0.7,
-  "layers": 0,
+  "layers": 131,
   "comps": 11,
   "effects": {
-   "ADBE Group End": 951,
-   "ADBE Envir Appear in Reflect": 131,
-   "ADBE Camera Options Group": 99,
-   "ADBE Camera Zoom": 63,
-   "ADBE AudSpect": 53,
-   "ADBE Blend Options Group": 32,
-   "ADBE Adv Blend Group": 32,
-   "ADBE Extrsn Options Group": 32,
-   "ADBE Bevel Direction": 32,
-   "ADBE Appears in Reflections": 32,
-   "ADBE Reflection Coefficient": 32,
-   "ADBE Glossiness Coefficient": 32
+   "ADBE Drop Shadow": 16,
+   "ADBE Fill": 14,
+   "ADBE Glo2": 20,
+   "ADBE Ramp": 14,
+   "ADBE Venetian Blinds": 15,
+   "ADBE Echo": 10
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 2,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 64,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "786",
@@ -3261,29 +2205,24 @@
   "preview": "https://assets.mixkit.co/video-templates/786/mixkit-786-360.mp4",
   "footage": 0,
   "aep_mb": 0.8,
-  "layers": 0,
+  "layers": 84,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 1012,
-   "ADBE AudSpect": 134,
-   "ADBE Ramp": 103,
-   "ADBE Envir Appear in Reflect": 84,
-   "ADBE Effect Built In Params": 74,
+   "ADBE Fill": 29,
    "ADBE Glo2": 70,
-   "ADBE Camera Options Group": 54,
+   "ADBE Ramp": 103,
    "ADBE Turbulent Displace": 41,
-   "ADBE Minimax": 37,
    "ADBE Venetian Blinds": 35,
-   "ADBE Blend Options Group": 30,
-   "ADBE Adv Blend Group": 30
+   "ADBE Drop Shadow": 22
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Particle World"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 29,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 37,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "612",
@@ -3293,27 +2232,18 @@
   "preview": "https://assets.mixkit.co/video-templates/612/mixkit-612-360.mp4",
   "footage": 0,
   "aep_mb": 0.7,
-  "layers": 0,
+  "layers": 120,
   "comps": 10,
   "effects": {
-   "ADBE Group End": 877,
-   "ADBE Envir Appear in Reflect": 120,
-   "ADBE AudSpect": 103,
-   "ADBE Camera Options Group": 90,
-   "ADBE Camera Zoom": 81,
-   "ADBE Blend Options Group": 30,
-   "ADBE Adv Blend Group": 30,
-   "ADBE Extrsn Options Group": 30,
-   "ADBE Bevel Direction": 30,
-   "ADBE Appears in Reflections": 30,
-   "ADBE Reflection Coefficient": 30,
-   "ADBE Glossiness Coefficient": 30
+   "ADBE Drop Shadow": 15,
+   "ADBE Fill": 14
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "812",
@@ -3323,27 +2253,18 @@
   "preview": "https://assets.mixkit.co/video-templates/812/mixkit-812-360.mp4",
   "footage": 1,
   "aep_mb": 0.8,
-  "layers": 0,
+  "layers": 122,
   "comps": 10,
   "effects": {
-   "ADBE Group End": 1011,
-   "ADBE AudSpect": 142,
-   "ADBE Envir Appear in Reflect": 122,
-   "ADBE Camera Options Group": 90,
-   "ADBE Camera Zoom": 81,
-   "ADBE Effect Built In Params": 42,
-   "ADBE Extrsn Options Group": 32,
-   "ADBE Bevel Direction": 32,
-   "ADBE Appears in Reflections": 32,
-   "ADBE Reflection Coefficient": 32,
-   "ADBE Glossiness Coefficient": 32,
-   "ADBE Fresnel Coefficient": 32
+   "ADBE Fill": 26,
+   "ADBE Drop Shadow": 25
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "845",
@@ -3353,32 +2274,21 @@
   "preview": "https://assets.mixkit.co/video-templates/845/mixkit-845-360.mp4",
   "footage": 0,
   "aep_mb": 1.1,
-  "layers": 0,
+  "layers": 140,
   "comps": 8,
   "effects": {
-   "ADBE Group End": 1750,
-   "ADBE HUE SATURATION": 171,
-   "ADBE Envir Appear in Reflect": 140,
-   "ADBE Camera Options Group": 81,
-   "ADBE Effect Built In Params": 76,
-   "ADBE Blend Options Group": 59,
-   "ADBE Adv Blend Group": 59,
-   "ADBE Extrsn Options Group": 59,
-   "ADBE Bevel Direction": 59,
-   "ADBE Appears in Reflections": 59,
-   "ADBE Reflection Coefficient": 59,
-   "ADBE Glossiness Coefficient": 59
+   "ADBE Glo2": 47,
+   "ADBE Ramp": 27
   },
-  "third_party": [
-   "CC Particle Systems II",
-   "CC Particle Systems IILIST",
-   "CC Particle Systems IIpjef",
+  "third_party": [],
+  "cc_effects": [
+   "CC Particle Systems",
    "CC Star Burst"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 70,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "795",
@@ -3388,27 +2298,18 @@
   "preview": "https://assets.mixkit.co/video-templates/795/mixkit-795-360.mp4",
   "footage": 6,
   "aep_mb": 0.8,
-  "layers": 0,
+  "layers": 144,
   "comps": 10,
   "effects": {
-   "ADBE Group End": 1279,
-   "ADBE Envir Appear in Reflect": 144,
-   "ADBE Camera Options Group": 102,
-   "ADBE Camera Lens Blur": 97,
-   "ADBE Blend Options Group": 42,
-   "ADBE Adv Blend Group": 42,
-   "ADBE Extrsn Options Group": 42,
-   "ADBE Bevel Direction": 42,
-   "ADBE Appears in Reflections": 42,
-   "ADBE Reflection Coefficient": 42,
-   "ADBE Glossiness Coefficient": 42,
-   "ADBE Fresnel Coefficient": 42
+   "ADBE CurvesCustom": 13,
+   "ADBE Tint": 20
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 68,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "587",
@@ -3418,32 +2319,20 @@
   "preview": "https://assets.mixkit.co/video-templates/587/mixkit-587-360.mp4",
   "footage": 0,
   "aep_mb": 5.0,
-  "layers": 0,
+  "layers": 18,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 316,
-   "ADBE Laser": 79,
-   "ADBE Color Control": 45,
-   "ADBE Effect Built In Params": 35,
-   "ADBE Fill": 26,
-   "ADBE Envir Appear in Reflect": 18,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9,
-   "ADBE Bevel Direction": 9,
-   "ADBE Appears in Reflections": 9,
-   "ADBE Reflection Coefficient": 9
+   "ADBE Fill": 26
   },
-  "third_party": [
-   "CC Composite",
-   "CC CompositeLIST",
+  "third_party": [],
+  "cc_effects": [
    "CC Compositepjef",
-   "CC RepeTile"
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 16,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 66,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "751",
@@ -3453,37 +2342,22 @@
   "preview": "https://assets.mixkit.co/video-templates/751/mixkit-751-360.mp4",
   "footage": 3,
   "aep_mb": 2.2,
-  "layers": 0,
+  "layers": 133,
   "comps": 9,
   "effects": {
-   "ADBE Group End": 1661,
-   "ADBE Fractal Noise": 156,
-   "ADBE Envir Appear in Reflect": 133,
-   "ADBE Camera Options Group": 81,
-   "ADBE Effect Built In Params": 74,
-   "ADBE Blend Options Group": 52,
-   "ADBE Adv Blend Group": 52,
-   "ADBE Extrsn Options Group": 52,
-   "ADBE Bevel Direction": 52,
-   "ADBE Appears in Reflections": 52,
-   "ADBE Reflection Coefficient": 52,
-   "ADBE Glossiness Coefficient": 52
+   "ADBE Displacement Map": 34,
+   "ADBE Fill": 23,
+   "ADBE Fractal Noise": 156
   },
-  "third_party": [
-   "CC 2018 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Bender",
-   "CC Bender 2",
-   "CC Bender 3",
-   "CC Bender 4",
-   "CC Threshold",
-   "CC ThresholdLIST"
+   "CC Threshold"
   ],
-  "fonts": [
-   "Muli-Regular"
-  ],
+  "has_3d_camera": true,
   "expressions": 11,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 37,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "805",
@@ -3493,29 +2367,18 @@
   "preview": "https://assets.mixkit.co/video-templates/805/mixkit-805-360.mp4",
   "footage": 2,
   "aep_mb": 0.6,
-  "layers": 0,
+  "layers": 87,
   "comps": 7,
   "effects": {
-   "ADBE Group End": 769,
-   "ADBE Envir Appear in Reflect": 87,
-   "ADBE Camera Options Group": 63,
-   "ADBE Tint": 35,
    "ADBE Fill": 31,
-   "ADBE Blend Options Group": 24,
-   "ADBE Adv Blend Group": 24,
-   "ADBE Extrsn Options Group": 24,
-   "ADBE Bevel Direction": 24,
-   "ADBE Appears in Reflections": 24,
-   "ADBE Reflection Coefficient": 24,
-   "ADBE Glossiness Coefficient": 24
+   "ADBE Tint": 35
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "828",
@@ -3525,27 +2388,18 @@
   "preview": "https://assets.mixkit.co/video-templates/828/mixkit-828-360.mp4",
   "footage": 2,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 52,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 607,
-   "ADBE Envir Appear in Reflect": 52,
-   "ADBE Camera Options Group": 30,
-   "ADBE Camera Zoom": 30,
-   "ADBE Blend Options Group": 22,
-   "ADBE Adv Blend Group": 22,
-   "ADBE Extrsn Options Group": 22,
-   "ADBE Bevel Direction": 22,
-   "ADBE Appears in Reflections": 22,
-   "ADBE Reflection Coefficient": 22,
-   "ADBE Glossiness Coefficient": 22,
-   "ADBE Fresnel Coefficient": 22
+   "ADBE Radial Wipe": 18,
+   "ADBE Drop Shadow": 18
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "638",
@@ -3555,27 +2409,17 @@
   "preview": "https://assets.mixkit.co/video-templates/638/mixkit-638-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 47,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 394,
-   "ADBE Fill": 51,
-   "ADBE Envir Appear in Reflect": 47,
-   "ADBE Camera Options Group": 36,
-   "ADBE Blend Options Group": 11,
-   "ADBE Adv Blend Group": 11,
-   "ADBE Extrsn Options Group": 11,
-   "ADBE Bevel Direction": 11,
-   "ADBE Appears in Reflections": 11,
-   "ADBE Reflection Coefficient": 11,
-   "ADBE Glossiness Coefficient": 11,
-   "ADBE Fresnel Coefficient": 11
+   "ADBE Fill": 51
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "759",
@@ -3585,30 +2429,17 @@
   "preview": "https://assets.mixkit.co/video-templates/759/mixkit-759-360.mp4",
   "footage": 0,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 21,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 318,
-   "ADBE Fill": 32,
-   "ADBE Color Control": 25,
-   "ADBE Envir Appear in Reflect": 21,
-   "ADBE Effect Built In Params": 12,
-   "ADBE Blend Options Group": 12,
-   "ADBE Adv Blend Group": 12,
-   "ADBE Extrsn Options Group": 12,
-   "ADBE Bevel Direction": 12,
-   "ADBE Appears in Reflections": 12,
-   "ADBE Reflection Coefficient": 12,
-   "ADBE Glossiness Coefficient": 12
+   "ADBE Fill": 32
   },
   "third_party": [],
-  "fonts": [
-   "Montserrat-Black",
-   "Montserrat-Light"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 5,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 85,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "586",
@@ -3618,27 +2449,17 @@
   "preview": "https://assets.mixkit.co/video-templates/586/mixkit-586-360.mp4",
   "footage": 0,
   "aep_mb": 5.0,
-  "layers": 0,
+  "layers": 18,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 296,
-   "ADBE Laser": 46,
-   "ADBE Color Control": 28,
-   "ADBE Fill": 26,
-   "ADBE Effect Built In Params": 22,
-   "ADBE Envir Appear in Reflect": 18,
-   "ADBE Slider Control": 16,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9,
-   "ADBE Bevel Direction": 9,
-   "ADBE Appears in Reflections": 9
+   "ADBE Fill": 26
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 16,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 74,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "793",
@@ -3648,29 +2469,18 @@
   "preview": "https://assets.mixkit.co/video-templates/793/mixkit-793-360.mp4",
   "footage": 2,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 30,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 334,
-   "ADBE Glo2": 56,
-   "ADBE Black": 37,
    "ADBE Fill": 32,
-   "ADBE Envir Appear in Reflect": 30,
-   "ADBE Camera Options Group": 20,
-   "ADBE Effect Built In Params": 18,
-   "ADBE Blend Options Group": 10,
-   "ADBE Adv Blend Group": 10,
-   "ADBE Extrsn Options Group": 10,
-   "ADBE Bevel Direction": 10,
-   "ADBE Appears in Reflections": 10
+   "ADBE Glo2": 56
   },
-  "third_party": [
-   "CC 2014 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 68,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "794",
@@ -3680,29 +2490,18 @@
   "preview": "https://assets.mixkit.co/video-templates/794/mixkit-794-360.mp4",
   "footage": 4,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 33,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 392,
    "ADBE Fill": 38,
-   "ADBE Envir Appear in Reflect": 33,
-   "ADBE Drop Shadow": 24,
-   "ADBE Camera Options Group": 20,
-   "ADBE Effect Built In Params": 13,
-   "ADBE Blend Options Group": 13,
-   "ADBE Adv Blend Group": 13,
-   "ADBE Extrsn Options Group": 13,
-   "ADBE Bevel Direction": 13,
-   "ADBE Appears in Reflections": 13,
-   "ADBE Reflection Coefficient": 13
+   "ADBE Drop Shadow": 24
   },
-  "third_party": [
-   "CC 2014 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "817",
@@ -3712,27 +2511,18 @@
   "preview": "https://assets.mixkit.co/video-templates/817/mixkit-817-360.mp4",
   "footage": 4,
   "aep_mb": 1.4,
-  "layers": 0,
+  "layers": 206,
   "comps": 14,
   "effects": {
-   "ADBE Group End": 2207,
-   "ADBE Envir Appear in Reflect": 206,
-   "ADBE Camera Options Group": 141,
-   "ADBE Camera Lens Blur": 124,
-   "ADBE BEZMESH": 106,
-   "ADBE Blend Options Group": 65,
-   "ADBE Adv Blend Group": 65,
-   "ADBE Extrsn Options Group": 65,
-   "ADBE Bevel Direction": 65,
-   "ADBE Appears in Reflections": 65,
-   "ADBE Reflection Coefficient": 65,
-   "ADBE Glossiness Coefficient": 65
+   "ADBE Drop Shadow": 34,
+   "ADBE Venetian Blinds": 20
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 8,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 72,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "815",
@@ -3742,30 +2532,20 @@
   "preview": "https://assets.mixkit.co/video-templates/815/mixkit-815-360.mp4",
   "footage": 2,
   "aep_mb": 0.7,
-  "layers": 0,
+  "layers": 73,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 1086,
-   "ADBE Envir Appear in Reflect": 73,
-   "ADBE Blend Options Group": 43,
-   "ADBE Adv Blend Group": 43,
-   "ADBE Extrsn Options Group": 43,
-   "ADBE Bevel Direction": 43,
-   "ADBE Appears in Reflections": 43,
-   "ADBE Reflection Coefficient": 43,
-   "ADBE Glossiness Coefficient": 43,
-   "ADBE Fresnel Coefficient": 43,
-   "ADBE Transparency Coefficient": 43,
-   "ADBE Transp Rolloff": 43
+   "ADBE Glo2": 37,
+   "ADBE Tint": 17
   },
-  "third_party": [
-   "CC 2017 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Particle World"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 10,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 54,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "580",
@@ -3775,30 +2555,17 @@
   "preview": "https://assets.mixkit.co/video-templates/580/mixkit-580-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 27,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 270,
-   "ADBE Grid": 43,
-   "ADBE Geometry2": 36,
-   "ADBE Tile": 29,
-   "ADBE Envir Appear in Reflect": 27,
-   "ADBE Effect Built In Params": 20,
-   "ADBE Basic 3D": 19,
-   "ADBE Camera Options Group": 18,
-   "ADBE Fast Blur": 16,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9
+   "ADBE Fast Blur": 16
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 4,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 86,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "579",
@@ -3808,30 +2575,15 @@
   "preview": "https://assets.mixkit.co/video-templates/579/mixkit-579-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 27,
   "comps": 2,
-  "effects": {
-   "ADBE Group End": 269,
-   "ADBE Grid": 43,
-   "ADBE Tile": 31,
-   "ADBE Envir Appear in Reflect": 27,
-   "ADBE Set Matte3": 23,
-   "ADBE Effect Built In Params": 20,
-   "ADBE Camera Options Group": 18,
-   "ADBE Motion Blur": 14,
-   "ADBE Offset": 13,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9
-  },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "effects": {},
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 6,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 84,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "800",
@@ -3841,29 +2593,17 @@
   "preview": "https://assets.mixkit.co/video-templates/800/mixkit-800-360.mp4",
   "footage": 1,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 37,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 295,
-   "ADBE Envir Appear in Reflect": 37,
-   "ADBE Camera Options Group": 28,
-   "ADBE Tint": 24,
-   "ADBE Gaussian Blur 2": 17,
-   "ADBE Effect Built In Params": 9,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9,
-   "ADBE Bevel Direction": 9,
-   "ADBE Appears in Reflections": 9,
-   "ADBE Reflection Coefficient": 9
+   "ADBE Tint": 24
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "578",
@@ -3873,30 +2613,15 @@
   "preview": "https://assets.mixkit.co/video-templates/578/mixkit-578-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 28,
   "comps": 2,
-  "effects": {
-   "ADBE Group End": 297,
-   "ADBE Grid": 43,
-   "ADBE Tile": 33,
-   "ADBE Geometry2": 32,
-   "ADBE Envir Appear in Reflect": 28,
-   "ADBE Effect Built In Params": 24,
-   "ADBE WRPMESH": 20,
-   "ADBE Camera Options Group": 18,
-   "ADBE Offset": 13,
-   "ADBE Motion Blur": 12,
-   "ADBE Blend Options Group": 10,
-   "ADBE Adv Blend Group": 10
-  },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "effects": {},
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 6,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 84,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "785",
@@ -3906,30 +2631,19 @@
   "preview": "https://assets.mixkit.co/video-templates/785/mixkit-785-360.mp4",
   "footage": 3,
   "aep_mb": 1.6,
-  "layers": 0,
+  "layers": 39,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 371,
-   "ADBE Fractal Noise": 88,
-   "ADBE Grid": 43,
-   "ADBE Geometry2": 41,
-   "ADBE Envir Appear in Reflect": 39,
    "ADBE Displacement Map": 34,
-   "ADBE Tile": 31,
-   "ADBE Effect Built In Params": 27,
-   "ADBE Camera Options Group": 27,
    "ADBE Fill": 23,
-   "ADBE Camera Zoom": 18,
-   "ADBE Blend Options Group": 12
+   "ADBE Fractal Noise": 88
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 4,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 52,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "576",
@@ -3939,30 +2653,15 @@
   "preview": "https://assets.mixkit.co/video-templates/576/mixkit-576-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 27,
   "comps": 2,
-  "effects": {
-   "ADBE Group End": 274,
-   "ADBE Grid": 43,
-   "ADBE Geometry2": 32,
-   "ADBE Tile": 29,
-   "ADBE Envir Appear in Reflect": 27,
-   "ADBE Effect Built In Params": 24,
-   "ADBE WRPMESH": 20,
-   "ADBE Camera Options Group": 18,
-   "ADBE Motion Blur": 14,
-   "ADBE Offset": 13,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9
-  },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "effects": {},
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 6,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 84,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "600",
@@ -3972,27 +2671,15 @@
   "preview": "https://assets.mixkit.co/video-templates/600/mixkit-600-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 27,
   "comps": 2,
-  "effects": {
-   "ADBE Group End": 269,
-   "ADBE Grid": 43,
-   "ADBE Tile": 31,
-   "ADBE Envir Appear in Reflect": 27,
-   "ADBE Set Matte3": 23,
-   "ADBE Effect Built In Params": 20,
-   "ADBE Camera Options Group": 18,
-   "ADBE Offset": 13,
-   "ADBE Motion Blur": 12,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9
-  },
+  "effects": {},
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 6,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 84,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "570",
@@ -4002,27 +2689,15 @@
   "preview": "https://assets.mixkit.co/video-templates/570/mixkit-570-360.mp4",
   "footage": 0,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 30,
   "comps": 2,
-  "effects": {
-   "ADBE Group End": 411,
-   "ADBE Envir Appear in Reflect": 30,
-   "ADBE Camera Options Group": 18,
-   "ADBE Blend Options Group": 12,
-   "ADBE Adv Blend Group": 12,
-   "ADBE Extrsn Options Group": 12,
-   "ADBE Bevel Direction": 12,
-   "ADBE Appears in Reflections": 12,
-   "ADBE Reflection Coefficient": 12,
-   "ADBE Glossiness Coefficient": 12,
-   "ADBE Fresnel Coefficient": 12,
-   "ADBE Transparency Coefficient": 12
-  },
+  "effects": {},
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "616",
@@ -4032,29 +2707,22 @@
   "preview": "https://assets.mixkit.co/video-templates/616/mixkit-616-360.mp4",
   "footage": 0,
   "aep_mb": 3.8,
-  "layers": 0,
+  "layers": 212,
   "comps": 16,
   "effects": {
-   "ADBE Group End": 2226,
-   "ADBE Envir Appear in Reflect": 212,
-   "ADBE Camera Options Group": 144,
-   "ADBE Effect Built In Params": 74,
-   "ADBE Blend Options Group": 68,
-   "ADBE Adv Blend Group": 68,
-   "ADBE Extrsn Options Group": 68,
-   "ADBE Bevel Direction": 68,
-   "ADBE Appears in Reflections": 68,
-   "ADBE Reflection Coefficient": 68,
-   "ADBE Glossiness Coefficient": 68,
-   "ADBE Fresnel Coefficient": 68
+   "ADBE CurvesCustom": 16,
+   "ADBE Fill": 44,
+   "ADBE Ramp": 29,
+   "ADBE Venetian Blinds": 18
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Scale Wipe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 74,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "544",
@@ -4064,32 +2732,19 @@
   "preview": "https://assets.mixkit.co/video-templates/544/mixkit-544-360.mp4",
   "footage": 0,
   "aep_mb": 1.7,
-  "layers": 0,
+  "layers": 182,
   "comps": 13,
   "effects": {
-   "ADBE Group End": 2068,
-   "ADBE Envir Appear in Reflect": 182,
-   "ADBE Camera Options Group": 117,
    "ADBE Fill": 114,
-   "ADBE Camera Zoom": 99,
-   "ADBE Blend Options Group": 65,
-   "ADBE Adv Blend Group": 65,
-   "ADBE Extrsn Options Group": 65,
-   "ADBE Bevel Direction": 65,
-   "ADBE Appears in Reflections": 65,
-   "ADBE Reflection Coefficient": 65,
-   "ADBE Glossiness Coefficient": 65
+   "ADBE Ramp": 28,
+   "ADBE Turbulent Displace": 36
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2018 "
-  ],
-  "fonts": [
-   "Montserrat-Black"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 12,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 66,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "613",
@@ -4099,29 +2754,24 @@
   "preview": "https://assets.mixkit.co/video-templates/613/mixkit-613-360.mp4",
   "footage": 0,
   "aep_mb": 2.5,
-  "layers": 0,
+  "layers": 327,
   "comps": 24,
   "effects": {
-   "ADBE Group End": 3453,
-   "ADBE Exposure2": 446,
    "ADBE 4ColorGradient": 408,
-   "ADBE Envir Appear in Reflect": 327,
+   "ADBE CurvesCustom": 19,
    "ADBE Glo2": 263,
-   "ADBE Camera Options Group": 217,
-   "ADBE Effect Built In Params": 172,
-   "ADBE Geometry2": 110,
-   "ADBE Blend Options Group": 110,
-   "ADBE Adv Blend Group": 110,
-   "ADBE Extrsn Options Group": 110,
-   "ADBE Bevel Direction": 110
+   "ADBE Ramp": 33,
+   "ADBE Exposure2": 446,
+   "ADBE Fast Blur": 20
   },
-  "third_party": [
-   "CC RepeTile"
+  "third_party": [],
+  "cc_effects": [
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 121,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 13,
+  "route": "study motion only"
  },
  {
   "id": "633",
@@ -4131,29 +2781,17 @@
   "preview": "https://assets.mixkit.co/video-templates/633/mixkit-633-360.mp4",
   "footage": 0,
   "aep_mb": 1.7,
-  "layers": 0,
+  "layers": 29,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 369,
-   "ADBE Slider Control": 65,
-   "ADBE Color Control": 46,
-   "ADBE Fill": 35,
-   "ADBE Envir Appear in Reflect": 29,
-   "ADBE Effect Built In Params": 26,
-   "ADBE Camera Options Group": 18,
-   "ADBE Blend Options Group": 11,
-   "ADBE Adv Blend Group": 11,
-   "ADBE Extrsn Options Group": 11,
-   "ADBE Bevel Direction": 11,
-   "ADBE Appears in Reflections": 11
+   "ADBE Fill": 35
   },
-  "third_party": [
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 12,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 78,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "735",
@@ -4163,33 +2801,22 @@
   "preview": "https://assets.mixkit.co/video-templates/735/mixkit-735-360.mp4",
   "footage": 0,
   "aep_mb": 30.1,
-  "layers": 0,
+  "layers": 3564,
   "comps": 147,
   "effects": {
-   "ADBE Group End": 63928,
-   "ADBE Envir Appear in Reflect": 3564,
-   "ADBE Blend Options Group": 2235,
-   "ADBE Adv Blend Group": 2235,
-   "ADBE Extrsn Options Group": 2235,
-   "ADBE Bevel Direction": 2235,
-   "ADBE Appears in Reflections": 2235,
-   "ADBE Reflection Coefficient": 2235,
-   "ADBE Glossiness Coefficient": 2235,
-   "ADBE Fresnel Coefficient": 2235,
-   "ADBE Transparency Coefficient": 2235,
-   "ADBE Transp Rolloff": 2235
+   "ADBE 4ColorGradient": 468,
+   "ADBE Fill": 228,
+   "ADBE Optics Compensation": 11
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2018 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Tiler",
-   "CC TilerLIST",
    "CC Tilerqtlg"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 64,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 33,
+  "route": "study motion only"
  },
  {
   "id": "641",
@@ -4199,32 +2826,17 @@
   "preview": "https://assets.mixkit.co/video-templates/641/mixkit-641-360.mp4",
   "footage": 0,
   "aep_mb": 1.4,
-  "layers": 0,
+  "layers": 23,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 419,
-   "ADBE Color Control": 61,
-   "ADBE Geometry2": 61,
-   "ADBE Effect Built In Params": 39,
-   "ADBE Fill": 32,
-   "ADBE Envir Appear in Reflect": 23,
-   "ADBE Slider Control": 15,
-   "ADBE Point Control": 14,
-   "ADBE Blend Options Group": 14,
-   "ADBE Adv Blend Group": 14,
-   "ADBE Extrsn Options Group": 14,
-   "ADBE Bevel Direction": 14
+   "ADBE Fill": 32
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "Montserrat-Black",
-   "Montserrat-Medium"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 16,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 74,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "778",
@@ -4234,32 +2846,18 @@
   "preview": "https://assets.mixkit.co/video-templates/778/mixkit-778-360.mp4",
   "footage": 1,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 72,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 596,
-   "ADBE Envir Appear in Reflect": 72,
-   "ADBE Camera Options Group": 54,
-   "ADBE Glo2": 52,
-   "ADBE Roughen Edges": 46,
-   "ADBE Color Control": 27,
    "ADBE Fill": 23,
-   "ADBE Effect Built In Params": 23,
-   "ADBE Blend Options Group": 18,
-   "ADBE Adv Blend Group": 18,
-   "ADBE Extrsn Options Group": 18,
-   "ADBE Bevel Direction": 18
+   "ADBE Glo2": 52
   },
-  "third_party": [
-   "CC 2015 ",
-   "CC 2018 "
-  ],
-  "fonts": [
-   "Roboto-Black"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 68,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "813",
@@ -4269,31 +2867,15 @@
   "preview": "https://assets.mixkit.co/video-templates/813/mixkit-813-360.mp4",
   "footage": 0,
   "aep_mb": 0.6,
-  "layers": 0,
+  "layers": 54,
   "comps": 4,
-  "effects": {
-   "ADBE Group End": 620,
-   "ADBE Slider Control": 169,
-   "ADBE Color Control": 78,
-   "ADBE Envir Appear in Reflect": 54,
-   "ADBE Laser": 50,
-   "ADBE Checkbox Control": 48,
-   "ADBE Effect Built In Params": 40,
-   "ADBE Camera Options Group": 36,
-   "ADBE Blend Options Group": 18,
-   "ADBE Adv Blend Group": 18,
-   "ADBE Extrsn Options Group": 18,
-   "ADBE Bevel Direction": 18
-  },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "OpenSans-Bold"
-  ],
+  "effects": {},
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 15,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 75,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "847",
@@ -4303,27 +2885,17 @@
   "preview": "https://assets.mixkit.co/video-templates/847/mixkit-847-360.mp4",
   "footage": 4,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 51,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 643,
-   "ADBE Envir Appear in Reflect": 51,
-   "ADBE Drop Shadow": 40,
-   "ADBE Camera Options Group": 30,
-   "ADBE Blend Options Group": 21,
-   "ADBE Adv Blend Group": 21,
-   "ADBE Extrsn Options Group": 21,
-   "ADBE Bevel Direction": 21,
-   "ADBE Appears in Reflections": 21,
-   "ADBE Reflection Coefficient": 21,
-   "ADBE Glossiness Coefficient": 21,
-   "ADBE Fresnel Coefficient": 21
+   "ADBE Drop Shadow": 40
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "558",
@@ -4333,29 +2905,17 @@
   "preview": "https://assets.mixkit.co/video-templates/558/mixkit-558-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 49,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 643,
-   "ADBE Envir Appear in Reflect": 49,
-   "ADBE Fill": 36,
-   "ADBE Camera Options Group": 27,
-   "ADBE Effect Built In Params": 25,
-   "ADBE Blend Options Group": 22,
-   "ADBE Adv Blend Group": 22,
-   "ADBE Extrsn Options Group": 22,
-   "ADBE Bevel Direction": 22,
-   "ADBE Appears in Reflections": 22,
-   "ADBE Reflection Coefficient": 22,
-   "ADBE Glossiness Coefficient": 22
+   "ADBE Fill": 36
   },
-  "third_party": [
-   "Element01"
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 9,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 81,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "791",
@@ -4365,27 +2925,18 @@
   "preview": "https://assets.mixkit.co/video-templates/791/mixkit-791-360.mp4",
   "footage": 4,
   "aep_mb": 0.7,
-  "layers": 0,
+  "layers": 116,
   "comps": 8,
   "effects": {
-   "ADBE Group End": 1081,
-   "ADBE Envir Appear in Reflect": 116,
-   "ADBE Camera Options Group": 80,
-   "ADBE Blend Options Group": 36,
-   "ADBE Adv Blend Group": 36,
-   "ADBE Extrsn Options Group": 36,
-   "ADBE Bevel Direction": 36,
-   "ADBE Appears in Reflections": 36,
-   "ADBE Reflection Coefficient": 36,
-   "ADBE Glossiness Coefficient": 36,
-   "ADBE Fresnel Coefficient": 36,
-   "ADBE Transparency Coefficient": 36
+   "ADBE CurvesCustom": 13,
+   "ADBE Fill": 35
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 68,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "808",
@@ -4395,31 +2946,15 @@
   "preview": "https://assets.mixkit.co/video-templates/808/mixkit-808-360.mp4",
   "footage": 0,
   "aep_mb": 0.6,
-  "layers": 0,
+  "layers": 54,
   "comps": 4,
-  "effects": {
-   "ADBE Group End": 603,
-   "ADBE Slider Control": 149,
-   "ADBE Color Control": 68,
-   "ADBE Envir Appear in Reflect": 54,
-   "ADBE Laser": 50,
-   "ADBE Checkbox Control": 47,
-   "ADBE Effect Built In Params": 37,
-   "ADBE Camera Options Group": 36,
-   "ADBE Blend Options Group": 18,
-   "ADBE Adv Blend Group": 18,
-   "ADBE Extrsn Options Group": 18,
-   "ADBE Bevel Direction": 18
-  },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "OpenSans-Bold"
-  ],
+  "effects": {},
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 12,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 78,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "789",
@@ -4429,27 +2964,15 @@
   "preview": "https://assets.mixkit.co/video-templates/789/mixkit-789-360.mp4",
   "footage": 4,
   "aep_mb": 0.7,
-  "layers": 0,
+  "layers": 103,
   "comps": 7,
-  "effects": {
-   "ADBE Group End": 1033,
-   "ADBE Envir Appear in Reflect": 103,
-   "ADBE Camera Options Group": 70,
-   "ADBE Camera Zoom": 60,
-   "ADBE Blend Options Group": 33,
-   "ADBE Adv Blend Group": 33,
-   "ADBE Extrsn Options Group": 33,
-   "ADBE Bevel Direction": 33,
-   "ADBE Appears in Reflections": 33,
-   "ADBE Reflection Coefficient": 33,
-   "ADBE Glossiness Coefficient": 33,
-   "ADBE Fresnel Coefficient": 33
-  },
+  "effects": {},
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "553",
@@ -4459,31 +2982,18 @@
   "preview": "https://assets.mixkit.co/video-templates/553/mixkit-553-360.mp4",
   "footage": 0,
   "aep_mb": 5.5,
-  "layers": 0,
+  "layers": 113,
   "comps": 8,
   "effects": {
-   "ADBE Group End": 1169,
-   "ADBE Envir Appear in Reflect": 113,
-   "ADBE Camera Options Group": 72,
-   "ADBE Blend Options Group": 41,
-   "ADBE Adv Blend Group": 41,
-   "ADBE Extrsn Options Group": 41,
-   "ADBE Bevel Direction": 41,
-   "ADBE Appears in Reflections": 41,
-   "ADBE Reflection Coefficient": 41,
-   "ADBE Glossiness Coefficient": 41,
-   "ADBE Fresnel Coefficient": 41,
-   "ADBE Transparency Coefficient": 41
+   "ADBE Fill": 30,
+   "ADBE Stroke": 27
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2017 ",
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 5,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 85,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "788",
@@ -4493,27 +3003,17 @@
   "preview": "https://assets.mixkit.co/video-templates/788/mixkit-788-360.mp4",
   "footage": 6,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 36,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 458,
-   "ADBE Grid": 49,
-   "ADBE Envir Appear in Reflect": 36,
-   "ADBE Tint": 26,
-   "ADBE Camera Options Group": 20,
-   "ADBE Blend Options Group": 16,
-   "ADBE Adv Blend Group": 16,
-   "ADBE Extrsn Options Group": 16,
-   "ADBE Bevel Direction": 16,
-   "ADBE Appears in Reflections": 16,
-   "ADBE Reflection Coefficient": 16,
-   "ADBE Glossiness Coefficient": 16
+   "ADBE Tint": 26
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "796",
@@ -4523,27 +3023,20 @@
   "preview": "https://assets.mixkit.co/video-templates/796/mixkit-796-360.mp4",
   "footage": 14,
   "aep_mb": 0.7,
-  "layers": 0,
+  "layers": 105,
   "comps": 7,
   "effects": {
-   "ADBE Group End": 1118,
-   "ADBE Envir Appear in Reflect": 105,
-   "ADBE Camera Options Group": 70,
-   "ADBE Ramp": 46,
+   "ADBE CurvesCustom": 25,
    "ADBE Fill": 38,
-   "ADBE Blend Options Group": 35,
-   "ADBE Adv Blend Group": 35,
-   "ADBE Extrsn Options Group": 35,
-   "ADBE Bevel Direction": 35,
-   "ADBE Appears in Reflections": 35,
-   "ADBE Reflection Coefficient": 35,
-   "ADBE Glossiness Coefficient": 35
+   "ADBE Ramp": 46,
+   "ADBE Drop Shadow": 22
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 68,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "820",
@@ -4553,27 +3046,17 @@
   "preview": "https://assets.mixkit.co/video-templates/820/mixkit-820-360.mp4",
   "footage": 4,
   "aep_mb": 0.8,
-  "layers": 0,
+  "layers": 105,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 1214,
-   "ADBE Envir Appear in Reflect": 105,
-   "ADBE Camera Options Group": 60,
-   "ADBE Displacement Map": 54,
-   "ADBE Blend Options Group": 45,
-   "ADBE Adv Blend Group": 45,
-   "ADBE Extrsn Options Group": 45,
-   "ADBE Bevel Direction": 45,
-   "ADBE Appears in Reflections": 45,
-   "ADBE Reflection Coefficient": 45,
-   "ADBE Glossiness Coefficient": 45,
-   "ADBE Fresnel Coefficient": 45
+   "ADBE Displacement Map": 54
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 68,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "772",
@@ -4583,27 +3066,15 @@
   "preview": "https://assets.mixkit.co/video-templates/772/mixkit-772-360.mp4",
   "footage": 6,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 47,
   "comps": 3,
-  "effects": {
-   "ADBE Group End": 455,
-   "ADBE Envir Appear in Reflect": 47,
-   "ADBE Camera Options Group": 30,
-   "ADBE Blend Options Group": 17,
-   "ADBE Adv Blend Group": 17,
-   "ADBE Extrsn Options Group": 17,
-   "ADBE Bevel Direction": 17,
-   "ADBE Appears in Reflections": 17,
-   "ADBE Reflection Coefficient": 17,
-   "ADBE Glossiness Coefficient": 17,
-   "ADBE Fresnel Coefficient": 17,
-   "ADBE Transparency Coefficient": 17
-  },
+  "effects": {},
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "557",
@@ -4613,29 +3084,17 @@
   "preview": "https://assets.mixkit.co/video-templates/557/mixkit-557-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 49,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 657,
-   "ADBE Envir Appear in Reflect": 49,
-   "ADBE Fill": 30,
-   "ADBE Camera Options Group": 27,
-   "ADBE Color Control": 23,
-   "ADBE Blend Options Group": 22,
-   "ADBE Adv Blend Group": 22,
-   "ADBE Extrsn Options Group": 22,
-   "ADBE Bevel Direction": 22,
-   "ADBE Appears in Reflections": 22,
-   "ADBE Reflection Coefficient": 22,
-   "ADBE Glossiness Coefficient": 22
+   "ADBE Fill": 30
   },
-  "third_party": [
-   "Element01"
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 9,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 81,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "602",
@@ -4645,32 +3104,17 @@
   "preview": "https://assets.mixkit.co/video-templates/602/mixkit-602-360.mp4",
   "footage": 0,
   "aep_mb": 2.6,
-  "layers": 0,
+  "layers": 129,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 2548,
-   "ADBE Fill": 222,
-   "ADBE Envir Appear in Reflect": 129,
-   "ADBE Blend Options Group": 84,
-   "ADBE Adv Blend Group": 84,
-   "ADBE Extrsn Options Group": 84,
-   "ADBE Bevel Direction": 84,
-   "ADBE Appears in Reflections": 84,
-   "ADBE Reflection Coefficient": 84,
-   "ADBE Glossiness Coefficient": 84,
-   "ADBE Fresnel Coefficient": 84,
-   "ADBE Transparency Coefficient": 84
+   "ADBE Fill": 222
   },
-  "third_party": [
-   "Elements Color 1",
-   "Elements Color 1tdmn",
-   "Elements Color 2",
-   "Elements Color 2tdmn"
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 55,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 65,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "774",
@@ -4680,36 +3124,30 @@
   "preview": "https://assets.mixkit.co/video-templates/774/mixkit-774-360.mp4",
   "footage": 0,
   "aep_mb": 0.8,
-  "layers": 0,
+  "layers": 89,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 1121,
-   "ADBE Fractal Noise": 139,
-   "ADBE Effect Built In Params": 105,
-   "ADBE Envir Appear in Reflect": 89,
-   "ADBE Exposure2": 79,
+   "ADBE CurvesCustom": 28,
+   "ADBE Fill": 26,
    "ADBE Glo2": 65,
-   "ADBE Camera Options Group": 52,
-   "ADBE Blend Options Group": 37,
-   "ADBE Adv Blend Group": 37,
-   "ADBE Extrsn Options Group": 37,
-   "ADBE Bevel Direction": 37,
-   "ADBE Appears in Reflections": 37
+   "ADBE Lens Flare": 29,
+   "ADBE Exposure2": 79,
+   "ADBE Fractal Noise": 139,
+   "ADBE Venetian Blinds": 25
   },
-  "third_party": [
-   "CC Composite",
-   "CC CompositeLIST",
+  "third_party": [],
+  "cc_effects": [
    "CC Compositepjef",
-   "CC Light Burst 2",
-   "CC Particle Systems II",
-   "CC Particle Systems IILIST",
-   "CC Particle Systems IIpjef",
-   "CC Radial Fast Blur"
+   "CC Light Burst",
+   "CC Particle Systems",
+   "CC Radial Fast",
+   "CC Star Burst",
+   "CC Toner"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 22,
   "convert_score": 0,
-  "route": "skip / study motion only"
+  "route": "study motion only"
  },
  {
   "id": "802",
@@ -4719,30 +3157,21 @@
   "preview": "https://assets.mixkit.co/video-templates/802/mixkit-802-360.mp4",
   "footage": 8,
   "aep_mb": 0.7,
-  "layers": 0,
+  "layers": 124,
   "comps": 9,
   "effects": {
-   "ADBE Group End": 1077,
-   "ADBE Envir Appear in Reflect": 124,
-   "ADBE Camera Options Group": 90,
-   "ADBE Drop Shadow": 50,
+   "ADBE Tint": 26,
    "ADBE Optics Compensation": 44,
-   "ADBE Effect Built In Params": 40,
-   "ADBE Blend Options Group": 34,
-   "ADBE Adv Blend Group": 34,
-   "ADBE Extrsn Options Group": 34,
-   "ADBE Bevel Direction": 34,
-   "ADBE Appears in Reflections": 34,
-   "ADBE Reflection Coefficient": 34
+   "ADBE Drop Shadow": 50
   },
-  "third_party": [
-   "CC Page Turn",
-   "CC Page TurnLIST"
+  "third_party": [],
+  "cc_effects": [
+   "CC Page Turn"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 64,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "749",
@@ -4752,27 +3181,17 @@
   "preview": "https://assets.mixkit.co/video-templates/749/mixkit-749-360.mp4",
   "footage": 0,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 65,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 639,
-   "ADBE Envir Appear in Reflect": 65,
-   "ADBE Camera Options Group": 45,
-   "ADBE Fill": 29,
-   "ADBE Blend Options Group": 20,
-   "ADBE Adv Blend Group": 20,
-   "ADBE Extrsn Options Group": 20,
-   "ADBE Bevel Direction": 20,
-   "ADBE Appears in Reflections": 20,
-   "ADBE Reflection Coefficient": 20,
-   "ADBE Glossiness Coefficient": 20,
-   "ADBE Fresnel Coefficient": 20
+   "ADBE Fill": 29
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "583",
@@ -4782,29 +3201,19 @@
   "preview": "https://assets.mixkit.co/video-templates/583/mixkit-583-360.mp4",
   "footage": 0,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 52,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 518,
-   "ADBE Envir Appear in Reflect": 52,
-   "ADBE Camera Options Group": 36,
-   "ADBE Color Control": 28,
-   "ADBE Fill": 26,
-   "ADBE Camera Zoom": 18,
-   "ADBE Effect Built In Params": 17,
-   "ADBE Blend Options Group": 16,
-   "ADBE Adv Blend Group": 16,
-   "ADBE Extrsn Options Group": 16,
-   "ADBE Bevel Direction": 16,
-   "ADBE Appears in Reflections": 16
+   "ADBE Fill": 26
   },
-  "third_party": [
-   "CC RepeTile"
+  "third_party": [],
+  "cc_effects": [
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 3,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 83,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "590",
@@ -4814,32 +3223,20 @@
   "preview": "https://assets.mixkit.co/video-templates/590/mixkit-590-360.mp4",
   "footage": 0,
   "aep_mb": 5.0,
-  "layers": 0,
+  "layers": 19,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 347,
-   "ADBE Laser": 79,
-   "ADBE Color Control": 43,
-   "ADBE Effect Built In Params": 34,
-   "ADBE Fill": 26,
-   "ADBE Envir Appear in Reflect": 19,
-   "ADBE Blend Options Group": 10,
-   "ADBE Adv Blend Group": 10,
-   "ADBE Extrsn Options Group": 10,
-   "ADBE Bevel Direction": 10,
-   "ADBE Appears in Reflections": 10,
-   "ADBE Reflection Coefficient": 10
+   "ADBE Fill": 26
   },
-  "third_party": [
-   "CC Composite",
-   "CC CompositeLIST",
+  "third_party": [],
+  "cc_effects": [
    "CC Compositepjef",
-   "CC RepeTile"
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 17,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 65,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "604",
@@ -4849,30 +3246,15 @@
   "preview": "https://assets.mixkit.co/video-templates/604/mixkit-604-360.mp4",
   "footage": 0,
   "aep_mb": 1.3,
-  "layers": 0,
+  "layers": 191,
   "comps": 14,
-  "effects": {
-   "ADBE Group End": 1785,
-   "ADBE Envir Appear in Reflect": 191,
-   "ADBE Camera Options Group": 130,
-   "ADBE Blend Options Group": 61,
-   "ADBE Adv Blend Group": 61,
-   "ADBE Extrsn Options Group": 61,
-   "ADBE Bevel Direction": 61,
-   "ADBE Appears in Reflections": 61,
-   "ADBE Reflection Coefficient": 61,
-   "ADBE Glossiness Coefficient": 61,
-   "ADBE Fresnel Coefficient": 61,
-   "ADBE Transparency Coefficient": 61
-  },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "effects": {},
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 3,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 87,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "739",
@@ -4882,31 +3264,17 @@
   "preview": "https://assets.mixkit.co/video-templates/739/mixkit-739-360.mp4",
   "footage": 0,
   "aep_mb": 3.2,
-  "layers": 0,
+  "layers": 73,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 859,
-   "ADBE Envir Appear in Reflect": 73,
-   "ADBE Fill": 53,
-   "ADBE Camera Options Group": 45,
-   "ADBE Blend Options Group": 28,
-   "ADBE Adv Blend Group": 28,
-   "ADBE Extrsn Options Group": 28,
-   "ADBE Bevel Direction": 28,
-   "ADBE Appears in Reflections": 28,
-   "ADBE Reflection Coefficient": 28,
-   "ADBE Glossiness Coefficient": 28,
-   "ADBE Fresnel Coefficient": 28
+   "ADBE Fill": 53
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2017 ",
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 9,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 81,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "589",
@@ -4916,32 +3284,21 @@
   "preview": "https://assets.mixkit.co/video-templates/589/mixkit-589-360.mp4",
   "footage": 0,
   "aep_mb": 5.5,
-  "layers": 0,
+  "layers": 18,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 871,
-   "ADBE Laser": 57,
-   "ADBE Color Control": 35,
-   "ADBE Effect Built In Params": 32,
    "ADBE Fill": 29,
-   "ADBE Linear Wipe": 18,
-   "ADBE Envir Appear in Reflect": 18,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9,
-   "ADBE Bevel Direction": 9,
-   "ADBE Appears in Reflections": 9
+   "ADBE Linear Wipe": 18
   },
-  "third_party": [
-   "CC Composite",
-   "CC CompositeLIST",
+  "third_party": [],
+  "cc_effects": [
    "CC Compositepjef",
-   "CC RepeTile"
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 12,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 70,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "650",
@@ -4951,30 +3308,17 @@
   "preview": "https://assets.mixkit.co/video-templates/650/mixkit-650-360.mp4",
   "footage": 2,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 23,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 473,
-   "ADBE Color Control": 76,
-   "ADBE Fill": 41,
-   "ADBE Envir Appear in Reflect": 23,
-   "ADBE Effect Built In Params": 19,
-   "ADBE Blend Options Group": 14,
-   "ADBE Adv Blend Group": 14,
-   "ADBE Extrsn Options Group": 14,
-   "ADBE Bevel Direction": 14,
-   "ADBE Appears in Reflections": 14,
-   "ADBE Reflection Coefficient": 14,
-   "ADBE Glossiness Coefficient": 14
+   "ADBE Fill": 41
   },
   "third_party": [],
-  "fonts": [
-   "Montserrat-Bold",
-   "Montserrat-Medium"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 15,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 65,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "647",
@@ -4984,38 +3328,21 @@
   "preview": "https://assets.mixkit.co/video-templates/647/mixkit-647-360.mp4",
   "footage": 0,
   "aep_mb": 0.9,
-  "layers": 0,
+  "layers": 73,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 1439,
    "ADBE Fill": 114,
-   "ADBE Fractal Noise": 110,
-   "ADBE Envir Appear in Reflect": 73,
-   "ADBE Effect Built In Params": 65,
    "ADBE Ramp": 47,
+   "ADBE Tint": 33,
    "ADBE Drop Shadow": 46,
-   "ADBE Blend Options Group": 46,
-   "ADBE Adv Blend Group": 46,
-   "ADBE Extrsn Options Group": 46,
-   "ADBE Bevel Direction": 46,
-   "ADBE Appears in Reflections": 46
+   "ADBE Fractal Noise": 110
   },
-  "third_party": [
-   "Element 01",
-   "Element 02",
-   "Element 03",
-   "Element 04",
-   "Element 05",
-   "Element Rec L",
-   "Element Rec R",
-   "Elementtdmn"
-  ],
-  "fonts": [
-   "SourceSansPro-Regular"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 93,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 53,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "777",
@@ -5025,27 +3352,17 @@
   "preview": "https://assets.mixkit.co/video-templates/777/mixkit-777-360.mp4",
   "footage": 1,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 57,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 678,
-   "ADBE Envir Appear in Reflect": 57,
-   "ADBE Color Control": 42,
-   "ADBE Camera Options Group": 36,
-   "ADBE Effect Built In Params": 31,
-   "ADBE Slider Control": 24,
-   "ADBE Drop Shadow": 24,
-   "ADBE Blend Options Group": 21,
-   "ADBE Adv Blend Group": 21,
-   "ADBE Extrsn Options Group": 21,
-   "ADBE Bevel Direction": 21,
-   "ADBE Appears in Reflections": 21
+   "ADBE Drop Shadow": 24
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 8,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 72,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "811",
@@ -5055,27 +3372,15 @@
   "preview": "https://assets.mixkit.co/video-templates/811/mixkit-811-360.mp4",
   "footage": 5,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 71,
   "comps": 6,
-  "effects": {
-   "ADBE Group End": 504,
-   "ADBE Envir Appear in Reflect": 71,
-   "ADBE Camera Options Group": 55,
-   "ADBE Blend Options Group": 16,
-   "ADBE Adv Blend Group": 16,
-   "ADBE Extrsn Options Group": 16,
-   "ADBE Bevel Direction": 16,
-   "ADBE Appears in Reflections": 16,
-   "ADBE Reflection Coefficient": 16,
-   "ADBE Glossiness Coefficient": 16,
-   "ADBE Fresnel Coefficient": 16,
-   "ADBE Transparency Coefficient": 16
-  },
+  "effects": {},
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "575",
@@ -5085,36 +3390,27 @@
   "preview": "https://assets.mixkit.co/video-templates/575/mixkit-575-360.mp4",
   "footage": 0,
   "aep_mb": 19.9,
-  "layers": 0,
+  "layers": 1853,
   "comps": 84,
   "effects": {
-   "ADBE Group End": 25715,
-   "ADBE Envir Appear in Reflect": 1853,
-   "ADBE Blend Options Group": 1096,
-   "ADBE Adv Blend Group": 1096,
-   "ADBE Extrsn Options Group": 1096,
-   "ADBE Bevel Direction": 1096,
-   "ADBE Appears in Reflections": 1096,
-   "ADBE Reflection Coefficient": 1096,
-   "ADBE Glossiness Coefficient": 1096,
-   "ADBE Fresnel Coefficient": 1096,
-   "ADBE Transparency Coefficient": 1096,
-   "ADBE Transp Rolloff": 1096
+   "ADBE CurvesCustom": 7,
+   "ADBE Displacement Map": 19,
+   "ADBE Fill": 308,
+   "ADBE Tint": 11,
+   "ADBE Turbulent Displace": 37,
+   "ADBE Drop Shadow": 221,
+   "ADBE Radial Wipe": 22,
+   "ADBE Fractal Noise": 377,
+   "ADBE Venetian Blinds": 37
   },
-  "third_party": [
-   "CC 2019 ",
-   "CC Scale Wipe",
-   "Elements A Color",
-   "Elements B Color",
-   "Elements Color",
-   "Elements Color A",
-   "Elements Color B",
-   "Elements Color C"
+  "third_party": [],
+  "cc_effects": [
+   "CC Scale Wipe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 208,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 13,
+  "route": "study motion only"
  },
  {
   "id": "599",
@@ -5124,27 +3420,17 @@
   "preview": "https://assets.mixkit.co/video-templates/599/mixkit-599-360.mp4",
   "footage": 0,
   "aep_mb": 1.4,
-  "layers": 0,
+  "layers": 27,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 257,
-   "ADBE Grid": 43,
-   "ADBE Glo2": 41,
-   "ADBE Envir Appear in Reflect": 27,
-   "ADBE Camera Options Group": 18,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9,
-   "ADBE Bevel Direction": 9,
-   "ADBE Appears in Reflections": 9,
-   "ADBE Reflection Coefficient": 9,
-   "ADBE Glossiness Coefficient": 9
+   "ADBE Glo2": 41
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 4,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 74,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "769",
@@ -5154,31 +3440,21 @@
   "preview": "https://assets.mixkit.co/video-templates/769/mixkit-769-360.mp4",
   "footage": 2,
   "aep_mb": 0.7,
-  "layers": 0,
+  "layers": 78,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 1031,
-   "ADBE Fractal Noise": 92,
-   "ADBE Envir Appear in Reflect": 78,
-   "ADBE Effect Built In Params": 50,
-   "ADBE Ramp": 47,
-   "ADBE Camera Options Group": 45,
-   "ADBE Color Control": 42,
    "ADBE Fill": 41,
+   "ADBE Ramp": 47,
    "ADBE Tint": 33,
-   "ADBE Blend Options Group": 33,
-   "ADBE Adv Blend Group": 33,
-   "ADBE Extrsn Options Group": 33
+   "ADBE Drop Shadow": 32,
+   "ADBE Fractal Noise": 92
   },
-  "third_party": [
-   "Element Rec L"
-  ],
-  "fonts": [
-   "Muli-Light"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 15,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 53,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "606",
@@ -5188,27 +3464,21 @@
   "preview": "https://assets.mixkit.co/video-templates/606/mixkit-606-360.mp4",
   "footage": 0,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 59,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 494,
-   "ADBE Envir Appear in Reflect": 59,
-   "ADBE Camera Options Group": 45,
-   "ADBE Iris Diffraction Fringe": 45,
-   "ADBE Iris Highlight Gain": 45,
-   "ADBE Iris Highlight Threshold": 45,
-   "ADBE Iris Hightlight Saturation": 45,
-   "ADBE Turbulent Displace": 40,
-   "ADBE Roughen Edges": 32,
-   "ADBE Effect Built In Params": 25,
+   "ADBE Fill": 15,
    "ADBE Ramp": 24,
+   "ADBE Turbulent Displace": 40,
+   "ADBE Venetian Blinds": 15,
    "ADBE Drop Shadow": 17
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 78,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "737",
@@ -5218,31 +3488,17 @@
   "preview": "https://assets.mixkit.co/video-templates/737/mixkit-737-360.mp4",
   "footage": 0,
   "aep_mb": 3.2,
-  "layers": 0,
+  "layers": 70,
   "comps": 5,
   "effects": {
-   "ADBE Group End": 745,
-   "ADBE Envir Appear in Reflect": 70,
-   "ADBE Fill": 50,
-   "ADBE Camera Options Group": 45,
-   "ADBE Color Control": 27,
-   "ADBE Blend Options Group": 25,
-   "ADBE Adv Blend Group": 25,
-   "ADBE Extrsn Options Group": 25,
-   "ADBE Bevel Direction": 25,
-   "ADBE Appears in Reflections": 25,
-   "ADBE Reflection Coefficient": 25,
-   "ADBE Glossiness Coefficient": 25
+   "ADBE Fill": 50
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2017 ",
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 6,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 84,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "643",
@@ -5252,29 +3508,17 @@
   "preview": "https://assets.mixkit.co/video-templates/643/mixkit-643-360.mp4",
   "footage": 0,
   "aep_mb": 5.0,
-  "layers": 0,
+  "layers": 17,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 264,
-   "ADBE Color Control": 57,
-   "ADBE Fill": 32,
-   "ADBE Slider Control": 19,
-   "ADBE Effect Built In Params": 19,
-   "ADBE Envir Appear in Reflect": 17,
-   "ADBE Camera Options Group": 9,
-   "ADBE Camera Zoom": 9,
-   "ADBE Blend Options Group": 8,
-   "ADBE Adv Blend Group": 8,
-   "ADBE Extrsn Options Group": 8,
-   "ADBE Bevel Direction": 8
+   "ADBE Fill": 32
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 7,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 83,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "622",
@@ -5284,32 +3528,15 @@
   "preview": "https://assets.mixkit.co/video-templates/622/mixkit-622-360.mp4",
   "footage": 0,
   "aep_mb": 0.7,
-  "layers": 0,
+  "layers": 57,
   "comps": 4,
-  "effects": {
-   "ADBE Group End": 667,
-   "ADBE Slider Control": 149,
-   "ADBE Color Control": 69,
-   "ADBE Laser": 63,
-   "ADBE Checkbox Control": 58,
-   "ADBE Envir Appear in Reflect": 57,
-   "ADBE Effect Built In Params": 39,
-   "ADBE Camera Options Group": 36,
-   "ADBE Blend Options Group": 21,
-   "ADBE Adv Blend Group": 21,
-   "ADBE Extrsn Options Group": 21,
-   "ADBE Bevel Direction": 21
-  },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "OpenSans-Bold",
-   "OpenSans-Light"
-  ],
+  "effects": {},
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 8,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 82,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "623",
@@ -5319,31 +3546,15 @@
   "preview": "https://assets.mixkit.co/video-templates/623/mixkit-623-360.mp4",
   "footage": 0,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 54,
   "comps": 4,
-  "effects": {
-   "ADBE Group End": 575,
-   "ADBE Slider Control": 110,
-   "ADBE Color Control": 68,
-   "ADBE Envir Appear in Reflect": 54,
-   "ADBE Laser": 50,
-   "ADBE Checkbox Control": 47,
-   "ADBE Camera Options Group": 36,
-   "ADBE Effect Built In Params": 35,
-   "ADBE Blend Options Group": 18,
-   "ADBE Adv Blend Group": 18,
-   "ADBE Extrsn Options Group": 18,
-   "ADBE Bevel Direction": 18
-  },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [
-   "OpenSans-Bold"
-  ],
+  "effects": {},
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 6,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 84,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "827",
@@ -5353,33 +3564,22 @@
   "preview": "https://assets.mixkit.co/video-templates/827/mixkit-827-360.mp4",
   "footage": 2,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 84,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 760,
-   "ADBE Envir Appear in Reflect": 84,
-   "ADBE Camera Options Group": 60,
    "ADBE Glo2": 49,
-   "ADBE HUE SATURATION": 48,
-   "ADBE Effect Built In Params": 40,
-   "ADBE Ramp": 27,
-   "ADBE Blend Options Group": 24,
-   "ADBE Adv Blend Group": 24,
-   "ADBE Extrsn Options Group": 24,
-   "ADBE Bevel Direction": 24,
-   "ADBE Appears in Reflections": 24
+   "ADBE Ramp": 27
   },
-  "third_party": [
-   "CC Particle Systems II",
-   "CC Particle Systems IILIST",
-   "CC Particle Systems IIpjef",
-   "CC Radial Fast Blur",
+  "third_party": [],
+  "cc_effects": [
+   "CC Particle Systems",
+   "CC Radial Fast",
    "CC Star Burst"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 56,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "846",
@@ -5389,32 +3589,21 @@
   "preview": "https://assets.mixkit.co/video-templates/846/mixkit-846-360.mp4",
   "footage": 8,
   "aep_mb": 0.9,
-  "layers": 0,
+  "layers": 135,
   "comps": 9,
   "effects": {
-   "ADBE Group End": 1304,
-   "ADBE Envir Appear in Reflect": 135,
-   "ADBE Camera Options Group": 91,
    "ADBE Glo2": 47,
-   "ADBE HUE SATURATION": 45,
-   "ADBE Blend Options Group": 44,
-   "ADBE Adv Blend Group": 44,
-   "ADBE Extrsn Options Group": 44,
-   "ADBE Bevel Direction": 44,
-   "ADBE Appears in Reflections": 44,
-   "ADBE Reflection Coefficient": 44,
-   "ADBE Glossiness Coefficient": 44
+   "ADBE Ramp": 27
   },
-  "third_party": [
-   "CC Particle Systems II",
-   "CC Particle Systems IILIST",
-   "CC Particle Systems IIpjef",
+  "third_party": [],
+  "cc_effects": [
+   "CC Particle Systems",
    "CC Star Burst"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 7,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 53,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "801",
@@ -5424,30 +3613,18 @@
   "preview": "https://assets.mixkit.co/video-templates/801/mixkit-801-360.mp4",
   "footage": 4,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 74,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 640,
-   "ADBE Envir Appear in Reflect": 74,
-   "ADBE Camera Options Group": 54,
-   "ADBE Glo2": 52,
-   "ADBE Roughen Edges": 46,
-   "ADBE Color Control": 27,
    "ADBE Fill": 23,
-   "ADBE Effect Built In Params": 23,
-   "ADBE Blend Options Group": 20,
-   "ADBE Adv Blend Group": 20,
-   "ADBE Extrsn Options Group": 20,
-   "ADBE Bevel Direction": 20
+   "ADBE Glo2": 52
   },
-  "third_party": [
-   "CC 2015 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 68,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "626",
@@ -5457,33 +3634,18 @@
   "preview": "https://assets.mixkit.co/video-templates/626/mixkit-626-360.mp4",
   "footage": 0,
   "aep_mb": 1.6,
-  "layers": 0,
+  "layers": 56,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 638,
    "ADBE Fill": 83,
-   "ADBE Envir Appear in Reflect": 56,
-   "ADBE Camera Options Group": 36,
-   "ADBE Fast Blur": 20,
-   "ADBE Blend Options Group": 20,
-   "ADBE Adv Blend Group": 20,
-   "ADBE Extrsn Options Group": 20,
-   "ADBE Bevel Direction": 20,
-   "ADBE Appears in Reflections": 20,
-   "ADBE Reflection Coefficient": 20,
-   "ADBE Glossiness Coefficient": 20
+   "ADBE Fast Blur": 20
   },
-  "third_party": [
-   "Elements Controls"
-  ],
-  "fonts": [
-   "AcuminPro-Black",
-   "AcuminPro-Light",
-   "AcuminPro-Regular"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 3,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 87,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "810",
@@ -5493,27 +3655,17 @@
   "preview": "https://assets.mixkit.co/video-templates/810/mixkit-810-360.mp4",
   "footage": 2,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 48,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 351,
-   "ADBE Envir Appear in Reflect": 48,
-   "ADBE Camera Options Group": 37,
-   "ADBE Fill": 23,
-   "ADBE Gaussian Blur 2": 14,
-   "ADBE Blend Options Group": 11,
-   "ADBE Adv Blend Group": 11,
-   "ADBE Extrsn Options Group": 11,
-   "ADBE Bevel Direction": 11,
-   "ADBE Appears in Reflections": 11,
-   "ADBE Reflection Coefficient": 11,
-   "ADBE Glossiness Coefficient": 11
+   "ADBE Fill": 23
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 80,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "592",
@@ -5523,30 +3675,20 @@
   "preview": "https://assets.mixkit.co/video-templates/592/mixkit-592-360.mp4",
   "footage": 16,
   "aep_mb": 6.4,
-  "layers": 0,
+  "layers": 706,
   "comps": 44,
   "effects": {
-   "ADBE Group End": 8615,
-   "ADBE Envir Appear in Reflect": 706,
-   "ADBE Camera Options Group": 396,
-   "ADBE Color Control": 344,
    "ADBE Fill": 338,
-   "ADBE Blend Options Group": 310,
-   "ADBE Adv Blend Group": 310,
-   "ADBE Extrsn Options Group": 310,
-   "ADBE Bevel Direction": 310,
-   "ADBE Appears in Reflections": 310,
-   "ADBE Reflection Coefficient": 310,
-   "ADBE Glossiness Coefficient": 310
+   "ADBE Linear Wipe": 141
   },
-  "third_party": [
-   "CC 2018 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Profile"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 209,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 51,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "572",
@@ -5556,36 +3698,27 @@
   "preview": "https://assets.mixkit.co/video-templates/572/mixkit-572-360.mp4",
   "footage": 0,
   "aep_mb": 19.9,
-  "layers": 0,
+  "layers": 1853,
   "comps": 84,
   "effects": {
-   "ADBE Group End": 25715,
-   "ADBE Envir Appear in Reflect": 1853,
-   "ADBE Blend Options Group": 1096,
-   "ADBE Adv Blend Group": 1096,
-   "ADBE Extrsn Options Group": 1096,
-   "ADBE Bevel Direction": 1096,
-   "ADBE Appears in Reflections": 1096,
-   "ADBE Reflection Coefficient": 1096,
-   "ADBE Glossiness Coefficient": 1096,
-   "ADBE Fresnel Coefficient": 1096,
-   "ADBE Transparency Coefficient": 1096,
-   "ADBE Transp Rolloff": 1096
+   "ADBE CurvesCustom": 7,
+   "ADBE Displacement Map": 19,
+   "ADBE Fill": 308,
+   "ADBE Tint": 11,
+   "ADBE Turbulent Displace": 37,
+   "ADBE Drop Shadow": 221,
+   "ADBE Radial Wipe": 22,
+   "ADBE Fractal Noise": 377,
+   "ADBE Venetian Blinds": 37
   },
-  "third_party": [
-   "CC 2019 ",
-   "CC Scale Wipe",
-   "Elements A Color",
-   "Elements B Color",
-   "Elements Color",
-   "Elements Color A",
-   "Elements Color B",
-   "Elements Color C"
+  "third_party": [],
+  "cc_effects": [
+   "CC Scale Wipe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 208,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 13,
+  "route": "study motion only"
  },
  {
   "id": "564",
@@ -5595,32 +3728,22 @@
   "preview": "https://assets.mixkit.co/video-templates/564/mixkit-564-360.mp4",
   "footage": 1,
   "aep_mb": 0.6,
-  "layers": 0,
+  "layers": 83,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 859,
    "ADBE Turbulent Displace": 87,
-   "ADBE Envir Appear in Reflect": 83,
-   "ADBE Camera Options Group": 54,
    "ADBE Glo2": 45,
-   "ADBE Fractal Noise": 45,
-   "ADBE Camera Zoom": 36,
-   "ADBE Blend Options Group": 29,
-   "ADBE Adv Blend Group": 29,
-   "ADBE Extrsn Options Group": 29,
-   "ADBE Bevel Direction": 29,
-   "ADBE Appears in Reflections": 29
+   "ADBE Fill": 22,
+   "ADBE Fractal Noise": 45
   },
-  "third_party": [
-   "CC 2015 ",
-   "CC 2018 ",
-   "CC RepeTile",
-   "Element Color "
+  "third_party": [],
+  "cc_effects": [
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 12,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 28,
+  "route": "study motion only"
  },
  {
   "id": "607",
@@ -5630,27 +3753,19 @@
   "preview": "https://assets.mixkit.co/video-templates/607/mixkit-607-360.mp4",
   "footage": 0,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 28,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 355,
-   "ADBE Wave Warp": 37,
-   "ADBE Ramp": 31,
-   "ADBE Envir Appear in Reflect": 28,
    "ADBE Glo2": 23,
-   "ADBE Effect Built In Params": 20,
-   "ADBE Camera Options Group": 18,
-   "ADBE Iris Diffraction Fringe": 18,
-   "ADBE Iris Highlight Gain": 18,
-   "ADBE Iris Highlight Threshold": 18,
-   "ADBE Iris Hightlight Saturation": 18,
+   "ADBE Ramp": 31,
    "ADBE Drop Shadow": 13
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 6,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 72,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "843",
@@ -5660,27 +3775,17 @@
   "preview": "https://assets.mixkit.co/video-templates/843/mixkit-843-360.mp4",
   "footage": 3,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 25,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 218,
-   "ADBE Glo2": 39,
-   "ADBE HUE SATURATION": 27,
-   "ADBE Envir Appear in Reflect": 25,
-   "ADBE Basic 3D": 21,
-   "ADBE Camera Options Group": 18,
-   "ADBE Effect Built In Params": 12,
-   "ADBE Blend Options Group": 7,
-   "ADBE Adv Blend Group": 7,
-   "ADBE Extrsn Options Group": 7,
-   "ADBE Bevel Direction": 7,
-   "ADBE Appears in Reflections": 7
+   "ADBE Glo2": 39
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 68,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "608",
@@ -5690,31 +3795,21 @@
   "preview": "https://assets.mixkit.co/video-templates/608/mixkit-608-360.mp4",
   "footage": 0,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 42,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 579,
-   "ADBE Envir Appear in Reflect": 42,
-   "ADBE Turbulent Displace": 40,
-   "ADBE Roughen Edges": 28,
    "ADBE Fill": 27,
-   "ADBE Camera Options Group": 27,
-   "ADBE Effect Built In Params": 26,
-   "ADBE Iris Diffraction Fringe": 18,
-   "ADBE Iris Highlight Gain": 18,
-   "ADBE Iris Highlight Threshold": 18,
-   "ADBE Iris Hightlight Saturation": 18,
-   "ADBE Matte Choker": 15
+   "ADBE Turbulent Displace": 40
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Glass",
-   "CC GlassLIST",
    "CC Glasspjef"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 3,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 67,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "651",
@@ -5724,32 +3819,17 @@
   "preview": "https://assets.mixkit.co/video-templates/651/mixkit-651-360.mp4",
   "footage": 0,
   "aep_mb": 2.4,
-  "layers": 0,
+  "layers": 93,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 1989,
-   "ADBE Envir Appear in Reflect": 93,
-   "ADBE Fill": 73,
-   "ADBE Blend Options Group": 66,
-   "ADBE Adv Blend Group": 66,
-   "ADBE Extrsn Options Group": 66,
-   "ADBE Bevel Direction": 66,
-   "ADBE Appears in Reflections": 66,
-   "ADBE Reflection Coefficient": 66,
-   "ADBE Glossiness Coefficient": 66,
-   "ADBE Fresnel Coefficient": 66,
-   "ADBE Transparency Coefficient": 66
+   "ADBE Fill": 73
   },
-  "third_party": [
-   "CC 2018 "
-  ],
-  "fonts": [
-   "Roboto-Medium",
-   "Roboto-Regular"
-  ],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 9,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 81,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "716",
@@ -5759,32 +3839,19 @@
   "preview": "https://assets.mixkit.co/video-templates/716/mixkit-716-360.mp4",
   "footage": 2,
   "aep_mb": 3.9,
-  "layers": 0,
+  "layers": 397,
   "comps": 26,
   "effects": {
-   "ADBE Group End": 4616,
-   "ADBE Envir Appear in Reflect": 397,
-   "ADBE Camera Options Group": 234,
-   "ADBE Blend Options Group": 163,
-   "ADBE Adv Blend Group": 163,
-   "ADBE Extrsn Options Group": 163,
-   "ADBE Bevel Direction": 163,
-   "ADBE Appears in Reflections": 163,
-   "ADBE Reflection Coefficient": 163,
-   "ADBE Glossiness Coefficient": 163,
-   "ADBE Fresnel Coefficient": 163,
-   "ADBE Transparency Coefficient": 163
+   "ADBE Fill": 91
   },
-  "third_party": [
-   "CC 2017 ",
-   "CC 2018 ",
-   "CC 2019 ",
-   "CC RepeTile"
+  "third_party": [],
+  "cc_effects": [
+   "CC Repe"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 14,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 62,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "750",
@@ -5794,33 +3861,19 @@
   "preview": "https://assets.mixkit.co/video-templates/750/mixkit-750-360.mp4",
   "footage": 1,
   "aep_mb": 1.8,
-  "layers": 0,
+  "layers": 96,
   "comps": 7,
   "effects": {
-   "ADBE Group End": 1055,
-   "ADBE Envir Appear in Reflect": 96,
-   "ADBE Camera Options Group": 63,
-   "ADBE Grid": 52,
-   "ADBE Effect Built In Params": 47,
-   "ADBE Color Control": 43,
-   "ADBE Displacement Map": 42,
-   "ADBE Slider Control": 35,
-   "ADBE Tile": 33,
-   "ADBE Blend Options Group": 33,
-   "ADBE Adv Blend Group": 33,
-   "ADBE Extrsn Options Group": 33
+   "ADBE Displacement Map": 42
   },
-  "third_party": [
-   "CC 2018 ",
-   "CC Bender",
-   "CC Bender 2",
-   "CC Bender 3",
-   "CC Bender 4"
+  "third_party": [],
+  "cc_effects": [
+   "CC Bender"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 64,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "779",
@@ -5830,38 +3883,27 @@
   "preview": "https://assets.mixkit.co/video-templates/779/mixkit-779-360.mp4",
   "footage": 2,
   "aep_mb": 21.1,
-  "layers": 0,
+  "layers": 1855,
   "comps": 84,
   "effects": {
-   "ADBE Group End": 27970,
-   "ADBE Envir Appear in Reflect": 1855,
-   "ADBE Blend Options Group": 1098,
-   "ADBE Adv Blend Group": 1098,
-   "ADBE Extrsn Options Group": 1098,
-   "ADBE Bevel Direction": 1098,
-   "ADBE Appears in Reflections": 1098,
-   "ADBE Reflection Coefficient": 1098,
-   "ADBE Glossiness Coefficient": 1098,
-   "ADBE Fresnel Coefficient": 1098,
-   "ADBE Transparency Coefficient": 1098,
-   "ADBE Transp Rolloff": 1098
+   "ADBE CurvesCustom": 13,
+   "ADBE Displacement Map": 37,
+   "ADBE Fill": 319,
+   "ADBE Tint": 21,
+   "ADBE Turbulent Displace": 59,
+   "ADBE Drop Shadow": 234,
+   "ADBE Radial Wipe": 32,
+   "ADBE Fractal Noise": 429,
+   "ADBE Venetian Blinds": 46
   },
-  "third_party": [
-   "CC 2019 ",
-   "CC Scale Wipe",
-   "Elements A Color",
-   "Elements A Colortdmn",
-   "Elements B Color",
-   "Elements B Colortdmn",
-   "Elements Color",
-   "Elements Color A"
+  "third_party": [],
+  "cc_effects": [
+   "CC Scale Wipe"
   ],
-  "fonts": [
-   "Montserrat-Regular"
-  ],
+  "has_3d_camera": true,
   "expressions": 217,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 3,
+  "route": "study motion only"
  },
  {
   "id": "577",
@@ -5871,30 +3913,19 @@
   "preview": "https://assets.mixkit.co/video-templates/577/mixkit-577-360.mp4",
   "footage": 0,
   "aep_mb": 1.6,
-  "layers": 0,
+  "layers": 39,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 371,
-   "ADBE Fractal Noise": 88,
-   "ADBE Grid": 43,
-   "ADBE Geometry2": 41,
-   "ADBE Envir Appear in Reflect": 39,
    "ADBE Displacement Map": 34,
-   "ADBE Tile": 31,
-   "ADBE Effect Built In Params": 27,
-   "ADBE Camera Options Group": 27,
    "ADBE Fill": 23,
-   "ADBE Camera Zoom": 18,
-   "ADBE Blend Options Group": 12
+   "ADBE Fractal Noise": 88
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 4,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 62,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "839",
@@ -5904,27 +3935,19 @@
   "preview": "https://assets.mixkit.co/video-templates/839/mixkit-839-360.mp4",
   "footage": 14,
   "aep_mb": 1.1,
-  "layers": 0,
+  "layers": 141,
   "comps": 8,
   "effects": {
-   "ADBE Group End": 1832,
-   "ADBE Envir Appear in Reflect": 141,
-   "ADBE Drop Shadow": 84,
-   "ADBE Camera Options Group": 80,
-   "ADBE Blend Options Group": 61,
-   "ADBE Adv Blend Group": 61,
-   "ADBE Extrsn Options Group": 61,
-   "ADBE Bevel Direction": 61,
-   "ADBE Appears in Reflections": 61,
-   "ADBE Reflection Coefficient": 61,
-   "ADBE Glossiness Coefficient": 61,
-   "ADBE Fresnel Coefficient": 61
+   "ADBE CurvesCustom": 16,
+   "ADBE Displacement Map": 42,
+   "ADBE Drop Shadow": 84
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 56,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "594",
@@ -5934,36 +3957,28 @@
   "preview": "https://assets.mixkit.co/video-templates/594/mixkit-594-360.mp4",
   "footage": 12,
   "aep_mb": 11.0,
-  "layers": 0,
+  "layers": 977,
   "comps": 57,
   "effects": {
-   "ADBE Group End": 13631,
-   "ADBE Envir Appear in Reflect": 977,
-   "ADBE Camera Options Group": 513,
-   "ADBE Blend Options Group": 464,
-   "ADBE Adv Blend Group": 464,
-   "ADBE Extrsn Options Group": 464,
-   "ADBE Bevel Direction": 464,
-   "ADBE Appears in Reflections": 464,
-   "ADBE Reflection Coefficient": 464,
-   "ADBE Glossiness Coefficient": 464,
-   "ADBE Fresnel Coefficient": 464,
-   "ADBE Transparency Coefficient": 464
+   "ADBE CurvesCustom": 7,
+   "ADBE Fill": 380,
+   "ADBE Ramp": 47,
+   "ADBE Stroke": 40,
+   "ADBE Tint": 140,
+   "ADBE Drop Shadow": 53,
+   "ADBE Fractal Noise": 142
   },
-  "third_party": [
-   "CC 2018 ",
+  "third_party": [],
+  "cc_effects": [
    "CC Light Sweep",
-   "CC Light Sweep 2tdmn",
-   "CC Light SweepLIST",
    "CC Light Sweeppjef",
    "CC Light Swepdnm",
-   "CC Light Swetdmn",
-   "Element 1"
+   "CC Light Swetdmn"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 236,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 15,
+  "route": "study motion only"
  },
  {
   "id": "614",
@@ -5973,30 +3988,22 @@
   "preview": "https://assets.mixkit.co/video-templates/614/mixkit-614-360.mp4",
   "footage": 0,
   "aep_mb": 4.3,
-  "layers": 0,
+  "layers": 312,
   "comps": 25,
   "effects": {
-   "ADBE Group End": 2849,
-   "ADBE Envir Appear in Reflect": 312,
-   "ADBE Camera Options Group": 225,
-   "ADBE Camera Zoom": 180,
-   "ADBE Effect Built In Params": 114,
-   "ADBE AIF Perlin Noise 3D": 99,
+   "ADBE CurvesCustom": 19,
+   "ADBE Displacement Map": 46,
+   "ADBE Fill": 66,
    "ADBE Turbulent Displace": 92,
-   "ADBE Minimax": 87,
-   "ADBE Blend Options Group": 87,
-   "ADBE Adv Blend Group": 87,
-   "ADBE Extrsn Options Group": 87,
-   "ADBE Bevel Direction": 87
+   "ADBE Linear Wipe": 31,
+   "ADBE Exposure2": 68
   },
-  "third_party": [
-   "CC Composite",
-   "CC CompositeLIST"
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 1,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 41,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "797",
@@ -6006,27 +4013,17 @@
   "preview": "https://assets.mixkit.co/video-templates/797/mixkit-797-360.mp4",
   "footage": 20,
   "aep_mb": 0.9,
-  "layers": 0,
+  "layers": 170,
   "comps": 12,
   "effects": {
-   "ADBE Group End": 1418,
-   "ADBE Envir Appear in Reflect": 170,
-   "ADBE Camera Options Group": 121,
-   "ADBE Blend Options Group": 49,
-   "ADBE Adv Blend Group": 49,
-   "ADBE Extrsn Options Group": 49,
-   "ADBE Bevel Direction": 49,
-   "ADBE Appears in Reflections": 49,
-   "ADBE Reflection Coefficient": 49,
-   "ADBE Glossiness Coefficient": 49,
-   "ADBE Fresnel Coefficient": 49,
-   "ADBE Transparency Coefficient": 49
+   "ADBE Ramp": 35
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 1,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 79,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "803",
@@ -6036,33 +4033,22 @@
   "preview": "https://assets.mixkit.co/video-templates/803/mixkit-803-360.mp4",
   "footage": 8,
   "aep_mb": 0.5,
-  "layers": 0,
+  "layers": 63,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 680,
-   "ADBE Envir Appear in Reflect": 63,
-   "ADBE Camera Options Group": 41,
-   "ADBE Glo2": 40,
-   "ADBE HUE SATURATION": 29,
    "ADBE Fill": 26,
-   "ADBE Effect Built In Params": 22,
-   "ADBE Blend Options Group": 22,
-   "ADBE Adv Blend Group": 22,
-   "ADBE Extrsn Options Group": 22,
-   "ADBE Bevel Direction": 22,
-   "ADBE Appears in Reflections": 22
+   "ADBE Glo2": 40
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Light Sweep",
-   "CC Light SweepLIST",
    "CC Light Sweeppjef",
-   "CC Particle Systems II",
-   "CC Particle Systems IILIST"
+   "CC Particle Systems"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 56,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "597",
@@ -6072,30 +4058,15 @@
   "preview": "https://assets.mixkit.co/video-templates/597/mixkit-597-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 27,
   "comps": 2,
-  "effects": {
-   "ADBE Group End": 270,
-   "ADBE Grid": 43,
-   "ADBE BEZMESH": 42,
-   "ADBE Geometry2": 36,
-   "ADBE Tile": 27,
-   "ADBE Envir Appear in Reflect": 27,
-   "ADBE Effect Built In Params": 20,
-   "ADBE Camera Options Group": 18,
-   "ADBE Motion Blur": 12,
-   "ADBE Blend Options Group": 9,
-   "ADBE Adv Blend Group": 9,
-   "ADBE Extrsn Options Group": 9
-  },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "effects": {},
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 4,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 86,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "551",
@@ -6105,31 +4076,19 @@
   "preview": "https://assets.mixkit.co/video-templates/551/mixkit-551-360.mp4",
   "footage": 4,
   "aep_mb": 5.5,
-  "layers": 0,
+  "layers": 95,
   "comps": 6,
   "effects": {
-   "ADBE Group End": 1126,
-   "ADBE Envir Appear in Reflect": 95,
-   "ADBE Camera Options Group": 54,
-   "ADBE Blend Options Group": 41,
-   "ADBE Adv Blend Group": 41,
-   "ADBE Extrsn Options Group": 41,
-   "ADBE Bevel Direction": 41,
-   "ADBE Appears in Reflections": 41,
-   "ADBE Reflection Coefficient": 41,
-   "ADBE Glossiness Coefficient": 41,
-   "ADBE Fresnel Coefficient": 41,
-   "ADBE Transparency Coefficient": 41
+   "ADBE Fill": 39,
+   "ADBE Ramp": 17,
+   "ADBE Tint": 14
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2017 ",
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 7,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 73,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "610",
@@ -6139,27 +4098,17 @@
   "preview": "https://assets.mixkit.co/video-templates/610/mixkit-610-360.mp4",
   "footage": 0,
   "aep_mb": 0.3,
-  "layers": 0,
+  "layers": 35,
   "comps": 2,
   "effects": {
-   "ADBE Group End": 510,
-   "ADBE Envir Appear in Reflect": 35,
-   "ADBE Fill": 27,
-   "ADBE Camera Options Group": 18,
-   "ADBE Blend Options Group": 17,
-   "ADBE Adv Blend Group": 17,
-   "ADBE Extrsn Options Group": 17,
-   "ADBE Bevel Direction": 17,
-   "ADBE Transparency Coefficient": 17,
-   "ADBE Transp Rolloff": 17,
-   "ADBE Index of Refraction": 17,
-   "ADBE Effect Built In Params": 16
+   "ADBE Fill": 27
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 6,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 84,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "740",
@@ -6169,31 +4118,17 @@
   "preview": "https://assets.mixkit.co/video-templates/740/mixkit-740-360.mp4",
   "footage": 0,
   "aep_mb": 3.0,
-  "layers": 0,
+  "layers": 52,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 499,
-   "ADBE Envir Appear in Reflect": 52,
-   "ADBE Fill": 41,
-   "ADBE Camera Options Group": 36,
-   "ADBE Blend Options Group": 16,
-   "ADBE Adv Blend Group": 16,
-   "ADBE Extrsn Options Group": 16,
-   "ADBE Bevel Direction": 16,
-   "ADBE Appears in Reflections": 16,
-   "ADBE Reflection Coefficient": 16,
-   "ADBE Glossiness Coefficient": 16,
-   "ADBE Fresnel Coefficient": 16
+   "ADBE Fill": 41
   },
-  "third_party": [
-   "CC 2014 ",
-   "CC 2017 ",
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 1,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 89,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "634",
@@ -6203,29 +4138,17 @@
   "preview": "https://assets.mixkit.co/video-templates/634/mixkit-634-360.mp4",
   "footage": 0,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 52,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 511,
-   "ADBE Slider Control": 154,
-   "ADBE Color Control": 57,
-   "ADBE Envir Appear in Reflect": 52,
-   "ADBE Camera Options Group": 36,
-   "ADBE Geometry2": 34,
-   "ADBE Effect Built In Params": 33,
-   "ADBE Drop Shadow": 26,
-   "ADBE Blend Options Group": 16,
-   "ADBE Adv Blend Group": 16,
-   "ADBE Extrsn Options Group": 16,
-   "ADBE Bevel Direction": 16
+   "ADBE Drop Shadow": 26
   },
-  "third_party": [
-   "CC 2018 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 16,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 74,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "782",
@@ -6235,31 +4158,22 @@
   "preview": "https://assets.mixkit.co/video-templates/782/mixkit-782-360.mp4",
   "footage": 4,
   "aep_mb": 8.0,
-  "layers": 0,
+  "layers": 879,
   "comps": 53,
   "effects": {
-   "ADBE Group End": 11592,
-   "ADBE Envir Appear in Reflect": 879,
-   "ADBE Camera Options Group": 487,
-   "ADBE Effect Built In Params": 450,
-   "ADBE Blend Options Group": 392,
-   "ADBE Adv Blend Group": 392,
-   "ADBE Extrsn Options Group": 392,
-   "ADBE Bevel Direction": 392,
-   "ADBE Appears in Reflections": 392,
-   "ADBE Reflection Coefficient": 392,
-   "ADBE Glossiness Coefficient": 392,
-   "ADBE Fresnel Coefficient": 392
+   "ADBE CurvesCustom": 49,
+   "ADBE Fill": 101,
+   "ADBE Ramp": 29,
+   "ADBE Tint": 77,
+   "ADBE Fast Blur": 208,
+   "ADBE Drop Shadow": 46
   },
-  "third_party": [
-   "CC 2018 ",
-   "CC Composite",
-   "CC CompositeLIST"
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 200,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 43,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "787",
@@ -6269,36 +4183,24 @@
   "preview": "https://assets.mixkit.co/video-templates/787/mixkit-787-360.mp4",
   "footage": 2,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 23,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 235,
-   "ADBE Wave Warp": 32,
-   "ADBE Effect Built In Params": 32,
-   "ADBE Envir Appear in Reflect": 23,
-   "ADBE Venetian Blinds": 22,
-   "ADBE Color Balance ": 17,
-   "ADBE Noise": 14,
-   "ADBE Camera Options Group": 10,
-   "ADBE Blend Options Group": 7,
-   "ADBE Adv Blend Group": 7,
-   "ADBE Extrsn Options Group": 7,
-   "ADBE Bevel Direction": 7
+   "ADBE Venetian Blinds": 22
   },
-  "third_party": [
+  "third_party": [],
+  "cc_effects": [
    "CC Light Sweep",
-   "CC Light SweepLIST",
    "CC Light Sweeppjef",
-   "CC Particle Systems II",
-   "CC Particle Systems IILIST",
-   "CC Particle Systems IIpjef",
+   "CC Particle Systems",
    "CC Spotlight",
-   "CC SpotlightLIST"
+   "CC Spotlightpjef",
+   "CC Vignette"
   ],
-  "fonts": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 56,
+  "route": "lottiefiles-aep2lottie then fix"
  },
  {
   "id": "631",
@@ -6308,32 +4210,19 @@
   "preview": "https://assets.mixkit.co/video-templates/631/mixkit-631-360.mp4",
   "footage": 0,
   "aep_mb": 5.7,
-  "layers": 0,
+  "layers": 547,
   "comps": 26,
   "effects": {
-   "ADBE Group End": 9479,
-   "ADBE Envir Appear in Reflect": 547,
-   "ADBE Blend Options Group": 313,
-   "ADBE Adv Blend Group": 313,
-   "ADBE Extrsn Options Group": 313,
-   "ADBE Bevel Direction": 313,
-   "ADBE Appears in Reflections": 313,
-   "ADBE Reflection Coefficient": 313,
-   "ADBE Glossiness Coefficient": 313,
-   "ADBE Fresnel Coefficient": 313,
-   "ADBE Transparency Coefficient": 313,
-   "ADBE Transp Rolloff": 313
+   "ADBE Fill": 116
   },
-  "third_party": [
-   "CC 2019 ",
-   "CC HexTileLIST"
+  "third_party": [],
+  "cc_effects": [
+   "CC Hex"
   ],
-  "fonts": [
-   "AnonymousPro-Bold"
-  ],
+  "has_3d_camera": true,
   "expressions": 1,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 85,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "598",
@@ -6343,27 +4232,18 @@
   "preview": "https://assets.mixkit.co/video-templates/598/mixkit-598-360.mp4",
   "footage": 0,
   "aep_mb": 1.6,
-  "layers": 0,
+  "layers": 42,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 437,
-   "ADBE Grid": 43,
-   "ADBE Envir Appear in Reflect": 42,
-   "ADBE Geometry2": 41,
-   "ADBE Tile": 34,
    "ADBE Displacement Map": 31,
-   "ADBE Camera Options Group": 27,
-   "ADBE Effect Built In Params": 26,
-   "ADBE Fill": 23,
-   "ADBE Aud HiLo": 21,
-   "ADBE Blend Options Group": 15,
-   "ADBE Adv Blend Group": 15
+   "ADBE Fill": 23
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 4,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 74,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "758",
@@ -6373,31 +4253,17 @@
   "preview": "https://assets.mixkit.co/video-templates/758/mixkit-758-360.mp4",
   "footage": 0,
   "aep_mb": 1.4,
-  "layers": 0,
+  "layers": 42,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 489,
-   "ADBE Color Control": 43,
-   "ADBE Envir Appear in Reflect": 42,
-   "ADBE Effect Built In Params": 31,
-   "ADBE Fill": 29,
-   "ADBE Camera Options Group": 27,
-   "ADBE Slider Control": 17,
-   "ADBE Blend Options Group": 15,
-   "ADBE Adv Blend Group": 15,
-   "ADBE Extrsn Options Group": 15,
-   "ADBE Bevel Direction": 15,
-   "ADBE Appears in Reflections": 15
+   "ADBE Fill": 29
   },
-  "third_party": [
-   "Element Color",
-   "Element On",
-   "Element01"
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 5,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 85,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "620",
@@ -6407,29 +4273,17 @@
   "preview": "https://assets.mixkit.co/video-templates/620/mixkit-620-360.mp4",
   "footage": 0,
   "aep_mb": 4.2,
-  "layers": 0,
+  "layers": 165,
   "comps": 12,
   "effects": {
-   "ADBE Group End": 1719,
-   "ADBE Envir Appear in Reflect": 165,
-   "ADBE Camera Options Group": 108,
-   "ADBE Fill": 71,
-   "ADBE Blend Options Group": 57,
-   "ADBE Adv Blend Group": 57,
-   "ADBE Extrsn Options Group": 57,
-   "ADBE Bevel Direction": 57,
-   "ADBE Appears in Reflections": 57,
-   "ADBE Reflection Coefficient": 57,
-   "ADBE Glossiness Coefficient": 57,
-   "ADBE Fresnel Coefficient": 57
+   "ADBE Fill": 71
   },
-  "third_party": [
-   "CC 2019 "
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 5,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 85,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "609",
@@ -6439,27 +4293,18 @@
   "preview": "https://assets.mixkit.co/video-templates/609/mixkit-609-360.mp4",
   "footage": 0,
   "aep_mb": 0.4,
-  "layers": 0,
+  "layers": 51,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 499,
-   "ADBE Envir Appear in Reflect": 51,
-   "ADBE Camera Options Group": 36,
    "ADBE Ramp": 34,
-   "ADBE Iris Diffraction Fringe": 27,
-   "ADBE Iris Highlight Gain": 27,
-   "ADBE Iris Highlight Threshold": 27,
-   "ADBE Iris Hightlight Saturation": 27,
-   "ADBE Effect Built In Params": 20,
-   "ADBE Drop Shadow": 16,
-   "ADBE Blend Options Group": 15,
-   "ADBE Adv Blend Group": 15
+   "ADBE Drop Shadow": 16
   },
   "third_party": [],
-  "fonts": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 0,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 90,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "556",
@@ -6469,31 +4314,19 @@
   "preview": "https://assets.mixkit.co/video-templates/556/mixkit-556-360.mp4",
   "footage": 0,
   "aep_mb": 1.5,
-  "layers": 0,
+  "layers": 49,
   "comps": 3,
   "effects": {
-   "ADBE Group End": 681,
-   "ADBE Envir Appear in Reflect": 49,
-   "ADBE Color Control": 38,
-   "ADBE Effect Built In Params": 35,
-   "ADBE Fill": 33,
    "ADBE 4ColorGradient": 28,
-   "ADBE Camera Options Group": 27,
-   "ADBE Blend Options Group": 22,
-   "ADBE Adv Blend Group": 22,
-   "ADBE Extrsn Options Group": 22,
-   "ADBE Bevel Direction": 22,
-   "ADBE Appears in Reflections": 22
+   "ADBE Fill": 33,
+   "ADBE Drop Shadow": 17
   },
-  "third_party": [
-   "Element Color",
-   "Element On",
-   "Element01"
-  ],
-  "fonts": [],
+  "third_party": [],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 16,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 62,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "629",
@@ -6503,29 +4336,17 @@
   "preview": "https://assets.mixkit.co/video-templates/629/mixkit-629-360.mp4",
   "footage": 0,
   "aep_mb": 0.2,
-  "layers": 0,
+  "layers": 19,
   "comps": 1,
   "effects": {
-   "ADBE Group End": 282,
-   "ADBE Color Control": 34,
-   "ADBE Fill": 29,
-   "ADBE Envir Appear in Reflect": 19,
-   "ADBE Effect Built In Params": 12,
-   "ADBE Blend Options Group": 10,
-   "ADBE Adv Blend Group": 10,
-   "ADBE Extrsn Options Group": 10,
-   "ADBE Bevel Direction": 10,
-   "ADBE Appears in Reflections": 10,
-   "ADBE Reflection Coefficient": 10,
-   "ADBE Glossiness Coefficient": 10
+   "ADBE Fill": 29
   },
   "third_party": [],
-  "fonts": [
-   "Montserrat-Regular"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 15,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 75,
+  "route": "remotion-rebuild (aep2json)"
  },
  {
   "id": "635",
@@ -6535,28 +4356,17 @@
   "preview": "https://assets.mixkit.co/video-templates/635/mixkit-635-360.mp4",
   "footage": 0,
   "aep_mb": 1.9,
-  "layers": 0,
+  "layers": 66,
   "comps": 4,
   "effects": {
-   "ADBE Group End": 854,
-   "ADBE Slider Control": 152,
-   "ADBE Envir Appear in Reflect": 66,
-   "ADBE Color Control": 56,
-   "ADBE Effect Built In Params": 40,
-   "ADBE Camera Options Group": 36,
    "ADBE Fill": 35,
-   "ADBE Geometry2": 34,
-   "ADBE Blend Options Group": 30,
-   "ADBE Adv Blend Group": 30,
-   "ADBE Extrsn Options Group": 30,
-   "ADBE Bevel Direction": 30
+   "ADBE Drop Shadow": 26
   },
   "third_party": [],
-  "fonts": [
-   "OpenSans-Light"
-  ],
+  "cc_effects": [],
+  "has_3d_camera": true,
   "expressions": 26,
-  "convert_score": 0,
-  "route": "skip / study motion only"
+  "convert_score": 65,
+  "route": "remotion-rebuild (aep2json)"
  }
 ]
