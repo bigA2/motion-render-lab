@@ -64,10 +64,11 @@ const SceneStack: React.FC<{f: number}> = ({f}) => {
           const hot = i === 1 ? k(f, [40, 50], [0, 1]) : 0;
           return (
             <div key={t} style={{position: 'absolute', left: -380, top: y - 46, width: 760, height: 92, borderRadius: 22, transform: `translateZ(${hot * 40 - d * 300}px)`, opacity: 1 - d,
-              background: `linear-gradient(180deg, rgba(70,70,78,${0.78 + hot * 0.1}), rgba(40,40,46,.86))`, border: '1.5px solid rgba(255,255,255,.22)',
-              boxShadow: `inset 0 1px 0 rgba(255,255,255,.3), 0 ${30 + hot * 20}px 60px rgba(60,40,20,.35)`, display: 'flex', alignItems: 'center', gap: 22, padding: '0 34px', boxSizing: 'border-box'}}>
-              <div style={{width: 34, height: 34, borderRadius: 10, background: 'rgba(255,255,255,.18)', border: '1px solid rgba(255,255,255,.35)'}} />
-              <span style={{fontFamily: FONT, color: 'rgba(255,255,255,.85)', fontSize: 30}}>{t}</span>
+              background: `linear-gradient(135deg, rgba(255,255,255,${0.34 + hot * 0.12}) 0%, rgba(120,110,120,.30) 45%, rgba(40,36,44,.42) 100%)`,
+              border: '1.5px solid rgba(255,255,255,.55)', backdropFilter: 'blur(18px) saturate(140%)',
+              boxShadow: `inset 0 2px 0 rgba(255,255,255,.75), inset 0 -10px 24px rgba(255,255,255,.10), inset 0 0 0 1px rgba(255,255,255,.08), 0 ${30 + hot * 20}px 60px rgba(60,40,20,.28)`, display: 'flex', alignItems: 'center', gap: 22, padding: '0 34px', boxSizing: 'border-box'}}>
+              <div style={{width: 34, height: 34, borderRadius: 10, background: 'rgba(255,255,255,.35)', border: '1px solid rgba(255,255,255,.7)', boxShadow: 'inset 0 1px 0 #fff'}} />
+              <span style={{fontFamily: FONT, color: 'rgba(255,255,255,.96)', fontSize: 30, textShadow: '0 1px 2px rgba(0,0,0,.25)'}}>{t}</span>
             </div>
           );
         })}

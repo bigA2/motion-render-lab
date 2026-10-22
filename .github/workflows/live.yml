@@ -55,15 +55,15 @@ jobs:
               if not i:
                   print('SKIP unknown comp', c); continue
               d = f'site/{c}'; os.makedirs(d, exist_ok=True)
-              sc = 480 / i['w']
+              hq = bool(cfg.get('hq')); sc = 1.0 if hq else 480 / i['w']
               items = []
               for k, s in enumerate(stills):
                   f = max(0, min(i['n'] - 1, round(s * i['fps'])))
                   p = f'{d}/s{k:02d}.jpg'
-                  r = subprocess.run(['npx','remotion','still',entry,c,p,f'--frame={f}',f'--scale={sc:.4f}','--image-format=jpeg','--jpeg-quality=80','--gl=swangle','--log=error','--timeout=120000'])
+                  r = subprocess.run(['npx','remotion','still',entry,c,p,f'--frame={f}',f'--scale={sc:.4f}','--image-format=jpeg','--jpeg-quality=' + ('92' if hq else '80'),'--gl=swangle','--log=error','--timeout=120000'])
                   if r.returncode == 0: items.append({'file': f's{k:02d}.jpg', 'sec': s})
-              vs = 540 / min(i['w'], i['h'])
-              subprocess.run(['npx','remotion','render',entry,c,f'{d}/preview.mp4','--codec=h264',f'--scale={vs:.4f}','--crf=32','--x264-preset=veryfast','--gl=swangle','--log=error','--timeout=120000'])
+              vs = 1.0 if hq else 540 / min(i['w'], i['h'])
+              subprocess.run(['npx','remotion','render',entry,c,f'{d}/preview.mp4','--codec=h264',f'--scale={vs:.4f}','--crf=' + ('16' if hq else '32'),'--x264-preset=' + ('medium' if hq else 'veryfast'),'--gl=swangle','--log=error','--timeout=120000'])
               meta['comps'].append({'id': c, 'stills': items, 'video': os.path.exists(f'{d}/preview.mp4')})
           json.dump(meta, open('site/comps.json', 'w'))
           if not meta['comps']: raise SystemExit('no comps rendered')
