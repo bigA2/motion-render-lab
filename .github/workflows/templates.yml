@@ -19,7 +19,7 @@ jobs:
     env:
       KIND: ${{ matrix.kind }}
       NAME: ${{ inputs.name || 'sample' }}
-      REPLACE: ${{ inputs.replace || '{"text":{"Hello World":"FansaChat"},"colors":{"#ff3366":"#7C83FF","#111111":"#0B0B1A"}}' }}
+      REPLACE: ${{ inputs.replace }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,6 +30,9 @@ jobs:
           case "$KIND" in lottie) C=Lottie;; am) C=AM;; *) echo "bad kind"; exit 1;; esac
           echo "$NAME" | grep -Eq '^[A-Za-z0-9_.-]+$' || { echo "bad name"; exit 1; }
           echo "C=$C" >> "$GITHUB_ENV"
+          # pre-merge push runs test the replace map on the samples
+          if [ -z "$REPLACE" ] || [ "$REPLACE" = '{}' ]; then if [ "$GITHUB_EVENT_NAME" = push ]; then REPLACE='{"text":{"Hello World":"FansaChat"},"colors":{"#ff3366":"#7C83FF","#111111":"#0B0B1A"}}'; else REPLACE='{}'; fi; fi
+          export REPLACE
           if [ "$KIND" = am ]; then python3 scripts/am2json.py "public/templates/am/$NAME.xml" -o "public/templates/am/$NAME.json"; fi
           python3 -c "import json,os; json.dump({'name':os.environ['NAME'],'replace':json.loads(os.environ['REPLACE'] or '{}')}, open('props.json','w'))"
           cat props.json
