@@ -42,4 +42,4 @@ jobs:
             ffprobe -v error -show_entries stream=width,height,r_frame_rate,duration -of csv=p=0 "out/${NAME}_${KIND}_$F.mp4"
           done
       - uses: actions/upload-artifact@v4
-        with: { name: 'templates-${{ matrix.kind }}-${{ inputs.name || 'sample' }}', path: out/, retention-days: 7 }
+        with: { name: "templates-${{ matrix.kind }}-${{ inputs.name || 'sample' }}", path: out/, retention-days: 7 }
