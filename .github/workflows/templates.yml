@@ -2,6 +2,7 @@
 name: templates
 permissions: { contents: read }
 on:
+  push: { branches: [tools/templates], paths: ['.github/workflows/templates.yml', 'src/templates/**', 'scripts/am2json.py', 'public/templates/**'] }  # pre-merge testing: renders both samples
   workflow_dispatch:
     inputs:
       kind: { description: 'lottie | am', required: true, default: 'lottie', type: choice, options: [lottie, am] }
@@ -11,10 +12,13 @@ jobs:
   render:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix: { kind: '${{ fromJSON(github.event_name == ''push'' && ''["lottie","am"]'' || format(''["{0}"]'', inputs.kind)) }}' }
     env:
-      KIND: ${{ inputs.kind }}
-      NAME: ${{ inputs.name }}
-      REPLACE: ${{ inputs.replace }}
+      KIND: ${{ matrix.kind }}
+      NAME: ${{ inputs.name || 'sample' }}
+      REPLACE: ${{ inputs.replace || '{"text":{"Hello World":"FansaChat"},"colors":{"#ff3366":"#7C83FF","#111111":"#0B0B1A"}}' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -37,4 +41,4 @@ jobs:
             ffprobe -v error -show_entries stream=width,height,r_frame_rate,duration -of csv=p=0 "out/${NAME}_${KIND}_$F.mp4"
           done
       - uses: actions/upload-artifact@v4
-        with: { name: 'templates-${{ inputs.kind }}-${{ inputs.name }}', path: out/, retention-days: 7 }
+        with: { name: 'templates-${{ matrix.kind }}-${{ inputs.name || 'sample' }}', path: out/, retention-days: 7 }
