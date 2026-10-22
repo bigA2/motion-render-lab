@@ -61,7 +61,7 @@ export const KineticType: React.FC = () => {
     <AbsoluteFill style={{background: BG, overflow: 'hidden'}}>
       <style>{css}</style>
       {SCENES[i].node(lf)}
-      {wipe > 0 && <div style={{position: 'absolute', left: 0, top: 0, bottom: 0, width: `${wipe * 100}%`, background: GREEN}} />}
+      {wipe > 0 && <div style={{position: 'absolute', top: 0, bottom: 0, left: `${(1 - wipe) * 100}%`, width: '28%', background: GREEN, transform: 'skewX(-12deg)'}} />}
     </AbsoluteFill>
   );
 };
