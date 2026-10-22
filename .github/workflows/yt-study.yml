@@ -44,6 +44,13 @@ jobs:
           ffmpeg -v error -i video.mp4 -vf "fps=1/4,scale=320:-2,drawtext=text='%{pts\:hms}':x=4:y=4:fontsize=14:fontcolor=yellow:box=1:boxcolor=black@0.6,tile=6x5" -q:v 4 sheets/sheet_%03d.jpg
           ls sheets | wc -l
       - uses: actions/upload-artifact@v4
-        with: { name: 'study-${{ matrix.id }}', path: 'out/*.txt\nout/*.description\nout/*.info.json\nout/sheets/', retention-days: 5 }
+        with:
+          name: study-${{ matrix.id }}
+          retention-days: 5
+          path: |
+            out/*.txt
+            out/*.description
+            out/*.info.json
+            out/sheets/
       - uses: actions/upload-artifact@v4
         with: { name: 'video-${{ matrix.id }}', path: out/video.mp4, retention-days: 3 }
