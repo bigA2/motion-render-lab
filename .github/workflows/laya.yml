@@ -1,0 +1,30 @@
+# Laya yes/no filter on study transcript chunks (encrypted in repo; key = STUDY_KEY secret). Results = artifacts only.
+name: laya
+on:
+  push:
+    paths: ['study/chunks.enc']
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy: { fail-fast: false, matrix: { shard: [0, 1, 2, 3, 4, 5] } }
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q laya==0.3.22 --extra-index-url https://download.pytorch.org/whl/cpu
+      - run: openssl enc -d -aes-256-cbc -pbkdf2 -pass pass:"$K" -in study/chunks.enc -out /tmp/chunks.json
+        env: { K: '${{ secrets.STUDY_KEY }}' }
+      - run: |
+          python - <<'PY'
+          import json, laya
+          ch = json.load(open('/tmp/chunks.json'))[${{ matrix.shard }}::6]
+          Q = {"tactic": {"type": "noul", "instructions": "Does this passage teach a concrete, actionable technique for writing video scripts, hooks, storytelling, keeping viewers watching, or structuring content?"},
+               "filler": {"type": "noul", "instructions": "Is this passage mostly a sales pitch, sponsor read, personal small talk, or course/challenge promotion?"}}
+          a = laya.load("convaiinnovations/laya", device="cpu")
+          with open('/tmp/scored.jsonl', 'w') as out:
+              for c in ch:
+                  r = a.predict(c["text"], Q)["answers"]
+                  c["tactic"], c["filler"] = round(r["tactic"]["noul"], 3), round(r["filler"]["noul"], 3)
+                  out.write(json.dumps(c) + "\n"); out.flush()
+          PY
+      - uses: actions/upload-artifact@v4
+        with: { name: 'laya-${{ matrix.shard }}', path: /tmp/scored.jsonl, retention-days: 3 }
