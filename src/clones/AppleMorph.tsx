@@ -46,6 +46,7 @@ export const AppleMorph: React.FC = () => {
   const iMsg = interpolate(f, [520, 545, 600, 612], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill style={{background: interpolateColors(t, [0, 1], [a.page, b.page]), alignItems: 'center', justifyContent: 'center'}}>
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: 'scale(1.4)'}}>
       <style>{css}</style>
       <div style={{width: mix(a.w, b.w), height: mix(a.h, b.h), borderRadius: mix(a.r, b.r), background: interpolateColors(t, [0, 1], [a.bg, b.bg]),
         border: `2px solid ${interpolateColors(t, [0, 1], [a.bd ?? 'rgba(0,0,0,0)', b.bd ?? 'rgba(0,0,0,0)'])}`, boxShadow: a.bg === '#ffffff' || b.bg === '#ffffff' ? '0 18px 50px rgba(0,0,0,.10)' : 'none',
@@ -53,6 +54,7 @@ export const AppleMorph: React.FC = () => {
         <div style={{position: 'absolute', opacity: fadeOut, transform: `scale(${1 - 0.06 * t})`}}>{a.c}</div>
         <div style={{position: 'absolute', opacity: fadeIn, transform: `scale(${0.94 + 0.06 * t})`}}>{b.c}</div>
       </div>
+      </AbsoluteFill>
       {iMsg > 0 && <>
         <Bubble c="#34c759" t="🟢 🟢 🟢  Buttery Smooth" x={1000} y={380} o={iMsg} />
         <Bubble c="#1f6bff" t="Apple Style Animations" x={620} y={520} o={interpolate(f, [530, 555, 600, 612], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} />

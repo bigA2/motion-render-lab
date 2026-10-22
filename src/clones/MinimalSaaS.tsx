@@ -60,7 +60,7 @@ export const MinimalSaaS: React.FC = () => {
     <AbsoluteFill style={{background: `${glow('92%', '8%')}, ${glow('8%', '96%')}, #ffffff`}}>
       <style>{css}</style>
       <div style={{position: 'absolute', top: 40, width: '100%', textAlign: 'center', fontFamily: FONT, fontSize: 26, letterSpacing: 3, color: '#222'}}>IN THIS VIDEO...</div>
-      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', filter: `blur(${pulse * 8}px)`}}>{scenes[i]}</AbsoluteFill>
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', filter: `blur(${pulse * 8}px)`, transform: 'scale(1.45)'}}>{scenes[i]}</AbsoluteFill>
     </AbsoluteFill>
   );
 };

@@ -42,8 +42,8 @@ const Orbit: React.FC<{f: number}> = ({f}) => {
       <div style={{transform: `scale(${zoom})`, position: 'relative', width: 900, height: 900, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <div style={{position: 'absolute', width: 520 * ring, height: 420 * ring, borderRadius: '50%', border: `4px solid ${BLUE}`, opacity: k(f, [55, 70], [0.9, 0]), transform: 'rotate(-18deg)'}} />
         {arc.map((w, i) => {
-          const ang = (-150 + i * 42 + spin) * Math.PI / 180;
-          return <div key={w} style={{position: 'absolute', left: 450 + Math.cos(ang) * 300, top: 450 + Math.sin(ang) * 260, transform: `translate(-50%,-50%) rotate(${(ang * 180 / Math.PI) + 90}deg)`,
+          const ang = (-165 + i * 58 + spin) * Math.PI / 180;
+          return <div key={w} style={{position: 'absolute', left: 450 + Math.cos(ang) * 330, top: 450 + Math.sin(ang) * 290, transform: `translate(-50%,-50%) rotate(${(ang * 180 / Math.PI) + 90}deg)`,
             fontFamily: FONT, color: BLUE, fontSize: 84, opacity: k(f, [12 + i * 5, 22 + i * 5], [0, 1])}}>{w}</div>;
         })}
         <div style={{fontFamily: FONT, color: BLUE, fontSize: 210, letterSpacing: -6}}>this</div>
@@ -66,7 +66,7 @@ export const TextAnim: React.FC = () => {
     <AbsoluteFill style={{filter: `blur(${blur}px)`}}>
       <style>{css}</style>
       {at(0) && <Orbit f={f} />}
-      {at(1) && <Card bg="radial-gradient(80% 70% at 50% 40%, #2a2a2a, #000)"><div style={{fontFamily: FONT, color: '#fff', fontSize: 170, letterSpacing: -4, transform: `scale(${k(f, [80, 102], [1.25, 1])})`}}>EVERYWHERE</div></Card>}
+      {at(1) && <Card bg="radial-gradient(80% 70% at 50% 40%, #2a2a2a, #000)"><div style={{fontFamily: FONT, color: '#fff', fontSize: 150, letterSpacing: -4, transform: `scale(${k(f, [80, 102], [1.12, 0.9])})`}}>EVERYWHERE</div></Card>}
       {at(2) && <Card bg="linear-gradient(180deg,#3a3a3a,#1c1c1c)"><WordRamp text="and the best part?" start={104} dur={26} size={120} color="#fff" /></Card>}
       {at(3) && <Card bg="radial-gradient(90% 80% at 50% 50%, #fff, #e6e6e6)">
         <WordRamp text={f < 160 ? 'it only takes' : f < 180 ? '15' : 'seconds to make'} start={f < 160 ? 140 : f < 180 ? 160 : 180} dur={14} size={f >= 160 && f < 180 ? 360 : 130} /></Card>}
