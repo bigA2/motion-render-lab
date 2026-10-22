@@ -1,0 +1,49 @@
+# Study videos on GitHub runners: download -> subtitles/transcript -> description (template links) -> frame contact sheets.
+# Outputs are workflow ARTIFACTS only (short retention); nothing from YouTube is committed. Trigger: push study/trigger.txt.
+name: yt-study
+on:
+  push:
+    paths: ['study/trigger.txt']
+jobs:
+  ids:
+    runs-on: ubuntu-latest
+    outputs: { list: '${{ steps.r.outputs.list }}' }
+    steps:
+      - uses: actions/checkout@v4
+      - id: r
+        run: echo "list=$(cat study/watchlater_ids.json)" >> "$GITHUB_OUTPUT"
+  study:
+    needs: ids
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy: { fail-fast: false, max-parallel: 6, matrix: { id: '${{ fromJson(needs.ids.outputs.list) }}' } }
+    steps:
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null && pip install -q -U yt-dlp faster-whisper
+      - name: Download
+        run: |
+          mkdir -p out && cd out
+          yt-dlp -f "bv*[height<=720][ext=mp4]+ba[ext=m4a]/b[height<=720]" --merge-output-format mp4 -o video.mp4 \
+            --write-info-json --write-description --write-auto-subs --write-subs --sub-langs "en.*" --convert-subs srt \
+            "https://www.youtube.com/watch?v=${{ matrix.id }}" 2>&1 | tail -5
+      - name: Transcript (subs, else Whisper)
+        run: |
+          cd out
+          if ls *.srt >/dev/null 2>&1; then
+            python -c "import re,glob;t=open(sorted(glob.glob('*.srt'))[0],encoding='utf-8').read();b=[x for x in re.split(r'\n\n+',t) if '-->' in x];o=[];p=''
+          for x in b:
+            l=x.split('\n');ts=l[1][:8];tx=' '.join(l[2:]).strip()
+            if tx and tx!=p:o.append(f'[{ts}] {tx}');p=tx
+          open('transcript.txt','w').write('\n'.join(o))"
+          else
+            python -c "from faster_whisper import WhisperModel as M;s,_=M('base.en',device='cpu',compute_type='int8').transcribe('video.mp4');open('transcript.txt','w').write('\n'.join(f'[{int(x.start//3600):02d}:{int(x.start%3600//60):02d}:{int(x.start%60):02d}] {x.text.strip()}' for x in s))"
+          fi
+          wc -l transcript.txt
+      - name: Contact sheets (1 frame / 4 s, 6x5 per sheet)
+        run: |
+          cd out && mkdir -p sheets
+          ffmpeg -v error -i video.mp4 -vf "fps=1/4,scale=320:-2,drawtext=text='%{pts\:hms}':x=4:y=4:fontsize=14:fontcolor=yellow:box=1:boxcolor=black@0.6,tile=6x5" -q:v 4 sheets/sheet_%03d.jpg
+          ls sheets | wc -l
+      - uses: actions/upload-artifact@v4
+        with: { name: 'study-${{ matrix.id }}', path: 'out/*.txt\nout/*.description\nout/*.info.json\nout/sheets/', retention-days: 5 }
+      - uses: actions/upload-artifact@v4
+        with: { name: 'video-${{ matrix.id }}', path: out/video.mp4, retention-days: 3 }
