@@ -28,7 +28,7 @@ const Doc: React.FC<{r: number; x: number}> = ({r, x}) => (
   </div>
 );
 export const ToggleSaaS: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   const [i, lf] = seq(f, [150, 90, 60]);
   const words = ['Editors', 'Creators', 'Freelancers', 'Client Projects', 'Viral Videos', 'SaaS Animations', 'Everything'];
   const bg = 'radial-gradient(120% 90% at 50% 110%, #5b63ff 0%, #c9d0ff 45%, #ffffff 75%)';
@@ -55,7 +55,7 @@ export const ToggleSaaS: React.FC = () => {
 
 // ---------- 9 ----------
 export const OrbitSaaS: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   const [i, lf] = seq(f, [70, 90, 130]);
   return (
     <AbsoluteFill style={{background: i === 2 ? 'radial-gradient(90% 90% at 40% 50%, #2a2a55, #0b0b1c)' : '#faf7f5', overflow: 'hidden'}}>
@@ -83,7 +83,7 @@ export const OrbitSaaS: React.FC = () => {
 
 // ---------- 10 ----------
 export const MorphGuide: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   const [i, lf] = seq(f, [80, 60, 80, 70, 80]);
   return (
     <AbsoluteFill style={{background: i === 0 ? '#050505' : i === 3 ? '#0b0b0b' : '#f2f2f4', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'}}>

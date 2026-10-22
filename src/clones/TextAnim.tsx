@@ -18,7 +18,7 @@ const rampUp = (wordIndex: number, n: number, progress: number, spread = 0.45) =
 };
 
 export const WordRamp: React.FC<{text: string; start: number; dur: number; size: number; color?: string; weight?: number; dy?: number; style?: React.CSSProperties}> = ({text, start, dur, size, color = BLUE, dy = 100, style}) => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   const words = text.split(' ');
   const p = k(f, [start, start + dur], [0, 1], Easing.linear);
   return (
@@ -58,7 +58,7 @@ const Card: React.FC<{bg: string; children: React.ReactNode}> = ({bg, children})
 );
 
 export const TextAnim: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   const S = [0, 80, 102, 140, 200, 240, 300]; // scene starts (30 fps)
   const at = (i: number) => f >= S[i] && (i === S.length - 1 || f < S[i + 1]);
   const blur = S.slice(1).reduce((b, s) => b + k(f, [s - 3, s, s + 3], [0, 10, 0]), 0);

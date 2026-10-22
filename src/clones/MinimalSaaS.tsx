@@ -137,7 +137,7 @@ const BEATS: Beat[] = [
 export const MINIMAL_SAAS_FRAMES = BEATS.reduce((a, b) => a + b.d, 0);
 
 export const MinimalSaaS: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   let acc = 0, i = 0;
   while (i < BEATS.length - 1 && f >= acc + BEATS[i].d) { acc += BEATS[i].d; i++; }
   const lf = f - acc, b = BEATS[i];

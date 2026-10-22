@@ -19,7 +19,7 @@ const glass: React.CSSProperties = {background: 'linear-gradient(160deg, rgba(25
 
 // ---------- 11 ----------
 export const LiquidGlass: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   const [i, lf] = seq(f, [60, 70, 80, 80, 60]);
   const wave = 'radial-gradient(70% 60% at 30% 70%, #1e4fd8 0%, rgba(30,79,216,0) 60%), radial-gradient(60% 50% at 80% 30%, #7aa7ff 0%, rgba(122,167,255,0) 60%), linear-gradient(160deg, #eef1f8, #c8d3ee)';
   return (
@@ -46,7 +46,7 @@ export const LiquidGlass: React.FC = () => {
 
 // ---------- 12 ----------
 export const ClaudeMotion: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   const [i, lf] = seq(f, [40, 50, 30, 110, 70]);
   const CO = '#d97757';
   return (
@@ -72,7 +72,7 @@ export const ClaudeMotion: React.FC = () => {
 
 // ---------- 13 ----------
 export const Blob3D: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   const blobs = Array.from({length: 9}).map((_, j) => ({x: random(`bx${j}`) * 1080, y: random(`by${j}`) * 1920, s: 60 + random(`bs${j}`) * 160, sp: 0.4 + random(`bp${j}`), r: random(`br${j}`) * 360}));
   return (
     <AbsoluteFill style={{background: 'radial-gradient(90% 60% at 50% 40%, #ffffff, #e9e9e9)', overflow: 'hidden'}}>

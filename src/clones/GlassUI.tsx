@@ -93,7 +93,7 @@ const SceneUrl: React.FC<{f: number}> = ({f}) => {
 };
 
 export const GlassUI: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   const {fps} = useVideoConfig();
   const s1 = Math.round(4.3 * fps), s2 = Math.round(8 * fps);
   // short cross-blur between scenes (the reference uses quick blur dissolves)

@@ -52,7 +52,7 @@ const SCENES: {d: number; node: (f: number) => React.ReactNode}[] = [
 export const KINETIC_FRAMES = SCENES.reduce((a, s) => a + s.d, 0);
 
 export const KineticType: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   let acc = 0, i = 0;
   while (i < SCENES.length - 1 && f >= acc + SCENES[i].d) { acc += SCENES[i].d; i++; }
   const lf = f - acc;

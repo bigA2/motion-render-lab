@@ -79,7 +79,7 @@ const SC: Scene[] = [
 export const CAMERA_FRAMES = SC.reduce((a, s) => a + s.d, 0);
 
 export const CameraFly: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   let acc = 0, i = 0;
   while (i < SC.length - 1 && f >= acc + SC[i].d) { acc += SC[i].d; i++; }
   const s = SC[i], lf = f - acc;

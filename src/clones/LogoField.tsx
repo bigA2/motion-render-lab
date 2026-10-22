@@ -16,7 +16,7 @@ const TILES = (LOGOS as string[]).map((file, i) => ({
 }));
 
 export const LogoField: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useCurrentFrame() / 2; // authored at 30 fps, rendered at 60 fps
   const pull = k(f, [0, 105], [0, 1], Easing.bezier(0.5, 0, 0.1, 1)); // dolly out
   const camZ = 2200 - pull * 2500;
   const drift = k(f, [0, 230], [-160, 160], Easing.linear);
