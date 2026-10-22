@@ -37,7 +37,7 @@ jobs:
           entry = os.environ.get('IN_ENTRY') or cfg.get('entry') or 'src/templates/index.ts'
           comps = [os.environ['IN_COMP']] if os.environ.get('IN_COMP') else cfg.get('comps')
           stills = (cfg.get('stills') or [0, 0.5, 1, 1.5, 2, 2.5])[:10]
-          out = subprocess.run(['npx','remotion','compositions',entry], capture_output=True, text=True).stdout
+          out = subprocess.run(['npx','remotion','compositions',entry], capture_output=True, text=True); out = re.sub(r'\[[0-9;]*m', '', out.stdout + out.stderr)
           info = {}
           for line in out.splitlines():
               m = re.match(r'^\s*(\S+)\s+(\d+)\s+(\d+)x(\d+)\s+(\d+)', line)
@@ -62,6 +62,7 @@ jobs:
               subprocess.run(['npx','remotion','render',entry,c,f'{d}/preview.mp4','--codec=h264',f'--scale={vs:.4f}','--crf=32','--x264-preset=veryfast','--gl=swangle','--log=error','--timeout=120000'])
               meta['comps'].append({'id': c, 'stills': items, 'video': os.path.exists(f'{d}/preview.mp4')})
           json.dump(meta, open('site/comps.json', 'w'))
+          if not meta['comps']: raise SystemExit('no comps rendered')
           PY
       - name: Build page and publish to gh-pages
         run: |
