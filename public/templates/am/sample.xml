@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ORIGINAL hand-written sample in the assumed Alight Motion structure (times in ms). -->
+<scene width="1080" height="1350" fps="30" duration="3000" background="#101018">
+  <element type="shape" id="card" shape="rect" width="760" height="420" radius="48" startTime="0" endTime="3000">
+    <fill color="#7C83FF"/>
+    <position><keyframe time="0" value="540,1500" easing="easeOut"/><keyframe time="700" value="540,675" easing="easeInOut"/></position>
+    <scale><keyframe time="0" value="0.8" easing="linear"/><keyframe time="700" value="1" easing="easeOut"/></scale>
+    <rotation><keyframe time="0" value="-8" easing="easeOut"/><keyframe time="700" value="0"/></rotation>
+    <opacity><keyframe time="0" value="0"/><keyframe time="400" value="1"/></opacity>
+  </element>
+  <element type="text" id="headline" text="Hello World" fontSize="96" color="#FFFFFF" startTime="500" endTime="3000">
+    <position value="540,640"/>
+    <opacity><keyframe time="500" value="0" easing="cubic-bezier(0.4,0,0.2,1)"/><keyframe time="1000" value="1"/></opacity>
+    <effect name="Glow"/>
+  </element>
+  <element type="shape" id="dot" shape="ellipse" width="90" height="90" startTime="1000" endTime="3000">
+    <fill color="#FF3366"/>
+    <position value="540,820"/>
+    <scale><keyframe time="1000" value="0" easing="easeOut"/><keyframe time="1400" value="1"/></scale>
+  </element>
+  <element type="image" id="photo" startTime="0" endTime="3000"><position value="100,100"/><effect name="Chromatic Aberration"/></element>
+</scene>

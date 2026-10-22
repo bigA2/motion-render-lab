@@ -1,0 +1,40 @@
+# Template lab: AE (Lottie JSON) or Alight Motion (XML) template -> 4:5 + 16:9 test mp4 + contact sheets. See docs/TEMPLATES.md.
+name: templates
+permissions: { contents: read }
+on:
+  workflow_dispatch:
+    inputs:
+      kind: { description: 'lottie | am', required: true, default: 'lottie', type: choice, options: [lottie, am] }
+      name: { description: 'file stem in public/templates/<kind>/ (sample, ...)', required: true, default: 'sample' }
+      replace: { description: 'JSON {"text":{"old":"new"},"colors":{"#hex":"#hex"}}', required: false, default: '{}' }
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      KIND: ${{ inputs.kind }}
+      NAME: ${{ inputs.name }}
+      REPLACE: ${{ inputs.replace }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure && (command -v ffmpeg || sudo apt-get -qq install -y ffmpeg)
+      - name: prepare (validate inputs, am2json, props)
+        run: |
+          case "$KIND" in lottie) C=Lottie;; am) C=AM;; *) echo "bad kind"; exit 1;; esac
+          echo "$NAME" | grep -Eq '^[A-Za-z0-9_.-]+$' || { echo "bad name"; exit 1; }
+          echo "C=$C" >> "$GITHUB_ENV"
+          if [ "$KIND" = am ]; then python3 scripts/am2json.py "public/templates/am/$NAME.xml" -o "public/templates/am/$NAME.json"; fi
+          python3 -c "import json,os; json.dump({'name':os.environ['NAME'],'replace':json.loads(os.environ['REPLACE'] or '{}')}, open('props.json','w'))"
+          cat props.json
+      - name: render 4x5 + 16x9, contact sheets
+        run: |
+          mkdir -p out
+          for F in 4x5 16x9; do
+            npx remotion render src/templates/index.ts "$C-$F" "out/${NAME}_${KIND}_$F.mp4" --props=props.json --gl=swangle --crf=18 --log=error --timeout=120000
+            ffmpeg -v error -i "out/${NAME}_${KIND}_$F.mp4" -vf "fps=4,scale=360:-2,tile=6x4:padding=4:color=white" -frames:v 1 "out/SHEET_${NAME}_${KIND}_$F.png"
+            ffprobe -v error -show_entries stream=width,height,r_frame_rate,duration -of csv=p=0 "out/${NAME}_${KIND}_$F.mp4"
+          done
+      - uses: actions/upload-artifact@v4
+        with: { name: 'templates-${{ inputs.kind }}-${{ inputs.name }}', path: out/, retention-days: 7 }
