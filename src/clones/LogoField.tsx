@@ -17,19 +17,19 @@ const TILES = (LOGOS as string[]).map((file, i) => ({
 
 export const LogoField: React.FC = () => {
   const f = useCurrentFrame();
-  const pull = k(f, [0, 150], [0, 1], Easing.bezier(0.5, 0, 0.1, 1)); // dolly out
+  const pull = k(f, [0, 105], [0, 1], Easing.bezier(0.5, 0, 0.1, 1)); // dolly out
   const camZ = 2200 - pull * 2500;
-  const drift = k(f, [0, 300], [-120, 120], Easing.linear);
-  const conv = k(f, [210, 270], [0, 1]); // converge to centre stack
-  const logo = k(f, [270, 300], [0, 1], Easing.bezier(0.16, 1, 0.3, 1));
+  const drift = k(f, [0, 230], [-160, 160], Easing.linear);
+  const conv = k(f, [150, 192], [0, 1]); // converge to centre stack
+  const logo = k(f, [192, 212], [0, 1], Easing.bezier(0.16, 1, 0.3, 1));
   return (
     <AbsoluteFill style={{background: 'radial-gradient(120% 90% at 50% 40%, #2b2f3d 0%, #11131b 60%, #07080c 100%)', perspective: 1400, overflow: 'hidden'}}>
       <style>{css}</style>
       {/* light streaks */}
-      {[0, 1].map((j) => <div key={j} style={{position: 'absolute', left: -400 + ((f * (6 + j * 3)) % 2800), top: 300 + j * 420, width: 900, height: 6, borderRadius: 9, background: 'linear-gradient(90deg, transparent, rgba(140,170,255,.55), transparent)', filter: 'blur(4px)', transform: 'rotate(-8deg)'}} />)}
+      {[0, 1].map((j) => <div key={j} style={{position: 'absolute', left: -400 + ((f * (9 + j * 4)) % 2800), top: 300 + j * 420, width: 900, height: 6, borderRadius: 9, background: 'linear-gradient(90deg, transparent, rgba(140,170,255,.55), transparent)', filter: 'blur(4px)', transform: 'rotate(-8deg)'}} />)}
       <AbsoluteFill style={{transformStyle: 'preserve-3d', transform: `translate3d(${drift}px, 0, ${-camZ}px)`, opacity: 1 - logo}}>
         {TILES.map((t, i) => {
-          const a = k(f, [t.delay * 0.5, t.delay * 0.5 + 20], [0, 1]);
+          const a = k(f, [t.delay * 0.3, t.delay * 0.3 + 14], [0, 1]);
           const x = t.x * (1 - conv), y = t.y * (1 - conv), z = t.z * (1 - conv) + i * 0.6 * conv;
           return (
             <div key={t.file} style={{position: 'absolute', left: 960, top: 540, transform: `translate3d(-50%,-50%,0) translate3d(${x}px, ${y}px, ${z}px) rotate(${t.r * (1 - conv)}deg) scale(${t.s * (1 - 0.3 * conv)})`,
@@ -43,9 +43,9 @@ export const LogoField: React.FC = () => {
       <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 34, opacity: logo}}>
         <Img src={staticFile('logo-fansa.png')} style={{width: 220, height: 220, objectFit: 'contain', transform: `perspective(900px) rotateY(${(1 - logo) * 90}deg)`, filter: 'drop-shadow(0 0 40px rgba(124,131,255,.6))'}} />
         <div style={{fontFamily: FONT, color: '#fff', fontSize: 64, letterSpacing: 6, display: 'flex', gap: 4}}>
-          {'FansaChat'.split('').map((c, i) => <span key={i} style={{display: 'inline-block', transform: `translateY(${Math.sin((f - 270) / 5 + i * 0.7) * 10 * (1 - k(f, [285, 310], [0, 1]))}px)`}}>{c}</span>)}
+          {'FansaChat'.split('').map((c, i) => <span key={i} style={{display: 'inline-block', transform: `translateY(${Math.sin((f - 192) / 5 + i * 0.7) * 10 * (1 - k(f, [205, 225], [0, 1]))}px)`}}>{c}</span>)}
         </div>
-        <div style={{fontFamily: FONT, color: '#aab0c8', fontSize: 34, opacity: k(f, [290, 305], [0, 1])}}>{N}+ apps on screen · 700+ apps connected</div>
+        <div style={{fontFamily: FONT, color: '#aab0c8', fontSize: 34, opacity: k(f, [210, 222], [0, 1])}}>{N}+ apps on screen · 700+ apps connected</div>
       </AbsoluteFill>
     </AbsoluteFill>
   );
