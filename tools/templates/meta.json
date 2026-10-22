@@ -1,1 +1,1 @@
-{"branch": "tools/templates", "time": "2026-10-22 11:37:13", "msg": "research: Mixkit AE crawler + convertibility probe on Actions", "sha": "7b749109b03d1aba0b45ba83eb0b5d2e4cb97c07", "ts": 1792647433}
+{"branch": "tools/templates", "time": "2026-10-22 11:42:48", "msg": "research: polite crawl with 429 backoff", "sha": "c449b18472cc44f3269c064407d87cfd05579ef2", "ts": 1792647768}
