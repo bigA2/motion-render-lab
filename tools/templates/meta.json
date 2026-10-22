@@ -1,1 +1,1 @@
-{"branch": "tools/templates", "time": "2026-10-22 11:42:48", "msg": "research: polite crawl with 429 backoff", "sha": "c449b18472cc44f3269c064407d87cfd05579ef2", "ts": 1792647768}
+{"branch": "tools/templates", "time": "2026-10-22 12:04:49", "msg": "research: fix convertibility scoring (real layer chunks, heavy/3rd-party effects only)", "sha": "8c128d17487057fbdd350186035ec35b00bc685d", "ts": 1792649089}
