@@ -56,10 +56,13 @@ export const CamSeq: React.FC<{id: string; durs: number[]; scale?: number; amoun
   const u = Math.min(1, (f - acc) / durs[i]);
   const c = camAt(s, data.fps, u * (s.end - s.start), amount);
   const z = Math.min(3.2, Math.max(0.6, c.z)); // keep the reference's big zooms (only extreme 7x is capped)
-  const pan = (v: number) => Math.max(-900, Math.min(900, v));
+  const r = Math.max(-25, Math.min(25, c.r));
+  // never reveal frame edges: total scale covers the rotated frame, pans limited to the spare margin
+  const need = 1.04 + Math.abs(r) * 0.03, outer = Math.max(1.12, need / z), total = outer * z;
+  const pan = (v: number, half: number) => { const m = ((total - need) * half) / outer; return Math.max(-m, Math.min(m, v * 0.8)); };
   return (
     <AbsoluteFill style={{overflow: 'hidden'}}>
-      <AbsoluteFill style={{transform: `scale(${z < 1 ? 1.25 / z * z : 1.12}) translate(${pan(c.x) * 0.8}px, ${pan(c.y) * 0.8}px) rotate(${Math.max(-25, Math.min(25, c.r))}deg) scale(${z})`, transformOrigin: '50% 50%'}}>
+      <AbsoluteFill style={{transform: `scale(${outer}) translate(${pan(c.x, 960)}px, ${pan(c.y, 540)}px) rotate(${r}deg) scale(${z})`, transformOrigin: '50% 50%'}}>
         {children}
       </AbsoluteFill>
     </AbsoluteFill>
