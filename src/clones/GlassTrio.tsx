@@ -50,14 +50,21 @@ export const ClaudeMotion: React.FC = () => {
   const [i, lf] = seq(f, [40, 50, 30, 110, 70]);
   const CO = '#d97757';
   return (
-    <AbsoluteFill style={{background: i === 0 ? '#fff' : 'radial-gradient(70% 60% at 85% 10%, rgba(217,119,87,.45), rgba(0,0,0,0) 60%), #050505', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'}}>
+    <AbsoluteFill style={{background: 'radial-gradient(70% 60% at 85% 10%, rgba(217,119,87,.45), rgba(0,0,0,0) 60%), #050505', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'}}>
       <style>{css}</style>
-      {i === 0 && <div style={{display: 'flex', gap: 20}}>{['People', 'are', 'making', 'over'].map((w, j) => { const a = k(lf, [j * 6, j * 6 + 10], [0, 1]); return <span key={w} style={{...T(90, '#111', 500), opacity: a, transform: `translateY(${(1 - a) * 30}px)`}}>{w}</span>; })}</div>}
-      {i === 1 && <div style={{position: 'relative'}}>
-        {Array.from({length: 260}).map((_, j) => { const x = random(`x${j}`) * 900 - 450, y = random(`y${j}`) * 300 - 150; const c = k(lf, [0, 26], [1, 0]);
-          return <div key={j} style={{position: 'absolute', left: x * (1 + c * 2), top: y * (1 + c * 2), width: 6, height: 6, borderRadius: 9, background: '#9fd0ff', boxShadow: '0 0 10px #4aa8ff', opacity: 0.25 + 0.75 * (1 - c) * random(`o${j}`)}} />; })}
-        <div style={{...T(260, 'transparent', 900), WebkitTextStroke: '3px #8fc8ff', textShadow: '0 0 40px #3a9bff', opacity: k(lf, [16, 30], [0, 1])}}>$500</div></div>}
-      {i === 2 && <div style={T(80, '#fff', 500)}>selling <span style={{color: '#7fb3ff'}}>motion design</span></div>}
+      {/* white opening fades into the dark stage (no hard cut) */}
+      <AbsoluteFill style={{background: '#fff', opacity: i === 0 ? 1 - k(lf, [30, 40], [0, 1]) : 0}} />
+      {i === 0 && <div style={{display: 'flex', gap: 20, transform: `translateY(${k(lf, [30, 40], [0, -60])}px) scale(${k(lf, [0, 40], [1, 1.06])})`}}>{['People', 'are', 'making', 'over'].map((w, j) => { const a = k(lf, [j * 6, j * 6 + 10], [0, 1]); return <span key={w} style={{...T(90, '#111', 500), color: lf > 34 ? '#fff' : '#111', opacity: a * (1 - k(lf, [36, 40], [0, 1])), transform: `translateY(${(1 - a) * 30}px)`, filter: `blur(${(1 - a) * 8}px)`}}>{w}</span>; })}</div>}
+      {i === 1 && <div style={{position: 'relative', width: 0, height: 0, transform: `scale(${k(lf, [0, 50], [0.92, 1.06])})`}}>
+        {/* particles fly in from all around and condense into the number while it counts up */}
+        {Array.from({length: 220}).map((_, j) => { const a = random(`a${j}`) * Math.PI * 2, r0 = 500 + random(`r${j}`) * 700, tx = random(`x${j}`) * 640 - 320, ty = random(`y${j}`) * 200 - 100;
+          const c = k(lf, [0, 24 + random(`d${j}`) * 8], [0, 1], Easing.bezier(0.2, 0.8, 0.2, 1));
+          const x = Math.cos(a) * r0 * (1 - c) + tx * c, y = Math.sin(a) * r0 * (1 - c) + ty * c;
+          return <div key={j} style={{position: 'absolute', left: x - 3, top: y - 3, width: 6, height: 6, borderRadius: 9, background: '#9fd0ff', boxShadow: '0 0 10px #4aa8ff', opacity: (0.35 + 0.65 * random(`o${j}`)) * (1 - k(lf, [26, 38], [0, 0.85]))}} />; })}
+        <div style={{position: 'absolute', left: 0, top: 0, transform: `translate(-50%, -50%) translateY(${k(lf, [40, 50], [0, -170])}px) scale(${k(lf, [40, 50], [1, 0.5])})`, ...T(260, '#eaf5ff', 900),
+          textShadow: `0 0 ${20 + 40 * k(lf, [20, 34], [0, 1])}px #3a9bff`, opacity: k(lf, [10, 24], [0, 1]), filter: `blur(${k(lf, [10, 24], [10, 0])}px)`}}>${Math.round(k(lf, [8, 32], [0, 500], Easing.bezier(0.2, 0.8, 0.2, 1)))}</div></div>}
+      {i === 2 && <><div style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%) translateY(-170px) scale(0.5)', ...T(260, '#eaf5ff', 900), textShadow: '0 0 40px #3a9bff', opacity: 1 - k(lf, [20, 30], [0, 1])}}>$500</div>
+        <div style={{display: 'flex', gap: 22, transform: 'translateY(60px)'}}>{['selling', 'motion', 'design'].map((w, j) => { const a = k(lf, [j * 4, j * 4 + 10], [0, 1]); return <span key={w} style={{...T(80, j ? '#7fb3ff' : '#fff', 500), opacity: a, transform: `translateY(${(1 - a) * 30}px)`, filter: `blur(${(1 - a) * 8}px)`}}>{w}</span>; })}</div></>}
       {i === 3 && <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 30}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 20, ...T(90, '#f5e6dc', 400), fontFamily: SERIF, opacity: k(lf, [0, 12], [0, 1])}}><span style={{color: CO, fontSize: 100}}>✺</span>Claude</div>
         <div style={{width: 1100, borderRadius: 30, background: '#1b1b1d', border: '1px solid #333', padding: '34px 40px', boxShadow: `0 0 80px rgba(217,119,87,${k(lf, [60, 100], [0, 0.45])})`, opacity: k(lf, [14, 26], [0, 1]), transform: `translateY(${k(lf, [14, 26], [40, 0])}px)`}}>

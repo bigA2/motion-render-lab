@@ -40,7 +40,7 @@ export const ToggleSaaS: React.FC = () => {
           <Toggles f={lf} />
           <div style={{position: 'relative', width: 620, height: 300}}>{[-12, -4, 4, 12].map((r, j) => <div key={j} style={{opacity: k(lf, [6 + j * 4, 16 + j * 4], [0, 1])}}><Doc r={r} x={j * 120} /></div>)}</div>
         </div>
-        <div style={{position: 'absolute', bottom: 150, ...T(44, '#1b1d6b', 500)}}>For <b>{words[Math.min(words.length - 1, Math.floor(lf / 20))]}</b></div>
+        <div style={{position: 'absolute', bottom: 270, ...T(60, '#1b1d6b', 500)}}>For <b>{words[Math.min(words.length - 1, Math.floor(lf / 20))]}</b></div>
       </AbsoluteFill>}
       {i === 1 && <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
         <div style={{display: 'flex', gap: 22, padding: '22px 30px', borderRadius: 40, background: 'rgba(255,255,255,.12)', border: '1px solid rgba(255,255,255,.25)', backdropFilter: 'blur(20px)', transform: `translateY(${k(lf, [0, 16], [200, 0])}px)`}}>
@@ -70,13 +70,14 @@ export const OrbitSaaS: React.FC = () => {
           <div key={j} style={{position: 'absolute', left: x as number, top: (y as number) + k(lf, [0, 90], [30, -30], Easing.linear) * (j % 2 ? 1 : -1), width: 520, padding: 30, borderRadius: 26, background: '#fff', boxShadow: '0 25px 60px rgba(80,60,180,.18)', opacity: k(lf, [j * 6, j * 6 + 14], [0, 1]), transform: `scale(${k(lf, [j * 6, j * 6 + 14], [0.85, 1])})`}}>
             <div style={T(32, '#333')}>{t}</div>{[0, 1, 2].map((r) => <div key={r} style={{height: 12, marginTop: 16, borderRadius: 6, background: '#ecebf7', width: `${90 - r * 15}%`}} />)}</div>))}
       </AbsoluteFill>}
-      {i === 2 && <AbsoluteFill>
+      {i === 2 && (() => { const words = ['Projects', 'Feedback', 'Files', 'Communication']; const p = lf / 130; const w = Math.min(3, Math.floor(p * 4)); const ang = (-40 + p * 80) * Math.PI / 180;
+        const cx = -700 + 900 + Math.cos(ang) * 900, cy = -360 + 900 + Math.sin(ang) * 900;
+        // camera tracks the travelling dot so the word beside it is always framed (dot held left of centre)
+        return <AbsoluteFill style={{transform: `translate(${760 - cx}px, ${540 - cy}px)`}}>
         <div style={{position: 'absolute', left: -700, top: -360, width: 1800, height: 1800, borderRadius: 9999, border: '3px solid rgba(140,140,255,.35)'}} />
-        {(() => { const words = ['Projects', 'Feedback', 'Files', 'Communication']; const p = lf / 130; const w = Math.min(3, Math.floor(p * 4)); const ang = (-40 + p * 80) * Math.PI / 180;
-          const cx = -700 + 900 + Math.cos(ang) * 900, cy = -360 + 900 + Math.sin(ang) * 900;
-          return <><div style={{position: 'absolute', left: cx - 22, top: cy - 22, width: 44, height: 44, borderRadius: 99, background: '#8fb2ff', boxShadow: '0 0 30px #8fb2ff'}} />
-            <div style={{position: 'absolute', left: cx + 50, top: cy - 40, ...T(72, '#e6e6ff', 500), opacity: k((lf % 32.5), [0, 8], [0, 1]), filter: `blur(${k((lf % 32.5), [0, 8], [8, 0])}px)`}}>{words[w]}</div></>; })()}
-      </AbsoluteFill>}
+          <div style={{position: 'absolute', left: cx - 22, top: cy - 22, width: 44, height: 44, borderRadius: 99, background: '#8fb2ff', boxShadow: '0 0 30px #8fb2ff'}} />
+            <div style={{position: 'absolute', left: cx + 50, top: cy - 40, ...T(72, '#e6e6ff', 500), opacity: k((lf % 32.5), [0, 8], [0, 1]), filter: `blur(${k((lf % 32.5), [0, 8], [8, 0])}px)`}}>{words[w]}</div>
+      </AbsoluteFill>; })()}
     </AbsoluteFill>
   );
 };

@@ -68,3 +68,21 @@ export const CamSeq: React.FC<{id: string; durs: number[]; scale?: number; amoun
     </AbsoluteFill>
   );
 };
+
+// Smooth keyframed camera (replaces CamSeq replay): each scene glides in with a gentle push (quick start, never stops),
+// and scenes hand off with a short zoom-through + motion blur. No measured shake, no roll, no slow-mo zooms.
+export const SmoothCam: React.FC<{durs: number[]; scale?: number; children: React.ReactNode}> = ({durs, scale = 1, children}) => {
+  const f = useCurrentFrame() / scale;
+  let acc = 0, i = 0;
+  while (i < durs.length - 1 && f >= acc + durs[i]) { acc += durs[i]; i++; }
+  const d = durs[i], lf = f - acc;
+  const cl = (v: number) => Math.max(0, Math.min(1, v));
+  const glide = 1 - Math.pow(1 - cl(lf / d), 3);
+  const inn = i ? 1 - Math.pow(cl(lf / 6), 0.5) : 0, out = i < durs.length - 1 ? Math.pow(cl((lf - (d - 5)) / 5), 2) : 0;
+  const z = 1 + 0.06 * glide - 0.05 * inn + 0.14 * out;
+  return (
+    <AbsoluteFill style={{overflow: 'hidden'}}>
+      <AbsoluteFill style={{transform: `scale(${z})`, filter: inn + out > 0.02 ? `blur(${(inn + out) * 6}px)` : undefined}}>{children}</AbsoluteFill>
+    </AbsoluteFill>
+  );
+};

@@ -13,20 +13,38 @@ const T = (s: number, c = '#111', w = 600): React.CSSProperties => ({fontFamily:
 const typed = (t: string, f: number, a: number, b: number) => t.slice(0, Math.round(k(f, [a, b], [0, t.length], Easing.linear)));
 
 // 60 fps timeline (frames)
-const S1 = 0, S2 = 100, S3 = 160, S4 = 250, S5 = 350, S6 = 480, S7 = 580, S8 = 700, END = 800;
+const S1 = 0, S2 = 160, S3 = 220, S4 = 310, S5 = 410, S6 = 540, S7 = 640, S8 = 760, END = 860;
 
+// Opening, matched to the reference at 6 fps: words rise in with blur while the line slides left (writing head stays
+// put), a black dot lands at the line end, the line blurs away as the dot glides to centre-left, a white "Motion
+// Graphics" pill grows out of it, then the pill ITSELF morphs (shape + colour) into the black timer card of S2.
+const WORDS = ['Is', 'it', 'possible', 'to', 'learn'];
 const Typing: React.FC<{f: number}> = ({f}) => {
-  const line = typed('Is it possible to learn', f, 0, 70);
-  const logo = k(f, [72, 84], [0, 1], OUT);
-  const swap = k(f, [84, 96], [0, 1]);
-  const camX = k(f, [0, 70], [260, -260], Easing.linear) * (1 - swap) + swap * 0; // follow caret
+  const ox = k(f, [86, 120], [330, -170]);                     // origin = dot centre
+  const lineOut = k(f, [84, 108], [0, 1]);
+  const dot = k(f, [70, 82], [0, 1], OUT) * (1 - k(f, [138, 156], [0, 1]));
+  const grow = k(f, [104, 128], [0, 1], OUT);
+  const m = k(f, [136, S2], [0, 1]);                           // pill -> card morph
+  const pw = 440 * grow, pcx = ox + 70 + pw / 2;
+  const w = pw + (300 - pw) * m, h = 84 + (300 - 84) * m, cx = pcx * (1 - m), r = 42 + (64 - 42) * m;
+  const bg = interpolateColors(m, [0, 0.5, 1], ['#ffffff', '#9a9a9e', '#0b0b0d']);
+  const label = 'Motion Graphics';
   return (
-    <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `translateX(${camX}px)`}}>
-      <div style={{display: 'flex', alignItems: 'center', gap: 26}}>
-        <span style={{...T(110), opacity: 1 - swap, filter: `blur(${swap * 8}px)`, position: swap > 0.5 ? 'absolute' : 'relative'}}>{line}</span>
-        <div style={{width: 120 * logo, height: 120 * logo, borderRadius: 99, background: '#111', flex: '0 0 auto'}} />
-        <span style={{...T(80), opacity: swap, transform: `translateX(${(1 - swap) * 40}px)`}}>Motion Graphics</span>
+    <AbsoluteFill>
+      <div style={{position: 'absolute', left: '50%', top: '50%', transform: `translateX(${ox}px)`}}>
+        <div style={{position: 'absolute', right: 70 + lineOut * 60, top: 0, transform: 'translateY(-50%)', display: 'flex', gap: 26, opacity: 1 - lineOut, filter: `blur(${lineOut * 12}px)`}}>
+          {WORDS.map((wd, i) => { const a = k(f, [6 + i * 13, 18 + i * 13], [0, 1], OUT);
+            return <span key={i} style={{...T(96), opacity: a, filter: `blur(${(1 - a) * 10}px)`, transform: `translateY(${(1 - a) * 34}px)`}}>{wd}</span>; })}
+        </div>
+        <div style={{position: 'absolute', left: -48, top: -48, width: 96, height: 96, borderRadius: 99, background: '#111', transform: `scale(${dot})`}} />
       </div>
+      {grow > 0 && (
+        <div style={{position: 'absolute', left: `calc(50% + ${cx - w / 2}px)`, top: `calc(50% - ${h / 2}px)`, width: w, height: h, borderRadius: r, background: bg,
+          boxShadow: `0 ${10 + 20 * m}px ${30 + 30 * m}px rgba(0,0,0,${0.08 + 0.1 * m})`, overflow: 'hidden', display: 'flex', alignItems: 'center', paddingLeft: 34}}>
+          <span style={{...T(52), opacity: 1 - k(f, [130, 146], [0, 1]), filter: `blur(${k(f, [130, 146], [0, 8])}px)`}}>
+            {label.split('').map((c, i) => <span key={i} style={{opacity: k(f, [110 + i * 1.5, 118 + i * 1.5], [0, 1], OUT)}}>{c}</span>)}</span>
+        </div>
+      )}
     </AbsoluteFill>
   );
 };
@@ -36,14 +54,14 @@ const Morph: React.FC<{f: number}> = ({f}) => {
   const a = k(f, [S3 - 14, S3 + 4], [0, 1]), b = k(f, [S4 - 10, S4 + 14], [0, 1]);
   const w = 300 + (520 - 300) * a + (900 - 520) * b, h = 300 + (140 - 300) * a + (620 - 140) * b, r = 64 + (70 - 64) * a + (60 - 70) * b;
   const zoom = 1 + k(f, [S4, S5 - 20], [0, 0.55]);
-  const enter = k(f, [S2, S2 + 16], [0, 1], OUT);
+  const enter = 1;
   const pick = k(f, [S2, S3 - 10], [0, 1]);
   const secs = Math.floor(k(f, [S3, S4 - 20], [1200, 1185], Easing.linear));
   return (
     <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `scale(${zoom * (0.7 + 0.3 * enter)})`, opacity: enter}}>
       <div style={{width: w, height: h, borderRadius: r, background: '#0b0b0d', position: 'relative', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,.18)'}}>
         {/* timer widget */}
-        <div style={{position: 'absolute', inset: 0, opacity: 1 - a, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18}}>
+        <div style={{position: 'absolute', inset: 0, opacity: (1 - a) * k(f, [S2, S2 + 14], [0, 1]), display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18}}>
           <div style={{height: 150, overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <div style={{transform: `translateY(${-pick * 50}px)`}}>{[19, 20, 21, 22].map((n, i) => <div key={n} style={{...T(i === 1 + Math.round(pick) - 1 + 1 ? 56 : 40, i === Math.round(pick) + 1 ? '#fff' : '#555'), height: 50, textAlign: 'center'}}>{n}</div>)}</div>
           </div>
@@ -53,9 +71,9 @@ const Morph: React.FC<{f: number}> = ({f}) => {
         {/* pill */}
         <div style={{position: 'absolute', inset: 0, opacity: a * (1 - b), display: 'flex', alignItems: 'center', gap: 26, padding: '0 30px'}}>
           <div style={{width: 92, height: 92, borderRadius: 99, border: '6px solid #ff8a1f', ...T(22, '#ff8a1f'), display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${f * 2}deg)`}}><span style={{transform: `rotate(${-f * 2}deg)`}}>{Math.floor(secs / 60)}:{String(secs % 60).padStart(2, '0')}</span></div>
-          <span style={{...T(64, '#ffb340'), position: 'relative', width: 140}}>
-            <span style={{position: 'absolute', opacity: 1 - k(f, [205, 215], [0, 1]), filter: `blur(${k(f, [205, 215], [0, 6])}px)`}}>Well</span>
-            <span style={{position: 'absolute', opacity: k(f, [210, 220], [0, 1])}}>Yes</span></span>
+          <span style={{...T(64, '#ffb340'), position: 'relative', display: 'inline-block', width: 150, height: 80, lineHeight: '80px'}}>
+            <span style={{position: 'absolute', left: 0, top: 0, opacity: 1 - k(f, [265, 275], [0, 1]), filter: `blur(${k(f, [265, 275], [0, 6])}px)`}}>Well</span>
+            <span style={{position: 'absolute', left: 0, top: 0, opacity: k(f, [270, 280], [0, 1])}}>Yes</span></span>
           <div style={{marginLeft: 'auto', width: 60, height: 60, borderRadius: 99, background: '#ff8a1f33', ...T(40, '#ff8a1f'), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>−</div>
         </div>
         {/* note card */}
@@ -72,15 +90,25 @@ const Morph: React.FC<{f: number}> = ({f}) => {
 const Search: React.FC<{f: number}> = ({f}) => {
   const lf = f - S5;
   const z = k(lf, [0, 40], [1, 3.2]);
-  const pan = k(lf, [50, 120], [0, -1500]);
+  const pan = k(lf, [44, 60], [0, -900]);
+  // the two results, ONE AT A TIME, centred and sharp (drawn at full size, not scaled up)
+  const Word = ({t, a, b}: {t: string; a: number; b: number}) => {
+    const i = k(lf, [a, a + 12], [0, 1], OUT), o = k(lf, [b - 10, b], [0, 1]);
+    if (i <= 0 || o >= 1) return null;
+    return (
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', opacity: i * (1 - o), filter: `blur(${(1 - i) * 10 + o * 10}px)`, transform: `translateY(${(1 - i) * 40 - o * 40}px)`}}>
+        <span style={T(150, '#fff', 600)}>{t}</span>
+        <div style={{height: 10, borderRadius: 5, marginTop: 18, background: '#2b5cff', width: 260 * k(lf, [a + 6, a + 22], [0, 1], OUT)}} />
+      </AbsoluteFill>
+    );
+  };
   return (
     <AbsoluteFill style={{background: '#050505', overflow: 'hidden'}}>
-      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `translateX(${pan}px) scale(${z})`}}>
+      <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `translateX(${pan}px) scale(${z})`, opacity: 1 - k(lf, [44, 56], [0, 1])}}>
         <div style={{width: 380, height: 52, borderRadius: 30, background: '#fff', display: 'flex', alignItems: 'center', padding: '0 20px', boxSizing: 'border-box', ...T(24)}}>{typed('2 components', lf, 6, 30)}<span style={{marginLeft: 'auto', ...T(22, '#444')}}>⌕</span></div>
-        <div style={{position: 'absolute', left: 'calc(50% + 330px)', top: 'calc(50% + 50px)', display: 'flex', gap: 120}}>
-          <span style={{...T(40, '#2b5cff'), textDecoration: 'underline', opacity: k(lf, [56, 66], [0, 1])}}>Expressions</span>
-          <span style={{...T(40, '#2b5cff'), textDecoration: 'underline', opacity: k(lf, [84, 94], [0, 1])}}>Timing</span></div>
       </AbsoluteFill>
+      <Word t="Expressions" a={52} b={88} />
+      <Word t="Timing" a={88} b={130} />
     </AbsoluteFill>
   );
 };
@@ -134,7 +162,7 @@ export const AppleMorph: React.FC = () => {
   const f = useCurrentFrame();
   const page = f < S5 ? '#f4f4f6' : f < S6 ? '#050505' : '#f4f4f6';
   const cut = (at: number) => k(f, [at - 6, at, at + 6], [0, 1, 0], Easing.linear); // tiny blur on scene changes
-  const blur = [S2, S5, S6, S7, S8].reduce((s, a) => s + cut(a) * 8, 0);
+  const blur = [S5, S6, S7, S8].reduce((s, a) => s + cut(a) * 8, 0);
   return (
     <AbsoluteFill style={{background: page, filter: `blur(${blur}px)`}}>
       <style>{css}</style>
