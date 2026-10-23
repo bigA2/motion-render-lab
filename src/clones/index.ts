@@ -15,12 +15,15 @@ import {LogoField} from './LogoField';
 import {KineticType, KINETIC_FRAMES} from './KineticType';
 import {ToggleSaaS, OrbitSaaS, MorphGuide, TRIO_FRAMES} from './SaasTrio';
 import {LiquidGlass, ClaudeMotion, Blob3D, GTRIO_FRAMES} from './GlassTrio';
+import {P01v8, P01_SECONDS} from '../p01v8/P01v8';
 
 // colour variants: rotate each clone's main accent hue onto a FansaChat palette (logos / monochrome clones excluded)
 const VARIANTS: [string, number][] = [['violet', 248], ['ocean', 195], ['sunset', 18]];
 const BASE_HUE: Record<string, number> = {"GlassUI-16x9": 215, "AppleMorph-16x9": 25, "CameraFly-16x9": 215, "MinimalSaaS-16x9": 140, "KineticType-16x9": 140, "ToggleSaaS-16x9": 235, "OrbitSaaS-16x9": 330, "MorphGuide-16x9": 215, "LiquidGlass-16x9": 220, "ClaudeMotion-16x9": 15, "TextAnim-4x5": 235};
 const tint = (C: React.FC, deg: number): React.FC => () => React.createElement(AbsoluteFill, {style: {filter: `hue-rotate(${deg}deg)`, ['--hue' as any]: `${deg}deg`}}, React.createElement(C));
 const COMPS = [
+  React.createElement(Composition, {id: 'P01v8-16x9', component: P01v8, durationInFrames: Math.round(P01_SECONDS * 60), fps: 60, width: 1920, height: 1080}),
+  React.createElement(Composition, {id: 'P01v8-4x5', component: P01v8, durationInFrames: Math.round(P01_SECONDS * 60), fps: 60, width: 1080, height: 1350}),
   React.createElement(Composition, {id: 'GlassUI-16x9', component: GlassUI, durationInFrames: (300) * 2, fps: 60, width: 1920, height: 1080}),
   React.createElement(Composition, {id: 'AppleMorph-16x9', component: AppleMorph, durationInFrames: APPLE_FRAMES, fps: 60, width: 1920, height: 1080}),
   React.createElement(Composition, {id: 'CameraFly-16x9', component: CameraFly, durationInFrames: (CAMERA_FRAMES) * 2, fps: 60, width: 1920, height: 1080}),
