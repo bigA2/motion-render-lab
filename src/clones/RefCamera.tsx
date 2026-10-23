@@ -12,7 +12,7 @@ export const useCamera = (id: string) => {
   const [h] = React.useState(() => (cache[id] ? null : delayRender(`camera ${id}`)));
   React.useEffect(() => {
     if (cache[id]) return;
-    fetch(staticFile(`cameras/${id}.json`)).then((r) => r.json()).then((j) => { cache[id] = j; setData(j); if (h !== null) continueRender(h); });
+    fetch(staticFile(`cameras/${id}.camera.json`)).then((r) => r.json()).then((j) => { cache[id] = j; setData(j); if (h !== null) continueRender(h); });
   }, [id, h]);
   return data;
 };

@@ -66,7 +66,7 @@ jobs:
               subprocess.run(['npx','remotion','render',entry,c,f'{d}/preview.mp4','--codec=h264',f'--scale={vs:.4f}','--crf=' + ('16' if hq else '32'),'--x264-preset=' + ('medium' if hq else 'veryfast'),'--gl=swangle','--log=error','--timeout=120000'])
               meta['comps'].append({'id': c, 'stills': items, 'video': os.path.exists(f'{d}/preview.mp4')})
           json.dump(meta, open('site/comps.json', 'w'))
-          if not meta['comps']: raise SystemExit('no comps rendered')
+          if not any(c['video'] for c in meta['comps']): raise SystemExit('no video rendered')
           PY
       - name: Build page and publish to gh-pages
         run: |
