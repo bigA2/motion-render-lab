@@ -16,7 +16,7 @@ permissions:
 jobs:
   live:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 300
     env:
       BRANCH: ${{ github.ref_name }}
       SHA: ${{ github.sha }}
