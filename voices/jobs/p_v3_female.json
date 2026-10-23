@@ -1,0 +1,1568 @@
+[
+{
+"ref": "voices/female_ref.wav",
+"text": "Ever wondered why small business owners never have enough time?",
+"out": "out/P02/01_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Ever wondered why small business owners never have enough time?",
+"out": "out/P02/01_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Ever wondered why small business owners never have enough time?",
+"out": "out/P02/01_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "They carry every heavy task with their team \u2014 hours lost updating the CRM, chasing leads, fixing sheets \u2014 until the whole day is gone.",
+"out": "out/P02/02_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "They carry every heavy task with their team \u2014 hours lost updating the CRM, chasing leads, fixing sheets \u2014 until the whole day is gone.",
+"out": "out/P02/02_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "They carry every heavy task with their team \u2014 hours lost updating the CRM, chasing leads, fixing sheets \u2014 until the whole day is gone.",
+"out": "out/P02/02_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "But what if those nightmare tasks ran on autopilot, 24/7?",
+"out": "out/P02/03_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "But what if those nightmare tasks ran on autopilot, 24/7?",
+"out": "out/P02/03_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "But what if those nightmare tasks ran on autopilot, 24/7?",
+"out": "out/P02/03_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Welcome to FansaChat.",
+"out": "out/P02/04_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Welcome to FansaChat.",
+"out": "out/P02/04_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Welcome to FansaChat.",
+"out": "out/P02/04_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your sales lead lives in HubSpot.",
+"out": "out/P02/05_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your sales lead lives in HubSpot.",
+"out": "out/P02/05_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your sales lead lives in HubSpot.",
+"out": "out/P02/05_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your designer in Canva and Slack.",
+"out": "out/P02/06_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your designer in Canva and Slack.",
+"out": "out/P02/06_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your designer in Canva and Slack.",
+"out": "out/P02/06_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your accountant in QuickBooks.",
+"out": "out/P02/07_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your accountant in QuickBooks.",
+"out": "out/P02/07_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your accountant in QuickBooks.",
+"out": "out/P02/07_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Operations in Google Sheets, Trello and Gmail.",
+"out": "out/P02/08_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Operations in Google Sheets, Trello and Gmail.",
+"out": "out/P02/08_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Operations in Google Sheets, Trello and Gmail.",
+"out": "out/P02/08_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Support in WhatsApp.",
+"out": "out/P02/09_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Support in WhatsApp.",
+"out": "out/P02/09_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Support in WhatsApp.",
+"out": "out/P02/09_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Different people, different apps.",
+"out": "out/P02/10_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Different people, different apps.",
+"out": "out/P02/10_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Different people, different apps.",
+"out": "out/P02/10_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "FansaChat brings everyone into one shared workspace.",
+"out": "out/P02/11_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "FansaChat brings everyone into one shared workspace.",
+"out": "out/P02/11_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "FansaChat brings everyone into one shared workspace.",
+"out": "out/P02/11_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "One sentence connects the apps \u2014 and each person's busywork simply runs itself.",
+"out": "out/P02/12_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "One sentence connects the apps \u2014 and each person's busywork simply runs itself.",
+"out": "out/P02/12_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "One sentence connects the apps \u2014 and each person's busywork simply runs itself.",
+"out": "out/P02/12_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection.",
+"out": "out/P02/13_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection.",
+"out": "out/P02/13_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection.",
+"out": "out/P02/13_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P02/14_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P02/14_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P02/14_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P02/15_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P02/15_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P02/15_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team shouldn't wait days for a developer to fix one small task.",
+"out": "out/P03/01_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team shouldn't wait days for a developer to fix one small task.",
+"out": "out/P03/01_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team shouldn't wait days for a developer to fix one small task.",
+"out": "out/P03/01_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Every handoff, every \"can you update this?\" \u2014 stuck in a queue.",
+"out": "out/P03/02_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Every handoff, every \"can you update this?\" \u2014 stuck in a queue.",
+"out": "out/P03/02_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Every handoff, every \"can you update this?\" \u2014 stuck in a queue.",
+"out": "out/P03/02_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "With FansaChat, you write it yourself, in plain English: \"When a new client signs, create the project, assign the team and tell everyone.\" Done.",
+"out": "out/P03/03_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "With FansaChat, you write it yourself, in plain English: \"When a new client signs, create the project, assign the team and tell everyone.\" Done.",
+"out": "out/P03/03_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "With FansaChat, you write it yourself, in plain English: \"When a new client signs, create the project, assign the team and tell everyone.\" Done.",
+"out": "out/P03/03_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Change it anytime \u2014 just ask.",
+"out": "out/P03/04_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Change it anytime \u2014 just ask.",
+"out": "out/P03/04_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Change it anytime \u2014 just ask.",
+"out": "out/P03/04_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team works in one shared workspace, and nothing runs until you approve it.",
+"out": "out/P03/05_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team works in one shared workspace, and nothing runs until you approve it.",
+"out": "out/P03/05_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team works in one shared workspace, and nothing runs until you approve it.",
+"out": "out/P03/05_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P03/06_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P03/06_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P03/06_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P03/07_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P03/07_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P03/07_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Hiring help is expensive.",
+"out": "out/P04/01_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Hiring help is expensive.",
+"out": "out/P04/01_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Hiring help is expensive.",
+"out": "out/P04/01_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Doing everything yourself is exhausting.",
+"out": "out/P04/02_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Doing everything yourself is exhausting.",
+"out": "out/P04/02_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Doing everything yourself is exhausting.",
+"out": "out/P04/02_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "FansaChat runs your busywork from one plain-English sentence.",
+"out": "out/P04/03_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "FansaChat runs your busywork from one plain-English sentence.",
+"out": "out/P04/03_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "FansaChat runs your busywork from one plain-English sentence.",
+"out": "out/P04/03_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Endless follow-ups, invoices, three inboxes?",
+"out": "out/P04/04_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Endless follow-ups, invoices, three inboxes?",
+"out": "out/P04/04_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Endless follow-ups, invoices, three inboxes?",
+"out": "out/P04/04_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Starter \u2014 $15 a month.",
+"out": "out/P04/05_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Starter \u2014 $15 a month.",
+"out": "out/P04/05_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Starter \u2014 $15 a month.",
+"out": "out/P04/05_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Many clients, content for every channel, reports every week?",
+"out": "out/P04/06_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Many clients, content for every channel, reports every week?",
+"out": "out/P04/06_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Many clients, content for every channel, reports every week?",
+"out": "out/P04/06_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Pro \u2014 $45 a month.",
+"out": "out/P04/07_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Pro \u2014 $45 a month.",
+"out": "out/P04/07_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Pro \u2014 $45 a month.",
+"out": "out/P04/07_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Client onboarding, team handoffs, reports for every client?",
+"out": "out/P04/08_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Client onboarding, team handoffs, reports for every client?",
+"out": "out/P04/08_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Client onboarding, team handoffs, reports for every client?",
+"out": "out/P04/08_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Team \u2014 $149 a month.",
+"out": "out/P04/09_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Team \u2014 $149 a month.",
+"out": "out/P04/09_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Team \u2014 $149 a month.",
+"out": "out/P04/09_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Departments, approvals, people in different apps?",
+"out": "out/P04/10_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Departments, approvals, people in different apps?",
+"out": "out/P04/10_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Departments, approvals, people in different apps?",
+"out": "out/P04/10_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Scale \u2014 $299 a month.",
+"out": "out/P04/11_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Scale \u2014 $299 a month.",
+"out": "out/P04/11_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Scale \u2014 $299 a month.",
+"out": "out/P04/11_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection \u2014 and you don't pay until then.",
+"out": "out/P04/12_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection \u2014 and you don't pay until then.",
+"out": "out/P04/12_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection \u2014 and you don't pay until then.",
+"out": "out/P04/12_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P04/13_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P04/13_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P04/13_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P04/14_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P04/14_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P04/14_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "A lead messaged you an hour ago.",
+"out": "out/P05/01_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "A lead messaged you an hour ago.",
+"out": "out/P05/01_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "A lead messaged you an hour ago.",
+"out": "out/P05/01_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Did anyone reply?",
+"out": "out/P05/02_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Did anyone reply?",
+"out": "out/P05/02_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Did anyone reply?",
+"out": "out/P05/02_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Leads hide everywhere \u2014 your website form, Instagram DMs, email, WhatsApp.",
+"out": "out/P05/03_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Leads hide everywhere \u2014 your website form, Instagram DMs, email, WhatsApp.",
+"out": "out/P05/03_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Leads hide everywhere \u2014 your website form, Instagram DMs, email, WhatsApp.",
+"out": "out/P05/03_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "FansaChat catches every one, saves it to your CRM and sends a friendly reply in seconds \u2014 from one sentence.",
+"out": "out/P05/04_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "FansaChat catches every one, saves it to your CRM and sends a friendly reply in seconds \u2014 from one sentence.",
+"out": "out/P05/04_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "FansaChat catches every one, saves it to your CRM and sends a friendly reply in seconds \u2014 from one sentence.",
+"out": "out/P05/04_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team sees every new lead in one shared workspace.",
+"out": "out/P05/05_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team sees every new lead in one shared workspace.",
+"out": "out/P05/05_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team sees every new lead in one shared workspace.",
+"out": "out/P05/05_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection.",
+"out": "out/P05/06_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection.",
+"out": "out/P05/06_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection.",
+"out": "out/P05/06_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P05/07_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P05/07_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P05/07_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P05/08_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P05/08_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P05/08_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Signing a new client should feel exciting \u2014 not like a pile of setup.",
+"out": "out/P06/01_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Signing a new client should feel exciting \u2014 not like a pile of setup.",
+"out": "out/P06/01_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Signing a new client should feel exciting \u2014 not like a pile of setup.",
+"out": "out/P06/01_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Contract, invoice, project folder, welcome email, team tasks \u2014 the same steps, every single time.",
+"out": "out/P06/02_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Contract, invoice, project folder, welcome email, team tasks \u2014 the same steps, every single time.",
+"out": "out/P06/02_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Contract, invoice, project folder, welcome email, team tasks \u2014 the same steps, every single time.",
+"out": "out/P06/02_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Tell FansaChat once, in plain English, and every new client is onboarded the same smooth way.",
+"out": "out/P06/03_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Tell FansaChat once, in plain English, and every new client is onboarded the same smooth way.",
+"out": "out/P06/03_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Tell FansaChat once, in plain English, and every new client is onboarded the same smooth way.",
+"out": "out/P06/03_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your whole team works from one shared workspace.",
+"out": "out/P06/04_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your whole team works from one shared workspace.",
+"out": "out/P06/04_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your whole team works from one shared workspace.",
+"out": "out/P06/04_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Nothing runs until you approve it.",
+"out": "out/P06/05_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Nothing runs until you approve it.",
+"out": "out/P06/05_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Nothing runs until you approve it.",
+"out": "out/P06/05_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P06/06_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P06/06_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P06/06_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P06/07_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P06/07_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P06/07_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Still building client reports from screenshots at the last minute?",
+"out": "out/P07/01_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Still building client reports from screenshots at the last minute?",
+"out": "out/P07/01_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Still building client reports from screenshots at the last minute?",
+"out": "out/P07/01_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Numbers from Google Analytics, ads and Sheets \u2014 copied by hand, every week.",
+"out": "out/P07/02_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Numbers from Google Analytics, ads and Sheets \u2014 copied by hand, every week.",
+"out": "out/P07/02_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Numbers from Google Analytics, ads and Sheets \u2014 copied by hand, every week.",
+"out": "out/P07/02_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "With FansaChat, one sentence pulls the numbers, builds the report and sends it \u2014 on time, every time.",
+"out": "out/P07/03_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "With FansaChat, one sentence pulls the numbers, builds the report and sends it \u2014 on time, every time.",
+"out": "out/P07/03_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "With FansaChat, one sentence pulls the numbers, builds the report and sends it \u2014 on time, every time.",
+"out": "out/P07/03_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team sees every report in one shared workspace.",
+"out": "out/P07/04_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team sees every report in one shared workspace.",
+"out": "out/P07/04_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Your team sees every report in one shared workspace.",
+"out": "out/P07/04_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection.",
+"out": "out/P07/05_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection.",
+"out": "out/P07/05_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "You approve every connection.",
+"out": "out/P07/05_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P07/06_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P07/06_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Get every update first \u2014 join the waitlist and our Telegram community.",
+"out": "out/P07/06_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P07/07_take1.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 1
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P07/07_take2.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 2
+},
+{
+"ref": "voices/female_ref.wav",
+"text": "Link in bio.",
+"out": "out/P07/07_take3.wav",
+"exaggeration": 0.55,
+"cfg_weight": 0.5,
+"temperature": 0.75,
+"seed": 3
+}
+]
