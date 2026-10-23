@@ -24,6 +24,8 @@ const tint = (C: React.FC, deg: number): React.FC => () => React.createElement(A
 const COMPS = [
   React.createElement(Composition, {id: 'P01v8-16x9', component: P01v8, durationInFrames: Math.round(P01_SECONDS * 60), fps: 60, width: 1920, height: 1080}),
   React.createElement(Composition, {id: 'P01v8-4x5', component: P01v8, durationInFrames: Math.round(P01_SECONDS * 60), fps: 60, width: 1080, height: 1350}),
+  React.createElement(Composition, {id: 'P01v8-16x9-music', component: P01v8, defaultProps: {music: true}, durationInFrames: Math.round(P01_SECONDS * 60), fps: 60, width: 1920, height: 1080}),
+  React.createElement(Composition, {id: 'P01v8-4x5-music', component: P01v8, defaultProps: {music: true}, durationInFrames: Math.round(P01_SECONDS * 60), fps: 60, width: 1080, height: 1350}),
   React.createElement(Composition, {id: 'GlassUI-16x9', component: GlassUI, durationInFrames: (300) * 2, fps: 60, width: 1920, height: 1080}),
   React.createElement(Composition, {id: 'AppleMorph-16x9', component: AppleMorph, durationInFrames: APPLE_FRAMES, fps: 60, width: 1920, height: 1080}),
   React.createElement(Composition, {id: 'CameraFly-16x9', component: CameraFly, durationInFrames: (CAMERA_FRAMES) * 2, fps: 60, width: 1920, height: 1080}),

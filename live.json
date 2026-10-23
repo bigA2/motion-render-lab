@@ -1,1 +1,1 @@
-{"entry": "src/clones/index.ts", "comps": ["KineticType-16x9", "ToggleSaaS-16x9", "OrbitSaaS-16x9", "MorphGuide-16x9", "LiquidGlass-16x9", "ClaudeMotion-16x9", "Blob3D-9x16", "AppleMorph-16x9", "CameraFly-16x9", "MinimalSaaS-16x9", "LogoField-16x9", "GlassUI-16x9", "TextAnim-4x5"], "hq": true, "stills": [0.5, 1.5, 2.5, 3.5, 4.6, 5.6, 6.6, 7.6, 9, 11]}
+{"entry": "src/clones/index.ts", "comps": ["P01v8-16x9-music", "P01v8-16x9", "P01v8-4x5-music", "P01v8-4x5"], "hq": true, "stills": [1, 4, 8, 12, 16, 20, 24, 28, 32, 36]}

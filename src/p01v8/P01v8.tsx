@@ -3,7 +3,7 @@
 // zoom-through transitions, readable copy. Storyboard: fansa-knowledge/raw/video_research/P01_STORYBOARD_v8_2026-10-23.md
 // Timing table T is in seconds and is re-timed to the chosen VO takes (voices/jobs/p_v3_lines.json).
 import React from 'react';
-import {AbsoluteFill, Easing, Img, interpolate, interpolateColors, random, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Audio, Easing, Img, interpolate, interpolateColors, random, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import LOGOS from '../clones/app_logos.json';
 
 const FONT = 'P1Font', DISP = 'P1Disp';
@@ -24,7 +24,8 @@ const Words: React.FC<{t: string; t0: number; at: number; gap?: number; style?: 
 );
 
 // ---- beat table (seconds) ------------------------------------------------------------------------------------------
-export const T_P01 = {hook: 0, ask: 5.2, meet: 8.4, type: 14.6, done: 19.2, late: 20.6, who: 23.8, pains: 29.2, flow: 33.4, team: 35.6, trust: 40, end: 43.6, out: 49};
+// re-timed to the chosen VO takes (public/audio/p01v8/times.json)
+export const T_P01 = {hook: 0, ask: 5.6, meet: 8.3, type: 14.95, late: 19.2, who: 22.25, pains: 29.3, flow: 34.65, team: 37.3, trust: 41.8, end: 45.1, out: 51.2};
 const B = T_P01;
 export const P01_SECONDS = B.out;
 
@@ -66,7 +67,7 @@ const Logo: React.FC<{s: number}> = ({s}) => <Img src={staticFile('logo-fansa.pn
 
 // ---- 1. HOOK: phrases on a canvas, camera lands on each and pans with it -----------------------------------------
 const Hook: React.FC<{t: number}> = ({t}) => {
-  const keys: Key[] = [[0, 0, 0, 1.5], [0.7, 60, 0, 1.55], [1.0, 640, 240, 1.35], [1.9, 760, 250, 1.35], [2.2, 60, 560, 1.3], [3.0, 200, 570, 1.3], [3.3, 900, 820, 1.35], [3.9, 1000, 830, 1.35], [4.2, 480, 1120, 1.15], [5.2, 560, 1130, 1.2]];
+  const keys: Key[] = [[0, 0, 0, 1.5], [0.7, 60, 0, 1.55], [1.0, 640, 240, 1.35], [1.9, 760, 250, 1.35], [2.2, 60, 560, 1.3], [3.0, 200, 570, 1.3], [3.3, 900, 820, 1.35], [3.9, 1000, 830, 1.35], [4.2, 620, 1120, 1.05], [5.6, 700, 1130, 1.1]];
   return (
     <World t={t} keys={keys} id="hk">
       <At x={0} y={0}><div style={T(130, INK, DISP)}><Words t="Still juggling" t0={t} at={0.05} /></div></At>
@@ -79,7 +80,7 @@ const Hook: React.FC<{t: number}> = ({t}) => {
       <At x={950} y={820}><div style={{display: 'flex', alignItems: 'center', gap: 34}}>
         <div style={T(96)}><Words t="and late invoices" t0={t} at={3.3} hot={['invoices']} hotC={RED} /></div>
         <Pop t={t} at={3.5}><div style={{padding: '14px 26px', borderRadius: 16, background: '#fff', border: `2px solid ${RED}`, ...T(34, RED)}}>Overdue · 14 days</div></Pop></div></At>
-      <At x={520} y={1120}><div style={T(150, INK, DISP)}><Words t="by hand, every day?" t0={t} at={4.25} hot={['every', 'day?']} /></div></At>
+      <At x={520} y={1120}><div style={T(150, INK, DISP)}><Words t="by hand, every single day?" t0={t} at={4.2} gap={0.16} hot={['every', 'single', 'day?']} /></div></At>
     </World>
   );
 };
@@ -91,9 +92,9 @@ const Meet: React.FC<{t: number}> = ({t}) => {
   const lineOut = k(t, [2.9, 3.4], [0, 1]);
   const dot = k(t, [2.6, 2.9], [0, 1], OUT);
   const grow = k(t, [3.2, 3.8], [0, 1], OUT);
-  const apps = k(t, [5.0, 6.6], [0, 1], IO);
+  const apps = k(t, [6.3, 7.9], [0, 1], IO);
   const pushIn = k(t, [3.2, 9.4], [1, 1.12], Easing.bezier(0.2, 0.9, 0.3, 1));
-  const counter = Math.round(k(t, [5.4, 6.6], [0, 700], OUT));
+  const counter = Math.round(k(t, [6.7, 7.9], [0, 700], OUT));
   return (
     <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `scale(${pushIn})`}}>
       <div style={{position: 'absolute', width: 1500, ...T(76), whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.15, opacity: 1 - lineOut, filter: `blur(${lineOut * 12}px)`, transform: `translateY(${-lineOut * 60}px)`}}>
@@ -107,12 +108,12 @@ const Meet: React.FC<{t: number}> = ({t}) => {
       {/* app icons fly in from all around and dock into a ring behind the pill */}
       {(LOGOS as string[]).slice(0, 36).map((f, i) => {
         const a = (i / 36) * Math.PI * 2, r0 = 1300 + random(`r${i}`) * 500, r1 = 330 + (i % 2) * 70;
-        const e = k(t, [5.0 + (i % 6) * 0.08, 6.2 + (i % 6) * 0.08], [0, 1], OUT);
+        const e = k(t, [6.3 + (i % 6) * 0.08, 7.5 + (i % 6) * 0.08], [0, 1], OUT);
         const r = r0 + (r1 - r0) * e, spin = t * 4;
         return <div key={f} style={{position: 'absolute', transform: `translate(${Math.cos(a + spin * 0.01) * r * 1.5}px, ${Math.sin(a + spin * 0.01) * r * 0.75}px) scale(${0.5 + 0.5 * e})`, opacity: apps > 0 ? e : 0}}>
           <div style={{width: 92, height: 92, borderRadius: 24, background: '#fff', boxShadow: '0 12px 30px rgba(40,40,90,.15)', display: 'flex', alignItems: 'center', justifyContent: 'center'}}><Img src={staticFile(`logos/ap/${f}`)} style={{width: 58, height: 58, objectFit: 'contain'}} /></div></div>;
       })}
-      <div style={{position: 'absolute', top: 760, padding: '14px 34px', borderRadius: 40, background: V, ...T(44, '#fff'), opacity: k(t, [5.4, 5.8], [0, 1]), transform: `scale(${k(t, [5.4, 5.9], [0.7, 1], OUT)})`}}>connected to {counter}+ apps</div>
+      <div style={{position: 'absolute', top: 760, padding: '14px 34px', borderRadius: 40, background: V, ...T(44, '#fff'), opacity: k(t, [6.7, 7.1], [0, 1]), transform: `scale(${k(t, [6.7, 7.2], [0.7, 1], OUT)})`}}>connected to {counter}+ apps</div>
     </AbsoluteFill>
   );
 };
@@ -122,23 +123,23 @@ const TypeIt: React.FC<{t: number}> = ({t}) => {
   // t = 0 at B.type
   const say = '"When a client pays, send the receipt and update my sheet."';
   const steps = [['Client pays', 'Payment received · $480'], ['Send receipt', 'Receipt #1042 emailed'], ['Update sheet', 'Row 38 added']];
-  const keys: Key[] = [[0, 0, 0, 1.35], [0.4, 0, 0, 1.3], [2.6, 0, 0, 1.2], [3.1, -520, 520, 1.25], [3.6, 0, 520, 1.25], [4.1, 520, 520, 1.25], [4.6, 520, 520, 1.25], [5.3, 0, 380, 0.85], [6.0, 0, 380, 0.85]];
+  const keys: Key[] = [[0, 0, 0, 1.35], [0.3, 0, 0, 1.3], [2.3, 0, 0, 1.2], [2.6, -520, 520, 1.25], [2.9, 0, 520, 1.25], [3.2, 520, 520, 1.25], [3.6, 0, 380, 0.85], [4.3, 0, 380, 0.85]];
   return (
     <AbsoluteFill style={{background: BG}}>
       <World t={t} keys={keys} id="ty">
         <At x={0} y={-150}><div style={T(70, INK, DISP)}><Words t="Just type it." t0={t} at={0.05} hot={['type']} /></div></At>
         <At x={0} y={40}><Card w={1180} dark style={{padding: '34px 40px'}}>
-          <div style={{...T(40, '#e9e9f1'), whiteSpace: 'normal', lineHeight: 1.3, minHeight: 104}}>{typed(say, t, 0.5, 2.6)}<span style={{opacity: Math.floor(t * 3) % 2}}>|</span></div>
-          <div style={{display: 'flex', justifyContent: 'space-between', marginTop: 18, ...T(26, '#8b8ca0')}}><span>FansaChat</span><span style={{padding: '8px 18px', borderRadius: 20, background: k(t, [2.6, 2.75], [0, 1]) > 0.5 ? V : '#2a2b36', color: '#fff'}}>Run ↵</span></div>
+          <div style={{...T(40, '#e9e9f1'), whiteSpace: 'normal', lineHeight: 1.3, minHeight: 104}}>{typed(say, t, 0.3, 2.3)}<span style={{opacity: Math.floor(t * 3) % 2}}>|</span></div>
+          <div style={{display: 'flex', justifyContent: 'space-between', marginTop: 18, ...T(26, '#8b8ca0')}}><span>FansaChat</span><span style={{padding: '8px 18px', borderRadius: 20, background: k(t, [2.3, 2.4], [0, 1]) > 0.5 ? V : '#2a2b36', color: '#fff'}}>Run ↵</span></div>
         </Card></At>
         {steps.map(([a, b], i) => {
-          const on = k(t, [3.0 + i * 0.5, 3.3 + i * 0.5], [0, 1]);
-          return <At key={a} x={-520 + i * 520} y={520}><div style={{opacity: k(t, [2.8, 3.1], [0, 1])}}><Card w={420} style={{border: `3px solid ${on > 0.5 ? OK : '#ececf3'}`, transform: `scale(${1 + on * 0.04})`}}>
+          const on = k(t, [2.45 + i * 0.3, 2.6 + i * 0.3], [0, 1]);
+          return <At key={a} x={-520 + i * 520} y={520}><div style={{opacity: k(t, [2.2, 2.45], [0, 1])}}><Card w={420} style={{border: `3px solid ${on > 0.5 ? OK : '#ececf3'}`, transform: `scale(${1 + on * 0.04})`}}>
             <div style={{display: 'flex', alignItems: 'center', gap: 16}}><span style={{width: 46, height: 46, borderRadius: 99, background: on > 0.5 ? OK : '#eee', ...T(28, '#fff'), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>{on > 0.5 ? '✓' : i + 1}</span><span style={T(38)}>{a}</span></div>
             <div style={{...T(26, '#777'), marginTop: 16, opacity: on}}>{b}</div></Card></div></At>;
         })}
-        {[0, 1].map((i) => <div key={i} style={{position: 'absolute', left: -310 + i * 520, top: 517, height: 6, borderRadius: 3, background: OK, width: 100 * k(t, [3.25 + i * 0.5, 3.5 + i * 0.5], [0, 1])}} />)}
-        <At x={0} y={760}><Pop t={t} at={4.75}><div style={{padding: '18px 44px', borderRadius: 50, background: OK, ...T(54, '#fff', DISP)}}>Done in seconds</div></Pop></At>
+        {[0, 1].map((i) => <div key={i} style={{position: 'absolute', left: -310 + i * 520, top: 517, height: 6, borderRadius: 3, background: OK, width: 100 * k(t, [2.55 + i * 0.3, 2.75 + i * 0.3], [0, 1])}} />)}
+        <At x={0} y={760}><Pop t={t} at={3.4}><div style={{padding: '18px 44px', borderRadius: 50, background: OK, ...T(54, '#fff', DISP)}}>Done in seconds</div></Pop></At>
       </World>
     </AbsoluteFill>
   );
@@ -164,37 +165,37 @@ const Late: React.FC<{t: number}> = ({t}) => {
 const Who: React.FC<{t: number}> = ({t}) => {
   // t = 0 at B.who
   const who = ['freelance copywriters', 'independent SEO consultants', 'small agencies', 'consulting firms'];
-  const w = Math.min(3, Math.floor(t / 0.95));
-  const lw = t - w * 0.95;
-  const heavy = k(t, [3.9, 4.3], [0, 1]);
+  const w = Math.min(3, Math.floor(t / 1.05));
+  const lw = t - w * 1.05;
+  const heavy = k(t, [4.2, 4.6], [0, 1]);
   return (
     <AbsoluteFill style={{background: 'linear-gradient(180deg,#ffffff, #e9e8ff)', alignItems: 'center', justifyContent: 'center'}}>
       <div style={{position: 'absolute', top: 300, ...T(64, '#555'), opacity: 1 - heavy}}>For</div>
       <div style={{position: 'absolute', top: 400, ...T(110, V, DISP), opacity: (1 - heavy) * k(lw, [0, 0.25], [0, 1]), filter: `blur(${k(lw, [0, 0.25], [10, 0])}px)`, transform: `translateY(${k(lw, [0, 0.3], [50, 0])}px)`}}>{who[w]}</div>
       <div style={{position: 'absolute', top: 640, display: 'flex', gap: 14, opacity: 1 - heavy}}>{who.map((_, i) => <div key={i} style={{width: i === w ? 54 : 16, height: 16, borderRadius: 8, background: i <= w ? V : '#d6d4f2'}} />)}</div>
-      <div style={{position: 'absolute', ...T(80), whiteSpace: 'normal', width: 1400, textAlign: 'center', lineHeight: 1.2}}>{heavy > 0 && <Words t="your work is heavier than reminders and bookings." t0={t} at={4.0} gap={0.12} hot={['heavier']} wrap />}</div>
+      <div style={{position: 'absolute', ...T(80), whiteSpace: 'normal', width: 1400, textAlign: 'center', lineHeight: 1.2}}>{heavy > 0 && <Words t="your work is heavier than reminders and bookings." t0={t} at={4.3} gap={0.14} hot={['heavier']} wrap />}</div>
     </AbsoluteFill>
   );
 };
 const Pains: React.FC<{t: number}> = ({t}) => {
   // t = 0 at B.pains; three pains, camera tracks each, then they snap onto one line ("one smooth flow")
   const pains = [['Leads', 'from five places'], ['Onboarding', 'that never ends'], ['Reports', 'nobody has time for']];
-  const flow = k(t, [4.2, 5.0], [0, 1], IO);
-  const keys: Key[] = [[0, -560, -140, 1.35], [1.2, -560, -120, 1.35], [1.5, 0, 140, 1.35], [2.6, 0, 160, 1.35], [2.9, 560, -140, 1.35], [4.0, 560, -120, 1.35], [4.6, 0, 0, 0.9], [6.4, 0, 0, 0.95]];
+  const flow = k(t, [5.45, 6.2], [0, 1], IO);
+  const keys: Key[] = [[0, -560, -140, 1.35], [1.5, -560, -120, 1.35], [1.8, 0, 140, 1.35], [3.4, 0, 160, 1.35], [3.7, 560, -140, 1.35], [5.2, 560, -120, 1.35], [5.8, 0, 0, 0.9], [8.0, 0, 0, 0.95]];
   const pos = (i: number) => [[-560, -140], [0, 140], [560, -140]][i];
   return (
     <AbsoluteFill style={{background: BG}}>
       <World t={t} keys={keys} id="pn">
         {/* the swoosh that becomes the flow line */}
         <svg width={2000} height={400} style={{position: 'absolute', left: -1000, top: -200, overflow: 'visible'}}>
-          <path d="M 0 200 C 400 -40, 700 420, 1000 200 S 1600 -40, 2000 200" fill="none" stroke={V} strokeWidth={10} strokeLinecap="round" strokeDasharray={2600} strokeDashoffset={2600 * (1 - k(t, [4.2, 5.0], [0, 1], IO))} /></svg>
+          <path d="M 0 200 C 400 -40, 700 420, 1000 200 S 1600 -40, 2000 200" fill="none" stroke={V} strokeWidth={10} strokeLinecap="round" strokeDasharray={2600} strokeDashoffset={2600 * (1 - k(t, [5.45, 6.2], [0, 1], IO))} /></svg>
         {pains.map(([a, b], i) => {
-          const [x, y] = pos(i), at = i * 1.4;
+          const [x, y] = pos(i), at = [0.1, 1.75, 3.7][i];
           return <At key={a} x={x * (1 - flow) + (-560 + i * 560) * flow} y={y * (1 - flow)}><Pop t={t} at={at}><Card w={440} style={{textAlign: 'center', border: flow > 0.5 ? `3px solid ${V}` : undefined}}>
             <div style={T(64, flow > 0.5 ? V : INK, DISP)}>{a}</div><div style={{...T(32, '#777'), marginTop: 12}}>{b}</div>
             {i === 0 && <div style={{display: 'flex', justifyContent: 'center', gap: 8, marginTop: 16}}>{[0, 1, 2, 3, 4].map((j) => <div key={j} style={{width: 18, height: 18, borderRadius: 9, background: k(t, [0.3 + j * 0.12, 0.45 + j * 0.12], [0, 1]) > 0.5 ? RED : '#eee'}} />)}</div>}</Card></Pop></At>;
         })}
-        <At x={0} y={330}><div style={{...T(84, INK, DISP), opacity: k(t, [4.5, 4.9], [0, 1])}}><Words t="one smooth flow." t0={t} at={4.5} hot={['flow.']} /></div></At>
+        <At x={0} y={330}><div style={{...T(84, INK, DISP), opacity: k(t, [5.8, 6.2], [0, 1])}}><Words t="one smooth flow." t0={t} at={5.8} hot={['flow.']} /></div></At>
       </World>
     </AbsoluteFill>
   );
@@ -240,16 +241,20 @@ const End: React.FC<{t: number}> = ({t}) => (
 
 // ---- sequencer: scenes hand off with a short zoom-through (outgoing pushes in + blur, incoming settles) -------------
 const SCENES: [number, number, React.FC<{t: number}>][] = [[B.hook, B.ask, Hook], [B.ask, B.type, Meet], [B.type, B.late, TypeIt], [B.late, B.who, Late], [B.who, B.pains, Who], [B.pains, B.team, Pains], [B.team, B.end, Team], [B.end, B.out, End]];
-export const P01v8: React.FC = () => {
+// full-frame backdrop per scene, so the 4:5 frame (taller than the 16:9 stage) is filled seamlessly
+const BACK = [BG, BG, BG, 'radial-gradient(80% 60% at 50% 45%, #1b1c2b, #07070c)', 'linear-gradient(180deg,#ffffff, #e9e8ff)', BG, 'linear-gradient(180deg,#f6f6fb,#ebeaff)', 'radial-gradient(80% 60% at 50% 40%, #ffffff, #e7e6fb)'];
+export const P01v8: React.FC<{music?: boolean}> = ({music = false}) => {
   const f = useCurrentFrame(), {fps, width, height} = useVideoConfig(), s = f / fps;
   const i = Math.max(0, SCENES.findIndex(([a, b]) => s >= a && s < b));
   const [a, b, C] = SCENES[i];
   const t = s - a, d = b - a;
   const inn = i ? k(t, [0, 0.2], [1, 0]) : 0, out = i < SCENES.length - 1 ? k(t, [d - 0.15, d], [0, 1], IN) : 0;
-  const fit = Math.max(width / 1920, height / 1080) * (height > width ? 0.78 : 1); // 4:5 = native re-fit of the 16:9 stage
+  const fit = height > width ? width / 1500 : Math.max(width / 1920, height / 1080); // 4:5: the centre 1500 px of the stage fill the width; BACK fills above/below
   return (
-    <AbsoluteFill style={{background: BG, overflow: 'hidden'}}>
+    <AbsoluteFill style={{background: BACK[i], overflow: 'hidden'}}>
       <style>{css}</style>
+      <Audio src={staticFile('audio/p01v8/vo.wav')} />
+      {music && <Audio src={staticFile('audio/01_upbeat-tech_high-technologic-beat-explosion_loyalty-freak-music.mp3')} volume={(fr) => 0.17 * Math.min(1, fr / 30) * Math.min(1, (P01_SECONDS * 60 - fr) / 90)} />}
       <AbsoluteFill style={{transform: `scale(${(1 - inn * 0.06 + out * 0.18)})`, filter: inn + out > 0.02 ? `blur(${(inn + out) * 8}px)` : undefined, opacity: 1 - out * 0.4}}>
         <div style={{position: 'absolute', left: '50%', top: '50%', width: 1920, height: 1080, marginLeft: -960, marginTop: -540, transform: `scale(${fit})`}}>
           <AbsoluteFill><C t={t} /></AbsoluteFill>
