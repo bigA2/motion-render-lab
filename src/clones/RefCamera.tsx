@@ -55,11 +55,11 @@ export const CamSeq: React.FC<{id: string; durs: number[]; scale?: number; amoun
   const s = moving[i % Math.max(1, moving.length)] ?? data.shots[0];
   const u = Math.min(1, (f - acc) / durs[i]);
   const c = camAt(s, data.fps, u * (s.end - s.start), amount);
-  const z = Math.min(1.8, Math.max(0.82, c.z));
-  const pan = (v: number) => Math.max(-420, Math.min(420, v));
+  const z = Math.min(3.2, Math.max(0.6, c.z)); // keep the reference's big zooms (only extreme 7x is capped)
+  const pan = (v: number) => Math.max(-900, Math.min(900, v));
   return (
     <AbsoluteFill style={{overflow: 'hidden'}}>
-      <AbsoluteFill style={{transform: `scale(1.18) translate(${pan(c.x) / 2}px, ${pan(c.y) / 2}px) rotate(${Math.max(-12, Math.min(12, c.r))}deg) scale(${z})`, transformOrigin: '50% 50%'}}>
+      <AbsoluteFill style={{transform: `scale(${z < 1 ? 1.25 / z * z : 1.12}) translate(${pan(c.x) * 0.8}px, ${pan(c.y) * 0.8}px) rotate(${Math.max(-25, Math.min(25, c.r))}deg) scale(${z})`, transformOrigin: '50% 50%'}}>
         {children}
       </AbsoluteFill>
     </AbsoluteFill>
