@@ -3,7 +3,7 @@
 // zoom-through transitions, readable copy. Storyboard: fansa-knowledge/raw/video_research/P01_STORYBOARD_v8_2026-10-23.md
 // Timing table T is in seconds and is re-timed to the chosen VO takes (voices/jobs/p_v3_lines.json).
 import React from 'react';
-import {AbsoluteFill, Audio, Easing, Img, interpolate, interpolateColors, random, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Audio, Easing, Img, interpolate, Sequence, interpolateColors, random, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import LOGOS from '../clones/app_logos.json';
 
 const FONT = 'P1Font', DISP = 'P1Disp';
@@ -239,6 +239,18 @@ const End: React.FC<{t: number}> = ({t}) => (
   </AbsoluteFill>
 );
 
+// ---- sound design: every visible event gets a hit (absolute seconds, file in public/sfx/proc, volume) ----------------
+const SFX: [number, string, number][] = [
+  [0.05, 'hook_bass_impact_1.2s', 0.55], [0.25, 'text_mouth_pop_1', 0.5], [1.0, 'node_pop_1', 0.45], [2.2, 'node_pop_2', 0.45], [3.3, 'node_pop_3', 0.45], [4.2, 'text_mouth_pop_2', 0.5],
+  [B.ask - 0.12, 'transition_whoosh_0.45s', 0.5], [B.ask + 2.6, 'ui_tick_1', 0.5], [B.ask + 3.2, 'node_pop_4', 0.5], [B.ask + 6.3, 'counter_roll_riser_1.5s', 0.4], [B.ask + 7.9, 'success_chime_G', 0.35],
+  [B.type - 0.12, 'transition_whoosh_0.45s', 0.5], [B.type + 0.3, 'typing_keyboard_2.0s', 0.45], [B.type + 2.3, 'ui_click_1', 0.6], [B.type + 2.45, 'node_pop_1', 0.4], [B.type + 2.75, 'node_pop_2', 0.4], [B.type + 3.05, 'node_pop_3', 0.4], [B.type + 3.4, 'success_chime_C', 0.45],
+  [B.late - 0.15, 'transition_whoosh_0.7s', 0.45], [B.late + 0.05, 'ui_tick_2', 0.4], [B.late + 1.8, 'buildup_metallic_riser_0.8s', 0.3],
+  [B.who - 0.12, 'transition_whoosh_0.45s', 0.5], [B.who + 0.05, 'ui_click_2', 0.45], [B.who + 1.05, 'ui_click_3', 0.45], [B.who + 2.1, 'ui_click_2', 0.45], [B.who + 3.15, 'ui_click_3', 0.45], [B.who + 4.3, 'text_mouth_pop_3', 0.45],
+  [B.pains - 0.12, 'transition_whoosh_0.25s', 0.5], [B.pains + 0.1, 'node_pop_5', 0.5], [B.pains + 1.75, 'node_pop_4', 0.5], [B.pains + 3.7, 'node_pop_3', 0.5], [B.pains + 5.45, 'transition_whoosh_0.7s', 0.4], [B.pains + 5.8, 'success_chime_G', 0.35],
+  [B.team - 0.12, 'transition_whoosh_0.45s', 0.5], [B.team + 0.05, 'node_pop_1', 0.4], [B.team + 2.2, 'ui_tick_1', 0.45], [B.team + 4.4, 'node_pop_2', 0.45], [B.team + 5.2, 'ui_click_1', 0.65], [B.team + 5.5, 'success_chime_C', 0.5],
+  [B.end - 0.15, 'transition_camera_flash_1', 0.45], [B.end + 0.05, 'hook_bass_impact_0.8s', 0.45], [B.end + 1.2, 'node_pop_4', 0.45], [B.end + 1.7, 'node_pop_5', 0.45],
+];
+
 // ---- sequencer: scenes hand off with a short zoom-through (outgoing pushes in + blur, incoming settles) -------------
 const SCENES: [number, number, React.FC<{t: number}>][] = [[B.hook, B.ask, Hook], [B.ask, B.type, Meet], [B.type, B.late, TypeIt], [B.late, B.who, Late], [B.who, B.pains, Who], [B.pains, B.team, Pains], [B.team, B.end, Team], [B.end, B.out, End]];
 // full-frame backdrop per scene, so the 4:5 frame (taller than the 16:9 stage) is filled seamlessly
@@ -254,7 +266,8 @@ export const P01v8: React.FC<{music?: boolean}> = ({music = false}) => {
     <AbsoluteFill style={{background: BACK[i], overflow: 'hidden'}}>
       <style>{css}</style>
       <Audio src={staticFile('audio/p01v8/vo.wav')} />
-      {music && <Audio src={staticFile('audio/01_upbeat-tech_high-technologic-beat-explosion_loyalty-freak-music.mp3')} volume={(fr) => 0.17 * Math.min(1, fr / 30) * Math.min(1, (P01_SECONDS * 60 - fr) / 90)} />}
+      {SFX.map(([at, f, v], j) => <Sequence key={j} from={Math.max(0, Math.round(at * fps))}><Audio src={staticFile(`sfx/proc/${f}.ogg`)} volume={v} /></Sequence>)}
+      {music && <Audio src={staticFile('audio/01_upbeat-tech_high-technologic-beat-explosion_loyalty-freak-music.mp3')} volume={(fr) => 0.24 * Math.min(1, fr / 30) * Math.min(1, (P01_SECONDS * 60 - fr) / 90)} />}
       <AbsoluteFill style={{transform: `scale(${(1 - inn * 0.06 + out * 0.18)})`, filter: inn + out > 0.02 ? `blur(${(inn + out) * 8}px)` : undefined, opacity: 1 - out * 0.4}}>
         <div style={{position: 'absolute', left: '50%', top: '50%', width: 1920, height: 1080, marginLeft: -960, marginTop: -540, transform: `scale(${fit})`}}>
           <AbsoluteFill><C t={t} /></AbsoluteFill>
