@@ -1,1 +1,1 @@
-{"branch": "tools/templates", "time": "2026-10-23 13:49:29", "msg": "CamSeq: never reveal frame edges (scale covers rotation, pans limited to margin)", "sha": "812c6756e54d553a45016a48de59aeead17ae837", "ts": 1792741769}
+{"branch": "tools/templates", "time": "2026-10-23 15:00:14", "msg": "live: render all 13 clones at 60fps HQ", "sha": "b9b7618a6c8b5dbaf38e4de82562d77be8d9a85d", "ts": 1792746014}
