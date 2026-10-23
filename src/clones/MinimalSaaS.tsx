@@ -11,6 +11,8 @@ const css = `@font-face{font-family:${FONT};src:url(${staticFile('fonts/InterTig
 const POP = Easing.bezier(0.16, 1, 0.3, 1), EASE = Easing.bezier(0.65, 0, 0.35, 1);
 const k = (f: number, i: number[], o: number[], e = POP) => interpolate(f, i, o, {easing: e, extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
 const G = '#22a447', DG = '#0d4a24', RED = '#e3342f';
+// warning reds keep their meaning in colour variants: undo the variant's hue rotation on them
+const KEEP = 'hue-rotate(calc(-1 * var(--hue, 0deg)))';
 const T = (s: number, c = '#151515'): React.CSSProperties => ({fontFamily: FONT, fontSize: s, color: c, whiteSpace: 'nowrap'});
 
 const Words: React.FC<{f: number; t: string; hot?: string[]; hotColor?: string; size?: number; align?: 'center' | 'left'}> = ({f, t, hot = [], hotColor = RED, size: s0 = 40, align = 'center'}) => { const size = Math.max(52, s0); return (
@@ -18,13 +20,13 @@ const Words: React.FC<{f: number; t: string; hot?: string[]; hotColor?: string; 
     {t.split(' ').map((w, i) => {
       const a = k(f, [i * 2.5, i * 2.5 + 9], [0, 1]);
       const isHot = hot.includes(w.replace(/[.,?]/g, ''));
-      return <span key={i} style={{...T(size, isHot ? hotColor : undefined), opacity: a, transform: `translateY(${(1 - a) * 18}px)`, filter: `blur(${(1 - a) * 5}px)`,
+      return <span key={i} style={{...T(size, isHot ? hotColor : undefined), opacity: a, ...(isHot && hotColor === RED ? {filter: `${KEEP} blur(${(1 - a) * 5}px)`} : {}), transform: `translateY(${(1 - a) * 18}px)`, ...(isHot && hotColor === RED ? {} : {filter: `blur(${(1 - a) * 5}px)`}),
         textShadow: isHot && hotColor === G ? '0 0 24px rgba(34,164,71,.55)' : undefined}}>{w}</span>;
     })}
   </div>
 ); };
 const Warn: React.FC<{f: number; x: number; y: number; s?: number}> = ({f, x, y, s = 1}) => (
-  <svg width={90 * s} height={80 * s} viewBox="0 0 90 80" style={{position: 'absolute', left: x, top: y, transform: `scale(${k(f, [0, 10], [0, 1])}) rotate(${k(f, [0, 10], [-25, -8])}deg)`, filter: 'drop-shadow(0 10px 18px rgba(227,52,47,.35))'}}>
+  <svg width={90 * s} height={80 * s} viewBox="0 0 90 80" style={{position: 'absolute', left: x, top: y, transform: `scale(${k(f, [0, 10], [0, 1])}) rotate(${k(f, [0, 10], [-25, -8])}deg)`, filter: `${KEEP} drop-shadow(0 10px 18px rgba(227,52,47,.35))`}}>
     <path d="M45 4 L86 74 Q88 78 83 78 L7 78 Q2 78 4 74 Z" fill={RED} /><rect x="41" y="26" width="8" height="28" rx="4" fill="#fff" /><circle cx="45" cy="64" r="5" fill="#fff" />
   </svg>
 );
@@ -55,7 +57,7 @@ const GreenCard: React.FC<{f: number}> = ({f}) => {
           {face.c === 'lines' && <div style={{width: '100%'}}>{(idx === 0 ? [['Revenue', '$12,480', 0], ['Expenses', '$9,310', 1], ['Payroll', '$4,02?', 1], ['Net profit', '???', 1]] : [['Form 1120', 'Filed', 0], ['Deductions', 'Missing', 1], ['Quarterly est.', 'Late', 1], ['Penalty risk', 'High', 1]]).map(([a, b, bad], j) => {
             const o = k(lf, [3 + j * 3, 9 + j * 3], [0, 1]);
             return <div key={j} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: 54, margin: '0 0 12px', padding: '0 22px', borderRadius: 16, background: bad ? 'rgba(255,255,255,.92)' : '#fff', opacity: o, transform: `translateX(${(1 - o) * 30}px)`, ...T(30, '#173d24')}}>
-              <span>{a}</span><span style={{color: bad ? RED : '#173d24', fontWeight: 700, textDecoration: bad && k(lf, [12 + j * 3, 16 + j * 3], [0, 1]) > 0.5 ? 'line-through' : 'none'}}>{b}</span></div>; })}</div>}
+              <span>{a}</span><span style={{color: bad ? RED : '#173d24', filter: bad ? KEEP : undefined, fontWeight: 700, textDecoration: bad && k(lf, [12 + j * 3, 16 + j * 3], [0, 1]) > 0.5 ? 'line-through' : 'none'}}>{b}</span></div>; })}</div>}
           {face.c === 'chart' && <svg width={480} height={240} style={{overflow: 'visible'}}><text x="0" y="236" fill="#bfe8c9" fontSize="22" fontFamily={FONT}>Jan</text><text x="210" y="236" fill="#bfe8c9" fontSize="22" fontFamily={FONT}>Jun</text><text x="430" y="236" fill="#bfe8c9" fontSize="22" fontFamily={FONT}>Dec</text><text x="250" y="16" fill="#fff" fontSize="26" fontFamily={FONT}>Cash flow ?</text><polyline points="0,190 60,120 110,175 170,60 230,180 300,90 360,170 480,30" fill="none" stroke="#ffffff" strokeWidth={7} strokeDasharray={1000} strokeDashoffset={1000 * (1 - k(lf, [2, 20], [0, 1]))} /></svg>}
           {face.c === 'money' && <span style={{...T(170, '#fff'), fontWeight: 800}}>-{Math.round(k(lf, [0, 16], [0, 170]))}$</span>}
         </div>
