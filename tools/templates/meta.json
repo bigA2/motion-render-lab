@@ -1,1 +1,1 @@
-{"branch": "tools/templates", "time": "2026-10-23 11:50:33", "msg": "CamSeq: keep big reference zooms/pans (0.6-3.2x, \u00b1900px, \u00b125\u00b0)", "sha": "2f388b65845f7f4681b025ed6379576e22d743a0", "ts": 1792734633}
+{"branch": "tools/templates", "time": "2026-10-23 13:14:49", "msg": "Fix camera JSON path (.camera.json); live fails if no video rendered", "sha": "34ebf9f242dbe21519665d0877fb97b36df29f06", "ts": 1792739689}
