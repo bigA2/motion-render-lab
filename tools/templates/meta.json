@@ -1,1 +1,1 @@
-{"branch": "tools/templates", "time": "2026-10-23 19:54:27", "msg": "P01 v8: sound design (whooshes, pops, clicks, typing, chimes, impacts) + music up to ~14 dB under VO", "sha": "e978af3405193d7363045d1b19ef6de544312835", "ts": 1792763667}
+{"branch": "tools/templates", "time": "2026-10-24 17:15:45", "msg": "study-enc: whisper from numpy (PyAV clash), keep sheets on failure", "sha": "25d6b6a5dbd4deee1fbd687ed264ca5446571b2f", "ts": 1792840545}
