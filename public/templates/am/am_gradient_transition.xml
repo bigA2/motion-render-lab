@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?><!--
+Created by Alight Motion (http://alightmotion.com)
+Exported: 2026-08-01 04:32 PM
+5.0.273.1028417 (1028417)
+e3844be (6 Mar 2026 15:14:40)
+-->
+<scene title="viral gradient tra ......" width="1920" height="1080" exportWidth="1920" exportHeight="1080" precompose="dynamicResolution" bgcolor="#ff000000" totalTime="2799" fps="60" modifiedTime="1785582137260" amver="1028417" ffver="106" am="com.alightcreative.motion/5.0.273.1028417" amplatform="android" retime="freeze" retimeAdaptFPS="false">
+  <media uri="content://media/external/images/media/1000180718" filename="Jul 24, 2026, 10_28_16 PM.png" title="Jul 24, 2026, 10_28_16 PM.png" type="image/png" size="1808456" orientation="0" infoUpdated="1784965179815" width="1674" height="940" />
+  <bookmark t="2483" />
+  <shape id="102362476" label="Jul 24, 2026, 10_28_16 PM.png" startTime="0" endTime="2032" fillType="media" fillImage="content://media/external/images/media/1000180718" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="960.000000,540.000000,0.000000" />
+    </transform>
+    <effect id="com.alightcreative.gradientmap" locallyApplied="true">
+      <property name="color1" type="color" value="#ffffffff" />
+      <property name="color2" type="color" value="#ff000000" />
+    </effect>
+    <effect id="com.alightcreative.effects.glowscan" locallyApplied="true">
+      <property name="threshold" type="float">
+        <kf t="0.057087" v="0.000000" />
+        <kf t="0.992126" v="0.990000" e="cubicBezier 0.0 0.32941177 0.5411111 1.0" />
+      </property>
+      <property name="radius" type="float">
+        <kf t="0.007874" v="0.680000" />
+        <kf t="0.992126" v="0.980000" />
+      </property>
+      <property name="power" type="float" value="1.520000" />
+      <property name="strength" type="float" value="0.000000" />
+      <property name="fillColor" type="color" value="#ff64b5f0" />
+      <property name="blend" type="float" value="1.000000" />
+      <property name="fill" type="float" value="1.000000" />
+      <property name="alpha" type="float" value="0.440000" />
+    </effect>
+    <effect id="com.alightcreative.fourcolorgradient" locallyApplied="true">
+      <property name="color1" type="color" value="#fffbb8bf" />
+      <property name="offset1" type="vec2" value="0.000000,-500.000000" />
+      <property name="color2" type="color" value="#9ef57e99" />
+      <property name="offset2" type="vec2" value="500.000000,-500.000000" />
+      <property name="color3" type="color" value="#fff57d98" />
+      <property name="offset3" type="vec2" value="500.000000,0.000000" />
+      <property name="color4" type="color" value="#fff57d98" />
+      <property name="blend" type="float" value="0.740000" />
+      <property name="alpha" type="float" value="0.766000" />
+      <property name="blendMode" type="int" value="1" />
+    </effect>
+    <effect id="com.alightcreative.effects.gaussianblur" locallyApplied="true">
+      <property name="strength" type="float">
+        <kf t="0.418307" v="0.000000" />
+        <kf t="0.007874" v="0.195000" />
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="960.000000,539.000000" />
+  </shape>
+  <shape id="102362479" label="Jul 24, 2026, 10_28_16 PM.png Copy" startTime="900" endTime="2799" fillType="media" fillImage="content://media/external/images/media/1000180718" mediaFillMode="fill" s=".rect">
+    <transform>
+      <location value="960.000000,540.000000,0.000000" />
+      <opacity>
+        <kf t="0.622961" v="1.000000" />
+        <kf t="0.008425" v="0.000000" />
+      </opacity>
+    </transform>
+    <effect id="com.alightcreative.effects.satvib" locallyApplied="true">
+      <property name="saturation" type="float">
+        <kf t="0.008951" v="-1.000000" />
+        <kf t="0.605582" v="1.000000" e="cubicBezier 0.74666667 0.0 0.5333333 1.0" />
+      </property>
+      <property name="vib" type="float" value="1.000000" />
+    </effect>
+    <effect id="com.alightcreative.effects.gaussianblur" locallyApplied="true">
+      <property name="strength" type="float">
+        <kf t="0.000000" v="0.060000" />
+        <kf t="0.412322" v="0.000000" />
+      </property>
+    </effect>
+    <property name="size" type="vec2" value="960.000000,539.000000" />
+  </shape>
+</scene>
