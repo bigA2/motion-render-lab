@@ -1,0 +1,76 @@
+# P01–P07 v11 built by Claude agents ON GITHUB RUNNERS (not the founder's laptop / chat session).
+# Phase A: 1 engine agent -> Phase B: 7 video agents in parallel -> Phase C: dispatch 1440p renders + QA sheets.
+# Brief: docs/tasks/v11/BRIEF.md. Needs repo secret CLAUDE_CODE_OAUTH_TOKEN (founder sets it).
+# Run: push docs/tasks/v11/trigger.txt (workflow_dispatch needs the file on main).
+name: agent-v11
+on:
+  push: { branches: [tools/templates], paths: ['docs/tasks/v11/trigger.txt'] }
+permissions: { contents: write, actions: write }
+concurrency: { group: agent-v11, cancel-in-progress: false }
+env:
+  RULES: |
+    You are working in the public repo bigA2/motion-render-lab (Remotion). Read docs/tasks/v11/BRIEF.md fully and follow it exactly.
+    Operating rules: think before coding and state assumptions in your report; simplest code that meets the brief; touch only the files your
+    phase allows; verify by rendering stills with `npx remotion still <entry> <comp> out.png --frame=N --gl=swangle` and LOOKING at them
+    (Read the png) before you claim anything. Never commit secrets. Commit with clear messages; do not push (the workflow pushes).
+jobs:
+  engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: tools/templates, fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: '--max-turns 200 --allowedTools Bash,Read,Write,Edit,Glob,Grep'
+          prompt: |
+            ${{ env.RULES }}
+            YOUR PHASE: A (engine). Build src/ads/v11/kit.tsx, stubs src/ads/v11/P01.tsx..P07.tsx and src/ads/v11/index.ts as BRIEF.md "Phase A" says,
+            plus scripts/v11_checks.mjs (text-overflow + contrast checks the video agents will run). Load the skills listed in BRIEF.md Step 0 first.
+            Done when `npx tsc --noEmit` has no errors in src/ads/v11 and one still per video renders and looks right. Write docs/tasks/v11/REPORT_ENGINE.md.
+      - name: push
+        run: |
+          git config user.name "agent-v11"; git config user.email "agent-v11@users.noreply.github.com"
+          git add -A src/ads/v11 scripts/v11_checks.mjs docs/tasks/v11 public/assets/v11 2>/dev/null; git diff --cached --quiet || git commit -m "v11 engine (agent)"
+          for i in 1 2 3 4 5; do git pull --rebase -q origin tools/templates && git push -q origin HEAD:tools/templates && break; sleep 10; done
+  video:
+    needs: engine
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy: { fail-fast: false, matrix: { v: [P01, P02, P03, P04, P05, P06, P07] } }
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: tools/templates, fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: '--max-turns 250 --allowedTools Bash,Read,Write,Edit,Glob,Grep,WebFetch'
+          prompt: |
+            ${{ env.RULES }}
+            YOUR PHASE: B, video ${{ matrix.v }}. Edit ONLY src/ads/v11/${{ matrix.v }}.tsx and public/assets/v11/${{ matrix.v }}/ (+ SOURCES.md lines for your assets,
+            docs/tasks/v11/REPORT_${{ matrix.v }}.md, and KIT_REQUESTS.md notes). Load the skills in BRIEF.md Step 0 first (taste skill first).
+            Design ${{ matrix.v }} uniquely per BRIEF.md (own background colour combo, own mockups, own transitions, own end card), pick minimal fitting
+            Mixkit/LottieFiles assets, run scripts/v11_checks.mjs for your comps, render QA stills at 10 evenly spaced frames for 16:9 and 4:5, look at them,
+            fix, max 3 rounds. Report honestly what still looks weak.
+      - name: push
+        run: |
+          git config user.name "agent-v11"; git config user.email "agent-v11@users.noreply.github.com"
+          git add -A src/ads/v11/${{ matrix.v }}.tsx public/assets/v11/${{ matrix.v }} public/assets/v11/SOURCES.md docs/tasks/v11 2>/dev/null; git diff --cached --quiet || git commit -m "v11 ${{ matrix.v }} (agent)"
+          for i in 1 2 3 4 5 6 7 8; do git pull --rebase -q -X ours origin tools/templates && git push -q origin HEAD:tools/templates && break; sleep $((RANDOM % 20 + 5)); done
+  render:
+    needs: video
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          for p in 1 2 3 4 5 6 7; do for r in 16x9 4x5; do for m in "" "-music"; do c="P0${p}v11-${r}${m}"
+            gh workflow run render-fast.yml -R "$GITHUB_REPOSITORY" --ref tools/templates -f entry=src/ads/v11/index.ts -f comp=$c -f crf=16 -f out=$c; done; done; done
+          gh workflow run frames.yml -R "$GITHUB_REPOSITORY" --ref tools/templates -f entry=src/ads/v11/index.ts -f comps="P01v11-16x9 P02v11-16x9 P03v11-16x9 P04v11-16x9 P05v11-16x9 P06v11-16x9 P07v11-16x9" -f n=10
