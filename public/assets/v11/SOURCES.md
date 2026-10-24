@@ -1,0 +1,13 @@
+# v11 asset sources
+- lottie/typing.json - LottieFiles 'typing' https://lottiefiles.com/animations/typing-xvjb1T7oRg (300x264, 83 KB) - Lottie Simple License, free commercial use
+- lottie/check.json - LottieFiles 'checkmark success' https://lottiefiles.com/animations/checkmark-success-t4QNWlFWPp (300x300, 3 KB) - Lottie Simple License, free commercial use
+- lottie/notify.json - LottieFiles 'message notification' https://lottiefiles.com/animations/message-notification-iycvNN6Bnc (1920x1080, 24 KB) - Lottie Simple License, free commercial use
+- lottie/chat.json - LottieFiles 'chat bubble' https://lottiefiles.com/animations/chat-bubble-Roy7vKu2Mw (150x60, 21 KB) - Lottie Simple License, free commercial use
+- lottie/invoice.json - LottieFiles 'invoice' https://lottiefiles.com/animations/invoice-qBPbuU3GwL (150x150, 9 KB) - Lottie Simple License, free commercial use
+- lottie/dataflow.json - LottieFiles 'Data flow' https://lottiefiles.com/animations/flow-12345678-D3OjPbMiWM (530x242, 387 KB) - Lottie Simple License, free commercial use
+- lottie/growth.json - LottieFiles 'growth' https://lottiefiles.com/animations/modified-P0KKXORhw3 (112x93, 42 KB) - Lottie Simple License, free commercial use
+- lottie/click.json - LottieFiles 'cursor' https://lottiefiles.com/animations/cursor-QlYILFJYtE (1080x1080, 5 KB) - Lottie Simple License, free commercial use
+- lottie/sparkle.json - LottieFiles 'spark' https://lottiefiles.com/animations/spark-qOGB9jqFLP (512x512, 10 KB) - Lottie Simple License, free commercial use
+- lottie/connect.json - LottieFiles 'connect' https://lottiefiles.com/animations/connect-4PYV6YfQ3x (1080x1080, 168 KB) - Lottie Simple License, free commercial use
+- lottie/email.json - LottieFiles 'email' https://lottiefiles.com/animations/mail-1-TjkdD6K1V4 (250x141, 326 KB) - Lottie Simple License, free commercial use
+- lottie/loading.json - LottieFiles 'loading' https://lottiefiles.com/animations/loading-zVjETvqAb9 (1920x1080, 60 KB) - Lottie Simple License, free commercial use
