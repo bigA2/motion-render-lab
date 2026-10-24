@@ -59,3 +59,19 @@ Write which skill rule you applied next to the code that uses it (one short comm
 - Overflow check: 0 overflowing elements. Contrast check: every text ≥ 4.5:1 (≥ 3:1 display).
 - No mockup/scene layout used in two videos. Background visibly flows left↔right in every video.
 - docs/tasks/v11/REPORT_P0X.md per video: skills used, assets used (+source), checks output, 3 QA frames.
+
+## Founder addendum (2026-10-24, later) — BINDING, overrides anything above that conflicts
+A. **Every video gets its OWN dynamic background TYPE + its OWN colour combo.** The landing ColorBends field is ONE example (use it for at most
+   one video). Others must be different animated shapes: flowing waves, mesh/aurora gradients, liquid blobs (metaball), silk ribbons,
+   flowing lines / topographic contours, particle fields, light-beam sweeps, noise gradients… Research GitHub first for beautiful,
+   permissive-licence (MIT/Apache/CC0) dynamic-background code (e.g. ReactBits backgrounds, shadergradient, whatamesh/Stripe mesh gradient,
+   vanta-style waves, Paper Shaders, three.js/OGL shader backgrounds) and port the best ones to frame-driven Remotion. Note repo + licence in
+   public/assets/v11/SOURCES.md. Each must visibly move (colours flow, e.g. left↔right within a few seconds) and stay clean behind text.
+B. **Colour combos — one per video, matched to the video's mood** (founder examples): sky blue + white · dark + blue · orange + warm ·
+   plus 4 more distinct ones you choose with ui-ux-pro-max / color-palette. A dark+blue video IS allowed now (founder asked for it);
+   keep text contrast ≥ 4.5:1 on it too.
+C. **Liquid glass in P01 and P02.** Reference: docs/tasks/v11/refs/liquid_glass_ref.png = our own clone `LiquidGlass-16x9`
+   (src/clones/GlassTrio.tsx): frosted glass search pill + round glass icon buttons over moving blue blooms. Use that liquid-glass UI
+   language in P01 and P02 (search/chat pill, glass buttons, glass cards).
+D. **P01 = sky blue + white**, using the exact LiquidGlass clone animation, improved with the skills (emil-design-eng curves, taste skill
+   pre-flight) and a richer colour variation of the sky blue (not flat).
