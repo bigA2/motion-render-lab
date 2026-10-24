@@ -212,6 +212,8 @@ const Backdrop: React.FC<{th: Theme; s: number}> = ({th, s}) => (
   <AbsoluteFill style={{background: `linear-gradient(180deg, ${th.bg[0]}, ${th.bg[1]})`}}>
     {th.bloom.map((c, i) => { const x = 50 + 36 * Math.sin(s * (0.16 + i * 0.07) + i * 2.4), y = 30 + 26 * Math.cos(s * (0.13 + i * 0.05) + i);
       return <AbsoluteFill key={i} style={{background: `radial-gradient(34% 46% at ${x}% ${y}%, ${c}, rgba(255,255,255,0) 72%)`}} />; })}
+    {/* soft feathered grid (TomsProject #1 tip: barely visible = luxurious) */}
+    <AbsoluteFill style={{backgroundImage: 'linear-gradient(rgba(20,30,60,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(20,30,60,.045) 1px, transparent 1px)', backgroundSize: '96px 96px', backgroundPosition: `${(s * 6) % 96}px 0`, WebkitMaskImage: 'radial-gradient(60% 60% at 50% 50%, #000, transparent 85%)', maskImage: 'radial-gradient(60% 60% at 50% 50%, #000, transparent 85%)'}} />
     <FxLayer th={th} s={s} />
     <AbsoluteFill style={{background: 'radial-gradient(46% 42% at 50% 54%, rgba(255,255,255,.62), rgba(255,255,255,0) 75%)'}} />
   </AbsoluteFill>
@@ -320,7 +322,10 @@ const Flow: React.FC<P<Extract<Scene, {kind: 'flow'}>>> = ({s, t, d}) => {
             <div style={{display: 'flex', alignItems: 'center', gap: 12}}><Logo s={44} /><span style={T(30)}>FansaChat</span></div>
             <div style={{marginTop: 30, padding: '18px 22px', borderRadius: 18, background: '#fff', ...T(26, '#444', FONT), whiteSpace: 'normal', lineHeight: 1.35, opacity: k(t, [tEnd, tEnd + 0.3], [0, 1])}}>Got it. Here's your workflow — approve it to run.</div>
           </div>
-          <div style={{position: 'absolute', left: -780 + (1 - morph) * 180, top: 250 - (1 - morph) * 350, width: 600 * morph + 240 * (1 - morph), minHeight: 120, borderRadius: 26 + (1 - morph) * 40, background: '#fff', boxShadow: '0 20px 50px rgba(30,40,90,.14)', border: `2px solid ${H0}`, padding: '20px 24px', boxSizing: 'border-box', transform: 'translateZ(40px)'}}>
+          {/* glow search bar (TomsProject #2): rotating two-colour gradient stroke + soft glow + bounce pop */}
+          <div style={{position: 'absolute', left: -780 + (1 - morph) * 180, top: 250 - (1 - morph) * 350, width: 600 * morph + 240 * (1 - morph), minHeight: 120, borderRadius: 26 + (1 - morph) * 40,
+            border: '3px solid transparent', background: `linear-gradient(#fff, #fff) padding-box, conic-gradient(from ${t * 140}deg, ${H0}, ${H1}, ${H0}22, ${H0}22, ${H0}) border-box`,
+            boxShadow: `0 20px 50px rgba(30,40,90,.14), 0 0 46px ${H0}40`, padding: '20px 24px', boxSizing: 'border-box', transform: `translateZ(40px) scale(${k(t, [0, 0.55], [0.86, 1], BACK)})`}}>
             <div style={{...T(28, INK, FONT), whiteSpace: 'normal', lineHeight: 1.3}}>{typed(s.say, t, 0.5, tEnd)}<span style={{opacity: Math.floor(t * 3) % 2, color: H0}}>|</span></div>
             <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: 10}}><span style={{width: 48, height: 48, borderRadius: 99, background: t > tEnd ? H0 : '#ddd', ...T(26, '#fff'), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>↑</span></div>
           </div>
@@ -373,7 +378,10 @@ const Cycle: React.FC<P<Extract<Scene, {kind: 'cycle'}>>> = ({s, t, d, m}) => {
   const w = Math.max(0, ats.filter((x) => t >= x).length - 1), lw = t - ats[w], heavy = k(t, [lineAt - 0.1, lineAt + 0.3], [0, 1]);
   return (
     <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
-      <div style={{position: 'absolute', top: 250, opacity: 1 - heavy, display: 'flex', gap: 18}}>{s.items.map((_, i) => <div key={i} style={{opacity: i <= w ? 1 : 0.35, transform: `scale(${i === w ? 1.15 : 0.85})`}}><Avatar seed={40 + i} s={120} grey={i === w ? 0 : 1} ring={i === w ? th.hot[w % 2] : undefined} /></div>)}</div>
+      {/* tilted 3D avatar orbit (TomsProject #3): the active audience swings to the front */}
+      {s.items.map((_, i) => { const n = s.items.length, ang = ((i - w) / n) * Math.PI * 2 + k(lw, [0, 0.6], [0.6, 0], OUT) + t * 0.15, z = Math.cos(ang);
+        return <div key={i} style={{position: 'absolute', left: 960 + Math.sin(ang) * 520 - 70, top: 290 + z * 70 - 70, zIndex: Math.round(z * 10) + 10, opacity: (1 - heavy) * (0.45 + 0.55 * (z + 1) / 2), transform: `scale(${0.6 + 0.45 * (z + 1) / 2})`, filter: z < -0.2 ? 'blur(2px)' : undefined}}>
+          <Avatar seed={40 + i} s={140} grey={i === w ? 0 : 0.85} ring={i === w ? th.hot[w % 2] : undefined} /></div>; })}
       <div style={{position: 'absolute', top: 470, ...T(64, SUB, FONT), opacity: 1 - heavy}}>{s.prefix}</div>
       <div style={{position: 'absolute', top: 560, ...T(116, th.hot[w % 2]), opacity: (1 - heavy) * k(lw, [0, 0.25], [0, 1]), filter: `blur(${k(lw, [0, 0.25], [10, 0])}px)`, transform: `translateY(${k(lw, [0, 0.3], [40, 0])}px)`}}>{s.items[w]}</div>
       {s.line && heavy > 0 && <div style={{position: 'absolute', ...T(92), whiteSpace: 'normal', width: 1400, textAlign: 'center', lineHeight: 1.15}}><Words t={s.line} t0={t} at={lineAt} gap={0.1} hot={s.hot} wrap /></div>}
