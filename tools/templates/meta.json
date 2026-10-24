@@ -1,1 +1,1 @@
-{"branch": "tools/templates", "time": "2026-10-24 21:29:46", "msg": "v11: founder brief, refs, design/motion skills (incl. taste), landing ColorBends reference, agent-v11 workflow (engine -> 7 parallel video agents -> 1440p renders)", "sha": "8a24f4426c07f52d1c1a7d355f4c76f12d3b5a31", "ts": 1792855786}
+{"branch": "tools/templates", "time": "2026-10-24 23:52:33", "msg": "collect-v11: autopilot \u2014 wait for 28 renders, rerun failures once, publish release p0x-v11", "sha": "ec87c14edc9aa0888909643b01dfd86c28721670", "ts": 1792864353}
