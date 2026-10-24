@@ -1,1 +1,1 @@
-tools/templates@25d6b6a
+tools/templates@8a24f44
