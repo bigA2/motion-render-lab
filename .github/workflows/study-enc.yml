@@ -29,20 +29,25 @@ jobs:
           gh release download "${{ needs.ids.outputs.tag }}" -R "$GITHUB_REPOSITORY" -p "$ID.mkv" -O video.mkv
           ffprobe -v error -show_entries stream=width,height,r_frame_rate:format=duration -of compact video.mkv | tee out/info.txt
       - name: Transcript (word-timed)
+        if: always()
         run: |
           ffmpeg -v error -i video.mkv -ac 1 -ar 16000 a.wav
           python3 - <<'PY'
+          import wave, numpy as np
           from faster_whisper import WhisperModel as M
-          segs, _ = M('small.en', device='cpu', compute_type='int8').transcribe('a.wav', word_timestamps=True, vad_filter=True)
+          w = wave.open('a.wav'); a = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768
+          segs, _ = M('small.en', device='cpu', compute_type='int8').transcribe(a, word_timestamps=True, vad_filter=True)
           with open('out/transcript.txt', 'w') as f:
               for s in segs:
                   f.write(f'[{int(s.start//60):02d}:{s.start%60:05.2f}] {s.text.strip()}\n')
           PY
       - name: Frame sheets (every 2 s) + scene cuts
+        if: always()
         run: |
           ffmpeg -v error -i video.mkv -vf "fps=0.5,scale=480:-2,drawtext=text='%{pts\:hms}':x=6:y=6:fontsize=18:fontcolor=red:box=1:boxcolor=white@0.7,tile=5x6:padding=4:color=white" out/sheets/s_%03d.jpg
           ffmpeg -v error -i video.mkv -vf "select='gt(scene,0.28)',scale=640:-2,drawtext=text='%{pts\:hms}':x=6:y=6:fontsize=20:fontcolor=red:box=1:boxcolor=white@0.7" -vsync vfr out/cuts/c_%04d.jpg
           ls out/cuts | wc -l
           ffmpeg -v error -pattern_type glob -i 'out/cuts/c_*.jpg' -vf "tile=4x5:padding=4:color=white" out/cuts_%03d.jpg && rm -rf out/cuts
-      - uses: actions/upload-artifact@v4
+      - if: always()
+        uses: actions/upload-artifact@v4
         with: { name: 'study-${{ matrix.id }}', path: out, retention-days: 7 }
