@@ -1,20 +1,20 @@
 # Study videos downloaded locally (YouTube blocks runners): encrypted parts on a release (key = STUDY_KEY2 secret) ->
 # decrypt -> word-timed transcript + 2 s frame sheets + scene-cut sheets at high res. Outputs = artifacts only.
-# Run: gh workflow run study-enc.yml -f tag=study-wl3 -f ids="ruTR7i1oJgg Aa_T1uI4UXY"
+# Run: push study/enc_trigger.txt = "<release tag> <id> <id> ..." (workflow_dispatch needs the file on main).
 name: study-enc
 permissions: { contents: read }
 on:
-  workflow_dispatch:
-    inputs:
-      tag: { required: true }
-      ids: { required: true }
+  push: { paths: ['study/enc_trigger.txt'] }
 jobs:
   ids:
     runs-on: ubuntu-latest
-    outputs: { list: '${{ steps.r.outputs.list }}' }
+    outputs: { list: '${{ steps.r.outputs.list }}', tag: '${{ steps.r.outputs.tag }}' }
     steps:
+      - uses: actions/checkout@v4
       - id: r
-        run: echo "list=$(python3 -c 'import json,sys;print(json.dumps(sys.argv[1].split()))' '${{ inputs.ids }}')" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "tag=$(awk '{print $1}' study/enc_trigger.txt)" >> "$GITHUB_OUTPUT"
+          echo "list=$(python3 -c 'import json;print(json.dumps(open("study/enc_trigger.txt").read().split()[1:]))')" >> "$GITHUB_OUTPUT"
   study:
     needs: ids
     runs-on: ubuntu-latest
@@ -26,7 +26,7 @@ jobs:
         env: { GH_TOKEN: '${{ github.token }}', K: '${{ secrets.STUDY_KEY2 }}', ID: '${{ matrix.id }}' }
         run: |
           mkdir -p in out/sheets out/cuts
-          gh release download "${{ inputs.tag }}" -R "$GITHUB_REPOSITORY" -p "$ID.enc.part*" -D in
+          gh release download "${{ needs.ids.outputs.tag }}" -R "$GITHUB_REPOSITORY" -p "$ID.enc.part*" -D in
           cat in/$ID.enc.part* | openssl enc -d -aes-256-cbc -pbkdf2 -pass env:K -out video.mkv
           rm -rf in; ffprobe -v error -show_entries stream=width,height,r_frame_rate:format=duration -of compact video.mkv | tee out/info.txt
       - name: Transcript (word-timed)
