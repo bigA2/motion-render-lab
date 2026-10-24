@@ -1,0 +1,41 @@
+# Autopilot: wait for the 28 P0Xv11 render-fast runs, re-dispatch any failed one once, then publish every video to the
+# release "p0x-v11" (downloadable from any device; the founder's laptop can be closed). Runs fully on GitHub.
+# Trigger: push docs/tasks/v11/collect_trigger.txt containing the ISO time the renders were dispatched (e.g. 2026-10-24T15:55:00Z).
+name: collect-v11
+on:
+  push: { branches: [tools/templates], paths: ['docs/tasks/v11/collect_trigger.txt'] }
+permissions: { contents: write, actions: write }
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env: { GH_TOKEN: '${{ github.token }}', R: '${{ github.repository }}' }
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: tools/templates }
+      - name: Wait for renders (re-run failures once)
+        run: |
+          SINCE=$(head -1 docs/tasks/v11/collect_trigger.txt | tr -d '\r ')
+          q() { gh run list -R "$R" -w render-fast.yml -L 200 --json databaseId,status,conclusion,createdAt,displayTitle \
+                 -q "[.[]|select(.createdAt>=\"$SINCE\")]"; }
+          retried=0
+          for i in $(seq 1 64); do
+            J=$(q); N=$(echo "$J" | jq length); P=$(echo "$J" | jq '[.[]|select(.status!="completed")]|length')
+            F=$(echo "$J" | jq -r '.[]|select(.status=="completed" and .conclusion!="success")|.databaseId')
+            echo "$(date -u +%H:%M) runs=$N pending=$P failed=$(echo $F | wc -w)"
+            if [ "$P" = 0 ] && [ -n "$F" ] && [ $retried = 0 ]; then for id in $F; do gh run rerun $id -R "$R" --failed || true; done; retried=1; sleep 60; continue; fi
+            [ "$N" -ge 28 ] && [ "$P" = 0 ] && break
+            sleep 300
+          done
+      - name: Download videos
+        run: |
+          SINCE=$(head -1 docs/tasks/v11/collect_trigger.txt | tr -d '\r ')
+          mkdir -p out
+          for id in $(gh run list -R "$R" -w render-fast.yml -L 200 --json databaseId,conclusion,createdAt -q ".[]|select(.createdAt>=\"$SINCE\" and .conclusion==\"success\")|.databaseId"); do
+            gh run download $id -R "$R" -n renders -D out || echo "no artifact $id"
+          done
+          ls -la out; echo "videos: $(ls out/*.mp4 | wc -l)"
+      - name: Publish release p0x-v11
+        run: |
+          gh release view p0x-v11 -R "$R" >/dev/null 2>&1 || gh release create p0x-v11 -R "$R" --target tools/templates -t "P01–P07 v11 (1440p)" -n "28 files: 16:9 2560x1440 + 4:5 1440x1800, music / no music. Built by collect-v11.yml."
+          gh release upload p0x-v11 -R "$R" out/*.mp4 --clobber
