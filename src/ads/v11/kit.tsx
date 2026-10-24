@@ -164,7 +164,8 @@ const VisView: React.FC<{v: Vis; u: number; seed: number}> = ({v, u, seed}) => {
     const p = k(u, [0.15, 0.75], [0, 1], IO), n = Math.max(v.from.length, v.to.length);
     return <Pop t={u} at={0}><div style={{display: 'flex', ...T(170), letterSpacing: 0, clipPath: 'inset(0 round 40px)', height: 210, alignItems: 'center', padding: '0 64px', borderRadius: 40, ...glass}}>
       {Array.from({length: n}, (_, i) => { const a = v.from[i] ?? ' ', b = v.to[i] ?? ' ', q = a === b ? 0 : k(p, [i / n * 0.5, i / n * 0.5 + 0.5], [0, 1], IO);
-        return <span key={i} style={{position: 'relative', display: 'inline-block', width: /\d/.test(b) || /\d/.test(a) ? '0.62em' : a === ' ' && b === ' ' ? '0.28em' : undefined, textAlign: 'center', height: '1em'}}>
+        if (!/\d/.test(a) && !/\d/.test(b)) return <span key={i} style={{display: 'inline-block', whiteSpace: 'pre'}}>{b}</span>; // letters/spaces: static, never clipped
+        return <span key={i} style={{position: 'relative', display: 'inline-block', width: '0.62em', textAlign: 'center', height: '1em'}}>
           <span style={{position: 'absolute', left: 0, right: 0, transform: `translateY(${-q * 110}%)`, filter: `blur(${Math.sin(q * Math.PI) * 6}px)`}}>{a}</span>
           <span style={{position: 'absolute', left: 0, right: 0, transform: `translateY(${(1 - q) * 110}%)`, filter: `blur(${Math.sin(q * Math.PI) * 6}px)`, color: q > 0 ? th.hot[0] : undefined}}>{b}</span>
           <span style={{visibility: 'hidden'}}>{b.length > a.length ? b : a}</span></span>; })}</div></Pop>;
@@ -589,8 +590,7 @@ const End: React.FC<P<Extract<Scene, {kind: 'end'}>>> = ({t, d, m}) => {
   const th = useTh(), bio = m[1] ?? d - 1.4, lay = th.end;
   return (
     <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
-      <div style={{position: 'absolute', bottom: -60, left: 0, right: 0, height: 420, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', gap: 18, filter: 'blur(22px)'}}>
-        {Array.from({length: 22}, (_, i) => { const mid = 1 - Math.abs(i - 10.5) / 11; return <div key={i} style={{width: 60, height: (120 + 300 * mid) * k(t, [0.2, 1.2], [0, 1]) * (0.85 + 0.15 * Math.sin(t * 4 + i)), borderRadius: 40, background: i % 2 ? th.bloom[0] : th.bloom[1]}} />; })}</div>
+      {/* no shared end-card bars: each video's own dynamic background carries the end card (uniqueness rule) */}
       <div style={{position: 'absolute', top: lay === 'split' ? 300 : 210, left: lay === 'center' ? undefined : 260, display: 'flex', alignItems: 'center', gap: 26}}><Pop t={t} at={0.05}><Logo s={124} /></Pop>
         <span style={{...T(110), minWidth: 560}}>{typed('FansaChat', t, 0.25, 0.75)}</span></div>
       <div style={{position: 'absolute', top: lay === 'split' ? 470 : 420, left: lay === 'center' ? undefined : 260, ...T(66)}}><Words t="Get every update first." t0={t} at={0.6} hot={['every', 'first.']} style={{justifyContent: lay === 'center' ? 'center' : 'flex-start'}} /></div>
