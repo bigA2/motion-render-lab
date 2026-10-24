@@ -143,9 +143,9 @@ const VisView: React.FC<{v: Vis; u: number; seed: number}> = ({v, u, seed}) => {
   }
   if (v.v === 'clock') {
     const p = k(u, [0.15, 0.75], [0, 1], IO), n = Math.max(v.from.length, v.to.length);
-    return <Pop t={u} at={0}><div style={{display: 'flex', ...T(170), overflow: 'hidden', height: 190, alignItems: 'center', padding: '0 40px', borderRadius: 40, ...glass}}>
+    return <Pop t={u} at={0}><div style={{display: 'flex', ...T(170), letterSpacing: 0, clipPath: 'inset(0 round 40px)', height: 210, alignItems: 'center', padding: '0 64px', borderRadius: 40, ...glass}}>
       {Array.from({length: n}, (_, i) => { const a = v.from[i] ?? ' ', b = v.to[i] ?? ' ', q = a === b ? 0 : k(p, [i / n * 0.5, i / n * 0.5 + 0.5], [0, 1], IO);
-        return <span key={i} style={{position: 'relative', display: 'inline-block', width: /\d/.test(b) || /\d/.test(a) ? '0.62em' : 'auto', textAlign: 'center', height: '1em'}}>
+        return <span key={i} style={{position: 'relative', display: 'inline-block', width: /\d/.test(b) || /\d/.test(a) ? '0.62em' : a === ' ' && b === ' ' ? '0.28em' : undefined, textAlign: 'center', height: '1em'}}>
           <span style={{position: 'absolute', left: 0, right: 0, transform: `translateY(${-q * 110}%)`, filter: `blur(${Math.sin(q * Math.PI) * 6}px)`}}>{a}</span>
           <span style={{position: 'absolute', left: 0, right: 0, transform: `translateY(${(1 - q) * 110}%)`, filter: `blur(${Math.sin(q * Math.PI) * 6}px)`, color: q > 0 ? th.hot[0] : undefined}}>{b}</span>
           <span style={{visibility: 'hidden'}}>{b.length > a.length ? b : a}</span></span>; })}</div></Pop>;
