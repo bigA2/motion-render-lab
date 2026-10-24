@@ -1,5 +1,5 @@
-# Study videos downloaded locally (YouTube blocks runners): encrypted parts on a release (key = STUDY_KEY2 secret) ->
-# decrypt -> word-timed transcript + 2 s frame sheets + scene-cut sheets at high res. Outputs = artifacts only.
+# Study videos downloaded locally (YouTube blocks runners): uploaded to a release ->
+# word-timed transcript + 2 s frame sheets + scene-cut sheets at high res. Outputs = artifacts only.
 # Run: push study/enc_trigger.txt = "<release tag> <id> <id> ..." (workflow_dispatch needs the file on main).
 name: study-enc
 permissions: { contents: read }
@@ -22,13 +22,12 @@ jobs:
     strategy: { fail-fast: false, matrix: { id: '${{ fromJson(needs.ids.outputs.list) }}' } }
     steps:
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null && pip install -q faster-whisper
-      - name: Fetch + decrypt
-        env: { GH_TOKEN: '${{ github.token }}', K: '${{ secrets.STUDY_KEY2 }}', ID: '${{ matrix.id }}' }
+      - name: Fetch
+        env: { GH_TOKEN: '${{ github.token }}', ID: '${{ matrix.id }}' }
         run: |
           mkdir -p in out/sheets out/cuts
-          gh release download "${{ needs.ids.outputs.tag }}" -R "$GITHUB_REPOSITORY" -p "$ID.enc.part*" -D in
-          cat in/$ID.enc.part* | openssl enc -d -aes-256-cbc -pbkdf2 -pass env:K -out video.mkv
-          rm -rf in; ffprobe -v error -show_entries stream=width,height,r_frame_rate:format=duration -of compact video.mkv | tee out/info.txt
+          gh release download "${{ needs.ids.outputs.tag }}" -R "$GITHUB_REPOSITORY" -p "$ID.mkv" -O video.mkv
+          ffprobe -v error -show_entries stream=width,height,r_frame_rate:format=duration -of compact video.mkv | tee out/info.txt
       - name: Transcript (word-timed)
         run: |
           ffmpeg -v error -i video.mkv -ac 1 -ar 16000 a.wav
