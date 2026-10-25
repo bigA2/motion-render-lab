@@ -1,0 +1,39 @@
+# pricing
+https://zapier.com/pricing
+https://www.make.com/en/pricing
+https://n8n.io/pricing/
+https://www.activepieces.com/pricing
+https://www.lindy.ai/pricing
+https://www.gumloop.com/pricing
+https://www.relay.app/pricing
+https://www.bardeen.ai/pricing
+https://pipedream.com/pricing
+https://www.taskade.com/pricing
+https://www.respond.io/pricing
+https://manychat.com/pricing
+# AI / agent feature pages
+https://zapier.com/ai
+https://zapier.com/agents
+https://zapier.com/canvas
+https://www.make.com/en/ai-agents
+https://n8n.io/ai/
+https://www.lindy.ai/
+https://www.gumloop.com/
+https://www.relay.app/
+https://www.activepieces.com/
+https://www.bardeen.ai/
+# template galleries (what people actually automate)
+https://zapier.com/templates
+https://zapier.com/apps/categories
+https://www.make.com/en/templates
+https://www.lindy.ai/templates
+https://www.gumloop.com/templates
+https://www.relay.app/templates
+https://www.activepieces.com/templates
+https://n8n.io/workflows/
+# reviews (may be bot-blocked; kept to measure)
+https://www.trustpilot.com/review/zapier.com
+https://www.trustpilot.com/review/make.com
+https://www.trustpilot.com/review/n8n.io
+https://www.g2.com/products/zapier/reviews
+https://www.capterra.com/p/130182/Zapier/reviews/
