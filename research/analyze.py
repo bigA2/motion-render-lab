@@ -3,7 +3,8 @@
 # report only reads the filtered evidence.
 # Run: E:\laya-pilot\.venv\Scripts\python.exe -I E:\research\analyze.py E:\research\raw
 import collections, csv, glob, json, os, re, sys, time
-RAW, OUT = sys.argv[1], r'E:\research\out'
+RAW, OUT = sys.argv[1], os.environ.get('RESEARCH_OUT', 'E:/research/out')
+NS, SH = int(os.environ.get('NSHARD', 0)), int(os.environ.get('SHARD', 0))
 os.makedirs(OUT, exist_ok=True)
 def jl(p): return [json.loads(l) for l in open(p, encoding='utf-8')] if os.path.exists(p) else []
 def find(name): return (glob.glob(os.path.join(RAW, '**', name), recursive=True) or [''])[0]
