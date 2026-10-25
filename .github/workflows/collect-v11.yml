@@ -18,7 +18,7 @@ jobs:
           SINCE=$(head -1 docs/tasks/v11/collect_trigger.txt | tr -d '\r ')
           q() { gh run list -R "$R" -w render-fast.yml -L 200 --json databaseId,status,conclusion,createdAt,displayTitle \
                  -q "[.[]|select(.createdAt>=\"$SINCE\")]"; }
-          WANT=$(sed -n 2p docs/tasks/v11/collect_trigger.txt | tr -d ' '); WANT=${WANT:-28}
+          WANT=$(sed -n 2p docs/tasks/v11/collect_trigger.txt | tr -d "\r "); WANT=${WANT:-28}
           retried=0
           for i in $(seq 1 64); do
             J=$(q); N=$(echo "$J" | jq length); P=$(echo "$J" | jq '[.[]|select(.status!="completed")]|length')
@@ -38,6 +38,6 @@ jobs:
           ls -la out; echo "videos: $(ls out/*.mp4 | wc -l)"
       - name: Publish release
         run: |
-          TAG=$(sed -n 3p docs/tasks/v11/collect_trigger.txt | tr -d ' '); TAG=${TAG:-p0x-v11}
+          TAG=$(sed -n 3p docs/tasks/v11/collect_trigger.txt | tr -d "\r "); TAG=${TAG:-p0x-v11}
           gh release view $TAG -R "$R" >/dev/null 2>&1 || gh release create $TAG -R "$R" --target tools/templates -t "P01–P07 v11 (1440p)" -n "28 files: 16:9 2560x1440 + 4:5 1440x1800, music / no music. Built by collect-v11.yml."
           gh release upload $TAG -R "$R" out/*.mp4 --clobber
