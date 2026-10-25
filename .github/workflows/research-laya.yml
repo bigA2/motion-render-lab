@@ -1,0 +1,38 @@
+# Laya yes/no scoring of the research crawl (public text) on GitHub CPUs, then one merge job writes DIGEST.md.
+# Run: gh workflow run research-laya.yml --ref tools/templates -f crawl_run=<research-crawl run id>
+name: research-laya
+on: { workflow_dispatch: { inputs: { crawl_run: { required: true }, max: { required: false, default: "4000" } } } }
+permissions: { contents: read, actions: read }
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy: { fail-fast: false, matrix: { shard: [0, 1, 2, 3, 4, 5] } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - uses: actions/download-artifact@v4
+        with: { name: research-api, path: raw/research-api, run-id: '${{ inputs.crawl_run }}', github-token: '${{ github.token }}' }
+      - run: pip install -q laya==0.3.22 --extra-index-url https://download.pytorch.org/whl/cpu
+      - run: python research/analyze.py raw
+        env: { RESEARCH_OUT: out, NSHARD: 6, SHARD: '${{ matrix.shard }}', LAYA_MAX: '${{ inputs.max }}' }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: 'scored-${{ matrix.shard }}', path: out, retention-days: 3 }
+  merge:
+    needs: score
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - uses: actions/download-artifact@v4
+        with: { name: research-api, path: raw/research-api, run-id: '${{ inputs.crawl_run }}', github-token: '${{ github.token }}' }
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'scored-*', path: out }
+      - run: python research/analyze.py raw
+        env: { RESEARCH_OUT: out, LAYA_SKIP: 1, LAYA_MAX: '${{ inputs.max }}' }
+      - uses: actions/upload-artifact@v4
+        with: { name: research-digest, path: out, retention-days: 3 }
