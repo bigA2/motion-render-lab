@@ -22,6 +22,7 @@ const OUT = Easing.bezier(0.16, 1, 0.3, 1), P3 = Easing.bezier(0.215, 0.61, 0.35
 const k = (t: number, i: number[], o: number[], e = OUT) => interpolate(t, i, o, {easing: e, extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
 // Set per render from the theme (P03 is dark+blue). Module-level on purpose: one composition per render process.
 let INK = '#0E1222', SUB = '#5A6075';
+let TALL = false; // 4:5: only stage x 240..1680 is visible -> text blocks max 1300 wide, side layouts become stacked
 const OK = '#12A150', RED = '#E5484D';
 const T = (s: number, c = INK, f = DISP): React.CSSProperties => ({fontFamily: f, fontSize: s, color: c, whiteSpace: 'nowrap', lineHeight: 1, letterSpacing: f === DISP ? '-0.035em' : '-0.01em'});
 const typed = (s: string, t: number, a: number, b: number) => s.slice(0, Math.round(k(t, [a, b], [0, s.length], Easing.linear)));
@@ -79,7 +80,7 @@ const Words: React.FC<{t: string; t0: number; at: number; gap?: number; hot?: st
   const th = useTh();
   let h = 0;
   return (
-    <div style={{display: 'flex', flexWrap: 'wrap', maxWidth: wrap === false ? undefined : 1380, margin: '0 auto', justifyContent: 'center', gap: '0 0.24em', ...style}}>
+    <div style={{display: 'flex', flexWrap: 'wrap', maxWidth: wrap === false ? undefined : TALL ? 1300 : 1380, margin: '0 auto', justifyContent: 'center', gap: '0 0.24em', ...style}}>
       {t.split(' ').map((w, i) => { const isHot = hot.some((x) => norm(x) === norm(w)), c = isHot ? th.hot[(off + h++) % 2] : undefined, a = at + i * gap + (isHot ? 0.08 : 0);
         const sc = isHot ? k(t0, [a, a + 0.5], [1.12, 1], OUT) : 1;
         return <Rise key={i} t={t0} at={a}><span style={{color: c, display: 'inline-block', transform: `scale(${sc})`}}>{w}</span></Rise>; })}
@@ -299,7 +300,7 @@ const Hook: React.FC<P<Extract<Scene, {kind: 'hook'}>>> = ({s, t, d}) => {
   const wordAt = useWordAt(), n = s.phrases.length;
   const ats: number[] = [];
   s.phrases.forEach((p, i) => ats.push(wordAt(p.text, i ? ats[i - 1] + 0.2 : 0, 0.05 + (i / n) * d * 0.86)));
-  const push = k(t, [0, d], [1.0, 1.05], Easing.linear), lay = useTh().hook;
+  const push = k(t, [0, d], [1.0, 1.05], Easing.linear), h0 = useTh().hook, lay = TALL && h0 === 'side' ? 'stack' : h0;
   return (
     <AbsoluteFill style={{transform: `scale(${push})`}}>
       {s.phrases.map((p, i) => { const a = i ? ats[i] - 0.12 : -1, b = i < n - 1 ? ats[i + 1] - 0.12 : d + 1, u = t - Math.max(0, ats[i] - 0.05);
@@ -307,10 +308,10 @@ const Hook: React.FC<P<Extract<Scene, {kind: 'hook'}>>> = ({s, t, d}) => {
         const out = k(t, [b - 0.05, b + 0.25], [0, 1], IN), hasV = !!p.vis;
         return <AbsoluteFill key={i} style={{opacity: 1 - out, filter: out > 0.01 ? `blur(${out * 16}px)` : undefined, transform: `translateY(${-out * 40}px) scale(${1 - out * 0.04})`}}>
           {hasV && (lay === 'side' ? <At x={600} y={540}><div style={{transform: 'scale(.9)'}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>
-            : lay === 'behind' ? <At x={960} y={430}><div style={{transform: 'scale(1.25)', opacity: 0.55, filter: 'blur(1.5px)'}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>
+            : lay === 'behind' ? <At x={960} y={430}><div style={{transform: 'scale(1.25)', opacity: 0.26, filter: 'blur(4px)'}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>
               : <At x={960} y={380}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></At>)}
           {lay === 'side' && hasV ? <At x={1390} y={540}><div style={{...T(96), width: 700, whiteSpace: 'normal'}}><Words t={p.text} t0={t} at={ats[i]} hot={p.hot} off={i} style={{maxWidth: 700, justifyContent: 'flex-start'}} /></div></At>
-            : <At x={960} y={hasV && lay === 'stack' ? 790 : 540}><div style={{...T(hasV && lay === 'stack' ? 104 : 132), width: 1380, whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.08}}><Words t={p.text} t0={t} at={ats[i]} hot={p.hot} off={i} /></div></At>}
+            : <At x={960} y={hasV && lay === 'stack' ? 790 : 540}><div style={{...T(hasV && lay === 'stack' ? 104 : 132), width: TALL ? 1300 : 1380, whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.08}}><Words t={p.text} t0={t} at={ats[i]} hot={p.hot} off={i} /></div></At>}
         </AbsoluteFill>; })}
     </AbsoluteFill>
   );
@@ -320,14 +321,14 @@ const Hook: React.FC<P<Extract<Scene, {kind: 'hook'}>>> = ({s, t, d}) => {
 const Brand: React.FC<P<Extract<Scene, {kind: 'brand'}>>> = ({s, t, d, m}) => {
   const wordAt = useWordAt(), th = useTh();
   const L = s.line ? (m[1] ?? 2.6) : 0.1, apps = s.apps ?? [];
-  const lineOut = s.line ? k(t, [L - 0.4, L], [0, 1]) : 1;
-  const ring = k(t, [L - 0.1, L + 0.9], [0, 1], OUT), icon = k(t, [L, L + 0.5], [0, 1], BACK);
+  const lineOut = s.line ? k(t, [L - 0.45, L - 0.05], [0, 1]) : 1;
+  const ring = k(t, [L + 0.05, L + 1.05], [0, 1], OUT), icon = k(t, [L + 0.1, L + 0.6], [0, 1], BACK);
   const word = typed('FansaChat', t, L + 0.45, L + 0.95);
   const appsAt = apps.length ? wordAt('connected', L, Math.max(L + 1.4, d * 0.55)) : d;
   const lift = apps.length ? k(t, [appsAt - 0.3, appsAt + 0.4], [0, 1], IO) : 0;
   return (
     <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', transform: `scale(${k(t, [L, d], [1, 1.05], Easing.linear)})`}}>
-      {s.line && <div style={{position: 'absolute', width: 1500, ...T(92), whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.12, opacity: 1 - lineOut, filter: `blur(${lineOut * 14}px)`, transform: `translateY(${-lineOut * 50}px)`}}>
+      {s.line && <div style={{position: 'absolute', width: 1300, ...T(92), whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.12, opacity: 1 - lineOut, filter: `blur(${lineOut * 14}px)`, transform: `translateY(${-lineOut * 50}px)`}}>
         <Words t={s.line} t0={t} at={0.05} gap={Math.min(0.2, (L - 0.8) / s.line.split(' ').length)} hot={s.hot} wrap /></div>}
       <div style={{position: 'absolute', top: 340 - lift * 120, display: 'flex', alignItems: 'center', gap: 30}}>
         <div style={{position: 'relative', width: 150, height: 150, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
@@ -336,12 +337,12 @@ const Brand: React.FC<P<Extract<Scene, {kind: 'brand'}>>> = ({s, t, d, m}) => {
           <div style={{opacity: Math.min(1, Math.max(0, icon) * 1.4), transform: `scale(${0.5 + 0.5 * icon})`}}><Logo s={150} /></div></div>
         <span style={{...T(130), minWidth: 640}}>{word}<span style={{opacity: t > L + 0.4 && t < L + 1.6 && Math.floor(t * 3) % 2 === 0 ? 1 : 0, color: th.hot[0], fontFamily: FONT}}>|</span></span>
       </div>
-      {th.liquid ? <div style={{position: 'absolute', top: 520 - lift * 120, display: 'flex', gap: 20, alignItems: 'center', opacity: k(t, [L + 0.8, L + 1.1], [0, 1]), transform: `translateX(${k(t, [L + 0.8, d], [60, -60], Easing.linear)}px)`}}>
+      {th.liquid ? <div style={{position: 'absolute', top: 520 - lift * 120, display: 'flex', gap: 20, alignItems: 'center', opacity: k(t, [L + 0.8, L + 1.1], [0, 1]), transform: `translateX(${k(t, [L + 0.8, d], [60, -60], Easing.linear)}px) scale(${TALL ? 0.88 : 1})`}}>
         <div style={{...GLASS_LIQUID, width: 820, height: 110, borderRadius: 55, display: 'flex', alignItems: 'center', padding: '0 40px', boxSizing: 'border-box', ...T(38, INK, FONT), overflow: 'hidden'}}>⌕&nbsp;&nbsp;{typed(s.sub, t, L + 1.0, L + 1.0 + s.sub.length * 0.035)}</div>
         {['✎', '◐', '⊕', '⋯'].map((c, j) => { const e = spring({frame: Math.max(0, (t - L - 1.1 - j * 0.08) * 60), fps: 60, config: {damping: 13, stiffness: 160}});
           return <div key={c} style={{...GLASS_LIQUID, width: 110, height: 110, borderRadius: 99, display: 'flex', alignItems: 'center', justifyContent: 'center', ...T(40, INK, FONT), transform: `scale(${e})`}}>{c}</div>; })}</div>
         : <div style={{position: 'absolute', top: 560 - lift * 120, ...T(54, SUB, FONT)}}><Words t={s.sub} t0={t} at={L + 1.0} hot={['automation', 'autopilot', 'busywork', 'sentence', 'plain-English', 'FansaChat']} /></div>}
-      <div style={{position: 'absolute', left: 1490, top: 250 - lift * 120, width: 150, height: 150, opacity: k(t, [L + 0.3, L + 0.6], [0, 1])}}><Lottie animationData={LOT.sparkle} /></div>
+      <div style={{position: 'absolute', left: 1490, top: 250 - lift * 120, width: 150, height: 150, opacity: k(t, [L + 0.5, L + 0.8], [0, 1])}}><Lottie animationData={LOT.sparkle} /></div>
       {apps.map((f, i) => { const col = i % 8, row = Math.floor(i / 8), e = k(t, [appsAt + col * 0.05 + row * 0.12, appsAt + 0.6 + col * 0.05 + row * 0.12], [0, 1], BACK);
         return <div key={f + i} style={{position: 'absolute', left: 960 - 4 * 130 + col * 130 + 20, top: 600 + row * 130, opacity: Math.min(1, Math.max(0, e) * 1.4), transform: `translateY(${(1 - e) * 60}px) scale(${0.6 + 0.4 * e})`}}><Icon app={f} s={96} /></div>; })}
       {s.chip && <div style={{position: 'absolute', top: 920, opacity: k(t, [appsAt + 0.6, appsAt + 1], [0, 1]), transform: `scale(${k(t, [appsAt + 0.6, appsAt + 1.1], [0.8, 1], BACK)})`}}><Pill c={th.hot[0]} solid s={36}>{s.chip}</Pill></div>}
@@ -366,8 +367,10 @@ const Flow: React.FC<P<Extract<Scene, {kind: 'flow'}>>> = ({s, t, d}) => {
   keys.push([runAt - 0.3, 100, 0, 0.92], [runAt + 0.4, 160, 60, 0.95], [d, 180, 60, 1.0]);
   const panel = th.stage === 'panel', tilt = lap ? k(t, [0, 0.9], [18, 4], IO) : panel ? k(t, [0, d], [th.tilt, th.tilt * 0.4], IO) : k(t, [0, d], [26, 14], IO), rz = lap ? 0 : panel ? k(t, [0, d], [th.tilt * 0.3, 0], IO) : k(t, [0, d], [-6, -2], IO);
   const wire = (x1: number, y1: number, x2: number, y2: number) => `M ${x1} ${y1} C ${(x1 + x2) / 2} ${y1}, ${(x1 + x2) / 2} ${y2}, ${x2} ${y2}`;
+  const capAt = Math.max(runAt + 0.3, d - 2.2), cap = s.caption ? k(t, [capAt - 0.15, capAt + 0.35], [0, 1], IO) : 0;
   return (
     <AbsoluteFill style={{perspective: 2000}}>
+      <AbsoluteFill style={{opacity: 1 - cap * 0.88, filter: cap > 0.01 ? `blur(${cap * 12}px)` : undefined, transform: `scale(${1 - cap * 0.06})`}}>
       <World t={t} keys={keys} id="fl">
         <div style={{position: 'absolute', transformStyle: 'preserve-3d', transform: `rotateX(${tilt}deg) rotateZ(${rz}deg)`}}>
           {lap && <><div style={{position: 'absolute', left: -880, top: -500, width: 1760, height: 1000, borderRadius: 44, background: '#16171C', boxShadow: '0 80px 160px rgba(30,40,90,.28)'}} />
@@ -403,7 +406,8 @@ const Flow: React.FC<P<Extract<Scene, {kind: 'flow'}>>> = ({s, t, d}) => {
             <div style={{position: 'absolute', left: 150, top: 10, width: 130, height: 130, opacity: k(t, [runAt - 0.5, runAt - 0.3, runAt + 0.6, runAt + 0.8], [0, 1, 1, 0]), transform: `translate(${k(t, [runAt - 0.5, runAt], [180, 0], P3)}px, ${k(t, [runAt - 0.5, runAt], [120, 0], P3)}px)`}}><Lottie animationData={LOT.click} /></div></div>
         </div>
       </World>
-      {s.caption && <div style={{position: 'absolute', bottom: 80, width: '100%', ...T(72)}}><Words t={s.caption} t0={t} at={Math.max(runAt + 0.3, d - 2.2)} hot={s.hot} /></div>}
+      </AbsoluteFill>
+      {s.caption && <div style={{position: 'absolute', top: 470, width: '100%', ...T(104), whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.1}}><Words t={s.caption} t0={t} at={capAt} hot={s.hot} wrap /></div>}
     </AbsoluteFill>
   );
 };
@@ -415,7 +419,7 @@ const Glass: React.FC<P<Extract<Scene, {kind: 'glass'}>>> = ({s, t, d}) => {
   const lineAt = s.line ? Math.max(ats[n - 1] + 0.6, d * 0.62) : d + 1, out = k(t, [lineAt - 0.2, lineAt + 0.4], [0, 1], IO);
   return (
     <AbsoluteFill style={{perspective: 1800}}>
-      <div style={{position: 'absolute', left: '50%', top: '52%', transformStyle: 'preserve-3d', opacity: 1 - out * 0.75, filter: `blur(${out * 10}px)`, transform: `rotateX(${46 - 8 * k(t, [0, d], [0, 1])}deg) rotateZ(${-22 + 8 * k(t, [0, d], [0, 1])}deg) scale(${(1.55 + 0.2 * k(t, [0, d], [0, 1], IO)) * (1 - 0.35 * out)})`}}>
+      <div style={{position: 'absolute', left: '50%', top: '52%', transformStyle: 'preserve-3d', opacity: 1 - out * 0.92, filter: `blur(${out * 12}px)`, transform: `rotateX(${46 - 8 * k(t, [0, d], [0, 1])}deg) rotateZ(${-22 + 8 * k(t, [0, d], [0, 1])}deg) scale(${(1.55 + 0.2 * k(t, [0, d], [0, 1], IO)) * (1 - 0.35 * out)})`}}>
         {s.bars.map((b, i) => { const e = k(t, [ats[i], ats[i] + 0.4], [1, 0], OUT), y = (i - (n - 1) / 2) * 116, c = th.hot[i % 2], st = s.strike ? k(t, [lineAt - 0.3 + i * 0.05, lineAt + i * 0.05], [0, 1]) : 0;
           return <div key={b + i} style={{position: 'absolute', left: -390, top: y - 46, width: 780, height: 92, borderRadius: 24, transform: `translateZ(${-e * 300}px)`, opacity: 1 - e, ...glass, display: 'flex', alignItems: 'center', gap: 22, padding: '0 30px', boxSizing: 'border-box'}}>
             <div style={{width: 34, height: 34, borderRadius: 10, background: c}} />
@@ -439,8 +443,8 @@ const Cycle: React.FC<P<Extract<Scene, {kind: 'cycle'}>>> = ({s, t, d, m}) => {
         return <div key={i} style={{position: 'absolute', left: 960 + Math.sin(ang) * 520 - 70, top: 290 + z * 70 - 70, zIndex: Math.round(z * 10) + 10, opacity: (1 - heavy) * (0.45 + 0.55 * (z + 1) / 2), transform: `scale(${0.6 + 0.45 * (z + 1) / 2})`, filter: z < -0.2 ? 'blur(2px)' : undefined}}>
           <Avatar seed={40 + i} s={140} grey={i === w ? 0 : 0.85} ring={i === w ? th.hot[w % 2] : undefined} /></div>; })}
       <div style={{position: 'absolute', top: 470, ...T(64, SUB, FONT), opacity: 1 - heavy}}>{s.prefix}</div>
-      <div style={{position: 'absolute', top: 560, ...T(116, th.hot[w % 2]), opacity: (1 - heavy) * k(lw, [0, 0.25], [0, 1]), filter: `blur(${k(lw, [0, 0.25], [10, 0])}px)`, transform: `translateY(${k(lw, [0, 0.3], [40, 0])}px)`}}>{s.items[w]}</div>
-      {s.line && heavy > 0 && <div style={{position: 'absolute', ...T(92), whiteSpace: 'normal', width: 1400, textAlign: 'center', lineHeight: 1.15}}><Words t={s.line} t0={t} at={lineAt} gap={0.1} hot={s.hot} wrap /></div>}
+      <div style={{position: 'absolute', top: 560, ...T(Math.min(116, (TALL ? 1250 : 1700) / (s.items[w].length * 0.53)), th.hot[w % 2]), opacity: (1 - heavy) * k(lw, [0, 0.25], [0, 1]), filter: `blur(${k(lw, [0, 0.25], [10, 0])}px)`, transform: `translateY(${k(lw, [0, 0.3], [40, 0])}px)`}}>{s.items[w]}</div>
+      {s.line && heavy > 0 && <div style={{position: 'absolute', ...T(92), whiteSpace: 'normal', width: 1300, textAlign: 'center', lineHeight: 1.15}}><Words t={s.line} t0={t} at={lineAt} gap={0.1} hot={s.hot} wrap /></div>}
     </AbsoluteFill>
   );
 };
@@ -457,7 +461,7 @@ const Cards: React.FC<P<Extract<Scene, {kind: 'cards'}>>> = ({s, t, d, m}) => {
   const pos = (i: number) => [-560 + (1120 * i) / Math.max(1, n - 1), i % 2 ? 120 : -120];
   const keys: Key[] = [[0, pos(0)[0], pos(0)[1], 1.3]];
   s.cards.forEach((_, i) => { const [x, y] = pos(i); if (i) keys.push([ats[i] - 0.25, ...keys[keys.length - 1].slice(1)] as Key, [ats[i] + 0.1, x, y, 1.3]); keys.push([Math.min(flowAt, (ats[i + 1] ?? flowAt) - 0.25), x, y + 20, 1.3]); });
-  keys.push([flowAt + 0.35, 0, 0, 0.9], [d, 0, 0, 0.95]);
+  keys.push([flowAt + 0.35, 0, 0, TALL ? 0.78 : 0.9], [d, 0, 0, TALL ? 0.82 : 0.95]);
   return (
     <World t={t} keys={keys} id="cd">
       <svg width={2000} height={400} style={{position: 'absolute', left: -1000, top: -200, overflow: 'visible'}}>
@@ -475,7 +479,7 @@ const People: React.FC<P<Extract<Scene, {kind: 'people'}>>> = ({s, t, d, m}) => 
   const wordAt = useWordAt(), th = useTh(), n = s.rows.length;
   const ats: number[] = []; s.rows.forEach(([w], i) => ats.push(wordAt(w, i ? ats[i - 1] + 0.15 : 0, m[i] ?? (i * d) / (n + 1))));
   const afterAt = s.after ? wordAt(s.after, ats[n - 1] + 0.3, m[n] ?? d * 0.8) : d + 1, sc = k(t, [afterAt, afterAt + 0.6], [0, 1], IO);
-  const cw = Math.min(330, 1560 / n);
+  const cw = Math.min(330, (TALL ? 1300 : 1560) / n);
   return (
     <AbsoluteFill>
       <div style={{position: 'absolute', left: 960 - (cw * n) / 2, top: 250 - sc * 120, width: cw * n, display: 'flex', opacity: 1 - sc * 0.55, filter: `blur(${sc * 6}px)`}}>
@@ -497,7 +501,7 @@ const Tiers: React.FC<P<Extract<Scene, {kind: 'tiers'}>>> = ({s, t, d, m}) => {
   const x = (i: number) => -780 + i * 520;
   const keys: Key[] = [[0, x(0), 0, 1.3]];
   s.tiers.forEach((_, i) => { if (i) keys.push([pain(i) - 0.3, x(i - 1), 0, 1.3], [pain(i) + 0.1, x(i), 0, 1.3]); });
-  keys.push([price(n - 1) + 1.0, x(n - 1), 0, 1.3], [price(n - 1) + 1.6, 0, 0, 0.82], [d, 0, 0, 0.86]);
+  keys.push([price(n - 1) + 1.0, x(n - 1), 0, 1.3], [price(n - 1) + 1.6, 0, 0, TALL ? 0.66 : 0.82], [d, 0, 0, TALL ? 0.69 : 0.86]);
   return (
     <World t={t} keys={keys} id="tr">
       {s.tiers.map((tr, i) => { const a = k(t, [pain(i), pain(i) + 0.35], [0, 1]), pr = k(t, [price(i), price(i) + 0.7], [0, 1]), c = th.hot[i % 2];
@@ -587,17 +591,17 @@ const Proof: React.FC<P<Extract<Scene, {kind: 'proof'}>>> = ({s, t, d, m}) => {
 
 // End card (reel 46–52 s): logo + wordmark type-on, tagline with hot word, CTA chips, soft bloom bars rising.
 const End: React.FC<P<Extract<Scene, {kind: 'end'}>>> = ({t, d, m}) => {
-  const th = useTh(), bio = m[1] ?? d - 1.4, lay = th.end;
+  const th = useTh(), bio = m[1] ?? d - 1.4, lay = TALL ? 'center' : th.end, ps = lay === 'split' ? 40 : 48;
   return (
     <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
       {/* no shared end-card bars: each video's own dynamic background carries the end card (uniqueness rule) */}
       <div style={{position: 'absolute', top: lay === 'split' ? 300 : 210, left: lay === 'center' ? undefined : 260, display: 'flex', alignItems: 'center', gap: 26}}><Pop t={t} at={0.05}><Logo s={124} /></Pop>
         <span style={{...T(110), minWidth: 560}}>{typed('FansaChat', t, 0.25, 0.75)}</span></div>
       <div style={{position: 'absolute', top: lay === 'split' ? 470 : 420, left: lay === 'center' ? undefined : 260, ...T(66)}}><Words t="Get every update first." t0={t} at={0.6} hot={['every', 'first.']} style={{justifyContent: lay === 'center' ? 'center' : 'flex-start'}} /></div>
-      {lay === 'split' && <div style={{position: 'absolute', right: 230, top: 250, width: 520, height: 520, borderRadius: 60, ...glass, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${k(t, [0, d], [-6, 0], IO)}deg) scale(${k(t, [0.1, 0.7], [0.85, 1], BACK)})`}}><div style={{width: 300, height: 300}}><Lottie animationData={LOT.connect} /></div></div>}
+      {lay === 'split' && <div style={{position: 'absolute', right: 200, top: 230, width: 440, height: 440, borderRadius: 60, ...glass, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${k(t, [0, d], [-6, 0], IO)}deg) scale(${k(t, [0.1, 0.7], [0.85, 1], BACK)})`}}><div style={{width: 260, height: 260}}><Lottie animationData={LOT.connect} /></div></div>}
       <div style={{position: 'absolute', top: lay === 'split' ? 640 : 580, left: lay === 'center' ? undefined : 260, display: 'flex', gap: 30}}>
-        <Pop t={t} at={1.2}><Pill c={th.hot[0]} solid s={48}>Join the waitlist</Pill></Pop>
-        <Pop t={t} at={1.6}><Pill c={th.hot[1]} s={48}>Telegram community</Pill></Pop></div>
+        <Pop t={t} at={1.2}><Pill c={th.hot[0]} solid s={ps}>Join the waitlist</Pill></Pop>
+        <Pop t={t} at={1.6}><Pill c={th.hot[1]} s={ps}>Telegram community</Pill></Pop></div>
       <div style={{position: 'absolute', top: lay === 'split' ? 820 : 790, left: lay === 'center' ? undefined : 260, ...T(44, SUB, FONT), opacity: k(t, [bio, bio + 0.4], [0, 1])}}>Link in bio</div>
     </AbsoluteFill>
   );
@@ -639,6 +643,7 @@ export const Ad11: React.FC<{spec: Spec; music?: boolean}> = ({spec, music = fal
   INK = spec.theme.dark ? '#F4F6FF' : '#0E1222'; SUB = spec.theme.dark ? '#B9C3E6' : '#545B70';
   glass = spec.theme.dark ? GLASS_DARK : spec.theme.liquid ? GLASS_LIQUID : GLASS_SOFT;
   const f = useCurrentFrame(), {fps, width, height, durationInFrames} = useVideoConfig(), s = f / fps;
+  TALL = height > width;
   const tl = React.useMemo(() => timeline(spec), [spec]), sfx = React.useMemo(() => sfxFor(spec), [spec]);
   const i = Math.max(0, tl.findIndex(({a, b}) => s >= a && s < b)), {sc, a, b, m} = tl[i];
   const t = s - a, d = b - a, V = VIEW[sc.kind], w = spec.theme.wipe;
