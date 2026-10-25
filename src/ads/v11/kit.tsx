@@ -332,7 +332,7 @@ const Brand: React.FC<P<Extract<Scene, {kind: 'brand'}>>> = ({s, t, d, m}) => {
         <Words t={s.line} t0={t} at={0.05} gap={Math.min(0.2, (L - 0.8) / s.line.split(' ').length)} hot={s.hot} wrap /></div>}
       <div style={{position: 'absolute', top: 340 - lift * 120, display: 'flex', alignItems: 'center', gap: 30}}>
         <div style={{position: 'relative', width: 150, height: 150, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          <div style={{position: 'absolute', width: 150 + 260 * ring, height: 150 + 260 * ring, borderRadius: 99, border: `3px solid ${th.hot[0]}`, opacity: (1 - ring) * 0.8}} />
+          <div style={{position: 'absolute', width: 150 + 260 * ring, height: 150 + 260 * ring, borderRadius: 99, border: `3px solid ${th.hot[0]}`, opacity: k(t, [L + 0.05, L + 0.2], [0, 1]) * (1 - ring) * 0.8}} />
           <div style={{position: 'absolute', width: 300, height: 300, borderRadius: 99, background: `radial-gradient(${th.bloom[0]}, rgba(255,255,255,0) 70%)`, opacity: icon}} />
           <div style={{opacity: Math.min(1, Math.max(0, icon) * 1.4), transform: `scale(${0.5 + 0.5 * icon})`}}><Logo s={150} /></div></div>
         <span style={{...T(130), minWidth: 640}}>{word}<span style={{opacity: t > L + 0.4 && t < L + 1.6 && Math.floor(t * 3) % 2 === 0 ? 1 : 0, color: th.hot[0], fontFamily: FONT}}>|</span></span>

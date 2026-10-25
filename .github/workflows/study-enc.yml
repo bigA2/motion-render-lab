@@ -21,6 +21,7 @@ jobs:
     timeout-minutes: 240
     strategy: { fail-fast: false, matrix: { id: '${{ fromJson(needs.ids.outputs.list) }}' } }
     steps:
+      - uses: actions/checkout@v4
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null && pip install -q faster-whisper
       - name: Fetch
         env: { GH_TOKEN: '${{ github.token }}', ID: '${{ matrix.id }}' }
@@ -28,6 +29,14 @@ jobs:
           mkdir -p in out/sheets out/cuts
           gh release download "${{ needs.ids.outputs.tag }}" -R "$GITHUB_REPOSITORY" -p "$ID.mkv" -O video.mkv
           ffprobe -v error -show_entries stream=width,height,r_frame_rate:format=duration -of compact video.mkv | tee out/info.txt
+      - name: Project files from the description (public Drive folder, if listed)
+        if: always()
+        env: { ID: '${{ matrix.id }}' }
+        run: |
+          [ -f "study/drive_$ID.txt" ] || exit 0
+          pip install -q gdown && mkdir -p out/project_files
+          python -m gdown --folder "$(head -1 study/drive_$ID.txt)" -O out/project_files --remaining-ok || true
+          find out/project_files -type f -size +300M -delete; find out/project_files -type f | sed 's#^#  #' > out/project_files_list.txt; cat out/project_files_list.txt
       - name: Transcript (word-timed)
         if: always()
         run: |
