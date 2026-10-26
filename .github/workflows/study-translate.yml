@@ -14,10 +14,12 @@ jobs:
       - run: |
           mkdir -p out
           python3 - <<'PY'
+          import wave, numpy as np
           from faster_whisper import WhisperModel as M
+          w = wave.open('a.wav'); audio = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768
           m = M('${{ inputs.model }}', device='cpu', compute_type='int8')
           for task in ['translate', 'transcribe']:
-              segs, info = m.transcribe('a.wav', task=task, vad_filter=True, beam_size=1)
+              segs, info = m.transcribe(audio, task=task, vad_filter=True, beam_size=1)
               with open(f'out/{task}.txt', 'w') as f:
                   f.write(f'# lang={info.language} p={info.language_probability:.2f}\n')
                   for s in segs: f.write(f'[{int(s.start//60):02d}:{s.start%60:05.2f}] {s.text.strip()}\n'); f.flush()
