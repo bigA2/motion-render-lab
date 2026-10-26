@@ -1,0 +1,27 @@
+# Re-transcribe a study video with multilingual Whisper and translate speech to English (for non-English tutorials).
+# Run: gh workflow run study-translate.yml --ref tools/templates -f tag=study-wl4 -f id=oa13Pqpdd5E
+name: study-translate
+on: { workflow_dispatch: { inputs: { tag: { required: true }, id: { required: true }, model: { required: false, default: "medium" } } } }
+permissions: { contents: read }
+jobs:
+  tr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null && pip install -q faster-whisper
+      - env: { GH_TOKEN: '${{ github.token }}' }
+        run: gh release download "${{ inputs.tag }}" -R "$GITHUB_REPOSITORY" -p "${{ inputs.id }}.mkv" -O v.mkv && ffmpeg -v error -i v.mkv -ac 1 -ar 16000 a.wav
+      - run: |
+          mkdir -p out
+          python3 - <<'PY'
+          from faster_whisper import WhisperModel as M
+          m = M('${{ inputs.model }}', device='cpu', compute_type='int8')
+          for task in ['translate', 'transcribe']:
+              segs, info = m.transcribe('a.wav', task=task, vad_filter=True, beam_size=1)
+              with open(f'out/{task}.txt', 'w') as f:
+                  f.write(f'# lang={info.language} p={info.language_probability:.2f}\n')
+                  for s in segs: f.write(f'[{int(s.start//60):02d}:{s.start%60:05.2f}] {s.text.strip()}\n'); f.flush()
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: 'translate-${{ inputs.id }}', path: out, retention-days: 3 }
