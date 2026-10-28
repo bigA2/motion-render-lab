@@ -22,7 +22,7 @@ for _ in range(9):
 bg = Image.alpha_composite(bg, pat)
 # founder cut-out, right side, slightly desaturated + lavender rim light
 f = remove(get('https://fansachat.com/founder.jpg').convert('RGB')).convert('RGBA')
-a = f.split()[3].point(lambda v: 0 if v < 90 else 255).filter(ImageFilter.GaussianBlur(1.2)); f.putalpha(a)
+a = f.split()[3].point(lambda v: 0 if v < 170 else 255).filter(ImageFilter.GaussianBlur(1.2)); f.putalpha(a)
 f = f.crop(a.getbbox()); f = f.resize((int(f.width * 470 / f.height), 470), Image.LANCZOS)
 rgb = Image.blend(f.convert('RGB'), ImageOps.grayscale(f.convert('RGB')).convert('RGB'), 0.35); f = Image.merge('RGBA', (*rgb.split(), f.split()[3]))
 rim = Image.new('RGBA', f.size, (167, 139, 250, 0)); rim.putalpha(f.split()[3].filter(ImageFilter.GaussianBlur(10)).point(lambda a: int(a * 0.55)))
