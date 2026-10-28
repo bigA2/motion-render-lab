@@ -22,6 +22,8 @@ const OUT = Easing.bezier(0.16, 1, 0.3, 1), P3 = Easing.bezier(0.215, 0.61, 0.35
 const k = (t: number, i: number[], o: number[], e = OUT) => interpolate(t, i, o, {easing: e, extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
 // Set per render from the theme (P03 is dark+blue). Module-level on purpose: one composition per render process.
 let INK = '#0E1222', SUB = '#5A6075';
+// builder surfaces follow the theme (dark videos get a dark builder so light ink stays readable)
+let PANEL = 'rgba(255,255,255,.97)', SIDE = '#F5F7FB', FIELD = '#fff', CHIP = '#fff';
 let TALL = false; // 4:5: only stage x 240..1680 is visible -> text blocks max 1300 wide, side layouts become stacked
 const OK = '#12A150', RED = '#E5484D';
 const T = (s: number, c = INK, f = DISP): React.CSSProperties => ({fontFamily: f, fontSize: s, color: c, whiteSpace: 'nowrap', lineHeight: 1, letterSpacing: f === DISP ? '-0.035em' : '-0.01em'});
@@ -422,14 +424,14 @@ const Flow: React.FC<P<Extract<Scene, {kind: 'flow'}>>> = ({s, t, d}) => {
         <div style={{position: 'absolute', transformStyle: 'preserve-3d', transform: `rotateX(${tilt}deg) rotateZ(${rz}deg)`}}>
           {lap && <><div style={{position: 'absolute', left: -880, top: -500, width: 1760, height: 1000, borderRadius: 44, background: '#16171C', boxShadow: '0 80px 160px rgba(30,40,90,.28)'}} />
             <div style={{position: 'absolute', left: -1060, top: 500, width: 2120, height: 46, borderRadius: '0 0 60px 60px', background: 'linear-gradient(#E6E8EE, #C9CCD6)', boxShadow: '0 40px 80px rgba(30,40,90,.2)'}} /></>}
-          <div style={{position: 'absolute', left: -850, top: -470, width: 1700, height: 940, borderRadius: lap ? 22 : 36, background: 'rgba(255,255,255,.97)', boxShadow: lap ? undefined : '0 70px 140px rgba(10,20,60,.22)', border: '1px solid #fff'}} />
-          <div style={{position: 'absolute', left: -800, top: -420, width: 600, height: 840, borderRadius: 26, background: '#F5F7FB', padding: 28, boxSizing: 'border-box'}}>
+          <div style={{position: 'absolute', left: -850, top: -470, width: 1700, height: 940, borderRadius: lap ? 22 : 36, background: PANEL, boxShadow: lap ? undefined : '0 70px 140px rgba(10,20,60,.22)', border: '1px solid #fff'}} />
+          <div style={{position: 'absolute', left: -800, top: -420, width: 600, height: 840, borderRadius: 26, background: SIDE, padding: 28, boxSizing: 'border-box'}}>
             <div style={{display: 'flex', alignItems: 'center', gap: 12}}><Logo s={44} /><span style={T(30)}>FansaChat</span></div>
-            <div style={{marginTop: 30, padding: '18px 22px', borderRadius: 18, background: '#fff', ...T(26, '#444', FONT), whiteSpace: 'normal', lineHeight: 1.35, opacity: k(t, [tEnd, tEnd + 0.3], [0, 1])}}>Got it. Here's your workflow — approve it to run.</div>
+            <div style={{marginTop: 30, padding: '18px 22px', borderRadius: 18, background: FIELD, ...T(26, SUB, FONT), whiteSpace: 'normal', lineHeight: 1.35, opacity: k(t, [tEnd, tEnd + 0.3], [0, 1])}}>Got it. Here's your workflow — approve it to run.</div>
           </div>
           {/* glow search bar (TomsProject #2): rotating two-colour gradient stroke + soft glow + bounce pop */}
           <div style={{position: 'absolute', left: -780 + (1 - morph) * 180, top: 250 - (1 - morph) * 350, width: 600 * morph + 240 * (1 - morph), minHeight: 120, borderRadius: 26 + (1 - morph) * 40,
-            border: '3px solid transparent', background: `linear-gradient(#fff, #fff) padding-box, conic-gradient(from ${t * 140}deg, ${H0}, ${H1}, ${H0}22, ${H0}22, ${H0}) border-box`,
+            border: '3px solid transparent', background: `linear-gradient(${FIELD}, ${FIELD}) padding-box, conic-gradient(from ${t * 140}deg, ${H0}, ${H1}, ${H0}22, ${H0}22, ${H0}) border-box`,
             boxShadow: `0 20px 50px rgba(30,40,90,.14), 0 0 46px ${H0}40`, padding: '20px 24px', boxSizing: 'border-box', transform: `translateZ(40px) scale(${k(t, [0, 0.55], [0.86, 1], BACK)})`}}>
             <div style={{...T(40, INK, FONT), whiteSpace: 'normal', lineHeight: 1.25}}>{typed(s.say, t, 0.5, tEnd)}<span style={{opacity: Math.floor(t * 3) % 2, color: H0}}>|</span></div>
             <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: 10}}><span style={{width: 48, height: 48, borderRadius: 99, background: t > tEnd ? H0 : '#ddd', ...T(26, '#fff'), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>↑</span></div>
@@ -442,12 +444,12 @@ const Flow: React.FC<P<Extract<Scene, {kind: 'flow'}>>> = ({s, t, d}) => {
                 <path d={wire(0, 0, sx, sy) + ' ' + wire(sx, sy, 470, ly(i)).replace('M', 'L')} fill="none" stroke={H1} strokeWidth={11} strokeLinecap="round" strokeDasharray="22 260" strokeDashoffset={-((t * 160 + i * 40) % 282)} opacity={flow} />
               </g>; })}
           </svg>
-          <div style={{position: 'absolute', left: -38, top: -38, width: 76, height: 76, borderRadius: 99, background: '#fff', border: `2.5px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'center', ...T(22, INK, FONT), transform: `translateZ(30px) scale(${k(t, [tEnd, tEnd + 0.3], [0, 1], OUT)})`}}>{s.root}</div>
+          <div style={{position: 'absolute', left: -38, top: -38, width: 76, height: 76, borderRadius: 99, background: CHIP, border: `2.5px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'center', ...T(22, INK, FONT), transform: `translateZ(30px) scale(${k(t, [tEnd, tEnd + 0.3], [0, 1], OUT)})`}}>{s.root}</div>
           {(n > 2 ? splits : []).map(([x, y], i) => <div key={i} style={{position: 'absolute', left: x - 14, top: y - 14, width: 28, height: 28, borderRadius: 99, background: '#F3F4FA', border: '2px solid #9AA0B8', transform: `scale(${k(t, [tEnd + 0.2, tEnd + 0.45], [0, 1], OUT)})`}} />)}
           {s.leaves.map(([label, app], i) => { const l = k(t, [grow(i), grow(i) + 0.4], [0, 1], BACK);
             return <div key={label} style={{position: 'absolute', left: 470 - 46, top: ly(i) - 46, display: 'flex', alignItems: 'center', gap: 18, transform: `translateZ(${l * 60}px) scale(${Math.max(0, l)})`, transformOrigin: '46px 46px'}}>
-              <div style={{width: 92, height: 92, borderRadius: 99, background: '#fff', border: `2.5px solid ${flow > 0.5 ? H1 : INK}`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 24px rgba(20,16,24,.16)'}}>{app ? <Img src={staticFile(`logos/${app}`)} style={{width: 52, height: 52, objectFit: 'contain'}} /> : <span style={T(30)}>{i + 1}</span>}</div>
-              <span style={{...T(44, INK, DISP), background: '#fff', padding: '10px 20px', borderRadius: 16, boxShadow: '0 8px 22px rgba(20,16,24,.14)', border: `2px solid ${H1}33`}}>{label}</span></div>; })}
+              <div style={{width: 92, height: 92, borderRadius: 99, background: CHIP, border: `2.5px solid ${flow > 0.5 ? H1 : INK}`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 24px rgba(20,16,24,.16)'}}>{app ? <Img src={staticFile(`logos/${app}`)} style={{width: 52, height: 52, objectFit: 'contain'}} /> : <span style={T(30)}>{i + 1}</span>}</div>
+              <span style={{...T(44, INK, DISP), background: CHIP, padding: '10px 20px', borderRadius: 16, boxShadow: '0 8px 22px rgba(20,16,24,.14)', border: `2px solid ${H1}33`}}>{label}</span></div>; })}
           <div style={{position: 'absolute', left: 140, top: 330, transform: `translateZ(50px) scale(${press})`, opacity: k(t, [runAt - 0.6, runAt - 0.3], [0, 1])}}>
             <div style={{padding: '22px 46px', borderRadius: 50, background: interpolateColors(k(t, [runAt + 0.2, runAt + 0.5], [0, 1]), [0, 1], [H0, OK]), ...T(40, '#fff'), boxShadow: '0 20px 50px rgba(30,40,90,.25)'}}>{t < runAt + 0.35 ? (s.button ?? 'Approve & Run') : 'Running ✓'}</div>
             <div style={{position: 'absolute', left: 150, top: 10, width: 130, height: 130, opacity: k(t, [runAt - 0.5, runAt - 0.3, runAt + 0.6, runAt + 0.8], [0, 1, 1, 0]), transform: `translate(${k(t, [runAt - 0.5, runAt], [180, 0], P3)}px, ${k(t, [runAt - 0.5, runAt], [120, 0], P3)}px)`}}><Lottie animationData={LOT.click} /></div></div>
@@ -688,6 +690,7 @@ const sfxFor = (sp: Spec): [number, string, number][] => {
 // move with motion blur). One style per video so the seven ads feel different.
 export const Ad11: React.FC<{spec: Spec; music?: boolean}> = ({spec, music = false}) => {
   INK = spec.theme.dark ? '#F4F6FF' : '#0E1222'; SUB = spec.theme.dark ? '#B9C3E6' : '#545B70';
+  [PANEL, SIDE, FIELD, CHIP] = spec.theme.dark ? ['rgba(16,22,44,.96)', 'rgba(255,255,255,.04)', '#141C38', '#1A2346'] : ['rgba(255,255,255,.97)', '#F5F7FB', '#fff', '#fff'];
   glass = spec.theme.dark ? GLASS_DARK : spec.theme.liquid ? GLASS_LIQUID : GLASS_SOFT;
   const f = useCurrentFrame(), {fps, width, height, durationInFrames} = useVideoConfig(), s = f / fps;
   TALL = height > width;
