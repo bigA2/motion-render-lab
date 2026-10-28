@@ -218,15 +218,9 @@ const BgLayer: React.FC<{th: Theme; s: number}> = ({th, s}) => {
         `radial-gradient(62% 56% at ${32 + 22 * sw(s, 7)}% ${66 + 6 * sw(s, 9, 1)}%, ${c0} 0%, rgba(255,255,255,0) 62%)`,
         `radial-gradient(52% 46% at ${76 - 20 * sw(s, 8, 2)}% ${30 + 8 * sw(s, 6)}%, ${c1} 0%, rgba(255,255,255,0) 60%)`,
         `radial-gradient(40% 36% at ${54 + 30 * sw(s, 11, 4)}% ${48 + 10 * sw(s, 10, 3)}%, ${c2} 0%, rgba(255,255,255,0) 60%)`].join(',')}} />;
-    case 'aurora': { // P02: living aurora, filter-free (fast to render): moving light pools + travelling soft ribbons.
-      // Periods 4-7 s so the motion always reads; colours stay lavender / peach / lilac.
-      const pool = (i: number, c: string, r: number) => `radial-gradient(${r}% ${r * 0.9}% at ${50 + 42 * sw(s, 4.5 + i * 1.3, i * 1.7)}% ${50 + 38 * sw(s, 5.5 + i, i * 2.3)}%, ${c} 0%, rgba(255,255,255,0) 70%)`;
-      return <AbsoluteFill>
-        <AbsoluteFill style={{background: [pool(0, c0, 60), pool(1, c1, 55), pool(2, c2, 50), pool(3, 'rgba(255,255,255,.85)', 30), pool(4, c1, 45)].join(',')}} />
-        {[c0, c1, c2, c1].map((c, i) => <div key={i} style={{position: 'absolute', left: `${-40 + 50 * sw(s, 4 + i * 0.8, i * 1.1)}%`, top: 60 + i * 250 + 70 * sw(s, 5 + i, i), width: '170%', height: 260,
-          background: `radial-gradient(50% 50% at 50% 50%, ${c} 0%, rgba(255,255,255,0) 72%)`, transform: `rotate(${-16 + 24 * sw(s, 6 + i * 0.9, i * 1.3)}deg) scaleY(${1 + 0.4 * sw(s, 3.4, i)})`, opacity: 0.8}} />)}
-      </AbsoluteFill>;
-    }
+    case 'aurora': // P02: lavender + peach aurora bands, now clearly moving (periods 4-7 s, wide sweeps, swing + pulse)
+      return <Blur px={60}>{[c0, c1, c2, c0].map((c, i) => <div key={i} style={{position: 'absolute', left: `${-30 + 45 * sw(s, 4 + i * 0.9, i)}%`, top: 100 + i * 210 + 50 * sw(s, 5 + i, i * 0.7), width: '150%', height: 240,
+        borderRadius: '50%', background: `linear-gradient(90deg, rgba(255,255,255,0), ${c}, rgba(255,255,255,0))`, transform: `rotate(${-12 + 22 * sw(s, 6 + i, i * 1.3)}deg) scaleY(${1 + 0.3 * sw(s, 3.5, i)})`, opacity: 0.95}} />)}</Blur>;
     case 'waves': { // P03: dark navy + electric blue layered glowing waves
       const layers = [0, 1, 2, 3, 4, 5];
       return <AbsoluteFill><svg width={1920} height={1080} style={{position: 'absolute'}}>
