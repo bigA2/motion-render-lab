@@ -1,0 +1,18 @@
+# Build the X header banner (public inputs only). Run: gh workflow run banner.yml --ref tools/templates
+name: banner
+on: { workflow_dispatch: {} }
+permissions: { contents: read }
+jobs:
+  b:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install -q "rembg[cpu]==2.0.86" pillow fonttools brotli
+      - run: |
+          mkdir -p fonts
+          for w in 500 700; do python -c "from fontTools.ttLib import TTFont;f=TTFont('public/fonts/InterTight-$w.woff2');f.flavor=None;f.save('fonts/InterTight-$w.ttf')"; done
+          python tools/banner/banner.py
+      - uses: actions/upload-artifact@v4
+        with: { name: banner, path: out, retention-days: 3 }
