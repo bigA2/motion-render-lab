@@ -36,7 +36,7 @@ const LOT: Record<string, LottieAnimationData> = {check: L_check as unknown as L
 
 // ---- spec types --------------------------------------------------------------------------------------------------
 export type App = string; // 'ap/hubspot.png' | 'si/whatsapp.svg'
-export type Bg = 'liquid' | 'aurora' | 'waves' | 'bends' | 'metaballs' | 'silk' | 'contours';
+export type Bg = 'liquid' | 'aurora' | 'waves' | 'bends' | 'metaballs' | 'silk' | 'contours' | 'particles' | 'gold' | 'arcs' | 'pastel' | 'neon';
 export type Proof = 'dashboard' | 'approvals' | 'history' | 'billing' | 'inbox' | 'checklist' | 'report';
 export type Theme = {bg: [string, string]; bloom: [string, string, string]; hot: [string, string]; type: Bg; dark?: boolean; liquid?: boolean;
   stage: 'laptop' | 'land' | 'panel'; tilt: number; hook: 'stack' | 'side' | 'behind'; wipe: 'blur' | 'circle' | 'whip' | 'slide' | 'zoom'; end: 'center' | 'left' | 'split'; proof: Proof};
@@ -88,8 +88,9 @@ const Words: React.FC<{t: string; t0: number; at: number; gap?: number; hot?: st
   );
 };
 const Pop: React.FC<{t: number; at: number; children: React.ReactNode; style?: React.CSSProperties}> = ({t, at, children, style}) => {
-  const a = k(t, [at, at + 0.4], [0, 1], BACK);
-  return <div style={{opacity: Math.min(1, Math.max(0, a) * 1.5), transform: `scale(${0.75 + 0.25 * a})`, filter: `blur(${Math.max(0, 1 - a) * 8}px)`, ...style}}>{children}</div>;
+  // KenySet / Apple inertial bounce: a real spring overshoots then settles (amp~.1, freq~2, decay~6 in AE terms)
+  const a = t < at ? 0 : spring({frame: (t - at) * 60, fps: 60, config: {damping: 11, stiffness: 170, mass: 1}});
+  return <div style={{opacity: Math.min(1, a * 1.6), transform: `scale(${0.72 + 0.28 * a})`, filter: `blur(${Math.max(0, 1 - Math.min(1, a)) * 8}px)`, ...style}}>{children}</div>;
 };
 const Card: React.FC<{w: number; h?: number; children?: React.ReactNode; style?: React.CSSProperties}> = ({w, h, children, style}) => (
   <div style={{width: w, height: h, borderRadius: 30, ...glass, padding: 28, boxSizing: 'border-box', ...style}}>{children}</div>
@@ -250,6 +251,50 @@ const BgLayer: React.FC<{th: Theme; s: number}> = ({th, s}) => {
           <stop offset={0.5 + 0.35 * sw(s, 7, i)} stopColor={[c0, c1, c2][i]} /><stop offset="1" stopColor={[c0, c1, c2][i]} stopOpacity={0} /></linearGradient>)}</defs>
         {Array.from({length: 7}, (_, i) => { let d = ''; for (let x = -80; x <= 2000; x += 40) { const y = 300 + i * 85 + 90 * Math.sin(x / 330 + s * 0.75 + i * 0.8) + 40 * Math.sin(x / 160 - s * 0.5 + i); d += `${x === -80 ? 'M' : 'L'} ${x} ${y} `; }
           return <path key={i} d={d} fill="none" stroke={`url(#sk${i % 3})`} strokeWidth={46 - i * 4} strokeLinecap="round" opacity={0.65} />; })}</svg></Blur>;
+    // ---- v12 looks (5-account SaaS study + KenySet clean): one light source, calm field, filter-free so renders stay fast ----
+    case 'particles': { // P03 (earnedits): navy field, one breathing blue light, slow orbiting dust, a ripple ring every 4 s
+      const dots = Array.from({length: 150}, (_, i) => { const a = random(`pa${i}`) * Math.PI * 2 + s * (0.04 + random(`pv${i}`) * 0.06), r = 120 + random(`pr${i}`) * 900;
+        return [960 + Math.cos(a) * r * 1.25, 540 + Math.sin(a) * r * 0.6, 1 + random(`ps${i}`) * 2.6, 0.25 + 0.6 * random(`po${i}`)] as const; });
+      const ring = (s % 4) / 4;
+      return <AbsoluteFill>
+        <AbsoluteFill style={{background: `radial-gradient(${46 + 6 * sw(s, 5)}% ${40 + 5 * sw(s, 5)}% at 50% 46%, ${c0} 0%, rgba(10,15,36,0) 70%)`, opacity: 0.85}} />
+        <svg width={1920} height={1080} style={{position: 'absolute'}}>{dots.map(([x, y, r, o], i) => <circle key={i} cx={x} cy={y} r={r} fill={i % 7 ? c1 : '#FFFFFF'} opacity={o} />)}
+          <circle cx={960} cy={500} r={120 + ring * 760} fill="none" stroke={c1} strokeWidth={2} opacity={(1 - ring) * 0.45} /></svg>
+      </AbsoluteFill>;
+    }
+    case 'gold': { // P04 (leonmotion): black + gold, one diagonal light beam sweeping, hairline frame, a glint every 5 s
+      const x = -30 + ((s * 9) % 160), g = Math.max(0, 1 - Math.abs(((s % 5) / 5) - 0.5) * 8);
+      return <AbsoluteFill>
+        <AbsoluteFill style={{background: `linear-gradient(115deg, rgba(0,0,0,0) ${x - 18}%, ${c0} ${x}%, rgba(0,0,0,0) ${x + 18}%)`, opacity: 0.35}} />
+        <AbsoluteFill style={{background: `radial-gradient(60% 50% at 50% 115%, ${c1} 0%, rgba(0,0,0,0) 70%)`, opacity: 0.55}} />
+        <div style={{position: 'absolute', inset: 46, border: `1.5px solid ${c0}`, borderRadius: 28, opacity: 0.35}} />
+        <svg width={1920} height={1080} style={{position: 'absolute'}}><g transform="translate(1640 170)" opacity={g}>
+          <path d="M0 -60 L8 -8 L60 0 L8 8 L0 60 L-8 8 L-60 0 L-8 -8 Z" fill={c2} /></g></svg>
+      </AbsoluteFill>;
+    }
+    case 'arcs': { // P05 (addx + KenySet clean): white, large violet concentric arcs rising from below, slow rotation, soft lilac light
+      return <AbsoluteFill>
+        <AbsoluteFill style={{background: `radial-gradient(70% 55% at 50% 100%, ${c2} 0%, rgba(255,255,255,0) 70%)`, opacity: 0.9}} />
+        <svg width={1920} height={1080} style={{position: 'absolute'}}>{[0, 1, 2, 3, 4, 5].map((i) => { const r = 420 + i * 120 + 18 * sw(s, 6, i);
+          return <circle key={i} cx={960} cy={1240} r={r} fill="none" stroke={i % 2 ? c1 : c0} strokeWidth={i === 0 ? 4 : 2} strokeDasharray={i % 2 ? '2 14' : undefined}
+            opacity={0.5 - i * 0.06} transform={`rotate(${s * (i % 2 ? 6 : -4)} 960 1240)`} />; })}</svg>
+      </AbsoluteFill>;
+    }
+    case 'pastel': { // P06 (madebyveduboi): cream canvas with three soft pastel light pools drifting
+      const pool = (i: number, c: string, r: number) => `radial-gradient(${r}% ${r * 0.9}% at ${50 + 34 * sw(s, 7 + i * 1.6, i * 2)}% ${50 + 30 * sw(s, 8 + i, i * 1.3)}%, ${c} 0%, rgba(255,255,255,0) 70%)`;
+      return <AbsoluteFill style={{background: [pool(0, c0, 48), pool(1, c1, 44), pool(2, c2, 40)].join(',')}} />;
+    }
+    case 'neon': { // P07 (leonmotion teal): near-black, teal horizon glow, perspective grid floor sliding toward camera
+      const off = (s * 60) % 80;
+      return <AbsoluteFill>
+        <AbsoluteFill style={{background: `radial-gradient(70% 38% at 50% 62%, ${c0} 0%, rgba(0,0,0,0) 70%)`, opacity: 0.6 + 0.1 * sw(s, 4)}} />
+        <svg width={1920} height={1080} style={{position: 'absolute'}}>
+          {Array.from({length: 14}, (_, i) => { const y = 660 + Math.pow((i * 80 + off) / 1120, 1.8) * 420; return <line key={`h${i}`} x1={0} x2={1920} y1={y} y2={y} stroke={c1} strokeWidth={1.2} opacity={0.12 + (y - 660) / 1400} />; })}
+          {Array.from({length: 23}, (_, i) => { const x = (i - 11) * 160; return <line key={`v${i}`} x1={960 + x * 0.18} y1={660} x2={960 + x * 2.4} y2={1080} stroke={c1} strokeWidth={1.2} opacity={0.22} />; })}
+          <line x1={0} x2={1920} y1={660} y2={660} stroke={c2} strokeWidth={2.5} opacity={0.9} />
+        </svg>
+      </AbsoluteFill>;
+    }
     default: { // contours — P07: cream + indigo topographic lines drifting, a soft light beam sweeping left<->right
       const cx = 960 + 420 * sw(s, 12), cy = 540 + 160 * sw(s, 9, 1);
       return <AbsoluteFill><svg width={1920} height={1080} style={{position: 'absolute'}}>{Array.from({length: 16}, (_, i) => { let d = '';
