@@ -22,10 +22,11 @@ for _ in range(9):
 bg = Image.alpha_composite(bg, pat)
 # founder cut-out, right side, slightly desaturated + lavender rim light
 f = remove(get('https://fansachat.com/founder.jpg').convert('RGB')).convert('RGBA')
-f = f.crop(f.getbbox()); f = f.resize((int(f.width * 560 / f.height), 560), Image.LANCZOS)
+a = f.split()[3].point(lambda v: 0 if v < 90 else 255).filter(ImageFilter.GaussianBlur(1.2)); f.putalpha(a)
+f = f.crop(a.getbbox()); f = f.resize((int(f.width * 470 / f.height), 470), Image.LANCZOS)
 rgb = Image.blend(f.convert('RGB'), ImageOps.grayscale(f.convert('RGB')).convert('RGB'), 0.35); f = Image.merge('RGBA', (*rgb.split(), f.split()[3]))
 rim = Image.new('RGBA', f.size, (167, 139, 250, 0)); rim.putalpha(f.split()[3].filter(ImageFilter.GaussianBlur(10)).point(lambda a: int(a * 0.55)))
-fx = W - f.width - 30; bg.alpha_composite(rim, (fx - 6, H - f.height + 6)); bg.alpha_composite(f, (fx, H - f.height + 20))
+fx = W - f.width - 30; bg.alpha_composite(rim, (fx - 6, H - f.height + 2)); bg.alpha_composite(f, (fx, H - f.height + 8))
 d = ImageDraw.Draw(bg)
 # logo + wordmark
 logo = get('https://fansachat.com/logo-mark.png').convert('RGBA').resize((74, 74), Image.LANCZOS)
@@ -39,5 +40,5 @@ cx, cy = x, 392
 for txt in ['700+ apps', 'Nothing runs without your OK', 'Launching Nov 2026']:
     tw = d.textlength(txt, font=F(500, 22)); d.rounded_rectangle((cx, cy, cx + tw + 32, cy + 40), radius=20, outline=(196, 181, 253, 150), width=2, fill=(30, 27, 60, 200))
     d.text((cx + 16, cy + 8), txt, font=F(500, 22), fill='#E9E5FF'); cx += tw + 46
-d.text((x, 446), 'Join the waitlist  →  fansachat.com', font=F(500, 24), fill='#A5B4FC')
+d.text((x, 446), 'Join the waitlist  ·  fansachat.com', font=F(500, 24), fill='#A5B4FC')
 import os; os.makedirs('out', exist_ok=True); bg.convert('RGB').save('out/x_banner.png', optimize=True); print('saved')
