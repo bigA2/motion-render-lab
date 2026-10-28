@@ -362,10 +362,10 @@ const Flow: React.FC<P<Extract<Scene, {kind: 'flow'}>>> = ({s, t, d}) => {
   const splits = [[230, (ly(0) + ly(Math.ceil(n / 2) - 1)) / 2], [230, (ly(Math.ceil(n / 2)) + ly(n - 1)) / 2]] as const;
   const sp = (i: number) => (n > 2 ? splits[i < Math.ceil(n / 2) ? 0 : 1] : [230, ly(i)]);
   const z0 = lap ? 0.62 : 1.4;
-  const keys: Key[] = [[0, lap ? 0 : -480, lap ? 120 : 290, z0], [Math.min(0.9, tEnd * 0.4), -460, 270, 1.3], [tEnd, -460, 260, 1.3], [grow(0) + 0.1, 380, ly(0), 1.35]];
-  s.leaves.forEach((_, i) => i && keys.push([grow(i) + 0.15, 380, ly(i), 1.35]));
-  keys.push([runAt - 0.3, 100, 0, 0.92], [runAt + 0.4, 160, 60, 0.95], [d, 180, 60, 1.0]);
-  const panel = th.stage === 'panel', tilt = lap ? k(t, [0, 0.9], [18, 4], IO) : panel ? k(t, [0, d], [th.tilt, th.tilt * 0.4], IO) : k(t, [0, d], [26, 14], IO), rz = lap ? 0 : panel ? k(t, [0, d], [th.tilt * 0.3, 0], IO) : k(t, [0, d], [-6, -2], IO);
+  const keys: Key[] = [[0, lap ? 0 : -480, lap ? 120 : 290, z0], [Math.min(0.9, tEnd * 0.4), -480, 300, 1.75], [tEnd, -480, 300, 1.75], [grow(0) + 0.1, 380, ly(0), 1.5]];
+  s.leaves.forEach((_, i) => i && keys.push([grow(i) + 0.15, 380, ly(i), 1.5]));
+  keys.push([runAt - 0.3, 260, 40, 1.15], [runAt + 0.4, 260, 80, 1.18], [d, 260, 80, 1.22]);
+  const panel = th.stage === 'panel', tilt = lap ? k(t, [0, 0.9], [18, 4], IO) : panel ? k(t, [0, d], [th.tilt, th.tilt * 0.4], IO) : k(t, [0, d], [12, 5], IO), rz = lap ? 0 : panel ? k(t, [0, d], [th.tilt * 0.3, 0], IO) : k(t, [0, d], [-6, -2], IO);
   const wire = (x1: number, y1: number, x2: number, y2: number) => `M ${x1} ${y1} C ${(x1 + x2) / 2} ${y1}, ${(x1 + x2) / 2} ${y2}, ${x2} ${y2}`;
   const capAt = Math.max(runAt + 0.3, d - 2.2), cap = s.caption ? k(t, [capAt - 0.15, capAt + 0.35], [0, 1], IO) : 0;
   return (
@@ -384,15 +384,15 @@ const Flow: React.FC<P<Extract<Scene, {kind: 'flow'}>>> = ({s, t, d}) => {
           <div style={{position: 'absolute', left: -780 + (1 - morph) * 180, top: 250 - (1 - morph) * 350, width: 600 * morph + 240 * (1 - morph), minHeight: 120, borderRadius: 26 + (1 - morph) * 40,
             border: '3px solid transparent', background: `linear-gradient(#fff, #fff) padding-box, conic-gradient(from ${t * 140}deg, ${H0}, ${H1}, ${H0}22, ${H0}22, ${H0}) border-box`,
             boxShadow: `0 20px 50px rgba(30,40,90,.14), 0 0 46px ${H0}40`, padding: '20px 24px', boxSizing: 'border-box', transform: `translateZ(40px) scale(${k(t, [0, 0.55], [0.86, 1], BACK)})`}}>
-            <div style={{...T(28, INK, FONT), whiteSpace: 'normal', lineHeight: 1.3}}>{typed(s.say, t, 0.5, tEnd)}<span style={{opacity: Math.floor(t * 3) % 2, color: H0}}>|</span></div>
+            <div style={{...T(40, INK, FONT), whiteSpace: 'normal', lineHeight: 1.25}}>{typed(s.say, t, 0.5, tEnd)}<span style={{opacity: Math.floor(t * 3) % 2, color: H0}}>|</span></div>
             <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: 10}}><span style={{width: 48, height: 48, borderRadius: 99, background: t > tEnd ? H0 : '#ddd', ...T(26, '#fff'), display: 'flex', alignItems: 'center', justifyContent: 'center'}}>↑</span></div>
           </div>
           <svg width={1000} height={900} style={{position: 'absolute', left: -100, top: -450, overflow: 'visible'}}>
             {s.leaves.map((_, i) => { const [sx, sy] = sp(i), g = k(t, [grow(i) - 0.1, grow(i) + 0.3], [0, 1], IO);
               return <g key={i} transform="translate(100 450)">
-                <path d={wire(0, 0, sx, sy)} fill="none" stroke={INK} strokeWidth={2.4} strokeDasharray={400} strokeDashoffset={400 * (1 - k(t, [tEnd + 0.1, tEnd + 0.4], [0, 1]))} />
-                <path d={wire(sx, sy, 470, ly(i))} fill="none" stroke={INK} strokeWidth={2.4} strokeDasharray={500} strokeDashoffset={500 * (1 - g)} />
-                <path d={wire(0, 0, sx, sy) + ' ' + wire(sx, sy, 470, ly(i)).replace('M', 'L')} fill="none" stroke={H1} strokeWidth={7} strokeLinecap="round" strokeDasharray="22 260" strokeDashoffset={-((t * 160 + i * 40) % 282)} opacity={flow} />
+                <path d={wire(0, 0, sx, sy)} fill="none" stroke={INK} strokeWidth={4.5} strokeDasharray={400} strokeDashoffset={400 * (1 - k(t, [tEnd + 0.1, tEnd + 0.4], [0, 1]))} />
+                <path d={wire(sx, sy, 470, ly(i))} fill="none" stroke={INK} strokeWidth={4.5} strokeDasharray={500} strokeDashoffset={500 * (1 - g)} />
+                <path d={wire(0, 0, sx, sy) + ' ' + wire(sx, sy, 470, ly(i)).replace('M', 'L')} fill="none" stroke={H1} strokeWidth={11} strokeLinecap="round" strokeDasharray="22 260" strokeDashoffset={-((t * 160 + i * 40) % 282)} opacity={flow} />
               </g>; })}
           </svg>
           <div style={{position: 'absolute', left: -38, top: -38, width: 76, height: 76, borderRadius: 99, background: '#fff', border: `2.5px solid ${INK}`, display: 'flex', alignItems: 'center', justifyContent: 'center', ...T(22, INK, FONT), transform: `translateZ(30px) scale(${k(t, [tEnd, tEnd + 0.3], [0, 1], OUT)})`}}>{s.root}</div>
@@ -400,7 +400,7 @@ const Flow: React.FC<P<Extract<Scene, {kind: 'flow'}>>> = ({s, t, d}) => {
           {s.leaves.map(([label, app], i) => { const l = k(t, [grow(i), grow(i) + 0.4], [0, 1], BACK);
             return <div key={label} style={{position: 'absolute', left: 470 - 46, top: ly(i) - 46, display: 'flex', alignItems: 'center', gap: 18, transform: `translateZ(${l * 60}px) scale(${Math.max(0, l)})`, transformOrigin: '46px 46px'}}>
               <div style={{width: 92, height: 92, borderRadius: 99, background: '#fff', border: `2.5px solid ${flow > 0.5 ? H1 : INK}`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 24px rgba(20,16,24,.16)'}}>{app ? <Img src={staticFile(`logos/${app}`)} style={{width: 52, height: 52, objectFit: 'contain'}} /> : <span style={T(30)}>{i + 1}</span>}</div>
-              <span style={{...T(32, INK, FONT), background: 'rgba(255,255,255,.9)', padding: '6px 14px', borderRadius: 12}}>{label}</span></div>; })}
+              <span style={{...T(44, INK, DISP), background: '#fff', padding: '10px 20px', borderRadius: 16, boxShadow: '0 8px 22px rgba(20,16,24,.14)', border: `2px solid ${H1}33`}}>{label}</span></div>; })}
           <div style={{position: 'absolute', left: 140, top: 330, transform: `translateZ(50px) scale(${press})`, opacity: k(t, [runAt - 0.6, runAt - 0.3], [0, 1])}}>
             <div style={{padding: '22px 46px', borderRadius: 50, background: interpolateColors(k(t, [runAt + 0.2, runAt + 0.5], [0, 1]), [0, 1], [H0, OK]), ...T(40, '#fff'), boxShadow: '0 20px 50px rgba(30,40,90,.25)'}}>{t < runAt + 0.35 ? (s.button ?? 'Approve & Run') : 'Running ✓'}</div>
             <div style={{position: 'absolute', left: 150, top: 10, width: 130, height: 130, opacity: k(t, [runAt - 0.5, runAt - 0.3, runAt + 0.6, runAt + 0.8], [0, 1, 1, 0]), transform: `translate(${k(t, [runAt - 0.5, runAt], [180, 0], P3)}px, ${k(t, [runAt - 0.5, runAt], [120, 0], P3)}px)`}}><Lottie animationData={LOT.click} /></div></div>
@@ -554,7 +554,7 @@ const Proof: React.FC<P<Extract<Scene, {kind: 'proof'}>>> = ({s, t, d, m}) => {
           <div key={a} style={{flex: 1, padding: 22, borderRadius: 20, background: `${[H0, H1, OK][i]}14`, opacity: rowOn(i)}}><div style={T(24, SUB, FONT)}>{a}</div><div style={{...T(56, [H0, H1, OK][i]), marginTop: 8}}>{countUp(b, k(t, [0.6 + i * 0.2, 1.6 + i * 0.2], [0, 1], P3))}</div></div>))}</div>
         <svg width={1030} height={120} style={{marginTop: 18}}><path d="M0 100 C 120 90, 200 40, 320 60 S 520 20, 640 40 S 860 10, 1030 18" fill="none" stroke={H0} strokeWidth={5} strokeLinecap="round" strokeDasharray={1200} strokeDashoffset={1200 * (1 - k(t, [0.8, 2.2], [0, 1], IO))} /></svg></>;
       case 'approvals': return <>{rows.map(([a, b], i) => { const ok = k(t, [1.2 + i * 0.45, 1.5 + i * 0.45], [0, 1]); return <Row key={a} on={rowOn(i)}>
-        <span style={{...T(32, INK, FONT), whiteSpace: 'normal'}}>{a}</span><div style={{display: 'flex', alignItems: 'center', gap: 12}}>{ok > 0.5 ? <div style={{width: 56, height: 56}}><Lottie animationData={LOT.check} loop={false} /></div> : <Pill c={H0} s={22}>Review</Pill>}<span style={T(24, SUB, FONT)}>{b}</span></div></Row>; })}</>;
+        <span style={{...T(40, INK, FONT), whiteSpace: 'normal'}}>{a}</span><div style={{display: 'flex', alignItems: 'center', gap: 12}}>{ok > 0.5 ? <div style={{width: 56, height: 56}}><Lottie animationData={LOT.check} loop={false} /></div> : <Pill c={H0} s={22}>Review</Pill>}<span style={T(24, SUB, FONT)}>{b}</span></div></Row>; })}</>;
       case 'history': return <div style={{position: 'relative', paddingLeft: 40, marginTop: 10}}><div style={{position: 'absolute', left: 14, top: 20, bottom: 10, width: 3, background: `${H0}44`}} />
         {rows.map(([a, b], i) => <Row key={a} on={rowOn(i)} style={{background: i === 0 ? `${H0}14` : undefined}}><div style={{position: 'absolute', marginLeft: -64, width: 22, height: 22, borderRadius: 99, background: i === 0 ? H0 : '#C9CEDC'}} />
           <span style={{...T(32, INK, FONT), whiteSpace: 'normal'}}>{a}</span><span style={T(24, i === 0 ? H0 : SUB, FONT)}>{b}</span></Row>)}</div>;
@@ -580,7 +580,7 @@ const Proof: React.FC<P<Extract<Scene, {kind: 'proof'}>>> = ({s, t, d, m}) => {
   return (
     <World t={t} keys={keys} id="pf">
       <At x={0} y={-40}><div style={{opacity: k(t, [0, 0.4], [0, 1], OUT), transform: `translateY(${k(t, [0, 0.5], [40, 0], OUT)}px) scale(${k(t, [0, 0.5], [0.96, 1], OUT)})`}}><Card w={1100} style={{padding: 36, position: 'relative'}}>
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}><span style={T(44)}>{title[v]}</span>{s.chip && <Pill c={H0} s={24}>{s.chip}</Pill>}</div>{body}</Card></div></At>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}><span style={T(54)}>{title[v]}</span>{s.chip && <Pill c={H0} s={24}>{s.chip}</Pill>}</div>{body}</Card></div></At>
       <At x={0} y={330}><div style={{opacity: k(t, [trustAt - 0.1, trustAt + 0.2], [0, 1]), transform: `scale(${press})`}}>
         <div style={{width: 320 + 160 * conn, height: 110, borderRadius: 60, background: interpolateColors(conn, [0, 1], [H0, OK]), display: 'flex', alignItems: 'center', justifyContent: 'center', ...T(50, '#fff'), boxShadow: '0 20px 50px rgba(20,30,80,.25)'}}>{conn < 0.5 ? 'Approve' : 'Connected ✓'}</div></div></At>
       <At x={0} y={470}><div style={{...T(44, SUB, FONT), width: 1300, whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.2, opacity: k(t, [trustAt + 1.0, trustAt + 1.3], [0, 1])}}>
