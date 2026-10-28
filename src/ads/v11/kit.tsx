@@ -218,9 +218,17 @@ const BgLayer: React.FC<{th: Theme; s: number}> = ({th, s}) => {
         `radial-gradient(62% 56% at ${32 + 22 * sw(s, 7)}% ${66 + 6 * sw(s, 9, 1)}%, ${c0} 0%, rgba(255,255,255,0) 62%)`,
         `radial-gradient(52% 46% at ${76 - 20 * sw(s, 8, 2)}% ${30 + 8 * sw(s, 6)}%, ${c1} 0%, rgba(255,255,255,0) 60%)`,
         `radial-gradient(40% 36% at ${54 + 30 * sw(s, 11, 4)}% ${48 + 10 * sw(s, 10, 3)}%, ${c2} 0%, rgba(255,255,255,0) 60%)`].join(',')}} />;
-    case 'aurora': // P02: lavender + peach aurora bands sweeping left<->right
-      return <Blur px={70}>{[c0, c1, c2, c0].map((c, i) => <div key={i} style={{position: 'absolute', left: `${-20 + 30 * sw(s, 9 + i * 2, i)}%`, top: 120 + i * 210, width: '140%', height: 230,
-        borderRadius: '50%', background: `linear-gradient(90deg, rgba(255,255,255,0), ${c}, rgba(255,255,255,0))`, transform: `rotate(${-8 + 10 * sw(s, 12, i * 1.3)}deg)`, opacity: 0.85}} />)}</Blur>;
+    case 'aurora': { // P02: living aurora. Rotating conic light field + fast-travelling ribbons + drifting light pools
+      // (all frame-driven; periods 4-7 s so motion is always visible; colours stay lavender / peach / lilac)
+      const rot = s * 24;
+      return <AbsoluteFill>
+        <AbsoluteFill style={{background: `conic-gradient(from ${rot}deg at ${50 + 18 * sw(s, 7)}% ${48 + 12 * sw(s, 5, 1)}%, ${c0}, ${c1}, ${c2}, ${c0})`, opacity: 0.55, filter: 'blur(90px)', transform: 'scale(1.4)'}} />
+        <Blur px={46}>{[c0, c1, c2, c1, c0].map((c, i) => <div key={i} style={{position: 'absolute', left: `${-35 + 45 * sw(s, 4.5 + i * 0.7, i * 1.1)}%`, top: 40 + i * 200 + 60 * sw(s, 5 + i, i), width: '150%', height: 190,
+          borderRadius: '50%', background: `linear-gradient(90deg, rgba(255,255,255,0), ${c}, rgba(255,255,255,.55), ${c}, rgba(255,255,255,0))`, transform: `rotate(${-14 + 22 * sw(s, 6 + i * 0.8, i * 1.3)}deg) scaleY(${1 + 0.35 * sw(s, 3.6, i)})`, opacity: 0.9}} />)}</Blur>
+        <Blur px={60}>{[0, 1, 2].map((i) => <div key={i} style={{position: 'absolute', left: `${20 + 55 * (0.5 + 0.5 * sw(s, 6 + i * 1.7, i * 2))}%`, top: `${15 + 60 * (0.5 + 0.5 * sw(s, 5 + i * 1.3, i))}%`, width: 520, height: 520, marginLeft: -260, marginTop: -260,
+          borderRadius: '50%', background: `radial-gradient(circle, rgba(255,255,255,.9), ${[c1, c2, c0][i]} 45%, rgba(255,255,255,0) 72%)`, opacity: 0.75}} />)}</Blur>
+      </AbsoluteFill>;
+    }
     case 'waves': { // P03: dark navy + electric blue layered glowing waves
       const layers = [0, 1, 2, 3, 4, 5];
       return <AbsoluteFill><svg width={1920} height={1080} style={{position: 'absolute'}}>
