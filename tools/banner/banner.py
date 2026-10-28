@@ -43,7 +43,7 @@ d.text((lx + 22, 62), 'AI WORKFLOW AUTOMATION  ·  NO-CODE', font=F(600, 19), fi
 # row 2: the slogan (one idea, two lines, accent on the payoff) + plain-English value line
 d.text((X0, 128), 'Make your work life', font=F(700, 62), fill=INK)
 d.text((X0, 196), 'hassle-free.', font=F(700, 62), fill=ACC)
-d.text((X0, 276), 'Describe a task in plain English, approve it, and FansaChat runs it across 700+ apps.', font=F(500, 21), fill=MUTED)
+d.text((X0, 276), 'Describe a task in plain English. Approve it. It runs across 700+ apps.', font=F(500, 21), fill=MUTED)
 # row 3: founder line + contact
 d.text((X0, 346), 'Aminur Rahman Noor', font=F(700, 23), fill=INK)
 nx = X0 + d.textlength('Aminur Rahman Noor', font=F(700, 23)) + 12
