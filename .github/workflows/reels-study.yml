@@ -1,0 +1,21 @@
+# Study a zip of short reels from a release: per reel a 1 fps contact sheet + scene-cut sheet (public refs only).
+# Run: gh workflow run reels-study.yml --ref tools/templates -f tag=study-wl5 -f zip=saas_refs.zip
+name: reels-study
+on: { workflow_dispatch: { inputs: { tag: { required: true }, zip: { required: true } } } }
+permissions: { contents: read }
+jobs:
+  s:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - env: { GH_TOKEN: '${{ github.token }}' }
+        run: gh release download "${{ inputs.tag }}" -R "$GITHUB_REPOSITORY" -p "${{ inputs.zip }}" -O r.zip && mkdir -p in out && unzip -q r.zip -d in && ls in | wc -l
+      - run: |
+          for v in in/*.mp4; do n=$(basename "$v" .mp4)
+            ffmpeg -v error -i "$v" -vf "fps=1,scale=240:-2,tile=8x4:padding=3:color=white" -frames:v 1 -pix_fmt yuvj420p "out/${n}__sheet.jpg" || echo "sheet fail $n"
+            ffmpeg -v error -i "$v" -vf "select='gt(scene,0.25)',scale=240:-2,tile=8x3:padding=3:color=white" -frames:v 1 -vsync vfr -pix_fmt yuvj420p "out/${n}__cuts.jpg" || true
+            ffprobe -v error -show_entries format=duration -of csv=p=0 "$v" | xargs -I{} echo "$n,{}" >> out/durations.csv
+          done; ls out | wc -l
+      - uses: actions/upload-artifact@v4
+        with: { name: reels-study, path: out, retention-days: 7 }
