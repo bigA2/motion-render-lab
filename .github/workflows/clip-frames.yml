@@ -1,0 +1,16 @@
+# Dense frame sheet for a short clip in a release. Run: gh workflow run clip-frames.yml -f tag=study-wl5 -f file=X.mkv -f fps=10
+name: clip-frames
+on: { workflow_dispatch: { inputs: { tag: { required: true }, file: { required: true }, fps: { required: false, default: "10" } } } }
+permissions: { contents: read }
+jobs:
+  f:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          gh release download "${{ inputs.tag }}" -R "$GITHUB_REPOSITORY" -p "${{ inputs.file }}" -O v.mkv && mkdir -p out
+          ffmpeg -v error -i v.mkv -vf "fps=${{ inputs.fps }},scale=360:-2,drawtext=text='%{pts\:hms}':x=4:y=4:fontsize=16:fontcolor=red:box=1:boxcolor=white@0.7,tile=10x3:padding=3:color=white" -pix_fmt yuvj420p out/dense_%02d.jpg
+          ls out
+      - uses: actions/upload-artifact@v4
+        with: { name: clip-frames, path: out, retention-days: 3 }
