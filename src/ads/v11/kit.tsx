@@ -307,11 +307,11 @@ const Hook: React.FC<P<Extract<Scene, {kind: 'hook'}>>> = ({s, t, d}) => {
         if (t < a - 0.05 || t > b + 0.3) return null;
         const out = k(t, [b - 0.05, b + 0.25], [0, 1], IN), hasV = !!p.vis;
         // camera beat: when a visual pops, the frame punches in toward it (locked to the word, then holds; no drift)
-        const vy = lay === 'behind' ? 430 : lay === 'side' ? 540 : 380, vx = lay === 'side' ? 600 : 960, cz = hasV ? k(u, [0, 0.45], [1, 1.14], OUT) : 1;
-        return <AbsoluteFill key={i} style={{opacity: 1 - out, filter: out > 0.01 ? `blur(${out * 16}px)` : undefined, transformOrigin: `${vx}px ${vy}px`, transform: `translateY(${-out * 40}px) scale(${(1 - out * 0.04) * cz})`}}>
-          {hasV && (lay === 'side' ? <At x={600} y={540}><div style={{transform: 'scale(.9)'}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>
-            : lay === 'behind' ? <At x={960} y={430}><div style={{transform: 'scale(1.25)', opacity: 0.26, filter: 'blur(4px)'}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>
-              : <At x={960} y={380}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></At>)}
+        const cz = hasV ? k(u, [0, 0.45], [1, 1.14], OUT) : 1;
+        return <AbsoluteFill key={i} style={{opacity: 1 - out, filter: out > 0.01 ? `blur(${out * 16}px)` : undefined, transform: `translateY(${-out * 40}px) scale(${1 - out * 0.04})`}}>
+          {hasV && (lay === 'side' ? <At x={600} y={540}><div style={{transform: `scale(${0.9 * cz})`}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>
+            : lay === 'behind' ? <At x={960} y={430}><div style={{transform: `scale(${1.25 * cz})`, opacity: 0.26, filter: 'blur(4px)'}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>
+              : <At x={960} y={380}><div style={{transform: `scale(${(TALL ? 1.3 : 1) * cz})`}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>)}
           {lay === 'side' && hasV ? <At x={1390} y={540}><div style={{...T(96), width: 700, whiteSpace: 'normal'}}><Words t={p.text} t0={t} at={ats[i]} hot={p.hot} off={i} style={{maxWidth: 700, justifyContent: 'flex-start'}} /></div></At>
             : <At x={960} y={hasV && lay === 'stack' ? 790 : 540}><div style={{...T(hasV && lay === 'stack' ? 104 : 132), width: TALL ? 1300 : 1380, whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.08}}><Words t={p.text} t0={t} at={ats[i]} hot={p.hot} off={i} /></div></At>}
         </AbsoluteFill>; })}
@@ -364,7 +364,7 @@ const Flow: React.FC<P<Extract<Scene, {kind: 'flow'}>>> = ({s, t, d}) => {
   const splits = [[230, (ly(0) + ly(Math.ceil(n / 2) - 1)) / 2], [230, (ly(Math.ceil(n / 2)) + ly(n - 1)) / 2]] as const;
   const sp = (i: number) => (n > 2 ? splits[i < Math.ceil(n / 2) ? 0 : 1] : [230, ly(i)]);
   const z0 = lap ? 0.62 : 1.4;
-  const keys: Key[] = [[0, lap ? 0 : -480, lap ? 120 : 290, z0], [Math.min(0.9, tEnd * 0.4), -480, 300, 1.75], [tEnd, -480, 300, 1.75], [grow(0) + 0.1, 380, ly(0), 1.5]];
+  const keys: Key[] = [[0, lap ? 0 : -480, lap ? 120 : 290, z0], [Math.min(0.9, tEnd * 0.4), -480, 360, 1.75], [tEnd, -480, 360, 1.75], [grow(0) + 0.1, 380, ly(0), 1.5]];
   s.leaves.forEach((_, i) => i && keys.push([grow(i) + 0.15, 380, ly(i), 1.5]));
   keys.push([runAt - 0.3, 260, 40, 1.15], [runAt + 0.4, 260, 80, 1.18], [d, 260, 80, 1.22]);
   const panel = th.stage === 'panel', tilt = lap ? k(t, [0, 0.9], [18, 4], IO) : panel ? k(t, [0, d], [th.tilt, th.tilt * 0.4], IO) : k(t, [0, d], [12, 5], IO), rz = lap ? 0 : panel ? k(t, [0, d], [th.tilt * 0.3, 0], IO) : k(t, [0, d], [-6, -2], IO);
