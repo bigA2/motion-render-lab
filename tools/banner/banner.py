@@ -3,7 +3,7 @@ import io, math, random, urllib.request
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 from rembg import remove
 W, H = 1500, 500
-def get(u): return Image.open(io.BytesIO(urllib.request.urlopen(u, timeout=60).read()))
+def get(u): return Image.open(io.BytesIO(urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0 (banner build)'}), timeout=60).read()))
 F = lambda w, s: ImageFont.truetype(f'fonts/InterTight-{w}.ttf', s)
 bg = Image.new('RGB', (W, H), '#0B0C1A')
 # soft brand glows (logo pastels: lavender + sky)
