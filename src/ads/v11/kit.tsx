@@ -306,7 +306,9 @@ const Hook: React.FC<P<Extract<Scene, {kind: 'hook'}>>> = ({s, t, d}) => {
       {s.phrases.map((p, i) => { const a = i ? ats[i] - 0.12 : -1, b = i < n - 1 ? ats[i + 1] - 0.12 : d + 1, u = t - Math.max(0, ats[i] - 0.05);
         if (t < a - 0.05 || t > b + 0.3) return null;
         const out = k(t, [b - 0.05, b + 0.25], [0, 1], IN), hasV = !!p.vis;
-        return <AbsoluteFill key={i} style={{opacity: 1 - out, filter: out > 0.01 ? `blur(${out * 16}px)` : undefined, transform: `translateY(${-out * 40}px) scale(${1 - out * 0.04})`}}>
+        // camera beat: when a visual pops, the frame punches in toward it (locked to the word, then holds; no drift)
+        const vy = lay === 'behind' ? 430 : lay === 'side' ? 540 : 380, vx = lay === 'side' ? 600 : 960, cz = hasV ? k(u, [0, 0.45], [1, 1.14], OUT) : 1;
+        return <AbsoluteFill key={i} style={{opacity: 1 - out, filter: out > 0.01 ? `blur(${out * 16}px)` : undefined, transformOrigin: `${vx}px ${vy}px`, transform: `translateY(${-out * 40}px) scale(${(1 - out * 0.04) * cz})`}}>
           {hasV && (lay === 'side' ? <At x={600} y={540}><div style={{transform: 'scale(.9)'}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>
             : lay === 'behind' ? <At x={960} y={430}><div style={{transform: 'scale(1.25)', opacity: 0.26, filter: 'blur(4px)'}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>
               : <At x={960} y={380}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></At>)}
