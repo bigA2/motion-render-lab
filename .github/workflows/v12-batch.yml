@@ -1,0 +1,33 @@
+# Render P03-P07 v12 (20 comps) fully on GitHub: dispatch render-fast per comp (4x5 music first), wait, rerun failures once,
+# publish all mp4 to release p0x-v12. No laptop involvement. Run: gh workflow run v12-batch.yml --ref tools/templates
+name: v12-batch
+on: { workflow_dispatch: {} }
+permissions: { contents: write, actions: write }
+jobs:
+  batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env: { GH_TOKEN: '${{ github.token }}', R: '${{ github.repository }}' }
+    steps:
+      - name: Dispatch
+        run: |
+          T=$(date -u +%Y-%m-%dT%H:%M:%SZ); echo "T=$T" >> $GITHUB_ENV
+          for r in 4x5-music 4x5 16x9-music 16x9; do for p in 3 4 5 6 7; do
+            for t in 1 2 3; do gh workflow run render-fast.yml -R "$R" --ref tools/templates -f entry=src/ads/v11/index.ts -f comp=P0${p}v11-$r -f crf=16 && break; sleep 10; done; sleep 3
+          done; done
+      - name: Wait + retry
+        run: |
+          sleep 60; retried=0
+          for i in $(seq 1 64); do
+            J=$(gh run list -R "$R" -w render-fast.yml -L 60 --json databaseId,status,conclusion,createdAt -q "[.[]|select(.createdAt>=\"$T\")]")
+            N=$(echo "$J" | jq length); P=$(echo "$J" | jq '[.[]|select(.status!="completed")]|length'); F=$(echo "$J" | jq -r '.[]|select(.status=="completed" and .conclusion!="success")|.databaseId')
+            echo "$(date -u +%H:%M) runs=$N pending=$P failed=$(echo $F | wc -w)"
+            if [ "$P" = 0 ] && [ -n "$F" ] && [ $retried = 0 ]; then for id in $F; do gh run rerun $id -R "$R" --failed || true; done; retried=1; sleep 60; continue; fi
+            [ "$N" -ge 20 ] && [ "$P" = 0 ] && break; sleep 240
+          done
+      - name: Collect + publish
+        run: |
+          mkdir -p out
+          for id in $(gh run list -R "$R" -w render-fast.yml -L 60 --json databaseId,createdAt,conclusion -q ".[]|select(.createdAt>=\"$T\" and .conclusion==\"success\")|.databaseId"); do gh run download $id -R "$R" -n renders -D out || true; done
+          ls -la out; gh release view p0x-v12 -R "$R" >/dev/null 2>&1 || gh release create p0x-v12 -R "$R" --target tools/templates -t "P03–P07 v12 (1440p)" -n "v12: 5 looks from the SaaS study, realistic mockups, spring pops, reel camera"
+          gh release upload p0x-v12 -R "$R" out/*.mp4 --clobber
