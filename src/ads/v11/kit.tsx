@@ -137,28 +137,48 @@ const VisView: React.FC<{v: Vis; u: number; seed: number}> = ({v, u, seed}) => {
   const th = useTh();
   if (v.v === 'chat') {
     const msgs = ['Can you send the file again?', 'Any update on this?', 'Where is the invoice?', 'Call today?'];
+    const who = ['Maya · Bloom Studio', 'Arif · Northwind', 'Sam · Acme Retail', 'Lena · Orbit Labs'], at = ['9:41', '9:43', '9:44', '9:46'];
     return <div style={{position: 'relative', width: 760}}>
       {Array.from({length: v.n}, (_, i) => <Pop key={i} t={u} at={i * 0.14} style={{marginTop: i ? 16 : 0, marginLeft: i % 2 ? 90 : 0}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 18, padding: '18px 26px 18px 18px', borderRadius: 28, ...glass, width: 600}}>
-          <Avatar seed={seed + i} s={64} /><div><div style={T(22, SUB, FONT)}>Client · just now</div><div style={{...T(30, INK, FONT), marginTop: 8}}>{msgs[i % 4]}</div></div></div></Pop>)}
+          <Avatar seed={seed + i} s={64} /><div><div style={{display: 'flex', gap: 12, alignItems: 'baseline'}}><span style={{...T(22, INK, FONT), fontWeight: 700}}>{who[i % 4]}</span><span style={T(19, SUB, FONT)}>{at[i % 4]}</span></div><div style={{...T(30, INK, FONT), marginTop: 8}}>{msgs[i % 4]}</div></div></div></Pop>)}
       <div style={{position: 'absolute', right: 40, top: -26}}><Pop t={u} at={v.n * 0.14 + 0.1}><Pill c={RED} solid s={26}>{v.badge}</Pill></Pop></div>
     </div>;
   }
-  if (v.v === 'sheet') {
-    return <Pop t={u} at={0}><Card w={780} style={{padding: 22}}>
-      {Array.from({length: 5}, (_, r) => <div key={r} style={{display: 'flex', gap: 10, marginTop: r ? 10 : 0}}>
-        {Array.from({length: 5}, (_, c) => { const bad = random(`sh${seed}${r}${c}`) < 0.22, jig = bad ? Math.sin(u * 9 + r + c) * 6 : 0;
-          return <div key={c} style={{width: 138, height: 46, borderRadius: 10, background: r === 0 ? '#EEF1F8' : bad ? `${RED}18` : '#F7F8FC', border: bad ? `2px solid ${RED}66` : '1px solid #E6E9F2', transform: `translate(${jig}px, ${jig * 0.4}px)`, display: 'flex', alignItems: 'center', padding: '0 12px', boxSizing: 'border-box'}}>
-            {r === 0 ? <span style={T(20, SUB, FONT)}>{'ABCDE'[c]}</span> : <Bar w={30 + random(`sw${r}${c}`) * 80} c={bad ? `${RED}88` : '#D9DDE8'} h={10} />}</div>; })}</div>)}
-    </Card></Pop>;
+  if (v.v === 'sheet') { // real spreadsheet UI: title bar, menu, formula bar, A-F columns, row numbers, real rows; the selection walks down column C
+    const cols = ['Client', 'Invoice', 'Amount', 'Status', 'Due', 'Owner'], w = [210, 120, 120, 130, 110, 110];
+    const rows = [['Bloom Studio', 'INV-1042', '$1,200', 'Paid', 'Oct 02', 'Maya'], ['Northwind Co.', 'INV-1043', '$860', 'Overdue', 'Sep 28', 'Arif'], ['Acme Retail', 'INV-1044', '$2,450', 'Sent', 'Oct 09', 'Sam'],
+      ['Lumen Dental', 'INV-1045', '$540', 'Overdue', 'Sep 30', 'Maya'], ['Orbit Labs', 'INV-1046', '$1,980', 'Draft', 'Oct 12', 'Arif'], ['Northwind Co.', 'INV-1043', '$860', 'Overdue', 'Sep 28', 'Arif']];
+    const sel = Math.min(rows.length - 1, Math.floor(k(u, [0.2, 1.6], [0, rows.length - 0.01], Easing.linear))), selC = 2;
+    const tag = (st: string) => { const c = st === 'Paid' ? OK : st === 'Overdue' ? RED : st === 'Sent' ? '#2563EB' : '#8A8FA3'; return <span style={{...T(17, c, FONT), fontWeight: 600, background: `${c}14`, padding: '3px 9px', borderRadius: 6}}>{st}</span>; };
+    const G = '#E2E5EC', HD = '#F3F4F7';
+    return <Pop t={u} at={0}><div style={{width: 900, borderRadius: 14, overflow: 'hidden', background: '#fff', boxShadow: '0 40px 90px rgba(15,23,42,.22), 0 0 0 1px rgba(15,23,42,.08)'}}>
+      <div style={{display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', background: '#FAFAFB', borderBottom: `1px solid ${G}`}}>
+        {['#FF5F57', '#FEBC2E', '#28C840'].map((c) => <span key={c} style={{width: 11, height: 11, borderRadius: 99, background: c}} />)}
+        <span style={{width: 22, height: 22, borderRadius: 5, background: '#0F9D58', marginLeft: 10}} /><span style={{...T(18, '#1F2937', FONT), fontWeight: 600}}>Client billing — Q4</span>
+        <span style={{...T(15, '#6B7280', FONT), marginLeft: 14, whiteSpace: 'pre'}}>File   Edit   View   Insert   Format   Data</span></div>
+      <div style={{display: 'flex', alignItems: 'center', gap: 10, padding: '7px 14px', borderBottom: `1px solid ${G}`}}><span style={{...T(15, '#6B7280', FONT), width: 46}}>C{sel + 2}</span><span style={T(16, '#9CA3AF', FONT)}>fx</span>
+        <span style={T(16, '#111827', FONT)}>{rows[sel][selC]}</span></div>
+      <div style={{display: 'flex', background: HD, borderBottom: `1px solid ${G}`}}><span style={{width: 40, borderRight: `1px solid ${G}`}} />{w.map((x, i) => <span key={i} style={{...T(14, '#6B7280', FONT), width: x, textAlign: 'center', padding: '5px 0', borderRight: `1px solid ${G}`}}>{'ABCDEF'[i]}</span>)}</div>
+      {[cols, ...rows].map((r, ri) => <div key={ri} style={{display: 'flex', borderBottom: `1px solid ${G}`, background: ri === 0 ? '#FBFBFC' : ri === 6 ? `${RED}0D` : '#fff'}}>
+        <span style={{...T(14, '#9CA3AF', FONT), width: 40, textAlign: 'center', padding: '11px 0', background: HD, borderRight: `1px solid ${G}`}}>{ri + 1}</span>
+        {r.map((cell, ci) => { const on = ri === sel + 1 && ci === selC; return <span key={ci} style={{width: w[ci], padding: '10px 12px', borderRight: `1px solid ${G}`, boxSizing: 'border-box', ...T(17, ri === 0 ? '#111827' : '#1F2937', FONT), fontWeight: ri === 0 ? 700 : 500, textAlign: ci === 2 ? 'right' : 'left',
+          outline: on ? '2.5px solid #1A73E8' : undefined, outlineOffset: -2}}>{ri && ci === 3 ? tag(cell) : cell}</span>; })}</div>)}
+      <div style={{display: 'flex', alignItems: 'center', gap: 10, padding: '8px 14px', background: '#FAFAFB'}}><span style={{...T(15, RED, FONT), fontWeight: 600}}>Row 7 duplicates row 3</span><span style={{...T(15, '#6B7280', FONT), marginLeft: 'auto'}}>Sum  $8,890</span></div>
+    </div></Pop>;
   }
-  if (v.v === 'invoice') {
-    const shake = Math.sin(u * 40) * k(u, [0.55, 0.9], [8, 0], Easing.linear) * (u > 0.55 ? 1 : 0);
-    return <Pop t={u} at={0}><div style={{position: 'relative'}}><Card w={560} style={{padding: 34}}>
-      <div style={{display: 'flex', justifyContent: 'space-between'}}><span style={T(34)}>Invoice #1042</span><span style={T(24, SUB, FONT)}>Acme Co.</span></div>
-      {[0, 1, 2].map((i) => <div key={i} style={{display: 'flex', justifyContent: 'space-between', marginTop: 22}}><Bar w={220 - i * 40} /><Bar w={70} /></div>)}
-      <div style={{display: 'flex', justifyContent: 'space-between', marginTop: 30, alignItems: 'baseline'}}><span style={T(26, SUB, FONT)}>Total</span><span style={T(52)}>{countUp('$1,200', k(u, [0.1, 0.8], [0, 1]))}</span></div>
-    </Card><div style={{position: 'absolute', right: -40, top: -28, transform: `translateX(${shake}px) rotate(6deg)`}}><Pop t={u} at={0.5}><Pill c={RED} solid s={28}>{v.badge}</Pill></Pop></div></div></Pop>;
+  if (v.v === 'invoice') { // real invoice document: brand, bill-to, line items, subtotal/tax/total, stamped status
+    const items: [string, string, string][] = [['Website redesign — phase 2', '1', '$750.00'], ['Monthly SEO retainer', '1', '$350.00'], ['Landing page copy', '2', '$50.00']];
+    const L = '#E5E7EB';
+    return <Pop t={u} at={0}><div style={{position: 'relative', width: 640, background: '#fff', borderRadius: 16, padding: '34px 38px', boxSizing: 'border-box', boxShadow: '0 40px 90px rgba(15,23,42,.22), 0 0 0 1px rgba(15,23,42,.06)'}}>
+      <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}><div><div style={{display: 'flex', alignItems: 'center', gap: 10}}><span style={{width: 30, height: 30, borderRadius: 8, background: '#111827'}} /><span style={{...T(22, '#111827'), fontWeight: 700}}>Bloom Studio</span></div>
+        <div style={{...T(15, '#6B7280', FONT), marginTop: 10, whiteSpace: 'normal', lineHeight: 1.4}}>Bill to: Acme Retail Ltd.<br />accounts@acme-retail.com</div></div>
+        <div style={{textAlign: 'right'}}><div style={{...T(30, '#111827'), fontWeight: 700}}>Invoice</div><div style={{...T(15, '#6B7280', FONT), marginTop: 8}}>#1042 · Due Sep 14</div></div></div>
+      <div style={{marginTop: 26, borderTop: `1px solid ${L}`}}>{items.map(([d, q, a]) => <div key={d} style={{display: 'flex', padding: '13px 0', borderBottom: `1px solid ${L}`, ...T(17, '#1F2937', FONT)}}><span style={{flex: 1}}>{d}</span><span style={{width: 60, textAlign: 'center', color: '#6B7280'}}>{q}</span><span style={{width: 110, textAlign: 'right'}}>{a}</span></div>)}</div>
+      {[['Subtotal', '$1,200.00'], ['Tax (0%)', '$0.00']].map(([a, b]) => <div key={a} style={{display: 'flex', justifyContent: 'flex-end', gap: 30, marginTop: 10, ...T(16, '#6B7280', FONT)}}><span>{a}</span><span style={{width: 110, textAlign: 'right'}}>{b}</span></div>)}
+      <div style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'baseline', gap: 30, marginTop: 14}}><span style={T(18, '#111827', FONT)}>Total due</span><span style={{...T(40, '#111827'), width: 200, textAlign: 'right', fontWeight: 700}}>{countUp('$1,200', k(u, [0.1, 0.8], [0, 1]))}</span></div>
+      <div style={{position: 'absolute', right: 28, top: 118, transform: `rotate(-8deg) scale(${k(u, [0.55, 0.8], [1.4, 1], BACK)})`, opacity: k(u, [0.55, 0.7], [0, 1]), border: `3px solid ${RED}`, borderRadius: 10, padding: '6px 14px', ...T(22, RED), fontWeight: 800, letterSpacing: '0.08em'}}>{v.badge.toUpperCase()}</div>
+    </div></Pop>;
   }
   if (v.v === 'people') {
     return <div style={{display: 'flex', gap: 22, alignItems: 'flex-end'}}>{Array.from({length: v.n}, (_, i) => { const mid = Math.abs(i - (v.n - 1) / 2);
@@ -358,7 +378,7 @@ const Hook: React.FC<P<Extract<Scene, {kind: 'hook'}>>> = ({s, t, d}) => {
         return <AbsoluteFill key={i} style={{opacity: 1 - out, filter: out > 0.01 ? `blur(${out * 16}px)` : undefined, transform: `translateY(${-out * 40}px) scale(${1 - out * 0.04})`}}>
           {hasV && (lay === 'side' ? <At x={600} y={540}><div style={{transform: `scale(${0.9 * cz})`}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>
             : lay === 'behind' ? <At x={960} y={430}><div style={{transform: `scale(${1.25 * cz})`, opacity: 0.26, filter: 'blur(4px)'}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>
-              : <At x={960} y={380}><div style={{transform: `scale(${(TALL ? 1.3 : 1) * cz})`}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>)}
+              : <At x={960} y={380}><div style={{transform: `perspective(1800px) rotateX(${10 * (1 - k(u, [0, 0.9], [0, 1], OUT))}deg) rotateY(${-14 * (1 - k(u, [0, 0.9], [0, 1], OUT))}deg) scale(${(TALL ? 1.3 : 1) * cz * k(u, [0.4, 3], [1, 1.05], Easing.linear)})`}}><VisView v={p.vis!} u={u} seed={i * 7 + 3} /></div></At>)}
           {lay === 'side' && hasV ? <At x={1390} y={540}><div style={{...T(96), width: 700, whiteSpace: 'normal'}}><Words t={p.text} t0={t} at={ats[i]} hot={p.hot} off={i} style={{maxWidth: 700, justifyContent: 'flex-start'}} /></div></At>
             : <At x={960} y={hasV && lay === 'stack' ? 790 : 540}><div style={{...T(hasV && lay === 'stack' ? 104 : 132), width: TALL ? 1300 : 1380, whiteSpace: 'normal', textAlign: 'center', lineHeight: 1.08}}><Words t={p.text} t0={t} at={ats[i]} hot={p.hot} off={i} /></div></At>}
         </AbsoluteFill>; })}
