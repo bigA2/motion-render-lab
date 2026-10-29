@@ -109,25 +109,13 @@ const Pill: React.FC<{c: string; children: React.ReactNode; solid?: boolean; s?:
 // Illustrated person (no real faces — founder rule: no personal data as mock). Deterministic per seed.
 const SKIN = ['#F7D7BC', '#E9B892', '#C98E66', '#8D5A3B', '#F2C9A6', '#A8714E'], HAIR = ['#2A1D19', '#5B3A24', '#C58A45', '#161616', '#8A5A2B', '#D9B26A'];
 const SHIRT = ['#4F7CFF', '#FF7A59', '#22B07D', '#8B5CF6', '#F4B400', '#EC4899', '#0EA5E9', '#334155'], BGS = ['#DCE7FF', '#FFE4DA', '#D8F5E8', '#EDE4FF', '#FFF1CC', '#FFE0EE'];
+const INITIALS = ['MK', 'AR', 'SJ', 'LN', 'DP', 'RC', 'TH', 'NB', 'EV', 'OM', 'FS', 'KI'];
+const AV_BG = [['#6366F1', '#8B5CF6'], ['#0EA5E9', '#2563EB'], ['#10B981', '#059669'], ['#F59E0B', '#EA580C'], ['#EC4899', '#DB2777'], ['#14B8A6', '#0D9488'], ['#64748B', '#334155']];
 const Avatar: React.FC<{seed: number; s: number; grey?: number; ring?: string}> = ({seed, s, grey = 0, ring}) => {
-  const r = (n: string) => random(`av${seed}${n}`), pick = <X,>(a: X[], n: string) => a[Math.floor(r(n) * a.length)];
-  const hs = Math.floor(r('h') * 4), hair = pick(HAIR, 'c'), skin = pick(SKIN, 's'), id = `c${seed}`;
-  return (
-    <svg width={s} height={s} viewBox="0 0 100 100" style={{filter: grey ? `grayscale(${grey})` : undefined, borderRadius: 99, boxShadow: ring ? `0 0 0 ${s * 0.04}px ${ring}, 0 10px 24px rgba(30,40,90,.16)` : '0 10px 24px rgba(30,40,90,.16)', flex: '0 0 auto'}}>
-      <defs><clipPath id={id}><circle cx="50" cy="50" r="50" /></clipPath></defs>
-      <g clipPath={`url(#${id})`}>
-        <rect width="100" height="100" fill={pick(BGS, 'b')} />
-        {hs === 1 && <path d="M28 46 Q26 82 34 92 L66 92 Q74 82 72 46 Z" fill={hair} />}
-        <ellipse cx="50" cy="104" rx="38" ry="30" fill={pick(SHIRT, 't')} />
-        <rect x="44" y="60" width="12" height="12" rx="4" fill={skin} />
-        <circle cx="50" cy="45" r="19" fill={skin} />
-        {hs === 3 ? <circle cx="50" cy="22" r="9" fill={hair} /> : null}
-        <path d={hs === 2 ? 'M31 44 Q31 24 50 24 Q69 24 69 44 Q62 34 50 34 Q40 34 31 44Z' : 'M30 46 Q29 22 50 22 Q71 22 70 46 Q66 31 50 31 Q35 31 30 46Z'} fill={hair} />
-        <circle cx="43" cy="47" r="1.9" fill="#1d1d24" /><circle cx="57" cy="47" r="1.9" fill="#1d1d24" />
-        <path d="M44 54 Q50 58.5 56 54" stroke="#1d1d24" strokeWidth="1.8" fill="none" strokeLinecap="round" />
-      </g>
-    </svg>
-  );
+  const [a, b] = AV_BG[Math.floor(random(`avc${seed}`) * AV_BG.length)], ini = INITIALS[Math.floor(random(`avi${seed}`) * INITIALS.length)];
+  return <div style={{width: s, height: s, borderRadius: 99, flex: '0 0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', background: `linear-gradient(140deg, ${a}, ${b})`,
+    color: '#fff', fontFamily: DISP, fontSize: s * 0.36, letterSpacing: '0.02em', filter: grey ? `grayscale(${grey})` : undefined,
+    boxShadow: ring ? `0 0 0 ${s * 0.045}px ${ring}, 0 10px 24px rgba(30,40,90,.16)` : '0 10px 24px rgba(30,40,90,.16)'}}>{ini}</div>;
 };
 const Bar: React.FC<{w: number; c?: string; h?: number}> = ({w, c = '#E3E6F0', h = 12}) => <div style={{width: w, height: h, borderRadius: 99, background: c}} />;
 const countUp = (label: string, p: number) => label.replace(/\d[\d,]*/, (m) => Math.round(Number(m.replace(/,/g, '')) * p).toLocaleString('en-US'));
