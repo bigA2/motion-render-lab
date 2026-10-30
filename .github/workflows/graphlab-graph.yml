@@ -15,6 +15,6 @@ jobs:
         with: { node-version: '20' }
       - run: git clone --depth 1 --filter=blob:none --sparse https://github.com/activepieces/activepieces ap && git -C ap sparse-checkout set packages/pieces/community
       - run: cd graphlab && node graph/extract.mjs ../ap/packages/pieces/community "$RUNNER_TEMP/npm"
-      - run: cd graphlab && python graph/build_graph.py ../ap/packages/pieces/community "$RUNNER_TEMP/npm/npm_meta.json" && cp "$RUNNER_TEMP/npm/npm_failed.txt" out/ && python graph/retrieve.py out/graph.json
+      - run: cd graphlab && python graph/build_graph.py ../ap/packages/pieces/community "$RUNNER_TEMP/npm/npm_meta.json" && cp "$RUNNER_TEMP"/npm/{npm_failed.txt,auth_index.json,props_index.json} out/ && python graph/retrieve.py out/graph.json && python graph/auth_report.py out/auth_index.json
       - uses: actions/upload-artifact@v4
         with: { name: graph-lite, path: graphlab/out/, retention-days: 14 }

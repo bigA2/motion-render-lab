@@ -1,7 +1,8 @@
 // Extractor v2 (no AI): install the PUBLISHED @activepieces/piece-* packages from npm and read the real
 // runtime metadata (actions/triggers: name, displayName, description, aiMetadata.description).
 // Pieces that fail to install or load are left out; build_graph.py falls back to regex for them.
-// Run: node graph/extract.mjs <community-dir> <work-dir>  -> <work-dir>/npm_meta.json + npm_failed.txt
+// Also: per-app auth methods (field definitions only, no values) -> auth_index.json; required step props -> props_index.json
+// Run: node graph/extract.mjs <community-dir> <work-dir>  -> <work-dir>/npm_meta.json, auth_index.json, props_index.json, npm_failed.txt
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
@@ -16,7 +17,20 @@ for (const slug of fs.readdirSync(ROOT).sort()) {
 const BASE = ['@activepieces/pieces-framework', '@activepieces/pieces-common', '@activepieces/shared'];
 const step = (s) => ({ name: s.name, displayName: s.displayName || '', description: s.description || '',
   ai: s.aiMetadata?.description || '' });
-const out = {}, failed = [];
+const out = {}, auths = {}, props = {}, failed = [];
+const short = (t) => String(t || '').slice(0, 300);
+// auth method -> field definitions only (never default values)
+const fields = (ps) => Object.entries(ps || {}).map(([k, v]) => ({ name: k, displayName: v?.displayName || '', type: v?.type || '', required: !!v?.required }));
+function authOf(a) {
+  if (!a) return { type: 'none' };
+  const m = { type: a.type || 'unknown', displayName: a.displayName || '', description: short(a.description) };
+  if (a.type === 'OAUTH2') Object.assign(m, { authUrl: a.authUrl || '', tokenUrl: a.tokenUrl || '', scope: a.scope || [], pkce: !!a.pkce,
+    ...(a.authorizationMethod ? { authorizationMethod: a.authorizationMethod } : {}), props: Object.keys(a.props || {}) });
+  if (a.type === 'CUSTOM_AUTH') m.props = fields(a.props);
+  return m;
+}
+const reqProps = (st) => fields(st.props).filter((f) => f.required)
+  .map((f) => ({ name: f.name, type: f.type, required: true, isDropdown: ['DROPDOWN', 'MULTI_SELECT_DROPDOWN', 'DYNAMIC'].includes(f.type) }));
 
 function read(n) {  // load one installed package and read its piece object
   try {
@@ -27,6 +41,11 @@ function read(n) {  // load one installed package and read its piece object
     const trigs = typeof piece.triggers === 'function' ? piece.triggers() : piece._triggers;
     out[pkgs[n]] = { displayName: piece.displayName, description: piece.description || '', categories: piece.categories || [],
       actions: Object.values(acts || {}).map(step), triggers: Object.values(trigs || {}).map(step) };
+    const ver = JSON.parse(fs.readFileSync(path.join(WORK, 'node_modules', n, 'package.json'), 'utf8')).version;
+    auths[pkgs[n]] = { name: piece.displayName, piece: n, version: ver,
+      auth: (Array.isArray(piece.auth) ? piece.auth : [piece.auth]).map(authOf) };
+    props[pkgs[n]] = { actions: Object.fromEntries(Object.values(acts || {}).map((x) => [x.name, reqProps(x)])),
+      triggers: Object.fromEntries(Object.values(trigs || {}).map((x) => [x.name, reqProps(x)])) };
   } catch (e) { failed.push(`load ${n}: ${String(e.message).split('\n')[0].slice(0, 120)}`); }
 }
 
@@ -58,6 +77,8 @@ for (let i = 0; i < rest.length; i += 40) {
 }
 fs.rmSync(WORK, { recursive: true, force: true }); fs.mkdirSync(WORK, { recursive: true });
 fs.writeFileSync(path.join(WORK, 'npm_meta.json'), JSON.stringify(out));
+fs.writeFileSync(path.join(WORK, 'auth_index.json'), JSON.stringify(auths));
+fs.writeFileSync(path.join(WORK, 'props_index.json'), JSON.stringify(props));
 fs.writeFileSync(path.join(WORK, 'npm_failed.txt'), failed.join('\n') + '\n');
 console.log(`npm metadata: ${Object.keys(out).length}/${Object.keys(pkgs).length} pieces; failed ${failed.length}`);
 process.exit(0);
