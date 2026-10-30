@@ -1,6 +1,6 @@
 # Graph-lite: Activepieces community pieces source (MIT) -> typed app/trigger/action graph + retrieval eval. No AI.
 name: graphlab-graph
-on: { workflow_dispatch: {} }
+on: { workflow_dispatch: {}, push: { branches: [tools/graphlab-graph] } }
 permissions: { contents: read }
 jobs:
   build:
