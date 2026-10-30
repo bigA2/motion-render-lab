@@ -75,6 +75,7 @@ json.dump({'nodes': uniq, 'edges': edges}, open(os.path.join(OUT, 'graph.json'),
 idx = {n['id'][4:]: {'name': n['name'], 'aliases': n['aliases'], 'triggers': [], 'actions': []} for n in uniq if n['type'] == 'app'}
 for n in uniq:
     if n['type'] in ('trigger', 'action'): idx[n['app']][n['type'] + 's'].append(n['name'])
+for v in idx.values(): v['triggers'], v['actions'] = list(dict.fromkeys(v['triggers'])), list(dict.fromkeys(v['actions']))
 ip = os.path.join(OUT, 'index.json')
 json.dump(idx, open(ip, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 t = collections.Counter(n['type'] for n in uniq)
