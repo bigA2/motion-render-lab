@@ -3,6 +3,9 @@
 import json, os, sys, collections
 
 d = json.load(open(sys.argv[1], encoding='utf-8'))
+# re-save auth/props indexes as pure ASCII JSON so any default-encoding json.load (e.g. Windows cp1252) reads them
+for f in (sys.argv[1], os.path.join(os.path.dirname(sys.argv[1]), 'props_index.json')):
+    if os.path.isfile(f): x = json.load(open(f, encoding='utf-8')); json.dump(x, open(f, 'w', encoding='ascii'), separators=(',', ':'))
 types = collections.Counter(t for v in d.values() for t in {m['type'] for m in v['auth']})
 oauth = {k: [m for m in v['auth'] if m['type'] == 'OAUTH2'] for k, v in d.items()}
 oauth = {k: v for k, v in oauth.items() if v}
