@@ -1,16 +1,20 @@
-# Graph-lite: Activepieces community pieces source (MIT) -> typed app/trigger/action graph + retrieval eval. No AI.
+# Graph-lite: Activepieces community pieces (MIT) -> typed app/trigger/action graph + retrieval eval. No AI.
+# v2: real metadata from the published @activepieces/piece-* npm packages, regex over source as fallback.
 name: graphlab-graph
 on: { workflow_dispatch: {}, push: { branches: [tools/graphlab-graph] } }
 permissions: { contents: read }
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
       - run: git clone --depth 1 --filter=blob:none --sparse https://github.com/activepieces/activepieces ap && git -C ap sparse-checkout set packages/pieces/community
-      - run: cd graphlab && python graph/build_graph.py ../ap/packages/pieces/community && python graph/retrieve.py out/graph.json
+      - run: cd graphlab && node graph/extract.mjs ../ap/packages/pieces/community "$RUNNER_TEMP/npm"
+      - run: cd graphlab && python graph/build_graph.py ../ap/packages/pieces/community "$RUNNER_TEMP/npm/npm_meta.json" && cp "$RUNNER_TEMP/npm/npm_failed.txt" out/ && python graph/retrieve.py out/graph.json
       - uses: actions/upload-artifact@v4
         with: { name: graph-lite, path: graphlab/out/, retention-days: 14 }
