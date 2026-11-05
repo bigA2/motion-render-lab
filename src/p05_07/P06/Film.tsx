@@ -66,11 +66,21 @@ const Fan: React.FC<{f: number}> = ({f}) => {
     </Depth>; })}</At>;
 };
 
+const ScreenFan: React.FC<{f: number}> = ({f}) => {
+  const {height: h} = useVideoConfig(); const p = prog(f, T.fan, 70, 'flyAccel'); const out = prog(f, T.fix + 40, 30, 'inHard');
+  return <div style={{position: 'absolute', left: 0, top: h / 2 - 200, transformStyle: 'preserve-3d', opacity: 1 - out}}>{P.ROWS.map((r, i) => { const urgent = i === L.urgentRow; const ang = (i - 5.5) * 15;
+    const x = urgent ? -400 : Math.sin(ang * Math.PI / 180) * 1300 * p - 400; const y = urgent ? -44 : (i - 6) * 100 * (1 - p) - 44 + Math.cos(ang * 0.07) * (i % 2 ? 1 : -1) * 520 * p; const z = urgent ? 260 * p : -300 - 900 * p * (1 + (i % 3));
+    return <div key={i} style={{position: 'absolute', left: x, top: y, transform: `translateZ(${z}px) rotateY(${urgent ? 0 : ang * 1.6 * p}deg) rotateZ(${urgent ? 0 : (rnd(i + 4) - 0.5) * 24 * p}deg)`, width: 800, height: 92, borderRadius: 20, background: urgent ? '#FFF6F1' : TH.panel, border: `2px solid ${urgent ? TH.hot : TH.line}`, boxShadow: urgent ? `0 0 0 12px ${a(TH.hot, 0.16)}, 0 30px 60px rgba(60,30,60,.28)` : '0 20px 40px rgba(60,30,60,.18)', display: 'flex', alignItems: 'center', gap: 14, padding: '0 18px', fontFamily: F.sans, fontSize: 25, color: TH.ink, filter: !urgent && p > 0.1 ? `blur(${4 * p}px)` : undefined, opacity: urgent ? 1 : 1 - 0.4 * p}}>
+      <Avatar name={r[0]} size={50} idx={i} /><b style={{whiteSpace: 'nowrap'}}>{r[0]}</b>{urgent && <Tag c={TH.hot} solid size={18}>URGENT</Tag>}<span style={{color: TH.muted, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>{r[1]}</span></div>; })}</div>;
+};
 // ---------------- prompt + nodes ----------------
 const HOT = ['Intercom', 'urgent', 'ClickUp', 'Discord'];
 const Prompt: React.FC<{f: number}> = ({f}) => {
   const press = f >= P.typed.end + 6 ? 1 - prog(f, P.typed.end + 6, 16, 'softOut') : 0;
   return <At x={P.PROMPT.x} y={P.PROMPT.y}>
+    <div style={{position: 'absolute', left: 30, top: -150, width: 900, opacity: clamp((f - T.fix - 40) / 12)}}>
+      <div style={{fontFamily: F.mono, fontSize: 24, letterSpacing: 4, color: TH.accent}}>THE FIX · ONE SENTENCE</div>
+      <div style={{fontFamily: F.serif, fontSize: 72, color: TH.ink, lineHeight: 1.05}}>Tell FansaChat what <span style={{color: TH.hot}}>urgent</span> means.</div></div>
     <div style={{width: P.PROMPT.w, borderRadius: 40, background: TH.panel, border: `1.5px solid ${TH.line}`, boxShadow: '0 40px 80px rgba(60,30,70,.18)', fontFamily: F.sans, color: TH.ink, position: 'relative'}}>
       <Row gap={14} style={{padding: '22px 30px', borderBottom: `1.5px solid ${TH.line}`}}><Logo name="fansa" size={40} round={10} /><b style={{fontSize: 27}}>FansaChat</b><span style={{fontSize: 22, color: TH.muted}}>· Agency workspace</span><span style={{marginLeft: 'auto'}}><Tag c={TH.ok} size={20}>4 apps connected</Tag></span></Row>
       <div style={{padding: '24px 30px 26px'}}>
@@ -98,7 +108,9 @@ const NODES = [
   {lg: 'discord', k: 'AND', t: 'Post message', d: '#client-urgent · mention @on-duty'},
 ];
 const Nodes: React.FC<{f: number}> = ({f}) => (
-  <>{NODES.map((n, i) => { const at = T.nodes[i]; if (f < at) return null; const p = prog(f, at, 24, 'spring'); const N = L.nodes[i];
+  <>{NODES.map((n, i) => f >= T.typeStart - 20 && f < T.nodes[i] + 4 && <At key={'g' + i} x={L.nodes[i].x - 140} y={L.nodes[i].y - 150} w={280} h={300} o={clamp((f - T.typeStart + 20) / 30) * 0.9} style={{transform: `rotate(${L.nodes[i].r}deg)`, borderRadius: 30, border: `3px dashed ${a(TH.ink, 0.22)}`, padding: 24, fontFamily: F.mono, fontSize: 22, color: a(TH.ink, 0.45)}}>
+      <div style={{width: 70, height: 70, borderRadius: 18, background: a(TH.ink, 0.06)}} /><div style={{marginTop: 18}}>{n.k} …</div><div style={{marginTop: 8, fontSize: 19}}>waiting for the sentence</div></At>)}
+  {NODES.map((n, i) => { const at = T.nodes[i]; if (f < at) return null; const p = prog(f, at, 24, 'spring'); const N = L.nodes[i];
     const lit = (i === 0 && vis(f, P.P.convo + 20, P.P.dot1[0] + 20)) || (i === 1 && vis(f, P.P.filter - 4, P.P.filter + 40)) || (i === 2 && vis(f, P.P.dot2[0], P.P.taskIn + 40)) || (i === 3 && vis(f, P.P.dot3[0], P.P.discordIn + 40));
     return <React.Fragment key={i}>
       {i < 3 && <Wire x1={N.x + 140} y1={N.y} x2={L.nodes[i + 1].x - 140} y2={L.nodes[i + 1].y} p={prog(f, at + 8, 18, 'swift')} color={TH.accent} base={a(TH.ink, 0.2)} bend={0} width={5} />}
@@ -153,7 +165,7 @@ const Discord: React.FC<{f: number}> = ({f}) => { const p = P.discArr.p(f); if (
     </div></At>; };
 
 // ---------------- screen-space type ----------------
-const glass: React.CSSProperties = {display: 'inline-block', padding: '18px 34px', borderRadius: 34, background: a('#FFFDFB', 0.62), backdropFilter: 'blur(14px) saturate(1.3)', border: `1.5px solid ${a('#FFFFFF', 0.8)}`, boxShadow: '0 20px 50px rgba(60,30,70,.15)'};
+const glass: React.CSSProperties = {display: 'inline-block', padding: '18px 34px', borderRadius: 34, background: a('#FFFDFB', 0.88), backdropFilter: 'blur(14px) saturate(1.3)', border: `1.5px solid ${a('#FFFFFF', 0.8)}`, boxShadow: '0 20px 50px rgba(60,30,70,.15)'};
 const vw = (line: number, words: string[], starts: number[]) => words.map((w, i) => ({w, f: P.VO[line] + Math.round(starts[i] * 60)}));
 const Overlay: React.FC<{f: number}> = ({f}) => {
   const {height: h} = useVideoConfig(); const top = h > 1500 ? 170 : 90; const bot = h > 1500 ? h - 430 : h - 330;
@@ -164,6 +176,12 @@ const Overlay: React.FC<{f: number}> = ({f}) => {
     {vis(f, T.fifty - 6, P.SC.B + 20) && <div style={{position: 'absolute', left: 40, right: 40, top: bot - 60, transform: `scale(${lerp(0.7, 1, prog(f, T.fifty - 6, 30, 'snapOut'))})`}}><div style={glass}>
       <span style={{fontFamily: F.sans, fontWeight: 700, fontSize: 130, color: TH.hot, textShadow: longShadow('#8A2A10', 10), verticalAlign: 'middle'}}>{P.unread.shown(f)}</span>
       <span style={{fontFamily: F.serif, fontSize: 74, color: TH.ink, marginLeft: 22, verticalAlign: 'middle'}}>quick questions</span></div></div>}
+    {vis(f, T.read - 4, T.fan) && <div style={{position: 'absolute', left: 40, right: 40, top: h > 1500 ? 150 : 50, fontFamily: F.serif, fontSize: h > 1500 ? 96 : 84, lineHeight: 1.0, color: TH.ink, opacity: 1 - prog(f, T.fan - 14, 14, 'inHard')}}>
+      {(h > 1500 ? [0, 1, 2, 3] : [P.steps.filter((x) => f >= x).length - 1]).map((k) => k >= 0 && f >= P.steps[k] && <div key={k} style={{transform: `translateY(${(1 - prog(f, P.steps[k], 12, 'snapOut')) * 30}px)`, opacity: prog(f, P.steps[k], 10, 'snapOut') * (h > 1500 && k < P.steps.filter((x) => f >= x).length - 1 ? 0.35 : 1)}}>{['Read everything.', 'Spot it.', 'Make a task.', 'Tell the team.'][k]}</div>)}</div>}
+    {vis(f, T.tell - 24, T.fan) && <div style={{position: 'absolute', left: 60, right: 60, bottom: h > 1500 ? 160 : 70, opacity: prog(f, T.tell - 24, 14, 'snapOut') * (1 - prog(f, T.fan - 10, 12, 'inHard')), transform: `translateY(${(1 - prog(f, T.tell - 24, 18, 'snapOut')) * 120}px)`, textAlign: 'left'}}>
+      <div style={{display: 'flex', gap: 16, alignItems: 'center', padding: '20px 24px', borderRadius: 28, background: '#FFFDFB', border: `2px solid ${TH.hot}`, boxShadow: '0 30px 60px rgba(60,30,60,.25)', fontFamily: F.sans}}>
+        <Logo name="intercom" size={54} round={14} /><div style={{flex: 1}}><div style={{fontSize: 21, color: TH.muted, fontWeight: 700, letterSpacing: 1.5}}>KARA LIN · 2ND MESSAGE · 10:51</div><div style={{fontSize: 28, fontWeight: 700, color: TH.ink}}>hello?? still losing orders</div></div><Tag c={TH.hot} solid size={18}>URGENT</Tag></div></div>}
+    {vis(f, T.seconds - 30, P.SC.F + 4) && <AbsoluteFill style={{background: `radial-gradient(ellipse 80% 40% at 50% 50%, ${a(PAL.bg, 0.92 * prog(f, T.seconds - 30, 24, 'softOut'))}, ${a(PAL.bg, 0.5 * prog(f, T.seconds - 30, 24, 'softOut'))})`}} />}
     {vis(f, T.fix - 4, T.fix + 70) && <div style={{position: 'absolute', left: 0, right: 0, top: h / 2 + (h > 1500 ? 300 : 230), transform: `scale(${lerp(0.6, 1.05, prog(f, T.fix - 4, 72, 'softOut'))})`, opacity: 1 - prog(f, T.fix + 56, 14, 'inHard')}}>
       <span style={{fontFamily: F.serif, fontSize: 140, color: TH.accent, letterSpacing: '-0.02em'}}>Let's fix that.</span></div>}
     {vis(f, T.urgentMeans - 4, T.seconds - 26) && <div style={{position: 'absolute', left: 40, right: 40, top}}><div style={glass}>
@@ -198,12 +216,12 @@ export const Film: React.FC = () => {
       <LivingBg p={PAL} cam={P.cam} grid={false} particles={36} seed={11} />
       <CameraRig cam={P.cam} id="w" perspective={1600}>
         {f < T.fan + 10 && <div style={{position: 'absolute', opacity: 1 - prog(f, T.fan - 4, 14, 'softOut')}}><Inbox f={f} /><List f={f} /></div>}
-        {fanOn && <Fan f={f} />}
         {f >= T.fix + 20 && f < P.SC.F + 10 && <><Prompt f={f} /><Nodes f={f} />
-          {[[L.nodes[0], L.convo, P.P.dot1, -300], [L.convo, L.task, P.P.dot2, 300], [L.task, L.discord, P.P.dot3, -300]].map(([A, B, d, bend], i) => { const D = d as readonly [number, number]; const a0 = A as {x: number; y: number}, b0 = B as {x: number; y: number}; const t = (f - D[0]) / D[1];
+          {[[L.nodes[0], L.convo, P.P.dot1, -160], [L.convo, L.task, P.P.dot2, 140], [L.task, L.discord, P.P.dot3, -140]].map(([A, B, d, bend], i) => { const D = d as readonly [number, number]; const a0 = A as {x: number; y: number}, b0 = B as {x: number; y: number}; const t = (f - D[0]) / D[1];
             return f > D[0] - 20 && <Wire key={i} x1={a0.x + (i ? 450 : 0)} y1={a0.y + (i ? 200 : 150)} x2={b0.x + (i ? 450 : 0)} y2={b0.y - (i ? 300 : 380)} bend={bend as number} p={prog(f, D[0] - 20, 24, 'swift')} dot={t >= 0 && t <= 1 ? prog(f, D[0], D[1], 'inOut') : -1} color={i === 0 ? TH.hot : TH.accent} base={a(TH.ink, 0.2)} />; })}
           <Convo f={f} /><Task f={f} /><Discord f={f} /></>}
       </CameraRig>
+      {fanOn && <AbsoluteFill style={{perspective: 1400}}><div style={{position: 'absolute', left: 540, top: (P.L.inbox.y > 0 ? 0 : 0), width: 0, height: 0}}><ScreenFan f={f} /></div></AbsoluteFill>}
       <Overlay f={f} />
     </AbsoluteFill>
     {inF && <AbsoluteFill style={{clipPath: `circle(${iris * 120}% at 50% 50%)`}}>

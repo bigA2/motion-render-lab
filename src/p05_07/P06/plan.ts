@@ -16,7 +16,7 @@ export const L = {
   inbox: {x: 540, y: 1000, w: 900}, urgentRow: 7, list: {x: 1560, y: 980},
   prompt: {x: 2700, y: 760, w: 960},
   nodes: [{x: 2380, y: 1330, r: -6}, {x: 2700, y: 1300, r: 0}, {x: 3020, y: 1330, r: 6}, {x: 3340, y: 1400, r: 11}],
-  convo: {x: 2700, y: 2150}, task: {x: 2700, y: 3000}, discord: {x: 2700, y: 3820},
+  convo: {x: 2700, y: 2150}, task: {x: 2700, y: 2830}, discord: {x: 2700, y: 3480},
 };
 export const T = {
   head: W(0, 0), urgent: W(0, 1.42), buried: W(0, 2.86), fifty: W(0, 3.54),
@@ -35,7 +35,7 @@ export const ROWS = [
   ['Eli · Ridgeway', 'thanks!! all good now', '23m'], ['Zara · Pinehill', 'do you have the logo in SVG?', '25m'],
 ];
 export const unread = countUp(12, 50, s(0.9), s(3.2), 'softOut', 1, 'unread');
-export const rowsIn = ROWS.map((_, i) => s(0.35) + i * 9);
+export const rowsIn = ROWS.map((_, i) => (i < 4 ? -40 + i * 6 : s(0.35) + i * 9));
 export const steps = [T.read, T.spot, T.task, T.tell];
 export const SENTENCE = "When an Intercom conversation is tagged urgent, create a ClickUp task for whoever's on duty and post it in our Discord.";
 export const LINES = ['When an Intercom conversation is', "tagged urgent, create a ClickUp", "task for whoever's on duty and", 'post it in our Discord.'];
@@ -65,17 +65,17 @@ const moves: Move[] = [
   {f: 0, dur: 0, to: {x: 540, y: 820, zoom: 1.12}, cut: true},
   {f: 20, dur: 120, to: {x: 540, y: rowY(L.urgentRow) - 100, zoom: 1.3}, curve: 'inOut'},           // push in, find the urgent row
   {f: T.buried - 10, dur: 70, to: {x: 540, y: rowY(3), zoom: 1.0, roll: -1}, curve: 'inOut'},     // more piles on: pull back
-  {f: T.fifty - 8, dur: 40, to: {x: 640, y: 900, zoom: 0.9, roll: 0}, curve: 'swift2'},
-  {f: SC.B - 6, dur: 40, to: {x: L.list.x, y: L.list.y - 200, zoom: 1.12}, curve: 'swift2'},     // to the checklist
-  {f: T.spot - 10, dur: 200, to: (f) => ({x: L.list.x, y: lerp(L.list.y - 200, L.list.y + 160, prog(f, T.spot - 10, T.tell + 20 - T.spot, 'inOut')), zoom: 1.12}), curve: 'softOut'}, // track down the list
-  {f: T.fan, dur: 60, to: {x: 1060, y: 1000, zoom: 0.7, yaw: -18, roll: -3, dolly: 300}, curve: 'flyAccel'},     // fly into the card fan
-  {f: T.fix + 46, dur: 40, to: {x: L.prompt.x, y: L.prompt.y + 60, zoom: 1.0, yaw: 0, roll: 0, dolly: 0}, curve: 'swift'},
-  {f: T.typeStart, dur: 30, to: (f) => { const c = caretPos(f); return {x: lerp(L.prompt.x, c.x, 0.45), y: c.y + 20, zoom: 1.28}; }, curve: 'softOut'},
+  {f: T.fifty - 8, dur: 50, to: {x: 560, y: 1080, zoom: 1.0, roll: 0}, curve: 'inOut'},
+  {f: SC.B - 6, dur: 44, to: {x: L.list.x, y: L.list.y - 120, zoom: 1.22}, curve: 'swift2'},     // to the checklist
+  {f: T.spot - 10, dur: 200, to: (f) => ({x: L.list.x, y: lerp(L.list.y - 120, L.list.y + 60, prog(f, T.spot - 10, T.tell + 20 - T.spot, 'inOut')), zoom: 1.22}), curve: 'softOut'}, // track down the list
+  {f: T.fan, dur: 60, to: {x: 1300, y: 1000, zoom: 0.9, roll: -3, dolly: 200}, curve: 'flyAccel'},     // fly into the card fan
+  {f: T.fix + 40, dur: 44, to: {x: L.prompt.x, y: L.prompt.y + 260, zoom: 1.05, yaw: 0, roll: 0, dolly: 0}, curve: 'swift'},
+  {f: T.typeStart, dur: 30, to: (f) => { const c = caretPos(f); return {x: lerp(L.prompt.x, c.x, 0.12), y: lerp(L.prompt.y + 260, c.y, 0.4), zoom: 1.1}; }, curve: 'softOut'},
   {f: T.buildStart, dur: 80, to: {x: L.nodes[1].x + 160, y: L.nodes[1].y - 40, zoom: 0.78}, curve: 'swift2'},
-  {f: P.convo - 16, dur: 40, to: {x: L.convo.x, y: L.convo.y, zoom: 1.0}, curve: 'swift2'},
-  {f: P.dot2[0] - 10, dur: 70, to: {x: L.task.x, y: L.task.y - 30, zoom: 1.0}, curve: 'inOut'},
-  {f: P.dot3[0] - 6, dur: 60, to: {x: L.discord.x, y: L.discord.y, zoom: 1.04}, curve: 'inOut'},
-  {f: T.seconds - 30, dur: 40, to: {x: L.task.x, y: (L.task.y + L.discord.y) / 2, zoom: 0.55}, curve: 'swift2'},
+  {f: P.convo - 16, dur: 50, to: {x: L.convo.x, y: L.convo.y - 200, zoom: 0.95}, curve: 'inOut'},
+  {f: P.dot2[0] - 10, dur: 80, to: {x: L.task.x, y: (L.convo.y + L.task.y) / 2, zoom: 0.92}, curve: 'inOut'},
+  {f: P.dot3[0] - 6, dur: 80, to: {x: L.discord.x, y: (L.task.y + L.discord.y) / 2, zoom: 0.92}, curve: 'inOut'},
+  {f: T.seconds - 30, dur: 50, to: {x: L.task.x, y: (L.convo.y + L.discord.y) / 2, zoom: 0.6}, curve: 'swift2'},
 ];
 export const cam = new Camera(moves, TOTAL, 1080, 1920);
 export const camF = new Camera([
@@ -89,11 +89,12 @@ export function events(): Sfx[] {
   const tl = new Timeline();
   tl.add(cam.whooshes('cam').filter((e) => e.f < SC.F - 10)); tl.add(camF.whooshes('camF').filter((e) => e.f >= SC.F));
   // inbox fills: soft pops per row (not chimes), counter ticks, one chime for the urgent message
-  tl.add(rowsIn.map((f, i) => pop(f, -8 + (i % 3), 'row')));
+  tl.add(rowsIn.filter((f) => f > 0).map((f, i) => pop(f, -8 + (i % 3), 'row')));
   tl.add({f: rowsIn[L.urgentRow] + 2, kind: 'chime', gain: -3, src: 'urgent'});
   tl.add(unread.ev.filter((_, i) => i % 2 === 0));
   // checklist: each item stamps in on its VO word (mechanical), ✕ marks
   tl.add(stepped(steps, 'check')); tl.add(steps.map((f) => ({f: f + 12, kind: 'stamp' as const, gain: -6, src: 'x'})));
+  tl.add({f: T.tell - 24, kind: 'chime', gain: -6, src: 'kara-again'});
   tl.add(respTime.ev.filter((_, i) => i % 6 === 0).map((e) => ({...e, gain: -6})));
   // turn: cards fly apart (riser into the fly, swipe on the reveal)
   tl.add([{f: T.fan - 30, kind: 'riser', dur: 34, gain: -4, src: 'fan'}, {f: T.fix + 4, kind: 'impact', gain: -8, src: 'fix'}]);

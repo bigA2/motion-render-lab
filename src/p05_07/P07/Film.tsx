@@ -12,6 +12,7 @@ import * as P from './plan';
 export const PAL: Pal = {bg: '#051214', bg2: '#0A2629', glow: '#0F4C4D', glow2: '#12385A', line: '#1D4245', ink: '#E7F4F2', muted: '#86A6A3', accent: '#3EE6C1', hot: '#FFD166', panel: '#0E2A2D', panelLine: '#1D4245', dark: true};
 export const TH: Th = {panel: '#0D2427', panel2: '#0A1C1F', line: '#1C3D40', ink: '#E7F4F2', muted: '#8DAEAB', accent: '#3EE6C1', hot: '#FFD166', ok: '#3EE6C1', font: F.display, mono: F.mono, dark: true};
 const {L, T} = P;
+const gp = (f: number, k: 'tally' | 'trello' | 'clock' | 'tele') => { const g = prog(f, T.onePlace - 26, 56, 'swift'); return {x: lerp(L[k].x, P.G[k].x, g), y: lerp(L[k].y, P.G[k].y, g)}; };
 const vis = (f: number, a0: number, b0: number) => f >= a0 && f < b0;
 const CW = 960, CH = 690;
 
@@ -48,12 +49,21 @@ const Back: React.FC<{f: number}> = ({f}) => {
 };
 const Card: React.FC<{f: number}> = ({f}) => {
   const flip = prog(f, T.flip, 44, 'swift') * 180;
-  const back = f >= P.SC.B - 10 && f < P.SC.C; const recede = back ? prog(f, P.SC.B - 10, 40, 'softOut') * (1 - prog(f, P.SC.C - 30, 30, 'softOut')) : 0;
-  return <Depth x={L.card.x - CW / 2} y={L.card.y - CH / 2} z={-700 * recede}>
+  const back = f >= T.dm - 24 && f < P.SC.C; const recede = back ? prog(f, T.dm - 24, 40, 'softOut') * (1 - prog(f, P.SC.C - 30, 30, 'softOut')) : 0;
+  const ghosts = f < T.dm ? 1 - prog(f, T.dm - 30, 20, 'softOut') : 0;
+  return <>{ghosts > 0 && ['02 · Invoice chaser', '03 · Feedback sorter', '04 · Portfolio ping'].map((g, i) => <Depth key={g} x={L.card.x - CW / 2 + (i + 1) * 36} y={L.card.y - CH / 2 - (i + 1) * 44} z={-(i + 1) * 160}>
+      <div style={{width: CW, height: CH, borderRadius: 44, background: '#0B2225', border: `1.5px solid ${a(TH.accent, 0.18)}`, opacity: (0.5 - i * 0.12) * ghosts, padding: 40, fontFamily: F.mono, fontSize: 26, color: TH.muted}}>{g}</div></Depth>)}
+  <Depth x={L.card.x - CW / 2} y={L.card.y - CH / 2} z={-700 * recede}>
     <div style={{width: CW, height: CH, position: 'relative', transformStyle: 'preserve-3d', transform: `rotateY(${flip}deg) rotateX(${Math.sin(f / 70) * 2}deg)`, opacity: lerp(1, 0.35, recede)}}>
       <Front f={f} /><Back f={f} />
     </div>
-  </Depth>;
+  </Depth>
+  {f >= T.flip + 30 && f < P.SC.E && <At x={L.card.x - CW / 2 + 10} y={L.card.y - CH / 2 - 170} w={CW} o={clamp((f - T.flip - 30) / 14)}>
+    <div style={{fontFamily: F.mono, fontSize: 24, letterSpacing: 4, color: TH.accent}}>THE BRIEF CATCHER · SETUP</div>
+    <div style={{fontFamily: F.display, fontWeight: 800, fontSize: 70, color: TH.ink, letterSpacing: '-0.02em'}}>Say it once:</div></At>}
+  {f >= T.typeStart - 20 && f < T.buildStart + 4 && L.nodes.map((n, i) => <At key={i} x={n.x - 112} y={n.y - 165} w={224} h={330} o={clamp((f - T.typeStart + 20) / 30) * 0.9} style={{borderRadius: 28, border: `3px dashed ${a(TH.accent, 0.3)}`, padding: 20, fontFamily: F.mono, fontSize: 20, color: a(TH.ink, 0.45)}}>
+    <div style={{width: 74, height: 74, borderRadius: 18, background: a(TH.accent, 0.08)}} /><div style={{marginTop: 20}}>{['WHEN', 'THEN', 'AND', 'AND'][i]} …</div><div style={{marginTop: 8, fontSize: 18}}>slot {i + 1}</div></At>)}
+  </>;
 };
 
 // ---------------- problem: briefs from everywhere + Monday list ----------------
@@ -72,7 +82,10 @@ const Bubbles: React.FC<{f: number}> = ({f}) => {
       {[['Name', 'Aisha Bello'], ['Company', 'Lumen Coffee Co.'], ['Budget', '$6–8k']].map(([k, v]) => <Row key={k} gap={10} style={{fontSize: 22, marginTop: 8}}><span style={{width: 120, color: '#777'}}>{k}</span><b>{v}</b></Row>)}</div>},
   ];
   const out = prog(f, T.rebuild - 16, 20, 'inHard');
-  return <>{items.map((it, i) => { if (f < it.at - 4) return null; const p = prog(f, it.at - 4, 22, 'snapOut'); const ang = (it.ang + (f - it.at) * 0.12) * Math.PI / 180;
+  const pills = [['instagram', 'Instagram · 3 new DMs'], ['gmail', 'Gmail · 12 unread'], ['tally', 'Tally · 2 new responses']];
+  return <>{pills.map(([lg, t], i) => { const at = P.SC.B + 4 + i * 9; if (f < at) return null; const p = prog(f, at, 16, 'snapOut');
+    return <Depth key={'p' + i} x={L.card.x - 330} y={L.card.y - 700 + i * 92 - (1 - p) * 60 - out * 300} z={120}><div style={{opacity: p * (1 - out), width: 660, display: 'flex', alignItems: 'center', gap: 14, padding: '14px 22px', borderRadius: 999, background: a('#0D2427', 0.92), border: `1.5px solid ${TH.line}`, fontFamily: F.display, fontSize: 26, color: TH.ink}}>{lg === 'instagram' ? <div style={{width: 40, height: 40, borderRadius: 12, background: 'linear-gradient(135deg,#F58529,#DD2A7B,#8134AF)'}} /> : <Logo name={lg} size={40} round={10} bg={lg === 'gmail' ? '#fff' : undefined} />}<b>{t}</b><span style={{marginLeft: 'auto', fontFamily: F.mono, fontSize: 20, color: TH.muted}}>now</span></div></Depth>; })}
+  {items.map((it, i) => { if (f < it.at - 4) return null; const p = prog(f, it.at - 4, 22, 'snapOut'); const ang = (it.ang + (f - it.at) * 0.12) * Math.PI / 180;
     return <Depth key={i} x={L.card.x + Math.cos(ang) * it.r * lerp(0.4, 1, p) - 320} y={L.card.y + Math.sin(ang) * it.r * 1.5 * lerp(0.4, 1, p) - 90 - out * 400} z={it.z} ry={Math.cos(ang) * -14} s={lerp(0.6, 1, p)}>
       <div style={{opacity: p * (1 - out)}}>{it.el}</div></Depth>; })}</>;
 };
@@ -101,15 +114,15 @@ const Slots: React.FC<{f: number}> = ({f}) => (<>
 </>);
 
 // ---------------- payoff dashboard panels ----------------
-const Tally: React.FC<{f: number}> = ({f}) => { const p = P.briefArr.p(f); if (p <= 0) return null;
-  return <At x={L.tally.x - 430} y={L.tally.y - 360 + (1 - p) * 700} o={clamp(p * 2)}>
+const Tally: React.FC<{f: number}> = ({f}) => { const p = P.briefArr.p(f); if (p <= 0) return null; const q = gp(f, 'tally');
+  return <At x={q.x - 430} y={q.y - 360 + (1 - p) * 700} o={clamp(p * 2)}>
     <Win th={TH} w={860} logo="tally" title="Project brief · new response" meta={<span style={{fontFamily: F.mono}}>#112</span>} pad={26}>
       {[['Name', 'Aisha Bello'], ['Company', 'Lumen Coffee Co.'], ['Project', 'Brand refresh + coffee bag packaging'], ['Budget', '$6,000 – 8,000'], ['Deadline', 'Fri, Dec 12'], ['Files', 'moodboard.pdf · bag-dieline.ai · logo-old.svg']].map(([k, v], i) =>
         <Row key={k} gap={16} style={{fontSize: 25, padding: '10px 0', borderBottom: `1.5px solid ${TH.line}`, opacity: clamp((f - P.P.brief - 8 - i * 4) / 8)}}><span style={{width: 150, color: TH.muted, fontFamily: F.mono, fontSize: 21}}>{k}</span><b style={{fontWeight: 600}}>{v}</b></Row>)}
       <div style={{fontSize: 23, color: TH.muted, marginTop: 14, lineHeight: 1.35}}>“Warm, a bit playful, must work on kraft paper.”</div>
     </Win></At>; };
-const Trello: React.FC<{f: number}> = ({f}) => { const p = P.trelloArr.p(f); if (p <= 0) return null;
-  return <At x={L.trello.x - 430 + (1 - p) * 700} y={L.trello.y - 360} o={clamp(p * 2)}>
+const Trello: React.FC<{f: number}> = ({f}) => { const p = P.trelloArr.p(f); if (p <= 0) return null; const q = gp(f, 'trello');
+  return <At x={q.x - 430 + (1 - p) * 700} y={q.y - 330} o={clamp(p * 2)}>
     <Win th={TH} w={860} logo="trello" title="Client work · New briefs" meta="Board" pad={26}>
       <Row gap={8}><Tag c="#FFD166" solid size={20} style={{color: '#2B2100'}}>Branding</Tag><Tag c="#7C8BFF" solid size={20}>Packaging</Tag><Tag c="#FF7AA8" solid size={20}>$6–8k</Tag></Row>
       <div style={{fontSize: 36, fontWeight: 800, marginTop: 14}}>Lumen Coffee — brand refresh</div>
@@ -117,8 +130,8 @@ const Trello: React.FC<{f: number}> = ({f}) => { const p = P.trelloArr.p(f); if 
       <div style={{marginTop: 16, display: 'flex', flexDirection: 'column', gap: 10}}><Check th={TH} size={24} at={P.P.trelloIn + 40}>Read brief + moodboard</Check><Check th={TH} size={24}>Send quote</Check><Check th={TH} size={24}>Kick-off call</Check></div>
       <Row gap={10} style={{marginTop: 16, fontSize: 21, color: TH.muted}}>{['New briefs', 'Quoted', 'In progress', 'Review'].map((c, i) => <span key={c} style={{padding: '6px 12px', borderRadius: 10, background: i === 0 ? a(TH.accent, 0.18) : TH.panel2, color: i === 0 ? TH.accent : TH.muted}}>{c}</span>)}</Row>
     </Win></At>; };
-const Clock: React.FC<{f: number}> = ({f}) => { const p = P.clockArr.p(f); if (p <= 0) return null;
-  return <At x={L.clock.x - 430 - (1 - p) * 700} y={L.clock.y - 330} o={clamp(p * 2)}>
+const Clock: React.FC<{f: number}> = ({f}) => { const p = P.clockArr.p(f); if (p <= 0) return null; const q = gp(f, 'clock');
+  return <At x={q.x - 430 - (1 - p) * 700} y={q.y - 260} o={clamp(p * 2)}>
     <Win th={TH} w={860} logo="clockify" title="Projects · Lumen Coffee" meta={<Tag c={TH.accent} size={19}>Billable</Tag>} pad={26}>
       <div style={{fontSize: 36, fontWeight: 800}}>Lumen Coffee — Brand refresh</div>
       <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 18, marginTop: 18}}>
@@ -126,8 +139,8 @@ const Clock: React.FC<{f: number}> = ({f}) => { const p = P.clockArr.p(f); if (p
       </div>
       <Row style={{marginTop: 18, justifyContent: 'space-between', fontSize: 24}}><span style={{color: TH.muted}}>Timer</span><span style={{fontFamily: F.mono, fontSize: 40, color: TH.accent}}>00:00:00</span><span style={{padding: '10px 22px', borderRadius: 14, background: TH.accent, color: '#04201C', fontWeight: 700}}>Start</span></Row>
     </Win></At>; };
-const Tele: React.FC<{f: number}> = ({f}) => { const p = P.teleArr.p(f); if (p <= 0) return null;
-  return <At x={L.tele.x - 330 + (1 - p) * 700} y={L.tele.y - 420} o={clamp(p * 2)}>
+const Tele: React.FC<{f: number}> = ({f}) => { const p = P.teleArr.p(f); if (p <= 0) return null; const q = gp(f, 'tele');
+  return <At x={q.x - 330 + (1 - p) * 700} y={q.y - 420} o={clamp(p * 2)}>
     <div style={{width: 660, height: 840, borderRadius: 70, background: '#0B0F12', border: '10px solid #1D2A2E', boxShadow: '0 50px 100px rgba(0,0,0,.55)', overflow: 'hidden', fontFamily: F.display}}>
       <Row gap={14} style={{padding: '50px 30px 20px', background: '#17212B', color: '#fff'}}><Logo name="telegram" size={56} round={28} /><div><b style={{fontSize: 28}}>Brief Bot</b><div style={{fontSize: 20, color: '#8FA3B5'}}>bot · online</div></div></Row>
       <div style={{padding: 26, background: '#0E1621', height: '100%'}}>
@@ -145,7 +158,7 @@ const Overlay: React.FC<{f: number}> = ({f}) => {
     {vis(f, 6, P.SC.B) && <div style={{position: 'absolute', left: 0, right: 0, top, fontSize: 70, fontWeight: 700, lineHeight: 1.05, opacity: 1 - prog(f, P.SC.B - 14, 14, 'inHard')}}>
       <div>If I were a</div><RotatingWord words={P.ROLE} at={P.T.swap} color={[TH.muted, TH.muted, TH.accent]} style={{fontWeight: 800, fontSize: 84}} /></div>}
     {vis(f, T.one - 40, P.SC.B) && <div style={{position: 'absolute', left: 60, right: 60, top: bot, opacity: 1 - prog(f, P.SC.B - 14, 14, 'inHard')}}>
-      <VoLine words={vw(0, ['this', 'is', 'the', 'one', 'automation', "I'd", 'set', 'up', 'first.'], [1.8, 1.92, 2.06, 2.22, 2.46, 2.96, 3.5, 3.62, 3.8])} hot={{first: TH.hot}} style={{fontSize: 60, fontWeight: 700, lineHeight: 1.1}} /></div>}
+      <VoLine words={vw(0, ['this', 'is', 'the', 'one', 'automation', "I'd", 'set', 'up', 'first.'], [1.8, 1.92, 2.06, 2.22, 2.46, 2.96, 3.5, 3.62, 3.8])} hot={{first: TH.hot, one: TH.accent, automation: TH.accent}} style={{fontSize: 72, fontWeight: 800, lineHeight: 1.08}} /></div>}
     {vis(f, T.dm - 10, T.rebuild - 8) && <div style={{position: 'absolute', left: 40, right: 40, top: bot + 40}}>
       <VoLine words={vw(1, ['Briefs', 'come', 'in', 'by', 'DM,', 'email,', 'a', 'form…'], [0, 0.3, 0.44, 0.6, 0.76, 1.58, 2.22, 2.28])} hot={{dm: TH.hot, email: TH.hot, form: TH.hot}} f1={T.rebuild - 20} style={{fontSize: 64, fontWeight: 800}} /></div>}
     {vis(f, T.rebuild - 4, P.SC.C) && <div style={{position: 'absolute', left: 40, right: 40, top}}>
@@ -182,8 +195,8 @@ export const Film: React.FC = () => {
         <Monday f={f} />
         {f >= T.buildStart - 2 && <Slots f={f} />}
         {f >= P.SC.E - 20 && <>
-          {[[L.nodes[0], L.tally, [P.SC.E - 10, 30], 0], [L.tally, L.trello, P.P.dot1, -200], [L.trello, L.clock, P.P.dot2, 200], [L.clock, L.tele, P.P.dot3, -200]].map(([A, B, d, bend], i) => { const D = d as readonly [number, number]; const a0 = A as {x: number; y: number}, b0 = B as {x: number; y: number}; const t = (f - D[0]) / D[1];
-            const p1 = i === 0 ? {x: a0.x, y: a0.y + 165} : {x: a0.x + (i === 2 ? -200 : 430), y: a0.y + (i === 2 ? 360 : 0)}; const p2 = i === 0 ? {x: b0.x - 300, y: b0.y - 360} : {x: b0.x - (i === 2 ? -200 : 430), y: b0.y - (i === 2 ? 330 : 0)};
+          {f < T.onePlace - 20 && [[L.nodes[0], L.tally, [P.SC.E - 10, 30], 0], [L.tally, L.trello, P.P.dot1, 0], [L.trello, L.clock, P.P.dot2, 0], [L.clock, L.tele, P.P.dot3, 0]].map(([A, B, d, bend], i) => { const D = d as readonly [number, number]; const a0 = A as {x: number; y: number}, b0 = B as {x: number; y: number}; const t = (f - D[0]) / D[1];
+            const p1 = i === 0 ? {x: a0.x, y: a0.y + 165} : {x: a0.x + 380, y: a0.y + [0, 250, 260, 200][i]}; const p2 = i === 0 ? {x: b0.x - 300, y: b0.y - 360} : {x: b0.x + 380, y: b0.y - [0, 330, 260, 420][i]};
             return f > D[0] - 20 && <Wire key={i} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} bend={bend as number} p={prog(f, D[0] - 20, 24, 'swift')} dot={t >= 0 && t <= 1 ? prog(f, D[0], D[1], 'inOut') : -1} color={TH.accent} base={a(TH.ink, 0.15)} />; })}
           <Tally f={f} /><Trello f={f} /><Clock f={f} /><Tele f={f} /></>}
       </CameraRig>

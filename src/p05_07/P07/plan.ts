@@ -13,8 +13,10 @@ export const SC = {A: 0, B: s(4.85), C: s(10.35), D: s(11.9), E: s(19.35), F: s(
 export const L = {
   card: {x: 540, y: 960},
   nodes: [0, 1, 2, 3].map((i) => ({x: 540 - 375 + i * 250, y: 1560})),
-  tally: {x: 540, y: 2350}, trello: {x: 1500, y: 2350}, clock: {x: 540, y: 3150}, tele: {x: 1500, y: 3150},
+  // payoff: a vertical stack while the data flows, then the panels slide into a 2x2 dashboard ("one place")
+  tally: {x: 540, y: 2350}, trello: {x: 540, y: 3030}, clock: {x: 540, y: 3700}, tele: {x: 540, y: 4420},
 };
+export const G = {tally: {x: 540, y: 2560}, trello: {x: 1500, y: 2560}, clock: {x: 540, y: 3330}, tele: {x: 1500, y: 3400}};
 export const T = {
   swap: [s(0.3), s(0.55), s(0.8)], designer: W(0, 0.76), one: W(0, 2.22), first: W(0, 3.8),
   dm: W(1, 0.76), email: W(1, 1.58), form: W(1, 2.28), rebuild: W(1, 3.2), monday: W(1, 4.56),
@@ -49,20 +51,20 @@ const caretPos = (f: number) => {
   return {x: PROMPT_TEXT.x + Math.min(k, LINES[li].length) * PROMPT_TEXT.cw, y: PROMPT_TEXT.y + li * PROMPT_TEXT.lh};
 };
 export const caret = caretPos;
-const DASH = {x: 1020, y: 2750};
+const DASH = {x: 1020, y: 2950};
 const moves: Move[] = [
   {f: 0, dur: 0, to: {x: 540, y: 960, zoom: 1.0}, cut: true},
   {f: 6, dur: 280, to: {x: 540, y: 940, zoom: 1.22, roll: -1}, curve: 'inOut'},                      // slow push on card 01
-  {f: SC.B - 10, dur: 90, to: {x: 540, y: 960, zoom: 0.92, roll: 2, yaw: 8}, curve: 'inOut'},       // bubbles swirl: orbit out
+  {f: SC.B - 10, dur: 120, to: {x: 540, y: 960, zoom: 0.95, roll: 2, yaw: 6}, curve: 'inOut'},       // bubbles swirl: orbit out
   {f: T.rebuild - 20, dur: 60, to: {x: 540, y: 1080, zoom: 1.1, roll: 0, yaw: 0}, curve: 'inOut'},  // to-do list
   {f: SC.C - 10, dur: 50, to: {x: 540, y: 960, zoom: 1.05}, curve: 'inOut'},                         // card back to centre, flip
-  {f: T.typeStart - 10, dur: 40, to: (f) => { const c = caretPos(f); return {x: lerp(540, c.x, 0.2), y: lerp(980, c.y, 0.45), zoom: 1.32}; }, curve: 'softOut'},
+  {f: T.typeStart - 10, dur: 40, to: (f) => { const c = caretPos(f); return {x: lerp(540, c.x, 0.1), y: lerp(1080, c.y, 0.35), zoom: 1.12}; }, curve: 'softOut'},
   {f: T.buildStart - 6, dur: 80, to: {x: 540, y: 1250, zoom: 0.92}, curve: 'inOut'},                  // slot columns
-  {f: P.brief - 10, dur: 60, to: {x: L.tally.x, y: L.tally.y, zoom: 1.08}, curve: 'inOut'},
-  {f: P.dot1[0] + 4, dur: 64, to: {x: L.trello.x, y: L.trello.y, zoom: 1.08}, curve: 'inOut'},
-  {f: P.dot2[0] + 4, dur: 64, to: {x: L.clock.x, y: L.clock.y, zoom: 1.08}, curve: 'inOut'},
-  {f: T.onePlace - 24, dur: 70, to: {x: DASH.x, y: DASH.y, zoom: 0.5}, curve: 'inOut'},              // one place: the dashboard
-  {f: T.onePlace + 50, dur: 200, to: {x: DASH.x, y: DASH.y, zoom: 0.56}, curve: 'softOut'},
+  {f: P.brief - 16, dur: 60, to: {x: L.tally.x, y: L.tally.y - 40, zoom: 1.12}, curve: 'inOut'},
+  {f: P.dot1[0] - 6, dur: 64, to: {x: L.trello.x, y: (L.tally.y + L.trello.y) / 2 - 40, zoom: 0.94}, curve: 'inOut'},
+  {f: P.dot2[0] - 6, dur: 64, to: {x: L.clock.x, y: (L.trello.y + L.clock.y) / 2 - 40, zoom: 0.94}, curve: 'inOut'},
+  {f: T.onePlace - 24, dur: 70, to: {x: DASH.x, y: DASH.y, zoom: 0.54}, curve: 'inOut'},              // one place: the dashboard
+  {f: T.onePlace + 50, dur: 200, to: {x: DASH.x, y: DASH.y, zoom: 0.58}, curve: 'softOut'},
 ];
 export const cam = new Camera(moves, TOTAL, 1080, 1920);
 export const camF = new Camera([
@@ -79,6 +81,7 @@ export function events(): Sfx[] {
   tl.add({f: T.first, kind: 'mech', gain: 2, src: 'first'});
   // problem: three messages arrive (DM, email, form) — one soft chime each; to-do items stamp in, then crossed
   tl.add([T.dm, T.email, T.form].map((f, i) => chime(f, -6 - i * 2, ['dm', 'email', 'form'][i])));
+  tl.add([0, 1, 2].map((i) => pop(SC.B + 4 + i * 9, -6, 'pill')));
   tl.add(stepped(todoAt, 'todo'));
   tl.add({f: T.monday, kind: 'swipe', dur: 16, gain: -4, src: 'monday'});
   // reveal: title un-blurs, card flips
