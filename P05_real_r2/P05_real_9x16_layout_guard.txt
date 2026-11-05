@@ -1,0 +1,12 @@
+layout_guard video.mp4: 495 frames, 1407 text boxes, 1305 contrast samples -> 11 violations {"safe":11}
+   {"f":156,"kind":"safe","id":"that","box":[640,557.6,377.6,143.7]}
+   {"f":160,"kind":"safe","id":"that","box":[639.9,557.6,377.6,143.6]}
+   {"f":164,"kind":"safe","id":"that","box":[639.4,558,377.5,143.3]}
+   {"f":184,"kind":"safe","id":"h-note1","box":[61.2,877,218.2,106.9]}
+   {"f":188,"kind":"safe","id":"h-note1","box":[59,876.3,217.9,106.2]}
+   {"f":192,"kind":"safe","id":"h-note1","box":[57.3,875.8,217.8,105.7]}
+   {"f":196,"kind":"safe","id":"h-note1","box":[56,875.5,217.6,105.3]}
+   {"f":200,"kind":"safe","id":"h-note1","box":[55,875.2,217.5,105.1]}
+   {"f":204,"kind":"safe","id":"h-note1","box":[54.3,874.9,217.5,105]}
+   {"f":1464,"kind":"safe","id":"n-title","box":[29.8,1441.8,621.7,107.7]}
+   {"f":1468,"kind":"safe","id":"n-title","box":[54.8,1332.2,589.3,102.1]}

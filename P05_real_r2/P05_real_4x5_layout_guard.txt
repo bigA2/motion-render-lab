@@ -1,0 +1,2 @@
+layout_guard video.mp4: 495 frames, 1407 text boxes, 1314 contrast samples -> 1 violations {"contrast":1}
+   {"f":476,"kind":"contrast","id":"book-what","cr":4.08,"need":4.5}
