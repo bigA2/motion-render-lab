@@ -3,7 +3,7 @@
 import {Curve, ease, prog, rnd} from './curves';
 
 export type Kind = 'key' | 'space' | 'enter' | 'click' | 'pop' | 'whoosh' | 'land' | 'chime' | 'tick' | 'data' | 'mech'
-  | 'stamp' | 'swipe' | 'riser' | 'impact';
+  | 'stamp' | 'swipe' | 'riser' | 'impact' | 'stutter' | 'charge';
 /** f = frame (fractional ok) at 60 fps; dur in frames; gain = dB offset from the sound map level; pitch = ratio */
 export type Sfx = {f: number; kind: Kind; dur?: number; gain?: number; pitch?: number; src?: string};
 

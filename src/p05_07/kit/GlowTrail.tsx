@@ -5,11 +5,8 @@
 import React from 'react';
 import {useCurrentFrame} from 'remotion';
 
-export type Glow = {start: number; perChar: number; head: number};
-/** frame the i-th letter of the line snaps on */
-export const glowAt = (g: Glow, i: number) => g.start + i * g.perChar;
-/** frame the whole line has settled (last letter + head) */
-export const glowDone = (g: Glow, n: number) => g.start + (n - 1 + g.head) * g.perChar;
+import {Glow} from './glowtime';
+export * from './glowtime';
 
 const mix = (a: string, b: string, t: number) => {
   const p = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
