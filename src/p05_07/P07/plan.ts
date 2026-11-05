@@ -99,7 +99,7 @@ export function events(): Sfx[] {
   tl.add(flow(P.dot3[0], P.dot3[1], 'dot3')); tl.add(teleArr.ev); tl.add(chime(P.teleIn + 16, 2, 'telegram'));
   tl.add([{f: T.onePlace - 4, kind: 'impact', gain: -6, src: 'one place'}, {f: T.ready, kind: 'stamp', gain: -4, src: 'ready'}]);
   tl.add({f: SC.F - 16, kind: 'swipe', dur: 24, src: 'sweep'});
-  tl.add([{f: T.endCard + 8, kind: 'impact', gain: -6, src: 'logo'}]);
+  tl.add([{f: T.endCard + 8, kind: 'impact', gain: -6, src: 'logo'}, flow(T.endCard + 40, 60, 'end-chain')]);
   return tl.sorted();
 }
 export const MUSIC = 'audio/music/04_ambient-electronic_horizon-ending_soft-and-furious.mp3';

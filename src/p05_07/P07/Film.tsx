@@ -5,6 +5,7 @@ import {At, CameraRig, Depth, hitShake} from '../kit/CameraRig';
 import {clamp, lerp, prog} from '../kit/curves';
 import {F} from '../kit/fonts';
 import {Corners, LiveBorder, LivingBg, Pal, a} from '../kit/Living';
+import {EndCard} from '../kit/EndCard';
 import {RotatingWord, TrackIn, TypedText, VoLine, longShadow} from '../kit/type';
 import {Avatar, Check, Logo, Row, Stamp, Tag, Th, Win, Wire} from '../kit/ui';
 import * as P from './plan';
@@ -84,7 +85,7 @@ const Bubbles: React.FC<{f: number}> = ({f}) => {
   const out = prog(f, T.rebuild - 16, 20, 'inHard');
   const pills = [['instagram', 'Instagram · 3 new DMs'], ['gmail', 'Gmail · 12 unread'], ['tally', 'Tally · 2 new responses']];
   return <>{pills.map(([lg, t], i) => { const at = P.SC.B + 4 + i * 9; if (f < at) return null; const p = prog(f, at, 16, 'snapOut');
-    return <Depth key={'p' + i} x={L.card.x - 330} y={L.card.y - 700 + i * 92 - (1 - p) * 60 - out * 300} z={120}><div style={{opacity: p * (1 - out), width: 660, display: 'flex', alignItems: 'center', gap: 14, padding: '14px 22px', borderRadius: 999, background: a('#0D2427', 0.92), border: `1.5px solid ${TH.line}`, fontFamily: F.display, fontSize: 26, color: TH.ink}}>{lg === 'instagram' ? <div style={{width: 40, height: 40, borderRadius: 12, background: 'linear-gradient(135deg,#F58529,#DD2A7B,#8134AF)'}} /> : <Logo name={lg} size={40} round={10} bg={lg === 'gmail' ? '#fff' : undefined} />}<b>{t}</b><span style={{marginLeft: 'auto', fontFamily: F.mono, fontSize: 20, color: TH.muted}}>now</span></div></Depth>; })}
+    return <Depth key={'p' + i} x={L.card.x - 330} y={L.card.y - 590 + i * 84 - (1 - p) * 60 - out * 300} z={120}><div style={{opacity: p * (1 - out), width: 660, display: 'flex', alignItems: 'center', gap: 14, padding: '14px 22px', borderRadius: 999, background: a('#0D2427', 0.92), border: `1.5px solid ${TH.line}`, fontFamily: F.display, fontSize: 26, color: TH.ink}}>{lg === 'instagram' ? <div style={{width: 40, height: 40, borderRadius: 12, background: 'linear-gradient(135deg,#F58529,#DD2A7B,#8134AF)'}} /> : <Logo name={lg} size={40} round={10} bg={lg === 'gmail' ? '#fff' : undefined} />}<b>{t}</b><span style={{marginLeft: 'auto', fontFamily: F.mono, fontSize: 20, color: TH.muted}}>now</span></div></Depth>; })}
   {items.map((it, i) => { if (f < it.at - 4) return null; const p = prog(f, it.at - 4, 22, 'snapOut'); const ang = (it.ang + (f - it.at) * 0.12) * Math.PI / 180;
     return <Depth key={i} x={L.card.x + Math.cos(ang) * it.r * lerp(0.4, 1, p) - 320} y={L.card.y + Math.sin(ang) * it.r * 1.5 * lerp(0.4, 1, p) - 90 - out * 400} z={it.z} ry={Math.cos(ang) * -14} s={lerp(0.6, 1, p)}>
       <div style={{opacity: p * (1 - out)}}>{it.el}</div></Depth>; })}</>;
@@ -173,14 +174,6 @@ const Overlay: React.FC<{f: number}> = ({f}) => {
 };
 
 // ---------------- end ----------------
-const End: React.FC<{f: number}> = ({f}) => (
-  <At x={0} y={600} w={1080} style={{textAlign: 'center', fontFamily: F.display, color: TH.ink}}>
-    <div style={{display: 'inline-block', transform: `scale(${lerp(0.4, 1, prog(f, T.endCard + 4, 30, 'spring'))})`, filter: `drop-shadow(0 0 40px ${a(TH.accent, 0.5)})`}}><Logo name="fansa" size={210} round={56} /></div>
-    <TrackIn f0={T.endCard + 10} dur={60} from={0.5} style={{fontWeight: 800, fontSize: 116, marginTop: 24}}>FansaChat</TrackIn>
-    <div style={{fontFamily: F.mono, fontSize: 34, color: TH.muted, marginTop: 6, opacity: clamp((f - T.endCard - 25) / 12)}}>catch every brief in one place</div>
-    <div style={{marginTop: 50, display: 'inline-block', transform: `scale(${prog(f, P.VO[5] + 4, 20, 'spring')})`}}><Tag c={TH.accent} solid size={46} style={{color: '#04201C'}}>Join the waitlist · link in bio</Tag></div>
-  </At>
-);
 
 export const Film: React.FC = () => {
   const f = useCurrentFrame(); const {width: w, height: h} = useVideoConfig();
@@ -204,7 +197,7 @@ export const Film: React.FC = () => {
     </AbsoluteFill>
     {inF && <AbsoluteFill style={{clipPath: `polygon(-100% 0, ${sw * 160 - 30}% 0, ${sw * 160 - 60}% 100%, -100% 100%)`}}>
       <LivingBg p={{...PAL, bg: '#062022'}} cam={P.camF} particles={40} seed={29} />
-      <CameraRig cam={P.camF} id="e"><End f={f} /></CameraRig>
+      <EndCard f0={T.endCard} pill={P.VO[5] + 4} apps={['tally', 'trello', 'clockify', 'telegram']} dot={[T.endCard + 40, 60]} tagline="Catch every brief in one place" sentence={P.SENTENCE} accent={TH.accent} ink={TH.ink} muted={TH.muted} display={F.display} body={F.display} pillInk="#04201C" />
     </AbsoluteFill>}
     {inF && sw > 0 && sw < 1 && <div style={{position: 'absolute', top: 0, left: 0, width: w, height: h, background: `linear-gradient(105deg, transparent ${sw * 160 - 62}%, ${a('#FFFFFF', 0.85)} ${sw * 160 - 46}%, transparent ${sw * 160 - 28}%)`, mixBlendMode: 'screen', pointerEvents: 'none'}} />}
     <Corners p={PAL} label={['BRIEF CATCHER', 'P07 · {t}']} />

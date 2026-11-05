@@ -110,7 +110,8 @@ export function events(): Sfx[] {
   tl.add(flow(P.dot3[0], P.dot3[1], 'dot3')); tl.add(discArr.ev); tl.add(chime(P.discordIn + 14, -2, 'discord'));
   tl.add(seen.ev); tl.add({f: T.seconds, kind: 'impact', src: 'seconds'});
   tl.add({f: SC.F - 14, kind: 'swipe', dur: 20, src: 'iris'});
-  tl.add([{f: T.endCard - 10, kind: 'swipe', dur: 16, src: 'wipe'}, {f: T.endCard + 8, kind: 'pop', gain: 2, src: 'logo'}]);
+  tl.add([0, 1, 2, 3].map((i) => pop(T.one + 20 + i * 6, -3, 'step')));
+  tl.add([{f: T.endCard - 10, kind: 'swipe', dur: 16, src: 'wipe'}, {f: T.endCard + 8, kind: 'pop', gain: 2, src: 'logo'}, flow(T.endCard + 40, 50, 'end-chain')]);
   return tl.sorted();
 }
 export const MUSIC = 'audio/01_upbeat-tech_high-technologic-beat-explosion_loyalty-freak-music.mp3';

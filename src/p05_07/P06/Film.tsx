@@ -5,6 +5,7 @@ import {At, CameraRig, Depth, hitShake} from '../kit/CameraRig';
 import {clamp, lerp, noise1, prog, rnd} from '../kit/curves';
 import {F} from '../kit/fonts';
 import {Corners, LiveBorder, LivingBg, Pal, a} from '../kit/Living';
+import {EndCard} from '../kit/EndCard';
 import {TrackIn, TypedText, VoLine, longShadow} from '../kit/type';
 import {Avatar, Check, Logo, Row, Stamp, Tag, Th, Win, Wire} from '../kit/ui';
 import * as P from './plan';
@@ -178,7 +179,7 @@ const Overlay: React.FC<{f: number}> = ({f}) => {
       <span style={{fontFamily: F.serif, fontSize: 74, color: TH.ink, marginLeft: 22, verticalAlign: 'middle'}}>quick questions</span></div></div>}
     {vis(f, T.read - 4, T.fan) && <div style={{position: 'absolute', left: 40, right: 40, top: h > 1500 ? 150 : 50, fontFamily: F.serif, fontSize: h > 1500 ? 96 : 84, lineHeight: 1.0, color: TH.ink, opacity: 1 - prog(f, T.fan - 14, 14, 'inHard')}}>
       {[P.steps.filter((x) => f >= x).length - 1].map((k) => k >= 0 && f >= P.steps[k] && <div key={k} style={{transform: `translateY(${(1 - prog(f, P.steps[k], 12, 'snapOut')) * 30}px)`, opacity: prog(f, P.steps[k], 10, 'snapOut')}}>{['Read everything.', 'Spot it.', 'Make a task.', 'Tell the team.'][k]}</div>)}</div>}
-    {vis(f, T.tell - 24, T.fan) && <div style={{position: 'absolute', left: 60, right: 60, bottom: h > 1500 ? 160 : 70, opacity: prog(f, T.tell - 24, 14, 'snapOut') * (1 - prog(f, T.fan - 10, 12, 'inHard')), transform: `translateY(${(1 - prog(f, T.tell - 24, 18, 'snapOut')) * 120}px)`, textAlign: 'left'}}>
+    {vis(f, T.tell - 24, T.fan) && <div style={{position: 'absolute', left: 60, right: 60, bottom: h > 1500 ? 160 : 110, opacity: prog(f, T.tell - 24, 14, 'snapOut') * (1 - prog(f, T.fan - 10, 12, 'inHard')), transform: `translateY(${(1 - prog(f, T.tell - 24, 18, 'snapOut')) * 120}px)`, textAlign: 'left'}}>
       <div style={{display: 'flex', gap: 16, alignItems: 'center', padding: '20px 24px', borderRadius: 28, background: '#FFFDFB', border: `2px solid ${TH.hot}`, boxShadow: '0 30px 60px rgba(60,30,60,.25)', fontFamily: F.sans}}>
         <Logo name="intercom" size={54} round={14} /><div style={{flex: 1}}><div style={{fontSize: 21, color: TH.muted, fontWeight: 700, letterSpacing: 1.5}}>KARA LIN · 2ND MESSAGE · 10:51</div><div style={{fontSize: 28, fontWeight: 700, color: TH.ink}}>hello?? still losing orders</div></div><Tag c={TH.hot} solid size={18}>URGENT</Tag></div></div>}
     {vis(f, T.seconds - 30, P.SC.F + 4) && <AbsoluteFill style={{background: `radial-gradient(ellipse 80% 40% at 50% 50%, ${a(PAL.bg, 0.92 * prog(f, T.seconds - 30, 24, 'softOut'))}, ${a(PAL.bg, 0.5 * prog(f, T.seconds - 30, 24, 'softOut'))})`}} />}
@@ -198,13 +199,11 @@ const End: React.FC<{f: number}> = ({f}) => {
   return <>{!ec && <At x={0} y={700} w={1080} style={{textAlign: 'center'}}>
       <div style={{fontFamily: F.sans, fontSize: 30, color: TH.muted, padding: '0 90px', lineHeight: 1.35, transform: `scale(${lerp(1, 0.86, one)})`, opacity: lerp(1, 0.55, one)}}>“{P.SENTENCE}”</div>
       <div style={{fontFamily: F.serif, fontSize: 170, color: TH.ink, marginTop: 50, opacity: one, transform: `translateY(${(1 - one) * 40}px)`, letterSpacing: `${lerp(0.2, -0.02, one)}em`}}>One sentence.</div>
+      <Row gap={18} style={{justifyContent: 'center', marginTop: 40}}>{[['intercom', 'new chat'], ['', 'urgent?'], ['clickup', 'task'], ['discord', 'ping']].map(([lg, t], i) => { const p = prog(f, T.one + 20 + i * 6, 20, 'spring');
+        return <div key={t} style={{transform: `scale(${p})`, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, fontFamily: F.sans, fontSize: 24, color: TH.muted}}>{lg ? <Logo name={lg} size={86} round={22} /> : <div style={{width: 86, height: 86, borderRadius: 22, background: a(TH.hot, 0.14), color: TH.hot, fontSize: 48, fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>#</div>}{t}</div>; })}</Row>
+      <div style={{fontFamily: F.mono, fontSize: 26, color: TH.accent, marginTop: 26, opacity: clamp((f - T.one - 50) / 10)}}>4 steps · built in ~10 s</div>
     </At>}
-    {ec && <At x={0} y={600} w={1080} style={{textAlign: 'center'}}>
-      <div style={{display: 'inline-block', transform: `scale(${lerp(0.4, 1, prog(f, T.endCard + 4, 30, 'spring'))})`}}><Logo name="fansa" size={210} round={56} /></div>
-      <TrackIn f0={T.endCard + 10} dur={60} from={0.5} style={{fontFamily: F.serif, fontSize: 130, color: TH.ink, marginTop: 20}}>FansaChat</TrackIn>
-      <div style={{fontFamily: F.sans, fontSize: 42, color: TH.muted, opacity: clamp((f - T.endCard - 25) / 12)}}>Urgent client messages, never missed</div>
-      <div style={{marginTop: 50, display: 'inline-block', transform: `scale(${prog(f, P.VO[6] + 4, 20, 'spring')})`}}><Tag c={TH.accent} solid size={46}>Join the waitlist · link in bio</Tag></div>
-    </At>}</>;
+    </>;
 };
 
 export const Film: React.FC = () => {
@@ -227,6 +226,7 @@ export const Film: React.FC = () => {
     {inF && <AbsoluteFill style={{clipPath: `circle(${iris * 120}% at 50% 50%)`}}>
       <LivingBg p={{...PAL, bg: '#F3ECE4'}} cam={P.camF} grid={false} particles={28} seed={13} />
       <CameraRig cam={P.camF} id="e"><End f={f} /></CameraRig>
+      {f >= T.endCard && <EndCard f0={T.endCard} pill={P.VO[6] + 4} apps={['intercom', 'clickup', 'discord']} dot={[T.endCard + 40, 50]} tagline="Urgent client messages, never missed" accent={TH.accent} ink={TH.ink} muted={TH.muted} display={F.serifUp} body={F.sans} wordWeight={400} />}
     </AbsoluteFill>}
     <Corners p={PAL} label={['URGENT · INBOX', 'P06 · {t}']} />
   </AbsoluteFill>;

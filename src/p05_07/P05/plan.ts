@@ -18,7 +18,7 @@ export const L = {
   div: 1080,
   head: {x: 1080, y: 300},
   pile: {x: 820, y: 1010}, dash: {x: 1350, y: 1010},
-  toast: {x: 560, y: 520}, board: {x: 560, y: 1060}, cal: {x: 560, y: 1560}, sticky: {x: 430, y: 1210},
+  toast: {x: 560, y: 520}, board: {x: 560, y: 1060}, cal: {x: 560, y: 1560}, sticky: {x: 840, y: 1150},
   prompt: {x: 2150, y: 700, w: 960},
   nodes: [{x: 2150, y: 1180}, {x: 2150, y: 1480}, {x: 2150, y: 1780}],
   deal: {x: 2150, y: 2420}, card: {x: 2150, y: 3300},
@@ -32,7 +32,7 @@ export const T = {
   typeStart: W(3, 1.15), // after "tell FansaChat"
   nodes: [0, 0, 0], buildStart: 0,
   booking: s(18.35), deal: 0, card: 0, tracked: W(4, 0.84), prepped: W(4, 1.48), auto: W(4, 1.9),
-  pollClick: W(5, 1.05), endCard: s(26.15),
+  pollClick: W(5, 0.7), endCard: s(26.2),
 };
 // prompt window geometry (Film.tsx uses the same numbers): window top-left, text block origin, char width, line height
 export const PROMPT = {x: 1650, y: 470, w: 1000, side: 190};
@@ -52,7 +52,7 @@ export const dealArr = arrive(P.dealIn, 30, 360, 'snapOut', {land: true, src: 'd
 export const cardArr = arrive(P.cardIn, 30, 360, 'snapOut', {land: true, src: 'card'});
 export const value = countUp(0, 4800, P.value[0], P.value[1], 'softOut', 100, 'value');
 export const score = countUp(0, 82, P.value[0] + 10, 50, 'softOut', 1, 'score');
-export const poll = countUp(0, 88, T.pollClick + 6, 46, 'softOut', 1, 'poll');
+export const poll = countUp(0, 88, T.pollClick + 6, 30, 'softOut', 1, 'poll');
 // calendar fills ("the day happens"): 9 meetings pop in on a stepped rhythm
 export const MEET = [
   ['9:00', 'Standup', 0], ['9:30', 'Hiring sync — Ops', 1], ['10:00', 'Q4 forecast review', 2], ['11:00', 'Vendor call · Northwind', 0],
@@ -61,11 +61,16 @@ export const MEET = [
 export const meetAt = MEET.map((_, i) => T.dayStart + i * 8);
 // sticky notes arriving on the board (slap)
 export const notes = [
-  {txt: 'add Dana to CRM!!', at: T.note1, x: -170, y: -40, r: -5, c: '#FFE066'},
-  {txt: 'prep for Dana call', at: T.note2, x: 150, y: 10, r: 4, c: '#FF9EBB'},
+  {txt: 'add Dana to CRM!!', at: T.note1, x: -200, y: -40, r: -5, c: '#FFE066'},
+  {txt: 'prep for Dana call', at: T.note2, x: 40, y: 10, r: 4, c: '#FF9EBB'},
 ];
+// "you mean to add them to your CRM": cursor snoozes the booking email instead
+export const SNOOZE = {x: 470, y: 590, at: s(4.95)};
+export const cursorB = cursorPath([
+  {f: T.toastIn + 24, x: 860, y: 980}, {f: SNOOZE.at - 4, x: SNOOZE.x, y: SNOOZE.y}, {f: SNOOZE.at, x: SNOOZE.x, y: SNOOZE.y, click: true}, {f: SNOOZE.at + 50, x: SNOOZE.x + 160, y: SNOOZE.y + 260},
+]);
 export const cursor = cursorPath([
-  {f: T.pollClick - 50, x: 900, y: 1500}, {f: T.pollClick - 4, x: 640, y: 1000}, {f: T.pollClick, x: 640, y: 1000, click: true}, {f: T.pollClick + 40, x: 700, y: 1080},
+  {f: T.pollClick - 46, x: 920, y: 1420}, {f: T.pollClick - 4, x: 640, y: 1050}, {f: T.pollClick, x: 640, y: 1050, click: true}, {f: T.pollClick + 40, x: 700, y: 1130},
 ]);
 
 // ---------- camera (one world, one camera: it tracks the subject of each beat) ----------
@@ -83,7 +88,7 @@ const moves: Move[] = [
   {f: T.that - 6, dur: 22, to: {x: 1300, y: 1000, zoom: 1.22, roll: 1.5}, curve: 'swift2'},     // track "THAT"
   {f: SC.B - 4, dur: 40, to: {x: 600, y: 760, zoom: 1.1, roll: 0}, curve: 'swift'},            // to the booking toast
   {f: T.note1 - 20, dur: 50, to: {x: 560, y: 1000, zoom: 1.05}, curve: 'inOut'},              // sticky notes
-  {f: T.dayStart - 10, dur: 70, to: {x: 560, y: 1290, zoom: 0.86}, curve: 'inOut'},           // calendar fills
+  {f: T.dayStart - 10, dur: 70, to: {x: 560, y: 1330, zoom: 0.86}, curve: 'inOut'},           // calendar fills
   {f: SC.C, dur: 60, to: {x: L.sticky.x + 40, y: L.sticky.y + 30, zoom: 1.55, roll: -2}, curve: 'swift2'}, // rack onto the forgotten note
   {f: T.mattered - 30, dur: 90, to: {x: L.sticky.x + 60, y: L.sticky.y + 50, zoom: 1.7, roll: -2.5}, curve: 'softOut'},
   {f: T.whip, dur: 30, to: {x: L.prompt.x, y: L.prompt.y + 40, zoom: 1.0, roll: 0}, curve: 'swift'}, // whip right across the divider
@@ -118,7 +123,7 @@ export function events(): Sfx[] {
   tl.add([0, 1, 2, 3].map((i) => ({f: T.this + i * 4, kind: 'mech' as const, gain: -2, pitch: 1 - i * 0.03, src: 'THIS'})));
   tl.add([0, 1, 2, 3].map((i) => ({f: T.that + i * 4, kind: 'mech' as const, gain: -2, pitch: 1.05 + i * 0.03, src: 'THAT'})));
   // problem: booking notification, notes slap, calendar fills, the X
-  tl.add(arrive(T.toastIn, 24, 700, 'snapOut', {src: 'toast'}).ev); tl.add(chime(T.toastIn + 14, -2, 'calendly'));
+  tl.add(arrive(T.toastIn, 24, 700, 'snapOut', {src: 'toast'}).ev); tl.add(cursorB.ev); tl.add(pop(SNOOZE.at + 4, -4, 'snoozed')); tl.add(chime(T.toastIn + 14, -2, 'calendly'));
   notes.forEach((n) => tl.add([{f: n.at, kind: 'land', gain: 4, src: 'sticky'}, {f: n.at - 8, kind: 'swipe', dur: 10, gain: -6, src: 'sticky'}]));
   tl.add(meetAt.map((f, i) => pop(f, -2 + (i % 3), 'meeting')));
   tl.add([{f: T.dayStart + 30, kind: 'chime', gain: -9, src: 'slack'}, {f: T.dayStart + 56, kind: 'chime', gain: -11, src: 'slack'}]);
@@ -139,7 +144,7 @@ export function events(): Sfx[] {
   tl.add({f: SC.F - 12, kind: 'swipe', dur: 18, src: 'bloom'});
   // end: poll click, bar ticks, end card
   tl.add(cursor.ev); tl.add(pop(T.pollClick + 2, -2, 'poll')); tl.add(poll.ev.filter((_, i) => i % 2 === 0));
-  tl.add([{f: T.endCard - 10, kind: 'swipe', dur: 16, src: 'wipe'}, {f: T.endCard + 8, kind: 'impact', gain: -5, src: 'logo'}]);
+  tl.add([{f: T.endCard - 10, kind: 'swipe', dur: 16, src: 'wipe'}, {f: T.endCard + 8, kind: 'impact', gain: -5, src: 'logo'}, flow(T.endCard + 40, 50, 'end-chain')]);
   return tl.sorted();
 }
 export const MUSIC = 'audio/02_calm-minimal_once-more-with-you_loyalty-freak-music.mp3';

@@ -5,6 +5,7 @@ import {At, CameraRig, hitShake} from '../kit/CameraRig';
 import {clamp, lerp, noise1, prog} from '../kit/curves';
 import {F} from '../kit/fonts';
 import {Corners, LiveBorder, LivingBg, Pal, a} from '../kit/Living';
+import {EndCard} from '../kit/EndCard';
 import {GiantLetters, TrackIn, TypedText, VoLine, longShadow} from '../kit/type';
 import {Avatar, Check, Cursor, Logo, Row, Stamp, Tag, Th, Toast, Win, Wire, wirePt} from '../kit/ui';
 import * as P from './plan';
@@ -38,8 +39,8 @@ const Hook: React.FC<{f: number}> = ({f}) => (
     <At x={L.pile.x - 110} y={L.pile.y - 90}>{STICKIES.map((s, i) => { const p = prog(f, -14 + i * 4, 24, 'snapOut');
       return <div key={i} style={{position: 'absolute', left: s.x * 0.62, top: s.y * 0.85, transform: `rotate(${s.r + noise1(f / 50, i) * 2}deg) scale(${lerp(1.3, 1, p)})`, opacity: p}}><Sticky t={s.t} c={s.c} w={200} size={32} /></div>; })}</At>
     <At x={L.dash.x - 230} y={L.dash.y - 230} o={clamp((f + 6) / 10)} s={lerp(0.92, 1, prog(f, -6, 40, 'snapOut'))}><div style={{transform: 'scale(0.9)', transformOrigin: '0 0'}}><DashMini f={f} /></div></At>
-    <At x={790 - 230} y={560} w={460} style={{textAlign: 'center'}}><GiantLetters text="THIS" f0={T.this} stagger={4} size={128} color={PAL.hot} shadow={longShadow('#9C2E0C', 12)} font={F.display} /></At>
-    <At x={1370 - 230} y={560} w={460} style={{textAlign: 'center'}}><GiantLetters text="THAT" f0={T.that} stagger={4} size={128} color={PAL.accent} shadow={longShadow('#3B2A99', 12)} font={F.display} /></At>
+    <At x={790 - 230} y={640} w={460} style={{textAlign: 'center'}}><GiantLetters text="THIS" f0={T.this} stagger={4} size={128} color={PAL.hot} shadow={longShadow('#9C2E0C', 12)} font={F.display} /></At>
+    <At x={1370 - 230} y={640} w={460} style={{textAlign: 'center'}}><GiantLetters text="THAT" f0={T.that} stagger={4} size={128} color={PAL.accent} shadow={longShadow('#3B2A99', 12)} font={F.display} /></At>
     <At x={L.div - 470} y={1330} w={420} style={{textAlign: 'center', fontFamily: F.mono, fontSize: 30, color: PAL.hot, opacity: clamp((f - T.this) / 10)}}>3 calls · 0 prepped</At>
     <At x={L.div + 50} y={1330} w={420} style={{textAlign: 'center', fontFamily: F.mono, fontSize: 30, color: PAL.accent, opacity: clamp((f - T.that) / 10)}}>3 calls · 3 prepped</At>
     <At x={L.div - 340} y={1440} w={300} style={{textAlign: 'center', fontFamily: F.mono, fontSize: 26, letterSpacing: 4, color: PAL.muted, opacity: clamp((f - T.this) / 10)}}>STICKY NOTES</At>
@@ -58,7 +59,7 @@ const Divider: React.FC<{f: number}> = ({f}) => (
 const Board: React.FC<{f: number}> = ({f}) => (
   <At x={L.board.x - 420} y={L.board.y - 250} w={840} h={500} style={{borderRadius: 26, background: '#E9DCC5', boxShadow: 'inset 0 0 0 10px #D8C6A6, 0 30px 60px rgba(60,50,30,.2)'}}>
     <div style={{position: 'absolute', left: 30, top: 24, fontFamily: F.mono, fontSize: 22, letterSpacing: 3, color: '#7A6648'}}>TO DO (SOMEDAY)</div>
-    {[['invoice Q3?', '#9EE6FF', 520, 40, 7], ['call back 555-0142', '#C7F59A', 600, 260, -4]].map(([t, c, x, y, r], i) => <div key={i} style={{position: 'absolute', left: x as number, top: y as number, transform: `rotate(${r}deg)`, opacity: 0.85}}><Sticky t={t as string} c={c as string} w={200} size={30} /></div>)}
+    {[['invoice Q3?', '#9EE6FF', 560, 30, 7]].map(([t, c, x, y, r], i) => <div key={i} style={{position: 'absolute', left: x as number, top: y as number, transform: `rotate(${r}deg)`, opacity: 0.85}}><Sticky t={t as string} c={c as string} w={200} size={30} /></div>)}
     {P.notes.map((n, i) => { const p = prog(f, n.at - 8, 14, 'snapOut'); if (f < n.at - 8) return null; const fall = i === 0 ? prog(f, T.dayStart + 40, 40, 'inHard') : 0;
       return <div key={i} style={{position: 'absolute', left: 290 + n.x, top: 130 + n.y + fall * 700, transform: `rotate(${n.r + fall * 40}deg) scale(${lerp(1.5, 1, p)})`, opacity: p}}><Sticky t={n.txt} c={n.c} w={240} size={38} />
         {i === 1 && f >= T.xMark && <svg width={240} height={210} style={{position: 'absolute', left: 0, top: 0}}><path d="M30 30 L210 180 M210 30 L30 180" stroke={PAL.hot} strokeWidth={14} strokeLinecap="round" fill="none" strokeDasharray={520} strokeDashoffset={520 * (1 - prog(f, T.xMark, 14, 'swift'))} /></svg>}</div>; })}
@@ -80,7 +81,7 @@ const Calendar: React.FC<{f: number}> = ({f}) => {
 };
 const Slacky: React.FC<{f: number}> = ({f}) => (
   <>{[['Priya N.', '@you can you look at the forecast?', 30], ['Ops bot', '3 invoices need approval', 56]].map(([n, l, d], i) => { const at = T.dayStart + (d as number); if (f < at) return null; const p = prog(f, at, 20, 'snapOut');
-    return <At key={i} x={L.cal.x - 380 + (1 - p) * 300} y={L.cal.y - 560 + i * 120} o={p * (1 - prog(f, P.SC.C + 20, 30, 'softOut'))}><div style={{transform: 'scale(0.9)', transformOrigin: '0 0'}}><Toast th={TH} logo="slack" app="Slack" title={n as string} line={l as string} time="now" w={760} /></div></At>; })}</>
+    return <At key={i} x={L.cal.x - 380 + (1 - p) * 300} y={L.cal.y + 340 + i * 105} o={p * (1 - prog(f, P.SC.C + 20, 30, 'softOut'))}><div style={{transform: 'scale(0.9)', transformOrigin: '0 0'}}><Toast th={TH} logo="slack" app="Slack" title={n as string} line={l as string} time="now" w={760} /></div></At>; })}</>
 );
 
 // ---------------- solution ----------------
@@ -208,8 +209,8 @@ const Overlay: React.FC<{f: number}> = ({f}) => {
       <VoLine words={vw(2, ['the', 'call', 'you', 'forgot', 'to', 'prep', 'is', 'the', 'one', 'that', 'mattered.'], [0.06, 0.14, 0.36, 0.64, 0.92, 1.14, 1.38, 1.66, 1.84, 2.0, 2.16])} hot={{forgot: PAL.hot, mattered: PAL.hot}} f1={T.whip - 6}
         style={{fontFamily: F.display, fontWeight: 800, fontSize: 82, lineHeight: 1.02, color: PAL.ink, letterSpacing: '-0.02em', textShadow: `0 2px 30px ${a(PAL.bg, 0.9)}`}} /></div>}
     {vis(f, T.auto - 20, P.SC.F + 6) && <AbsoluteFill style={{background: `radial-gradient(ellipse 80% 40% at 50% 50%, ${a(PAL.bg, 0.92 * prog(f, T.auto - 20, 24, 'softOut'))}, ${a(PAL.bg, 0.55 * prog(f, T.auto - 20, 24, 'softOut'))})`}} />}
-    {vis(f, P.SC.A, P.SC.B + 12) && <div style={{position: 'absolute', left: 0, right: 0, top: h > 1500 ? 170 : 80, textAlign: 'center', opacity: 1 - prog(f, P.SC.B - 6, 16, 'inHard'), transform: `translateY(${-prog(f, P.SC.B - 6, 16, 'inHard') * 60}px)`}}>
-      <TrackIn f0={T.headIn} dur={70} style={{fontFamily: F.display, fontWeight: 800, fontSize: 96, color: PAL.ink, lineHeight: 1}}>Booking sales calls?</TrackIn></div>}
+    {vis(f, P.SC.A, P.SC.B + 12) && <div style={{position: 'absolute', left: 0, right: 0, top: h > 1500 ? 170 : 36, textAlign: 'center', fontSize: h > 1500 ? 96 : 78, opacity: 1 - prog(f, P.SC.B - 6, 16, 'inHard'), transform: `translateY(${-prog(f, P.SC.B - 6, 16, 'inHard') * 60}px)`}}>
+      <TrackIn f0={T.headIn} dur={70} style={{fontFamily: F.display, fontWeight: 800, fontSize: 'inherit', color: PAL.ink, lineHeight: 1}}>Booking sales calls?</TrackIn></div>}
     {vis(f, T.auto - 4, P.SC.F + 6) && <div style={{position: 'absolute', left: 0, right: 0, top: h / 2 - 110, textAlign: 'center', transform: `translate(${sh.x}px, ${sh.y}px) scale(${sh.s * lerp(0.6, 1.05, prog(f, T.auto - 4, 72, 'softOut'))})`}}>
       <div style={{display: 'inline-block', fontFamily: F.display, fontWeight: 800, fontSize: 118, letterSpacing: `${lerp(0.25, -0.03, prog(f, T.auto - 4, 30, 'snapOut'))}em`, color: PAL.accent, textShadow: longShadow('#3B2A99', 16), opacity: clamp((f - T.auto + 4) / 4)}}>Automatically.</div>
       <div style={{fontFamily: F.sans, fontSize: 40, fontWeight: 600, color: PAL.ink, marginTop: 24, opacity: clamp((f - T.auto - 20) / 12)}}>every booking → deal + prep card</div></div>}
@@ -221,21 +222,15 @@ const End: React.FC<{f: number}> = ({f}) => {
   const c = P.cursor.at(f); const voted = f >= T.pollClick; const pct = P.poll.shown(f);
   const ec = f >= P.T.endCard;
   return <>
-    {!ec && <At x={90} y={560} w={900} style={{fontFamily: F.sans}}>
-      <div style={{borderRadius: 36, background: TH.panel, padding: 40, boxShadow: '0 40px 80px rgba(30,40,80,.2)', border: `1.5px solid ${TH.line}`}}>
-        <TrackIn f0={P.VO[5]} dur={50} s0={0.9} s1={1} style={{fontFamily: F.display, fontWeight: 800, fontSize: 70, color: TH.ink, textAlign: 'center', lineHeight: 1.05}}>Which side are you on?</TrackIn>
-        {[['Sticky notes', 100 - pct, PAL.hot], ['Automatic', pct, PAL.accent]].map(([n, v, col], i) => <div key={i} style={{position: 'relative', marginTop: i ? 20 : 36, height: 104, borderRadius: 24, border: `3px solid ${i === 1 && voted ? col : TH.line}`, overflow: 'hidden', display: 'flex', alignItems: 'center', padding: '0 30px', fontSize: 38, fontWeight: 700, transform: i === 1 && voted ? `scale(${1 + 0.04 * (1 - prog(f, T.pollClick, 20, 'softOut'))})` : undefined}}>
+    {!ec && <At x={50} y={700} w={980} style={{fontFamily: F.sans}}>
+      <div style={{borderRadius: 40, background: TH.panel, padding: 44, boxShadow: '0 40px 80px rgba(30,40,80,.2)', border: `1.5px solid ${TH.line}`}}>
+        <div style={{fontFamily: F.mono, fontSize: 24, letterSpacing: 4, color: TH.muted, textAlign: 'center', marginBottom: 10}}>POLL · 2,418 VOTES</div><TrackIn f0={P.VO[5]} dur={50} s0={0.9} s1={1} style={{fontFamily: F.display, fontWeight: 800, fontSize: 78, color: TH.ink, textAlign: 'center', lineHeight: 1.05}}>Which side are you on?</TrackIn>
+        {[['Sticky notes', 100 - pct, PAL.hot], ['Automatic', pct, PAL.accent]].map(([n, v, col], i) => <div key={i} style={{position: 'relative', marginTop: i ? 22 : 36, height: 118, borderRadius: 26, border: `3px solid ${i === 1 && voted ? col : TH.line}`, overflow: 'hidden', display: 'flex', alignItems: 'center', padding: '0 32px', fontSize: 44, fontWeight: 700, transform: i === 1 && voted ? `scale(${1 + 0.04 * (1 - prog(f, T.pollClick, 20, 'softOut'))})` : undefined}}>
           {voted && <div style={{position: 'absolute', left: 0, top: 0, bottom: 0, width: `${v}%`, background: a(col as string, 0.18)}} />}
           <span style={{position: 'relative'}}>{n}</span>{voted && <span style={{position: 'relative', marginLeft: 'auto', fontFamily: F.mono, color: col as string}}>{v}%</span>}</div>)}
       </div>
     </At>}
     {!ec && <Cursor x={c.x} y={c.y} press={c.press} clicks={P.cursor.clicks} ring={PAL.accent} o={clamp((f - T.pollClick + 50) / 8)} />}
-    {ec && <At x={0} y={560} w={1080} style={{textAlign: 'center'}}>
-      <div style={{transform: `scale(${lerp(0.5, 1, prog(f, T.endCard + 6, 30, 'spring'))})`, display: 'inline-block'}}><Logo name="fansa" size={220} round={56} /></div>
-      <TrackIn f0={T.endCard + 10} dur={60} from={0.5} style={{fontFamily: F.display, fontWeight: 800, fontSize: 110, color: PAL.ink, marginTop: 30}}>FansaChat</TrackIn>
-      <div style={{fontFamily: F.sans, fontSize: 44, color: PAL.muted, marginTop: 10, opacity: clamp((f - T.endCard - 25) / 12)}}>One sentence → a working automation</div>
-      <div style={{marginTop: 50, display: 'inline-block', transform: `scale(${prog(f, P.VO[6] + 4, 20, 'spring')})`}}><Tag c={PAL.accent} solid size={46}>Join the waitlist · link in bio</Tag></div>
-    </At>}
   </>;
 };
 
@@ -251,6 +246,9 @@ export const Film: React.FC = () => {
         {f < P.SC.B + 30 && <Hook f={f} />}
         <div style={{position: 'absolute', filter: leftBlur > 0.2 ? `blur(${leftBlur}px)` : undefined}}>
           {vis(f, P.SC.B - 30, T.whip + 40) && <><At x={L.toast.x - 410 + (1 - prog(f, T.toastIn, 24, 'snapOut')) * 700} y={L.toast.y - 70} o={clamp((f - T.toastIn) / 6)}><Toast th={TH} logo="calendly" app="Calendly" title="New event: Dana Whitfield" line="Discovery call · 30 min · Thu, Nov 13, 2:30 PM" time="9:41" w={820} /></At>
+            {f < T.note1 + 40 && <At x={L.toast.x - 386} y={L.toast.y + 90} o={clamp((f - T.toastIn - 10) / 10) * (1 - prog(f, T.note1 + 10, 20, 'softOut'))}>
+              <Row gap={12}>{['Add to CRM', f >= P.SNOOZE.at ? 'Snoozed · tomorrow' : 'Snooze'].map((b, i) => <div key={i} style={{padding: '12px 22px', borderRadius: 14, fontFamily: F.sans, fontSize: 24, fontWeight: 700, background: i === 1 && f >= P.SNOOZE.at ? a(PAL.hot, 0.14) : TH.panel, color: i === 1 && f >= P.SNOOZE.at ? PAL.hot : TH.ink, border: `1.5px solid ${TH.line}`, boxShadow: '0 8px 20px rgba(30,40,70,.12)', transform: i === 1 ? `scale(${1 - P.cursorB.at(f).press * 0.08})` : undefined}}>{b}</div>)}</Row></At>}
+            {vis(f, T.toastIn + 20, P.SNOOZE.at + 60) && (() => { const c = P.cursorB.at(f); return <Cursor x={c.x} y={c.y} press={c.press} clicks={P.cursorB.clicks} ring={PAL.hot} o={clamp((f - T.toastIn - 20) / 8) * (1 - prog(f, P.SNOOZE.at + 40, 20, 'softOut'))} />; })()}
             <Board f={f} /><Calendar f={f} /><Slacky f={f} /></>}
         </div>
         {vis(f, P.SC.B, T.whip + 40) && <At x={L.sticky.x - 125} y={L.sticky.y - 105} o={1 - 0.85 * prog(f, T.mattered - 10, 50, 'softOut')}><div style={{transform: `rotate(${-6 + noise1(f / 60, 3) * 2}deg)`}}><Sticky t="prep call??" c="#FFE066" w={250} size={44} /></div></At>}
@@ -261,6 +259,7 @@ export const Film: React.FC = () => {
     {inF && <AbsoluteFill style={{clipPath: `circle(${bloom * 140}% at 50% 50%)`}}>
       <LivingBg p={PAL} cam={P.camF} rings particles={24} seed={7} />
       <CameraRig cam={P.camF} id="e"><End f={f} /></CameraRig>
+      {f >= T.endCard && <EndCard f0={T.endCard} pill={P.VO[6] + 4} apps={['calendly', 'pipedrive', 'trello']} dot={[T.endCard + 40, 50]} tagline="One sentence → a working automation" sentence={P.SENTENCE} accent={PAL.accent} ink={PAL.ink} muted={PAL.muted} display={F.display} body={F.sans} />}
       {inF && bloom < 1 && <AbsoluteFill style={{background: `radial-gradient(circle at 50% 50%, transparent ${bloom * 98}%, ${a(PAL.accent, 0.6)} ${bloom * 99}%, transparent ${bloom * 100 + 4}%)`}} />}
     </AbsoluteFill>}
     <Corners p={PAL} label={['THIS  /  THAT', 'P05 · {t}']} />

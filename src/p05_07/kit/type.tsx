@@ -39,9 +39,9 @@ export const GiantLetters: React.FC<{text: string; f0: number; stagger?: number;
 /** Rotating word: words swap on the same spot at the given frames (vertical snap + blur clear). */
 export const RotatingWord: React.FC<{words: string[]; at: number[]; style?: React.CSSProperties; color?: string[]}> = ({words, at, style, color}) => {
   const f = useCurrentFrame(); let k = 0; for (let i = 0; i < at.length; i++) if (f >= at[i]) k = i;
-  const p = prog(f, at[k], 14, 'snapOut'); const out = k > 0 ? prog(f, at[k], 8, 'inHard') : 1;
+  const p = prog(f, at[k] + 3, 14, 'snapOut'); const out = k > 0 ? prog(f, at[k] - 2, 6, 'inHard') : 1;
   return <span style={{position: 'relative', display: 'inline-block', ...style}}>
-    {k > 0 && out < 1 && <span style={{position: 'absolute', left: 0, top: 0, transform: `translateY(${-out * 0.6}em)`, opacity: 1 - out, filter: `blur(${out * 8}px)`, color: color?.[k - 1]}}>{words[k - 1]}</span>}
+    {k > 0 && out < 1 && <span style={{position: 'absolute', left: 0, top: 0, transform: `translateY(${-out * 0.9}em)`, opacity: 1 - out, filter: `blur(${out * 10}px)`, color: color?.[k - 1]}}>{words[k - 1]}</span>}
     <span style={{display: 'inline-block', transform: `translateY(${(1 - p) * 0.6}em)`, opacity: f >= at[0] ? p : 0, filter: `blur(${(1 - p) * 10}px)`, color: color?.[k]}}>{words[k]}</span>
   </span>;
 };
