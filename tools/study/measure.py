@@ -33,11 +33,15 @@ while True:
         cut = cv2.compareHist(prev_hist, hist, cv2.HISTCMP_BHATTACHARYYA) > 0.45
         if cut: cuts.append(round(t, 3))
         f = cv2.calcOpticalFlowFarneback(prev, g, None, 0.5, 3, 15, 3, 5, 1.2, 0)
-        dx, dy = float(np.median(f[..., 0])), float(np.median(f[..., 1]))
-        # per second, as share of frame width
-        vel.append(0 if cut else float(np.hypot(dx, dy)) * (12 if step else fps) / aw)
-        div.append(0 if cut else float(np.median((f * r).sum(-1) / rr)) * 12)
-        curl.append(0 if cut else float(np.median((r[..., 0] * f[..., 1] - r[..., 1] * f[..., 0]) / rr)) * 12 * 57.3)
+        # flat UI areas carry no flow: use textured pixels only (edges of text, cards, icons)
+        gm = cv2.magnitude(cv2.Sobel(prev, cv2.CV_32F, 1, 0), cv2.Sobel(prev, cv2.CV_32F, 0, 1)); m = gm > 40
+        if m.sum() < 150: m = np.ones_like(m)
+        fx, fy = f[..., 0][m], f[..., 1][m]; rx, ry = r[..., 0][m], r[..., 1][m]; rm = rr[m]
+        dx, dy = float(np.median(fx)), float(np.median(fy))
+        # per second, as share of frame width (analysis runs at ~12 fps)
+        vel.append(0 if cut else float(np.hypot(dx, dy)) * 12 / aw)
+        div.append(0 if cut else float(np.median((fx * rx + fy * ry) / rm)) * 12)
+        curl.append(0 if cut else float(np.median((rx * fy - ry * fx) / rm)) * 12 * 57.3)
         diff.append(float(np.abs(g.astype(np.int16) - prev.astype(np.int16)).mean()))
     else:
         vel.append(0); div.append(0); curl.append(0); diff.append(0)

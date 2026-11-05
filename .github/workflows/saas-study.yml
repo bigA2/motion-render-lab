@@ -8,13 +8,13 @@ on:
       sources:
         description: 'semicolon-separated yt-dlp targets or page:<url>'
         required: false
-        default: 'page:https://linear.app/;page:https://linear.app/changelog;page:https://www.raycast.com/;page:https://www.framer.com/;page:https://www.notion.com/product/ai;page:https://stripe.com/sessions;page:https://vercel.com/ship;page:https://attio.com/;page:https://cal.com/;page:https://superhuman.com/;page:https://www.pitch.com/;page:https://mercury.com/;page:https://ramp.com/;page:https://clay.com/;page:https://www.descript.com/;page:https://arc.net/;https://vimeo.com/ordinaryfolk;https://vimeo.com/giantant;https://vimeo.com/animade;https://vimeo.com/buck;ytsearch4:linear app launch video;ytsearch3:raycast launch film;ytsearch3:framer launch video;ytsearch3:notion launch video;ytsearch3:stripe product announcement motion;ytsearch3:vercel ship keynote opener;ytsearch3:arc browser launch film;ytsearch4:saas product motion graphics ad 2025'
-      per: { description: 'max videos per source', required: false, default: '2' }
+        default: 'page:https://linear.app/;page:https://linear.app/changelog;page:https://linear.app/insights;page:https://linear.app/asks;page:https://linear.app/customer-requests;page:https://stripe.com/sessions;page:https://stripe.com/billing;page:https://stripe.com/payments;page:https://stripe.com/terminal;page:https://stripe.com/;page:https://www.apple.com/macbook-air/;page:https://www.apple.com/macbook-pro/;page:https://www.apple.com/apple-intelligence/;page:https://www.apple.com/final-cut-pro/;page:https://www.apple.com/ipad-pro/;page:https://superhuman.com/;page:https://clay.com/;page:https://attio.com/;page:https://attio.com/platform;page:https://cal.com/;page:https://www.raycast.com/;page:https://www.raycast.com/ai;page:https://www.framer.com/;page:https://www.framer.com/features/;page:https://www.notion.com/product/ai;page:https://www.notion.com/product/mail;page:https://www.notion.com/product/calendar;page:https://mercury.com/;page:https://ramp.com/;page:https://vercel.com/;page:https://v0.app/;page:https://arc.net/;page:https://www.diabrowser.com/;page:https://www.granola.ai/;page:https://cursor.com/;page:https://www.figma.com/sites/;page:https://www.descript.com/;page:https://www.loom.com/;page:https://pitch.com/;page:https://www.intercom.com/;page:https://www.airtable.com/;page:https://miro.com/;page:https://webflow.com/;page:https://zapier.com/agents;page:https://clickup.com/;page:https://monday.com/;page:https://www.rippling.com/;page:https://height.app/;page:https://www.perplexity.ai/comet'
+      per: { description: 'max videos per source', required: false, default: '3' }
 jobs:
   measure:
     runs-on: ubuntu-latest
     timeout-minutes: 180
-    strategy: { fail-fast: false, matrix: { shard: [0, 1, 2, 3] } }
+    strategy: { fail-fast: false, matrix: { shard: [0, 1, 2, 3, 4, 5, 6, 7] } }
     steps:
       - uses: actions/checkout@v4
       - run: |
@@ -22,7 +22,7 @@ jobs:
           pip install --quiet yt-dlp opencv-python-headless numpy pytesseract
       - env: { SOURCES: '${{ inputs.sources }}', SHARD: '${{ matrix.shard }}' }
         run: |
-          python3 -c "import os; s=[x.strip() for x in os.environ['SOURCES'].split(';') if x.strip()]; open('src.txt','w').write('\n'.join(x for i,x in enumerate(s) if i%4==int(os.environ['SHARD'])))"
+          python3 -c "import os; s=[x.strip() for x in os.environ['SOURCES'].split(';') if x.strip()]; open('src.txt','w').write('\n'.join(x for i,x in enumerate(s) if i%8==int(os.environ['SHARD'])))"
           cat src.txt
           T=$RUNNER_TEMP/vids; mkdir -p $T nums
           python3 tools/study/fetch.py src.txt $T ${{ inputs.per }} || true
