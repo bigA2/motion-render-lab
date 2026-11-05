@@ -77,10 +77,10 @@ const caretPos = (f: number) => {
 export const caret = caretPos;
 const dot = (a: {x: number; y: number}, b: {x: number; y: number}, f: number, f0: number, d: number) => { const t = prog(f, f0, d, 'inOut'); return {x: lerp(a.x, b.x, t), y: lerp(a.y, b.y, t)}; };
 const moves: Move[] = [
-  {f: 0, dur: 0, to: {x: 1080, y: 900, zoom: 0.94}, cut: true},
-  {f: 10, dur: 80, to: {x: 1080, y: 930, zoom: 1.0}, curve: 'softOut'},                      // drift with the headline
-  {f: T.this - 6, dur: 26, to: {x: 840, y: 960, zoom: 1.12, roll: -1.5}, curve: 'swift2'},     // track "THIS"
-  {f: T.that - 6, dur: 22, to: {x: 1320, y: 960, zoom: 1.12, roll: 1.5}, curve: 'swift2'},     // track "THAT"
+  {f: 0, dur: 0, to: {x: 1080, y: 960, zoom: 1.04}, cut: true},
+  {f: 10, dur: 80, to: {x: 1080, y: 980, zoom: 1.12}, curve: 'softOut'},                      // drift with the headline
+  {f: T.this - 6, dur: 26, to: {x: 860, y: 1000, zoom: 1.22, roll: -1.5}, curve: 'swift2'},     // track "THIS"
+  {f: T.that - 6, dur: 22, to: {x: 1300, y: 1000, zoom: 1.22, roll: 1.5}, curve: 'swift2'},     // track "THAT"
   {f: SC.B - 4, dur: 40, to: {x: 600, y: 760, zoom: 1.1, roll: 0}, curve: 'swift'},            // to the booking toast
   {f: T.note1 - 20, dur: 50, to: {x: 560, y: 1000, zoom: 1.05}, curve: 'inOut'},              // sticky notes
   {f: T.dayStart - 10, dur: 70, to: {x: 560, y: 1290, zoom: 0.86}, curve: 'inOut'},           // calendar fills

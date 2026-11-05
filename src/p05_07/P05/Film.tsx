@@ -40,6 +40,8 @@ const Hook: React.FC<{f: number}> = ({f}) => (
     <At x={L.dash.x - 230} y={L.dash.y - 230} o={clamp((f + 6) / 10)} s={lerp(0.92, 1, prog(f, -6, 40, 'snapOut'))}><div style={{transform: 'scale(0.9)', transformOrigin: '0 0'}}><DashMini f={f} /></div></At>
     <At x={790 - 230} y={560} w={460} style={{textAlign: 'center'}}><GiantLetters text="THIS" f0={T.this} stagger={4} size={128} color={PAL.hot} shadow={longShadow('#9C2E0C', 12)} font={F.display} /></At>
     <At x={1370 - 230} y={560} w={460} style={{textAlign: 'center'}}><GiantLetters text="THAT" f0={T.that} stagger={4} size={128} color={PAL.accent} shadow={longShadow('#3B2A99', 12)} font={F.display} /></At>
+    <At x={L.div - 470} y={1330} w={420} style={{textAlign: 'center', fontFamily: F.mono, fontSize: 30, color: PAL.hot, opacity: clamp((f - T.this) / 10)}}>3 calls · 0 prepped</At>
+    <At x={L.div + 50} y={1330} w={420} style={{textAlign: 'center', fontFamily: F.mono, fontSize: 30, color: PAL.accent, opacity: clamp((f - T.that) / 10)}}>3 calls · 3 prepped</At>
     <At x={L.div - 340} y={1440} w={300} style={{textAlign: 'center', fontFamily: F.mono, fontSize: 26, letterSpacing: 4, color: PAL.muted, opacity: clamp((f - T.this) / 10)}}>STICKY NOTES</At>
     <At x={L.div + 40} y={1440} w={300} style={{textAlign: 'center', fontFamily: F.mono, fontSize: 26, letterSpacing: 4, color: PAL.muted, opacity: clamp((f - T.that) / 10)}}>AUTOMATIC</At>
   </>
@@ -85,9 +87,11 @@ const Slacky: React.FC<{f: number}> = ({f}) => (
 const Prompt: React.FC<{f: number}> = ({f}) => {
   const enter = f >= P.typed.end + 6; const press = enter ? 1 - prog(f, P.typed.end + 6, 16, 'softOut') : 0;
   const chips: [string, string][] = [['calendly', 'Calendly'], ['pipedrive', 'Pipedrive'], ['trello', 'Trello']];
-  return <At x={P.PROMPT.x} y={P.PROMPT.y}>
-    <div style={{position: 'absolute', left: 0, top: -150, width: P.PROMPT.w}}>
-      <VoLine words={[['Right:', 0], ['tell', 0.3], ['FansaChat', 0.42]].map(([w, t]) => ({w: w as string, f: P.VO[3] + Math.round((t as number) * 60)}))} hot={{fansachat: PAL.accent}} style={{fontFamily: F.display, fontWeight: 800, fontSize: 76, color: PAL.ink, letterSpacing: '-0.02em'}} />
+  const gone = prog(f, P.P.toast - 14, 22, 'inHard');
+  return <At x={P.PROMPT.x} y={P.PROMPT.y - gone * 260} o={1 - gone}>
+    <div style={{position: 'absolute', left: P.PROMPT_TEXT.x - P.PROMPT.x - 6, top: -170, width: 760}}>
+      <div style={{fontFamily: F.mono, fontSize: 26, letterSpacing: 4, color: PAL.accent, opacity: clamp((f - P.VO[3]) / 8)}}>RIGHT SIDE →</div>
+      <VoLine words={[['tell', 0.3], ['FansaChat', 0.42]].map(([w, t]) => ({w: w as string, f: P.VO[3] + Math.round((t as number) * 60)}))} hot={{fansachat: PAL.accent}} style={{fontFamily: F.display, fontWeight: 800, fontSize: 74, color: PAL.ink, letterSpacing: '-0.02em'}} />
     </div>
     <Win th={TH} w={P.PROMPT.w} logo="fansa" title="FansaChat" meta={<><span style={{width: 12, height: 12, borderRadius: 6, background: TH.ok, display: 'inline-block'}} /> New workflow</>} pad={28}>
       <div style={{display: 'flex', gap: 26}}>
