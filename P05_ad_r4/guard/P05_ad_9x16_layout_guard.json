@@ -1,0 +1,122 @@
+{
+ "video": "video.mp4",
+ "size": [
+  1080,
+  1920
+ ],
+ "every": 4,
+ "frames_with_guard": 203,
+ "frames_checked": 203,
+ "text_boxes_checked": 467,
+ "contrast_measured": 337,
+ "violations": 0,
+ "by_kind": {},
+ "worst_contrast_per_text": {
+  "h-sales": {
+   "cr": 11.17,
+   "f": 52,
+   "need": 3
+  },
+  "h-calls": {
+   "cr": 15.01,
+   "f": 120,
+   "need": 3
+  },
+  "h-slip": {
+   "cr": 5.54,
+   "f": 104,
+   "need": 3
+  },
+  "h-through": {
+   "cr": 13.02,
+   "f": 128,
+   "need": 3
+  },
+  "o-note1": {
+   "cr": 15.58,
+   "f": 196,
+   "need": 4.5
+  },
+  "o-ping1": {
+   "cr": 5.13,
+   "f": 188,
+   "need": 3
+  },
+  "o-book1": {
+   "cr": 18.06,
+   "f": 152,
+   "need": 4.5
+  },
+  "o-note2": {
+   "cr": 15.14,
+   "f": 156,
+   "need": 4.5
+  },
+  "o-ping2": {
+   "cr": 5.17,
+   "f": 184,
+   "need": 3
+  },
+  "o-book2": {
+   "cr": 17.91,
+   "f": 164,
+   "need": 4.5
+  },
+  "cap1": {
+   "cr": 13.18,
+   "f": 240,
+   "need": 3
+  },
+  "cap2": {
+   "cr": 13.06,
+   "f": 364,
+   "need": 3
+  },
+  "cap3": {
+   "cr": 12.85,
+   "f": 412,
+   "need": 3
+  },
+  "c-page": {
+   "cr": 5.83,
+   "f": 412,
+   "need": 4.5
+  },
+  "c-title": {
+   "cr": 18.25,
+   "f": 412,
+   "need": 3
+  },
+  "c-who": {
+   "cr": 18.07,
+   "f": 440,
+   "need": 4.5
+  },
+  "c-msg": {
+   "cr": 16.85,
+   "f": 440,
+   "need": 4.5
+  },
+  "prompt": {
+   "cr": 17.21,
+   "f": 656,
+   "need": 3
+  },
+  "e-word": {
+   "cr": 11.42,
+   "f": 784,
+   "need": 3
+  },
+  "e-tag": {
+   "cr": 9.83,
+   "f": 808,
+   "need": 4.5
+  },
+  "e-pill": {
+   "cr": 5.4,
+   "f": 776,
+   "need": 3
+  }
+ },
+ "list": []
+}

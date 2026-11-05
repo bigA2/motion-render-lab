@@ -1,0 +1,201 @@
+{
+"events": [
+{
+"frame": 4,
+"t": 0.067,
+"kind": "stutter",
+"src": "hook typing burst",
+"level_db": -14
+},
+{
+"frame": 71,
+"t": 1.183,
+"kind": "whoosh",
+"src": "box snaps on \"slip\"",
+"level_db": -11
+},
+{
+"frame": 73,
+"t": 1.217,
+"kind": "pop",
+"src": "box lands",
+"level_db": -11
+},
+{
+"frame": 129,
+"t": 2.15,
+"kind": "hit",
+"src": "hard cut to the problem",
+"level_db": -3
+},
+{
+"frame": 141,
+"t": 2.35,
+"kind": "mech",
+"src": "orbit items snap in (step 1/3)",
+"level_db": -12
+},
+{
+"frame": 148,
+"t": 2.467,
+"kind": "mech",
+"src": "orbit items snap in (step 2/3)",
+"level_db": -11
+},
+{
+"frame": 154,
+"t": 2.567,
+"kind": "mech",
+"src": "orbit items snap in (step 3/3)",
+"level_db": -10
+},
+{
+"frame": 193,
+"t": 3.217,
+"kind": "whoosh",
+"src": "orbit tightens",
+"level_db": -9
+},
+{
+"frame": 231,
+"t": 3.85,
+"kind": "click",
+"src": "hard cut to the product (music drop)",
+"level_db": -8
+},
+{
+"frame": 241,
+"t": 4.017,
+"kind": "stutter",
+"src": "typing burst on screen A",
+"level_db": -16
+},
+{
+"frame": 313,
+"t": 5.217,
+"kind": "whoosh",
+"src": "swish: screen A -> B",
+"level_db": -14
+},
+{
+"frame": 372,
+"t": 6.2,
+"kind": "charge",
+"src": "charge: the diagram builds",
+"level_db": -12
+},
+{
+"frame": 372,
+"t": 6.2,
+"kind": "data",
+"src": "data loop under the data dot (B -> C)",
+"level_db": -17
+},
+{
+"frame": 390,
+"t": 6.5,
+"kind": "whoosh",
+"src": "swish: screen B -> C",
+"level_db": -15
+},
+{
+"frame": 400,
+"t": 6.667,
+"kind": "pop",
+"src": "deal page lands",
+"level_db": -11
+},
+{
+"frame": 416,
+"t": 6.933,
+"kind": "mech",
+"src": "checkbox 1 ticks",
+"level_db": -13
+},
+{
+"frame": 421,
+"t": 7.017,
+"kind": "mech",
+"src": "checkbox 2 ticks",
+"level_db": -12
+},
+{
+"frame": 426,
+"t": 7.1,
+"kind": "mech",
+"src": "checkbox 3 ticks",
+"level_db": -11
+},
+{
+"frame": 437,
+"t": 7.283,
+"kind": "pop",
+"src": "chat message lands",
+"level_db": -12
+},
+{
+"frame": 465,
+"t": 7.75,
+"kind": "whoosh",
+"src": "cut to dark, ring forms",
+"level_db": -13
+},
+{
+"frame": 476,
+"t": 7.933,
+"kind": "pop",
+"src": "ring becomes the prompt bar",
+"level_db": -10
+},
+{
+"frame": 482,
+"t": 8.033,
+"kind": "stutter",
+"src": "prompt typing burst",
+"level_db": -14
+},
+{
+"frame": 665,
+"t": 11.083,
+"kind": "whoosh",
+"src": "bar flies out",
+"level_db": -9
+},
+{
+"frame": 669,
+"t": 11.15,
+"kind": "riser",
+"src": "riser into the logo",
+"level_db": -10
+},
+{
+"frame": 669,
+"t": 11.15,
+"kind": "hit",
+"src": "logo",
+"level_db": -3
+},
+{
+"frame": 735,
+"t": 12.25,
+"kind": "pop",
+"src": "waitlist pill",
+"level_db": -12
+}
+],
+"counts": {
+"stutter": 3,
+"whoosh": 6,
+"pop": 5,
+"hit": 2,
+"mech": 6,
+"click": 1,
+"charge": 1,
+"data": 1,
+"riser": 1
+},
+"events_per_s": 1.93,
+"duration_s": 13.5,
+"music": "audio/01_upbeat-tech_high-technologic-beat-explosion_loyalty-freak-music.mp3",
+"music_offset_s": 50.57742857142857
+}

@@ -1,0 +1,1 @@
+layout_guard video.mp4: 203 frames, 467 text boxes, 337 contrast samples -> 0 violations {}
