@@ -6,12 +6,12 @@ import {Camera} from './camera';
 
 export const CamCtx = React.createContext<Camera | null>(null);
 
-export const CameraRig: React.FC<{cam: Camera; children: React.ReactNode; perspective?: number; blur?: number; id?: string}> = ({cam, children, perspective = 2200, blur = 0.45, id = 'rig'}) => {
+export const CameraRig: React.FC<{cam: Camera; children: React.ReactNode; perspective?: number; blur?: number; id?: string}> = ({cam, children, perspective = 2200, blur = 0.2, id = 'rig'}) => {
   const f = useCurrentFrame(); const {width: w, height: h} = useVideoConfig();
   const c = cam.get(f); const v = cam.vel(f);
   // directional blur in screen px: proportional to velocity, ignored for slow drift
-  const k = (n: number) => { const a = Math.abs(n) * blur; return a < 1.2 ? 0 : Math.min(28, a - 1.2); };
-  const bx = k(v.vx), by = k(v.vy), bz = Math.min(10, Math.max(0, Math.abs(v.vz) * 0.08 - 0.6));
+  const k = (n: number) => { const a = Math.abs(n) * blur; return a < 2.5 ? 0 : Math.min(16, a - 2.5); };
+  const bx = k(v.vx), by = k(v.vy), bz = Math.min(6, Math.max(0, Math.abs(v.vz) * 0.04 - 1));
   const on = bx + by + bz > 0.3;
   const world = `translate(${w / 2}px, ${h / 2}px) translateZ(${c.dolly}px) rotateZ(${c.roll}deg) rotateX(${c.pitch}deg) rotateY(${c.yaw}deg) scale(${c.zoom}) translate(${-c.x}px, ${-c.y}px)`;
   return (

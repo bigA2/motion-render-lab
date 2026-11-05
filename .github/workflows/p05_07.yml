@@ -114,9 +114,13 @@ jobs:
         with: { path: qa_in, pattern: 'qa-*', merge-multiple: true }
       - run: |
           git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
-          D="${{ inputs.mode }}_${{ inputs.rev }}"
-          git fetch origin qa/p05_07 && git checkout -B qa/p05_07 origin/qa/p05_07 || git checkout --orphan qa/p05_07
-          git rm -rq --cached . 2>/dev/null || true; find . -mindepth 1 -maxdepth 1 ! -name .git ! -name qa_in -exec rm -rf {} +
-          mkdir -p "$D" && cp -r qa_in/* "$D/" && rm -rf qa_in
-          echo "run ${{ github.run_id }} mode=${{ inputs.mode }} videos=${{ inputs.videos }} rev=${{ inputs.rev }}" > "$D/RUN.txt"
-          git add -A && git commit -qm "QA $D (run ${{ github.run_id }})" && git push -f origin HEAD:qa/p05_07
+          D="${{ inputs.mode }}_${{ inputs.videos }}_${{ inputs.rev }}"; D="${D// /-}"
+          mv qa_in /tmp/qa_in
+          for i in 1 2 3 4 5; do
+            if git fetch -q origin qa/p05_07; then git checkout -qf -B qa/p05_07 origin/qa/p05_07; else git checkout -q --orphan qa/p05_07; git rm -rqf --cached . || true; fi
+            find . -mindepth 1 -maxdepth 1 ! -name .git ! -name '*_*' -exec rm -rf {} +
+            rm -rf "$D"; mkdir -p "$D" && cp -r /tmp/qa_in/* "$D/"
+            echo "run ${{ github.run_id }} mode=${{ inputs.mode }} videos=${{ inputs.videos }} rev=${{ inputs.rev }}" > "$D/RUN.txt"
+            git add -A "$D" && git commit -qm "QA $D (run ${{ github.run_id }})" && git push -q origin HEAD:qa/p05_07 && break
+            sleep $((i * 5))
+          done

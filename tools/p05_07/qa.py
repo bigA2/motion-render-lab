@@ -35,7 +35,7 @@ if len(a):
     dur = len(a) / 8000; col = {'key': (255, 255, 255), 'space': (200, 200, 200), 'whoosh': (90, 220, 160), 'impact': (255, 80, 80), 'chime': (255, 200, 60), 'tick': (180, 120, 255)}
     for e in ev:
         x = (e['t'] - t0) / dur * W; d.line([(x, H), (x, H + 14)], fill=col.get(e['kind'], (255, 140, 60)))
-    for s in range(int(dur) + 1): d.text((s / dur * W + 2, H + 18), f'{s + t0:.0f}', fill=(200, 200, 200), font=fnt)
+    for s in range(int(dur) + 1): d.text((s / dur * W + 2, H + 18), f'{s + t0:.1f}s', fill=(200, 200, 200), font=fnt)
     img.save(f'{out}/{label}_wave.png')
 r = subprocess.run(['ffmpeg', '-hide_banner', '-i', vid, '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
 open(f'{out}/{label}_loudness.txt', 'w').write('\n'.join(r.splitlines()[-12:]))

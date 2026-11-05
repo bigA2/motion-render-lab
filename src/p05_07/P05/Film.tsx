@@ -35,14 +35,11 @@ const DashMini: React.FC<{f: number}> = ({f}) => (
 );
 const Hook: React.FC<{f: number}> = ({f}) => (
   <>
-    <At x={L.head.x - 540} y={L.head.y - 70} w={1080} style={{textAlign: 'center'}}>
-      <TrackIn f0={T.headIn} dur={70} style={{fontFamily: F.display, fontWeight: 800, fontSize: 96, color: PAL.ink, lineHeight: 1}}>Booking sales calls?</TrackIn>
-    </At>
-    <At x={L.pile.x - 160} y={L.pile.y - 120}>{STICKIES.map((s, i) => { const p = prog(f, 4 + i * 5, 24, 'snapOut');
-      return <div key={i} style={{position: 'absolute', left: s.x, top: s.y, transform: `rotate(${s.r + noise1(f / 50, i) * 2}deg) scale(${lerp(1.3, 1, p)})`, opacity: p}}><Sticky t={s.t} c={s.c} w={230} size={36} /></div>; })}</At>
-    <At x={L.dash.x - 230} y={L.dash.y - 230} o={clamp((f - 20) / 14)} s={lerp(0.92, 1, prog(f, 20, 40, 'snapOut'))}><div style={{transform: 'scale(0.9)', transformOrigin: '0 0'}}><DashMini f={f} /></div></At>
-    <At x={L.div - 330} y={620} w={300} style={{textAlign: 'center'}}><GiantLetters text="THIS" f0={T.this} stagger={4} size={170} color={PAL.hot} shadow={longShadow('#9C2E0C', 14)} font={F.display} /></At>
-    <At x={L.div + 30} y={620} w={300} style={{textAlign: 'center'}}><GiantLetters text="THAT" f0={T.that} stagger={4} size={170} color={PAL.accent} shadow={longShadow('#3B2A99', 14)} font={F.display} /></At>
+    <At x={L.pile.x - 110} y={L.pile.y - 90}>{STICKIES.map((s, i) => { const p = prog(f, -14 + i * 4, 24, 'snapOut');
+      return <div key={i} style={{position: 'absolute', left: s.x * 0.62, top: s.y * 0.85, transform: `rotate(${s.r + noise1(f / 50, i) * 2}deg) scale(${lerp(1.3, 1, p)})`, opacity: p}}><Sticky t={s.t} c={s.c} w={200} size={32} /></div>; })}</At>
+    <At x={L.dash.x - 230} y={L.dash.y - 230} o={clamp((f + 6) / 10)} s={lerp(0.92, 1, prog(f, -6, 40, 'snapOut'))}><div style={{transform: 'scale(0.9)', transformOrigin: '0 0'}}><DashMini f={f} /></div></At>
+    <At x={790 - 230} y={560} w={460} style={{textAlign: 'center'}}><GiantLetters text="THIS" f0={T.this} stagger={4} size={128} color={PAL.hot} shadow={longShadow('#9C2E0C', 12)} font={F.display} /></At>
+    <At x={1370 - 230} y={560} w={460} style={{textAlign: 'center'}}><GiantLetters text="THAT" f0={T.that} stagger={4} size={128} color={PAL.accent} shadow={longShadow('#3B2A99', 12)} font={F.display} /></At>
     <At x={L.div - 340} y={1440} w={300} style={{textAlign: 'center', fontFamily: F.mono, fontSize: 26, letterSpacing: 4, color: PAL.muted, opacity: clamp((f - T.this) / 10)}}>STICKY NOTES</At>
     <At x={L.div + 40} y={1440} w={300} style={{textAlign: 'center', fontFamily: F.mono, fontSize: 26, letterSpacing: 4, color: PAL.muted, opacity: clamp((f - T.that) / 10)}}>AUTOMATIC</At>
   </>
@@ -89,9 +86,12 @@ const Prompt: React.FC<{f: number}> = ({f}) => {
   const enter = f >= P.typed.end + 6; const press = enter ? 1 - prog(f, P.typed.end + 6, 16, 'softOut') : 0;
   const chips: [string, string][] = [['calendly', 'Calendly'], ['pipedrive', 'Pipedrive'], ['trello', 'Trello']];
   return <At x={P.PROMPT.x} y={P.PROMPT.y}>
+    <div style={{position: 'absolute', left: 0, top: -150, width: P.PROMPT.w}}>
+      <VoLine words={[['Right:', 0], ['tell', 0.3], ['FansaChat', 0.42]].map(([w, t]) => ({w: w as string, f: P.VO[3] + Math.round((t as number) * 60)}))} hot={{fansachat: PAL.accent}} style={{fontFamily: F.display, fontWeight: 800, fontSize: 76, color: PAL.ink, letterSpacing: '-0.02em'}} />
+    </div>
     <Win th={TH} w={P.PROMPT.w} logo="fansa" title="FansaChat" meta={<><span style={{width: 12, height: 12, borderRadius: 6, background: TH.ok, display: 'inline-block'}} /> New workflow</>} pad={28}>
       <div style={{display: 'flex', gap: 26}}>
-        <div style={{width: P.PROMPT.side, flexShrink: 0, borderRight: `1.5px solid ${TH.line}`, paddingRight: 16, fontSize: 22}}>
+        <div style={{width: P.PROMPT.side, flexShrink: 0, borderRight: `1.5px solid ${TH.line}`, paddingRight: 14, fontSize: 20}}>
           <div style={{color: TH.muted, fontSize: 19, letterSpacing: 1.5, marginBottom: 12}}>WORKFLOWS</div>
           {[['Leads → CRM', 'On'], ['Invoices → Slack', 'On'], ['Calls → Deals', 'Draft']].map(([n, s], i) => <div key={n} style={{padding: '10px 12px', borderRadius: 12, marginBottom: 6, background: i === 2 ? a(TH.accent, 0.1) : undefined, fontWeight: i === 2 ? 700 : 500, color: i === 2 ? TH.accent : TH.ink}}>{n}<div style={{fontSize: 18, color: s === 'On' ? TH.ok : TH.muted}}>{s === 'On' ? '● running' : '○ draft'}</div></div>)}
         </div>
@@ -122,6 +122,8 @@ const NODES = [
 ];
 const Nodes: React.FC<{f: number}> = ({f}) => (
   <>
+    {NODES.map((n, i) => f >= T.typeStart && f < T.nodes[i] + 4 && <At key={'g' + i} x={L.nodes[i].x - 380} y={L.nodes[i].y - 95} w={760} h={190} o={clamp((f - T.typeStart) / 30) * 0.9} style={{borderRadius: 28, border: `3px dashed ${a(PAL.ink, 0.22)}`, display: 'flex', alignItems: 'center', gap: 22, padding: '0 28px', fontFamily: F.mono, fontSize: 24, color: a(PAL.ink, 0.4)}}>
+      <div style={{width: 78, height: 78, borderRadius: 18, background: a(PAL.ink, 0.07)}} />{i === 0 ? 'WHEN … ?' : 'THEN … ?'}<span style={{marginLeft: 'auto', fontSize: 20}}>waiting for your sentence</span></At>)}
     {[0, 1].map((i) => { const A = L.nodes[i], B = L.nodes[i + 1]; const pr = prog(f, T.nodes[i] + 6, 18, 'swift');
       return <Wire key={i} x1={A.x} y1={A.y + 95} x2={B.x} y2={B.y - 95} p={pr} color={TH.accent} base={a(PAL.ink, 0.25)} width={6} />; })}
     {NODES.map((n, i) => { const at = T.nodes[i]; if (f < at) return null; const p = prog(f, at, 22, 'spring'); const hot = (i === 0 && vis(f, P.P.toast, P.P.dot1[0] + 10)) || (i === 1 && vis(f, P.P.dot1[0] + P.P.dot1[1] - 6, P.P.dealIn + 30)) || (i === 2 && vis(f, P.P.dot2[0] + P.P.dot2[1] - 6, P.P.cardIn + 30));
@@ -180,11 +182,11 @@ const Card: React.FC<{f: number}> = ({f}) => {
 };
 const Payoff: React.FC<{f: number}> = ({f}) => (
   <>
-    {f >= P.P.toast && f < P.P.dealIn + 60 && <At x={L.nodes[0].x - 410 + (1 - prog(f, P.P.toast, 22, 'snapOut')) * 700} y={L.nodes[0].y - 380} o={1 - prog(f, P.P.dealIn + 30, 30, 'softOut')}>
+    {f >= P.P.toast && f < P.P.dealIn + 60 && <At x={L.nodes[0].x - 410 + (1 - prog(f, P.P.toast, 22, 'snapOut')) * 700} y={L.nodes[0].y - 300} o={1 - prog(f, P.P.dealIn + 30, 30, 'softOut')}>
       <Toast th={TH} logo="calendly" app="Calendly · new booking" title="Marco Ruiz booked Discovery call" line="Fri, Nov 14 · 10:00 AM · Brightline Studio" w={820} /></At>}
     <Wire x1={L.nodes[2].x - 380} y1={L.nodes[0].y} x2={L.deal.x - 450} y2={L.deal.y - 300} p={0} bend={-300} color="transparent" base="transparent" />
     {(() => { const A = {x: L.nodes[0].x - 380, y: L.nodes[0].y}, B = {x: L.deal.x - 400, y: L.deal.y - 330}; const t = (f - P.P.dot1[0]) / P.P.dot1[1];
-      return f > P.P.dot1[0] - 20 && <Wire x1={A.x} y1={A.y} x2={B.x} y2={B.y} bend={-260} p={prog(f, P.P.dot1[0] - 20, 24, 'swift')} dot={t >= 0 && t <= 1 ? prog(f, P.P.dot1[0], P.P.dot1[1], 'inOut') : -1} color={TH.accent} base={a(PAL.ink, 0.22)} />; })()}
+      return f > P.P.dot1[0] - 20 && <Wire x1={A.x} y1={A.y} x2={B.x} y2={B.y} bend={-150} p={prog(f, P.P.dot1[0] - 20, 24, 'swift')} dot={t >= 0 && t <= 1 ? prog(f, P.P.dot1[0], P.P.dot1[1], 'inOut') : -1} color={TH.accent} base={a(PAL.ink, 0.22)} />; })()}
     {(() => { const A = {x: L.deal.x + 450, y: L.deal.y + 200}, B = {x: L.card.x + 400, y: L.card.y - 320}; const t = (f - P.P.dot2[0]) / P.P.dot2[1];
       return f > P.P.dot2[0] - 20 && <Wire x1={A.x} y1={A.y} x2={B.x} y2={B.y} bend={240} p={prog(f, P.P.dot2[0] - 20, 24, 'swift')} dot={t >= 0 && t <= 1 ? prog(f, P.P.dot2[0], P.P.dot2[1], 'inOut') : -1} color={TH.ok} base={a(PAL.ink, 0.22)} />; })()}
     <Deal f={f} /><Card f={f} />
@@ -201,6 +203,9 @@ const Overlay: React.FC<{f: number}> = ({f}) => {
     {vis(f, P.SC.C + 20, T.whip + 4) && <div style={{position: 'absolute', left: 60, right: 60, top: h * 0.5 - (h > 1500 ? 600 : 470), textAlign: 'center'}}>
       <VoLine words={vw(2, ['the', 'call', 'you', 'forgot', 'to', 'prep', 'is', 'the', 'one', 'that', 'mattered.'], [0.06, 0.14, 0.36, 0.64, 0.92, 1.14, 1.38, 1.66, 1.84, 2.0, 2.16])} hot={{forgot: PAL.hot, mattered: PAL.hot}} f1={T.whip - 6}
         style={{fontFamily: F.display, fontWeight: 800, fontSize: 82, lineHeight: 1.02, color: PAL.ink, letterSpacing: '-0.02em', textShadow: `0 2px 30px ${a(PAL.bg, 0.9)}`}} /></div>}
+    {vis(f, T.auto - 20, P.SC.F + 6) && <AbsoluteFill style={{background: `radial-gradient(ellipse 80% 40% at 50% 50%, ${a(PAL.bg, 0.92 * prog(f, T.auto - 20, 24, 'softOut'))}, ${a(PAL.bg, 0.55 * prog(f, T.auto - 20, 24, 'softOut'))})`}} />}
+    {vis(f, P.SC.A, P.SC.B + 12) && <div style={{position: 'absolute', left: 0, right: 0, top: h > 1500 ? 170 : 80, textAlign: 'center', opacity: 1 - prog(f, P.SC.B - 6, 16, 'inHard'), transform: `translateY(${-prog(f, P.SC.B - 6, 16, 'inHard') * 60}px)`}}>
+      <TrackIn f0={T.headIn} dur={70} style={{fontFamily: F.display, fontWeight: 800, fontSize: 96, color: PAL.ink, lineHeight: 1}}>Booking sales calls?</TrackIn></div>}
     {vis(f, T.auto - 4, P.SC.F + 6) && <div style={{position: 'absolute', left: 0, right: 0, top: h / 2 - 110, textAlign: 'center', transform: `translate(${sh.x}px, ${sh.y}px) scale(${sh.s * lerp(0.6, 1.05, prog(f, T.auto - 4, 72, 'softOut'))})`}}>
       <div style={{display: 'inline-block', fontFamily: F.display, fontWeight: 800, fontSize: 118, letterSpacing: `${lerp(0.25, -0.03, prog(f, T.auto - 4, 30, 'snapOut'))}em`, color: PAL.accent, textShadow: longShadow('#3B2A99', 16), opacity: clamp((f - T.auto + 4) / 4)}}>Automatically.</div>
       <div style={{fontFamily: F.sans, fontSize: 40, fontWeight: 600, color: PAL.ink, marginTop: 24, opacity: clamp((f - T.auto - 20) / 12)}}>every booking → deal + prep card</div></div>}

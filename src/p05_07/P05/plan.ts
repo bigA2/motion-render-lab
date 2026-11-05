@@ -17,7 +17,7 @@ export const SC = {A: 0, B: s(3.33), C: s(9.0), D: s(12.0), E: s(18.17), F: s(24
 export const L = {
   div: 1080,
   head: {x: 1080, y: 300},
-  pile: {x: 800, y: 1000}, dash: {x: 1370, y: 1000},
+  pile: {x: 820, y: 1010}, dash: {x: 1350, y: 1010},
   toast: {x: 560, y: 520}, board: {x: 560, y: 1060}, cal: {x: 560, y: 1560}, sticky: {x: 430, y: 1210},
   prompt: {x: 2150, y: 700, w: 960},
   nodes: [{x: 2150, y: 1180}, {x: 2150, y: 1480}, {x: 2150, y: 1780}],
@@ -35,10 +35,10 @@ export const T = {
   pollClick: W(5, 1.05), endCard: s(26.15),
 };
 // prompt window geometry (Film.tsx uses the same numbers): window top-left, text block origin, char width, line height
-export const PROMPT = {x: 1670, y: 470, w: 960, side: 236};
-export const PROMPT_TEXT = {x: 1670 + 28 + 236 + 26, y: 470 + 80 + 28 + 50 + 28, cw: 19.2, lh: 56, size: 38};
+export const PROMPT = {x: 1650, y: 470, w: 1000, side: 190};
+export const PROMPT_TEXT = {x: 1650 + 28 + 190 + 26, y: 470 + 80 + 28 + 50 + 14, cw: 22.4, lh: 62, size: 44};
 export const SENTENCE = 'When someone books on Calendly, create a deal in Pipedrive and a prep card in Trello.';
-export const LINES = ['When someone books on Calendly,', 'create a deal in Pipedrive and', 'a prep card in Trello.'];
+export const LINES = ['When someone books on', 'Calendly, create a deal in', 'Pipedrive and a prep card', 'in Trello.'];
 export const typed = typing(SENTENCE, T.typeStart, {cps: 24, seed: 5, enter: true, src: 'prompt'});
 T.buildStart = Math.round(typed.end + 10);
 T.nodes = [T.buildStart + 8, T.buildStart + 26, T.buildStart + 44];
@@ -87,7 +87,7 @@ const moves: Move[] = [
   {f: SC.C, dur: 60, to: {x: L.sticky.x + 40, y: L.sticky.y + 30, zoom: 1.55, roll: -2}, curve: 'swift2'}, // rack onto the forgotten note
   {f: T.mattered - 30, dur: 90, to: {x: L.sticky.x + 60, y: L.sticky.y + 50, zoom: 1.7, roll: -2.5}, curve: 'softOut'},
   {f: T.whip, dur: 30, to: {x: L.prompt.x, y: L.prompt.y + 40, zoom: 1.0, roll: 0}, curve: 'swift'}, // whip right across the divider
-  {f: T.typeStart - 10, dur: 30, to: (f) => { const c = caretPos(f); return {x: lerp(L.prompt.x, c.x, 0.45), y: c.y + 10, zoom: 1.3}; }, curve: 'softOut'}, // follow the caret
+  {f: T.typeStart - 10, dur: 30, to: (f) => { const c = caretPos(f); return {x: lerp(L.prompt.x, c.x, 0.22), y: lerp(L.prompt.y + 200, c.y, 0.5), zoom: 1.42}; }, curve: 'softOut'}, // follow the caret
   {f: T.buildStart, dur: 70, to: {x: L.nodes[1].x, y: L.nodes[1].y - 120, zoom: 0.92}, curve: 'swift2'},     // nodes snap in
   {f: P.toast - 10, dur: 40, to: {x: L.nodes[0].x, y: L.nodes[0].y - 80, zoom: 1.12}, curve: 'swift2'},   // new booking hits the trigger
   {f: P.dot1[0], dur: 20, to: (f) => ({...dot(L.nodes[0], {x: L.deal.x, y: L.deal.y - 200}, f, P.dot1[0], P.dot1[1] + 30), zoom: 1.0}), curve: 'softOut'}, // track the data dot down
