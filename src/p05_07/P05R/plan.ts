@@ -61,7 +61,7 @@ export const T = {
   head: s(0.2), this: W(0, 1.3), that: W(0, 2.26), hookOut: s(3.3),
   booking: W(1, 0.55), note1: W(1, 2.64), note2: W(1, 3.24), cal: W(1, 3.9), calOut: s(9.0),
   forgot: W(2, 0.64), mattered: W(2, 2.16), whip: s(11.72), cutB: s(11.9),
-  chip: s(22.75), d1: s(23.0), d2: s(23.55), notionIn: s(24.35), d3: s(24.95), slackIn: s(25.8),
+  chip: s(22.75), d1: s(23.0), d2: s(23.55), notionIn: s(24.5), d3: s(24.95), slackIn: s(25.8),
   auto: W(4, 1.9), outB: s(27.3), F: s(27.45), outF: s(29.25), end: s(29.4), pill: s(30.0),
 };
 export const D = {d1: 32, d2: 40, d3: 44};
@@ -92,7 +92,7 @@ const both = (h: number) => { // frame both result cards under the headline
 };
 export function cams(h: number) {
   const tall = h > 1500; // 9:16 sees more height: frame tighter so the subject fills it
-  const zA = tall ? 1.1 : 1, yA = tall ? 880 : 960, yP = tall ? 920 : 1000, zN = tall ? 1.85 : 1.58;
+  const zA = tall ? 1.06 : 1, yA = tall ? 880 : 960, yP = tall ? 920 : 1000, zN = tall ? 1.85 : 1.58;
   const camA = new Camera([
     {f: 0, dur: 0, to: {x: 540, y: yA, zoom: zA * 0.96}, cut: true},
     {f: 6, dur: 90, to: {x: 540, y: yA, zoom: zA}, curve: 'softOut'},
@@ -116,7 +116,7 @@ export function cams(h: number) {
     {f: F_ENTER + 8, dur: 44, to: {x: UI.modal.x, y: UI.modal.y, zoom: zM}, curve: 'swift2'},     // to the shape picker
     {f: F_SHAPE + 30, dur: 40, to: {x: UI.loader.x, y: UI.loader.y, zoom: zL}, curve: 'inOut'},
     {f: F_BUILT - 6, dur: 70, to: {x: UI.diagram.x, y: UI.diagram.y, zoom: zD}, curve: 'softOut'}, // push into the diagram as it draws
-    {f: T.d2, dur: 20, to: (f) => { const d = dot(f) ?? {x: CARD.x, y: CARD.notion.y}; const t = prog(f, T.d2, D.d2, 'inOut'); return {x: lerp(UI.diagram.x, CARD.x, t), y: d.y, zoom: lerp(zD, zC, t)}; }, curve: 'softOut'}, // follow the dot out
+    {f: T.d2, dur: 20, to: (f) => { const d = dot(f) ?? {x: CARD.x, y: CARD.notion.y}; const t = prog(f, T.d2, D.d2, 'inOut'), tz = prog(f, T.d2, D.d2 * 0.6, 'inOut'); return {x: lerp(UI.diagram.x, CARD.x, t), y: d.y, zoom: lerp(zD, zC, tz)}; }, curve: 'softOut'}, // follow the dot out
     {f: T.d2 + D.d2, dur: 50, to: {x: CARD.x, y: CARD.notion.y + 240, zoom: zC}, curve: 'softOut'},
     {f: T.d3, dur: 56, to: B, curve: 'inOut'},
     {f: T.auto, dur: 90, to: {...B, zoom: B.zoom * 1.02}, curve: 'softOut'},

@@ -50,7 +50,7 @@ const WorldA: React.FC<{f: number}> = ({f}) => {
       <At x={580} y={520} w={430} o={hook * clamp((f - T.that) / 3)} style={{textAlign: 'center'}}><G id="that" size={140} color={ACC} font={F.display}><GiantLetters text="THAT" f0={T.that} stagger={4} size={140} color={ACC} shadow={longShadow('#3B2A99', 10)} font={F.display} /></G></At>
       <At x={492} y={552} w={96} h={96} o={hook * clamp((f - T.this - 6) / 8)} style={{borderRadius: 48, background: INK, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 0 8px ${a(PAL.bg, 0.8)}`}}><G id="or" size={42} color="#FFFFFF" font={F.display} weight={700}>or</G></At>
       <At x={540} y={760} w={3} h={600} o={hook * 0.5} style={{background: a(INK, 0.4)}}>{null}</At>
-      {[{id: 'h-note1', t: 'call Dana??', x: 90, y: 790, r: -6, c: '#FFE066'}, {id: 'h-note2', t: 'CRM later…', x: 230, y: 1030, r: 5, c: '#FF9EBB'}].map((n, i) => { const p = prog(f, 4 + i * 6, 22, 'snapOut');
+      {[{id: 'h-note1', t: 'call Dana??', x: 112, y: 790, r: -6, c: '#FFE066'}, {id: 'h-note2', t: 'CRM later…', x: 230, y: 1030, r: 5, c: '#FF9EBB'}].map((n, i) => { const p = prog(f, 4 + i * 6, 22, 'snapOut');
         return <At key={n.id} x={n.x} y={n.y} o={hook * p} style={{transform: `rotate(${n.r + noise1(f / 50, i) * 1.5}deg) scale(${lerp(1.25, 1, p)})`}}><Sticky id={n.id} t={n.t} c={n.c} w={240} h={190} size={36} /></At>; })}
       <At x={590} y={850} o={hook * clamp((f - 8) / 12)}><Depth ry={-14 + noise1(f / 60, 3) * 3} rx={4}><RealStill w={420} at={41.5} /></Depth></At>
       <At x={70} y={1278} w={430} o={hook * clamp((f - T.this) / 10)} style={{textAlign: 'center'}}><G id="cap-this" size={36} color={INK} font={F.sans} weight={700}>Sticky notes</G></At>
@@ -62,7 +62,7 @@ const WorldA: React.FC<{f: number}> = ({f}) => {
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 6}}>
         <G id="book-k" size={28} color={SUB} font={F.sans} weight={600}>New booking · booking form</G>
         <G id="book-name" size={38} color={INK} font={F.sans} weight={700}>Dana Whitfield, Northwind Studio</G>
-        <G id="book-what" size={30} color={SUB} font={F.sans}>Sales call</G>
+        <G id="book-what" size={30} color={SUB} font={F.sans} weight={600}>Sales call</G>
       </div>
     </At>}
     {/* cork board + the two notes */}

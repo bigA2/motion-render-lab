@@ -63,7 +63,7 @@ const pixels = (fr, buf) => {
     }
     if (nText < bw * bh * 0.004) { viol.push({f: fr.f, kind: 'unseen', id: b.id, box: [b.x, b.y, b.w, b.h]}); continue; }
     // dilate the glyph mask (anti-aliasing + shadows) and keep the rest as background
-    const r = Math.max(2, Math.round(b.px * 0.08)); const tmp = new Uint8Array(bw * bh), dil = new Uint8Array(bw * bh);
+    const r = Math.max(3, Math.round(b.px * 0.08)); const tmp = new Uint8Array(bw * bh), dil = new Uint8Array(bw * bh);
     for (let y = 0; y < bh; y++) { let last = -1e9; for (let x = 0; x < bw; x++) { if (mask[y * bw + x]) last = x; if (x - last <= r) tmp[y * bw + x] = 1; } last = 1e9; for (let x = bw - 1; x >= 0; x--) { if (mask[y * bw + x]) last = x; if (last - x <= r) tmp[y * bw + x] = 1; } }
     for (let x = 0; x < bw; x++) { let last = -1e9; for (let y = 0; y < bh; y++) { if (tmp[y * bw + x]) last = y; if (y - last <= r) dil[y * bw + x] = 1; } last = 1e9; for (let y = bh - 1; y >= 0; y--) { if (tmp[y * bw + x]) last = y; if (last - y <= r) dil[y * bw + x] = 1; } }
     const cr = [];
