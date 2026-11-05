@@ -46,7 +46,7 @@ const WorldA: React.FC<{f: number}> = ({f}) => {
     {/* hook */}
     {hook > 0 && <>
       <At x={0} y={378} w={1080} o={hook * clamp((f - T.head) / 8)} style={{textAlign: 'center'}}><G id="head" size={66} color={INK} font={F.display} weight={800} style={{letterSpacing: '-0.02em'}}>Booking sales calls</G></At>
-      <At x={70} y={520} w={430} o={hook * clamp((f - T.this) / 3)} style={{textAlign: 'center'}}><G id="this" size={140} color={HOT} font={F.display}><GiantLetters text="THIS" f0={T.this} stagger={4} size={140} color={HOT} shadow={longShadow('#9C2E0C', 10)} font={F.display} /></G></At>
+      <At x={70} y={520} w={430} o={hook * clamp((f - T.this) / 3)} style={{textAlign: 'center'}}><G id="this" size={140} color={HOT_D} font={F.display}><GiantLetters text="THIS" f0={T.this} stagger={4} size={140} color={HOT_D} shadow={longShadow('#6E1E06', 10)} font={F.display} /></G></At>
       <At x={580} y={520} w={430} o={hook * clamp((f - T.that) / 3)} style={{textAlign: 'center'}}><G id="that" size={140} color={ACC} font={F.display}><GiantLetters text="THAT" f0={T.that} stagger={4} size={140} color={ACC} shadow={longShadow('#3B2A99', 10)} font={F.display} /></G></At>
       <At x={492} y={552} w={96} h={96} o={hook * clamp((f - T.this - 6) / 8)} style={{borderRadius: 48, background: INK, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 0 8px ${a(PAL.bg, 0.8)}`}}><G id="or" size={42} color="#FFFFFF" font={F.display} weight={700}>or</G></At>
       <At x={540} y={760} w={3} h={600} o={hook * 0.5} style={{background: a(INK, 0.4)}}>{null}</At>
@@ -57,9 +57,9 @@ const WorldA: React.FC<{f: number}> = ({f}) => {
       <At x={580} y={1278} w={430} o={hook * clamp((f - T.that) / 10)} style={{textAlign: 'center'}}><G id="cap-that" size={36} color={INK} font={F.sans} weight={700}>One sentence</G></At>
     </>}
     {/* problem: a booking comes in */}
-    {bookO > 0 && <At x={110} y={420 - (1 - bookP) * 240} w={860} h={200} o={bookO} style={{borderRadius: 28, background: '#FFFFFF', boxShadow: '0 30px 60px rgba(20,25,50,.18)', display: 'flex', alignItems: 'center', gap: 26, padding: '0 34px'}}>
+    {bookO > 0 && <At x={110} y={420 - (1 - bookP) * 60} w={860} h={200} o={bookO} style={{borderRadius: 28, background: '#FFFFFF', boxShadow: '0 30px 60px rgba(20,25,50,.18)', display: 'flex', alignItems: 'center', gap: 26, padding: '0 34px'}}>
       <Logo name="webhook" size={84} round={20} />
-      <div style={{display: 'flex', flexDirection: 'column', gap: 6}}>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 6}}>
         <G id="book-k" size={28} color={SUB} font={F.sans} weight={600}>New booking · booking form</G>
         <G id="book-name" size={38} color={INK} font={F.sans} weight={700}>Dana Whitfield, Northwind Studio</G>
         <G id="book-what" size={30} color={SUB} font={F.sans}>Sales call</G>
@@ -90,7 +90,7 @@ const Footage: React.FC = () => (
   </div>
 );
 const Card: React.FC<{y: number; h: number; p: number; o: number; children: React.ReactNode}> = ({y, h, p, o, children}) => (
-  <At x={CARD.x - CARD.w / 2} y={y + (1 - p) * 120} w={CARD.w} h={h} o={o} style={{borderRadius: 30, background: '#FFFFFF', boxShadow: '0 40px 80px rgba(20,25,60,.22), 0 8px 20px rgba(20,25,60,.1)', overflow: 'hidden'}}>
+  <At x={CARD.x - CARD.w / 2} y={y + (1 - p) * 40} w={CARD.w} h={h} o={o} style={{borderRadius: 30, background: '#FFFFFF', boxShadow: '0 40px 80px rgba(20,25,60,.22), 0 8px 20px rgba(20,25,60,.1)', overflow: 'hidden'}}>
     {children}<LiveBorder color={a(ACC, 0.6)} r={30} width={3} speed={50} phase={y} />
   </At>
 );
@@ -141,8 +141,8 @@ const WorldB: React.FC<{f: number}> = ({f}) => {
   return <>
     <Footage />
     {vis(f, P.F_SHAPE - 56, P.F_SHAPE + 50) && <div style={{position: 'absolute', left: 0, top: 0, transform: 'scale(0.7)', transformOrigin: `${c.x}px ${c.y}px`}}><Cursor x={c.x} y={c.y} press={c.press} clicks={P.cursor.clicks} ring={ACC} o={fade(f, P.F_SHAPE - 56, P.F_SHAPE + 50, 8)} /></div>}
-    {chip > 0 && <At x={UI.trig.x - 150} y={UI.trig.y + 78 + (1 - prog(f, T.chip, 14, 'snapOut')) * 16} w={300} h={64} o={chip} style={{borderRadius: 16, background: INK, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 24px rgba(10,15,30,.25)'}}>
-      <G id="chip" size={13} color="#FFFFFF" font={F.sans} weight={700}>New booking · Dana Whitfield</G></At>}
+    {chip > 0 && <At x={P.CHIP.x - 130} y={P.CHIP.y + (1 - prog(f, T.chip, 14, 'snapOut')) * 16} w={260} h={64} o={chip} style={{borderRadius: 16, background: INK, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 24px rgba(10,15,30,.25)'}}>
+      <G id="chip" size={14} color="#FFFFFF" font={F.sans} weight={700}>New booking · Dana Whitfield</G></At>}
     <DataDot f={f} />
     <Results f={f} />
   </>;

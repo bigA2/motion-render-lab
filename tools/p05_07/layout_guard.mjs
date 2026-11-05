@@ -21,7 +21,7 @@ const frames = [...byF.values()].sort((a, b) => a.f - b.f);
 if (!frames.length) { console.error('layout_guard: no TextGuard frames found'); process.exit(1); }
 const W = frames[0].w, H = frames[0].h, EVERY = 4;
 
-const hex = (c) => { const m = /^#?([0-9a-f]{6})/i.exec(c || ''); const n = m ? parseInt(m[1], 16) : 0; return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
+const hex = (c) => { let m = /^#?([0-9a-f]{3,8})$/i.exec((c || '').trim())?.[1] ?? '000000'; if (m.length <= 4) m = m.slice(0, 3).split('').map((x) => x + x).join(''); const n = parseInt(m.slice(0, 6), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
 const lin = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
 const lum = (r, g, b) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
 const ratio = (a, b) => (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
@@ -50,10 +50,12 @@ const pixels = (fr, buf) => {
     let nText = 0;
     for (let y = 0; y < bh; y++) for (let x = 0; x < bw; x++) {
       const i = ((y0 + y) * W + x0 + x) * 3; const d = Math.max(Math.abs(buf[i] - tr), Math.abs(buf[i + 1] - tg), Math.abs(buf[i + 2] - tb));
-      if (d < 28) { mask[y * bw + x] = 1; nText++; }
+      if (d < 28) mask[y * bw + x] = 1;
+      if (d < 60) nText++; // presence (thin strokes lose colour to chroma subsampling)
     }
     const need = b.px >= 48 ? 3 : 4.5;
-    if (nText > bw * bh * 0.6) { // background is (almost) the text colour itself: compare with the box median
+    let nCore = 0; for (let k = 0; k < mask.length; k++) nCore += mask[k];
+    if (nCore > bw * bh * 0.6) { // background is (almost) the text colour itself: compare with the box median
       const ls = []; for (let y = 0; y < bh; y += 2) for (let x = 0; x < bw; x += 2) { const i = ((y0 + y) * W + x0 + x) * 3; ls.push(lum(buf[i], buf[i + 1], buf[i + 2])); }
       ls.sort((p, q) => p - q); const c0 = ratio(Lt, ls[ls.length >> 1]); contrastMeasured++;
       if (c0 < need) viol.push({f: fr.f, kind: 'contrast', id: b.id, cr: +c0.toFixed(2), need, note: 'background ~ text colour'});

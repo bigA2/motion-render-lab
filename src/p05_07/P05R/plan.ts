@@ -54,16 +54,17 @@ export const caret = (f: number) => { // caret in source px (= world px of the f
 export const UI = {prompt: {x: 270, y: 930}, modal: {x: 1248, y: 567}, horizontal: {x: 1036, y: 444}, loader: {x: 1245, y: 590},
   diagram: {x: 1272, y: 580}, trig: {x: 1186, y: 582}, notion: {x: 1356, y: 538}, slack: {x: 1356, y: 628}};
 export const CARD = {x: 1300, w: 860, notion: {y: 1320, h: 470}, slack: {y: 2010, h: 360}};
+export const CHIP = {x: UI.trig.x + 30, y: UI.trig.y + 95}; // the booking chip under the trigger node
 
 // ---------- beats (frames) ----------
 export const T = {
   head: s(0.2), this: W(0, 1.3), that: W(0, 2.26), hookOut: s(3.3),
   booking: W(1, 0.55), note1: W(1, 2.64), note2: W(1, 3.24), cal: W(1, 3.9), calOut: s(9.0),
   forgot: W(2, 0.64), mattered: W(2, 2.16), whip: s(11.72), cutB: s(11.9),
-  chip: s(22.75), d1: s(23.0), d2: s(23.55), notionIn: s(24.2), d3: s(24.95), slackIn: s(25.55),
+  chip: s(22.75), d1: s(23.0), d2: s(23.55), notionIn: s(24.35), d3: s(24.95), slackIn: s(25.8),
   auto: W(4, 1.9), outB: s(27.3), F: s(27.45), outF: s(29.25), end: s(29.4), pill: s(30.0),
 };
-export const D = {d1: 32, d2: 40, d3: 36};
+export const D = {d1: 32, d2: 40, d3: 44};
 export const CAPS: [string, number, number][] = [ // screen captions over the footage, one at a time
   ['Type one sentence', s(12.3), F_ENTER + 14],
   ['Pick how it reads', F_ENTER + 22, F_SHAPE + 26],
@@ -87,30 +88,36 @@ export const slackArr = arrive(T.slackIn, 26, 300, 'snapOut', {land: true, src: 
 // ---------- cameras (per frame height: 9:16 and 4:5 frame the same subjects) ----------
 const both = (h: number) => { // frame both result cards under the headline
   const top = CARD.notion.y, bot = CARD.slack.y + CARD.slack.h, room = h * 0.06 + 250;
-  const z = Math.min(1, (h * 0.94 - 40 - room) / (bot - top)); return {x: CARD.x, y: top + (h / 2 - room) / z, zoom: z};
+  const z = Math.min(h > 1500 ? 1.12 : 1, (h * 0.94 - 40 - room) / (bot - top)); return {x: CARD.x, y: top + (h / 2 - room) / z, zoom: z};
 };
 export function cams(h: number) {
+  const tall = h > 1500; // 9:16 sees more height: frame tighter so the subject fills it
+  const zA = tall ? 1.1 : 1, yA = tall ? 880 : 960, yP = tall ? 920 : 1000, zN = tall ? 1.85 : 1.58;
   const camA = new Camera([
-    {f: 0, dur: 0, to: {x: 540, y: 960, zoom: 0.96}, cut: true},
-    {f: 6, dur: 90, to: {x: 540, y: 960, zoom: 1.0}, curve: 'softOut'},
-    {f: T.this - 4, dur: 30, to: {x: 500, y: 960, zoom: 1.0, roll: -0.8}, curve: 'swift2'},     // lean to THIS
-    {f: T.that - 4, dur: 30, to: {x: 580, y: 960, zoom: 1.0, roll: 0.8}, curve: 'swift2'},      // lean to THAT
-    {f: T.hookOut, dur: 40, to: {x: 540, y: 960, zoom: 1.0, roll: 0}, curve: 'inOut'},
-    {f: T.cal - 10, dur: 70, to: {x: 540, y: 1000, zoom: 0.98}, curve: 'inOut'},              // the day piles up
-    {f: T.calOut + 6, dur: 70, to: {x: 730, y: 905, zoom: 1.55, roll: -1.2}, curve: 'swift2'}, // rack onto the note
-    {f: T.mattered - 20, dur: 50, to: {x: 730, y: 915, zoom: 1.62, roll: -1.6}, curve: 'softOut'},
-    {f: T.whip, dur: 12, to: {x: 2400, y: 915, zoom: 1.62, roll: 0}, curve: 'inHard', stiff: 40}, // whip right
+    {f: 0, dur: 0, to: {x: 540, y: yA, zoom: zA * 0.96}, cut: true},
+    {f: 6, dur: 90, to: {x: 540, y: yA, zoom: zA}, curve: 'softOut'},
+    {f: T.this - 4, dur: 30, to: {x: 528, y: yA, zoom: zA, roll: -0.8}, curve: 'swift2'},      // lean to THIS
+    {f: T.that - 4, dur: 30, to: {x: 552, y: yA, zoom: zA, roll: 0.8}, curve: 'swift2'},       // lean to THAT
+    {f: T.hookOut, dur: 40, to: {x: 540, y: yP, zoom: zA, roll: 0}, curve: 'inOut'},
+    {f: T.cal - 10, dur: 70, to: {x: 540, y: yP + 20, zoom: zA * 0.98}, curve: 'inOut'},     // the day piles up
+    {f: T.calOut + 6, dur: 70, to: {x: 730, y: 905, zoom: zN, roll: -1.2}, curve: 'swift2'},  // rack onto the note
+    {f: T.mattered - 20, dur: 50, to: {x: 730, y: 915, zoom: zN * 1.04, roll: -1.6}, curve: 'softOut'},
+    {f: T.whip, dur: 12, to: {x: 2400, y: 915, zoom: zN * 1.04, roll: 0}, curve: 'inHard', stiff: 40}, // whip right
   ], TOTAL, 1080, h);
   const B = both(h);
+  const zT = tall ? 2.0 : 1.75, zM = 1.45, zL = tall ? 1.6 : 1.3, zD = tall ? 2.7 : 2.4, zC = tall ? 1.12 : 1;
+  // typing: keep the bottom of the real page near the bottom of the frame, so the chat panel fills the frame above
+  const typeY = (cy: number) => Math.min(cy - 40, 1080 - (h / 2 - 110) / zT);
+  const typeX = (cx: number) => (tall ? 268 : lerp(UI.prompt.x, cx, 0.35));
   const camB = new Camera([
     {f: T.cutB, dur: 0, to: {x: 1000, y: 560, zoom: 0.6, yaw: -9, roll: 0.6}, cut: true},    // the whole real page, 3D card
-    {f: T.cutB + 8, dur: 52, to: {x: UI.prompt.x, y: UI.prompt.y, zoom: 1.6, yaw: 0, roll: 0}, curve: 'swift2'}, // push into the prompt
-    {f: s(12.9), dur: 40, to: (f) => { const c = caret(f); return {x: lerp(UI.prompt.x, c.x, 0.35), y: c.y - 40, zoom: 1.75}; }, curve: 'softOut'}, // track the real caret
-    {f: F_ENTER + 8, dur: 44, to: {x: UI.modal.x, y: UI.modal.y, zoom: 1.45}, curve: 'swift2'},     // to the shape picker
-    {f: F_SHAPE + 30, dur: 40, to: {x: UI.loader.x, y: UI.loader.y, zoom: 1.3}, curve: 'inOut'},
-    {f: F_BUILT - 6, dur: 70, to: {x: UI.diagram.x, y: UI.diagram.y, zoom: 2.4}, curve: 'softOut'}, // push into the diagram as it draws
-    {f: T.d2, dur: 20, to: (f) => { const d = dot(f) ?? {x: CARD.x, y: CARD.notion.y}; return {x: d.x, y: d.y, zoom: lerp(2.4, 1, prog(f, T.d2, D.d2, 'inOut'))}; }, curve: 'softOut'}, // follow the dot out
-    {f: T.d2 + D.d2, dur: 50, to: {x: CARD.x, y: CARD.notion.y + 240, zoom: 1}, curve: 'softOut'},
+    {f: T.cutB + 8, dur: 52, to: {x: typeX(UI.prompt.x), y: typeY(UI.prompt.y), zoom: zT, yaw: 0, roll: 0}, curve: 'swift2'}, // push into the prompt
+    {f: s(12.9), dur: 40, to: (f) => { const c = caret(f); return {x: typeX(c.x), y: typeY(c.y), zoom: zT}; }, curve: 'softOut'}, // track the real caret
+    {f: F_ENTER + 8, dur: 44, to: {x: UI.modal.x, y: UI.modal.y, zoom: zM}, curve: 'swift2'},     // to the shape picker
+    {f: F_SHAPE + 30, dur: 40, to: {x: UI.loader.x, y: UI.loader.y, zoom: zL}, curve: 'inOut'},
+    {f: F_BUILT - 6, dur: 70, to: {x: UI.diagram.x, y: UI.diagram.y, zoom: zD}, curve: 'softOut'}, // push into the diagram as it draws
+    {f: T.d2, dur: 20, to: (f) => { const d = dot(f) ?? {x: CARD.x, y: CARD.notion.y}; const t = prog(f, T.d2, D.d2, 'inOut'); return {x: lerp(UI.diagram.x, CARD.x, t), y: d.y, zoom: lerp(zD, zC, t)}; }, curve: 'softOut'}, // follow the dot out
+    {f: T.d2 + D.d2, dur: 50, to: {x: CARD.x, y: CARD.notion.y + 240, zoom: zC}, curve: 'softOut'},
     {f: T.d3, dur: 56, to: B, curve: 'inOut'},
     {f: T.auto, dur: 90, to: {...B, zoom: B.zoom * 1.02}, curve: 'softOut'},
   ], TOTAL, 1080, h, {x: 1000, y: 560, zoom: 0.6});

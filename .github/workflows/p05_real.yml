@@ -73,9 +73,10 @@ jobs:
         run: |
           set +e; N=P05_real_${{ matrix.fmt }}
           node tools/p05_07/layout_guard.mjs video.mp4 "qa/guard/${N}_layout_guard.json" 0 parts/tg*.json 2>&1 | tee "qa/${N}_layout_guard.txt"
+          R=${PIPESTATUS[0]}
           cp "qa/guard/${N}_layout_guard.json" final/
           echo "### layout guard ${N}" >> $GITHUB_STEP_SUMMARY; head -3 "qa/${N}_layout_guard.txt" >> $GITHUB_STEP_SUMMARY
-          R=${PIPESTATUS[0]}; exit $R
+          exit $R
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: 'final-${{ matrix.fmt }}', path: final/, retention-days: 14 }
