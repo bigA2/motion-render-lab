@@ -44,8 +44,8 @@ T.buildStart = Math.round(typed.end + 10);
 T.nodes = [T.buildStart + 8, T.buildStart + 26, T.buildStart + 44];
 // payoff: booking toast -> dot to Pipedrive -> deal card -> dot to Trello -> prep card
 export const P = {
-  toast: T.booking, dot1: [T.booking + 30, 44] as const, dealIn: T.booking + 70, value: [T.booking + 86, 60] as const,
-  stamp: T.booking + 160, dot2: [T.booking + 168, 40] as const, cardIn: T.booking + 205, checks: [T.booking + 245, T.booking + 262],
+  toast: T.booking, dot1: [T.booking + 30, 62] as const, dealIn: T.booking + 88, value: [T.booking + 100, 56] as const,
+  stamp: T.booking + 170, dot2: [T.booking + 176, 56] as const, cardIn: T.booking + 228, checks: [T.booking + 262, T.booking + 276],
 };
 T.deal = P.dealIn; T.card = P.cardIn;
 export const dealArr = arrive(P.dealIn, 30, 900, 'snapOut', {land: true, src: 'deal'});
@@ -90,10 +90,10 @@ const moves: Move[] = [
   {f: T.typeStart - 10, dur: 30, to: (f) => { const c = caretPos(f); return {x: lerp(L.prompt.x, c.x, 0.22), y: lerp(L.prompt.y + 200, c.y, 0.5), zoom: 1.42}; }, curve: 'softOut'}, // follow the caret
   {f: T.buildStart, dur: 70, to: {x: L.nodes[1].x, y: L.nodes[1].y - 120, zoom: 0.92}, curve: 'swift2'},     // nodes snap in
   {f: P.toast - 10, dur: 40, to: {x: L.nodes[0].x, y: L.nodes[0].y - 80, zoom: 1.12}, curve: 'swift2'},   // new booking hits the trigger
-  {f: P.dot1[0], dur: 20, to: (f) => ({...dot(L.nodes[0], {x: L.deal.x, y: L.deal.y - 200}, f, P.dot1[0], P.dot1[1] + 30), zoom: 1.0}), curve: 'softOut'}, // track the data dot down
-  {f: P.dealIn + 20, dur: 50, to: {x: L.deal.x, y: L.deal.y + 10, zoom: 1.02}, curve: 'softOut'},
-  {f: P.dot2[0], dur: 20, to: (f) => ({...dot({x: L.deal.x, y: L.deal.y + 300}, {x: L.card.x, y: L.card.y - 200}, f, P.dot2[0], P.dot2[1] + 30), zoom: 1.0}), curve: 'softOut'},
-  {f: P.cardIn + 20, dur: 50, to: {x: L.card.x, y: L.card.y, zoom: 1.04}, curve: 'softOut'},
+  {f: P.dot1[0], dur: 30, to: (f) => ({...dot(L.nodes[0], {x: L.deal.x, y: L.deal.y - 120}, f, P.dot1[0], P.dot1[1] + 40), zoom: 1.08}), curve: 'softOut'}, // track the data dot down
+  {f: P.dealIn + 10, dur: 60, to: {x: L.deal.x, y: L.deal.y + 10, zoom: 1.12}, curve: 'softOut'},
+  {f: P.dot2[0], dur: 30, to: (f) => ({...dot({x: L.deal.x, y: L.deal.y + 200}, {x: L.card.x, y: L.card.y - 100}, f, P.dot2[0], P.dot2[1] + 40), zoom: 1.08}), curve: 'softOut'},
+  {f: P.cardIn + 10, dur: 60, to: {x: L.card.x, y: L.card.y, zoom: 1.12}, curve: 'softOut'},
   {f: T.auto - 26, dur: 34, to: {x: L.deal.x, y: (L.deal.y + L.card.y) / 2 + 40, zoom: 0.52, roll: 0}, curve: 'swift2'}, // pull back for "Automatically."
   {f: T.auto + 10, dur: 70, to: {x: L.deal.x, y: (L.deal.y + L.card.y) / 2 + 40, zoom: 0.56}, curve: 'softOut'},
 ];

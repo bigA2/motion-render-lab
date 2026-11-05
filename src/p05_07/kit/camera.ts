@@ -14,7 +14,7 @@ const resolveT = (t: Target, f: number) => (typeof t === 'function' ? t(f) : t);
 
 export class Camera {
   private raw: Cam[] = []; private sm: Cam[] = []; private cuts = new Set<number>();
-  constructor(public moves: Move[], public frames: number, public w: number, public h: number, start: Partial<Cam> = {}, public omega = 9) {
+  constructor(public moves: Move[], public frames: number, public w: number, public h: number, start: Partial<Cam> = {}, public omega = 6.5) {
     const ms = [...moves].sort((a, b) => a.f - b.f);
     let base: Cam = {...CAM0, ...start}; let i = -1;
     for (let f = 0; f < frames; f++) {
