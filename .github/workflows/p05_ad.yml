@@ -1,0 +1,120 @@
+# P05 PRODUCTION AD (src/p05_07/P05AD): no voice, music-led, sparse SFX on big beats. Renders ONLY here: 9:16 + 4:5
+# in parts with the TextGuard collector; the layout guard checks every 4th frame and FAILS the run on any violation.
+# Outputs (artifact P05_ad): music+SFX master (-14 LUFS) per format, an SFX-only review file per format (same gain as
+# the master), the stems (wav) and the guard reports. QA (4 fps sheets with SFX marks, 1 fps stills, guard) -> qa/p05_ad.
+name: p05_ad
+permissions: { contents: write }
+on:
+  workflow_dispatch:
+    inputs:
+      rev: { description: 'label for the QA folder', required: false, default: 'r1' }
+      parts: { description: 'render parts per format', required: false, default: '4' }
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs: { r: '${{ steps.m.outputs.r }}' }
+    steps:
+      - id: m
+        run: python3 -c "import json; n=int('${{ inputs.parts }}'); print('r=' + json.dumps({'include':[{'fmt':f,'comp':c,'part':p,'n':n} for f,c in (('9x16','P05AD'),('4x5','P05AD-4x5')) for p in range(n)]}))" >> $GITHUB_OUTPUT
+  render:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy: { fail-fast: false, matrix: '${{ fromJSON(needs.setup.outputs.r) }}' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - run: |
+          P=${{ matrix.part }}; node tools/p05_07/render_guarded.mjs "${{ matrix.comp }}" "part$P.mp4" "tg$P.json" "$P/${{ matrix.n }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 'part-${{ matrix.fmt }}-${{ matrix.part }}'
+          retention-days: 2
+          path: |
+            part${{ matrix.part }}.mp4
+            tg${{ matrix.part }}.json
+  audio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && sudo apt-get -qq install -y ffmpeg >/dev/null && pip install --quiet numpy
+      - run: npx -y tsx@4.19.2 src/p05_07/P05AD/dump.ts && python3 tools/p05_07/ad_mix.py out/events_P05AD.json out/audio
+      - uses: actions/upload-artifact@v4
+        with: { name: 'audio-P05AD', path: 'out/', retention-days: 3 }
+  join:
+    needs: [setup, render, audio]
+    runs-on: ubuntu-latest
+    strategy: { fail-fast: false, matrix: { fmt: ['9x16', '4x5'] } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg >/dev/null && pip install --quiet numpy pillow
+      - uses: actions/download-artifact@v4
+        with: { path: parts, pattern: 'part-${{ matrix.fmt }}-*', merge-multiple: true }
+      - uses: actions/download-artifact@v4
+        with: { name: 'audio-P05AD', path: aud }
+      - name: join + master
+        run: |
+          N=P05_ad_${{ matrix.fmt }}; K=$(ls parts/part*.mp4 | wc -l)
+          for p in $(seq 0 $((K - 1))); do echo "file 'parts/part$p.mp4'" >> list.txt; done
+          ffmpeg -v error -f concat -safe 0 -i list.txt -c copy video.mp4
+          mkdir -p final qa
+          python3 tools/p05_07/master.py video.mp4 aud/audio/music_sfx.wav "final/FansaChat_${N}.mp4"
+          # SFX-only review file: the SFX stem with the SAME gain the master applied to the full mix
+          I=$(ffmpeg -hide_banner -i aud/audio/music_sfx.wav -af ebur128 -f null - 2>&1 | grep -E '^\s+I:' | tail -1 | awk '{print $2}')
+          G=$(python3 -c "print(round(-14 - float('$I'), 2))"); echo "mix $I LUFS -> gain $G dB"
+          ffmpeg -v error -y -i video.mp4 -i aud/audio/sfx_only.wav -map 0:v -map 1:a -c:v copy -af "volume=${G}dB,alimiter=limit=0.84" -c:a aac -b:a 192k -shortest -movflags +faststart "final/FansaChat_${N}_SFX-only.mp4"
+          python3 tools/p05_07/qa.py "final/FansaChat_${N}.mp4" aud/audio/sfx_report.json qa "$N"
+          ffmpeg -hide_banner -i "final/FansaChat_${N}.mp4" -af ebur128=peak=true -f null - 2>&1 | tail -12 > "qa/${N}_loudness.txt"
+          cp aud/audio/sfx_report.json qa/P05AD_sfx_report.json
+      - name: layout guard (every 4th frame)
+        run: |
+          set +e; N=P05_ad_${{ matrix.fmt }}
+          node tools/p05_07/layout_guard.mjs video.mp4 "qa/guard/${N}_layout_guard.json" 0 parts/tg*.json 2>&1 | tee "qa/${N}_layout_guard.txt"
+          R=${PIPESTATUS[0]}
+          cp "qa/guard/${N}_layout_guard.json" final/
+          echo "### layout guard ${N}" >> $GITHUB_STEP_SUMMARY; head -3 "qa/${N}_layout_guard.txt" >> $GITHUB_STEP_SUMMARY
+          exit $R
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: 'final-${{ matrix.fmt }}', path: final/, retention-days: 14 }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: 'qa-${{ matrix.fmt }}', path: qa/, retention-days: 7 }
+  collect:
+    needs: [join]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { path: pub, pattern: 'final-*', merge-multiple: true }
+      - uses: actions/download-artifact@v4
+        with: { name: 'audio-P05AD', path: aud }
+      - run: mkdir -p pub/stems && cp aud/audio/*.wav aud/audio/sfx_report.json pub/stems/ && ls -laR pub
+      - uses: actions/upload-artifact@v4
+        with: { name: 'P05_ad', path: pub/, retention-days: 30 }
+  qa:
+    needs: [join]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { path: qa_in, pattern: 'qa-*', merge-multiple: true }
+      - run: |
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          D="P05_ad_${{ inputs.rev }}"; [ -d qa_in ] || { echo "no QA artifacts"; exit 1; }
+          mv qa_in /tmp/qa_in
+          for i in 1 2 3 4 5; do
+            if git fetch -q origin qa/p05_ad; then git checkout -qf -B qa/p05_ad origin/qa/p05_ad; else git checkout -q --orphan qa/p05_ad; git rm -rqf --cached . || true; fi
+            find . -mindepth 1 -maxdepth 1 ! -name .git ! -name 'P05_ad_*' -exec rm -rf {} +
+            rm -rf "$D"; mkdir -p "$D" && cp -r /tmp/qa_in/* "$D/"
+            echo "run ${{ github.run_id }} rev=${{ inputs.rev }} sha=${{ github.sha }}" > "$D/RUN.txt"
+            git add -A "$D" && git commit -qm "QA $D (run ${{ github.run_id }})" && git push -q origin HEAD:qa/p05_ad && break
+            sleep $((i * 5))
+          done

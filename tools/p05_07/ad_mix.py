@@ -25,7 +25,7 @@ ref = db(-6)
 
 sfx = np.zeros(ns); duck = np.ones(ns); rep = []
 for e in sorted(J['ev'], key=lambda x: x['f']):
-    k = e['kind']; s = SM[k].copy(); t = e['f'] / FPS
+    k = {'impact': 'hit'}.get(e['kind'], e['kind']); s = SM[k].copy(); t = e['f'] / FPS
     if k == 'riser':  # keep the last `dur` of the 2 s riser so its cut lands on f
         L = int(min(len(s), (e.get('dur') or 120) / FPS * SR)); s = s[-L:].copy(); s[:int(0.05 * SR)] *= np.linspace(0, 1, int(0.05 * SR)); start = t - L / SR
     else:
