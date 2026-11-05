@@ -64,7 +64,8 @@ const moves: Move[] = [
   {f: P.dot1[0] - 6, dur: 64, to: {x: L.trello.x, y: (L.tally.y + L.trello.y) / 2 - 40, zoom: 0.94}, curve: 'inOut'},
   {f: P.dot2[0] - 6, dur: 64, to: {x: L.clock.x, y: (L.trello.y + L.clock.y) / 2 - 40, zoom: 0.94}, curve: 'inOut'},
   {f: T.onePlace - 24, dur: 70, to: {x: DASH.x, y: DASH.y, zoom: 0.54}, curve: 'inOut'},              // one place: the dashboard
-  {f: T.onePlace + 50, dur: 200, to: {x: DASH.x, y: DASH.y, zoom: 0.58}, curve: 'softOut'},
+  {f: T.onePlace + 40, dur: 80, to: {x: DASH.x, y: DASH.y, zoom: 0.6}, curve: 'softOut'},
+  {f: T.opened - 70, dur: 70, to: {x: G.tele.x - 80, y: G.tele.y - 60, zoom: 1.0}, curve: 'inOut'},  // the message you have not opened yet
 ];
 export const cam = new Camera(moves, TOTAL, 1080, 1920);
 export const camF = new Camera([

@@ -67,7 +67,7 @@ const moves: Move[] = [
   {f: T.buried - 10, dur: 70, to: {x: 540, y: rowY(3), zoom: 1.0, roll: -1}, curve: 'inOut'},     // more piles on: pull back
   {f: T.fifty - 8, dur: 50, to: {x: 560, y: 1080, zoom: 1.0, roll: 0}, curve: 'inOut'},
   {f: SC.B - 6, dur: 44, to: {x: L.list.x, y: L.list.y - 120, zoom: 1.22}, curve: 'swift2'},     // to the checklist
-  {f: T.spot - 10, dur: 200, to: (f) => ({x: L.list.x, y: lerp(L.list.y - 120, L.list.y + 60, prog(f, T.spot - 10, T.tell + 20 - T.spot, 'inOut')), zoom: 1.22}), curve: 'softOut'}, // track down the list
+  {f: T.spot - 10, dur: 200, to: (f) => ({x: L.list.x, y: lerp(L.list.y - 160, L.list.y - 60, prog(f, T.spot - 10, T.tell + 20 - T.spot, 'inOut')), zoom: 1.2}), curve: 'softOut'}, // track down the list
   {f: T.fan, dur: 60, to: {x: 1300, y: 1000, zoom: 0.9, roll: -3, dolly: 200}, curve: 'flyAccel'},     // fly into the card fan
   {f: T.fix + 40, dur: 44, to: {x: L.prompt.x, y: L.prompt.y + 260, zoom: 1.05, yaw: 0, roll: 0, dolly: 0}, curve: 'swift'},
   {f: T.typeStart, dur: 30, to: (f) => { const c = caretPos(f); return {x: lerp(L.prompt.x, c.x, 0.12), y: lerp(L.prompt.y + 260, c.y, 0.4), zoom: 1.1}; }, curve: 'softOut'},
