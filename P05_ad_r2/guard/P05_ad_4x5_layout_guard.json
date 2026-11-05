@@ -1,0 +1,153 @@
+{
+ "video": "video.mp4",
+ "size": [
+  1080,
+  1350
+ ],
+ "every": 4,
+ "frames_with_guard": 213,
+ "frames_checked": 213,
+ "text_boxes_checked": 578,
+ "contrast_measured": 564,
+ "violations": 4,
+ "by_kind": {
+  "contrast": 4
+ },
+ "worst_contrast_per_text": {
+  "h-sales": {
+   "cr": 12.34,
+   "f": 28,
+   "need": 3
+  },
+  "h-calls": {
+   "cr": 15.68,
+   "f": 48,
+   "need": 3
+  },
+  "h-slip": {
+   "cr": 4.4,
+   "f": 56,
+   "need": 3
+  },
+  "h-through": {
+   "cr": 13.48,
+   "f": 52,
+   "need": 3
+  },
+  "o-note1": {
+   "cr": 11.49,
+   "f": 168,
+   "need": 4.5
+  },
+  "o-ping1": {
+   "cr": 5.17,
+   "f": 164,
+   "need": 3
+  },
+  "o-book1": {
+   "cr": 18.06,
+   "f": 124,
+   "need": 4.5
+  },
+  "o-note2": {
+   "cr": 7.7,
+   "f": 168,
+   "need": 4.5
+  },
+  "o-ping2": {
+   "cr": 5.17,
+   "f": 144,
+   "need": 3
+  },
+  "o-book2": {
+   "cr": 17.92,
+   "f": 192,
+   "need": 4.5
+  },
+  "cap1": {
+   "cr": 16.28,
+   "f": 280,
+   "need": 3
+  },
+  "cap2": {
+   "cr": 16.28,
+   "f": 404,
+   "need": 3
+  },
+  "cap3": {
+   "cr": 16.13,
+   "f": 420,
+   "need": 3
+  },
+  "c-page": {
+   "cr": 9.26,
+   "f": 436,
+   "need": 4.5
+  },
+  "c-title": {
+   "cr": 18.25,
+   "f": 436,
+   "need": 3
+  },
+  "c-who": {
+   "cr": 18.01,
+   "f": 452,
+   "need": 4.5
+  },
+  "c-msg": {
+   "cr": 16.85,
+   "f": 512,
+   "need": 4.5
+  },
+  "prompt": {
+   "cr": 16.41,
+   "f": 644,
+   "need": 3
+  },
+  "e-word": {
+   "cr": 15.92,
+   "f": 788,
+   "need": 3
+  },
+  "e-tag": {
+   "cr": 10.02,
+   "f": 808,
+   "need": 4.5
+  },
+  "e-pill": {
+   "cr": 4.32,
+   "f": 788,
+   "need": 4.5
+  }
+ },
+ "list": [
+  {
+   "f": 788,
+   "kind": "contrast",
+   "id": "e-pill",
+   "cr": 4.32,
+   "need": 4.5
+  },
+  {
+   "f": 792,
+   "kind": "contrast",
+   "id": "e-pill",
+   "cr": 4.32,
+   "need": 4.5
+  },
+  {
+   "f": 796,
+   "kind": "contrast",
+   "id": "e-pill",
+   "cr": 4.34,
+   "need": 4.5
+  },
+  {
+   "f": 800,
+   "kind": "contrast",
+   "id": "e-pill",
+   "cr": 4.49,
+   "need": 4.5
+  }
+ ]
+}

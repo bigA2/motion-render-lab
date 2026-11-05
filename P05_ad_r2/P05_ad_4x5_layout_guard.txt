@@ -1,0 +1,5 @@
+layout_guard video.mp4: 213 frames, 578 text boxes, 564 contrast samples -> 4 violations {"contrast":4}
+   {"f":788,"kind":"contrast","id":"e-pill","cr":4.32,"need":4.5}
+   {"f":792,"kind":"contrast","id":"e-pill","cr":4.32,"need":4.5}
+   {"f":796,"kind":"contrast","id":"e-pill","cr":4.34,"need":4.5}
+   {"f":800,"kind":"contrast","id":"e-pill","cr":4.49,"need":4.5}
