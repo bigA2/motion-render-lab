@@ -1,0 +1,47 @@
+{
+ "P05": {
+  "request": "When someone books a sales call through my booking form webhook, create a Notion page for the deal with their name, company, call time and a prep checklist, then post in Slack: prep for the call with their name and the time.",
+  "notion": [
+   {
+    "title": "Dana Whitfield"
+   }
+  ],
+  "slack": [
+   {
+    "where": "channel",
+    "text": "Prep for the call with Dana Whitfield (Northwind Studio)"
+   }
+  ]
+ },
+ "P06": {
+  "request": "When a client request comes in through my webhook, create a Notion task with the client, the request and a due date of today, then alert Slack with the client name and the request.",
+  "notion": [
+   {
+    "Assignee": "",
+    "Status": "Not started",
+    "Due date": null,
+    "Task name": "Priya Nair"
+   }
+  ],
+  "slack": [
+   {
+    "where": "channel",
+    "text": "Priya Nair (Bloom Bakery). Detail: Homepage banner shows last week's price, launch is in 2 hours"
+   }
+  ]
+ },
+ "P07": {
+  "request": "When a new project brief arrives through my webhook, save it as a Notion brief page with the client, budget, deadline and what they need, then send me a Slack message with the client and the budget.",
+  "notion": [
+   {
+    "title": "Leo Martins"
+   }
+  ],
+  "slack": [
+   {
+    "where": "DM",
+    "text": "Leo Martins (Harbor Coffee). Budget: 1,200 USD, Deadline: Nov 28, Detail: Need a logo refresh and 5 Instagram templates, budget 1,200 dollars, deadline Nov 28"
+   }
+  ]
+ }
+}
