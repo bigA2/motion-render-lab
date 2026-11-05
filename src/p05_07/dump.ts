@@ -5,9 +5,10 @@ import {mkdirSync, writeFileSync} from 'fs';
 import * as P05 from './P05/plan';
 import * as P06 from './P06/plan';
 import * as P07 from './P07/plan';
+import * as P05R from './P05R/plan';
 
 type Plan = {FPS: number; TOTAL: number; VO: number[]; VO_FILES: string[]; VO_TRIM?: ([number, number] | null)[]; MUSIC: string; events: () => unknown[]};
-const PLANS: Record<string, Plan> = {P05, P06, P07};
+const PLANS: Record<string, Plan> = {P05, P06, P07, P05R};
 mkdirSync('out', {recursive: true});
 for (const id of process.argv.slice(2)) {
   const p = PLANS[id]; if (!p) throw new Error('no plan ' + id);

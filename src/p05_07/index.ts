@@ -8,9 +8,11 @@ import {Film as F06} from './P06/Film';
 import * as P06 from './P06/plan';
 import {Film as F07} from './P07/Film';
 import * as P07 from './P07/plan';
+import {Film as F05R} from './P05R/Film';
+import * as P05R from './P05R/plan';
 
 const h = React.createElement;
-const V: {id: string; c: React.FC; n: number}[] = [{id: 'P05', c: F05, n: P05.TOTAL}, {id: 'P06', c: F06, n: P06.TOTAL}, {id: 'P07', c: F07, n: P07.TOTAL}];
+const V: {id: string; c: React.FC; n: number}[] = [{id: 'P05', c: F05, n: P05.TOTAL}, {id: 'P06', c: F06, n: P06.TOTAL}, {id: 'P07', c: F07, n: P07.TOTAL}, {id: 'P05R', c: F05R, n: P05R.TOTAL}];
 const Root: React.FC = () => h(React.Fragment, null, ...V.flatMap((v) => [
   h(Composition, {key: v.id, id: v.id, component: v.c, durationInFrames: v.n, fps: 60, width: 1080, height: 1920}),
   h(Composition, {key: v.id + '45', id: `${v.id}-4x5`, component: v.c, durationInFrames: v.n, fps: 60, width: 1080, height: 1350}),
