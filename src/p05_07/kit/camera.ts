@@ -13,7 +13,7 @@ const KEYS: (keyof Cam)[] = ['x', 'y', 'zoom', 'roll', 'yaw', 'pitch', 'dolly'];
 const resolveT = (t: Target, f: number) => (typeof t === 'function' ? t(f) : t);
 
 export class Camera {
-  private raw: Cam[] = []; private sm: Cam[] = [];
+  private raw: Cam[] = []; private sm: Cam[] = []; private cuts = new Set<number>();
   constructor(public moves: Move[], public frames: number, public w: number, public h: number, start: Partial<Cam> = {}, public omega = 9) {
     const ms = [...moves].sort((a, b) => a.f - b.f);
     let base: Cam = {...CAM0, ...start}; let i = -1;
@@ -24,7 +24,7 @@ export class Camera {
     // spring smoothing (critically damped): x'' = w^2 (target - x) - 2 w x'
     const dt = 1 / 60, sub = 4; let x: Cam = {...this.raw[0]}; const v: Record<string, number> = {};
     KEYS.forEach((k) => (v[k] = 0));
-    const cutAt = new Set(ms.filter((m) => m.cut).map((m) => m.f));
+    const cutAt = new Set(ms.filter((m) => m.cut).map((m) => m.f)); this.cuts = cutAt;
     for (let f = 0; f < frames; f++) {
       if (cutAt.has(f)) { x = {...this.raw[f]}; KEYS.forEach((k) => (v[k] = 0)); }
       const m = ms.filter((mm) => mm.f <= f).pop(); const w = m?.stiff ?? omega;
@@ -44,6 +44,7 @@ export class Camera {
   get(f: number): Cam { const i = Math.max(0, Math.min(this.frames - 1, Math.floor(f))); return this.sm[i] ?? CAM0; }
   /** screen-space velocity of the world point under the centre, px per frame */
   vel(f: number) {
+    if (this.cuts.has(Math.floor(f))) return {vx: 0, vy: 0, vz: 0, vr: 0};
     const a = this.get(f - 1), b = this.get(f);
     const s = (b.zoom + a.zoom) / 2 * (1 + (a.dolly + b.dolly) / 2 / 2000);
     return {vx: (b.x - a.x) * s, vy: (b.y - a.y) * s, vz: (b.zoom - a.zoom) * this.h + (b.dolly - a.dolly), vr: b.roll - a.roll};
@@ -52,7 +53,7 @@ export class Camera {
   /** whooshes from camera speed peaks (fast moves only), peak of the sound on the fastest frame */
   whooshes(src = 'cam', thr = 1.3): Sfx[] {
     const out: Sfx[] = []; const fw = this.w;
-    const sp = Array.from({length: this.frames}, (_, f) => (this.speed(f) * 60) / fw); // frame-widths per s
+    const sp = Array.from({length: this.frames}, (_, f) => (this.cuts.has(f) || this.cuts.has(f + 1) ? 0 : (this.speed(f) * 60) / fw)); // frame-widths per s
     for (let f = 2; f < this.frames - 2; f++) {
       if (sp[f] > thr && sp[f] >= sp[f - 1] && sp[f] > sp[f + 1]) {
         let a = f, b = f; while (a > 0 && sp[a] > sp[f] * 0.35) a--; while (b < this.frames - 1 && sp[b] > sp[f] * 0.35) b++;

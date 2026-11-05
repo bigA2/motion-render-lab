@@ -1,0 +1,122 @@
+# P05–P07 rebuild (src/p05_07). Renders ONLY here. mode=practice renders frame ranges of one video (9:16) for the
+# practice loop; mode=full renders 9:16 + 4:5 of each video, with-music and no-music, artifacts named P05/P06/P07.
+# QA (4 fps sheets with SFX marks, 1 fps stills, waveform, loudness, motion numbers) is pushed to branch qa/p05_07.
+name: p05_07
+permissions: { contents: write }
+on:
+  workflow_dispatch:
+    inputs:
+      mode: { description: 'practice | full', required: false, default: 'practice' }
+      videos: { description: 'space-separated ids', required: false, default: 'P05' }
+      shots: { description: 'practice shots name:a-b (frames, first video)', required: false, default: 'S1:0-210 S2:690-1100 S3:1090-1480' }
+      rev: { description: 'label for the QA folder', required: false, default: 'r1' }
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs: { r: '${{ steps.m.outputs.r }}', j: '${{ steps.m.outputs.j }}', v: '${{ steps.m.outputs.v }}' }
+    steps:
+      - id: m
+        env: { MODE: '${{ inputs.mode }}', VIDS: '${{ inputs.videos }}', SHOTS: '${{ inputs.shots }}' }
+        run: |
+          python3 - <<'PY' >> $GITHUB_OUTPUT
+          import json, os
+          vids = os.environ['VIDS'].split(); r = []; j = []
+          if os.environ['MODE'] == 'practice':
+              for s in os.environ['SHOTS'].split():
+                  n, ab = s.split(':'); a, b = ab.split('-')
+                  r.append({'name': n, 'vid': vids[0], 'comp': vids[0], 'fmt': '9x16', 'a': a, 'b': b, 'part': 0})
+                  j.append({'name': n, 'vid': vids[0], 'fmt': '9x16', 'a': a, 'b': b, 'parts': 1})
+          else:
+              for v in vids:
+                  for fmt, comp in (('9x16', v), ('4x5', v + '-4x5')):
+                      for p in range(5): r.append({'name': f'{v}_{fmt}', 'vid': v, 'comp': comp, 'fmt': fmt, 'a': '', 'b': '', 'part': p})
+                      j.append({'name': f'{v}_{fmt}', 'vid': v, 'fmt': fmt, 'a': '', 'b': '', 'parts': 5})
+          print('r=' + json.dumps({'include': r})); print('j=' + json.dumps({'include': j})); print('v=' + json.dumps(vids))
+          PY
+  render:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy: { fail-fast: false, matrix: '${{ fromJSON(needs.setup.outputs.r) }}' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - run: |
+          C="${{ matrix.comp }}"; A="${{ matrix.a }}"; B="${{ matrix.b }}"; P=${{ matrix.part }}; K=5
+          if [ -z "$A" ]; then
+            npx remotion compositions src/p05_07/index.ts > comps.txt 2>&1 || (cat comps.txt; exit 1)
+            N=$(grep -E "^[[:space:]]*$C[[:space:]]" comps.txt | grep -oE "[0-9]+ \([0-9.]+ sec\)" | grep -oE "^[0-9]+" | head -1)
+            A=$(( N * P / K )); B=$(( N * (P + 1) / K - 1 ))
+          fi
+          echo "render $C $A-$B"
+          npx remotion render src/p05_07/index.ts "$C" "part$P.mp4" --frames=$A-$B --muted --crf=15 --pixel-format=yuv420p --concurrency=100% --log=error --timeout=180000
+      - uses: actions/upload-artifact@v4
+        with: { name: 'part-${{ matrix.name }}-${{ matrix.part }}', path: 'part${{ matrix.part }}.mp4', retention-days: 2 }
+  audio:
+    needs: setup
+    runs-on: ubuntu-latest
+    strategy: { fail-fast: false, matrix: { vid: '${{ fromJSON(needs.setup.outputs.v) }}' } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && sudo apt-get -qq install -y ffmpeg >/dev/null && pip install --quiet numpy
+      - run: npx -y tsx@4.19.2 src/p05_07/dump.ts ${{ matrix.vid }} && python3 tools/p05_07/sfx_mix.py out/events_${{ matrix.vid }}.json out/audio
+      - uses: actions/upload-artifact@v4
+        with: { name: 'audio-${{ matrix.vid }}', path: 'out/', retention-days: 3 }
+  join:
+    needs: [setup, render, audio]
+    runs-on: ubuntu-latest
+    strategy: { fail-fast: false, matrix: '${{ fromJSON(needs.setup.outputs.j) }}' }
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg tesseract-ocr >/dev/null && pip install --quiet numpy pillow opencv-python-headless pytesseract
+      - uses: actions/download-artifact@v4
+        with: { path: parts, pattern: 'part-${{ matrix.name }}-*', merge-multiple: true }
+      - uses: actions/download-artifact@v4
+        with: { name: 'audio-${{ matrix.vid }}', path: aud }
+      - run: |
+          N=${{ matrix.name }}; A="${{ matrix.a }}"; B="${{ matrix.b }}"
+          for p in $(seq 0 $(( ${{ matrix.parts }} - 1 ))); do echo "file 'parts/part$p.mp4'" >> list.txt; done
+          ffmpeg -v error -f concat -safe 0 -i list.txt -c copy video.mp4
+          mkdir -p final qa
+          if [ -n "$A" ]; then T0=$(python3 -c "print($A/60)"); T1=$(python3 -c "print(($B+1)/60)"); TR="$T0 $T1"; else T0=0; T1=1e9; TR=""; fi
+          python3 tools/p05_07/master.py video.mp4 aud/audio/vo_sfx.wav "final/FansaChat_${N}_no-music.mp4" $TR
+          python3 tools/p05_07/master.py video.mp4 aud/audio/vo_sfx_music.wav "final/FansaChat_${N}_music.mp4" $TR
+          python3 tools/p05_07/qa.py "final/FansaChat_${N}_no-music.mp4" aud/audio/sfx_report.json qa "$N" $T0 $T1
+          ffmpeg -hide_banner -i "final/FansaChat_${N}_music.mp4" -af ebur128=peak=true -f null - 2>&1 | tail -12 > "qa/${N}_loudness_music.txt"
+          python3 tools/study/measure.py "final/FansaChat_${N}_no-music.mp4" "qa/${N}_measure.json" "$N"
+          cp aud/audio/sfx_report.json "qa/${{ matrix.vid }}_sfx_report.json"
+      - uses: actions/upload-artifact@v4
+        with: { name: 'final-${{ matrix.name }}', path: final/, retention-days: 14 }
+      - uses: actions/upload-artifact@v4
+        with: { name: 'qa-${{ matrix.name }}', path: qa/, retention-days: 7 }
+  collect:
+    needs: [setup, join]
+    if: always()
+    runs-on: ubuntu-latest
+    strategy: { fail-fast: false, matrix: { vid: '${{ fromJSON(needs.setup.outputs.v) }}' } }
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { path: fin, pattern: 'final-*', merge-multiple: true }
+      - run: mkdir -p pub && cp fin/*${{ matrix.vid }}* pub/ 2>/dev/null || cp fin/* pub/; ls -la pub
+      - uses: actions/upload-artifact@v4
+        with: { name: '${{ inputs.mode == ''full'' && matrix.vid || format(''practice-{0}'', matrix.vid) }}', path: pub/, retention-days: 30 }
+  qa:
+    needs: [setup, join]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { path: qa_in, pattern: 'qa-*', merge-multiple: true }
+      - run: |
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          D="${{ inputs.mode }}_${{ inputs.rev }}"
+          git fetch origin qa/p05_07 && git checkout -B qa/p05_07 origin/qa/p05_07 || git checkout --orphan qa/p05_07
+          git rm -rq --cached . 2>/dev/null || true; find . -mindepth 1 -maxdepth 1 ! -name .git ! -name qa_in -exec rm -rf {} +
+          mkdir -p "$D" && cp -r qa_in/* "$D/" && rm -rf qa_in
+          echo "run ${{ github.run_id }} mode=${{ inputs.mode }} videos=${{ inputs.videos }} rev=${{ inputs.rev }}" > "$D/RUN.txt"
+          git add -A && git commit -qm "QA $D (run ${{ github.run_id }})" && git push -f origin HEAD:qa/p05_07

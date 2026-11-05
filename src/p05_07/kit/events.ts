@@ -11,7 +11,16 @@ export class Timeline {
   ev: Sfx[] = [];
   constructor(public fps = 60) {}
   add(e: Sfx | Sfx[]) { (Array.isArray(e) ? e : [e]).forEach((x) => this.ev.push(x)); return this; }
-  sorted() { return [...this.ev].sort((a, b) => a.f - b.f); }
+  /** sorted; overlapping whooshes (starts < 18 frames apart) keep only the louder one */
+  sorted() {
+    const out: Sfx[] = [];
+    for (const e of [...this.ev].sort((a, b) => a.f - b.f)) {
+      const prev = e.kind === 'whoosh' ? out.filter((o) => o.kind === 'whoosh' && Math.abs(o.f - e.f) < 18).pop() : undefined;
+      if (prev) { if ((e.gain ?? 0) > (prev.gain ?? 0)) out[out.indexOf(prev)] = e; continue; }
+      out.push(e);
+    }
+    return out;
+  }
 }
 
 // ---------- typing: one key per character, human rhythm ----------
