@@ -145,6 +145,10 @@ const Tele: React.FC<{f: number}> = ({f}) => { const p = P.teleArr.p(f); if (p <
     <div style={{width: 660, height: 840, borderRadius: 70, background: '#0B0F12', border: '10px solid #1D2A2E', boxShadow: '0 50px 100px rgba(0,0,0,.55)', overflow: 'hidden', fontFamily: F.display}}>
       <Row gap={14} style={{padding: '50px 30px 20px', background: '#17212B', color: '#fff'}}><Logo name="telegram" size={56} round={28} /><div><b style={{fontSize: 28}}>Brief Bot</b><div style={{fontSize: 20, color: '#8FA3B5'}}>bot · online</div></div></Row>
       <div style={{padding: 26, background: '#0E1621', height: '100%'}}>
+        {[['Yesterday', 'New brief from Kofi Mensah', 'Portfolio site · $3k · due Nov 28'], ['Mon', 'New brief from Rue & Co.', 'Menu redesign · $1.8k · due Nov 21']].map(([d, t, l]) => <div key={t} style={{marginBottom: 18}}>
+          <div style={{textAlign: 'center', fontSize: 18, color: '#6C8296', marginBottom: 10}}>{d}</div>
+          <div style={{maxWidth: 520, borderRadius: 26, padding: '14px 20px', background: '#182533', color: '#B9C6D3', fontSize: 23, lineHeight: 1.35, opacity: 0.8}}><b style={{color: '#7FA9C9'}}>{t}</b><br />{l}</div></div>)}
+        <div style={{textAlign: 'center', fontSize: 18, color: '#6C8296', marginBottom: 10}}>Today</div>
         <div style={{maxWidth: 520, borderRadius: 26, padding: '18px 22px', background: '#182533', color: '#E8EEF4', fontSize: 27, lineHeight: 1.35, transform: `scale(${prog(f, P.P.teleIn + 14, 18, 'spring')})`, transformOrigin: 'left top'}}>
           <b style={{color: '#64B5EF'}}>New brief from Aisha Bello</b><br />Lumen Coffee Co. · $6–8k · due Dec 12<br /><span style={{color: '#8FA3B5', fontSize: 22}}>Trello card ✓ · Clockify project ✓</span>
           <div style={{textAlign: 'right', fontSize: 18, color: '#6C8296'}}>10:02</div></div>

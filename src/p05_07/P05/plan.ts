@@ -65,7 +65,7 @@ export const notes = [
   {txt: 'prep for Dana call', at: T.note2, x: 40, y: 10, r: 4, c: '#FF9EBB'},
 ];
 // "you mean to add them to your CRM": cursor snoozes the booking email instead
-export const SNOOZE = {x: 470, y: 590, at: s(4.95)};
+export const SNOOZE = {x: 462, y: 640, at: s(4.95)};
 export const cursorB = cursorPath([
   {f: T.toastIn + 24, x: 860, y: 980}, {f: SNOOZE.at - 4, x: SNOOZE.x, y: SNOOZE.y}, {f: SNOOZE.at, x: SNOOZE.x, y: SNOOZE.y, click: true}, {f: SNOOZE.at + 50, x: SNOOZE.x + 160, y: SNOOZE.y + 260},
 ]);
