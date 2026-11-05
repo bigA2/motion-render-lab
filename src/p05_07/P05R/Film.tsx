@@ -46,8 +46,8 @@ const WorldA: React.FC<{f: number}> = ({f}) => {
     {/* hook */}
     {hook > 0 && <>
       <At x={0} y={378} w={1080} o={hook * clamp((f - T.head) / 8)} style={{textAlign: 'center'}}><G id="head" size={66} color={INK} font={F.display} weight={800} style={{letterSpacing: '-0.02em'}}>Booking sales calls</G></At>
-      <At x={70} y={520} w={430} o={hook} style={{textAlign: 'center'}}><G id="this" size={140} color={HOT} font={F.display}><GiantLetters text="THIS" f0={T.this} stagger={4} size={140} color={HOT} shadow={longShadow('#9C2E0C', 10)} font={F.display} /></G></At>
-      <At x={580} y={520} w={430} o={hook} style={{textAlign: 'center'}}><G id="that" size={140} color={ACC} font={F.display}><GiantLetters text="THAT" f0={T.that} stagger={4} size={140} color={ACC} shadow={longShadow('#3B2A99', 10)} font={F.display} /></G></At>
+      <At x={70} y={520} w={430} o={hook * clamp((f - T.this) / 3)} style={{textAlign: 'center'}}><G id="this" size={140} color={HOT} font={F.display}><GiantLetters text="THIS" f0={T.this} stagger={4} size={140} color={HOT} shadow={longShadow('#9C2E0C', 10)} font={F.display} /></G></At>
+      <At x={580} y={520} w={430} o={hook * clamp((f - T.that) / 3)} style={{textAlign: 'center'}}><G id="that" size={140} color={ACC} font={F.display}><GiantLetters text="THAT" f0={T.that} stagger={4} size={140} color={ACC} shadow={longShadow('#3B2A99', 10)} font={F.display} /></G></At>
       <At x={492} y={552} w={96} h={96} o={hook * clamp((f - T.this - 6) / 8)} style={{borderRadius: 48, background: INK, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 0 8px ${a(PAL.bg, 0.8)}`}}><G id="or" size={42} color="#FFFFFF" font={F.display} weight={700}>or</G></At>
       <At x={540} y={760} w={3} h={600} o={hook * 0.5} style={{background: a(INK, 0.4)}}>{null}</At>
       {[{id: 'h-note1', t: 'call Dana??', x: 90, y: 790, r: -6, c: '#FFE066'}, {id: 'h-note2', t: 'CRM later…', x: 230, y: 1030, r: 5, c: '#FF9EBB'}].map((n, i) => { const p = prog(f, 4 + i * 6, 22, 'snapOut');
@@ -74,7 +74,7 @@ const WorldA: React.FC<{f: number}> = ({f}) => {
     {calP > 0 && calOut < 1 && <At x={110} y={660 + (1 - calP) * 900 + calOut * 1100} w={860} h={760} style={{borderRadius: 28, background: '#FFFFFF', boxShadow: '0 40px 80px rgba(20,25,50,.22)', padding: '30px 36px'}}>
       <div style={{display: 'flex', alignItems: 'center', gap: 18, marginBottom: 18}}><Logo name="google-calendar" size={56} round={14} /><G id="cal-h" size={38} color={INK} font={F.sans} weight={700}>Today</G></div>
       {MEET.map((m, i) => { const p = prog(f, T.cal + 26 + i * 9, 14, 'spring');
-        return <div key={m} style={{height: 112, marginBottom: 14, borderRadius: 18, background: ['#E8E4FF', '#DDF3EA', '#FFE9DC', '#E3EEFF', '#F1E8FF'][i], borderLeft: `8px solid ${[ACC, '#14A06A', HOT, '#2F6FE0', '#8A4CD6'][i]}`, display: 'flex', alignItems: 'center', padding: '0 26px', transform: `scale(${p})`, transformOrigin: '0 50%', opacity: clamp(p * 3)}}>
+        return <div key={m} style={{height: 112, marginBottom: 14, borderRadius: 18, background: ['#E8E4FF', '#DDF3EA', '#FFE9DC', '#E3EEFF', '#F1E8FF'][i], borderLeft: `8px solid ${[ACC, '#14A06A', HOT, '#2F6FE0', '#8A4CD6'][i]}`, display: 'flex', alignItems: 'center', padding: '0 26px', transform: `scale(${lerp(0.85, 1, p)})`, transformOrigin: '0 50%', opacity: clamp(p * 1.5)}}>
           <G id={`meet${i}`} size={34} color={INK} font={F.sans} weight={600} style={{whiteSpace: 'pre'}}>{m}</G></div>; })}
     </At>}
   </>;
@@ -167,7 +167,7 @@ const WhichSide: React.FC<{f: number; h: number}> = ({f, h}) => {
   return <AbsoluteFill style={{opacity: o}}>
     <div style={{position: 'absolute', left: 0, width: 1080, top: c0 - 330, textAlign: 'center'}}><G id="q" size={84} color={INK} font={F.display} weight={800} style={{lineHeight: 1.02, letterSpacing: '-0.02em'}}>Which side<br />are you on?</G></div>
     {[{id: 'this', l: 'THIS', c: 'Sticky notes', bg: HOT_D, x: 90}, {id: 'that', l: 'THAT', c: 'One sentence', bg: ACC, x: 560}].map((k, i) => (
-      <div key={k.id} style={{position: 'absolute', left: k.x, top: c0, width: 430, height: 420, borderRadius: 36, background: k.bg, transform: `scale(${card(i)}) rotate(${i ? 2 : -2}deg)`, boxShadow: '0 30px 60px rgba(20,25,50,.25)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 22}}>
+      <div key={k.id} style={{position: 'absolute', left: k.x, top: c0, width: 430, height: 420, borderRadius: 36, background: k.bg, transform: `scale(${card(i)}) rotate(${i ? 2 : -2}deg)`, opacity: clamp((card(i) - 0.55) * 3), boxShadow: '0 30px 60px rgba(20,25,50,.25)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 22}}>
         <G id={`w-${k.id}`} size={92} color="#FFFFFF" font={F.display} weight={800}>{k.l}</G>
         {i === 0 ? <div style={{width: 150, height: 120, background: '#FFE066', borderRadius: 6, transform: 'rotate(-5deg)', boxShadow: '0 10px 20px rgba(0,0,0,.2)'}} /> : <div style={{display: 'flex', gap: 14}}><Logo name="webhook" size={70} round={16} /><Logo name="notion" size={70} round={16} /><Logo name="slack" size={70} round={16} /></div>}
         <G id={`wc-${k.id}`} size={40} color="#FFFFFF" font={F.sans} weight={700}>{k.c}</G>
@@ -186,7 +186,7 @@ export const Film: React.FC = () => {
     {inB && <Captions f={f} h={h} />}
     <AutoHead f={f} h={h} />
     {f >= T.F && f < T.end && <WhichSide f={f} h={h} />}
-    {f >= T.end && <EndCard f0={T.end} pill={T.pill} apps={['webhook', 'notion', 'slack']} tagline="One sentence. It runs." accent={ACC} ink={INK} muted={SUB} display={F.display} body={F.sans} dot={[T.end + 40, 50]} pillSize={48} />}
+    {f >= T.end && <EndCard f0={T.end} pill={T.pill} apps={['webhook', 'notion', 'slack']} tagline="One sentence. It runs." accent={ACC} ink={INK} muted={SUB} display={F.display} body={F.sans} dot={[T.end + 40, 50]} pillSize={48} sweepAlpha={0.18} />}
     <Corners p={PAL} />
     <TextGuard every={4} label="P05R" />
   </AbsoluteFill>;

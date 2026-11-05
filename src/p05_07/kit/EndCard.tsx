@@ -8,7 +8,7 @@ import {TrackIn} from './type';
 import {Logo} from './ui';
 import {G} from './TextGuard';
 
-export const EndCard: React.FC<{f0: number; pill: number; apps: string[]; tagline: string; sentence?: string; accent: string; ink: string; muted: string; display: string; body: string; wordWeight?: number; pillInk?: string; dot?: [number, number]; pillSize?: number}> = ({f0, pill, apps, tagline, sentence, accent, ink, muted, display, body, wordWeight = 800, pillInk = '#fff', dot, pillSize}) => {
+export const EndCard: React.FC<{f0: number; pill: number; apps: string[]; tagline: string; sentence?: string; accent: string; ink: string; muted: string; display: string; body: string; wordWeight?: number; pillInk?: string; dot?: [number, number]; pillSize?: number; sweepAlpha?: number}> = ({f0, pill, apps, tagline, sentence, accent, ink, muted, display, body, wordWeight = 800, pillInk = '#fff', dot, pillSize, sweepAlpha = 0.55}) => {
   const f = useCurrentFrame(); const {height: h} = useVideoConfig(); const tall = h > 1500;
   const push = lerp(1, 1.06, prog(f, f0, 220, 'softOut'));
   const n = apps.length, gap = 150, x0 = 540 - ((n - 1) * gap) / 2;
@@ -30,7 +30,7 @@ export const EndCard: React.FC<{f0: number; pill: number; apps: string[]; taglin
       {sentence && <div style={{fontFamily: body, fontSize: 28, lineHeight: 1.35, color: muted, margin: '26px 110px 0', opacity: clamp((f - f0 - 34) / 14) * 0.9}}><G id="end-sentence" size={28} color={muted}>“{sentence}”</G></div>}
       <div style={{marginTop: tall ? 54 : 34, display: 'inline-block', position: 'relative', overflow: 'hidden', borderRadius: 999, transform: `scale(${prog(f, pill, 20, 'spring')})`}}>
         <div style={{padding: '22px 46px', background: accent, color: pillInk, fontFamily: body, fontWeight: 700, fontSize: pillSize ?? (tall ? 46 : 42), whiteSpace: 'nowrap'}}><G id="end-pill" size={pillSize ?? (tall ? 46 : 42)} color={pillInk}>Join the waitlist · link in bio</G></div>
-        {sweep >= 0 && sweep <= 1 && <div style={{position: 'absolute', top: 0, bottom: 0, left: `${sweep * 140 - 30}%`, width: '25%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent)', transform: 'skewX(-20deg)'}} />}
+        {sweep >= 0 && sweep <= 1 && <div style={{position: 'absolute', top: 0, bottom: 0, left: `${sweep * 140 - 30}%`, width: '25%', background: `linear-gradient(90deg, transparent, rgba(255,255,255,${sweepAlpha}), transparent)`, transform: 'skewX(-20deg)'}} />}
       </div>
     </div>
   </div>;
