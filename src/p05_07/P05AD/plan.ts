@@ -34,7 +34,7 @@ export const srcT = (c: {f0: number; a: number; b: number; r: number}, f: number
 // ---------- world: three fanned screens (world px, centre of each screen) ----------
 export const SCR = {
   A: {x: -1000, y: 0, w: 896, h: 736, ry: 18, z: -120, crop: {x: 0, y: 600, s: 1.6}},
-  B: {x: 0, y: 0, w: 910, h: 525, ry: 0, z: 0, crop: {x: 1060, y: 440, s: 1.75}},
+  B: {x: 0, y: 0, w: 910, h: 525, ry: 0, z: 0, crop: {x: 1075, y: 468, s: 2.3}},
   C: {x: 1000, y: 0, w: 900, h: 880, ry: -14, z: -120},
 };
 export const capRoom = (h: number) => Math.round(h * 0.06 + 136);

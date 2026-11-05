@@ -20,7 +20,7 @@ const ICE = '#BFD9F2', VIO = '#7B5CFF', INK = '#0B1520', SUB = '#3A475A';
 // ---------------- 1. hook ----------------
 const Word: React.FC<{id: string; t: string; f0: number; f: number; box?: number}> = ({id, t, f0, f, box}) => {
   const p = prog(f, f0, 16, 'snapOut'); const bp = box !== undefined ? prog(f, box, 12, 'snapOut') : 0;
-  return <span style={{position: 'relative', display: 'inline-block', zIndex: 0, margin: '0 0.16em', opacity: clamp(p * 2.5), transform: `translateY(${(1 - p) * 34}px) scale(${lerp(1.08, 1, p)})`}}>
+  return <span style={{position: 'relative', display: 'inline-block', zIndex: 0, margin: '0 22px', opacity: clamp(p * 2.5), transform: `translateY(${(1 - p) * 34}px) scale(${lerp(1.08, 1, p)})`}}>
     {box !== undefined && f >= box && <span style={{position: 'absolute', left: '-0.1em', right: '-0.1em', top: '0.04em', bottom: '-0.02em', zIndex: -1, borderRadius: 18, background: VIO, boxShadow: `0 0 50px ${a(VIO, 0.6)}`, transformOrigin: '0% 50%', transform: `scaleX(${bp}) rotate(${lerp(-5, -2, bp)}deg) scale(${1 + (1 - bp) * 0.15})`}} />}
     <G id={id} size={116} color="#FFFFFF" font={F.display} weight={800} style={{lineHeight: 1.12, letterSpacing: '-0.03em'}}>{t}</G>
   </span>;
@@ -57,11 +57,11 @@ const OrbitItem: React.FC<{it: Item; i: number; f: number}> = ({it, i, f}) => {
   const r = noise1(f / 50, i + 4) * 5;
   if (it.kind === 'note') return <div style={{width: 200, height: 140, marginLeft: -100, marginTop: -70, background: it.c, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${r + (i % 2 ? 4 : -4)}deg)`, boxShadow: '0 18px 36px rgba(0,0,0,.45)'}}>
     <G id={it.id} size={32} color="#2A2418" font={F.sans} weight={700}>{it.t}</G></div>;
-  if (it.kind === 'ping') return <div style={{width: 108, height: 108, marginLeft: -54, marginTop: -54, borderRadius: 54, background: '#FF5A36', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 40px ${a('#FF5A36', 0.6)}`, transform: `scale(${1 + 0.06 * Math.sin(f / 5 + i)})`}}>
-    <G id={it.id} size={46} color="#FFFFFF" font={F.display} weight={800}>{it.t}</G></div>;
-  return <div style={{width: 250, height: 92, marginLeft: -125, marginTop: -46, borderRadius: 22, background: '#FFFFFF', display: 'flex', alignItems: 'center', gap: 12, padding: '0 18px', boxShadow: '0 18px 36px rgba(0,0,0,.45)', transform: `rotate(${r * 0.5}deg)`}}>
+  if (it.kind === 'ping') return <div style={{width: 108, height: 108, marginLeft: -54, marginTop: -54, borderRadius: 54, background: '#C8341A', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 40px ${a('#FF5A36', 0.55)}`, transform: `scale(${1 + 0.06 * Math.sin(f / 5 + i)})`}}>
+    <G id={it.id} size={50} color="#FFFFFF" font={F.display} weight={800}>{it.t}</G></div>;
+  return <div style={{width: 270, height: 84, marginLeft: -135, marginTop: -46, borderRadius: 22, background: '#FFFFFF', display: 'flex', alignItems: 'center', gap: 12, padding: '0 18px', boxShadow: '0 18px 36px rgba(0,0,0,.45)', transform: `rotate(${r * 0.5}deg)`}}>
     <div style={{width: 18, height: 18, borderRadius: 9, background: VIO, flexShrink: 0}} />
-    <G id={it.id} size={30} color={INK} font={F.sans} weight={700}>{it.t}</G></div>;
+    <G id={it.id} size={30} color={INK} font={F.sans} weight={700} style={{whiteSpace: 'nowrap'}}>{it.t}</G></div>;
 };
 const Problem: React.FC<{f: number; h: number}> = ({f, h}) => {
   const o = P.ORBIT(f, h);
@@ -136,7 +136,7 @@ const Prompt: React.FC<{f: number; h: number}> = ({f, h}) => {
   const ring = prog(f, T.cut3, 16, 'snapOut'), morph = prog(f, T.bar, 18, 'snapOut');
   const charge = prog(f, T.rise0, T.logo - T.rise0, 'linear'), push = lerp(1, 1.08, prog(f, T.rise0, T.out - T.rise0, 'softOut'));
   const out = prog(f, T.out, T.logo - T.out, 'inHard');
-  const W = lerp(150, 940, morph), H = lerp(150, 230, morph);
+  const W = lerp(150, 900, morph), H = lerp(150, 230, morph);
   const words = P.PROMPT.split(' '); const wf = (i: number) => T.words + i * 4;
   const g0 = clamp((f - wf(0)) / 6) * (1 - clamp(out / 0.04)); // text leaves before the bar launches (safe area)
   return <div style={{position: 'absolute', left: 540 - W / 2, top: h / 2 - H / 2, width: W, height: H, transform: `scale(${lerp(0.2, 1, ring) * push * lerp(1, 2.6, out)})`, opacity: 1 - clamp((out - 0.6) / 0.4), filter: out > 0.02 ? `blur(${out * 24}px)` : undefined}}>
