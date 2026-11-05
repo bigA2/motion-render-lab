@@ -6,12 +6,12 @@ import * as P05 from './P05/plan';
 import * as P06 from './P06/plan';
 import * as P07 from './P07/plan';
 
-type Plan = {FPS: number; TOTAL: number; VO: number[]; VO_FILES: string[]; MUSIC: string; events: () => unknown[]};
+type Plan = {FPS: number; TOTAL: number; VO: number[]; VO_FILES: string[]; VO_TRIM?: ([number, number] | null)[]; MUSIC: string; events: () => unknown[]};
 const PLANS: Record<string, Plan> = {P05, P06, P07};
 mkdirSync('out', {recursive: true});
 for (const id of process.argv.slice(2)) {
   const p = PLANS[id]; if (!p) throw new Error('no plan ' + id);
   const ev = p.events();
-  writeFileSync(`out/events_${id}.json`, JSON.stringify({id, fps: p.FPS, frames: p.TOTAL, vo: p.VO.map((f, i) => ({file: p.VO_FILES[i], f})), ev, music: p.MUSIC}));
+  writeFileSync(`out/events_${id}.json`, JSON.stringify({id, fps: p.FPS, frames: p.TOTAL, vo: p.VO.map((f, i) => ({file: p.VO_FILES[i], f, ...(p.VO_TRIM?.[i] ? {a: p.VO_TRIM[i]![0], b: p.VO_TRIM[i]![1]} : {})})), ev, music: p.MUSIC}));
   console.log(id, 'frames', p.TOTAL, 'events', ev.length);
 }

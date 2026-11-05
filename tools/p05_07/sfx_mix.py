@@ -99,7 +99,10 @@ def make(e, i):
 # ---- VO ----
 vo = np.zeros(N, np.float32)
 for v in J['vo']:
-    x = load(v['file']); s0 = int(v['f'] / FPS * SR); vo[s0:s0 + len(x)] += x[:max(0, N - s0)]
+    x = load(v['file'])
+    if v.get('b'):  # optional trim (s): keep [a, b) of the take with 30 ms fades
+        x = x[int(v.get('a', 0) * SR):int(v['b'] * SR)].copy(); fd = min(len(x), int(0.03 * SR)); x[:fd] *= np.linspace(0, 1, fd); x[-fd:] *= np.linspace(1, 0, fd)
+    s0 = int(v['f'] / FPS * SR); x = x[:max(0, N - s0)]; vo[s0:s0 + len(x)] += x
 vo = norm(vo, -6) if np.abs(vo).max() > 0 else vo
 # VO envelope -> SFX duck (4 dB, attack 30 ms, release 300 ms)
 win = int(0.01 * SR); nwin = N // win
