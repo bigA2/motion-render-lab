@@ -1,5 +1,5 @@
 // Render a frame range of a src/p05_07 composition AND collect the TextGuard boxes the page logs (TG|{...}).
-// Usage: node tools/p05_07/render_guarded.mjs <compId> <out.mp4> <tg.json> [a b]     (a/b = frame range, inclusive)
+// Usage: node tools/p05_07/render_guarded.mjs <compId> <out.mp4> <tg.json> [a b | p/k]  (frame range a..b inclusive, or part p of k)
 // MIT, our own code.
 import {bundle} from '@remotion/bundler';
 import {renderMedia, selectComposition} from '@remotion/renderer';
@@ -10,7 +10,8 @@ const [id, out, tgOut, a, b] = process.argv.slice(2);
 const serveUrl = await bundle({entryPoint: path.resolve('src/p05_07/index.ts')});
 const composition = await selectComposition({serveUrl, id});
 const N = composition.durationInFrames;
-const frameRange = a !== undefined && a !== '' ? [Math.max(0, +a), Math.min(N - 1, +b)] : null;
+let frameRange = a !== undefined && a !== '' ? [Math.max(0, +a), Math.min(N - 1, +b)] : null;
+if (a && a.includes('/')) { const [p, k] = a.split('/').map(Number); frameRange = [Math.floor((N * p) / k), Math.floor((N * (p + 1)) / k) - 1]; } // part p of k
 const seen = new Map();
 await renderMedia({
   serveUrl, composition, codec: 'h264', outputLocation: out, muted: true, crf: 15, pixelFormat: 'yuv420p',
