@@ -165,8 +165,8 @@ const Logo: React.FC<{f: number; h: number}> = ({f, h}) => {
       <TrackIn f0={T.word} dur={60} from={0.15} s0={0.85} s1={1} style={{marginTop: 28}}><G id="e-word" size={tall ? 124 : 108} color="#FFFFFF" font={F.display} weight={800} style={{lineHeight: 1.1}}>FansaChat</G></TrackIn>
       <div style={{marginTop: 14, opacity: clamp((f - T.tag) / 10), transform: `translateY(${(1 - prog(f, T.tag, 16, 'snapOut')) * 20}px)`}}><G id="e-tag" size={tall ? 46 : 40} color="#C9D5E3" font={F.sans} weight={500}>Make your work life hassle-free.</G></div>
       <div style={{marginTop: tall ? 52 : 34, display: 'inline-block', position: 'relative', overflow: 'hidden', borderRadius: 999, transform: `scale(${prog(f, T.pill, 20, 'spring')})`, boxShadow: `0 0 50px ${a(VIO, 0.55)}`}}>
-        <div style={{padding: '22px 52px', background: '#6A4CFF'}}><G id="e-pill" size={tall ? 48 : 44} color="#FFFFFF" font={F.sans} weight={700}>Join the waitlist</G></div>
-        {sweep >= 0 && sweep <= 1 && <div style={{position: 'absolute', top: 0, bottom: 0, left: `${sweep * 140 - 30}%`, width: '22%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent)', transform: 'skewX(-20deg)'}} />}
+        <div style={{padding: '22px 52px', background: '#5A3BEF'}}><G id="e-pill" size={tall ? 48 : 44} color="#FFFFFF" font={F.sans} weight={700}>Join the waitlist</G></div>
+        {sweep >= 0 && sweep <= 1 && <div style={{position: 'absolute', top: 0, bottom: 0, left: `${sweep * 140 - 30}%`, width: '22%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)', transform: 'skewX(-20deg)'}} />}
       </div>
     </div>
     <AbsoluteFill style={{background: '#FFFFFF', opacity: 0.55 * (1 - clamp((f - T.logo) / 8)), pointerEvents: 'none'}} />
