@@ -1,0 +1,377 @@
+{
+ "video": "video.mp4",
+ "size": [
+  1080,
+  1350
+ ],
+ "every": 4,
+ "frames_with_guard": 213,
+ "frames_checked": 213,
+ "text_boxes_checked": 578,
+ "contrast_measured": 564,
+ "violations": 36,
+ "by_kind": {
+  "overlap": 1,
+  "contrast": 35
+ },
+ "worst_contrast_per_text": {
+  "h-sales": {
+   "cr": 12.91,
+   "f": 32,
+   "need": 3
+  },
+  "h-calls": {
+   "cr": 15.68,
+   "f": 48,
+   "need": 3
+  },
+  "h-slip": {
+   "cr": 4.4,
+   "f": 60,
+   "need": 3
+  },
+  "h-through": {
+   "cr": 13.42,
+   "f": 56,
+   "need": 3
+  },
+  "o-note1": {
+   "cr": 11.46,
+   "f": 152,
+   "need": 4.5
+  },
+  "o-ping1": {
+   "cr": 3.12,
+   "f": 108,
+   "need": 4.5
+  },
+  "o-book1": {
+   "cr": 18.18,
+   "f": 208,
+   "need": 4.5
+  },
+  "o-note2": {
+   "cr": 7.66,
+   "f": 140,
+   "need": 4.5
+  },
+  "o-ping2": {
+   "cr": 3.12,
+   "f": 108,
+   "need": 3
+  },
+  "o-book2": {
+   "cr": 17.92,
+   "f": 208,
+   "need": 4.5
+  },
+  "cap1": {
+   "cr": 16.28,
+   "f": 280,
+   "need": 3
+  },
+  "cap2": {
+   "cr": 16.28,
+   "f": 404,
+   "need": 3
+  },
+  "cap3": {
+   "cr": 16.13,
+   "f": 420,
+   "need": 3
+  },
+  "c-page": {
+   "cr": 9.25,
+   "f": 460,
+   "need": 4.5
+  },
+  "c-title": {
+   "cr": 18.27,
+   "f": 436,
+   "need": 3
+  },
+  "c-who": {
+   "cr": 18.02,
+   "f": 452,
+   "need": 4.5
+  },
+  "c-msg": {
+   "cr": 16.85,
+   "f": 512,
+   "need": 4.5
+  },
+  "prompt": {
+   "cr": 16.41,
+   "f": 592,
+   "need": 3
+  },
+  "e-word": {
+   "cr": 15.92,
+   "f": 788,
+   "need": 3
+  },
+  "e-tag": {
+   "cr": 10.02,
+   "f": 808,
+   "need": 4.5
+  },
+  "e-pill": {
+   "cr": 4.31,
+   "f": 788,
+   "need": 4.5
+  }
+ },
+ "list": [
+  {
+   "f": 40,
+   "kind": "overlap",
+   "id": "h-slip × h-through",
+   "area": 859
+  },
+  {
+   "f": 108,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 112,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 116,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 120,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 124,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 128,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 132,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 136,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 136,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.14,
+   "need": 4.5
+  },
+  {
+   "f": 140,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 144,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 148,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 152,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.14,
+   "need": 4.5
+  },
+  {
+   "f": 152,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 156,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 160,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 164,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 164,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 168,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 168,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 172,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 176,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 180,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 184,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 184,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 188,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 192,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 196,
+   "kind": "contrast",
+   "id": "o-ping2",
+   "cr": 3.12,
+   "need": 4.5
+  },
+  {
+   "f": 200,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 204,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.13,
+   "need": 4.5
+  },
+  {
+   "f": 208,
+   "kind": "contrast",
+   "id": "o-ping1",
+   "cr": 3.14,
+   "need": 4.5
+  },
+  {
+   "f": 788,
+   "kind": "contrast",
+   "id": "e-pill",
+   "cr": 4.31,
+   "need": 4.5
+  },
+  {
+   "f": 792,
+   "kind": "contrast",
+   "id": "e-pill",
+   "cr": 4.31,
+   "need": 4.5
+  },
+  {
+   "f": 796,
+   "kind": "contrast",
+   "id": "e-pill",
+   "cr": 4.32,
+   "need": 4.5
+  },
+  {
+   "f": 800,
+   "kind": "contrast",
+   "id": "e-pill",
+   "cr": 4.49,
+   "need": 4.5
+  }
+ ]
+}

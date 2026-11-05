@@ -1,0 +1,31 @@
+layout_guard video.mp4: 213 frames, 578 text boxes, 564 contrast samples -> 32 violations {"overlap":1,"contrast":31}
+   {"f":40,"kind":"overlap","id":"h-slip × h-through","area":859}
+   {"f":108,"kind":"contrast","id":"o-ping1","cr":3.13,"need":4.5}
+   {"f":112,"kind":"contrast","id":"o-ping1","cr":3.12,"need":4.5}
+   {"f":116,"kind":"contrast","id":"o-ping1","cr":3.12,"need":4.5}
+   {"f":120,"kind":"contrast","id":"o-ping1","cr":3.12,"need":4.5}
+   {"f":124,"kind":"contrast","id":"o-ping2","cr":3.12,"need":4.5}
+   {"f":128,"kind":"contrast","id":"o-ping2","cr":3.13,"need":4.5}
+   {"f":132,"kind":"contrast","id":"o-ping2","cr":3.12,"need":4.5}
+   {"f":136,"kind":"contrast","id":"o-ping1","cr":3.12,"need":4.5}
+   {"f":136,"kind":"contrast","id":"o-ping2","cr":3.12,"need":4.5}
+   {"f":140,"kind":"contrast","id":"o-ping1","cr":3.12,"need":4.5}
+   {"f":144,"kind":"contrast","id":"o-ping1","cr":3.14,"need":4.5}
+   {"f":148,"kind":"contrast","id":"o-ping1","cr":3.13,"need":4.5}
+   {"f":152,"kind":"contrast","id":"o-ping1","cr":3.12,"need":4.5}
+   {"f":152,"kind":"contrast","id":"o-ping2","cr":3.13,"need":4.5}
+   {"f":156,"kind":"contrast","id":"o-ping2","cr":3.12,"need":4.5}
+   {"f":160,"kind":"contrast","id":"o-ping2","cr":3.13,"need":4.5}
+   {"f":164,"kind":"contrast","id":"o-ping1","cr":3.12,"need":4.5}
+   {"f":164,"kind":"contrast","id":"o-ping2","cr":3.12,"need":4.5}
+   {"f":168,"kind":"contrast","id":"o-ping1","cr":3.12,"need":4.5}
+   {"f":168,"kind":"contrast","id":"o-ping2","cr":3.13,"need":4.5}
+   {"f":172,"kind":"contrast","id":"o-ping1","cr":3.13,"need":4.5}
+   {"f":176,"kind":"contrast","id":"o-ping1","cr":3.12,"need":4.5}
+   {"f":180,"kind":"contrast","id":"o-ping1","cr":3.13,"need":4.5}
+   {"f":184,"kind":"contrast","id":"o-ping1","cr":3.12,"need":4.5}
+   {"f":184,"kind":"contrast","id":"o-ping2","cr":3.14,"need":4.5}
+   {"f":188,"kind":"contrast","id":"o-ping2","cr":3.13,"need":4.5}
+   {"f":192,"kind":"contrast","id":"o-ping2","cr":3.12,"need":4.5}
+   {"f":196,"kind":"contrast","id":"o-ping2","cr":3.12,"need":4.5}
+   {"f":200,"kind":"contrast","id":"o-ping1","cr":3.13,"need":4.5}
