@@ -1,0 +1,45 @@
+# Measure public pro SaaS motion ads with plain signal processing (tools/study). Videos are downloaded to the
+# runner's temp folder only and deleted with the runner; nothing but the numbers (JSON) is uploaded.
+name: saas-study
+permissions: { contents: read }
+on:
+  workflow_dispatch:
+    inputs:
+      sources:
+        description: 'semicolon-separated yt-dlp targets or page:<url>'
+        required: false
+        default: 'page:https://linear.app/;page:https://linear.app/changelog;page:https://www.raycast.com/;page:https://www.framer.com/;page:https://www.notion.com/product/ai;page:https://stripe.com/sessions;page:https://vercel.com/ship;page:https://attio.com/;page:https://cal.com/;page:https://superhuman.com/;page:https://www.pitch.com/;page:https://mercury.com/;page:https://ramp.com/;page:https://clay.com/;page:https://www.descript.com/;page:https://arc.net/;https://vimeo.com/ordinaryfolk;https://vimeo.com/giantant;https://vimeo.com/animade;https://vimeo.com/buck;ytsearch4:linear app launch video;ytsearch3:raycast launch film;ytsearch3:framer launch video;ytsearch3:notion launch video;ytsearch3:stripe product announcement motion;ytsearch3:vercel ship keynote opener;ytsearch3:arc browser launch film;ytsearch4:saas product motion graphics ad 2025'
+      per: { description: 'max videos per source', required: false, default: '2' }
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy: { fail-fast: false, matrix: { shard: [0, 1, 2, 3] } }
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg tesseract-ocr >/dev/null
+          pip install --quiet yt-dlp opencv-python-headless numpy pytesseract
+      - env: { SOURCES: '${{ inputs.sources }}', SHARD: '${{ matrix.shard }}' }
+        run: |
+          python3 -c "import os; s=[x.strip() for x in os.environ['SOURCES'].split(';') if x.strip()]; open('src.txt','w').write('\n'.join(x for i,x in enumerate(s) if i%4==int(os.environ['SHARD'])))"
+          cat src.txt
+          T=$RUNNER_TEMP/vids; mkdir -p $T nums
+          python3 tools/study/fetch.py src.txt $T ${{ inputs.per }} || true
+          for v in $T/*.mp4 $T/*.webm $T/*.mkv; do [ -f "$v" ] || continue
+            n=$(basename "$v"); timeout 900 python3 tools/study/measure.py "$v" "nums/s${{ matrix.shard }}_${n%.*}.json" "$n" || echo "measure fail $n"
+          done
+          rm -rf $T
+      - uses: actions/upload-artifact@v4
+        with: { name: 'nums-${{ matrix.shard }}', path: nums/, retention-days: 7, if-no-files-found: ignore }
+  summary:
+    needs: measure
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { path: nums, pattern: 'nums-*', merge-multiple: true }
+      - run: |
+          mkdir -p nums; python3 tools/study/summarize.py nums | tee -a $GITHUB_STEP_SUMMARY
+          echo '=== RAW ==='; for f in nums/*.json; do python3 -c "import json,sys; d=json.load(open(sys.argv[1])); d.pop('segments',None); print(json.dumps(d))" "$f"; done
