@@ -1,0 +1,1290 @@
+{
+"events": [
+{
+"frame": 20,
+"t": 0.333,
+"kind": "mech",
+"src": "head",
+"peak_dbfs": -22.0
+},
+{
+"frame": 27,
+"t": 0.45,
+"kind": "mech",
+"src": "head",
+"peak_dbfs": -22.0
+},
+{
+"frame": 34,
+"t": 0.567,
+"kind": "mech",
+"src": "head",
+"peak_dbfs": -22.0
+},
+{
+"frame": 96,
+"t": 1.6,
+"kind": "mech",
+"src": "THIS",
+"peak_dbfs": -24.0
+},
+{
+"frame": 100,
+"t": 1.667,
+"kind": "mech",
+"src": "THIS",
+"peak_dbfs": -24.0
+},
+{
+"frame": 104,
+"t": 1.733,
+"kind": "mech",
+"src": "THIS",
+"peak_dbfs": -24.0
+},
+{
+"frame": 108,
+"t": 1.8,
+"kind": "mech",
+"src": "THIS",
+"peak_dbfs": -24.0
+},
+{
+"frame": 154,
+"t": 2.567,
+"kind": "mech",
+"src": "THAT",
+"peak_dbfs": -24.0
+},
+{
+"frame": 158,
+"t": 2.633,
+"kind": "whoosh",
+"src": "cam",
+"peak_dbfs": -29.9
+},
+{
+"frame": 158,
+"t": 2.633,
+"kind": "mech",
+"src": "THAT",
+"peak_dbfs": -24.0
+},
+{
+"frame": 162,
+"t": 2.7,
+"kind": "mech",
+"src": "THAT",
+"peak_dbfs": -24.0
+},
+{
+"frame": 166,
+"t": 2.767,
+"kind": "mech",
+"src": "THAT",
+"peak_dbfs": -24.0
+},
+{
+"frame": 232.1,
+"t": 3.868,
+"kind": "whoosh",
+"src": "toast",
+"peak_dbfs": -24.0
+},
+{
+"frame": 254,
+"t": 4.233,
+"kind": "chime",
+"src": "calendly",
+"peak_dbfs": -22.0
+},
+{
+"frame": 354,
+"t": 5.9,
+"kind": "swipe",
+"src": "sticky",
+"peak_dbfs": -30.0
+},
+{
+"frame": 362,
+"t": 6.033,
+"kind": "land",
+"src": "sticky",
+"peak_dbfs": -24.0
+},
+{
+"frame": 390,
+"t": 6.5,
+"kind": "swipe",
+"src": "sticky",
+"peak_dbfs": -30.0
+},
+{
+"frame": 398,
+"t": 6.633,
+"kind": "land",
+"src": "sticky",
+"peak_dbfs": -24.0
+},
+{
+"frame": 444,
+"t": 7.4,
+"kind": "pop",
+"src": "meeting",
+"peak_dbfs": -28.0
+},
+{
+"frame": 452,
+"t": 7.533,
+"kind": "pop",
+"src": "meeting",
+"peak_dbfs": -27.0
+},
+{
+"frame": 460,
+"t": 7.667,
+"kind": "pop",
+"src": "meeting",
+"peak_dbfs": -26.0
+},
+{
+"frame": 468,
+"t": 7.8,
+"kind": "pop",
+"src": "meeting",
+"peak_dbfs": -28.0
+},
+{
+"frame": 474,
+"t": 7.9,
+"kind": "chime",
+"src": "slack",
+"peak_dbfs": -29.0
+},
+{
+"frame": 476,
+"t": 7.933,
+"kind": "pop",
+"src": "meeting",
+"peak_dbfs": -27.0
+},
+{
+"frame": 484,
+"t": 8.067,
+"kind": "pop",
+"src": "meeting",
+"peak_dbfs": -26.0
+},
+{
+"frame": 492,
+"t": 8.2,
+"kind": "pop",
+"src": "meeting",
+"peak_dbfs": -28.0
+},
+{
+"frame": 500,
+"t": 8.333,
+"kind": "pop",
+"src": "meeting",
+"peak_dbfs": -27.0
+},
+{
+"frame": 500,
+"t": 8.333,
+"kind": "chime",
+"src": "slack",
+"peak_dbfs": -31.0
+},
+{
+"frame": 508,
+"t": 8.467,
+"kind": "pop",
+"src": "meeting",
+"peak_dbfs": -26.0
+},
+{
+"frame": 513,
+"t": 8.55,
+"kind": "swipe",
+"src": "x",
+"peak_dbfs": -24.0
+},
+{
+"frame": 563,
+"t": 9.383,
+"kind": "whoosh",
+"src": "cam",
+"peak_dbfs": -29.6
+},
+{
+"frame": 716,
+"t": 11.933,
+"kind": "whoosh",
+"src": "cam",
+"peak_dbfs": -22.0
+},
+{
+"frame": 795,
+"t": 13.25,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -25.1
+},
+{
+"frame": 798.2,
+"t": 13.304,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.9
+},
+{
+"frame": 801.4,
+"t": 13.356,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.9
+},
+{
+"frame": 804.6,
+"t": 13.411,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.4
+},
+{
+"frame": 806.5,
+"t": 13.441,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -24.9
+},
+{
+"frame": 809.3,
+"t": 13.488,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -26.0
+},
+{
+"frame": 811.8,
+"t": 13.53,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.9
+},
+{
+"frame": 814.7,
+"t": 13.578,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -25.3
+},
+{
+"frame": 817.0,
+"t": 13.617,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -23.3
+},
+{
+"frame": 819.4,
+"t": 13.657,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.5
+},
+{
+"frame": 822.2,
+"t": 13.704,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -25.9
+},
+{
+"frame": 824.3,
+"t": 13.739,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -25.9
+},
+{
+"frame": 826.5,
+"t": 13.775,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -24.5
+},
+{
+"frame": 830.2,
+"t": 13.836,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.8
+},
+{
+"frame": 833.5,
+"t": 13.891,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.6
+},
+{
+"frame": 836.4,
+"t": 13.94,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.9
+},
+{
+"frame": 838.3,
+"t": 13.972,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.3
+},
+{
+"frame": 841.4,
+"t": 14.023,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -25.1
+},
+{
+"frame": 843.5,
+"t": 14.058,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -22.5
+},
+{
+"frame": 845.7,
+"t": 14.095,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.8
+},
+{
+"frame": 848.5,
+"t": 14.142,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.7
+},
+{
+"frame": 850.9,
+"t": 14.182,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -24.6
+},
+{
+"frame": 852.9,
+"t": 14.216,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -21.9
+},
+{
+"frame": 855.5,
+"t": 14.258,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.8
+},
+{
+"frame": 857.1,
+"t": 14.285,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.2
+},
+{
+"frame": 858.8,
+"t": 14.314,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.1
+},
+{
+"frame": 860.7,
+"t": 14.345,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -26.3
+},
+{
+"frame": 863.8,
+"t": 14.397,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -26.5
+},
+{
+"frame": 866.1,
+"t": 14.435,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -23.0
+},
+{
+"frame": 869.3,
+"t": 14.488,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.8
+},
+{
+"frame": 872.3,
+"t": 14.538,
+"kind": "pop",
+"src": "chip",
+"peak_dbfs": -30.0
+},
+{
+"frame": 872.7,
+"t": 14.546,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.6
+},
+{
+"frame": 877.6,
+"t": 14.627,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -22.6
+},
+{
+"frame": 879.5,
+"t": 14.658,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.5
+},
+{
+"frame": 882.1,
+"t": 14.702,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.9
+},
+{
+"frame": 884.2,
+"t": 14.737,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.0
+},
+{
+"frame": 887.0,
+"t": 14.783,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -23.9
+},
+{
+"frame": 890.4,
+"t": 14.84,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -23.5
+},
+{
+"frame": 893.0,
+"t": 14.884,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -23.6
+},
+{
+"frame": 894.9,
+"t": 14.915,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -21.1
+},
+{
+"frame": 898.8,
+"t": 14.981,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -21.9
+},
+{
+"frame": 901.6,
+"t": 15.027,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -20.6
+},
+{
+"frame": 903.4,
+"t": 15.056,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -23.8
+},
+{
+"frame": 905.6,
+"t": 15.093,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.6
+},
+{
+"frame": 908.2,
+"t": 15.136,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -25.6
+},
+{
+"frame": 911.1,
+"t": 15.185,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.8
+},
+{
+"frame": 913.2,
+"t": 15.22,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -22.4
+},
+{
+"frame": 917.1,
+"t": 15.285,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -23.5
+},
+{
+"frame": 919.0,
+"t": 15.317,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.9
+},
+{
+"frame": 921.4,
+"t": 15.356,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -23.9
+},
+{
+"frame": 924.7,
+"t": 15.411,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -21.8
+},
+{
+"frame": 927.5,
+"t": 15.459,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.9
+},
+{
+"frame": 930.0,
+"t": 15.5,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -23.9
+},
+{
+"frame": 932.6,
+"t": 15.543,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.9
+},
+{
+"frame": 935.1,
+"t": 15.585,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -21.8
+},
+{
+"frame": 938.2,
+"t": 15.636,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.5
+},
+{
+"frame": 939.9,
+"t": 15.665,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.4
+},
+{
+"frame": 943.1,
+"t": 15.719,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -25.3
+},
+{
+"frame": 945.5,
+"t": 15.759,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -26.1
+},
+{
+"frame": 948.0,
+"t": 15.8,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -24.1
+},
+{
+"frame": 948.5,
+"t": 15.809,
+"kind": "pop",
+"src": "chip",
+"peak_dbfs": -30.0
+},
+{
+"frame": 950.8,
+"t": 15.846,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.7
+},
+{
+"frame": 953.5,
+"t": 15.891,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -26.0
+},
+{
+"frame": 956.3,
+"t": 15.938,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -25.6
+},
+{
+"frame": 958.9,
+"t": 15.981,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -22.6
+},
+{
+"frame": 961.8,
+"t": 16.03,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -23.7
+},
+{
+"frame": 964.5,
+"t": 16.074,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -23.7
+},
+{
+"frame": 966.9,
+"t": 16.115,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.5
+},
+{
+"frame": 970.1,
+"t": 16.168,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.1
+},
+{
+"frame": 972.0,
+"t": 16.2,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -23.3
+},
+{
+"frame": 975.5,
+"t": 16.258,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -26.0
+},
+{
+"frame": 978.5,
+"t": 16.309,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -24.7
+},
+{
+"frame": 980.4,
+"t": 16.34,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.0
+},
+{
+"frame": 983.7,
+"t": 16.396,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.1
+},
+{
+"frame": 985.9,
+"t": 16.431,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.3
+},
+{
+"frame": 989.1,
+"t": 16.485,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -25.8
+},
+{
+"frame": 992.4,
+"t": 16.54,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -24.4
+},
+{
+"frame": 994.6,
+"t": 16.576,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.7
+},
+{
+"frame": 996.5,
+"t": 16.608,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -22.3
+},
+{
+"frame": 999.7,
+"t": 16.662,
+"kind": "space",
+"src": "prompt",
+"peak_dbfs": -23.4
+},
+{
+"frame": 1001.8,
+"t": 16.697,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.2
+},
+{
+"frame": 1005.3,
+"t": 16.756,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.0
+},
+{
+"frame": 1007.2,
+"t": 16.786,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -26.3
+},
+{
+"frame": 1009.9,
+"t": 16.832,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.3
+},
+{
+"frame": 1011.6,
+"t": 16.86,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.8
+},
+{
+"frame": 1013.2,
+"t": 16.886,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -23.4
+},
+{
+"frame": 1015.0,
+"t": 16.916,
+"kind": "key",
+"src": "prompt",
+"peak_dbfs": -24.1
+},
+{
+"frame": 1016.2,
+"t": 16.936,
+"kind": "pop",
+"src": "chip",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1027.3,
+"t": 17.122,
+"kind": "enter",
+"src": "prompt",
+"peak_dbfs": -19.0
+},
+{
+"frame": 1039,
+"t": 17.317,
+"kind": "pop",
+"src": "node",
+"peak_dbfs": -26.0
+},
+{
+"frame": 1045,
+"t": 17.417,
+"kind": "data",
+"src": "wires",
+"peak_dbfs": -34.0
+},
+{
+"frame": 1057,
+"t": 17.617,
+"kind": "whoosh",
+"src": "cam",
+"peak_dbfs": -29.9
+},
+{
+"frame": 1057,
+"t": 17.617,
+"kind": "pop",
+"src": "node",
+"peak_dbfs": -26.0
+},
+{
+"frame": 1075,
+"t": 17.917,
+"kind": "pop",
+"src": "node",
+"peak_dbfs": -26.0
+},
+{
+"frame": 1113,
+"t": 18.55,
+"kind": "chime",
+"src": "booking",
+"peak_dbfs": -20.0
+},
+{
+"frame": 1131,
+"t": 18.85,
+"kind": "data",
+"src": "dot1",
+"peak_dbfs": -34.0
+},
+{
+"frame": 1161.1,
+"t": 19.352,
+"kind": "whoosh",
+"src": "deal",
+"peak_dbfs": -24.0
+},
+{
+"frame": 1187.5,
+"t": 19.792,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1190,
+"t": 19.833,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1192.5,
+"t": 19.875,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1193,
+"t": 19.883,
+"kind": "land",
+"src": "deal",
+"peak_dbfs": -28.0
+},
+{
+"frame": 1195,
+"t": 19.917,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1197.5,
+"t": 19.958,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1197.5,
+"t": 19.958,
+"kind": "tick",
+"src": "score",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1200,
+"t": 20.0,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1202.5,
+"t": 20.042,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1205,
+"t": 20.083,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1205,
+"t": 20.083,
+"kind": "tick",
+"src": "score",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1207.5,
+"t": 20.125,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1210,
+"t": 20.167,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1212.5,
+"t": 20.208,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1212.5,
+"t": 20.208,
+"kind": "tick",
+"src": "score",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1215,
+"t": 20.25,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1217.5,
+"t": 20.292,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1220,
+"t": 20.333,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1220,
+"t": 20.333,
+"kind": "tick",
+"src": "score",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1222.5,
+"t": 20.375,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1225,
+"t": 20.417,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1227.5,
+"t": 20.458,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1227.5,
+"t": 20.458,
+"kind": "tick",
+"src": "score",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1230,
+"t": 20.5,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1232.5,
+"t": 20.542,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1235,
+"t": 20.583,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1235,
+"t": 20.583,
+"kind": "tick",
+"src": "score",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1240.5,
+"t": 20.675,
+"kind": "tick",
+"src": "value",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1243,
+"t": 20.717,
+"kind": "tick",
+"src": "score",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1261,
+"t": 21.017,
+"kind": "stamp",
+"src": "synced",
+"peak_dbfs": -22.0
+},
+{
+"frame": 1269,
+"t": 21.15,
+"kind": "data",
+"src": "dot2",
+"peak_dbfs": -34.0
+},
+{
+"frame": 1296.1,
+"t": 21.602,
+"kind": "whoosh",
+"src": "card",
+"peak_dbfs": -24.0
+},
+{
+"frame": 1328,
+"t": 22.133,
+"kind": "land",
+"src": "card",
+"peak_dbfs": -28.0
+},
+{
+"frame": 1346,
+"t": 22.433,
+"kind": "mech",
+"src": "check",
+"peak_dbfs": -22.0
+},
+{
+"frame": 1346,
+"t": 22.433,
+"kind": "riser",
+"src": "auto",
+"peak_dbfs": -20.0
+},
+{
+"frame": 1363,
+"t": 22.717,
+"kind": "mech",
+"src": "check",
+"peak_dbfs": -22.0
+},
+{
+"frame": 1380,
+"t": 23.0,
+"kind": "whoosh",
+"src": "cam",
+"peak_dbfs": -29.2
+},
+{
+"frame": 1392,
+"t": 23.2,
+"kind": "impact",
+"src": "auto",
+"peak_dbfs": -14.0
+},
+{
+"frame": 1458,
+"t": 24.3,
+"kind": "swipe",
+"src": "bloom",
+"peak_dbfs": -24.0
+},
+{
+"frame": 1539,
+"t": 25.65,
+"kind": "click",
+"src": null,
+"peak_dbfs": -20.0
+},
+{
+"frame": 1541,
+"t": 25.683,
+"kind": "pop",
+"src": "poll",
+"peak_dbfs": -28.0
+},
+{
+"frame": 1545.5,
+"t": 25.758,
+"kind": "tick",
+"src": "poll",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1550.5,
+"t": 25.842,
+"kind": "tick",
+"src": "poll",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1555.5,
+"t": 25.925,
+"kind": "tick",
+"src": "poll",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1559,
+"t": 25.983,
+"kind": "swipe",
+"src": "wipe",
+"peak_dbfs": -24.0
+},
+{
+"frame": 1560.5,
+"t": 26.008,
+"kind": "tick",
+"src": "poll",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1565.5,
+"t": 26.092,
+"kind": "tick",
+"src": "poll",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1570.5,
+"t": 26.175,
+"kind": "tick",
+"src": "poll",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1575.5,
+"t": 26.258,
+"kind": "tick",
+"src": "poll",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1577,
+"t": 26.283,
+"kind": "impact",
+"src": "logo",
+"peak_dbfs": -19.0
+},
+{
+"frame": 1580.5,
+"t": 26.342,
+"kind": "tick",
+"src": "poll",
+"peak_dbfs": -30.0
+},
+{
+"frame": 1585.5,
+"t": 26.425,
+"kind": "tick",
+"src": "poll",
+"peak_dbfs": -30.0
+}
+],
+"counts": {
+"mech": 13,
+"whoosh": 8,
+"chime": 4,
+"swipe": 5,
+"land": 4,
+"pop": 16,
+"key": 70,
+"space": 15,
+"enter": 1,
+"data": 3,
+"tick": 37,
+"stamp": 1,
+"riser": 1,
+"impact": 2,
+"click": 1
+},
+"events_per_s": 6.11,
+"duration_s": 29.6
+}
