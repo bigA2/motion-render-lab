@@ -48,8 +48,8 @@ export const P = {
   stamp: T.booking + 170, dot2: [T.booking + 176, 56] as const, cardIn: T.booking + 228, checks: [T.booking + 262, T.booking + 276],
 };
 T.deal = P.dealIn; T.card = P.cardIn;
-export const dealArr = arrive(P.dealIn, 30, 900, 'snapOut', {land: true, src: 'deal'});
-export const cardArr = arrive(P.cardIn, 30, 900, 'snapOut', {land: true, src: 'card'});
+export const dealArr = arrive(P.dealIn, 30, 360, 'snapOut', {land: true, src: 'deal'});
+export const cardArr = arrive(P.cardIn, 30, 360, 'snapOut', {land: true, src: 'card'});
 export const value = countUp(0, 4800, P.value[0], P.value[1], 'softOut', 100, 'value');
 export const score = countUp(0, 82, P.value[0] + 10, 50, 'softOut', 1, 'score');
 export const poll = countUp(0, 88, T.pollClick + 6, 46, 'softOut', 1, 'poll');

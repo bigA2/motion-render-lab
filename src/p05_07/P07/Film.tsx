@@ -115,14 +115,14 @@ const Slots: React.FC<{f: number}> = ({f}) => (<>
 
 // ---------------- payoff dashboard panels ----------------
 const Tally: React.FC<{f: number}> = ({f}) => { const p = P.briefArr.p(f); if (p <= 0) return null; const q = gp(f, 'tally');
-  return <At x={q.x - 430} y={q.y - 360 + (1 - p) * 700} o={clamp(p * 2)}>
+  return <At x={q.x - 430} y={q.y - 360 + (1 - p) * 360} o={clamp(p * 2)}>
     <Win th={TH} w={860} logo="tally" title="Project brief · new response" meta={<span style={{fontFamily: F.mono}}>#112</span>} pad={26}>
       {[['Name', 'Aisha Bello'], ['Company', 'Lumen Coffee Co.'], ['Project', 'Brand refresh + coffee bag packaging'], ['Budget', '$6,000 – 8,000'], ['Deadline', 'Fri, Dec 12'], ['Files', 'moodboard.pdf · bag-dieline.ai · logo-old.svg']].map(([k, v], i) =>
         <Row key={k} gap={16} style={{fontSize: 25, padding: '10px 0', borderBottom: `1.5px solid ${TH.line}`, opacity: clamp((f - P.P.brief - 8 - i * 4) / 8)}}><span style={{width: 150, color: TH.muted, fontFamily: F.mono, fontSize: 21}}>{k}</span><b style={{fontWeight: 600}}>{v}</b></Row>)}
       <div style={{fontSize: 23, color: TH.muted, marginTop: 14, lineHeight: 1.35}}>“Warm, a bit playful, must work on kraft paper.”</div>
     </Win></At>; };
 const Trello: React.FC<{f: number}> = ({f}) => { const p = P.trelloArr.p(f); if (p <= 0) return null; const q = gp(f, 'trello');
-  return <At x={q.x - 430 + (1 - p) * 700} y={q.y - 330} o={clamp(p * 2)}>
+  return <At x={q.x - 430 + (1 - p) * 360} y={q.y - 330} o={clamp(p * 2)}>
     <Win th={TH} w={860} logo="trello" title="Client work · New briefs" meta="Board" pad={26}>
       <Row gap={8}><Tag c="#FFD166" solid size={20} style={{color: '#2B2100'}}>Branding</Tag><Tag c="#7C8BFF" solid size={20}>Packaging</Tag><Tag c="#FF7AA8" solid size={20}>$6–8k</Tag></Row>
       <div style={{fontSize: 36, fontWeight: 800, marginTop: 14}}>Lumen Coffee — brand refresh</div>
@@ -131,7 +131,7 @@ const Trello: React.FC<{f: number}> = ({f}) => { const p = P.trelloArr.p(f); if 
       <Row gap={10} style={{marginTop: 16, fontSize: 21, color: TH.muted}}>{['New briefs', 'Quoted', 'In progress', 'Review'].map((c, i) => <span key={c} style={{padding: '6px 12px', borderRadius: 10, background: i === 0 ? a(TH.accent, 0.18) : TH.panel2, color: i === 0 ? TH.accent : TH.muted}}>{c}</span>)}</Row>
     </Win></At>; };
 const Clock: React.FC<{f: number}> = ({f}) => { const p = P.clockArr.p(f); if (p <= 0) return null; const q = gp(f, 'clock');
-  return <At x={q.x - 430 - (1 - p) * 700} y={q.y - 260} o={clamp(p * 2)}>
+  return <At x={q.x - 430 - (1 - p) * 360} y={q.y - 260} o={clamp(p * 2)}>
     <Win th={TH} w={860} logo="clockify" title="Projects · Lumen Coffee" meta={<Tag c={TH.accent} size={19}>Billable</Tag>} pad={26}>
       <div style={{fontSize: 36, fontWeight: 800}}>Lumen Coffee — Brand refresh</div>
       <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 18, marginTop: 18}}>
@@ -140,7 +140,7 @@ const Clock: React.FC<{f: number}> = ({f}) => { const p = P.clockArr.p(f); if (p
       <Row style={{marginTop: 18, justifyContent: 'space-between', fontSize: 24}}><span style={{color: TH.muted}}>Timer</span><span style={{fontFamily: F.mono, fontSize: 40, color: TH.accent}}>00:00:00</span><span style={{padding: '10px 22px', borderRadius: 14, background: TH.accent, color: '#04201C', fontWeight: 700}}>Start</span></Row>
     </Win></At>; };
 const Tele: React.FC<{f: number}> = ({f}) => { const p = P.teleArr.p(f); if (p <= 0) return null; const q = gp(f, 'tele');
-  return <At x={q.x - 330 + (1 - p) * 700} y={q.y - 420} o={clamp(p * 2)}>
+  return <At x={q.x - 330 + (1 - p) * 360} y={q.y - 420} o={clamp(p * 2)}>
     <div style={{width: 660, height: 840, borderRadius: 70, background: '#0B0F12', border: '10px solid #1D2A2E', boxShadow: '0 50px 100px rgba(0,0,0,.55)', overflow: 'hidden', fontFamily: F.display}}>
       <Row gap={14} style={{padding: '50px 30px 20px', background: '#17212B', color: '#fff'}}><Logo name="telegram" size={56} round={28} /><div><b style={{fontSize: 28}}>Brief Bot</b><div style={{fontSize: 20, color: '#8FA3B5'}}>bot · online</div></div></Row>
       <div style={{padding: 26, background: '#0E1621', height: '100%'}}>

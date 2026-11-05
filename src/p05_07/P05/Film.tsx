@@ -144,7 +144,7 @@ const STAGES = ['Lead in', 'Qualified', 'Demo', 'Proposal', 'Won'];
 const Deal: React.FC<{f: number}> = ({f}) => {
   const p = P.dealArr.p(f); if (p <= 0) return null; const v = P.value.shown(f);
   const st = f >= P.P.dealIn + 60 ? 1 : 0; const stP = prog(f, P.P.dealIn + 60, 30, 'snapOut');
-  return <At x={L.deal.x - 450 + (1 - p) * 900} y={L.deal.y - 330} o={clamp(p * 2)}>
+  return <At x={L.deal.x - 450 + (1 - p) * 360} y={L.deal.y - 330} o={clamp(p * 2)}>
     <Win th={TH} w={900} logo="pipedrive" title="Deal · Marco Ruiz" meta={<span style={{fontFamily: F.mono, fontSize: 20}}>#D-2481</span>} pad={26}>
       <Row gap={18}>
         <Avatar name="Marco Ruiz" size={72} />
@@ -169,7 +169,7 @@ const Deal: React.FC<{f: number}> = ({f}) => {
 };
 const Card: React.FC<{f: number}> = ({f}) => {
   const p = P.cardArr.p(f); if (p <= 0) return null; const done = P.P.checks.filter((x) => f >= x).length;
-  return <At x={L.card.x - 450 - (1 - p) * 900} y={L.card.y - 320} o={clamp(p * 2)}>
+  return <At x={L.card.x - 450 - (1 - p) * 360} y={L.card.y - 320} o={clamp(p * 2)}>
     <Win th={TH} w={900} logo="trello" title="Sales prep · This week" meta="Board" pad={26}>
       <Row gap={8}><Tag c="#0E8F9E" solid size={20}>Discovery</Tag><Tag c={TH.hot} solid size={20}>Hot lead</Tag><Tag c="#9B5DE5" solid size={20}>Agency</Tag></Row>
       <div style={{fontSize: 36, fontWeight: 800, marginTop: 14}}>Prep: call with Marco Ruiz</div>

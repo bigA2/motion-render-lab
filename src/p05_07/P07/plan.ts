@@ -38,10 +38,10 @@ export const P = {
   brief: T.brief, dot1: [T.brief + 30, 36] as const, trelloIn: T.brief + 62, dot2: [T.brief + 88, 32] as const, clockIn: T.brief + 118,
   timer: [T.brief + 130, 90] as const, dot3: [T.brief + 142, 30] as const, teleIn: T.brief + 170,
 };
-export const briefArr = arrive(P.brief, 28, 900, 'snapOut', {land: true, src: 'tally'});
-export const trelloArr = arrive(P.trelloIn, 26, 900, 'snapOut', {land: true, src: 'trello'});
-export const clockArr = arrive(P.clockIn, 26, 900, 'snapOut', {land: true, src: 'clockify'});
-export const teleArr = arrive(P.teleIn, 26, 900, 'snapOut', {src: 'telegram'});
+export const briefArr = arrive(P.brief, 28, 360, 'snapOut', {land: true, src: 'tally'});
+export const trelloArr = arrive(P.trelloIn, 26, 360, 'snapOut', {land: true, src: 'trello'});
+export const clockArr = arrive(P.clockIn, 26, 360, 'snapOut', {land: true, src: 'clockify'});
+export const teleArr = arrive(P.teleIn, 26, 360, 'snapOut', {src: 'telegram'});
 export const est = countUp(0, 70, P.clockIn + 20, 40, 'softOut', 1, 'estimate');
 export const briefs = countUp(11, 12, P.brief + 20, 2, 'linear', 1, 'count');
 

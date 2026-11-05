@@ -126,7 +126,7 @@ const Nodes: React.FC<{f: number}> = ({f}) => (
 
 // ---------------- payoff panels ----------------
 const Convo: React.FC<{f: number}> = ({f}) => { const p = P.convoArr.p(f); if (p <= 0) return null;
-  return <At x={L.convo.x - 450 + (1 - p) * 1000} y={L.convo.y - 380}>
+  return <At x={L.convo.x - 450 + (1 - p) * 360} y={L.convo.y - 380}>
     <Win th={TH} w={900} logo="intercom" title="Kara Lin · Meridian Goods" meta={<Tag c={TH.hot} solid size={20}>Reply in 15m</Tag>} pad={26}>
       <Row gap={16}><Avatar name="Kara Lin" size={64} idx={3} /><div><div style={{fontSize: 28, fontWeight: 700}}>Kara Lin <span style={{color: TH.muted, fontWeight: 500}}>· Head of E-commerce</span></div><div style={{fontSize: 22, color: TH.muted}}>Growth plan · $1,200/mo · client since 2024 · kara@meridian.example</div></div></Row>
       <div style={{marginTop: 20, padding: '18px 22px', borderRadius: 22, background: TH.panel2, fontSize: 27, lineHeight: 1.35}}>Checkout is <b style={{color: TH.hot}}>down</b> on our live store — customers get a 500 error at payment. We've been losing orders since 10:02.</div>
@@ -135,7 +135,7 @@ const Convo: React.FC<{f: number}> = ({f}) => { const p = P.convoArr.p(f); if (p
         <span style={{marginLeft: 'auto', fontSize: 22}}>Assignee: <b style={{color: f >= P.P.taskIn + 34 ? TH.ok : TH.muted}}>{f >= P.P.taskIn + 34 ? 'Leo Park (on duty)' : 'Unassigned'}</b></span></Row>
     </Win></At>; };
 const Task: React.FC<{f: number}> = ({f}) => { const p = P.taskArr.p(f); if (p <= 0) return null;
-  return <At x={L.task.x - 450 - (1 - p) * 1000} y={L.task.y - 360}>
+  return <At x={L.task.x - 450 - (1 - p) * 360} y={L.task.y - 360}>
     <Win th={TH} w={900} logo="clickup" title="Client fires" meta={<span style={{fontFamily: F.mono}}>CU-7731</span>} pad={26}>
       <Row gap={10}><Tag c={TH.hot} solid size={21}>URGENT</Tag><Tag c={TH.accent} size={21}>Meridian Goods</Tag><span style={{marginLeft: 'auto', fontSize: 21, color: TH.muted}}>created 10:04 · by FansaChat</span></Row>
       <div style={{fontSize: 36, fontWeight: 800, marginTop: 14, lineHeight: 1.12}}>Meridian checkout returns 500 at payment</div>
@@ -150,7 +150,7 @@ const Task: React.FC<{f: number}> = ({f}) => { const p = P.taskArr.p(f); if (p <
     </Win></At>; };
 const Discord: React.FC<{f: number}> = ({f}) => { const p = P.discArr.p(f); if (p <= 0) return null; const sn = P.seen.shown(f);
   const D = {bg: '#313338', side: '#2B2D31', ink: '#F2F3F5', mut: '#B5BAC1', blurple: '#5865F2'};
-  return <At x={L.discord.x - 450 + (1 - p) * 1000} y={L.discord.y - 330}>
+  return <At x={L.discord.x - 450 + (1 - p) * 360} y={L.discord.y - 330}>
     <div style={{width: 900, borderRadius: 30, overflow: 'hidden', background: D.bg, boxShadow: '0 40px 80px rgba(30,20,40,.35)', fontFamily: F.sans, color: D.ink}}>
       <Row gap={12} style={{padding: '18px 26px', background: D.side, fontSize: 25}}><Logo name="discord" size={36} round={10} /><b># client-urgent</b><span style={{color: D.mut, fontSize: 21}}>· Studio Ops</span><span style={{marginLeft: 'auto', color: D.mut, fontSize: 21}}>7 online</span></Row>
       <div style={{padding: 26}}>

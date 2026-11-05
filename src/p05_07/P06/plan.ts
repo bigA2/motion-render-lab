@@ -48,9 +48,9 @@ export const P = {
   convo: T.newConvo, dot1: [T.newConvo + 54, 30] as const, filter: T.newConvo + 86, dot2: [T.newConvo + 92, 34] as const, taskIn: T.newConvo + 128,
   dot3: [T.newConvo + 170, 30] as const, discordIn: T.newConvo + 202, seen: [T.newConvo + 210, 70] as const,
 };
-export const convoArr = arrive(P.convo, 28, 1000, 'snapOut', {land: true, src: 'convo'});
-export const taskArr = arrive(P.taskIn, 28, 1000, 'snapOut', {land: true, src: 'task'});
-export const discArr = arrive(P.discordIn, 28, 1000, 'snapOut', {land: true, src: 'discord'});
+export const convoArr = arrive(P.convo, 28, 360, 'snapOut', {land: true, src: 'convo'});
+export const taskArr = arrive(P.taskIn, 28, 360, 'snapOut', {land: true, src: 'task'});
+export const discArr = arrive(P.discordIn, 28, 360, 'snapOut', {land: true, src: 'discord'});
 export const seen = countUp(0, 8, P.seen[0], P.seen[1], 'softOut', 1, 'seen');
 export const respTime = countUp(47, 192, T.read, T.tell + 60 - T.read, 'linear', 1, 'resp');
 
