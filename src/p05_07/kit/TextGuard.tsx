@@ -6,13 +6,15 @@
 import React, {useLayoutEffect} from 'react';
 import {continueRender, delayRender, useCurrentFrame, useVideoConfig} from 'remotion';
 
-/** Guarded text. size = CSS font px before camera/scale, color = solid text colour (#rrggbb). */
-export const G: React.FC<{id: string; size: number; color: string; children: React.ReactNode; style?: React.CSSProperties; font?: string; weight?: number | string}> = ({id, size, color, children, style, font, weight}) => (
-  <span data-tg={id} data-tg-size={size} data-tg-color={color} style={{display: 'inline-block', fontSize: size, color, fontFamily: font, fontWeight: weight, ...style}}>{children}</span>
+/** Guarded text. size = CSS font px before camera/scale, color = solid text colour (#rrggbb).
+ *  anim = the letters are still being typed / glowing (not yet one solid colour): the guard then treats the text like
+ *  motion-blurred text (overlap + safe area still checked; size/contrast checked once it has settled). */
+export const G: React.FC<{id: string; size: number; color: string; children: React.ReactNode; style?: React.CSSProperties; font?: string; weight?: number | string; anim?: boolean}> = ({id, size, color, children, style, font, weight, anim}) => (
+  <span data-tg={id} data-tg-size={size} data-tg-color={color} data-tg-anim={anim ? '1' : undefined} style={{display: 'inline-block', fontSize: size, color, fontFamily: font, fontWeight: weight, ...style}}>{children}</span>
 );
 
 const effective = (el: Element) => {
-  let o = 1, blur = false; let n: Element | null = el;
+  let o = 1, blur = (el as HTMLElement).dataset.tgAnim === '1'; let n: Element | null = el;
   while (n) {
     const cs = getComputedStyle(n);
     o *= parseFloat(cs.opacity || '1');

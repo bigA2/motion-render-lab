@@ -10,7 +10,7 @@ export const a = (hex: string, al: number) => hex + Math.round(Math.max(0, Math.
 
 /** Background stack: base gradient, drifting glow blobs (parallax 0.15), slow grid (0.35), depth particles
  *  (0.2-0.9), periodic light sweep, grain, vignette. */
-export const LivingBg: React.FC<{p: Pal; cam?: Camera; grid?: boolean; particles?: number; sweepEvery?: number; seed?: number; rings?: boolean}> = ({p, cam, grid = true, particles = 34, sweepEvery = 4.2, seed = 3, rings = false}) => {
+export const LivingBg: React.FC<{p: Pal; cam?: Camera; grid?: boolean; particles?: number; sweepEvery?: number; seed?: number; rings?: boolean; scan?: boolean}> = ({p, cam, grid = true, particles = 34, sweepEvery = 4.2, seed = 3, rings = false, scan = false}) => {
   const f = useCurrentFrame(); const {width: w, height: h, fps} = useVideoConfig(); const t = f / fps;
   const c = cam?.get(f) ?? {x: 0, y: 0, zoom: 1, roll: 0};
   const px = (k: number) => -c.x * k, py = (k: number) => -c.y * k;
@@ -43,6 +43,10 @@ export const LivingBg: React.FC<{p: Pal; cam?: Camera; grid?: boolean; particles
         return <div key={`p${i}`} style={{position: 'absolute', left: x, top: y, width: s, height: s, borderRadius: '50%', background: i % 5 === 0 ? p.accent : p.ink, opacity: (p.dark ? 0.35 : 0.18) * tw * d, filter: d < 0.45 ? 'blur(2px)' : undefined}} />;
       })}
       {sweepT <= 1 && <div style={{position: 'absolute', top: -h * 0.25, left: -w * 0.6 + sweepT * w * 2.2, width: w * 0.35, height: h * 1.5, transform: 'rotate(18deg)', background: `linear-gradient(90deg, transparent, ${a(p.dark ? '#ffffff' : '#ffffff', p.dark ? 0.06 : 0.22)}, transparent)`, filter: 'blur(20px)'}} />}
+      {scan && <>{/* presets-lab "steelScan": fine scanlines + a slow accent band drifting down */}
+        <AbsoluteFill style={{backgroundImage: `repeating-linear-gradient(0deg, ${a(p.ink, p.dark ? 0.035 : 0.045)} 0 1px, transparent 1px 4px)`}} />
+        <div style={{position: 'absolute', left: 0, right: 0, height: '22%', top: `${((t * 14) % 140) - 20}%`, background: `linear-gradient(180deg, transparent, ${a(p.glow, p.dark ? 0.08 : 0.12)}, transparent)`}} />
+      </>}
       <Grain amount={p.dark ? 0.06 : 0.045} />
       <AbsoluteFill style={{background: `radial-gradient(ellipse 85% 75% at 50% 45%, transparent 55%, ${a(p.dark ? '#000000' : p.bg2, p.dark ? 0.5 : 0.35)} 100%)`}} />
     </AbsoluteFill>
