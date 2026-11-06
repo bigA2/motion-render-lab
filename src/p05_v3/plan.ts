@@ -44,7 +44,7 @@ export const srcT = (f: number) => {
 };
 // footage view (source px, 1920x1080): wide on the chat + canvas, then pushes into the diagram as it builds
 export const VIEW_WIDE = {cx: 660, cy: 560, w: 1240};
-export const VIEW_DIAG = {cx: 1250, cy: 590, w: 640};
+export const VIEW_DIAG = {cx: 1240, cy: 600, w: 460};
 
 // ---------------- layout per format (screen px) ----------------
 export type Box = {x: number; y: number; w: number; h: number};
