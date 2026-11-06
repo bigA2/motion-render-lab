@@ -1,0 +1,31 @@
+layout_guard video.mp4: 210 frames, 1111 text boxes, 252 mockup boxes, 606 contrast samples -> 136 violations {"size":4,"contrast":4,"overlap":127,"mockup":1}
+   {"f":92,"kind":"size","id":"p-doc-t","px":25.3}
+   {"f":96,"kind":"contrast","id":"p-book-n","cr":1.02,"need":4.5,"note":"background ~ text colour"}
+   {"f":100,"kind":"contrast","id":"p-book-n","cr":1.03,"need":4.5,"note":"background ~ text colour"}
+   {"f":104,"kind":"contrast","id":"p-book-n","cr":1.03,"need":4.5,"note":"background ~ text colour"}
+   {"f":108,"kind":"contrast","id":"p-book-n","cr":1.03,"need":4.5,"note":"background ~ text colour"}
+   {"f":140,"kind":"size","id":"p-doc-row","px":25.9}
+   {"f":236,"kind":"overlap","id":"p-book-t × p-book-n","area":213}
+   {"f":236,"kind":"overlap","id":"p-bub-c × p-bub-m","area":134}
+   {"f":236,"kind":"overlap","id":"w-every-0 × w-every-1","area":240}
+   {"f":236,"kind":"overlap","id":"w-every-1 × w-every-2","area":111}
+   {"f":236,"kind":"overlap","id":"w-every-1 × w-every-3","area":235}
+   {"f":240,"kind":"overlap","id":"w-every-0 × w-every-1","area":307}
+   {"f":240,"kind":"overlap","id":"w-every-1 × w-every-2","area":142}
+   {"f":240,"kind":"overlap","id":"w-every-1 × w-every-3","area":301}
+   {"f":244,"kind":"overlap","id":"w-every-0 × w-every-1","area":285}
+   {"f":244,"kind":"overlap","id":"w-every-1 × w-every-2","area":132}
+   {"f":244,"kind":"overlap","id":"w-every-1 × w-every-3","area":280}
+   {"f":248,"kind":"mockup","id":"p-bub-m over bar","area":2203}
+   {"f":248,"kind":"size","id":"p-doc-row","px":25.4}
+   {"f":248,"kind":"size","id":"p-bub-c","px":25.5}
+   {"f":504,"kind":"overlap","id":"cap1-0 × cap1-3","area":151}
+   {"f":504,"kind":"overlap","id":"cap1-1 × cap1-3","area":151}
+   {"f":508,"kind":"overlap","id":"cap1-0 × cap1-3","area":151}
+   {"f":508,"kind":"overlap","id":"cap1-1 × cap1-3","area":152}
+   {"f":512,"kind":"overlap","id":"cap1-0 × cap1-3","area":151}
+   {"f":512,"kind":"overlap","id":"cap1-1 × cap1-3","area":153}
+   {"f":516,"kind":"overlap","id":"cap1-0 × cap1-3","area":179}
+   {"f":516,"kind":"overlap","id":"cap1-1 × cap1-3","area":183}
+   {"f":520,"kind":"overlap","id":"cap1-0 × cap1-3","area":179}
+   {"f":520,"kind":"overlap","id":"cap1-1 × cap1-3","area":184}

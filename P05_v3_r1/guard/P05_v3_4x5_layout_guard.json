@@ -1,0 +1,993 @@
+{
+ "video": "video.mp4",
+ "size": [
+  1080,
+  1350
+ ],
+ "every": 4,
+ "frames_with_guard": 210,
+ "frames_checked": 210,
+ "text_boxes_checked": 1111,
+ "mockup_boxes_checked": 252,
+ "contrast_measured": 606,
+ "violations": 126,
+ "by_kind": {
+  "size": 4,
+  "contrast": 2,
+  "overlap": 120
+ },
+ "worst_contrast_per_text": {
+  "h-0": {
+   "cr": 13.56,
+   "f": 44,
+   "need": 3
+  },
+  "h-1": {
+   "cr": 11.66,
+   "f": 60,
+   "need": 3
+  },
+  "h-2": {
+   "cr": 10.27,
+   "f": 84,
+   "need": 3
+  },
+  "p-book-t": {
+   "cr": 6.96,
+   "f": 108,
+   "need": 4.5
+  },
+  "p-book-n": {
+   "cr": 9.38,
+   "f": 100,
+   "need": 4.5
+  },
+  "p-doc-t": {
+   "cr": 14.19,
+   "f": 248,
+   "need": 4.5
+  },
+  "w-copy-0": {
+   "cr": 10.7,
+   "f": 132,
+   "need": 3
+  },
+  "p-doc-row": {
+   "cr": 6.82,
+   "f": 148,
+   "need": 4.5
+  },
+  "p-bub-c": {
+   "cr": 4.5,
+   "f": 248,
+   "need": 4.5
+  },
+  "p-bub-m": {
+   "cr": 14.06,
+   "f": 248,
+   "need": 4.5
+  },
+  "w-paste-0": {
+   "cr": 11.14,
+   "f": 168,
+   "need": 3
+  },
+  "p-clock": {
+   "cr": 13.69,
+   "f": 184,
+   "need": 3
+  },
+  "w-repeat-0": {
+   "cr": 10.19,
+   "f": 208,
+   "need": 3
+  },
+  "w-every-0": {
+   "cr": 10.03,
+   "f": 236,
+   "need": 3
+  },
+  "pr-0": {
+   "cr": 6.07,
+   "f": 404,
+   "need": 4.5
+  },
+  "pr-1": {
+   "cr": 6.03,
+   "f": 404,
+   "need": 4.5
+  },
+  "pr-2": {
+   "cr": 6.12,
+   "f": 404,
+   "need": 4.5
+  },
+  "pr-3": {
+   "cr": 6.17,
+   "f": 404,
+   "need": 4.5
+  },
+  "pr-4": {
+   "cr": 6.07,
+   "f": 404,
+   "need": 4.5
+  },
+  "pr-5": {
+   "cr": 6.17,
+   "f": 404,
+   "need": 4.5
+  },
+  "cap1-0": {
+   "cr": 13.73,
+   "f": 532,
+   "need": 3
+  },
+  "cap1-1": {
+   "cr": 13.44,
+   "f": 472,
+   "need": 3
+  },
+  "cap1-2": {
+   "cr": 12.87,
+   "f": 460,
+   "need": 3
+  },
+  "cap1-3": {
+   "cr": 3.98,
+   "f": 500,
+   "need": 3
+  },
+  "cap2-0": {
+   "cr": 4.41,
+   "f": 584,
+   "need": 3
+  },
+  "cap2-1": {
+   "cr": 13.47,
+   "f": 592,
+   "need": 3
+  },
+  "cap2-2": {
+   "cr": 12.6,
+   "f": 588,
+   "need": 3
+  },
+  "cap2-3": {
+   "cr": 3.98,
+   "f": 628,
+   "need": 3
+  },
+  "cap2-4": {
+   "cr": 12.24,
+   "f": 612,
+   "need": 3
+  },
+  "cap2-5": {
+   "cr": 13.84,
+   "f": 628,
+   "need": 3
+  },
+  "r-n-lab": {
+   "cr": 5.31,
+   "f": 632,
+   "need": 4.5
+  },
+  "r-n-title": {
+   "cr": 16.76,
+   "f": 632,
+   "need": 4.5
+  },
+  "r-s-0": {
+   "cr": 16.79,
+   "f": 632,
+   "need": 4.5
+  },
+  "r-s-1": {
+   "cr": 16.61,
+   "f": 632,
+   "need": 4.5
+  },
+  "pay-0": {
+   "cr": 15.59,
+   "f": 668,
+   "need": 3
+  },
+  "pay-1": {
+   "cr": 15.84,
+   "f": 728,
+   "need": 3
+  },
+  "pay-2": {
+   "cr": 15.64,
+   "f": 668,
+   "need": 3
+  },
+  "pay-3": {
+   "cr": 15.88,
+   "f": 676,
+   "need": 3
+  },
+  "pay-4": {
+   "cr": 4.84,
+   "f": 704,
+   "need": 3
+  },
+  "cta-word": {
+   "cr": 18.84,
+   "f": 836,
+   "need": 3
+  },
+  "cta-pill": {
+   "cr": 5.5,
+   "f": 816,
+   "need": 4.5
+  },
+  "cta-url": {
+   "cr": 12.33,
+   "f": 836,
+   "need": 4.5
+  }
+ },
+ "list": [
+  {
+   "f": 92,
+   "kind": "size",
+   "id": "p-doc-t",
+   "px": 25.3
+  },
+  {
+   "f": 96,
+   "kind": "contrast",
+   "id": "p-book-n",
+   "cr": 1.03,
+   "need": 4.5,
+   "note": "background ~ text colour"
+  },
+  {
+   "f": 104,
+   "kind": "contrast",
+   "id": "p-book-n",
+   "cr": 1.04,
+   "need": 4.5,
+   "note": "background ~ text colour"
+  },
+  {
+   "f": 140,
+   "kind": "size",
+   "id": "p-doc-row",
+   "px": 25.9
+  },
+  {
+   "f": 232,
+   "kind": "overlap",
+   "id": "w-every-0 × w-every-2",
+   "area": 184
+  },
+  {
+   "f": 232,
+   "kind": "overlap",
+   "id": "w-every-0 × w-every-3",
+   "area": 183
+  },
+  {
+   "f": 232,
+   "kind": "overlap",
+   "id": "w-every-1 × w-every-3",
+   "area": 170
+  },
+  {
+   "f": 236,
+   "kind": "overlap",
+   "id": "p-book-t × p-book-n",
+   "area": 195
+  },
+  {
+   "f": 236,
+   "kind": "overlap",
+   "id": "p-bub-c × p-bub-m",
+   "area": 134
+  },
+  {
+   "f": 236,
+   "kind": "overlap",
+   "id": "w-every-0 × w-every-2",
+   "area": 241
+  },
+  {
+   "f": 236,
+   "kind": "overlap",
+   "id": "w-every-0 × w-every-3",
+   "area": 242
+  },
+  {
+   "f": 236,
+   "kind": "overlap",
+   "id": "w-every-1 × w-every-3",
+   "area": 223
+  },
+  {
+   "f": 240,
+   "kind": "overlap",
+   "id": "w-every-0 × w-every-2",
+   "area": 270
+  },
+  {
+   "f": 240,
+   "kind": "overlap",
+   "id": "w-every-0 × w-every-3",
+   "area": 274
+  },
+  {
+   "f": 240,
+   "kind": "overlap",
+   "id": "w-every-1 × w-every-3",
+   "area": 250
+  },
+  {
+   "f": 244,
+   "kind": "overlap",
+   "id": "w-every-0 × w-every-2",
+   "area": 256
+  },
+  {
+   "f": 244,
+   "kind": "overlap",
+   "id": "w-every-0 × w-every-3",
+   "area": 260
+  },
+  {
+   "f": 244,
+   "kind": "overlap",
+   "id": "w-every-1 × w-every-3",
+   "area": 235
+  },
+  {
+   "f": 248,
+   "kind": "size",
+   "id": "p-doc-row",
+   "px": 25.4
+  },
+  {
+   "f": 248,
+   "kind": "size",
+   "id": "p-bub-c",
+   "px": 25.5
+  },
+  {
+   "f": 604,
+   "kind": "overlap",
+   "id": "cap2-0 × cap2-5",
+   "area": 147
+  },
+  {
+   "f": 604,
+   "kind": "overlap",
+   "id": "cap2-1 × cap2-5",
+   "area": 157
+  },
+  {
+   "f": 608,
+   "kind": "overlap",
+   "id": "cap2-0 × cap2-5",
+   "area": 160
+  },
+  {
+   "f": 608,
+   "kind": "overlap",
+   "id": "cap2-1 × cap2-5",
+   "area": 172
+  },
+  {
+   "f": 612,
+   "kind": "overlap",
+   "id": "cap2-0 × cap2-5",
+   "area": 174
+  },
+  {
+   "f": 612,
+   "kind": "overlap",
+   "id": "cap2-1 × cap2-5",
+   "area": 188
+  },
+  {
+   "f": 616,
+   "kind": "overlap",
+   "id": "cap2-0 × cap2-5",
+   "area": 188
+  },
+  {
+   "f": 616,
+   "kind": "overlap",
+   "id": "cap2-1 × cap2-5",
+   "area": 204
+  },
+  {
+   "f": 620,
+   "kind": "overlap",
+   "id": "cap2-0 × cap2-5",
+   "area": 201
+  },
+  {
+   "f": 620,
+   "kind": "overlap",
+   "id": "cap2-1 × cap2-5",
+   "area": 219
+  },
+  {
+   "f": 624,
+   "kind": "overlap",
+   "id": "cap2-0 × cap2-5",
+   "area": 214
+  },
+  {
+   "f": 624,
+   "kind": "overlap",
+   "id": "cap2-1 × cap2-5",
+   "area": 235
+  },
+  {
+   "f": 628,
+   "kind": "overlap",
+   "id": "cap2-0 × cap2-5",
+   "area": 227
+  },
+  {
+   "f": 628,
+   "kind": "overlap",
+   "id": "cap2-1 × cap2-5",
+   "area": 251
+  },
+  {
+   "f": 632,
+   "kind": "overlap",
+   "id": "cap2-0 × cap2-5",
+   "area": 214
+  },
+  {
+   "f": 632,
+   "kind": "overlap",
+   "id": "cap2-1 × cap2-5",
+   "area": 181
+  },
+  {
+   "f": 668,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 323
+  },
+  {
+   "f": 668,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 8
+  },
+  {
+   "f": 668,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 220
+  },
+  {
+   "f": 668,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 367
+  },
+  {
+   "f": 668,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 220
+  },
+  {
+   "f": 672,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 350
+  },
+  {
+   "f": 672,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 9
+  },
+  {
+   "f": 672,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 238
+  },
+  {
+   "f": 672,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 398
+  },
+  {
+   "f": 672,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 238
+  },
+  {
+   "f": 676,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 405
+  },
+  {
+   "f": 676,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 10
+  },
+  {
+   "f": 676,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 275
+  },
+  {
+   "f": 676,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 460
+  },
+  {
+   "f": 676,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 275
+  },
+  {
+   "f": 680,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 432
+  },
+  {
+   "f": 680,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 11
+  },
+  {
+   "f": 680,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 294
+  },
+  {
+   "f": 680,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 491
+  },
+  {
+   "f": 680,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 294
+  },
+  {
+   "f": 684,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 487
+  },
+  {
+   "f": 684,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 12
+  },
+  {
+   "f": 684,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 331
+  },
+  {
+   "f": 684,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 553
+  },
+  {
+   "f": 684,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 331
+  },
+  {
+   "f": 688,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 515
+  },
+  {
+   "f": 688,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 13
+  },
+  {
+   "f": 688,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 350
+  },
+  {
+   "f": 688,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 584
+  },
+  {
+   "f": 688,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 350
+  },
+  {
+   "f": 692,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 571
+  },
+  {
+   "f": 692,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 15
+  },
+  {
+   "f": 692,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 387
+  },
+  {
+   "f": 692,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 646
+  },
+  {
+   "f": 692,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 387
+  },
+  {
+   "f": 696,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 600
+  },
+  {
+   "f": 696,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 15
+  },
+  {
+   "f": 696,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 406
+  },
+  {
+   "f": 696,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 678
+  },
+  {
+   "f": 696,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 406
+  },
+  {
+   "f": 700,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 656
+  },
+  {
+   "f": 700,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 17
+  },
+  {
+   "f": 700,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 444
+  },
+  {
+   "f": 700,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 740
+  },
+  {
+   "f": 700,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 444
+  },
+  {
+   "f": 704,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 686
+  },
+  {
+   "f": 704,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 17
+  },
+  {
+   "f": 704,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 463
+  },
+  {
+   "f": 704,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 741
+  },
+  {
+   "f": 704,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 444
+  },
+  {
+   "f": 708,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 744
+  },
+  {
+   "f": 708,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 19
+  },
+  {
+   "f": 708,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 500
+  },
+  {
+   "f": 708,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 835
+  },
+  {
+   "f": 708,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 500
+  },
+  {
+   "f": 712,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 774
+  },
+  {
+   "f": 712,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 19
+  },
+  {
+   "f": 712,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 519
+  },
+  {
+   "f": 712,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 866
+  },
+  {
+   "f": 712,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 519
+  },
+  {
+   "f": 716,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 804
+  },
+  {
+   "f": 716,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 20
+  },
+  {
+   "f": 716,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 538
+  },
+  {
+   "f": 716,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 898
+  },
+  {
+   "f": 716,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 538
+  },
+  {
+   "f": 720,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 836
+  },
+  {
+   "f": 720,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 21
+  },
+  {
+   "f": 720,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 557
+  },
+  {
+   "f": 720,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 961
+  },
+  {
+   "f": 720,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 576
+  },
+  {
+   "f": 724,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 895
+  },
+  {
+   "f": 724,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 22
+  },
+  {
+   "f": 724,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 595
+  },
+  {
+   "f": 724,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 993
+  },
+  {
+   "f": 724,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 595
+  },
+  {
+   "f": 728,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 954
+  },
+  {
+   "f": 728,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 24
+  },
+  {
+   "f": 728,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 633
+  },
+  {
+   "f": 728,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 1056
+  },
+  {
+   "f": 728,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 633
+  },
+  {
+   "f": 732,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 986
+  },
+  {
+   "f": 732,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 26
+  },
+  {
+   "f": 732,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 652
+  },
+  {
+   "f": 732,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 1089
+  },
+  {
+   "f": 732,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 652
+  },
+  {
+   "f": 736,
+   "kind": "overlap",
+   "id": "pay-0 × pay-2",
+   "area": 930
+  },
+  {
+   "f": 736,
+   "kind": "overlap",
+   "id": "pay-1 × pay-2",
+   "area": 22
+  },
+  {
+   "f": 736,
+   "kind": "overlap",
+   "id": "pay-1 × pay-3",
+   "area": 614
+  },
+  {
+   "f": 736,
+   "kind": "overlap",
+   "id": "pay-2 × pay-4",
+   "area": 994
+  },
+  {
+   "f": 736,
+   "kind": "overlap",
+   "id": "pay-3 × pay-4",
+   "area": 595
+  }
+ ]
+}

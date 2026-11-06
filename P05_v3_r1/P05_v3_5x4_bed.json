@@ -1,0 +1,11 @@
+{
+ "master_lufs": -14.3,
+ "master_true_peak_dbtp": -1.7,
+ "gain_db": 8.1,
+ "sfx_peak_dbfs": -2.0,
+ "bed_peak_dbfs": -18.1,
+ "bed_under_sfx_peak_db": 16.1,
+ "sfx_max_short_term_lufs": -13.3,
+ "bed_max_short_term_lufs": -31.0,
+ "bed_under_sfx_short_term_db": 17.7
+}
