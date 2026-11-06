@@ -14,11 +14,12 @@ env: { ENTRY: src/p05_v4/index.ts }
 jobs:
   stills:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm }
-      - run: npm ci --no-audit --no-fund && npx remotion browser ensure && sudo apt-get -qq install -y ffmpeg >/dev/null
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure && (command -v ffmpeg >/dev/null || (sudo timeout 300 apt-get -qq update && sudo DEBIAN_FRONTEND=noninteractive timeout 400 apt-get -qq install -y -o Dpkg::Lock::Timeout=60 ffmpeg >/dev/null)) && ffmpeg -version | head -1
       - run: node tools/p05_v4/stills.mjs stills 10 P05V4-4x5 P05V4-5x4 && mkdir -p sheets && cp stills/*_sheet.jpg sheets/
       - uses: actions/upload-artifact@v4
         with: { name: 'stills', path: sheets/, retention-days: 3 }
@@ -48,23 +49,25 @@ jobs:
             tg${{ matrix.part }}.json
   audio:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22, cache: npm }
-      - run: npm ci --no-audit --no-fund && sudo apt-get -qq install -y ffmpeg >/dev/null && pip install --quiet numpy
+      - run: npm ci --no-audit --no-fund && (command -v ffmpeg >/dev/null || (sudo timeout 300 apt-get -qq update && sudo DEBIAN_FRONTEND=noninteractive timeout 400 apt-get -qq install -y -o Dpkg::Lock::Timeout=60 ffmpeg >/dev/null)) && ffmpeg -version | head -1 && pip install --quiet numpy
       - run: npx -y tsx@4.19.2 src/p05_v4/dump.ts && python3 tools/p05_v4/mix.py out/events_P05V4.json out/audio && cp out/events_P05V4.json out/audio/
       - uses: actions/upload-artifact@v4
         with: { name: 'audio-P05V4', path: 'out/audio/', retention-days: 3 }
   join:
     needs: [setup, render, audio]
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     strategy: { fail-fast: false, matrix: { fmt: ['4x5', '5x4'] } }
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
-      - run: sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg fonts-dejavu-core >/dev/null && pip install --quiet numpy pillow
+      - run: (command -v ffmpeg >/dev/null || (sudo timeout 300 apt-get -qq update && sudo DEBIAN_FRONTEND=noninteractive timeout 400 apt-get -qq install -y -o Dpkg::Lock::Timeout=60 ffmpeg >/dev/null)) && ffmpeg -version | head -1 && pip install --quiet numpy pillow
       - uses: actions/download-artifact@v4
         with: { path: parts, pattern: 'part-${{ matrix.fmt }}-*', merge-multiple: true }
       - uses: actions/download-artifact@v4
@@ -93,6 +96,13 @@ jobs:
           R=${PIPESTATUS[0]}
           cp "qa/guard/${N}_layout_guard.json" final/
           head -3 "qa/${N}_layout_guard.txt" >> $GITHUB_STEP_SUMMARY
+          python3 -c "
+          import json, collections
+          r = json.load(open('qa/guard/${N}_layout_guard.json')); g = collections.defaultdict(list)
+          for v in r['list']: g[(v['kind'], v['id'])].append(v['f'])
+          print('GUARD SUMMARY', r['violations'], r['by_kind'])
+          for (k, i), fs in sorted(g.items(), key=lambda x: -len(x[1]))[:60]: print('  ', k, i, len(fs), 'frames', min(fs), '-', max(fs), [x for x in r['list'] if x['kind'] == k and x['id'] == i][0])
+          " || true
           [ "$R" = "0" ] && [ "$MOTION_RC" = "0" ]
       - uses: actions/upload-artifact@v4
         if: always()
@@ -121,6 +131,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with: { path: qa_in, pattern: 'qa-*', merge-multiple: true }
       - uses: actions/download-artifact@v4
+        continue-on-error: true
         with: { name: 'stills', path: qa_in/stills }
       - run: |
           git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
