@@ -42,9 +42,16 @@ export const srcT = (f: number) => {
   for (let i = 0; i < SRC.length - 1; i++) { const [f0, s0] = SRC[i], [f1, s1] = SRC[i + 1]; if (f <= f1) return s0 + ((f - f0) / (f1 - f0)) * (s1 - s0); }
   return SRC[SRC.length - 1][1];
 };
-// footage view (source px, 1920x1080): wide on the chat + canvas, then pushes into the diagram as it builds
-export const VIEW_WIDE = {cx: 660, cy: 560, w: 1240};
-export const VIEW_DIAG = {cx: 1240, cy: 600, w: 460};
+// footage view (source px, 1920x1080): the in-screen camera tracks the real UI — the sent sentence in the chat,
+// then the canvas (shape picker / "picking the apps"), then it pushes into the diagram as it is drawn
+export type View = {cx: number; cy: number; w: number};
+export const VIEWS: [number, View][] = [[420, {cx: 330, cy: 250, w: 660}], [472, {cx: 330, cy: 250, w: 660}], [506, {cx: 1240, cy: 560, w: 900}], [540, {cx: 1240, cy: 600, w: 460}]];
+export const viewAt = (f: number, ease: (t: number) => number): View => {
+  if (f <= VIEWS[0][0]) return VIEWS[0][1];
+  for (let i = 0; i < VIEWS.length - 1; i++) { const [f0, a] = VIEWS[i], [f1, b] = VIEWS[i + 1];
+    if (f <= f1) { const t = ease((f - f0) / (f1 - f0)); return {cx: a.cx + (b.cx - a.cx) * t, cy: a.cy + (b.cy - a.cy) * t, w: a.w + (b.w - a.w) * t}; } }
+  return VIEWS[VIEWS.length - 1][1];
+};
 
 // ---------------- layout per format (screen px) ----------------
 export type Box = {x: number; y: number; w: number; h: number};

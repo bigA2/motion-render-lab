@@ -16,7 +16,7 @@ import {Bloom, DARK, FrostGrain, ICE, INK, LIGHT, NIGHT, PAPER, RingHorizon, STE
 import * as P from './plan';
 import {LiveWord} from './text';
 
-const {T} = P;
+const {T} = P; void T.push;
 type L = P.Lay;
 const Abs: React.FC<{b: P.Box; children?: React.ReactNode; style?: React.CSSProperties}> = ({b, children, style}) =>
   <div style={{position: 'absolute', left: b.x, top: b.y, width: b.w, height: b.h, ...style}}>{children}</div>;
@@ -177,8 +177,7 @@ const Turn: React.FC<{f: number; L: L}> = ({f, L}) => {
 
 // ================= 4. PROOF: real footage on a glass screen, result cards beside it =================
 const Footage: React.FC<{f: number; bw: number; bh: number}> = ({f, bw, bh}) => {
-  const k = prog(f, T.push, T.built - T.push + 30, 'inOut');
-  const vw = lerp(P.VIEW_WIDE.w, P.VIEW_DIAG.w, k), cx = lerp(P.VIEW_WIDE.cx, P.VIEW_DIAG.cx, k), cy = lerp(P.VIEW_WIDE.cy, P.VIEW_DIAG.cy, k);
+  const v = P.viewAt(f, (t) => ease(t, 'inOut')); const vw = v.w * (1 - 0.03 * prog(f, 540, 96, 'softOut')), cx = v.cx, cy = v.cy; // slow push-in after the build
   let sw = vw, sh = vw * (bh / bw); if (sh > 1080) { sh = 1080; sw = sh * (bw / bh); }
   const x0 = clamp(cx - sw / 2, 0, 1920 - sw), y0 = clamp(cy - sh / 2, 0, 1080 - sh); const s = bw / sw;
   return <Freeze frame={0}><OffthreadVideo src={staticFile('real/P05_ui.webm')} trimBefore={Math.round(P.srcT(f) * 60)} muted style={{position: 'absolute', left: -x0 * s, top: -y0 * s, width: 1920 * s, height: 1080 * s}} /></Freeze>;
@@ -248,16 +247,16 @@ const Payoff: React.FC<{f: number; L: L}> = ({f, L}) => {
   </div>;
 };
 const Cta: React.FC<{f: number; L: L}> = ({f, L}) => {
-  const up = prog(f, T.cta, 40, 'snapOut'); const big = L.wide ? 150 : 180; const hs = hitShake(f, T.cta, 0.08);
-  const top = L.H * (L.wide ? 0.22 : 0.29);
+  const up = prog(f, T.cta, 40, 'snapOut'); const big = L.wide ? 170 : 180; const hs = hitShake(f, T.cta, 0.08);
+  const top = L.H * (L.wide ? 0.2 : 0.29);
   const sweep = ((f - T.pill - 10) % 70) / 30;
   return <div style={{position: 'absolute', left: 0, width: L.W, top, textAlign: 'center', transform: `translate(${hs.x}px, ${hs.y + (1 - up) * 140}px) scale(${lerp(1, 1.03, prog(f, T.cta, 100, 'softOut'))})`}}>
     <div style={{display: 'inline-flex', width: big, height: big, borderRadius: big * 0.26, background: '#FFFFFF', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 90px ${a(STEEL, 0.7)}, 0 0 30px ${a(ICE, 0.5)}`, transform: `scale(${prog(f, T.cta, 26, 'spring')})`, opacity: clamp(up * 3)}}>
       <Img src={staticFile('logo-fansa.png')} style={{width: '82%', height: '82%'}} /></div>
-    <div style={{marginTop: 26}}><LiveWord id="cta-word" text="FansaChat" size={L.wide ? 96 : 104} color="#FFFFFF" font={F.display} reveal={{kind: 'rise', f0: T.cta + 10, stagger: 2}} life={[T.cta, T.end]} seed={1} /></div>
+    <div style={{marginTop: 26}}><LiveWord id="cta-word" text="FansaChat" size={L.wide ? 112 : 104} color="#FFFFFF" font={F.display} reveal={{kind: 'rise', f0: T.cta + 10, stagger: 2}} life={[T.cta, T.end]} seed={1} /></div>
     <div style={{marginTop: L.wide ? 30 : 44, display: 'inline-block', position: 'relative', overflow: 'hidden', borderRadius: 999, transform: `scale(${prog(f, T.pill, 18, 'spring')})`, boxShadow: `0 0 50px ${a(STEEL, 0.55)}`}}>
       <div style={{padding: '20px 44px', background: STEEL, display: 'flex', columnGap: 12}}>
-        <LiveWord id="cta-pill" text="Join the waitlist" size={L.wide ? 40 : 42} color="#FFFFFF" font={F.sans} weight={700} reveal={{kind: 'rise', f0: T.pill + 4, stagger: 1, dur: 10}} life={[T.pill, T.end]} seed={2} />
+        <LiveWord id="cta-pill" text="Join the waitlist" size={L.wide ? 44 : 42} color="#FFFFFF" font={F.sans} weight={700} reveal={{kind: 'rise', f0: T.pill + 4, stagger: 1, dur: 10}} life={[T.pill, T.end]} seed={2} />
       </div>
       {sweep >= 0 && sweep <= 1 && <div style={{position: 'absolute', top: 0, bottom: 0, left: `${sweep * 140 - 30}%`, width: '20%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent)', transform: 'skewX(-20deg)'}} />}
     </div>
