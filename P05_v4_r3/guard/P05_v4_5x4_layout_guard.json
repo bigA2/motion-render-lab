@@ -1,0 +1,304 @@
+{
+ "video": "video.mp4",
+ "size": [
+  1350,
+  1080
+ ],
+ "every": 4,
+ "frames_with_guard": 210,
+ "frames_checked": 210,
+ "text_boxes_checked": 425,
+ "mockup_boxes_checked": 276,
+ "contrast_measured": 340,
+ "violations": 4,
+ "by_kind": {
+  "contrast": 4
+ },
+ "worst_contrast_per_text": {
+  "hook-Tired": {
+   "cr": 14.68,
+   "f": 32,
+   "need": 3
+  },
+  "hook-of": {
+   "cr": 16.47,
+   "f": 44,
+   "need": 3
+  },
+  "hook-manual": {
+   "cr": 10.16,
+   "f": 52,
+   "need": 3
+  },
+  "hook-work?": {
+   "cr": 16.75,
+   "f": 56,
+   "need": 3
+  },
+  "bk-title": {
+   "cr": 9.82,
+   "f": 104,
+   "need": 3
+  },
+  "bk-new": {
+   "cr": 6.41,
+   "f": 116,
+   "need": 4.5
+  },
+  "k-Name": {
+   "cr": 6.32,
+   "f": 104,
+   "need": 4.5
+  },
+  "bk-name": {
+   "cr": 1.48,
+   "f": 124,
+   "need": 4.5
+  },
+  "k-Company": {
+   "cr": 6.62,
+   "f": 104,
+   "need": 4.5
+  },
+  "bk-co": {
+   "cr": 1.31,
+   "f": 132,
+   "need": 4.5
+  },
+  "bk-call": {
+   "cr": 10.36,
+   "f": 108,
+   "need": 4.5
+  },
+  "k-Call time": {
+   "cr": 7.19,
+   "f": 132,
+   "need": 4.5
+  },
+  "dl-title": {
+   "cr": 18.01,
+   "f": 176,
+   "need": 3
+  },
+  "dl-by": {
+   "cr": 5.23,
+   "f": 168,
+   "need": 4.5
+  },
+  "pill-doc": {
+   "cr": 10.07,
+   "f": 160,
+   "need": 4.5
+  },
+  "cap-paste": {
+   "cr": 18.31,
+   "f": 176,
+   "need": 3
+  },
+  "dl-co": {
+   "cr": 16.56,
+   "f": 176,
+   "need": 4.5
+  },
+  "ch-name": {
+   "cr": 10.69,
+   "f": 204,
+   "need": 4.5
+  },
+  "ch-n": {
+   "cr": 5.54,
+   "f": 220,
+   "need": 4.5
+  },
+  "cap-repeat": {
+   "cr": 18.27,
+   "f": 216,
+   "need": 3
+  },
+  "prompt": {
+   "cr": 7.51,
+   "f": 372,
+   "need": 3
+  },
+  "node-0": {
+   "cr": 17.47,
+   "f": 444,
+   "need": 4.5
+  },
+  "node-1": {
+   "cr": 10.16,
+   "f": 444,
+   "need": 4.5
+  },
+  "node-2": {
+   "cr": 17.69,
+   "f": 444,
+   "need": 4.5
+  },
+  "node-3": {
+   "cr": 17.75,
+   "f": 444,
+   "need": 4.5
+  },
+  "cap2-0": {
+   "cr": 11.29,
+   "f": 528,
+   "need": 3
+  },
+  "np-title": {
+   "cr": 16.83,
+   "f": 496,
+   "need": 3
+  },
+  "np-k0": {
+   "cr": 6.19,
+   "f": 520,
+   "need": 4.5
+  },
+  "np-v0": {
+   "cr": 14.67,
+   "f": 524,
+   "need": 4.5
+  },
+  "np-k1": {
+   "cr": 6.16,
+   "f": 532,
+   "need": 4.5
+  },
+  "np-v1": {
+   "cr": 15.11,
+   "f": 524,
+   "need": 4.5
+  },
+  "np-prep": {
+   "cr": 16.55,
+   "f": 532,
+   "need": 4.5
+  },
+  "np-p0": {
+   "cr": 4.84,
+   "f": 532,
+   "need": 4.5
+  },
+  "np-p1": {
+   "cr": 4.84,
+   "f": 532,
+   "need": 4.5
+  },
+  "np-p2": {
+   "cr": 4.8,
+   "f": 524,
+   "need": 4.5
+  },
+  "toast-h": {
+   "cr": 16.09,
+   "f": 556,
+   "need": 4.5
+  },
+  "toast-l": {
+   "cr": 9.79,
+   "f": 564,
+   "need": 4.5
+  },
+  "toast-t": {
+   "cr": 7.18,
+   "f": 560,
+   "need": 4.5
+  },
+  "sl-ch": {
+   "cr": 10.36,
+   "f": 596,
+   "need": 4.5
+  },
+  "sl-name": {
+   "cr": 10.52,
+   "f": 596,
+   "need": 4.5
+  },
+  "sl-app": {
+   "cr": 4.76,
+   "f": 600,
+   "need": 4.5
+  },
+  "sl-time": {
+   "cr": 4.65,
+   "f": 604,
+   "need": 4.5
+  },
+  "sl-msg": {
+   "cr": 12.08,
+   "f": 608,
+   "need": 3
+  },
+  "sl-r": {
+   "cr": 9.61,
+   "f": 600,
+   "need": 4.5
+  },
+  "cap3-0": {
+   "cr": 12.05,
+   "f": 592,
+   "need": 3
+  },
+  "pay-0": {
+   "cr": 17.45,
+   "f": 652,
+   "need": 3
+  },
+  "pay-1": {
+   "cr": 10.57,
+   "f": 676,
+   "need": 3
+  },
+  "wordmark": {
+   "cr": 15.68,
+   "f": 784,
+   "need": 3
+  },
+  "tag": {
+   "cr": 10.44,
+   "f": 792,
+   "need": 3
+  },
+  "cta": {
+   "cr": 3.45,
+   "f": 824,
+   "need": 3
+  },
+  "url": {
+   "cr": 8.02,
+   "f": 820,
+   "need": 3
+  }
+ },
+ "list": [
+  {
+   "f": 124,
+   "kind": "contrast",
+   "id": "bk-name",
+   "cr": 1.48,
+   "need": 4.5
+  },
+  {
+   "f": 128,
+   "kind": "contrast",
+   "id": "bk-name",
+   "cr": 1.49,
+   "need": 4.5
+  },
+  {
+   "f": 128,
+   "kind": "contrast",
+   "id": "bk-co",
+   "cr": 1.5,
+   "need": 4.5
+  },
+  {
+   "f": 132,
+   "kind": "contrast",
+   "id": "bk-co",
+   "cr": 1.31,
+   "need": 4.5
+  }
+ ]
+}

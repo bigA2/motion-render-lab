@@ -1,0 +1,6 @@
+layout_guard video.mp4: 210 frames, 427 text boxes, 276 mockup boxes, 341 contrast samples -> 5 violations {"contrast":4,"overlap":1}
+   {"f":124,"kind":"contrast","id":"bk-name","cr":1.48,"need":4.5}
+   {"f":128,"kind":"contrast","id":"bk-name","cr":1.49,"need":4.5}
+   {"f":128,"kind":"contrast","id":"bk-co","cr":1.52,"need":4.5}
+   {"f":132,"kind":"contrast","id":"bk-co","cr":1.31,"need":4.5}
+   {"f":656,"kind":"overlap","id":"pay-0 × pay-1","area":1768}
