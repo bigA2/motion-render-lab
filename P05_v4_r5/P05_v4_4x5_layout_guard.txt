@@ -1,0 +1,4 @@
+layout_guard video.mp4: 210 frames, 427 text boxes, 276 mockup boxes, 341 contrast samples -> 3 violations {"mockup":3}
+   {"f":440,"kind":"mockup","id":"cap1-0 over flow-window","area":9701}
+   {"f":444,"kind":"mockup","id":"cap1-0 over flow-window","area":8926}
+   {"f":448,"kind":"mockup","id":"cap1-0 over flow-window","area":9430}

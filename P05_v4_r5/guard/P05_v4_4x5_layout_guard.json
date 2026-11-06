@@ -1,0 +1,294 @@
+{
+ "video": "video.mp4",
+ "size": [
+  1080,
+  1350
+ ],
+ "every": 4,
+ "frames_with_guard": 210,
+ "frames_checked": 210,
+ "text_boxes_checked": 427,
+ "mockup_boxes_checked": 276,
+ "contrast_measured": 341,
+ "violations": 3,
+ "by_kind": {
+  "mockup": 3
+ },
+ "worst_contrast_per_text": {
+  "hook-Tired": {
+   "cr": 15.75,
+   "f": 52,
+   "need": 3
+  },
+  "hook-of": {
+   "cr": 16.84,
+   "f": 28,
+   "need": 3
+  },
+  "hook-manual": {
+   "cr": 10.17,
+   "f": 60,
+   "need": 3
+  },
+  "hook-work?": {
+   "cr": 18.66,
+   "f": 56,
+   "need": 3
+  },
+  "bk-title": {
+   "cr": 9.7,
+   "f": 104,
+   "need": 4.5
+  },
+  "bk-new": {
+   "cr": 6.39,
+   "f": 116,
+   "need": 4.5
+  },
+  "k-Name": {
+   "cr": 6.33,
+   "f": 112,
+   "need": 4.5
+  },
+  "bk-name": {
+   "cr": 7.48,
+   "f": 120,
+   "need": 4.5
+  },
+  "k-Company": {
+   "cr": 6.6,
+   "f": 104,
+   "need": 4.5
+  },
+  "bk-co": {
+   "cr": 9.76,
+   "f": 108,
+   "need": 4.5
+  },
+  "bk-call": {
+   "cr": 10.38,
+   "f": 108,
+   "need": 4.5
+  },
+  "k-Call time": {
+   "cr": 7.19,
+   "f": 132,
+   "need": 4.5
+  },
+  "dl-title": {
+   "cr": 17.79,
+   "f": 164,
+   "need": 4.5
+  },
+  "dl-by": {
+   "cr": 5.24,
+   "f": 172,
+   "need": 4.5
+  },
+  "pill-doc": {
+   "cr": 10.02,
+   "f": 160,
+   "need": 4.5
+  },
+  "cap-paste": {
+   "cr": 18.31,
+   "f": 176,
+   "need": 3
+  },
+  "dl-co": {
+   "cr": 16.41,
+   "f": 176,
+   "need": 4.5
+  },
+  "ch-name": {
+   "cr": 10.61,
+   "f": 204,
+   "need": 4.5
+  },
+  "ch-n": {
+   "cr": 5.54,
+   "f": 220,
+   "need": 4.5
+  },
+  "cap-repeat": {
+   "cr": 18.31,
+   "f": 220,
+   "need": 3
+  },
+  "prompt": {
+   "cr": 14.94,
+   "f": 360,
+   "need": 4.5
+  },
+  "node-0": {
+   "cr": 16.77,
+   "f": 444,
+   "need": 4.5
+  },
+  "node-1": {
+   "cr": 9.03,
+   "f": 444,
+   "need": 4.5
+  },
+  "node-2": {
+   "cr": 16.85,
+   "f": 444,
+   "need": 4.5
+  },
+  "node-3": {
+   "cr": 17.03,
+   "f": 444,
+   "need": 4.5
+  },
+  "cap2-0": {
+   "cr": 10.78,
+   "f": 524,
+   "need": 3
+  },
+  "np-title": {
+   "cr": 16.98,
+   "f": 488,
+   "need": 3
+  },
+  "np-k0": {
+   "cr": 6.21,
+   "f": 532,
+   "need": 4.5
+  },
+  "np-v0": {
+   "cr": 14.65,
+   "f": 496,
+   "need": 4.5
+  },
+  "np-k1": {
+   "cr": 6.16,
+   "f": 532,
+   "need": 4.5
+  },
+  "np-v1": {
+   "cr": 15.05,
+   "f": 500,
+   "need": 4.5
+  },
+  "np-prep": {
+   "cr": 16.55,
+   "f": 532,
+   "need": 4.5
+  },
+  "np-p0": {
+   "cr": 4.84,
+   "f": 532,
+   "need": 4.5
+  },
+  "np-p1": {
+   "cr": 4.84,
+   "f": 532,
+   "need": 4.5
+  },
+  "np-p2": {
+   "cr": 4.83,
+   "f": 524,
+   "need": 4.5
+  },
+  "toast-h": {
+   "cr": 16.09,
+   "f": 556,
+   "need": 4.5
+  },
+  "toast-l": {
+   "cr": 9.81,
+   "f": 564,
+   "need": 4.5
+  },
+  "toast-t": {
+   "cr": 7.18,
+   "f": 560,
+   "need": 4.5
+  },
+  "sl-ch": {
+   "cr": 10.36,
+   "f": 596,
+   "need": 4.5
+  },
+  "sl-name": {
+   "cr": 10.52,
+   "f": 596,
+   "need": 4.5
+  },
+  "sl-app": {
+   "cr": 5,
+   "f": 600,
+   "need": 4.5
+  },
+  "sl-time": {
+   "cr": 4.63,
+   "f": 604,
+   "need": 4.5
+  },
+  "sl-msg": {
+   "cr": 11.63,
+   "f": 612,
+   "need": 3
+  },
+  "sl-r": {
+   "cr": 9.19,
+   "f": 600,
+   "need": 4.5
+  },
+  "cap3-0": {
+   "cr": 12.58,
+   "f": 604,
+   "need": 3
+  },
+  "pay-0": {
+   "cr": 19.09,
+   "f": 668,
+   "need": 3
+  },
+  "pay-1": {
+   "cr": 12.37,
+   "f": 676,
+   "need": 3
+  },
+  "wordmark": {
+   "cr": 15.3,
+   "f": 788,
+   "need": 3
+  },
+  "tag": {
+   "cr": 10.55,
+   "f": 792,
+   "need": 3
+  },
+  "cta": {
+   "cr": 3.43,
+   "f": 824,
+   "need": 3
+  },
+  "url": {
+   "cr": 6.18,
+   "f": 820,
+   "need": 3
+  }
+ },
+ "list": [
+  {
+   "f": 440,
+   "kind": "mockup",
+   "id": "cap1-0 over flow-window",
+   "area": 9701
+  },
+  {
+   "f": 444,
+   "kind": "mockup",
+   "id": "cap1-0 over flow-window",
+   "area": 8926
+  },
+  {
+   "f": 448,
+   "kind": "mockup",
+   "id": "cap1-0 over flow-window",
+   "area": 9430
+  }
+ ]
+}
