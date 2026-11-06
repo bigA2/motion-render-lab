@@ -1,0 +1,3 @@
+stream|width=1080|height=1350|r_frame_rate=60/1|
+stream|r_frame_rate=0/0
+format|duration=14.000000
