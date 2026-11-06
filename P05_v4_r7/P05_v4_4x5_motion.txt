@@ -1,0 +1,1 @@
+motion video.mp4: 28 windows, min 0.453 at 5.5 s, floor 0.4 -> ok
