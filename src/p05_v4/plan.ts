@@ -26,7 +26,7 @@ export const T = {
   w1: 0, manual: s(0.5), box: s(1.05), card: s(1.5), click: s(1.78), lift: s(2.0), whip1: s(2.25), doc: s(2.5), type1: s(2.62),
   whip2: s(3.0), chat: s(3.25), type2: s(3.3), pull: s(3.7), shrink: s(4.05), w2: s(4.32),
   ring: s(4.36), bar: s(4.78), type3: s(4.86), enter: s(6.25),
-  w3: s(6.25), n1: s(6.5), n2: s(6.78), n3: s(7.0), n4: s(7.2), dive: s(7.45), page: s(7.7), ttl: s(7.75), props: s(8.0), ticks: s(8.3),
+  w3: s(6.25), n1: s(6.4), n2: s(6.78), n3: s(7.0), n4: s(7.2), dive: s(7.45), page: s(7.7), ttl: s(7.75), props: s(8.0), ticks: s(8.3),
   whip3: s(8.95), toast: s(9.22), msg: s(9.5), react: s(9.78), pullB: s(10.25), pay1: s(10.62), pay2: s(10.88), collapse: s(11.7),
   w4: s(11.95), logo: s(12.25), sweep: s(12.45), word: s(12.62), tag: s(12.95), cta: s(13.22), url: s(13.45), end: TOTAL,
 };
@@ -86,8 +86,8 @@ export function camKeys(L: Lay): Key[] {
     // W2 turn (own world, centred on the bar)
     [T.w2 + 1, c(0, 0, 1.0, 0), 'linear'], [T.type3, c(0, 0, 1.03, 0), 'softOut'], [T.enter - 6, c(0, 0, 1.1, 0), 'linear'], [T.enter, c(0, 0, 1.22, 0), 'inHard'],
     // W3 product: track the pulse along the nodes, frame the whole flow, dive, whip, pull back
-    [T.w3 + 1, c(N[0].x, N[0].y, 1.15, 0), 'linear'], [T.n2, c(N[1].x, N[1].y, 1.0, 0), 'swift'], [T.n4, c(0, 0, w ? 0.68 : 0.58, 0), 'swift'],
-    [T.dive, c(0, 0, w ? 0.7 : 0.6, 0), 'linear'], [T.page, c(N[2].x, N[2].y, 1.0, 0), 'swift'], [T.whip3, c(N[2].x, N[2].y, 1.05, 0.6), 'linear'],
+    [T.w3 + 1, c(N[0].x, N[0].y, 1.15, 0), 'linear'], [T.n2, c(N[1].x, N[1].y, 1.0, 0), 'swift'], [T.n4, c(0, 0, w ? 0.68 : 0.61, 0), 'swift'],
+    [T.dive, c(0, 0, w ? 0.7 : 0.63, 0), 'linear'], [T.page, c(N[2].x, N[2].y, 1.0, 0), 'swift'], [T.whip3, c(N[2].x, N[2].y, 1.05, 0.6), 'linear'],
     [T.toast, c(N[3].x, N[3].y, 1.0, -0.5), 'swift'], [T.pullB, c(N[3].x, N[3].y, 1.07, 0), 'linear'],
     [T.pay1, c(0, w ? -610 : -470, w ? 0.5 : 0.46, -2), 'swift'], [T.collapse, c(0, w ? -620 : -480, w ? 0.52 : 0.48, -1), 'linear'], [T.w4, c(0, w ? -620 : -480, 0.03, 6), 'inHard'],
     // W4 end: slow continuous push to the last frame
@@ -121,7 +121,7 @@ export function events(): Ev[] {
   ev(T.click, 'click', 'click_1', 50, -18, 'cursor clicks the name (1st click)', 'a real cursor click', {pan: 0.1});
   ev(T.click + 7, 'click', 'click_2', 50, -19, 'cursor clicks the name (2nd click, double-click) - name highlights', 'second click of the double-click', {pan: 0.1});
   e.push(W(T.whip1, 'whoosh_25', 250, -11, 0.3, 'whip from the booking card to the Deals doc (down-right)'));
-  ev(T.doc, 'swipe', 'slide_paper_a', 460, -16, 'Deals doc slides in from the right and stops', 'a slide-in panel = swipe (paper slide, not a pop)', {pan: 0.25, eq: 'highpass=f=300'});
+  ev(T.doc - 12, 'swipe', 'slide_paper_a', 260, -16, 'Deals doc slides in from the right (2.23-2.50 s) and stops', 'a slide-in panel = swipe (paper slide, not a pop)', {pan: 0.25, eq: 'highpass=f=300'});
   e.push(W(T.whip2, 'whoosh_45', 250, -11, 0.2, 'whip from the doc to the #sales chat (up-right)', 1.8));
   ev(T.chat, 'pop', 'pop_3', 140, -17, 'chat panel arrives from depth and lands', 'element lands');
   ev(T.pull + 14, 'tick', 'tick_a', 80, -18, 'clock hand stops on 11:47 PM', 'small mechanical stop');
@@ -149,9 +149,10 @@ export function events(): Ev[] {
   ev(T.logo, 'impact', 'impact_c', 500, -3, 'logo mark lands through the ring', 'structural moment 3 of 3 (logo), after 0.25 s near-silence', {verb: 'short room'});
   ev(T.cta + 6, 'pop', 'pop_5', 140, -17, '"Join the waitlist" pill lands', 'element lands', {rate: 0.94});
   // --- typing: one soft key per 1-2 letters, only while letters appear
+  let kv = 0; // every key is its own synthesized variant (own noise seed): never the same sample twice in a row
   for (const [name, ty] of Object.entries(TY)) {
     const k = typeKeys(ty); const step = ty.cps > 30 ? 2 : 1;
-    k.forEach((f, i) => { if (i % step) return; ev(f, 'key', 'key', 60, -24 + ((i * 7) % 5) - 2, `letter ${i + 1}${step > 1 ? `-${Math.min(i + 2, k.length)}` : ''} of "${ty.text}" appears (${name})`, 'soft keyboard key while text is typed', {rate: Math.pow(2, (((i * 13) % 9) - 4) / 2 / 12), pan: name === 'prompt' ? 0 : 0.1}); });
+    k.forEach((f, i) => { if (i % step) return; kv++; ev(f, 'key', `key_${kv}`, 60, -24 + ((i * 7) % 5) - 2, `letter ${i + 1}${step > 1 ? `-${Math.min(i + 2, k.length)}` : ''} of "${ty.text}" appears (${name})`, 'soft keyboard key while text is typed', {rate: Math.pow(2, (((i * 13) % 9) - 4) / 2 / 12), pan: name === 'prompt' ? 0 : 0.1}); });
   }
   return e.sort((p, q) => p.f - q.f);
 }
@@ -166,6 +167,9 @@ export function checkRules(ev: Ev[]) {
   for (let i = 0; i < nk.length; i++) for (let j = i + 1; j < nk.length; j++) { const a = nk[i], b = nk[j]; if (a.snd === b.snd && Math.abs(a.f - b.f) < 0.4 * FPS) errs.push(`${a.snd} repeats within 0.4 s at ${a.f}/${b.f}`); }
   for (const k of ['whoosh', 'pop', 'tick', 'impact', 'click', 'swipe']) { const xs = nk.filter((x) => x.kind === k); for (let i = 1; i < xs.length; i++) if (xs[i].snd === xs[i - 1].snd) errs.push(`same sample twice in a row: ${xs[i].snd} at ${xs[i].f}`); }
   for (const [a, b] of SILENCE) for (const x of ev) { const end = x.f + (x.kind === 'riser' ? 0 : 0); if (end >= a && end <= b) errs.push(`event inside silence ${a}-${b}: ${x.snd} at ${x.f}`); }
+  const spans = Object.values(TY).map((t) => { const k = typeKeys(t); return [k[0], k[k.length - 1]]; });
+  for (const x of ev.filter((x) => x.kind === 'key')) if (!spans.some(([a, b]) => x.f >= a && x.f <= b)) errs.push(`key outside typing at ${x.f}`);
+  const ks = ev.filter((x) => x.kind === 'key').map((x) => x.snd); if (new Set(ks).size !== ks.length) errs.push('key variant reused');
   const dens = nk.length / (TOTAL / FPS); if (dens < 1.5 || dens > 2.5) errs.push(`density ${dens.toFixed(2)}/s (non-key events)`);
   return errs;
 }

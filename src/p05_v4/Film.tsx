@@ -229,10 +229,10 @@ const World1: React.FC<{f: number; L: L}> = ({f, L}) => {
 // ======================================================= WORLD 2 =======================================================
 const World2: React.FC<{f: number; L: L}> = ({f, L}) => {
   const flare = prog(f, T.w2, 8, 'snapOut'); const draw = prog(f, T.ring, T.bar - 12 - T.ring, 'swift'); const m = prog(f, T.bar - 12, 14, 'swift');
-  const BW = L.wide ? 1140 : 960, BH = L.wide ? 150 : 210; const R = L.wide ? 400 : 420;
+  const BW = L.wide ? 1140 : 1000, BH = L.wide ? 190 : 240; const R = L.wide ? 400 : 420;
   const w = lerp(R * 2, BW, m), h = lerp(R * 2, BH, m), rad = lerp(R, BH / 2, m);
   const tilt = lerp(14, 0, prog(f, T.bar, T.enter - T.bar, 'softOut'));
-  const txt = typed(P.TY.prompt, f); const press = f >= T.enter - 4 && f < T.enter + 4;
+  const txt = typed(P.TY.prompt, f).replace('? ', '?\n'); const press = f >= T.enter - 4 && f < T.enter + 4;
   const pulse = prog(f, T.enter - 2, 10, 'inHard');
   return <>
     {/* light point */}
@@ -248,10 +248,10 @@ const World2: React.FC<{f: number; L: L}> = ({f, L}) => {
           {m > 0.8 && <>
             <div style={{width: 64, height: 64, borderRadius: 16, background: '#fff', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center'}}><Img src={staticFile('logo-fansa.png')} style={{width: 54, height: 54}} /></div>
             <div style={{flex: 1, minWidth: 0, whiteSpace: 'normal'}}>
-              {txt.length === 0 && <span style={{fontFamily: F.sans, fontSize: L.wide ? 50 : 46, color: '#6F8197'}}>Describe your automation…</span>}
-              {txt.length > 0 && <Tx id="prompt" size={L.wide ? 50 : 46} color="#FFFFFF" weight={600} anim={P.shown(P.TY.prompt, f) < P.TY.prompt.text.length} style={{whiteSpace: 'normal', maxWidth: L.wide ? 900 : 700}}>{txt}<Caret on={f < T.enter} c={ICE} h={44} /></Tx>}
+              {txt.length === 0 && <span style={{fontFamily: F.sans, fontSize: L.wide ? 48 : 40, color: '#6F8197'}}>Describe your automation…</span>}
+              {txt.length > 0 && <Tx id="prompt" size={L.wide ? 48 : 40} color="#FFFFFF" weight={600} anim={P.shown(P.TY.prompt, f) < P.TY.prompt.text.length} style={{whiteSpace: 'pre'}}>{txt}<Caret on={f < T.enter} c={ICE} h={44} /></Tx>}
             </div>
-            <div style={{width: BH * 0.62, height: BH * 0.62, borderRadius: '50%', flexShrink: 0, background: `linear-gradient(140deg, ${ICE}, ${STEEL})`, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${press ? 0.86 : 1})`, boxShadow: `0 0 ${press ? 60 : 24}px ${a(ICE, 0.7)}`}}>
+            <div style={{width: BH * 0.5, height: BH * 0.5, borderRadius: '50%', flexShrink: 0, background: `linear-gradient(140deg, ${ICE}, ${STEEL})`, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${press ? 0.86 : 1})`, boxShadow: `0 0 ${press ? 60 : 24}px ${a(ICE, 0.7)}`}}>
               <svg width="40" height="40" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" stroke="#04121F" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
           </>}
           <Spec f0={T.bar + 4} dur={50} />

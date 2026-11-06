@@ -14,6 +14,7 @@ for i in range(1, 6): SRC[f'pop_{i}'] = f'proc/node_pop_{i}.ogg'
 seen = Counter(); rows = []
 for i, (e, r) in enumerate(zip(ev, rep)):
     seen[e['snd']] += 1
+    if e['snd'].startswith('key'): SRC[e['snd']] = SRC['key'] + f"; variant #{e['snd'].split('_')[1]} (own noise seed {1000 + int(e['snd'].split('_')[1])}, release {55}-{80} ms random)"
     rows.append(f"| {i + 1} | {e['f'] / FPS:.2f} | {round(e['f'])} | {e['cause']} | {e['kind']} | {SRC[e['snd']]} | {r['len_ms']} | {e['gain']:.0f} | {e.get('pan', 0):+.2f} | "
                 f"{e.get('eq') or '-'}{' / rate ' + format(e.get('rate'), '.3f') if e.get('rate') and abs(e['rate'] - 1) > 1e-3 else ''} | {e.get('verb') or 'none'} | {e['why']} | {seen[e['snd']] - 1} |")
 nk = [e for e in ev if e['kind'] != 'key']; dur = J['frames'] / FPS

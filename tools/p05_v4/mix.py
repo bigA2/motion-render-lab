@@ -57,8 +57,8 @@ def key(seed, rate):
 L = np.zeros(ns); R = np.zeros(ns); duck = np.ones(ns); rep = []
 for i, e in enumerate(J['ev']):
     k, snd = e['kind'], e['snd']; rate = e.get('rate') or 1.0; t = e['f'] / FPS
-    if snd == 'key':
-        s = key(1000 + i, rate)
+    if snd.startswith('key'):
+        s = key(1000 + int(snd.split('_')[1]), rate)  # key_N = synth variant N (own noise seed)
     else:
         af = [x for x in [e.get('eq') or '', f'asetrate={int(SR * rate)},aresample={SR}' if abs(rate - 1) > 1e-3 else '',
                           'aecho=0.8:0.6:35|60:0.22|0.12' if e.get('verb') == 'short room' else ''] if x]
