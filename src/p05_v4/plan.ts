@@ -130,12 +130,12 @@ export function events(): Ev[] {
   ev(T.bar + 2, 'pop', 'pop_4', 140, -17, 'ring squashes into the prompt bar and lands', 'element lands');
   // --- product
   ev(T.enter, 'impact', 'impact_b', 450, -3, 'Enter: the light pulse fires into the flow (product reveal) + white flash', 'structural moment 2 of 3 (product reveal), after 0.25 s near-silence', {eq: 'lowpass=f=10000'});
-  ev(T.n1, 'pop', 'pop_5', 140, -19, 'node "Booking" pops in', 'node lands', {pan: -0.3});
-  ev(T.n2, 'pop', 'pop_1', 140, -19, 'node "FansaChat" pops in', 'node lands', {pan: -0.1, rate: 1.06});
-  ev(T.n3, 'pop', 'pop_2', 140, -19, 'node "Notion" pops in', 'node lands', {pan: 0.1, rate: 1.12});
-  ev(T.n4, 'pop', 'pop_3', 140, -19, 'node "Slack" pops in', 'node lands', {pan: 0.3, rate: 1.18});
+  ev(T.n1 + 2, 'pop', 'pop_5', 140, -19, 'node "Booking" pops in', 'node lands', {pan: -0.3});
+  ev(T.n2 + 2, 'pop', 'pop_1', 140, -19, 'node "FansaChat" pops in', 'node lands', {pan: -0.1, rate: 1.06});
+  ev(T.n3 + 2, 'pop', 'pop_2', 140, -19, 'node "Notion" pops in', 'node lands', {pan: 0.1, rate: 1.12});
+  ev(T.n4 + 2, 'pop', 'pop_3', 140, -19, 'node "Slack" pops in', 'node lands', {pan: 0.3, rate: 1.18});
   e.push(W(T.dive, 'whoosh_25', 250, -12, 0, 'camera dives into the Notion node'));
-  ev(T.page - 12, 'swipe', 'slide_paper_b', 600, -14, 'the Notion page unfolds out of the node (3D flip) and lands at 7.70 s', 'paper/page whoosh for the page appearing', {eq: 'highpass=f=250', verb: 'short room'});
+  ev(T.dive + 6, 'swipe', 'slide_paper_b', 300, -14, 'the Notion page unfolds out of the node (3D flip, 7.55-7.70 s) and lands', 'paper/page whoosh for the page appearing', {eq: 'highpass=f=250', verb: 'short room'});
   ev(T.ticks, 'tick', 'tick_b', 80, -17, 'prep box 1 ticks', 'checkbox tick');
   ev(T.ticks + 13, 'tick', 'tick_c', 80, -18, 'prep box 2 ticks', 'checkbox tick');
   ev(T.ticks + 26, 'tick', 'tick_a', 80, -18, 'prep box 3 ticks', 'checkbox tick', {rate: 1.08});
@@ -145,8 +145,8 @@ export function events(): Ev[] {
   e.push(W(T.pullB, 'whoosh_p', 420, -12, 0, 'pull back over the finished flow', 1.3));
   // --- payoff + end
   ev(s(12.0), 'riser', 'riser', 1050, -10, 'payoff holds while the flow pulses; ends as everything has collapsed to a point (12.00 s)', 'the one build into the logo reveal (1.05 s); then 0.25 s near-silence', {eq: 'highpass=f=200'});
-  e.push(W(T.collapse, 'whoosh_25', 250, -12, 0, 'flow + payoff collapse into one point'));
-  ev(T.logo, 'impact', 'impact_c', 500, -3, 'logo mark lands through the ring', 'structural moment 3 of 3 (logo), after 0.25 s near-silence', {verb: 'short room'});
+  e.push(W(T.collapse + 5, 'whoosh_25', 170, -12, 0, 'flow + payoff collapse into one point (visible 11.78-11.95 s, accelerating)', 1.3));
+  ev(T.logo + 1, 'impact', 'impact_c', 500, -3, 'logo mark lands through the ring (first visible frame)', 'structural moment 3 of 3 (logo), after 0.25 s near-silence', {verb: 'short room'});
   ev(T.cta + 6, 'pop', 'pop_5', 140, -17, '"Join the waitlist" pill lands', 'element lands', {rate: 0.94});
   // --- typing: one soft key per 1-2 letters, only while letters appear
   let kv = 0; // every key is its own synthesized variant (own noise seed): never the same sample twice in a row
