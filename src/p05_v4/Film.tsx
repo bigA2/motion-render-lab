@@ -184,7 +184,7 @@ const Clock: React.FC<{f: number; L: L}> = ({f, L}) => {
 const HeroPill: React.FC<{f: number; L: L}> = ({f, L}) => {
   const S = P.ST(L); const p1 = prog(f, T.lift, T.doc + 6 - T.lift, 'swift');
   if (f < T.lift || f >= T.doc + 6) return null;
-  const a0 = {x: S.card.x + 10, y: S.card.y - 110}, a1 = {x: S.doc.x - 240, y: S.doc.y + 120};
+  const a0 = {x: S.card.x + 300, y: S.card.y - 150}, a1 = {x: S.doc.x - 240, y: S.doc.y + 120};
   const x = lerp(a0.x, a1.x, p1), y = lerp(a0.y, a1.y, p1) - Math.sin(p1 * Math.PI) * 220;
   return <At x={x} y={y} w={300} h={60} style={{display: 'flex', justifyContent: 'center', transform: `scale(${(1 + Math.sin(p1 * Math.PI) * 0.35).toFixed(3)}) rotate(${(Math.sin(p1 * Math.PI) * -6).toFixed(2)}deg)`}}><Pill f={f} at={T.lift} on={false} id="pill-fly" /></At>;
 };
@@ -374,9 +374,9 @@ const SlackMsg: React.FC<{f: number; L: L}> = ({f, L}) => {
 const Payoff: React.FC<{f: number; L: L}> = ({f, L}) => {
   const Wn = P.WIN3(L); const top = -Wn.h / 2; const o = prog(f, T.collapse, 14, 'inHard');
   const ws: [string, number, number, string][] = L.wide ? [['Make your work life', T.pay1, 200, '#FFFFFF'], ['hassle-free.', T.pay2, 300, ICE]] : [['Make your work life', T.pay1, 180, '#FFFFFF'], ['hassle-free.', T.pay2, 272, ICE]];
-  void top; const ys = L.wide ? [-902, -550] : [-1305, -994];
+  void top; const ys = L.wide ? [-902, -550] : [-1330, -994];
   return <>{ws.map(([t, f0, S, c], i) => { const p = prog(f, f0, i ? 9 : 14, i ? 'snapOut' : 'softOut'); if (p <= 0) return null;
-    const sc = i ? lerp(1.2, 1, p) : lerp(0.6, 1, p); const bl = (1 - p) * 14;
+    const sc = i ? lerp(1.12, 1, p) : lerp(0.6, 1, p); const bl = (1 - p) * 14;
     const sw = ((f - T.pay2 - 8) / 30);
     return <At key={i} x={0} y={ys[i]} w={5200} h={S * 1.3} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', opacity: (i ? clamp((p - 0.35) * 2.5) : clamp(p * 1.5)) * (1 - o), transform: `scale(${(sc * (1 + 0.03 * prog(f, f0, 80, 'linear'))).toFixed(4)})`, filter: bl > 0.3 ? `blur(${bl.toFixed(1)}px)` : undefined}}>
       <span style={{position: 'relative', display: 'inline-block', overflow: 'hidden'}}>
@@ -437,7 +437,7 @@ export const Film: React.FC = () => {
   const blur = bx > 0.4 || by > 0.4;
   const bg = f < T.box + 6 ? 'A' : wd === 1 ? 'B' : wd === 2 ? 'C' : wd === 4 ? 'G' : f < T.dive + 8 ? 'D' : f < T.whip3 + 8 ? 'E' : f < T.pullB ? 'F' : 'G';
   const pre = f < T.w2 ? prog(f, T.shrink + 6, T.w2 - T.shrink - 6, 'inHard') : 0; // the world shrinking into one light point
-  const flash = Math.max(0, 1 - Math.abs(f - T.enter) / 6) * 0.5 + Math.max(0, 1 - Math.abs(f - T.logo) / 5) * 0.25;
+  const flash = (f >= T.enter ? Math.max(0, 1 - (f - T.enter) / 8) * 0.5 : 0) + (f >= T.logo ? Math.max(0, 1 - (f - T.logo) / 6) * 0.25 : 0);
   return <AbsoluteFill style={{background: NIGHT, overflow: 'hidden'}}>
     {bg === 'A' && <GridFly speed={lerp(1, 0.3, prog(f, s(0.9), 20))} />}
     {bg === 'B' && <DotWorld cx={c.x} cy={c.y} z={c.z} warm={prog(f, T.pull, 30)} />}

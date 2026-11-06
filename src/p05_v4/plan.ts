@@ -114,7 +114,7 @@ export function events(): Ev[] {
   const ev = (f: number, kind: Sfx['kind'], snd: string, len: number, gain: number, cause: string, why: string, o: Partial<Ev> = {}) =>
     e.push({f, kind, snd, len, gain, pan: 0, eq: '', verb: 'none', cause, src: cause, why, ...o});
   // --- hook
-  ev(T.manual, 'impact', 'impact_a', 1200, -3, '"manual" slams in from in front of the camera', 'structural moment 1 of 3 (hook word)', {eq: 'lowpass=f=9000'});
+  ev(T.manual, 'impact', 'impact_a', 450, -3, '"manual" slams in from in front of the camera', 'structural moment 1 of 3 (hook word)', {eq: 'lowpass=f=9000'});
   ev(T.manual + 2, 'pop', 'pop_1', 140, -18, 'selection box snaps around "manual"', 'a small frame landing', {pan: -0.15});
   // --- manual world
   ev(T.card, 'pop', 'pop_2', 140, -17, 'booking card finishes its flip and lands', 'element lands');
@@ -129,7 +129,7 @@ export function events(): Ev[] {
   // --- turn
   ev(T.bar + 2, 'pop', 'pop_4', 140, -17, 'ring squashes into the prompt bar and lands', 'element lands');
   // --- product
-  ev(T.enter, 'impact', 'impact_b', 800, -3, 'Enter: the light pulse fires into the flow (product reveal) + white flash', 'structural moment 2 of 3 (product reveal), after 0.25 s near-silence', {eq: 'lowpass=f=10000'});
+  ev(T.enter, 'impact', 'impact_b', 450, -3, 'Enter: the light pulse fires into the flow (product reveal) + white flash', 'structural moment 2 of 3 (product reveal), after 0.25 s near-silence', {eq: 'lowpass=f=10000'});
   ev(T.n1, 'pop', 'pop_5', 140, -19, 'node "Booking" pops in', 'node lands', {pan: -0.3});
   ev(T.n2, 'pop', 'pop_1', 140, -19, 'node "FansaChat" pops in', 'node lands', {pan: -0.1, rate: 1.06});
   ev(T.n3, 'pop', 'pop_2', 140, -19, 'node "Notion" pops in', 'node lands', {pan: 0.1, rate: 1.12});
@@ -146,7 +146,7 @@ export function events(): Ev[] {
   // --- payoff + end
   ev(s(12.0), 'riser', 'riser', 1050, -10, 'payoff holds while the flow pulses; ends as everything has collapsed to a point (12.00 s)', 'the one build into the logo reveal (1.05 s); then 0.25 s near-silence', {eq: 'highpass=f=200'});
   e.push(W(T.collapse, 'whoosh_25', 250, -12, 0, 'flow + payoff collapse into one point'));
-  ev(T.logo, 'impact', 'impact_c', 800, -3, 'logo mark lands through the ring', 'structural moment 3 of 3 (logo), after 0.25 s near-silence', {verb: 'short room'});
+  ev(T.logo, 'impact', 'impact_c', 500, -3, 'logo mark lands through the ring', 'structural moment 3 of 3 (logo), after 0.25 s near-silence', {verb: 'short room'});
   ev(T.cta + 6, 'pop', 'pop_5', 140, -17, '"Join the waitlist" pill lands', 'element lands', {rate: 0.94});
   // --- typing: one soft key per 1-2 letters, only while letters appear
   for (const [name, ty] of Object.entries(TY)) {

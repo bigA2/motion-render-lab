@@ -69,7 +69,7 @@ for i, e in enumerate(J['ev']):
     elif k == 'whoosh':
         s = fade(s[:n] if n and len(s) > n else s, 0.01, 0.06); start = t
     else:
-        s = fade(s[:n], 0.002, 0.25) if (k == 'chime' and n and len(s) > n) else fade(s, 0.002, 0.03); start = t
+        s = fade(s[:n], 0.002, n / SR * 0.6 if k == 'impact' else 0.25) if (k in ('chime', 'impact') and n and len(s) > n) else fade(s, 0.002, 0.03); start = t
     s = s / (np.abs(s).max() + 1e-12) * db(e['gain'])
     p = (e.get('pan') or 0); gl, gr = np.cos((p + 1) * np.pi / 4), np.sin((p + 1) * np.pi / 4)
     a = int(round(start * SR))
