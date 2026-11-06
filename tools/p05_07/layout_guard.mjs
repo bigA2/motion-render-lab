@@ -6,6 +6,8 @@
 //   contrast — WCAG contrast between the text colour and the pixels around the glyphs inside its box, measured on
 //              the rendered frame (10th percentile of the background pixels), is under 4.5:1 (or 3:1 for >= 48 px)
 //   unseen   — a fully visible text box has (almost) no pixels of its own colour: it is covered by something
+//   mockup   — a visible text box (opacity >= 0.2) overlaps a visible mockup box (<M>, opacity >= 0.2) it does not belong to
+//              (only for compositions that register mockups; text inside its own mockup is UI content)
 // Contrast/size/unseen are skipped while the text itself is motion-blurred or fading (opacity < 0.9).
 // Usage: node layout_guard.mjs <video.mp4> <report.json> <frameOffset> <tg1.json> [tg2.json ...]
 // MIT, our own code.
@@ -27,7 +29,7 @@ const lum = (r, g, b) => 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
 const ratio = (a, b) => (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
 const onScreen = (b) => b.x < W && b.y < H && b.x + b.w > 0 && b.y + b.h > 0;
 
-const viol = []; let checked = 0, boxesChecked = 0, contrastMeasured = 0; const worst = {};
+const viol = []; let checked = 0, boxesChecked = 0, contrastMeasured = 0, mockChecks = 0; const worst = {};
 const geom = (fr) => {
   const vis = fr.boxes.filter((b) => b.o >= 0.2 && onScreen(b));
   const sx0 = W * SAFE, sy0 = H * SAFE, sx1 = W - sx0, sy1 = H - sy0;
@@ -36,6 +38,12 @@ const geom = (fr) => {
     const a = vis[i], b = vis[j]; const ix = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x), iy = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y);
     if (ix > 1 && iy > 1) viol.push({f: fr.f, kind: 'overlap', id: `${a.id} × ${b.id}`, area: Math.round(ix * iy)});
   }
+  for (const m of (fr.mocks || []).filter((m) => m.o >= 0.2)) for (const b of vis) {
+    if (b.mk === m.id) continue;
+    const ix = Math.min(m.x + m.w, b.x + b.w) - Math.max(m.x, b.x), iy = Math.min(m.y + m.h, b.y + b.h) - Math.max(m.y, b.y);
+    if (ix > 1 && iy > 1) viol.push({f: fr.f, kind: 'mockup', id: `${b.id} over ${m.id}`, area: Math.round(ix * iy)});
+  }
+  mockChecks += (fr.mocks || []).length;
   for (const b of vis) if (b.o >= 0.9 && !b.blur && b.px < MIN_PX) viol.push({f: fr.f, kind: 'size', id: b.id, px: b.px});
   boxesChecked += vis.length;
 };
@@ -84,7 +92,7 @@ ff.stdout.on('data', (d) => {
   acc = Buffer.concat([acc, d]);
   while (acc.length >= FS) {
     const buf = acc.subarray(0, FS); const f = OFF + k * EVERY; k++;
-    if (want.has(f)) { const fr = byF.get(f); const n0 = viol.length; geom(fr); pixels(fr, buf); checked++; if (viol.length > n0 && shots.length < 8) shots.push({f, buf: Buffer.from(buf), boxes: fr.boxes}); }
+    if (want.has(f)) { const fr = byF.get(f); const n0 = viol.length; geom(fr); pixels(fr, buf); checked++; if (viol.length > n0 && shots.length < 8) shots.push({f, buf: Buffer.from(buf), boxes: fr.boxes, mocks: fr.mocks}); }
     acc = acc.subarray(FS);
   }
 });
@@ -97,14 +105,15 @@ for (const s of shots) {
   const rect = (x, y, w, h, c) => { for (let t = 0; t < 3; t++) { for (let xx = Math.round(x); xx < x + w; xx++) { px(xx, Math.round(y) + t, c); px(xx, Math.round(y + h) - t, c); } for (let yy = Math.round(y); yy < y + h; yy++) { px(Math.round(x) + t, yy, c); px(Math.round(x + w) - t, yy, c); } } };
   rect(W * SAFE, H * SAFE, W * (1 - 2 * SAFE), H * (1 - 2 * SAFE), [0, 200, 0]);
   for (const b of s.boxes) if (b.o >= 0.2) rect(b.x, b.y, b.w, b.h, [255, 0, 0]);
+  for (const m of s.mocks || []) if (m.o >= 0.2) rect(m.x, m.y, m.w, m.h, [0, 140, 255]);
   const ppm = Buffer.concat([Buffer.from(`P6\n${W} ${H}\n255\n`), s.buf]);
   spawnSync('ffmpeg', ['-v', 'error', '-y', '-f', 'image2pipe', '-c:v', 'ppm', '-i', '-', '-vf', 'scale=540:-2', path.join(dir, `f${String(s.f).padStart(5, '0')}.jpg`)], {input: ppm});
 }
 
 const kinds = {}; viol.forEach((v) => (kinds[v.kind] = (kinds[v.kind] || 0) + 1));
-const rep = {video: path.basename(video), size: [W, H], every: EVERY, frames_with_guard: frames.length, frames_checked: checked, text_boxes_checked: boxesChecked, contrast_measured: contrastMeasured, violations: viol.length, by_kind: kinds, worst_contrast_per_text: worst, list: viol.slice(0, 400)};
+const rep = {video: path.basename(video), size: [W, H], every: EVERY, frames_with_guard: frames.length, frames_checked: checked, text_boxes_checked: boxesChecked, mockup_boxes_checked: mockChecks, contrast_measured: contrastMeasured, violations: viol.length, by_kind: kinds, worst_contrast_per_text: worst, list: viol.slice(0, 400)};
 writeFileSync(reportPath, JSON.stringify(rep, null, 1));
-console.log(`layout_guard ${rep.video}: ${checked} frames, ${boxesChecked} text boxes, ${contrastMeasured} contrast samples -> ${viol.length} violations ${JSON.stringify(kinds)}`);
+console.log(`layout_guard ${rep.video}: ${checked} frames, ${boxesChecked} text boxes, ${mockChecks} mockup boxes, ${contrastMeasured} contrast samples -> ${viol.length} violations ${JSON.stringify(kinds)}`);
 for (const v of viol.slice(0, 30)) console.log('  ', JSON.stringify(v));
 if (checked < frames.length * 0.95) { console.error(`layout_guard: only ${checked}/${frames.length} guard frames decoded`); process.exit(1); }
 process.exit(viol.length ? 1 : 0);

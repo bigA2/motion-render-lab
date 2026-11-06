@@ -13,6 +13,12 @@ export const G: React.FC<{id: string; size: number; color: string; children: Rea
   <span data-tg={id} data-tg-size={size} data-tg-color={color} data-tg-anim={anim ? '1' : undefined} style={{display: 'inline-block', fontSize: size, color, fontFamily: font, fontWeight: weight, ...style}}>{children}</span>
 );
 
+/** Mockup box (UI card, glass screen, footage). The layout guard checks that no <G> outside this box overlaps it
+ *  ("no text over mockups"). Text that belongs to the mockup itself (a <G> inside it) is UI content and is exempt. */
+export const M: React.FC<{id: string; children: React.ReactNode; style?: React.CSSProperties}> = ({id, children, style}) => (
+  <div data-mk={id} style={{position: 'absolute', left: 0, top: 0, ...style}}>{children}</div>
+);
+
 const effective = (el: Element) => {
   let o = 1, blur = (el as HTMLElement).dataset.tgAnim === '1'; let n: Element | null = el;
   while (n) {
@@ -35,9 +41,17 @@ export const TextGuard: React.FC<{every?: number; label?: string}> = ({every = 4
         const r = el.getBoundingClientRect(); const e = el as HTMLElement;
         const sc = e.offsetWidth > 0 ? r.width / e.offsetWidth : 1;
         const {o, blur} = effective(el);
-        return {id: e.dataset.tg, x: +r.x.toFixed(1), y: +r.y.toFixed(1), w: +r.width.toFixed(1), h: +r.height.toFixed(1), px: +(parseFloat(e.dataset.tgSize || '0') * sc).toFixed(1), c: e.dataset.tgColor, o: +o.toFixed(2), blur};
+        const own = (el.closest('[data-mk]') as HTMLElement | null)?.dataset.mk;
+        return {id: e.dataset.tg, x: +r.x.toFixed(1), y: +r.y.toFixed(1), w: +r.width.toFixed(1), h: +r.height.toFixed(1), px: +(parseFloat(e.dataset.tgSize || '0') * sc).toFixed(1), c: e.dataset.tgColor, o: +o.toFixed(2), blur, ...(own ? {mk: own} : {})};
       }).filter((b) => b.o > 0.02 && b.w > 0 && b.h > 0);
-      console.log('TG|' + JSON.stringify({f, w: width, h: height, label, boxes}));
+      // mockup boxes: the union of the rects of the element's direct children (3D-projected bounding boxes)
+      const mocks = Array.from(document.querySelectorAll('[data-mk]')).map((el) => {
+        const rs = Array.from(el.children).map((c) => c.getBoundingClientRect()).filter((r) => r.width > 0 && r.height > 0);
+        if (!rs.length) return null;
+        const x0 = Math.min(...rs.map((r) => r.left)), y0 = Math.min(...rs.map((r) => r.top)), x1 = Math.max(...rs.map((r) => r.right)), y1 = Math.max(...rs.map((r) => r.bottom));
+        return {id: (el as HTMLElement).dataset.mk, x: +x0.toFixed(1), y: +y0.toFixed(1), w: +(x1 - x0).toFixed(1), h: +(y1 - y0).toFixed(1), o: +effective(el).o.toFixed(2)};
+      }).filter((m) => m && m.o > 0.02);
+      console.log('TG|' + JSON.stringify({f, w: width, h: height, label, boxes, ...(mocks.length ? {mocks} : {})}));
       continueRender(h);
     });
   }, [f, every, width, height, label]);

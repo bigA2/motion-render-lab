@@ -1,4 +1,5 @@
 // Render a frame range of a src/p05_07 composition AND collect the TextGuard boxes the page logs (TG|{...}).
+// ENTRY=src/p05_v3/index.ts selects another Remotion entry (default src/p05_07/index.ts).
 // Usage: node tools/p05_07/render_guarded.mjs <compId> <out.mp4> <tg.json> [a b | p/k]  (frame range a..b inclusive, or part p of k)
 // MIT, our own code.
 import {bundle} from '@remotion/bundler';
@@ -7,7 +8,7 @@ import {writeFileSync} from 'fs';
 import path from 'path';
 
 const [id, out, tgOut, a, b] = process.argv.slice(2);
-const serveUrl = await bundle({entryPoint: path.resolve('src/p05_07/index.ts')});
+const serveUrl = await bundle({entryPoint: path.resolve(process.env.ENTRY || 'src/p05_07/index.ts')});
 const composition = await selectComposition({serveUrl, id});
 const N = composition.durationInFrames;
 let frameRange = a !== undefined && a !== '' ? [Math.max(0, +a), Math.min(N - 1, +b)] : null;
