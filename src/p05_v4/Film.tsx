@@ -465,7 +465,7 @@ export const Film: React.FC = () => {
 const ScreenCaps: React.FC<{f: number; L: L; lag: {x: number; y: number}}> = ({f, L, lag}) => {
   const caps: [string, number, number, number, number][] = [ // text, in, out, y (fraction of H), size
     ['Every booking. By hand.', T.pull + 22, T.w2 - 6, L.wide ? 0.84 : 0.78, L.wide ? 76 : 70],
-    ['Built from one sentence.', T.n4 + 4, T.dive + 4, L.wide ? 0.115 : 0.1, L.wide ? 60 : 62],
+    ['Built from one sentence.', T.n4 + 4, T.dive + 4, L.wide ? 0.115 : 0.06, L.wide ? 60 : 62],
     ['Real Notion page.', T.page + 10, T.whip3 + 2, L.wide ? 0.085 : 0.075, L.wide ? 56 : 60],
     ['Real Slack message.', T.msg + 10, T.pullB - 2, L.wide ? 0.115 : 0.1, L.wide ? 60 : 62],
   ];

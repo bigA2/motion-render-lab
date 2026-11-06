@@ -86,8 +86,8 @@ export function camKeys(L: Lay): Key[] {
     // W2 turn (own world, centred on the bar)
     [T.w2 + 1, c(0, 0, 1.0, 0), 'linear'], [T.type3, c(0, 0, 1.03, 0), 'softOut'], [T.enter - 6, c(0, 0, 1.1, 0), 'linear'], [T.enter, c(0, 0, 1.22, 0), 'inHard'],
     // W3 product: track the pulse along the nodes, frame the whole flow, dive, whip, pull back
-    [T.w3 + 1, c(N[0].x, N[0].y, 1.15, 0), 'linear'], [T.n2, c(N[1].x, N[1].y, 1.0, 0), 'swift'], [T.n4, c(0, 0, w ? 0.68 : 0.61, 0), 'swift'],
-    [T.dive, c(0, 0, w ? 0.7 : 0.63, 0), 'linear'], [T.page, c(N[2].x, N[2].y, 1.0, 0), 'swift'], [T.whip3, c(N[2].x, N[2].y, 1.05, 0.6), 'linear'],
+    [T.w3 + 1, c(N[0].x, N[0].y, 1.15, 0), 'linear'], [T.n2, c(N[1].x, N[1].y, 1.0, 0), 'swift'], [T.n4, c(0, 0, w ? 0.68 : 0.6, 0), 'swift'],
+    [T.dive, c(0, 0, w ? 0.7 : 0.62, 0), 'linear'], [T.page, c(N[2].x, N[2].y, 1.0, 0), 'swift'], [T.whip3, c(N[2].x, N[2].y, 1.05, 0.6), 'linear'],
     [T.toast, c(N[3].x, N[3].y, 1.0, -0.5), 'swift'], [T.pullB, c(N[3].x, N[3].y, 1.07, 0), 'linear'],
     [T.pay1, c(0, w ? -610 : -470, w ? 0.5 : 0.46, -2), 'swift'], [T.collapse, c(0, w ? -620 : -480, w ? 0.52 : 0.48, -1), 'linear'], [T.w4, c(0, w ? -620 : -480, 0.03, 6), 'inHard'],
     // W4 end: slow continuous push to the last frame
