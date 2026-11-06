@@ -21,7 +21,7 @@ export const PROMPT = 'New booking? Add to Notion, ping Slack.';
 export const T = {
   hook: 0, copy: 90, paste: 144, repeat: 180, every: 216, collapse: 244,
   turn: 258, bar: 292, enter: 404,
-  proof: 420, push: 500, built: 554, card1: 566, card2: 596, cap2: 560,
+  proof: 420, push: 490, built: 548, card1: 540, card2: 562, cap2: 548,
   payoff: 636, cta: 738, pill: 786, end: TOTAL,
 };
 // glow-trail typing: hook (~13 letters/s, starts mid-action), prompt (~21 letters/s so it fits the turn)

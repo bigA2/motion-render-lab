@@ -41,8 +41,8 @@ export const LiveWord: React.FC<{id: string; text: string; size: number; color: 
   // the parent null: slow drift + scale (<= 3 %) over the word's life, then a fast exit
   const [l0, l1] = life ?? [0, 120]; const lp = clamp((f - l0) / Math.max(1, l1 - l0));
   const o = out !== undefined ? ease((f - out) / 8, 'inHard') : 0;
-  const tr = `translate(${(noise(seed, f) * 4).toFixed(2)}px, ${(-o * 26).toFixed(2)}px) scale(${(1 + 0.028 * lp) * (1 - o * 0.06)})`;
+  const tr = `translate(${(noise(seed, f) * 4).toFixed(2)}px, ${(-o * 26).toFixed(2)}px) scale(${(1 + 0.022 * lp) * (1 - o * 0.06)})`;
   return <G id={id} size={size} color={color} font={font} weight={weight} anim={!settled || o > 0}
-    style={{lineHeight: 1.08, letterSpacing: '-0.025em', transform: tr, opacity: 1 - o, ...style}}>{letters}</G>;
+    style={{lineHeight: 1.08, letterSpacing: '-0.025em', transform: tr, transformOrigin: '50% 55%', opacity: 1 - o, ...style}}>{letters}</G>;
 };
 const noise = (seed: number, f: number) => Math.sin(f / 37 + seed * 1.7) * 0.6 + Math.sin(f / 23 + seed) * 0.4;

@@ -27,7 +27,7 @@ const Hook: React.FC<{f: number; L: L}> = ({f, L}) => {
   const w = (k: number, gap = true) => { const x = P.HOOK[k];
     return <span style={{display: 'inline-block', margin: gap ? `0 ${Math.round(L.hookSize * 0.13)}px` : 0}}><LiveWord id={`h-${k}`} text={x.t} size={L.hookSize} color={x.hot ? ICE : '#F4F7FA'} font={F.display} reveal={{kind: 'glow', g: P.GH, from: x.from}} life={[0, T.copy]} seed={k} out={T.copy - 6} /></span>; };
   return <div style={{position: 'absolute', left: 0, width: L.W, top: L.H / 2 - L.hookSize * 1.15, textAlign: 'center', transform: `translate(${hs.x}px, ${hs.y}px) scale(${push * hs.s})`}}>
-    <div>{w(0)}{w(1)}</div><div style={{marginTop: 10}}>{w(2)}{w(3)}</div>
+    <div>{w(0)}{w(1)}</div><div style={{marginTop: Math.round(L.hookSize * 0.14)}}>{w(2)}{w(3)}</div>
   </div>;
 };
 
@@ -50,55 +50,58 @@ const Problem: React.FC<{f: number; L: L}> = ({f, L}) => {
   const s = slots(L); const col = prog(f, T.collapse - 4, 12, 'inHard'); // collapse into the ring
   const wob = f >= T.every ? Math.sin((f - T.every) / 2.6) * 2.4 * clamp((f - T.every) / 10) : 0;
   const ring = center(L.mock);
-  const shrink = (b: P.Box, k: number): React.CSSProperties => { const c = center(b); return {transform: `translate(${(ring.x - c.x) * col}px, ${(ring.y - c.y) * col}px) scale(${lerp(1, 0.1, col)}) rotate(${wob * k}deg)`, opacity: 1 - clamp(col * 3)}; };
-  const inP = (f0: number) => prog(f, f0, 16, 'spring');
+  const fade = 1 - clamp((f - (T.collapse - 14)) / 8); // cards are gone before they converge on the ring
+  const pulse = f >= T.every ? 1 + 0.012 * Math.sin((f - T.every) / 2.2) : 1;
+  const shrink = (b: P.Box, k: number): React.CSSProperties => { const c = center(b); return {transform: `translate(${(ring.x - c.x) * col}px, ${(ring.y - c.y) * col}px) scale(${lerp(1, 0.1, col) * (k === 2 ? 1 : pulse)}) rotate(${k === 2 ? wob * k : 0}deg)`, opacity: k === 2 ? 1 - clamp(col * 3) : fade}; };
+  const inP = (f0: number) => prog(f, f0, 16, 'snapOut');
+  const inO = (f0: number) => clamp((f - f0) / 6);
   // copy: cursor grabs a ghost from the booking card and drops it into the doc card
-  const bk = center(s.book), dc = {x: s.doc.x + s.doc.w * 0.5, y: s.doc.y + s.doc.h * 0.62};
+  const bk = {x: s.book.x + s.book.w + 40, y: s.book.y + s.book.h * 0.75}, dc = {x: s.doc.x + s.doc.w * 0.5, y: s.doc.y + s.doc.h * 0.62};
   const drag = prog(f, T.copy + 12, 28, 'swift2');
   const gx = lerp(bk.x, dc.x, drag), gy = lerp(bk.y, dc.y, drag) - Math.sin(drag * Math.PI) * 60;
   const cur = f < T.copy + 8 ? {x: lerp(bk.x + 160, bk.x + 30, prog(f, T.copy, 8, 'softOut')), y: lerp(bk.y + 120, bk.y + 10, prog(f, T.copy, 8, 'softOut'))} : f < T.copy + 42 ? {x: gx + 30, y: gy + 10} : {x: lerp(dc.x + 30, dc.x + 120, prog(f, T.copy + 42, 30, 'softOut')), y: dc.y + 30};
   const press = f >= T.copy + 6 && f < T.copy + 42 ? 1 : 0;
   const rowIn = f >= T.copy + 42; // the dropped booking becomes a row of the doc card
   // paste: a ghost flies from the doc card into the chat bubble
-  const bb = center(s.bubble); const pp = prog(f, T.paste, 14, 'swift2');
+  const bb = center(s.bubble); const dl = {x: s.doc.x - 40, y: s.doc.y + s.doc.h * 0.8}; const pp = prog(f, T.paste - 2, 12, 'swift2');
   // repeat: the stack of copies
   const clockMin = Math.round(lerp(P.CLOCK.from, P.CLOCK.to, prog(f, T.repeat + 4, 28, 'inOut')));
   const clockTxt = `${((Math.floor(clockMin / 60) + 11) % 12) + 1}:${String(clockMin % 60).padStart(2, '0')} PM`;
   const gw = Math.min(330, s.stack.w - 30), gh = 60;
   return <>
     {/* booking card (source) */}
-    <M id="book"><Abs b={s.book} style={{...shrink(s.book, -1), transform: `${shrink(s.book, -1).transform} scale(${inP(T.copy - 4)})`}}>
+    <M id="book"><Abs b={s.book} style={{...shrink(s.book, -1), opacity: (shrink(s.book, -1).opacity as number) * inO(T.copy - 4), transform: `${shrink(s.book, -1).transform} scale(${lerp(0.9, 1, inP(T.copy - 4))})`}}>
       <div style={card(true)} />
       <div style={{position: 'absolute', left: 22, top: 18, right: 18}}>
-        <G id="p-book-t" size={28} color="#CFE6F5" font={F.sans} weight={600}>Booking form</G>
-        <div style={{marginTop: 8}}><G id="p-book-n" size={34} color="#FFFFFF" font={F.display} weight={800}>New booking</G></div>
+        <G id="p-book-t" size={30} color="#CFE6F5" font={F.sans} weight={600}>Booking form</G>
+        <div style={{marginTop: 12}}><G id="p-book-n" size={34} color="#FFFFFF" font={F.display} weight={800}>New booking</G></div>
         <div style={{marginTop: 6, fontFamily: F.sans, fontSize: 22, color: '#9FB0C3', whiteSpace: 'nowrap'}}>Thu 2:30 PM · intro call</div>
       </div>
       <LiveBorder color={a(ICE, 0.7)} r={26} width={2} speed={70} />
     </Abs></M>
     {/* doc card (target of "Copy.") */}
-    <M id="doc"><Abs b={s.doc} style={{...shrink(s.doc, 1), transform: `${shrink(s.doc, 1).transform} scale(${inP(T.copy)})`}}>
+    <M id="doc"><Abs b={s.doc} style={{...shrink(s.doc, 1), opacity: (shrink(s.doc, 1).opacity as number) * inO(T.copy), transform: `${shrink(s.doc, 1).transform} scale(${lerp(0.9, 1, inP(T.copy))})`}}>
       <div style={card()} />
       <div style={{position: 'absolute', left: 24, top: 20, right: 20, fontFamily: F.sans}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 12}}><div style={{width: 30, height: 36, borderRadius: 6, border: '2px solid #9AA7B6', background: '#fff'}} />
-          <G id="p-doc-t" size={34} color={INK} font={F.display} weight={800}>Deals</G></div>
+          <G id="p-doc-t" size={38} color={INK} font={F.display} weight={800}>Deals</G></div>
         {['Sam Ortiz · Mon', 'Lee Park · Tue', 'Ana Ruiz · Wed'].map((r, i) => <div key={r} style={{marginTop: i ? 10 : 18, display: 'flex', gap: 10, alignItems: 'center', fontSize: 21, color: SUB, whiteSpace: 'nowrap'}}><div style={{width: 18, height: 18, borderRadius: 4, border: '2px solid #B8C3CF'}} />{r}</div>)}
         <div style={{marginTop: 12, height: 52, borderRadius: 12, background: rowIn ? a(STEEL, 0.1 + 0.1 * Math.sin(f / 5)) : 'transparent', border: `2px dashed ${rowIn ? STEEL : '#C9D3DD'}`, display: 'flex', alignItems: 'center', padding: '0 12px'}}>
-          {rowIn && <G id="p-doc-row" size={26} color={INK} font={F.sans} weight={700} style={{whiteSpace: 'nowrap', transform: `scale(${prog(f, T.copy + 42, 12, 'spring')})`, transformOrigin: '0 50%'}}>New booking · Thu</G>}
+          {rowIn && <G id="p-doc-row" size={30} color={INK} font={F.sans} weight={700} style={{whiteSpace: 'nowrap', opacity: inO(T.copy + 42), transform: `scale(${lerp(0.9, 1, prog(f, T.copy + 42, 12, 'snapOut'))})`, transformOrigin: '0 50%'}}>New booking · Thu</G>}
         </div>
       </div>
     </Abs></M>
     {/* chat bubble (target of "Paste.") */}
-    {f >= T.paste && <M id="bubble"><Abs b={s.bubble} style={{...shrink(s.bubble, -1), transform: `${shrink(s.bubble, -1).transform} scale(${prog(f, T.paste + 12, 16, 'spring')})`, transformOrigin: '10% 90%'}}>
+    {f >= T.paste && <M id="bubble"><Abs b={s.bubble} style={{...shrink(s.bubble, -1), opacity: (shrink(s.bubble, -1).opacity as number) * inO(T.paste + 10), transform: `${shrink(s.bubble, -1).transform} scale(${lerp(0.85, 1, inP(T.paste + 10))})`, transformOrigin: '10% 90%'}}>
       <div style={{...card(), borderRadius: '26px 26px 26px 6px'}} />
       <div style={{position: 'absolute', left: 22, top: 16, right: 16}}>
         <div style={{display: 'flex', alignItems: 'center', gap: 10, fontFamily: F.sans}}><div style={{width: 34, height: 34, borderRadius: 9, background: '#3D6E9E'}} />
-          <G id="p-bub-c" size={26} color={SUB} font={F.sans} weight={700}>#sales</G></div>
-        <div style={{marginTop: 8}}><G id="p-bub-m" size={28} color={INK} font={F.sans} weight={600} style={{whiteSpace: 'nowrap'}}>New booking, Thu 2:30</G></div>
+          <G id="p-bub-c" size={30} color={SUB} font={F.sans} weight={700}>#sales</G></div>
+        <div style={{marginTop: 12}}><G id="p-bub-m" size={28} color={INK} font={F.sans} weight={600} style={{whiteSpace: 'nowrap'}}>New booking, Thu 2:30</G></div>
       </div>
     </Abs></M>}
     {/* clock: late night, by hand */}
-    {f >= T.repeat && <M id="clock"><Abs b={s.clock} style={{...shrink(s.clock, 1), transform: `${shrink(s.clock, 1).transform} scale(${prog(f, T.repeat, 14, 'spring')})`}}>
+    {f >= T.repeat && <M id="clock"><Abs b={s.clock} style={{...shrink(s.clock, 1), opacity: (shrink(s.clock, 1).opacity as number) * inO(T.repeat), transform: `${shrink(s.clock, 1).transform} scale(${lerp(0.85, 1, inP(T.repeat))})`}}>
       <div style={card(true)} />
       <div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', gap: 18, padding: '0 22px'}}>
         <svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="24" stroke={ICE} strokeWidth="3" fill="none" />
@@ -112,10 +115,10 @@ const Problem: React.FC<{f: number; L: L}> = ({f, L}) => {
       {P.STACK.map((sf, i) => f >= sf && <div key={i} style={{position: 'absolute', left: 6 + i * 7, top: s.stack.h - gh - 10 - i * 18, transform: `rotate(${(i % 2 ? 2.5 : -2) + wob * (i - 2.5) * 0.6}deg) scale(${lerp(1.18, 1, prog(f, sf, 6, 'snapOut'))})`}}><Ghost w={gw} h={gh} o={0.65 + i * 0.07} /></div>)}
     </div>}
     {/* the ghost in flight (copy, paste) */}
-    {f >= T.copy + 6 && f < T.copy + 44 && <div style={{position: 'absolute', left: gx - 130, top: gy - 28, transform: `rotate(${Math.sin(drag * Math.PI) * -6}deg) scale(${lerp(0.9, 0.75, drag)})`}}><Ghost w={260} h={56} /></div>}
-    {f >= T.paste && f < T.paste + 16 && <div style={{position: 'absolute', left: lerp(dc.x, bb.x, pp) - 130, top: lerp(dc.y, bb.y, pp) - 28 - Math.sin(pp * Math.PI) * 50, transform: `scale(${lerp(0.75, 0.6, pp)})`, opacity: 1 - clamp((pp - 0.85) / 0.15)}}><Ghost w={260} h={56} /></div>}
+    {f >= T.copy + 6 && f < T.copy + 41 && <div style={{position: 'absolute', left: gx - 130, top: gy - 28, transform: `rotate(${Math.sin(drag * Math.PI) * -6}deg) scale(${lerp(0.9, 0.75, drag)})`}}><Ghost w={260} h={56} /></div>}
+    {f >= T.paste - 2 && f < T.paste + 10 && <div style={{position: 'absolute', left: lerp(dl.x, bb.x, pp) - 130, top: lerp(dl.y, bb.y, pp) - 28 - Math.sin(pp * Math.PI) * 50, transform: `scale(${lerp(0.75, 0.5, pp)})`, opacity: 1 - clamp((pp - 0.7) / 0.3)}}><Ghost w={260} h={56} /></div>}
     {f < T.copy + 80 && <Cursor x={cur.x} y={cur.y} press={press} clicks={[T.copy + 8]} color="#fff" ring={ICE} o={1 - clamp((f - T.copy - 60) / 16)} />}
-    {f >= T.paste && f < T.paste + 30 && <Cursor x={lerp(dc.x + 120, bb.x + 60, prog(f, T.paste - 4, 10, 'swift2'))} y={lerp(dc.y + 30, bb.y + 20, prog(f, T.paste - 4, 10, 'swift2'))} press={0} clicks={[T.paste + 4]} color="#fff" ring={ICE} o={1 - clamp((f - T.paste - 20) / 10)} />}
+    {f >= T.paste && f < T.paste + 30 && <Cursor x={lerp(dl.x, bb.x + s.bubble.w * 0.45, prog(f, T.paste - 4, 10, 'swift2'))} y={lerp(dl.y, bb.y + s.bubble.h * 0.5, prog(f, T.paste - 4, 10, 'swift2'))} press={0} clicks={[T.paste + 4]} color="#fff" ring={ICE} o={1 - clamp((f - T.paste - 20) / 10)} />}
   </>;
 };
 const WORDS: [string, string[], number, number][] = [['copy', ['Copy.'], T.copy, T.paste], ['paste', ['Paste.'], T.paste, T.repeat], ['repeat', ['Repeat.'], T.repeat, T.every], ['every', ['Every booking.', 'By hand.'], T.every, T.turn]];
@@ -125,7 +128,7 @@ const ProblemWords: React.FC<{f: number; L: L}> = ({f, L}) => {
   const words = lines.flatMap((ln, li) => ln.split(' ').map((t, k) => ({t, li, k})));
   const tz = L.text; const out = a1 === T.turn ? T.collapse - 6 : a1 - 5;
   return <div style={{position: 'absolute', left: tz.x, top: L.wide ? tz.y + 40 : tz.y + 14, width: tz.w, textAlign: 'left'}}>
-    {lines.map((ln, li) => <div key={li} style={{display: 'flex', flexWrap: 'wrap', columnGap: size * 0.26}}>{words.filter((x) => x.li === li).map((x, n) => {
+    {lines.map((ln, li) => <div key={li} style={{display: 'flex', flexWrap: 'wrap', columnGap: size * 0.26, rowGap: Math.round(size * 0.14), marginTop: li ? Math.round(size * 0.14) : 0}}>{words.filter((x) => x.li === li).map((x, n) => {
       const idx = words.indexOf(x);
       return <LiveWord key={n} id={`w-${id}-${idx}`} text={x.t} size={size} color={id === 'every' && x.t === 'hand.' ? ICE : '#F4F7FA'} font={F.display} reveal={{kind: 'rise', f0: a0 + idx * 4, stagger: 2, dur: 12}} life={[a0, a1]} seed={idx + 3} out={out} />; })}</div>)}
   </div>;
@@ -149,8 +152,9 @@ const Turn: React.FC<{f: number; L: L}> = ({f, L}) => {
         <defs><filter id="gl" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="9" /></filter></defs>
         <rect x={40} y={40} width={w} height={h} rx={rx} fill={NIGHT} opacity={fill * 0.92} />
         {/* glow stroke + trim-path build-on */}
-        <rect x={40} y={40} width={w} height={h} rx={rx} fill="none" stroke={ICE} strokeWidth={10} filter="url(#gl)" strokeDasharray={`${per * Math.max(trim, 0.08)} ${per}`} strokeDashoffset={-f * 4} opacity={0.75} />
-        <rect x={40} y={40} width={w} height={h} rx={rx} fill="none" stroke="#E8FBFF" strokeWidth={3} strokeDasharray={`${per * Math.max(trim, 0.08)} ${per}`} strokeDashoffset={-f * 4} />
+        <rect x={40} y={40} width={w} height={h} rx={rx} fill="none" stroke={ICE} strokeWidth={10} filter="url(#gl)" strokeDasharray={trim >= 1 ? undefined : `${per * Math.max(trim, 0.08)} ${per * 2}`} opacity={0.55 + 0.25 * (1 - fill)} />
+        <rect x={40} y={40} width={w} height={h} rx={rx} fill="none" stroke="#E8FBFF" strokeWidth={2.5} strokeDasharray={trim >= 1 ? undefined : `${per * Math.max(trim, 0.08)} ${per * 2}`} opacity={0.9} />
+        {fill > 0.3 && <rect x={40} y={40} width={w} height={h} rx={rx} fill="none" stroke="#FFFFFF" strokeWidth={4} filter="url(#gl)" strokeDasharray={`${per * 0.12} ${per * 0.88}`} strokeDashoffset={-(f * 9) % per} opacity={0.8} />}
         {/* rim duplicates at 96 % and 95 % */}
         {[0.96, 0.95].map((k, i) => <rect key={k} x={40 + (w * (1 - k)) / 2} y={40 + (h * (1 - k)) / 2} width={w * k} height={h * k} rx={(h * k) / 2} fill="none" stroke={ICE} strokeWidth={1.4} opacity={fill * (i ? 0.25 : 0.4)} />)}
         <rect x={40} y={40} width={w} height={h} rx={rx} fill="#FFFFFF" opacity={enter * 0.35} />
@@ -180,7 +184,7 @@ const Footage: React.FC<{f: number; bw: number; bh: number}> = ({f, bw, bh}) => 
   return <Freeze frame={0}><OffthreadVideo src={staticFile('real/P05_ui.webm')} trimBefore={Math.round(P.srcT(f) * 60)} muted style={{position: 'absolute', left: -x0 * s, top: -y0 * s, width: 1920 * s, height: 1080 * s}} /></Freeze>;
 };
 const Proof: React.FC<{f: number; L: L}> = ({f, L}) => {
-  const fly = prog(f, T.proof, 34, 'snapOut'); const sm = L.wide ? 0 : prog(f, T.built - 26, 20, 'inOut');
+  const fly = prog(f, T.proof, 34, 'snapOut'); const sm = L.wide ? 0 : prog(f, T.card1 - 24, 20, 'inOut');
   const b = {x: lerp(L.screen.x, L.screenSmall.x, sm), y: lerp(L.screen.y, L.screenSmall.y, sm), w: lerp(L.screen.w, L.screenSmall.w, sm), h: lerp(L.screen.h, L.screenSmall.h, sm)};
   const yaw = lerp(L.wide ? -16 : 0, L.wide ? -5 : 0, fly) + noise1(f / 60, 4) * 1.2, pitch = lerp(22, 3, fly) + noise1(f / 50, 8) * 0.8;
   const pad = 12; const out = prog(f, T.payoff - 10, 10, 'inHard');
@@ -202,7 +206,7 @@ const ResultCard: React.FC<{f: number; at: number; b: P.Box; from: P.Box; kind: 
   const p = prog(f, at, 22, 'snapOut'); const tc = center(b);
   const dx = L.wide ? 40 : 0, dy = L.wide ? 0 : -30;
   const x = tc.x + dx * (1 - p) - b.w / 2, y = tc.y + dy * (1 - p) - b.h / 2; void from;
-  const t0 = at + 18; // text rises once the card has landed beside the screen
+  const t0 = at + 12; // text rises once the card has landed beside the screen
   const sz = L.wide ? 1 : 1;
   return <M id={`card-${kind}`}><div style={{position: 'absolute', left: x, top: y, width: b.w, height: b.h, transform: `scale(${lerp(0.7, 1, p)}) rotate(${(1 - p) * (kind === 'notion' ? -5 : 5)}deg)`, opacity: clamp(p * 4) * (1 - out)}}>
     <div style={{...card(), boxShadow: '0 30px 60px rgba(20,30,70,.22), 0 6px 16px rgba(20,30,70,.12)', border: '1.5px solid #D5DEE7'}} />
@@ -218,7 +222,7 @@ const ResultCard: React.FC<{f: number; at: number; b: P.Box; from: P.Box; kind: 
       <div style={{flex: 1}}>
         <div style={{display: 'flex', alignItems: 'baseline', gap: 10}}>{f >= t0 && <LiveWord id="r-s-who" text="Slack message" size={26} color={SUB} font={F.sans} weight={700} reveal={{kind: 'rise', f0: t0}} life={[t0, T.payoff]} seed={4} />}</div>
         <div style={{marginTop: 8, display: 'flex', flexWrap: 'wrap', columnGap: 8, rowGap: 2}}>
-          {f >= t0 && P.CHAT.split(' ').map((t, i) => <LiveWord key={i} id={`r-s-${i}`} text={t} size={L.wide ? 30 : 29} color={INK} font={F.sans} weight={600} reveal={{kind: 'rise', f0: t0 + 3 + i * 2, stagger: 1, dur: 10}} life={[t0, T.payoff]} seed={i + 5} />)}
+          {f >= t0 && P.CHAT.split(' ').map((t, i) => <LiveWord key={i} id={`r-s-${i}`} text={t} size={L.wide ? 30 : 29} color={INK} font={F.sans} weight={600} reveal={{kind: 'rise', f0: t0 + 3 + i, stagger: 1, dur: 10}} life={[t0, T.payoff]} seed={i + 5} />)}
         </div>
       </div>
     </div>}
@@ -228,7 +232,7 @@ const CAPS: [string, string, number, number][] = [['cap1', 'Built from one sente
 const Caption: React.FC<{f: number; L: L}> = ({f, L}) => {
   const c = CAPS.find(([, , a0, a1]) => f >= a0 && f < a1); if (!c) return null;
   const [id, txt, a0, a1] = c; const size = L.capSize; const tz = L.text;
-  return <div style={{position: 'absolute', left: tz.x, top: tz.y + (L.wide ? 40 : 30), width: tz.w, display: 'flex', flexWrap: 'wrap', columnGap: size * 0.26, rowGap: 0}}>
+  return <div style={{position: 'absolute', left: tz.x, top: tz.y + (L.wide ? 40 : 30), width: tz.w, display: 'flex', flexWrap: 'wrap', columnGap: size * 0.26, rowGap: Math.round(size * 0.14)}}>
     {txt.split(' ').map((t, i) => <LiveWord key={i} id={`${id}-${i}`} text={t} size={size} color={/^(sentence\.|Real)$/.test(t) ? STEEL : INK} font={F.display} reveal={{kind: 'rise', f0: a0 + i * 3}} life={[a0, a1]} seed={i} out={a1 - 6} />)}
   </div>;
 };
@@ -239,13 +243,13 @@ const Payoff: React.FC<{f: number; L: L}> = ({f, L}) => {
   const size = L.wide ? 104 : 124; let n = 0; const hs = hitShake(f, T.payoff, 0.1);
   const out = T.cta - 8;
   return <div style={{position: 'absolute', left: 0, width: L.W, top: L.H / 2 - (lines.length * size * 1.1) / 2, transform: `translate(${hs.x}px, ${hs.y}px)`}}>
-    {lines.map((ln, li) => <div key={li} style={{display: 'flex', justifyContent: 'center', columnGap: size * 0.24}}>{ln.map((t) => { const i = n++;
+    {lines.map((ln, li) => <div key={li} style={{display: 'flex', justifyContent: 'center', columnGap: size * 0.24, marginTop: li ? Math.round(size * 0.12) : 0}}>{ln.map((t) => { const i = n++;
       return <LiveWord key={t} id={`pay-${i}`} text={t} size={size} color={t === 'hassle-free.' ? STEEL : INK} font={F.display} reveal={{kind: 'rise', f0: T.payoff + 4 + i * 4, stagger: 2, dur: 14}} life={[T.payoff, T.cta]} seed={i} out={out} />; })}</div>)}
   </div>;
 };
 const Cta: React.FC<{f: number; L: L}> = ({f, L}) => {
   const up = prog(f, T.cta, 40, 'snapOut'); const big = L.wide ? 150 : 180; const hs = hitShake(f, T.cta, 0.08);
-  const top = L.H * (L.wide ? 0.2 : 0.24);
+  const top = L.H * (L.wide ? 0.22 : 0.29);
   const sweep = ((f - T.pill - 10) % 70) / 30;
   return <div style={{position: 'absolute', left: 0, width: L.W, top, textAlign: 'center', transform: `translate(${hs.x}px, ${hs.y + (1 - up) * 140}px) scale(${lerp(1, 1.03, prog(f, T.cta, 100, 'softOut'))})`}}>
     <div style={{display: 'inline-flex', width: big, height: big, borderRadius: big * 0.26, background: '#FFFFFF', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 90px ${a(STEEL, 0.7)}, 0 0 30px ${a(ICE, 0.5)}`, transform: `scale(${prog(f, T.cta, 26, 'spring')})`, opacity: clamp(up * 3)}}>
@@ -278,7 +282,7 @@ export const Film: React.FC = () => {
     {sec === 'payoff' && <Payoff f={f} L={L} />}
     {sec === 'cta' && <Cta f={f} L={L} />}
     <Corners p={dark ? DARK : LIGHT} />
-    {f >= T.cta && <AbsoluteFill style={{background: '#FFFFFF', opacity: 0.6 * (1 - clamp((f - T.cta) / 10)), pointerEvents: 'none'}} />}
+    {f >= T.cta && f < T.cta + 4 && <AbsoluteFill style={{background: ICE, opacity: 0.35 * (1 - (f - T.cta) / 4), pointerEvents: 'none'}} />}
     <TextGuard every={4} label="P05V3" />
   </AbsoluteFill>;
 };
