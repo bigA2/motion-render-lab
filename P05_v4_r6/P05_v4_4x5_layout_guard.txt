@@ -1,0 +1,2 @@
+layout_guard video.mp4: 210 frames, 427 text boxes, 276 mockup boxes, 341 contrast samples -> 1 violations {"safe":1}
+   {"f":448,"kind":"safe","id":"cap1-0","box":[180.5,79.5,719.1,71.3]}
