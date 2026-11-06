@@ -1,0 +1,26 @@
+== final/FansaChat_P05_v4_5x4.mp4
+    Threshold: -25.4 LUFS
+
+  Loudness range:
+    LRA:         4.6 LU
+    Threshold: -36.3 LUFS
+    LRA low:   -18.2 LUFS
+    LRA high:  -13.6 LUFS
+
+  True peak:
+    Peak:       -1.5 dBFS
+[out#0/null @ 0x5e9e5425e400] video:341KiB audio:2628KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame=  840 fps=0.0 q=-0.0 Lsize=N/A time=00:00:14.00 bitrate=N/A speed=14.9x elapsed=0:00:00.94    
+== final/FansaChat_P05_v4_5x4_SFX-only.mp4
+    Threshold: -25.4 LUFS
+
+  Loudness range:
+    LRA:         4.7 LU
+    Threshold: -36.4 LUFS
+    LRA low:   -18.5 LUFS
+    LRA high:  -13.8 LUFS
+
+  True peak:
+    Peak:       -1.9 dBFS
+[out#0/null @ 0x5e7691933400] video:341KiB audio:2628KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame=  840 fps=0.0 q=-0.0 Lsize=N/A time=00:00:14.00 bitrate=N/A speed=  15x elapsed=0:00:00.93    

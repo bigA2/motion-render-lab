@@ -1,0 +1,31 @@
+layout_guard video.mp4: 210 frames, 433 text boxes, 305 mockup boxes, 345 contrast samples -> 37 violations {"overlap":8,"safe":10,"mockup":4,"contrast":11,"size":4}
+   {"f":24,"kind":"overlap","id":"hook-Tired × hook-manual","area":11264}
+   {"f":28,"kind":"overlap","id":"hook-Tired × hook-manual","area":1609}
+   {"f":32,"kind":"overlap","id":"hook-Tired × hook-manual","area":334}
+   {"f":64,"kind":"safe","id":"hook-work?","box":[962.6,424.6,553.7,225.9]}
+   {"f":64,"kind":"mockup","id":"hook-Tired over booking","area":1450}
+   {"f":64,"kind":"mockup","id":"hook-manual over booking","area":139719}
+   {"f":68,"kind":"mockup","id":"hook-manual over booking","area":176031}
+   {"f":116,"kind":"contrast","id":"bk-new","cr":4.06,"need":4.5}
+   {"f":124,"kind":"contrast","id":"bk-co","cr":1.38,"need":4.5}
+   {"f":128,"kind":"contrast","id":"bk-co","cr":1.3,"need":4.5}
+   {"f":132,"kind":"contrast","id":"bk-co","cr":1.26,"need":4.5}
+   {"f":168,"kind":"safe","id":"cap-paste","box":[460.8,60.4,381.1,157.2]}
+   {"f":172,"kind":"safe","id":"cap-paste","box":[456.2,57.8,383,157.6]}
+   {"f":176,"kind":"safe","id":"cap-paste","box":[451.7,55.2,385,158.1]}
+   {"f":180,"kind":"safe","id":"cap-paste","box":[447.2,52.5,387.1,158.5]}
+   {"f":444,"kind":"size","id":"node-0","px":23.6}
+   {"f":444,"kind":"size","id":"node-1","px":23.7}
+   {"f":444,"kind":"size","id":"node-2","px":23.8}
+   {"f":444,"kind":"size","id":"node-3","px":23.6}
+   {"f":556,"kind":"overlap","id":"toast-h × toast-l","area":979}
+   {"f":560,"kind":"overlap","id":"toast-h × toast-l","area":904}
+   {"f":564,"kind":"overlap","id":"toast-h × toast-l","area":828}
+   {"f":648,"kind":"safe","id":"pay-1","box":[69.8,421.4,1194.2,286.3]}
+   {"f":648,"kind":"overlap","id":"pay-0 × pay-1","area":37071}
+   {"f":648,"kind":"mockup","id":"pay-1 over flow-window","area":30997}
+   {"f":652,"kind":"overlap","id":"pay-0 × pay-1","area":2516}
+   {"f":668,"kind":"contrast","id":"pay-1","cr":2.75,"need":3}
+   {"f":672,"kind":"contrast","id":"pay-1","cr":2.93,"need":3}
+   {"f":760,"kind":"safe","id":"wordmark","box":[813.4,233.4,808.4,184.4]}
+   {"f":764,"kind":"safe","id":"wordmark","box":[788.7,232.9,811,185]}
