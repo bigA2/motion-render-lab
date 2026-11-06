@@ -91,9 +91,9 @@ export const Refract: React.FC = () => {
   </AbsoluteFill>;
 };
 
-export const Horizon: React.FC<{rise: number; beam?: number}> = ({rise, beam = 1}) => {
+export const Horizon: React.FC<{rise: number; beam?: number; maxRise?: number}> = ({rise, beam = 1, maxRise = 0.24}) => {
   const f = useCurrentFrame(); const {width: w, height: h} = useVideoConfig(); const t = f / 60;
-  const R = w * 2.2; const top = h * (1.02 - 0.24 * rise) + Math.sin(t * 1.4) * 6;
+  const R = w * 2.2; const top = h * (1.02 - maxRise * rise) + Math.sin(t * 1.4) * 6;
   const br = 0.55 + 0.25 * Math.sin(t * 3);
   return <AbsoluteFill style={{background: `radial-gradient(ellipse 80% 60% at 50% 70%, #0E2238 0%, ${NIGHT} 70%)`, overflow: 'hidden'}}>
     <Abs style={{left: w / 2 - w * 0.17, top: -h * 0.1, width: w * 0.34, height: top + h * 0.1, background: `linear-gradient(180deg, transparent, ${a(ICE, 0.22 * beam * br)} 80%, ${a('#FFFFFF', 0.35 * beam * br)})`, filter: 'blur(28px)'}} />

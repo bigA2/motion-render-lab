@@ -27,7 +27,7 @@ export const T = {
   whip2: s(3.0), chat: s(3.25), type2: s(3.3), pull: s(3.7), shrink: s(4.05), w2: s(4.32),
   ring: s(4.36), bar: s(4.78), type3: s(4.86), enter: s(6.25),
   w3: s(6.25), n1: s(6.5), n2: s(6.78), n3: s(7.0), n4: s(7.2), dive: s(7.45), page: s(7.7), ttl: s(7.75), props: s(8.0), ticks: s(8.3),
-  whip3: s(8.95), toast: s(9.22), msg: s(9.5), react: s(9.78), pullB: s(10.25), pay1: s(10.5), pay2: s(10.78), collapse: s(11.7),
+  whip3: s(8.95), toast: s(9.22), msg: s(9.5), react: s(9.78), pullB: s(10.25), pay1: s(10.62), pay2: s(10.88), collapse: s(11.7),
   w4: s(11.95), logo: s(12.25), sweep: s(12.45), word: s(12.62), tag: s(12.95), cta: s(13.22), url: s(13.45), end: TOTAL,
 };
 export const WORLD = (f: number) => (f < T.w2 ? 1 : f < T.w3 ? 2 : f < T.w4 ? 3 : 4);
@@ -89,7 +89,7 @@ export function camKeys(L: Lay): Key[] {
     [T.w3 + 1, c(N[0].x, N[0].y, 1.15, 0), 'linear'], [T.n2, c(N[1].x, N[1].y, 1.0, 0), 'swift'], [T.n4, c(0, 0, w ? 0.68 : 0.58, 0), 'swift'],
     [T.dive, c(0, 0, w ? 0.7 : 0.6, 0), 'linear'], [T.page, c(N[2].x, N[2].y, 1.0, 0), 'swift'], [T.whip3, c(N[2].x, N[2].y, 1.05, 0.6), 'linear'],
     [T.toast, c(N[3].x, N[3].y, 1.0, -0.5), 'swift'], [T.pullB, c(N[3].x, N[3].y, 1.07, 0), 'linear'],
-    [T.pay1 + 10, c(0, w ? -610 : -470, w ? 0.5 : 0.46, -2), 'swift'], [T.collapse, c(0, w ? -620 : -480, w ? 0.52 : 0.48, -1), 'linear'], [T.w4, c(0, w ? -620 : -480, 0.03, 6), 'inHard'],
+    [T.pay1, c(0, w ? -610 : -470, w ? 0.5 : 0.46, -2), 'swift'], [T.collapse, c(0, w ? -620 : -480, w ? 0.52 : 0.48, -1), 'linear'], [T.w4, c(0, w ? -620 : -480, 0.03, 6), 'inHard'],
     // W4 end: slow continuous push to the last frame
     [T.w4 + 1, c(0, 0, 1.0, 0), 'linear'], [T.end, c(0, 0, 1.09, 0), 'linear'],
   ];

@@ -89,7 +89,7 @@ for a, b in J.get('silence', []):
 sfxpk = max(np.abs(L).max(), np.abs(R).max())
 m = load(J['music']); o = int(J.get('music_offset', 0) * SR); m = m[o:o + ns]; m = np.pad(m, (0, ns - len(m)))
 fi, fo = int(0.3 * SR), int(1.2 * SR); m[:fi] *= np.linspace(0, 1, fi); m[-fo:] *= np.linspace(1, 0, fo) ** 1.5
-BED_UNDER = float(os.environ.get('BED_UNDER', 16))
+BED_UNDER = float(os.environ.get('BED_UNDER', 18))
 m = m / (np.abs(m).max() + 1e-12) * sfxpk * db(-BED_UNDER) * duck
 ML, MR = L + m * 0.707, R + m * 0.707
 pk = max(np.abs(ML).max(), np.abs(MR).max()); G = db(-1) / pk if pk > db(-1) else 1.0

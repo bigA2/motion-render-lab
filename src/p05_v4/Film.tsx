@@ -25,6 +25,8 @@ const Tx: React.FC<{id: string; on?: boolean; size: number; color: string; font?
 const At: React.FC<{x: number; y: number; w?: number; h?: number; style?: React.CSSProperties; children?: React.ReactNode}> = ({x, y, w = 0, h = 0, style, children}) =>
   <div style={{position: 'absolute', left: x - w / 2, top: y - h / 2, width: w || undefined, height: h || undefined, ...style}}>{children}</div>;
 
+const Mk: React.FC<{on: boolean; id: string; w: number; h: number; children: React.ReactNode}> = ({on, id, w, h, children}) =>
+  on ? <M id={id} style={{width: w, height: h}}>{children}</M> : <div style={{position: 'absolute', left: 0, top: 0, width: w, height: h}}>{children}</div>;
 const glass = (dark = true, r = 30): React.CSSProperties => ({
   borderRadius: r, overflow: 'hidden', position: 'relative',
   background: dark ? 'linear-gradient(160deg, rgba(34,54,82,0.96) 0%, rgba(13,22,36,0.97) 60%, rgba(10,17,28,0.98) 100%)' : 'linear-gradient(165deg, #FFFFFF 0%, #F3F6FA 100%)',
@@ -43,19 +45,19 @@ const Caret: React.FC<{on: boolean; c: string; h: number}> = ({on, c, h}) => { c
 const HOOK_SIZE = (L: L) => (L.wide ? 150 : 170);
 const hookLines = (L: L) => L.wide ? [[{t: 'Tired', f0: 0}, {t: 'of', f0: 9}], [{t: 'manual', f0: T.manual - 8, hot: true}, {t: 'work?', f0: T.manual + 8}]]
   : [[{t: 'Tired', f0: 0}, {t: 'of', f0: 9}], [{t: 'manual', f0: T.manual - 8, hot: true}], [{t: 'work?', f0: T.manual + 8}]];
-const lineY = (L: L, i: number) => (L.wide ? [-175, 0][i] : [-205, 0, 205][i]);
+const lineY = (L: L, i: number) => (L.wide ? [-200, 0][i] : [-232, 0, 232][i]);
 
 const Hook: React.FC<{f: number; L: L}> = ({f, L}) => {
-  const S = HOOK_SIZE(L); const out = prog(f, s(0.96), 8, 'linear');
+  const S = HOOK_SIZE(L); const out = prog(f, s(0.95), 6, 'linear');
   return <>{hookLines(L).map((line, li) => <At key={li} x={0} y={lineY(L, li)} w={2400} h={S * 1.3} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: S * 0.26}}>
     {line.map((w, wi) => {
       const hot = 'hot' in w && w.hot; const p = prog(f, w.f0, hot ? 8 : 12, hot ? 'snapOut' : 'softOut');
       if (p <= 0) return <span key={wi} style={{fontSize: S, fontFamily: F.display, fontWeight: 800, opacity: 0, whiteSpace: 'pre'}}>{w.t}</span>;
       // arrival from depth (small + blurred) or, for "manual", a slam from in front of the camera
-      const sc = hot ? lerp(2.1, 1, p) : lerp(0.55, 1, p); const bl = (1 - p) * (hot ? 10 : 16);
+      const sc = hot ? lerp(1.25, 1, p) : lerp(0.55, 1, p); const bl = (1 - p) * (hot ? 10 : 16);
       // scatter: "manual" breaks into sparks as the box grows; the others fall out of frame
       const gone = hot ? prog(f, T.box, 9, 'linear') : out;
-      const o = clamp(p * 1.6) * (1 - gone);
+      const o = (hot ? clamp((p - 0.3) * 2.5) : clamp(p * 1.6)) * (1 - gone);
       const sel = hot ? prog(f, T.manual + 1, 7, 'snapOut') * (1 - prog(f, T.box, 3, 'linear')) : 0;
       const letters = [...w.t].map((ch, j) => { const r1 = rnd(j * 7 + li), r2 = rnd(j * 13 + 3);
         const dx = hot ? gone * (r1 - 0.5) * 500 : 0, dy = hot ? gone * (r2 - 0.6) * 380 : gone * (li - (L.wide ? 0.5 : 1)) * 160;
@@ -90,13 +92,13 @@ const BookingCard: React.FC<{f: number; L: L}> = ({f, L}) => {
   const cur = cursorPath([{f: T.card + 2, x: 760, y: 520}, {f: T.click - 1, x: 330, y: 150}, {f: T.click, x: 330, y: 150, click: true}, {f: T.click + 7, x: 332, y: 151, click: true}, {f: T.lift + 10, x: 520, y: 420}]);
   const cp = cur.at(f); const co = clamp(prog(f, T.card + 2, 8) * (1 - prog(f, T.lift + 4, 8)));
   return <At x={x} y={y} w={w} h={h} style={{perspective: 1400}}>
-    <M id="booking" style={{width: w, height: h}}>
+    <Mk on={f >= T.box + 10} id="booking" w={w} h={h}>
       <div style={{width: w, height: h, transform: `rotateY(${flip.toFixed(2)}deg) rotateX(${(flip * 0.3).toFixed(2)}deg)`, ...glass(true), border: `${lerp(4, 1.5, g)}px solid ${a(ICE, lerp(1, 0.3, g))}`, background: g < 1 ? `linear-gradient(160deg, ${a('#22364F', 0.4 + 0.56 * g)}, ${a('#0D1624', 0.4 + 0.57 * g)})` : glass(true).background}}>
         <div style={{padding: '30px 40px', opacity: fill}}>
           <div style={{display: 'flex', alignItems: 'center', gap: 16, marginBottom: 12}}>
             <div style={{width: 46, height: 46, borderRadius: 12, background: `linear-gradient(140deg, ${ICE}, ${STEEL})`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}><CalIcon /></div>
             <Tx id="bk-title" on={on} size={38} color="#FFFFFF" weight={700}>Booking form</Tx>
-            <div style={{marginLeft: 'auto', padding: '6px 16px', borderRadius: 999, background: a(AMBER, 0.2), border: `1.5px solid ${a(AMBER, 0.6)}`}}><Tx id="bk-new" on={on} size={28} color={AMBER} weight={700}>New</Tx></div>
+            <div style={{marginLeft: 'auto', padding: '6px 16px', borderRadius: 999, background: a(AMBER, 0.1), border: `1.5px solid ${a(AMBER, 0.6)}`}}><Tx id="bk-new" on={on} size={28} color="#FFD68A" weight={700}>New</Tx></div>
           </div>
           <Row k="Name" f={f} at={T.card - 4} on={on} hl={hl} v={<Tx id="bk-name" on={on} size={36} color="#FFFFFF" weight={700}>{P.PERSON}</Tx>} />
           <Row k="Company" f={f} at={T.card + 2} on={on} v={<Tx id="bk-co" on={on} size={34} color="#E6EEF6">{P.COMPANY}</Tx>} />
@@ -105,7 +107,7 @@ const BookingCard: React.FC<{f: number; L: L}> = ({f, L}) => {
         <Spec f0={T.card} />
       </div>
       {co > 0 && <Cursor x={cp.x} y={cp.y} press={cp.press} clicks={cur.clicks} color="#FFFFFF" ring={ICE} o={co} />}
-    </M>
+    </Mk>
   </At>;
 };
 const CalIcon = () => <svg width="28" height="28" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="#06101C" strokeWidth="2.4" /><path d="M3 10h18M8 3v4M16 3v4" stroke="#06101C" strokeWidth="2.4" strokeLinecap="round" /></svg>;
@@ -182,7 +184,7 @@ const Clock: React.FC<{f: number; L: L}> = ({f, L}) => {
 const HeroPill: React.FC<{f: number; L: L}> = ({f, L}) => {
   const S = P.ST(L); const p1 = prog(f, T.lift, T.doc + 6 - T.lift, 'swift');
   if (f < T.lift || f >= T.doc + 6) return null;
-  const a0 = {x: S.card.x - 80, y: S.card.y - 64}, a1 = {x: S.doc.x - 240, y: S.doc.y + 120};
+  const a0 = {x: S.card.x + 10, y: S.card.y - 110}, a1 = {x: S.doc.x - 240, y: S.doc.y + 120};
   const x = lerp(a0.x, a1.x, p1), y = lerp(a0.y, a1.y, p1) - Math.sin(p1 * Math.PI) * 220;
   return <At x={x} y={y} w={300} h={60} style={{display: 'flex', justifyContent: 'center', transform: `scale(${(1 + Math.sin(p1 * Math.PI) * 0.35).toFixed(3)}) rotate(${(Math.sin(p1 * Math.PI) * -6).toFixed(2)}deg)`}}><Pill f={f} at={T.lift} on={false} id="pill-fly" /></At>;
 };
@@ -218,9 +220,9 @@ const World1: React.FC<{f: number; L: L}> = ({f, L}) => {
     <Paths f={f} L={L} /><Dups f={f} L={L} /><Clock f={f} L={L} />
     <BookingCard f={f} L={L} /><DealsDoc f={f} L={L} /><SalesChat f={f} L={L} /><HeroPill f={f} L={L} />
     {f < T.box + 20 && <Hook f={f} L={L} />}
-    <StationCaption f={f} x={S.card.x} y={S.card.y - 370} t0={T.lift} t1={T.whip1 + 2} text="Copy." id="cap-copy" />
-    <StationCaption f={f} x={S.doc.x} y={S.doc.y - 380} t0={T.doc + 6} t1={T.whip2 + 2} text="Paste." id="cap-paste" />
-    <StationCaption f={f} x={S.chat.x} y={S.chat.y - 360} t0={T.chat + 4} t1={T.pull + 8} text="Repeat." id="cap-repeat" />
+    <StationCaption f={f} x={S.card.x} y={S.card.y - 345} t0={T.lift} t1={T.whip1 + 2} text="Copy." id="cap-copy" />
+    <StationCaption f={f} x={S.doc.x} y={S.doc.y - 355} t0={T.doc + 6} t1={T.whip2 + 2} text="Paste." id="cap-paste" />
+    <StationCaption f={f} x={S.chat.x} y={S.chat.y - 335} t0={T.chat + 4} t1={T.pull + 8} text="Repeat." id="cap-repeat" />
   </>;
 };
 
@@ -265,7 +267,7 @@ const NODE = [{id: 'Booking', logo: 'cal'}, {id: 'FansaChat', logo: 'fansa'}, {i
 const NT = [T.n1, T.n2, T.n3, T.n4];
 const World3: React.FC<{f: number; L: L}> = ({f, L}) => {
   const N = P.NODES(L), Wn = P.WIN3(L); const asm = prog(f, T.w3, 22, 'snapOut');
-  const ghost = prog(f, T.dive + 4, 12, 'linear') * (1 - prog(f, T.pullB, 18, 'softOut')); const wo = lerp(1, 0.12, ghost);
+  const ghost = prog(f, T.dive + 4, 12, 'linear') * (1 - prog(f, T.pullB + 6, 18, 'softOut')); const wo = lerp(1, 0.12, ghost);
   const nodeOn = f >= T.n4 + 12 && f < T.dive && wo > 0.9;
   const glow = prog(f, T.pullB, 20, 'softOut');
   return <>
@@ -288,7 +290,7 @@ const World3: React.FC<{f: number; L: L}> = ({f, L}) => {
             return <div key={i} style={{...glass(true, 26), position: 'absolute', left: Wn.w / 2 + n.x - nw / 2, top: Wn.h / 2 + 20 + n.y - nh / 2, width: nw, height: nh, transform: `scale(${p.toFixed(3)}) translateZ(0)`, background: i === 1 ? 'linear-gradient(160deg, rgba(60,110,170,0.95), rgba(14,30,52,0.97))' : glass(true).background, border: `2px solid ${a(ICE, i === 1 ? 0.8 : 0.35)}`,
               display: 'flex', flexDirection: L.wide ? 'column' : 'row', alignItems: 'center', justifyContent: 'center', gap: 18}}>
               {NODE[i].logo === 'cal' ? <div style={{width: 92, height: 92, borderRadius: 22, background: `linear-gradient(140deg, ${ICE}, ${STEEL})`, display: 'flex', alignItems: 'center', justifyContent: 'center'}}><CalIcon /></div> : <Logo name={NODE[i].logo} size={92} round={22} />}
-              <Tx id={`node-${i}`} on={nodeOn} size={34} color="#FFFFFF" weight={700}>{NODE[i].id}</Tx>
+              <Tx id={`node-${i}`} on={nodeOn} size={48} color="#FFFFFF" weight={700}>{NODE[i].id}</Tx>
             </div>; })}
         </div>
       </M>
@@ -343,7 +345,7 @@ const SlackMsg: React.FC<{f: number; L: L}> = ({f, L}) => {
       <div style={{width: w, height: h, ...glass(true, 26), background: 'linear-gradient(170deg, #22262C 0%, #16191D 100%)', border: '1.5px solid rgba(255,255,255,0.14)'}}>
         {ex < 0.4 && <div style={{display: 'flex', alignItems: 'center', gap: 20, padding: '24px 28px', opacity: 1 - ex * 2.5}}>
           <Logo name="slack" size={92} round={20} />
-          <div style={{minWidth: 0}}><Tx id="toast-h" on={onT} size={30} color="#FFFFFF" weight={700}>#sales · FansaChat</Tx><br />
+          <div style={{minWidth: 0, display: 'flex', flexDirection: 'column', gap: 8}}><Tx id="toast-h" on={onT} size={30} color="#FFFFFF" weight={700}>#sales · FansaChat</Tx>
             <Tx id="toast-l" on={onT} size={30} color="#C9CACC" weight={500}>{P.CHAT.slice(0, 30) + '…'}</Tx></div>
           <div style={{marginLeft: 'auto', alignSelf: 'flex-start'}}><Tx id="toast-t" on={onT} size={26} color="#ABABAD" weight={500}>now</Tx></div>
         </div>}
@@ -374,12 +376,11 @@ const Payoff: React.FC<{f: number; L: L}> = ({f, L}) => {
   const ws: [string, number, number, string][] = L.wide ? [['Make your work life', T.pay1, 200, '#FFFFFF'], ['hassle-free.', T.pay2, 300, ICE]] : [['Make your work life', T.pay1, 180, '#FFFFFF'], ['hassle-free.', T.pay2, 272, ICE]];
   void top; const ys = L.wide ? [-902, -550] : [-1305, -994];
   return <>{ws.map(([t, f0, S, c], i) => { const p = prog(f, f0, i ? 9 : 14, i ? 'snapOut' : 'softOut'); if (p <= 0) return null;
-    const sc = i ? lerp(1.8, 1, p) : lerp(0.6, 1, p); const bl = (1 - p) * 14;
+    const sc = i ? lerp(1.2, 1, p) : lerp(0.6, 1, p); const bl = (1 - p) * 14;
     const sw = ((f - T.pay2 - 8) / 30);
-    return <At key={i} x={0} y={ys[i]} w={5200} h={S * 1.3} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', opacity: clamp(p * 1.5) * (1 - o), transform: `scale(${(sc * (1 + 0.03 * prog(f, f0, 80, 'linear'))).toFixed(4)})`, filter: bl > 0.3 ? `blur(${bl.toFixed(1)}px)` : undefined}}>
+    return <At key={i} x={0} y={ys[i]} w={5200} h={S * 1.3} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', opacity: (i ? clamp((p - 0.35) * 2.5) : clamp(p * 1.5)) * (1 - o), transform: `scale(${(sc * (1 + 0.03 * prog(f, f0, 80, 'linear'))).toFixed(4)})`, filter: bl > 0.3 ? `blur(${bl.toFixed(1)}px)` : undefined}}>
       <span style={{position: 'relative', display: 'inline-block', overflow: 'hidden'}}>
-        <Tx id={`pay-${i}`} size={S} color={c} font={F.display} weight={800} anim={p < 1 || o > 0} style={{letterSpacing: '-0.03em', textShadow: i ? `0 0 40px ${a(ICE, 0.5)}` : undefined}}>{t}</Tx>
-        {i === 1 && sw > 0 && sw < 1 && <span style={{position: 'absolute', top: 0, bottom: 0, left: `${-30 + sw * 140}%`, width: '22%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent)', transform: 'skewX(-18deg)', mixBlendMode: 'overlay'}} />}
+        <Tx id={`pay-${i}`} size={S} color={c} font={F.display} weight={800} anim={p < 1 || o > 0} style={{letterSpacing: '-0.03em', textShadow: i ? `0 0 ${(40 + 30 * Math.max(0, 1 - Math.abs(sw - 0.5) * 2)).toFixed(0)}px ${a(ICE, 0.5)}` : undefined}}>{t}</Tx>
       </span>
     </At>; })}</>;
 };
@@ -387,7 +388,7 @@ const Payoff: React.FC<{f: number; L: L}> = ({f, L}) => {
 // ======================================================= WORLD 4 =======================================================
 const World4: React.FC<{f: number; L: L}> = ({f, L}) => {
   const flare = prog(f, T.w4, 8, 'snapOut'); const draw = prog(f, T.w4 + 4, T.logo - T.w4 - 6, 'swift');
-  const lp = prog(f, T.logo, 22, 'spring'); const MS = L.wide ? 250 : 230; const WS = L.wide ? 156 : 118;
+  const lp = prog(f, T.logo, 22, 'spring'); const MS = L.wide ? 250 : 230; const WS = L.wide ? 146 : 112;
   const ww = 9 * 0.58 * WS; const slide = prog(f, T.word, 26, 'swift'); const rowY = L.wide ? -210 : -240;
   const mx = lerp(0, -(ww + 34) / 2, slide); const ringOut = prog(f, T.logo, 24, 'softOut');
   const sw = (f - T.sweep) / 26;
@@ -397,15 +398,15 @@ const World4: React.FC<{f: number; L: L}> = ({f, L}) => {
       <circle cx={200} cy={200} r={170} fill="none" stroke={ICE} strokeWidth={7} strokeLinecap="round" pathLength={100} strokeDasharray={`${draw * 100} 100`} style={{filter: `drop-shadow(0 0 16px ${ICE})`}} />
     </svg>
     {lp > 0 && <At x={mx} y={rowY} w={MS} h={MS}>
-      <M id="logo" style={{width: MS, height: MS}}>
+      <div style={{position: 'absolute', left: 0, top: 0, width: MS, height: MS}}>
         <div style={{width: MS, height: MS, borderRadius: MS * 0.26, background: '#FFFFFF', transform: `scale(${lerp(0.4, 1, lp).toFixed(4)})`, boxShadow: `0 0 90px ${a(ICE, 0.6)}, 0 30px 60px rgba(0,0,0,0.5)`, overflow: 'hidden', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
           <Img src={staticFile('logo-fansa.png')} style={{width: '84%', height: '84%'}} />
           {sw > 0 && sw < 1 && <div style={{position: 'absolute', top: '-30%', bottom: '-30%', left: `${-50 + sw * 180}%`, width: '35%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.85), transparent)', transform: 'skewX(-20deg)'}} />}
         </div>
-      </M>
+      </div>
     </At>}
     {/* wordmark tracks out from behind the mark */}
-    {slide > 0 && <At x={mx + MS / 2 + 34 + ww / 2} y={rowY} w={ww + 40} h={WS * 1.3} style={{overflow: 'hidden', display: 'flex', alignItems: 'center'}}>
+    {slide > 0 && <At x={-(ww + 34) / 2 + MS / 2 + 34 + ww / 2} y={rowY} w={ww + 40} h={WS * 1.3} style={{display: 'flex', alignItems: 'center', clipPath: `inset(0 0 0 ${Math.max(0, (mx + MS / 2 + 10) - (-(ww + 34) / 2 + MS / 2 + 14)).toFixed(1)}px)`}}>
       <Tx id="wordmark" size={WS} color="#FFFFFF" font={F.display} weight={800} anim={slide < 1} style={{letterSpacing: '-0.03em'}}>
         {[...'FansaChat'].map((ch, j) => { const p = prog(f, T.word + j * 2, 18, 'snapOut'); return <span key={j} style={{display: 'inline-block', transform: `translateX(${px((1 - p) * -(ww * 0.3))})`, opacity: clamp(p * 1.4 - 0.2)}}>{ch}</span>; })}
       </Tx>
@@ -417,7 +418,7 @@ const World4: React.FC<{f: number; L: L}> = ({f, L}) => {
         <div style={{position: 'absolute', top: 0, bottom: 0, left: `${-40 + (((f - T.cta) % 70) / 50) * 180}%`, width: '25%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)', transform: 'skewX(-20deg)'}} />
       </div></M>
     </At>}
-    <EndLine f={f} y={L.wide ? 255 : 255} f0={T.url} id="url" size={48} color={ICE} text="fansachat.com" />
+    <EndLine f={f} y={L.wide ? 232 : 255} f0={T.url} id="url" size={48} color={ICE} text="fansachat.com" />
   </>;
 };
 const EndLine: React.FC<{f: number; y: number; f0: number; id: string; size: number; color: string; text: string}> = ({f, y, f0, id, size, color, text}) => {
@@ -444,7 +445,7 @@ export const Film: React.FC = () => {
     {bg === 'D' && <Particles dir={L.wide ? [1, 0] : [0, 1]} cx={c.x} cy={c.y} />}
     {bg === 'E' && <Leaks />}
     {bg === 'F' && <Refract />}
-    {bg === 'G' && <Horizon rise={wd === 4 ? lerp(0.5, 1, prog(f, T.w4, T.end - T.w4, 'softOut')) : prog(f, T.pullB, 60, 'softOut') * 0.5} beam={wd === 4 ? 1 : 0.5} />}
+    {bg === 'G' && <Horizon maxRise={L.wide ? 0.15 : 0.24} rise={wd === 4 ? lerp(0.5, 1, prog(f, T.w4, T.end - T.w4, 'softOut')) : prog(f, T.pullB, 60, 'softOut') * 0.5} beam={wd === 4 ? 1 : 0.5} />}
     {blur && <svg width={0} height={0} style={{position: 'absolute'}}><filter id="mb" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation={`${bx.toFixed(1)} ${by.toFixed(1)}`} /></filter></svg>}
     <div style={{position: 'absolute', left: W / 2, top: H / 2, width: 0, height: 0, transformOrigin: '0 0', transform: `rotate(${c.r.toFixed(3)}deg) scale(${(c.z * L.k).toFixed(5)}) translate(${(-c.x).toFixed(2)}px, ${(-c.y).toFixed(2)}px)`, filter: blur ? 'url(#mb)' : undefined, opacity: wd === 1 ? 1 - pre * 0.85 : 1}}>
       {wd === 1 && <World1 f={f} L={L} />}
@@ -466,7 +467,7 @@ const ScreenCaps: React.FC<{f: number; L: L; lag: {x: number; y: number}}> = ({f
     ['Every booking. By hand.', T.pull + 22, T.w2 - 6, L.wide ? 0.84 : 0.78, L.wide ? 76 : 70],
     ['Built from one sentence.', T.n4 + 4, T.dive + 4, L.wide ? 0.115 : 0.1, L.wide ? 60 : 62],
     ['Real Notion page.', T.page + 10, T.whip3 + 2, L.wide ? 0.085 : 0.075, L.wide ? 56 : 60],
-    ['Real Slack message.', T.msg + 10, T.pullB + 2, L.wide ? 0.115 : 0.1, L.wide ? 60 : 62],
+    ['Real Slack message.', T.msg + 10, T.pullB - 2, L.wide ? 0.115 : 0.1, L.wide ? 60 : 62],
   ];
   return <>{caps.map(([t, i0, o0, y, S], k) => { const i = prog(f, i0, 12, 'snapOut'), o = prog(f, o0 - 8, 8, 'inHard'); const v = i * (1 - o); if (v <= 0) return null;
     const lines = !L.wide && t.length > 20 ? t.split('. ').map((x, j, arr) => (j < arr.length - 1 ? x + '.' : x)) : [t];
