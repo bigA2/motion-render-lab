@@ -1,0 +1,31 @@
+# Publishes the P05 v3 masters (both formats) from a finished p05_v3 run to GitHub Pages /p05_v3/ for review in a browser.
+name: show_p05_v3
+on:
+  workflow_dispatch:
+    inputs:
+      run_id: {description: "p05_v3 run id", required: true}
+permissions: {contents: write, actions: read}
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: gh-pages}
+      - name: download masters
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          gh run download ${{ inputs.run_id }} -R ${{ github.repository }} -n P05_v3 -D /tmp/a
+          mkdir -p p05_v3
+          find /tmp/a -name 'FansaChat_P05_v3_*.mp4' -exec cp {} p05_v3/ \;
+          ls -la p05_v3
+          {
+            echo '<!doctype html><meta charset=utf-8><title>P05 v3 review</title>'
+            echo '<style>body{background:#0b1118;color:#dfe8f2;font:16px system-ui;margin:24px}video{max-height:86vh;max-width:48vw;margin:8px;border-radius:10px}.r{display:flex;flex-wrap:wrap;align-items:flex-start}</style>'
+            echo "<h2>P05 v3 - run ${{ inputs.run_id }}</h2><div class=r>"
+            for f in p05_v3/*.mp4; do n=$(basename $f); echo "<figure><video src=\"./$n\" controls playsinline preload=metadata></video><figcaption>$n</figcaption></figure>"; done
+            echo '</div>'
+          } > p05_v3/index.html
+      - name: commit
+        run: |
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          git add p05_v3 && git commit -m "review page: P05 v3 run ${{ inputs.run_id }}" && git push
