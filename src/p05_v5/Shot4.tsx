@@ -152,7 +152,7 @@ const BuilderContent: React.FC<{f: number}> = ({f}) => {
           {/* canvas of the built state dissolves in, flow hidden under its plate until each node connects */}
           <Crop src={IMG.built.src} iw={iw} ih={ih} r={B.canvas} s={s} style={{opacity: canvasIn}} />
           <Crop src={IMG.flowPlate.src} iw={IMG.flowPlate.w} ih={IMG.flowPlate.h} r={{x: 0, y: 0, w: IMG.flowPlate.w, h: IMG.flowPlate.h}} s={s}
-            style={{left: IMG.flowPlate.x * s, top: IMG.flowPlate.y * s, opacity: canvasIn}} />
+            style={{left: IMG.flowPlate.x * s, top: IMG.flowPlate.y * s}} />
           {/* the loading card shrinks into the first node */}
           {loadOut < 1 && <Moving src={IMG.read.src} from={B.loading} rect={cardR(B.loading, {x: B.nodes[0].cx - 60, y: B.nodeCy - 40, w: 120, h: 64}, k(f, T.flow0, T.flow0 + 8, inCut))} o={1 - loadOut} />}
           {/* connect: node 1 -> line -> node 2 -> line -> node 3 */}
