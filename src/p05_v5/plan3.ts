@@ -31,7 +31,7 @@ export const LINES = ['When a new lead fills', 'my website form, add them', 'to 
 // Screen-space boxes. Pill = the real composer pill at the composer camera (panel px 26..886 x 1643..1751, s = 1).
 export const PILL_CAM = {cx: 456, cy: 1316, s: 1.0};
 export const PILL_PANEL = {x: 26, y: 1643, w: 860, h: 108};
-export const HERO = {x: 135, y: 196, w: 1080, h: 360, r: 52};
+export const HERO = {x: 225, y: 206, w: 900, h: 340, r: 52};   // sized to the text (r1 was 1080 wide: empty right half)
 export const COMPACT = {sc: 0.56, cy: 138};  // box scale + screen centre y when parked at the top
 export const TYPE = {size: 58, lh: 1.16, padX: 60, padY: 46};
 export const SEND_R = 34;
@@ -40,15 +40,15 @@ export const SEND_R = 34;
 export const IMG = {
   panel: {src: 'real3/fc_panel.png', w: 912, h: 1856, r: 56},
   notion: {src: 'real3/notion_page.png', w: 1200, h: 790, r: 22},
-  slack: {src: 'real3/slack_newest.png', w: 962, h: 400, r: 18},
+  slack: {src: 'real3/slack_newest.png', w: 962, h: 419, r: 18},
 };
 export const CAM = {
   panel: {cx: 456, cy: 928, s: 0.56, ax: 675, ay: 540},
   pill: {...PILL_CAM, ax: 675, ay: 540},
   notionFit: {cx: 600, cy: 395, s: 0.95, ax: 675, ay: 668},
   notionKey: {cx: 400, cy: 662, s: 1.3, ax: 675, ay: 668},     // Name / Company / Budget / Need lines
-  slackFit: {cx: 481, cy: 200, s: 1.2, ax: 675, ay: 668},
-  slackKey: {cx: 360, cy: 230, s: 1.3, ax: 675, ay: 660},       // #all-fansachat-test ... Today + FansaChat APP 12:34 PM
+  slackFit: {cx: 481, cy: 210, s: 1.2, ax: 675, ay: 668},
+  slackKey: {cx: 300, cy: 360, s: 1.75, ax: 675, ay: 640},      // Today + FansaChat APP 12:34 PM (1x capture: upscaled)
 };
 
 const I = 'sfx/kenney/interface-sounds/', M = 'sfx/kenney/impact-sounds/';

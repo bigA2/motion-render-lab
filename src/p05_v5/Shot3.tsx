@@ -99,7 +99,7 @@ const boxAt = (f: number): Box | null => {
 
 // displacement map: R = x offset, G = y offset, neutral grey in the middle, strongest at the rim (lens edge)
 const dispMap = (w: number, h: number, r: number) => {
-  const rim = Math.max(10, Math.min(w, h) * 0.2);
+  const rim = Math.max(10, Math.min(w, h) * 0.28);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><defs><linearGradient id="x" x1="0" x2="1"><stop offset="0" stop-color="#000"/><stop offset="1" stop-color="#f00"/></linearGradient><linearGradient id="y" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000"/><stop offset="1" stop-color="#0f0"/></linearGradient><filter id="b" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="${rim * 0.45}"/></filter></defs><rect width="${w}" height="${h}" fill="url(#x)"/><rect width="${w}" height="${h}" fill="url(#y)" style="mix-blend-mode:screen"/><rect x="${rim}" y="${rim}" width="${w - rim * 2}" height="${h - rim * 2}" rx="${Math.max(0, r - rim)}" fill="rgb(128,128,0)" filter="url(#b)"/></svg>`;
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 };
@@ -108,14 +108,14 @@ const dispMap = (w: number, h: number, r: number) => {
 const Neon: React.FC<{w: number; h: number; r: number; head: number; amp: number; id: string}> = ({w, h, r, head, amp, id}) => {
   const pad = 40;
   const segs = [
-    {L: 34, sw: 3, op: 0.18, col: `url(#ng-${id})`},
-    {L: 20, sw: 3.5, op: 0.4, col: `url(#ng-${id})`},
-    {L: 10, sw: 4, op: 0.85, col: `url(#ng-${id})`},
-    {L: 2.2, sw: 5, op: 1, col: '#FFFFFF'},
+    {L: 34, sw: 4, op: 0.22, col: `url(#ng-${id})`},
+    {L: 20, sw: 5, op: 0.5, col: `url(#ng-${id})`},
+    {L: 10, sw: 6, op: 0.95, col: `url(#ng-${id})`},
+    {L: 2.2, sw: 7, op: 1, col: '#FFFFFF'},
   ];
   const rect = (s: typeof segs[number], i: number, glow: boolean) => (
     <rect key={(glow ? 'g' : 'c') + i} x={pad} y={pad} width={w} height={h} rx={r} ry={r} pathLength={100} fill="none"
-      stroke={s.col} strokeWidth={glow ? s.sw * 4 : s.sw} strokeLinecap="round" opacity={s.op * amp * (glow ? 0.7 : 1)}
+      stroke={s.col} strokeWidth={glow ? s.sw * 5 : s.sw} strokeLinecap="round" opacity={s.op * amp * (glow ? 0.7 : 1)}
       strokeDasharray={`${s.L} ${100 - s.L}`} strokeDashoffset={s.L - head} />
   );
   // second, fainter runner half a lap behind keeps the whole rim alive
@@ -127,7 +127,7 @@ const Neon: React.FC<{w: number; h: number; r: number; head: number; amp: number
         <filter id={`nb-${id}`} x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="7" /></filter>
       </defs>
       {/* faint always-on rim so the runner reads as light IN the border */}
-      <rect x={pad} y={pad} width={w} height={h} rx={r} ry={r} fill="none" stroke={`url(#ng-${id})`} strokeWidth={1.4} opacity={0.28 * amp} />
+      <rect x={pad} y={pad} width={w} height={h} rx={r} ry={r} fill="none" stroke={`url(#ng-${id})`} strokeWidth={1.8} opacity={0.4 * amp} />
       <g filter={`url(#nb-${id})`}>{segs.map((s, i) => rect(s, i, true))}</g>
       <g>{segs.map((s, i) => rect(s, i, false))}</g>
       <g opacity={0.35}>{segs.slice(0, 3).map((s, i) => (
@@ -167,15 +167,15 @@ const GlassBox: React.FC<{f: number; b: Box; draft: boolean}> = ({f, b, draft}) 
             <svg width={0} height={0} style={{position: 'absolute'}}>
               <filter id={fid} filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse" x={-60} y={-60} width={W0 + 120} height={H0 + 120} colorInterpolationFilters="sRGB">
                 <feImage href={map} x={0} y={0} width={W0} height={H0} preserveAspectRatio="none" result="m" />
-                <feDisplacementMap in="SourceGraphic" in2="m" scale={-34} xChannelSelector="R" yChannelSelector="G" result="dr" />
-                <feDisplacementMap in="SourceGraphic" in2="m" scale={-38} xChannelSelector="R" yChannelSelector="G" result="dg" />
-                <feDisplacementMap in="SourceGraphic" in2="m" scale={-42} xChannelSelector="R" yChannelSelector="G" result="db" />
+                <feDisplacementMap in="SourceGraphic" in2="m" scale={-70} xChannelSelector="R" yChannelSelector="G" result="dr" />
+                <feDisplacementMap in="SourceGraphic" in2="m" scale={-76} xChannelSelector="R" yChannelSelector="G" result="dg" />
+                <feDisplacementMap in="SourceGraphic" in2="m" scale={-82} xChannelSelector="R" yChannelSelector="G" result="db" />
                 <feColorMatrix in="dr" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r" />
                 <feColorMatrix in="dg" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="g" />
                 <feColorMatrix in="db" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="b" />
                 <feComposite in="r" in2="g" operator="arithmetic" k2={1} k3={1} result="rg" />
                 <feComposite in="rg" in2="b" operator="arithmetic" k2={1} k3={1} result="rgb" />
-                <feGaussianBlur in="rgb" stdDeviation={7} />
+                <feGaussianBlur in="rgb" stdDeviation={3.5} />
               </filter>
             </svg>
             {/* what is behind the box (field + world), re-rendered in box space and lensed */}
@@ -186,8 +186,8 @@ const GlassBox: React.FC<{f: number; b: Box; draft: boolean}> = ({f, b, draft}) 
               </div>
             </div>
             {/* milky tint for legibility, light from the top-left, inner shadow / glow */}
-            <div style={{position: 'absolute', inset: 0, background: 'rgba(255,255,255,.42)'}} />
-            <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(155deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 38%, rgba(255,255,255,0) 72%, rgba(210,225,255,.30) 100%)'}} />
+            <div style={{position: 'absolute', inset: 0, background: 'rgba(255,255,255,.16)'}} />
+            <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(155deg, rgba(255,255,255,.40) 0%, rgba(255,255,255,0) 34%, rgba(255,255,255,0) 72%, rgba(210,225,255,.30) 100%)'}} />
             <div style={{position: 'absolute', inset: 0, borderRadius: b.r, boxShadow: 'inset 0 2px 1px rgba(255,255,255,.95), inset 0 -18px 40px rgba(255,255,255,.35), inset 0 -2px 8px rgba(30,40,80,.10), inset 0 10px 24px rgba(30,40,80,.06)'}} />
           </>
         )}

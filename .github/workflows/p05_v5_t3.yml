@@ -3,7 +3,7 @@
 # the world match-cuts to the real Notion page, then the real Slack channel. Draft-first (B/W draft + final), breakdown,
 # 12 fps sheet, key-frame sheet, audio mastered to -14 LUFS (gain bisection into a -2 dB limiter, measured with ebur128).
 # Publishes artifact P05_v5_test3 and Pages /p05_test3/. Does not touch p05_v4 or test shot 1.
-name: p05_v5_t2
+name: p05_v5_t3
 permissions: { contents: write }
 on: { workflow_dispatch: {} }
 jobs:
