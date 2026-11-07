@@ -60,8 +60,10 @@ const nodeX = B.nodes.map((n) => bx(n.cx)), nodeY = by(B.nodeCy);
 const C = {
   full: {cx: 693, cy: 548, s: 1.0},
   comp: CAM_COMP,
-  reply: {cx: REPLY.x + REPLY.w / 2 + 40, cy: REPLY.y + REPLY.h / 2, s: 2.2},
-  flow: {cx: (nodeX[1] + nodeX[2]) / 2 - 20, cy: nodeY + 14, s: 2.2},
+  // reply and flow share one height band at 1.8x so the single pan is (almost) horizontal and short: the reply card sits
+  // left with the canvas beside it, then the camera slides right over form -> Notion -> Slack
+  reply: {cx: REPLY.x + 355, cy: (REPLY.y + nodeY) / 2 + 20, s: 1.8},
+  flow: {cx: nodeX[1] - 30, cy: (REPLY.y + nodeY) / 2 + 60, s: 1.8},
   nFit: {cx: 693, cy: 548, s: 1.0},
   nKey: {cx: WIN.notion.x + NOTION_BODY.cx * NWS, cy: WIN.notion.y + CHROME_H + NOTION_BODY.cy * NWS - 20, s: 1.85},
   sFit: {cx: 693, cy: 548, s: 1.0},

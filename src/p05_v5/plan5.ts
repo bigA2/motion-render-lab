@@ -35,16 +35,16 @@ export const WORD0 = 4, WSTEP = 4, WDUR = 9;
 
 // ---------- timeline (frames @30) ----------
 export const T = {
-  hookOut: 34,                    // words slide out left (1 f stagger, ease-in), gone by 45
-  win0: 36, win1: 56,             // Chrome window slides in from the right
-  z1: 60, z1in: 78,               // ZOOM 1: camera pushes INTO the real composer
-  lift0: 62, lift1: 74,           // glass applied in place: lifts 3 px, frost + ice-blue neon fade in
-  type0: 80,                      // first character (1.2 chars / f), last character at 142
-  cursorIn: 138, press: 150,      // cursor glides to the send disc, press
-  rel1a: 152, rel1b: 176,         // zoom 1 releases to the wide; the glass box flies into the real sent bubble
-  morph0: 152, morph1: 170,
-  sent0: 150, sent1: 156,         // real state ready -> sent (dissolve)
-  pick0: 176, pick1: 190,         // wide hold: picker card transforms into the "Reading your request" card (real states)
+  hookOut: 28,                    // words slide out left (1 f stagger, ease-in), gone by 39 (before the window arrives)
+  win0: 40, win1: 58,             // Chrome window slides in from the right
+  z1: 62, z1in: 80,               // ZOOM 1: camera pushes INTO the real composer
+  lift0: 64, lift1: 76,           // glass applied in place: lifts 3 px, frost + ice-blue neon fade in
+  type0: 82,                      // first character (1.2 chars / f), last character at 144
+  cursorIn: 140, press: 152,      // cursor glides to the send disc, press
+  rel1a: 154, rel1b: 178,         // zoom 1 releases to the wide; the glass box flies into the real sent bubble
+  morph0: 154, morph1: 172,
+  sent0: 152, sent1: 158,         // real state ready -> sent (dissolve)
+  pick0: 178, pick1: 190,         // wide hold: picker card transforms into the "Reading your request" card (real states)
   flow0: 190,                     // built: the reply card slides in from the left (= the response)
   z2: 192, z2in: 208,             // ZOOM 2: push onto the reply
   pan0: 222, pan1: 258,           // ONE pan from the reply across form -> Notion -> Slack while the nodes connect

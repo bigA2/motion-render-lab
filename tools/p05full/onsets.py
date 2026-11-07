@@ -28,15 +28,27 @@ for c in sorted(cues, key=lambda c: c['f']):
     for j, of in enumerate(on_f):
         if abs(of - c['f']) <= 1.0 and (best is None or abs(of - c['f']) < abs(on_f[best] - c['f'])): best = j
     if best is None:
-        # masked by an earlier ringing sound? report the level rise at the cue frame
-        i0 = int(c['f'] / FPS * SR / HOP)
-        rise = max(e[i0:i0 + 8]) - max(e[i0 - 6:i0 - 1]) if i0 > 6 else 0
-        out.append('%5d  %-7s  --          --        %s   [no separate onset; rise %.1f dB]' % (c['f'], c['type'], c['why'], rise)); miss += 1
+        # slow-attack sound (whoosh, swish, paper, chime): onset = first 2 ms hop within +-1 f that rises 20 dB over the
+        # level of the 20 ms before the cue frame (the stem's floor there)
+        i0 = int(c['f'] / FPS * SR / HOP); span = int(SR / FPS / HOP)
+        floor = max(e[max(0, i0 - span - 10):max(1, i0 - span)])
+        soft = next((i for i in range(i0 - span, i0 + span + 1) if e[i] > max(floor, -100) + 20 and e[i] > -75), None)
+        if soft is None:
+            out.append('%5d  %-7s  --          --        %s   [NOT FOUND]' % (c['f'], c['type'], c['why'])); miss += 1
+        else:
+            sf = soft * HOP / SR * FPS
+            out.append('%5d  %-7s  %8.2f  %+7.1f   %s   [soft attack: +20 dB over the floor]' % (c['f'], c['type'], sf, (sf - c['f']) / FPS * 1000, c['why']))
     else:
         used.add(best); out.append('%5d  %-7s  %8.2f  %+7.1f   %s' % (c['f'], c['type'], on_f[best], (on_f[best] - c['f']) / FPS * 1000, c['why']))
 extra = [on_f[j] for j in range(len(on_f)) if j not in used]
+def owner(x):
+    for c in cues:
+        if c['f'] <= x < c['f'] + (c.get('dur') or 40): return c
+inside = [(x, owner(x)) for x in extra if owner(x)]
+alone = [x for x in extra if not owner(x)]
 out.append('')
-out.append('unexpected onsets (no cue within 1 f): %s' % (', '.join('%.2f' % x for x in extra) or 'none'))
+out.append('transients inside a playing cue (the same sample, e.g. a latch release): %s' % (', '.join('%.2f (%s @%d)' % (x, c['src'].split('/')[-1], c['f']) for x, c in inside) or 'none'))
+out.append('UNEXPECTED onsets (no cue playing): %s' % (', '.join('%.2f' % x for x in alone) or 'none'))
 cnt = {}
 for c in cues: cnt[c['type']] = cnt.get(c['type'], 0) + 1
 out.append('SFX count per type: ' + ', '.join('%s %d' % kv for kv in sorted(cnt.items())))
@@ -46,7 +58,7 @@ for i, a in enumerate(cs):
     for b in cs[i + 1:]:
         if b['f'] - a['f'] < 45 and b['src'] == a['src']: rep.append('%s @%d/%d' % (a['src'], a['f'], b['f']))
 out.append('same sample twice within 1.5 s: ' + (', '.join(rep) or 'none'))
-out.append('cues without a separate onset: %d' % miss)
+out.append('cues not found: %d' % miss)
 # silence check per 1/30 s frame on the stem: frames whose level is above -50 dBFS but not within a cue's window
 fr_db = []
 N = SR // FPS
