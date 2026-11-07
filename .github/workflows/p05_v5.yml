@@ -22,7 +22,7 @@ jobs:
       - name: breakdown, sheet, loudness
         run: |
           cd out
-          ffmpeg -v error -y -i FansaChat_P05_v5_test1_5x4.mp4 -i P05_v5_test1_draft.mp4 -filter_complex "[0:v]scale=675:540[a];[1:v]scale=675:540[b];[a][b]vstack" -map 0:a -c:v libx264 -crf 18 -pix_fmt yuv420p P05_v5_test1_breakdown.mp4
+          ffmpeg -v error -y -i FansaChat_P05_v5_test1_5x4.mp4 -i P05_v5_test1_draft.mp4 -filter_complex "[0:v]scale=676:540[a];[1:v]scale=676:540[b];[a][b]vstack" -map 0:a -c:v libx264 -crf 18 -pix_fmt yuv420p P05_v5_test1_breakdown.mp4
           ffmpeg -v error -y -i FansaChat_P05_v5_test1_5x4.mp4 -vf "fps=12,scale=338:-1,drawtext=text='%{pts\:hms}':x=6:y=6:fontsize=14:fontcolor=yellow:box=1:boxcolor=black@0.5,tile=6x9" -frames:v 1 P05_v5_test1_sheet12.jpg
           ffmpeg -hide_banner -i FansaChat_P05_v5_test1_5x4.mp4 -af ebur128=peak=true -f null - 2>&1 | tail -12 > loudness.txt
           ffprobe -v error -show_entries format=duration:stream=codec_name,width,height,r_frame_rate -of compact FansaChat_P05_v5_test1_5x4.mp4 > probe.txt
