@@ -6,7 +6,7 @@ import React, {useMemo} from 'react';
 import {AbsoluteFill, Audio, Easing, Img, interpolate, interpolateColors, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {CameraMotionBlur} from '@remotion/motion-blur';
 import {loadFont as geist} from '@remotion/google-fonts/Geist';
-import {CAM, COMPACT, H, HERO, HOOK, IMG, LINES, PILL_CAM, PILL_PANEL, SEND_R, SFX, T, TYPE, W, WDUR, WORD0, WSTEP, CPS} from './plan3';
+import {CAM, COMPACT, H, HERO, HOOK, IMG, LINES, PILL_CAM, PILL_PANEL, PILL_PLATE, SEND_R, SFX, T, TYPE, W, WDUR, WORD0, WSTEP, CPS} from './plan3';
 
 const GEIST = geist('normal', {weights: ['500', '700'], subsets: ['latin']}).fontFamily;
 
@@ -71,7 +71,22 @@ const World: React.FC<{f: number; draft: boolean}> = ({f, draft}) => {
         filter: draft ? 'none' : `blur(${(1 - inn) * 8}px)`}}>
         {draft ? <div style={{width: '100%', height: '100%', background: '#ddd', fontFamily: 'Arial', fontSize: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>{label}</div>
           : <Img src={staticFile(img.src)} style={{width: img.w, height: img.h, display: 'block'}} />}
+        {!draft && sc === 'panel' && f >= T.lift0 && <PillPlate f={f} imgH={img.h} />}
       </div>
+    </div>
+  );
+};
+
+// Gap 3: hide the real 'start connecting' pill under the lifting glass box with a clean plate made from the panel's own
+// pixels (the rows just above the pill, stretched over it), feathered at the edges, fading in during the lift.
+const PillPlate: React.FC<{f: number; imgH: number}> = ({f, imgH}) => {
+  const P = PILL_PLATE, sy = imgH / P.natH, m = P.h / P.sh;
+  const fe = 'transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%';
+  return (
+    <div style={{position: 'absolute', left: P.x, top: P.y * sy, width: P.w, height: P.h * sy, overflow: 'hidden',
+      opacity: k(f, T.lift0, T.lift1), WebkitMaskImage: `linear-gradient(to bottom, ${fe}), linear-gradient(to right, ${fe})`,
+      WebkitMaskComposite: 'source-in', maskImage: `linear-gradient(to bottom, ${fe}), linear-gradient(to right, ${fe})`, maskComposite: 'intersect'}}>
+      <Img src={staticFile(IMG.panel.src)} style={{position: 'absolute', left: -P.x, top: -P.sy * sy * m, width: IMG.panel.w, height: imgH * m, display: 'block'}} />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 // P05 v5 test shot 3: timing, geometry, camera keys and SFX rows (pure data). 5:4 1350x1080, 30 fps.
 // Worlds are crisp crops of real captures (public/real3/*): our builder panel (2x), the real Notion page (2x) and the
-// real Slack channel strip (1x, the only capture we have). Each crop is shown at <= 1.0 of its pixels except Slack.
+// real Slack message block (2x recapture: avatar + 'FansaChat APP 12:34 PM' + the Maya Chen line, nothing else).
+// Crops are shown at <= 1.0 of their pixels except the Slack line push-in (1.5 of 2x = 0.75 of 1x px).
 export const FPS = 30;
 export const TOTAL = 200;
 export const W = 1350, H = 1080;
@@ -21,7 +22,7 @@ export const T = {
   cut2: 126,                      // match cut #1: world -> real Notion page, box fixed
   nPush0: 138, nPush1: 156,       // push-in to the key lines (Company / Budget)
   cut3: 166,                      // match cut #2: world -> real Slack channel, box fixed
-  sPush0: 174, sPush1: 190,       // push-in to the FansaChat row
+  sPush0: 170, sPush1: 182,       // push-in to the message line, then ~0.6 s hold (182..200)
   end: TOTAL,
 };
 export const CPS = 2;
@@ -35,20 +36,23 @@ export const HERO = {x: 225, y: 206, w: 900, h: 340, r: 52};   // sized to the t
 export const COMPACT = {sc: 0.56, cy: 138};  // box scale + screen centre y when parked at the top
 export const TYPE = {size: 58, lh: 1.16, padX: 60, padY: 46};
 export const SEND_R = 34;
+// Clean plate for the real 'start connecting' pill (fc_panel.png natural px, 912x1824): rows sy..sy+sh just above the pill
+// are stretched over it and faded in while the glass box lifts off, so only one prompt bar is on screen (gap 3).
+export const PILL_PLATE = {x: 16, y: 1586, w: 882, h: 126, sy: 1562, sh: 22, natH: 1824};
 
 // Worlds (image px) and cameras: world point (cx, cy) lands on the anchor (ax, ay), scale s.
 export const IMG = {
   panel: {src: 'real3/fc_panel.png', w: 912, h: 1856, r: 56},
   notion: {src: 'real3/notion_page.png', w: 1200, h: 790, r: 22},
-  slack: {src: 'real3/slack_newest.png', w: 962, h: 419, r: 18},
+  slack: {src: 'real3/slack_msg.png', w: 880, h: 114, r: 18},
 };
 export const CAM = {
   panel: {cx: 456, cy: 928, s: 0.56, ax: 675, ay: 540},
   pill: {...PILL_CAM, ax: 675, ay: 540},
   notionFit: {cx: 600, cy: 395, s: 0.95, ax: 675, ay: 668},
   notionKey: {cx: 400, cy: 662, s: 1.3, ax: 675, ay: 668},     // Name / Company / Budget / Need lines
-  slackFit: {cx: 481, cy: 210, s: 1.2, ax: 675, ay: 668},
-  slackKey: {cx: 280, cy: 370, s: 2.0, ax: 675, ay: 760},       // Today + FansaChat APP 12:34 PM low-centre (1x capture: 2x upscale)
+  slackFit: {cx: 440, cy: 57, s: 1.0, ax: 675, ay: 640},        // whole message block under the parked box
+  slackKey: {cx: 430, cy: 82, s: 1.5, ax: 675, ay: 640},        // 'New lead with Maya Chen, Brightline Dental, $4,000' big, avatar + header still in frame
 };
 
 const I = 'sfx/kenney/interface-sounds/', M = 'sfx/kenney/impact-sounds/';

@@ -2,7 +2,7 @@
 # prompt box with a neon runner while the real lead prompt is typed -> send -> box parks at the top and stays fixed while
 # the world match-cuts to the real Notion page, then the real Slack channel. Draft-first (B/W draft + final), breakdown,
 # 12 fps sheet, key-frame sheet, audio mastered to -14 LUFS (gain bisection into a -2 dB limiter, measured with ebur128).
-# Publishes artifact P05_v5_test3 and Pages /p05_test3/. Does not touch p05_v4 or test shot 1.
+# Publishes artifact P05_v5_test3b and Pages /p05_test3b/. Does not touch p05_v4 or test shot 1.
 name: p05_v5_t3
 permissions: { contents: write }
 on: { workflow_dispatch: {} }
@@ -52,23 +52,23 @@ jobs:
           ffprobe -v error -show_entries format=duration:stream=codec_name,width,height,r_frame_rate -of compact $F > probe.txt
           cat probe.txt loudness.txt >> $GITHUB_STEP_SUMMARY; ls -la
       - uses: actions/upload-artifact@v4
-        with: { name: 'P05_v5_test3', path: out/, retention-days: 30 }
-      - name: publish to Pages /p05_test3/
+        with: { name: 'P05_v5_test3b', path: out/, retention-days: 30 }
+      - name: publish to Pages /p05_test3b/
         run: |
           git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
           cp -r out /tmp/out
           for i in 1 2 3 4 5; do
             git fetch -q origin gh-pages && git checkout -qf -B gh-pages origin/gh-pages
-            rm -rf p05_test3 && mkdir -p p05_test3 && cp /tmp/out/*.mp4 /tmp/out/*.jpg /tmp/out/*.txt p05_test3/
+            rm -rf p05_test3b && mkdir -p p05_test3b && cp /tmp/out/*.mp4 /tmp/out/*.jpg /tmp/out/*.txt p05_test3b/
             {
               echo '<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>P05 test shot 3</title>'
               echo '<style>body{background:#0c0b11;color:#e9e6f2;font:16px system-ui;margin:24px}video,img{max-width:100%;border-radius:10px;margin:8px 0}</style>'
-              echo "<h2>P05 v5 - test shot 3 (5:4) - run ${{ github.run_id }}</h2>"
+              echo "<h2>P05 v5 - test shot 3b (5:4) - run ${{ github.run_id }}</h2>"
               echo '<video src="./FansaChat_P05_v5_test3_5x4.mp4" controls playsinline loop width=675></video>'
               echo '<h3>Breakdown: final over B/W draft</h3><video src="./P05_v5_test3_breakdown.mp4" controls playsinline loop width=675></video>'
               echo '<h3>Key frames</h3><img src="./P05_v5_test3_keys.jpg"><h3>12 fps sheet</h3><img src="./P05_v5_test3_sheet12.jpg">'
               echo '<h3>Loudness</h3><pre>'; cat /tmp/out/loudness.txt; echo '</pre>'
-            } > p05_test3/index.html
-            git add p05_test3 && git commit -qm "Pages: P05 v5 test shot 3 (run ${{ github.run_id }})" && git push -q origin gh-pages && break
+            } > p05_test3b/index.html
+            git add p05_test3b && git commit -qm "Pages: P05 v5 test shot 3b (run ${{ github.run_id }})" && git push -q origin gh-pages && break
             sleep $((i * 5))
           done
