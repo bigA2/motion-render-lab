@@ -1,0 +1,49 @@
+# P05 v5 test shot 1 (src/p05_v5): the hook, 5:4 1350x1080, 4.5 s, 30 fps, real FansaChat recording + mechanical SFX.
+# Draft-first: renders the B/W draft and the final, a breakdown (final over draft), a 12 fps sheet, then publishes
+# the files as artifact P05_v5_test1 and to GitHub Pages /p05_test1/. Does not touch p05_v4.
+name: p05_v5
+permissions: { contents: write }
+on: { workflow_dispatch: {} }
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - run: (command -v ffmpeg >/dev/null || (sudo timeout 300 apt-get -qq update && sudo DEBIAN_FRONTEND=noninteractive timeout 400 apt-get -qq install -y ffmpeg >/dev/null)) && ffmpeg -version | head -1
+      - name: render draft + final
+        run: |
+          mkdir -p out
+          npx remotion render src/p05_v5/index.tsx P05V5-draft out/P05_v5_test1_draft.mp4 --codec h264 --crf 18 --muted
+          npx remotion render src/p05_v5/index.tsx P05V5 out/FansaChat_P05_v5_test1_5x4.mp4 --codec h264 --crf 14 --audio-codec aac
+      - name: breakdown, sheet, loudness
+        run: |
+          cd out
+          ffmpeg -v error -y -i FansaChat_P05_v5_test1_5x4.mp4 -i P05_v5_test1_draft.mp4 -filter_complex "[0:v]scale=675:540[a];[1:v]scale=675:540[b];[a][b]vstack" -map 0:a -c:v libx264 -crf 18 -pix_fmt yuv420p P05_v5_test1_breakdown.mp4
+          ffmpeg -v error -y -i FansaChat_P05_v5_test1_5x4.mp4 -vf "fps=12,scale=338:-1,drawtext=text='%{pts\:hms}':x=6:y=6:fontsize=14:fontcolor=yellow:box=1:boxcolor=black@0.5,tile=6x9" -frames:v 1 P05_v5_test1_sheet12.jpg
+          ffmpeg -hide_banner -i FansaChat_P05_v5_test1_5x4.mp4 -af ebur128=peak=true -f null - 2>&1 | tail -12 > loudness.txt
+          ffprobe -v error -show_entries format=duration:stream=codec_name,width,height,r_frame_rate -of compact FansaChat_P05_v5_test1_5x4.mp4 > probe.txt
+          cat probe.txt loudness.txt >> $GITHUB_STEP_SUMMARY; ls -la
+      - uses: actions/upload-artifact@v4
+        with: { name: 'P05_v5_test1', path: out/, retention-days: 30 }
+      - name: publish to Pages /p05_test1/
+        run: |
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          cp -r out /tmp/out
+          for i in 1 2 3 4 5; do
+            git fetch -q origin gh-pages && git checkout -qf -B gh-pages origin/gh-pages
+            rm -rf p05_test1 && mkdir -p p05_test1 && cp /tmp/out/*.mp4 /tmp/out/*.jpg /tmp/out/*.txt p05_test1/
+            {
+              echo '<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>P05 test shot 1</title>'
+              echo '<style>body{background:#0c0b11;color:#e9e6f2;font:16px system-ui;margin:24px}video,img{max-width:100%;border-radius:10px;margin:8px 0}</style>'
+              echo "<h2>P05 v5 - test shot 1 (5:4) - run ${{ github.run_id }}</h2>"
+              echo '<video src="./FansaChat_P05_v5_test1_5x4.mp4" controls playsinline loop width=675></video>'
+              echo '<h3>Breakdown: final over B/W draft</h3><video src="./P05_v5_test1_breakdown.mp4" controls playsinline loop width=675></video>'
+              echo '<h3>12 fps sheet</h3><img src="./P05_v5_test1_sheet12.jpg">'
+            } > p05_test1/index.html
+            git add p05_test1 && git commit -qm "Pages: P05 v5 test shot 1 (run ${{ github.run_id }})" && git push -q origin gh-pages && break
+            sleep $((i * 5))
+          done
