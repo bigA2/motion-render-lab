@@ -48,7 +48,7 @@ export const CAM = {
   notionFit: {cx: 600, cy: 395, s: 0.95, ax: 675, ay: 668},
   notionKey: {cx: 400, cy: 662, s: 1.3, ax: 675, ay: 668},     // Name / Company / Budget / Need lines
   slackFit: {cx: 481, cy: 210, s: 1.2, ax: 675, ay: 668},
-  slackKey: {cx: 300, cy: 360, s: 1.75, ax: 675, ay: 640},      // Today + FansaChat APP 12:34 PM (1x capture: upscaled)
+  slackKey: {cx: 280, cy: 370, s: 2.0, ax: 675, ay: 760},       // Today + FansaChat APP 12:34 PM low-centre (1x capture: 2x upscale)
 };
 
 const I = 'sfx/kenney/interface-sounds/', M = 'sfx/kenney/impact-sounds/';
