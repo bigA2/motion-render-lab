@@ -41,9 +41,9 @@ for c in sorted(cues, key=lambda c: c['f']):
     else:
         used.add(best); out.append('%5d  %-7s  %8.2f  %+7.1f   %s' % (c['f'], c['type'], on_f[best], (on_f[best] - c['f']) / FPS * 1000, c['why']))
 extra = [on_f[j] for j in range(len(on_f)) if j not in used]
-def owner(x):
-    for c in cues:
-        if c['f'] <= x < c['f'] + (c.get('dur') or 40): return c
+def owner(x):  # the latest-starting cue still playing at x
+    on = [c for c in cues if c['f'] <= x < c['f'] + (c.get('dur') or 40)]
+    return max(on, key=lambda c: c['f']) if on else None
 inside = [(x, owner(x)) for x in extra if owner(x)]
 alone = [x for x in extra if not owner(x)]
 out.append('')

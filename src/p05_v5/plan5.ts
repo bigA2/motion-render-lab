@@ -151,7 +151,7 @@ export const SFX: Cue[] = [
   {f: T.node2, src: I + 'tick_004.ogg', vol: 0.42, type: 'tick', why: 'node 2 (Notion) connects: tick'},
   {f: T.node3, src: I + 'tick_002.ogg', vol: 0.42, type: 'tick', why: 'node 3 (Slack) connects: tick'},
   {f: T.out0, src: G + 'swish_c.wav', vol: 0.08, type: 'swish', why: 'zoom out to the wide (falling air swish)'},
-  {f: T.tr0, src: CA + 'card-slide-1.ogg', vol: 0.32, type: 'paper', why: 'Notion page slides in: paper slide'},
+  {f: T.tr0, src: CA + 'card-slide-6.ogg', vol: 0.32, type: 'paper', why: 'Notion page slides in: paper slide'},
   {f: T.sSwap0, src: P + 'whoosh_s.ogg', vol: 0.12, type: 'whoosh', why: 'Notion out / Slack in (whoosh 2 of 2)'},
   {f: T.msg, src: I + 'glass_002.ogg', vol: 0.5, type: 'chime', why: 'Slack message arrives: short glass chime'},
   {f: T.logo0 + 2, src: PR + 'success_chime_C.ogg', vol: 0.22, type: 'chime', why: 'logo lands: soft chime'},
