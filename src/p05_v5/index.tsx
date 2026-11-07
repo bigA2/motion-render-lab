@@ -9,6 +9,8 @@ import {Shot3} from './Shot3';
 import {TOTAL as TOTAL3} from './plan3';
 import {Shot4} from './Shot4';
 import {TOTAL as TOTAL4} from './plan4';
+import {Shot4b} from './Shot4b';
+import {TOTAL as TOTAL4B} from './plan4b';
 
 const Root: React.FC = () => (
   <>
@@ -23,6 +25,8 @@ const Root: React.FC = () => (
     {/* test shot 4: Chrome window on an ice/steel field, glass box -> real chat bubble, real builder states, flow connects, Notion, Slack */}
     <Composition id="P05V5T4-draft" component={Shot4} defaultProps={{draft: true}} durationInFrames={TOTAL4} fps={FPS} width={1350} height={1080} />
     <Composition id="P05V5T4" component={Shot4} defaultProps={{draft: false}} durationInFrames={TOTAL4} fps={FPS} width={1350} height={1080} />
+    <Composition id="P05V5T4B-draft" component={Shot4b} defaultProps={{draft: true}} durationInFrames={TOTAL4B} fps={FPS} width={1350} height={1080} />
+    <Composition id="P05V5T4B" component={Shot4b} defaultProps={{draft: false}} durationInFrames={TOTAL4B} fps={FPS} width={1350} height={1080} />
   </>
 );
 registerRoot(Root);
