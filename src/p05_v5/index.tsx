@@ -11,6 +11,8 @@ import {Shot4} from './Shot4';
 import {TOTAL as TOTAL4} from './plan4';
 import {Shot4b} from './Shot4b';
 import {TOTAL as TOTAL4B} from './plan4b';
+import {Shot5} from './Shot5';
+import {TOTAL as TOTAL5} from './plan5';
 
 const Root: React.FC = () => (
   <>
@@ -27,6 +29,10 @@ const Root: React.FC = () => (
     <Composition id="P05V5T4" component={Shot4} defaultProps={{draft: false}} durationInFrames={TOTAL4} fps={FPS} width={1350} height={1080} />
     <Composition id="P05V5T4B-draft" component={Shot4b} defaultProps={{draft: true}} durationInFrames={TOTAL4B} fps={FPS} width={1350} height={1080} />
     <Composition id="P05V5T4B" component={Shot4b} defaultProps={{draft: false}} durationInFrames={TOTAL4B} fps={FPS} width={1350} height={1080} />
+    {/* FULL 15 s P05 v5 (from test shot 4b + the founder's 7 notes); -sfx = SFX-only stem for the onset check */}
+    <Composition id="P05V5FULL-draft" component={Shot5} defaultProps={{draft: true}} durationInFrames={TOTAL5} fps={FPS} width={1350} height={1080} />
+    <Composition id="P05V5FULL" component={Shot5} defaultProps={{draft: false}} durationInFrames={TOTAL5} fps={FPS} width={1350} height={1080} />
+    <Composition id="P05V5FULL-sfx" component={Shot5} defaultProps={{draft: false, bed: false}} durationInFrames={TOTAL5} fps={FPS} width={1350} height={1080} />
   </>
 );
 registerRoot(Root);

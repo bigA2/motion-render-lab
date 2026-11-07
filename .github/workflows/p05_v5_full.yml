@@ -1,0 +1,89 @@
+# P05 FULL v5 (src/p05_v5/Shot5.tsx, plan5.ts): the full 15 s 5:4 ad built from test shot 4b + the founder's 7 notes.
+# Renders draft (greyscale + grid) + final + an SFX-only stem (bed muted) for the onset check; masters to -14 LUFS;
+# writes a 12 fps sheet, every 12 fps frame, key sheet, breakdown and onsets.txt (each cue vs its detected onset, unexpected
+# onsets, SFX count per type, same-sample-within-1.5 s check). Artifact P05_v5_full, Pages /p05_full/.
+name: p05_v5_full
+permissions: { contents: write }
+on: { workflow_dispatch: {} }
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund && npx remotion browser ensure
+      - run: (command -v ffmpeg >/dev/null || (sudo timeout 300 apt-get -qq update && sudo DEBIAN_FRONTEND=noninteractive timeout 400 apt-get -qq install -y ffmpeg >/dev/null)) && ffmpeg -version | head -1
+      - name: procedural SFX (our code; not committed)
+        run: python3 tools/p05full/make_sfx.py public/sfx/p05full
+      - name: render draft + final + SFX stem
+        run: |
+          mkdir -p out
+          npx remotion render src/p05_v5/index.tsx P05V5FULL-draft out/P05_v5_full_draft.mp4 --codec h264 --crf 18 --muted --concurrency 4
+          npx remotion render src/p05_v5/index.tsx P05V5FULL out/raw.mp4 --codec h264 --crf 14 --audio-codec aac --audio-bitrate 320k --concurrency 4
+          npx remotion render src/p05_v5/index.tsx P05V5FULL-sfx out/stem.wav --codec wav --concurrency 4
+      - name: master to -14 LUFS (gain search into a -2 dB limiter)
+        run: |
+          cd out
+          python3 - <<'PY'
+          import re, subprocess
+          def chain(g): return "volume=%.2fdB,alimiter=limit=0.79:attack=0.5:release=40:level=false" % g
+          def meas(g):
+              r = subprocess.run(['ffmpeg','-hide_banner','-i','raw.mp4','-t','15.0','-af',chain(g)+',ebur128=peak=true','-f','null','-'], capture_output=True, text=True).stderr
+              s = r[r.rindex('Summary:'):]
+              return float(re.search(r'I:\s+(-?[\d.]+) LUFS', s).group(1)), float(re.search(r'Peak:\s+(-?[\d.]+) dBFS', s).group(1))
+          lo, hi = -10.0, 30.0
+          for _ in range(14):
+              g = (lo + hi) / 2; i, tp = meas(g)
+              print('gain %.2f -> I %.2f LUFS, TP %.2f' % (g, i, tp))
+              if abs(i + 14) < 0.1: break
+              lo, hi = (g, hi) if i < -14 else (lo, g)
+          open('chain.txt', 'w').write(chain(g))
+          PY
+          ffmpeg -v error -y -i raw.mp4 -t 15.0 -af "$(cat chain.txt),aresample=48000" -c:v copy -c:a aac -b:a 256k FansaChat_P05_v5_full_5x4.mp4
+          cat chain.txt; rm raw.mp4 chain.txt
+      - name: SFX onset check
+        run: |
+          node --experimental-strip-types -e "import('./src/p05_v5/plan5.ts').then(p=>require('fs').writeFileSync('out/cues.json', JSON.stringify(p.SFX)))"
+          cd out
+          ffmpeg -v error -y -i stem.wav -ac 1 -ar 48000 -f s16le stem.raw
+          python3 ../tools/p05full/onsets.py cues.json stem.raw
+          ffmpeg -v error -y -i stem.wav -ac 1 -ar 24000 -c:a libmp3lame -q:a 4 sfx_stem.mp3 || true
+          rm -f stem.raw stem.wav
+          cat onsets.txt >> $GITHUB_STEP_SUMMARY
+      - name: breakdown, sheets, frames, loudness
+        run: |
+          cd out
+          F=FansaChat_P05_v5_full_5x4.mp4
+          ffmpeg -v error -y -i $F -i P05_v5_full_draft.mp4 -filter_complex "[0:v]scale=676:540[a];[1:v]scale=676:540[b];[a][b]vstack" -map 0:a -c:v libx264 -crf 18 -pix_fmt yuv420p P05_v5_full_breakdown.mp4
+          ffmpeg -v error -y -i $F -vf "fps=12,scale=270:-1,drawtext=text='%{n}':x=4:y=4:fontsize=13:fontcolor=yellow:box=1:boxcolor=black@0.5,tile=12x15" -frames:v 1 P05_v5_full_sheet12.jpg
+          ffmpeg -v error -y -i $F -vf "select='not(mod(n\,15))',scale=338:-1,drawtext=text='f%{n}':x=6:y=6:fontsize=16:fontcolor=yellow:box=1:boxcolor=black@0.6,tile=6x5" -vsync vfr -frames:v 1 P05_v5_full_keys.jpg
+          mkdir -p f12 d4
+          ffmpeg -v error -y -i $F -vf "fps=12,scale=675:-1" -q:v 3 f12/f12_%03d.jpg
+          ffmpeg -v error -y -i P05_v5_full_draft.mp4 -vf "fps=2,scale=1350:-1" -q:v 3 d4/d2_%03d.jpg
+          ffmpeg -hide_banner -i $F -af ebur128=peak=true -f null - 2>&1 | tail -12 > loudness.txt
+          ffprobe -v error -show_entries format=duration:stream=codec_name,width,height,r_frame_rate -of compact $F > probe.txt
+          cat probe.txt loudness.txt >> $GITHUB_STEP_SUMMARY; ls -la
+      - uses: actions/upload-artifact@v4
+        with: { name: 'P05_v5_full', path: out/, retention-days: 30 }
+      - name: publish to Pages /p05_full/
+        run: |
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          cp -r out /tmp/out
+          for i in 1 2 3 4 5; do
+            git fetch -q origin gh-pages && git checkout -qf -B gh-pages origin/gh-pages
+            rm -rf p05_full && mkdir -p p05_full && cp -r /tmp/out/*.mp4 /tmp/out/*.mp3 /tmp/out/*.jpg /tmp/out/*.txt /tmp/out/*.json /tmp/out/f12 /tmp/out/d4 p05_full/
+            echo "${{ github.run_id }}" > p05_full/run_id.txt
+            {
+              echo '<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>P05 v5 full</title>'
+              echo '<style>body{background:#0c0b11;color:#e9e6f2;font:16px system-ui;margin:24px}video,img{max-width:100%;border-radius:10px;margin:8px 0}</style>'
+              echo "<h2>P05 v5 FULL (5:4, 15 s) - run ${{ github.run_id }}</h2>"
+              echo '<video src="./FansaChat_P05_v5_full_5x4.mp4" controls playsinline loop width=675></video>'
+              echo '<h3>Breakdown: final over draft (greyscale + typographic grid)</h3><video src="./P05_v5_full_breakdown.mp4" controls playsinline loop width=675></video>'
+              echo '<h3>Key frames (every 15 f)</h3><img src="./P05_v5_full_keys.jpg"><h3>12 fps sheet</h3><img src="./P05_v5_full_sheet12.jpg">'
+              echo '<h3>SFX onsets</h3><pre>'; cat /tmp/out/onsets.txt; echo '</pre><h3>Loudness</h3><pre>'; cat /tmp/out/loudness.txt; echo '</pre>'
+            } > p05_full/index.html
+            git add p05_full && git commit -qm "Pages: P05 v5 full (run ${{ github.run_id }})" && git push -q origin gh-pages && break
+            sleep $((i * 5))
+          done
