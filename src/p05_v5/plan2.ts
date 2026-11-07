@@ -16,7 +16,7 @@ export const T = {
   zoom0: 39, zoom1: 62, // camera dives into the composer (peaked in-out)
   dof0: 50, dof1: 64,   // background goes out of focus, pill comes forward
   type0: 64,     // first character
-  track0: 104, track1: 116, // camera tracks to the send button
+  track0: 106, track1: 117, // camera tracks to the send button
   cursorIn: 100, press: 116,
   cut2: 120,     // send: hard cut to the real 'sent' still (0.84 -> 1)
   end: TOTAL,

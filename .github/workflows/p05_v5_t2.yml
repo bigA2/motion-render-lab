@@ -1,7 +1,7 @@
 # P05 v5 test shot 2 (src/p05_v5/Shot2.tsx): 5:4 1350x1080, 4.5 s, 30 fps. Camera dives into the real composer (stills of
 # our own app), types the prompt big, presses send, cuts to the real 'sent' still. Draft-first: B/W draft + final,
-# breakdown (final over draft), 12 fps sheet, key-frame sheet, audio: +8 dB into a -1.9 dB limiter (the SFX mix is sparse and
-# peaky), then two-pass linear loudnorm to -14 LUFS / -1 dBTP.
+# breakdown (final over draft), 12 fps sheet, key-frame sheet, audio mastered to -14 LUFS (bisection on the gain into a -2 dB
+# limiter, measured with ebur128; two-pass loudnorm fell back to dynamic mode on this sparse, peaky SFX mix).
 # Publishes artifact P05_v5_test2 and Pages /p05_test2/. Does not touch p05_v4 or test shot 1.
 name: p05_v5_t2
 permissions: { contents: write }
@@ -21,18 +21,26 @@ jobs:
           mkdir -p out
           npx remotion render src/p05_v5/index.tsx P05V5T2-draft out/P05_v5_test2_draft.mp4 --codec h264 --crf 18 --muted
           npx remotion render src/p05_v5/index.tsx P05V5T2 out/raw.mp4 --codec h264 --crf 14 --audio-codec aac --audio-bitrate 320k
-      - name: master to -14 LUFS (two-pass loudnorm)
+      - name: master to -14 LUFS (gain search into a -2 dB limiter; loudnorm falls back to dynamic on this peaky mix)
         run: |
           cd out
-          ffmpeg -hide_banner -i raw.mp4 -af "volume=8dB,alimiter=limit=0.8:attack=0.5:release=40:level=false,loudnorm=I=-14:TP=-1:LRA=11:print_format=json" -f null - 2> pass1.txt
           python3 - <<'PY'
-          import json,re
-          t=open('pass1.txt').read(); j=json.loads(t[t.rindex('{'):t.rindex('}')+1])
-          open('ln.txt','w').write("loudnorm=I=-14:TP=-1:LRA=11:measured_I=%s:measured_TP=%s:measured_LRA=%s:measured_thresh=%s:offset=%s:linear=true" % (j['input_i'],j['input_tp'],j['input_lra'],j['input_thresh'],j['target_offset']))
-          print('pass1', j)
+          import re, subprocess
+          def chain(g): return "volume=%.2fdB,alimiter=limit=0.79:attack=0.5:release=40:level=false" % g
+          def meas(g):
+              r = subprocess.run(['ffmpeg','-hide_banner','-i','raw.mp4','-t','4.5','-af',chain(g)+',ebur128=peak=true','-f','null','-'], capture_output=True, text=True).stderr
+              s = r[r.rindex('Summary:'):]
+              return float(re.search(r'I:\s+(-?[\d.]+) LUFS', s).group(1)), float(re.search(r'Peak:\s+(-?[\d.]+) dBFS', s).group(1))
+          lo, hi = 0.0, 24.0
+          for _ in range(14):
+              g = (lo + hi) / 2; i, tp = meas(g)
+              print('gain %.2f -> I %.2f LUFS, TP %.2f' % (g, i, tp))
+              if abs(i + 14) < 0.1: break
+              lo, hi = (g, hi) if i < -14 else (lo, g)
+          open('chain.txt', 'w').write(chain(g))
           PY
-          ffmpeg -v error -y -i raw.mp4 -t 4.5 -af "volume=8dB,alimiter=limit=0.8:attack=0.5:release=40:level=false,$(cat ln.txt),aresample=48000" -c:v copy -c:a aac -b:a 256k FansaChat_P05_v5_test2_5x4.mp4
-          rm raw.mp4
+          ffmpeg -v error -y -i raw.mp4 -t 4.5 -af "$(cat chain.txt),aresample=48000" -c:v copy -c:a aac -b:a 256k FansaChat_P05_v5_test2_5x4.mp4
+          cat chain.txt; rm raw.mp4 chain.txt
       - name: breakdown, sheets, loudness
         run: |
           cd out
@@ -42,7 +50,7 @@ jobs:
           ffmpeg -v error -y -i $F -vf "select='eq(n\,10)+eq(n\,20)+eq(n\,27)+eq(n\,31)+eq(n\,45)+eq(n\,55)+eq(n\,66)+eq(n\,80)+eq(n\,95)+eq(n\,108)+eq(n\,117)+eq(n\,121)+eq(n\,126)+eq(n\,134)',scale=675:-1,drawtext=text='f%{n}':x=8:y=8:fontsize=22:fontcolor=yellow:box=1:boxcolor=black@0.6,tile=4x4" -vsync vfr -frames:v 1 P05_v5_test2_keys.jpg
           ffmpeg -hide_banner -i $F -af ebur128=peak=true -f null - 2>&1 | tail -12 > loudness.txt
           ffprobe -v error -show_entries format=duration:stream=codec_name,width,height,r_frame_rate -of compact $F > probe.txt
-          cat probe.txt loudness.txt >> $GITHUB_STEP_SUMMARY; rm -f pass1.txt ln.txt; ls -la
+          cat probe.txt loudness.txt >> $GITHUB_STEP_SUMMARY; ls -la
       - uses: actions/upload-artifact@v4
         with: { name: 'P05_v5_test2', path: out/, retention-days: 30 }
       - name: publish to Pages /p05_test2/
