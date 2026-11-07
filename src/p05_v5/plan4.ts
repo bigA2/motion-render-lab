@@ -39,7 +39,7 @@ export const T = {
   type0: 58,                     // first character, 2 chars / frame
   cursorIn: 86, press: 100,      // cursor glides in, press send (in-box disc)
   morph0: 102, morph1: 116,      // box shrinks INTO the real sent chat bubble (box gone by 116)
-  sent0: 104, sent1: 112,        // real state: ready -> sent (cross-dissolve)
+  sent0: 100, sent1: 106,        // real state: ready -> sent (cross-dissolve)
   pick0: 118, pick1: 132,        // shape picker card transforms into the "Reading your request" card (real states)
   flow0: 134,                    // reading -> built: mapping panel slides in from the left, flow connects node by node
   node1: 140, node2: 148, node3: 156,
@@ -54,8 +54,8 @@ export const CPS = 2;
 export const LINES = ['When a lead fills my', 'website form, add them', 'to Notion and post it', 'in Slack.'];
 export const TYPE_END = T.type0 + Math.ceil((LINES.reduce((a, l) => a + l.length + 1, 0) - 1) / CPS);
 
-// ---------- glass box (screen px, on the grid: columns 2..11, baselines 416/488/560/632) ----------
-export const BOX = {x: colX(1), y: 328, w: colR(10) - colX(1), h: 352, r: 48, padX: 48, size: 61, lead: 72, base0: 416};
+// ---------- glass box (screen px, on the grid: text starts on column 2, box padded 48 outside cols 2..11, baselines 416/488/560/632) ----------
+export const BOX = {x: colX(1) - 48, y: 328, w: colR(10) - colX(1) + 96, h: 352, r: 48, padX: 48, size: 61, lead: 72, base0: 416};
 export const SEND_R = 32;
 
 // ---------- the browser window per scene (stage px at camera s = 1) ----------
@@ -99,29 +99,29 @@ export const SLACK_LINE = {cx: 470, cy: 60};   // message crop px of 'New lead w
 
 const I = 'sfx/kenney/interface-sounds/', M = 'sfx/kenney/impact-sounds/', P = 'sfx/p05t4/';
 const KEYS = [I + 'click_002.ogg', I + 'click_003.ogg', I + 'tick_002.ogg'];
-export type Cue = {f: number; src: string; vol: number; why: string};
+export type Cue = {f: number; src: string; vol: number; why: string; dur?: number};
 // One soft key per 3-frame character group, only while characters appear (T.type0 .. TYPE_END-1).
 const keyCues: Cue[] = [];
 for (let f = T.type0, i = 0; f < TYPE_END; f += 3, i++) keyCues.push({f, src: KEYS[i % 3], vol: 0.26 + 0.06 * ((i * 7) % 3) / 2, why: 'typing: soft key (character group appears)'});
 export const SFX: Cue[] = [
   ...HOOK.map((_, i) => ({f: WORD0 + i * WSTEP, src: I + 'tick_00' + (i % 2 ? 2 : 4) + '.ogg', vol: 0.36, why: 'hook word lands: tick'})),
-  {f: T.win0, src: P + 'whoosh_m.ogg', vol: 0.3, why: 'window slides in from the right: whoosh'},
-  {f: T.win1 - 2, src: I + 'switch_003.ogg', vol: 0.38, why: 'window lands: latch'},
-  {f: T.lift0, src: P + 'whoosh_s.ogg', vol: 0.2, why: 'glass box lifts off the pill: soft whoosh'},
+  {f: T.win0, src: P + 'whoosh_m.ogg', vol: 0.16, why: 'window slides in from the right: whoosh'},
+  {f: T.win1 - 2, src: I + 'switch_003.ogg', vol: 0.38, dur: 7, why: 'window lands: latch'},
+  {f: T.lift0, src: P + 'whoosh_s.ogg', vol: 0.1, why: 'glass box lifts off the pill: soft whoosh'},
   ...keyCues,
   {f: T.press, src: I + 'click_001.ogg', vol: 0.7, why: 'press send: click'},
-  {f: T.morph0, src: P + 'whoosh_s.ogg', vol: 0.26, why: 'box flies into the chat bubble: whoosh'},
-  {f: T.morph1 - 2, src: I + 'switch_002.ogg', vol: 0.32, why: 'bubble lands: small latch'},
-  {f: T.pick0, src: P + 'whoosh_s.ogg', vol: 0.2, why: 'camera glides + card transforms: whoosh'},
-  {f: T.flow0, src: P + 'whoosh_s.ogg', vol: 0.2, why: 'mapping panel slides in: whoosh'},
+  {f: T.morph0, src: P + 'whoosh_s.ogg', vol: 0.13, why: 'box flies into the chat bubble: whoosh'},
+  {f: T.morph1 - 2, src: I + 'switch_002.ogg', vol: 0.32, dur: 7, why: 'bubble lands: small latch'},
+  {f: T.pick0, src: P + 'whoosh_s.ogg', vol: 0.1, why: 'camera glides + card transforms: whoosh'},
+  {f: T.flow0, src: P + 'whoosh_s.ogg', vol: 0.1, why: 'mapping panel slides in: whoosh'},
   {f: T.node1, src: I + 'tick_001.ogg', vol: 0.34, why: 'node 1 snaps in: tick'},
   {f: T.node2, src: I + 'tick_001.ogg', vol: 0.34, why: 'node 2 snaps in: tick'},
   {f: T.node3, src: I + 'tick_001.ogg', vol: 0.34, why: 'node 3 snaps in: tick'},
-  {f: T.nIn0, src: P + 'whoosh_m.ogg', vol: 0.3, why: 'push into the Notion node: whoosh (peaks on the open)'},
-  {f: T.cutN, src: I + 'switch_003.ogg', vol: 0.34, why: 'Notion page opens: latch'},
+  {f: T.nIn0, src: P + 'whoosh_m.ogg', vol: 0.15, why: 'push into the Notion node: whoosh (peaks on the open)'},
+  {f: T.cutN, src: I + 'switch_003.ogg', vol: 0.34, dur: 7, why: 'Notion page opens: latch'},
   {f: T.cutN, src: M + 'impactMetal_light_002.ogg', vol: 0.3, why: 'Notion page opens: light metal hit'},
-  {f: T.nPush0, src: P + 'whoosh_s.ogg', vol: 0.14, why: 'push-in: soft whoosh'},
-  {f: T.sSwap0, src: P + 'whoosh_m.ogg', vol: 0.3, why: 'Notion slides out / Slack slides in: whoosh'},
-  {f: T.msg, src: I + 'glass_001.ogg', vol: 0.42, why: 'Slack message appears: notification tick'},
-  {f: T.sPush0, src: P + 'whoosh_s.ogg', vol: 0.14, why: 'push-in: soft whoosh'},
+  {f: T.nPush0, src: P + 'whoosh_s.ogg', vol: 0.08, why: 'push-in: soft whoosh'},
+  {f: T.sSwap0, src: P + 'whoosh_s.ogg', vol: 0.15, why: 'Notion slides out / Slack slides in: whoosh (short, clears before the tick)'},
+  {f: T.msg, src: I + 'glass_001.ogg', vol: 0.55, why: 'Slack message appears: notification tick'},
+  {f: T.sPush0 + 2, src: P + 'whoosh_s.ogg', vol: 0.08, why: 'push-in: soft whoosh'},
 ];

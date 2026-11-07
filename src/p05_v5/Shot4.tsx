@@ -46,19 +46,21 @@ const C = {
   type: {cx: 675, cy: 548, s: 1.04},
   bubble: {cx: 560, cy: 530, s: 1.1},
   picker: {cx: 760, cy: 560, s: 1.12},
-  flow: {cx: 598, cy: 520, s: 1.3},
-  node: {cx: node2.x, cy: node2.y, s: 2.6},
+  map: {cx: 560, cy: 520, s: 1.25},
+  flow: {cx: node2.x - 4, cy: node2.y + 6, s: 2.0},
+  node: {cx: node2.x, cy: node2.y, s: 2.3},
   nFit: {cx: 693, cy: 548, s: 1.0},
   nKey: {cx: WIN.notion.x + NOTION_BODY.cx * NWS, cy: WIN.notion.y + CHROME_H + NOTION_BODY.cy * NWS - 20, s: 1.85},
   sFit: {cx: 675, cy: 548, s: 1.0},
-  sKey: {cx: WIN.slack.x + SLACK_LINE.cx * SWS + 40, cy: WIN.slack.y + CHROME_H + (IMG.slackMsg.slotY + SLACK_LINE.cy) * SWS, s: 2.0},
+  sKey: {cx: WIN.slack.x + SLACK_LINE.cx * SWS + 40, cy: WIN.slack.y + CHROME_H + (IMG.slackMsg.slotY + SLACK_LINE.cy) * SWS - 24, s: 2.0},
 };
 const camAt = (f: number): Cam => {
   if (f < T.win1) return sc(C.full, 0.94 + 0.06 * k(f, T.win0, T.win1));
   if (f < T.morph0) return mix(C.full, C.type, k(f, T.win1, T.morph0, glide));
   if (f < T.pick0) return mix(C.type, C.bubble, k(f, T.morph0, T.pick0, smooth));
   if (f < T.flow0) return mix(C.bubble, C.picker, k(f, T.pick0, T.flow0, smooth));
-  if (f < T.nIn0) return mix(C.picker, C.flow, k(f, T.flow0, T.flow0 + 16, smooth));
+  if (f < T.node2 - 2) return mix(C.picker, C.map, k(f, T.flow0, T.node2 - 2, smooth));
+  if (f < T.nIn0) return mix(C.map, C.flow, k(f, T.node2 - 2, T.node3 + 4, smooth));
   if (f < T.cutN) return mix(C.flow, C.node, k(f, T.nIn0, T.cutN, inCut));   // speed peaks as the node opens
   if (f < T.nPush0) return mix(C.node, C.nFit, k(f, T.cutN, T.nFit, outCut));
   if (f < T.sSwap0) return sc(mix(C.nFit, C.nKey, k(f, T.nPush0, T.nPush1, peak)), 1 + 0.02 * k(f, T.nPush1, T.sSwap0, glide));
@@ -241,7 +243,7 @@ const Window: React.FC<{f: number}> = ({f}) => {
   // Notion opens out of the Notion node: a growing circle from the node's stage point
   const nOpen = k(f, T.cutN - 2, T.cutN + 10, outCut);
   const cxN = node2.x - r.x, cyN = node2.y - (r.y + CHROME_H);
-  const rad = lerp(B.nodeR * BWS, Math.hypot(Math.max(cxN, cw - cxN), Math.max(cyN, ch - cyN)) + 4, nOpen);
+  const rad = lerp(B.nodeR * BWS * 1.6, Math.hypot(Math.max(cxN, cw - cxN), Math.max(cyN, ch - cyN)) + 4, nOpen);
   const sw = k(f, T.sSwap0, T.sSwap1); // Notion out left, Slack in from the right
   return (
     <div style={{position: 'absolute', left: r.x, top: r.y, width: r.w, height: r.h, borderRadius: 14, overflow: 'hidden', background: '#fff',
@@ -472,7 +474,11 @@ const Picture: React.FC<{draft: boolean}> = ({draft}) => {
 
 export const Shot4: React.FC<{draft: boolean}> = ({draft}) => (
   <AbsoluteFill>
-    {!draft && SFX.map((x, i) => <Sequence key={i} from={x.f} durationInFrames={Math.min(30, TOTAL - x.f)} layout="none"><Audio src={staticFile(x.src)} volume={x.vol} /></Sequence>)}
+    {/* each cue plays from its first visible frame; trimmed cues (dur) fade over their last 2 frames so no tail/noise floor is left */}
+    {!draft && SFX.map((x, i) => {
+      const d = Math.min(x.dur ?? 30, TOTAL - x.f);
+      return <Sequence key={i} from={x.f} durationInFrames={d} layout="none"><Audio src={staticFile(x.src)} volume={(fr) => x.vol * (x.dur ? interpolate(fr, [d - 3, d - 1], [1, 0], cl) : 1)} /></Sequence>;
+    })}
     {draft ? <Picture draft /> : <CameraMotionBlur shutterAngle={90} samples={8}><Picture draft={false} /></CameraMotionBlur>}
   </AbsoluteFill>
 );
