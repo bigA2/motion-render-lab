@@ -1,6 +1,7 @@
 # P05 v5 test shot 2 (src/p05_v5/Shot2.tsx): 5:4 1350x1080, 4.5 s, 30 fps. Camera dives into the real composer (stills of
 # our own app), types the prompt big, presses send, cuts to the real 'sent' still. Draft-first: B/W draft + final,
-# breakdown (final over draft), 12 fps sheet, key-frame sheet, audio mastered to -14 LUFS / -1 dBTP (two-pass loudnorm).
+# breakdown (final over draft), 12 fps sheet, key-frame sheet, audio: +8 dB into a -1.9 dB limiter (the SFX mix is sparse and
+# peaky), then two-pass linear loudnorm to -14 LUFS / -1 dBTP.
 # Publishes artifact P05_v5_test2 and Pages /p05_test2/. Does not touch p05_v4 or test shot 1.
 name: p05_v5_t2
 permissions: { contents: write }
@@ -23,14 +24,14 @@ jobs:
       - name: master to -14 LUFS (two-pass loudnorm)
         run: |
           cd out
-          ffmpeg -hide_banner -i raw.mp4 -af loudnorm=I=-14:TP=-1:LRA=11:print_format=json -f null - 2> pass1.txt
+          ffmpeg -hide_banner -i raw.mp4 -af "volume=8dB,alimiter=limit=0.8:attack=0.5:release=40:level=false,loudnorm=I=-14:TP=-1:LRA=11:print_format=json" -f null - 2> pass1.txt
           python3 - <<'PY'
           import json,re
           t=open('pass1.txt').read(); j=json.loads(t[t.rindex('{'):t.rindex('}')+1])
           open('ln.txt','w').write("loudnorm=I=-14:TP=-1:LRA=11:measured_I=%s:measured_TP=%s:measured_LRA=%s:measured_thresh=%s:offset=%s:linear=true" % (j['input_i'],j['input_tp'],j['input_lra'],j['input_thresh'],j['target_offset']))
           print('pass1', j)
           PY
-          ffmpeg -v error -y -i raw.mp4 -af "$(cat ln.txt),aresample=48000" -c:v copy -c:a aac -b:a 256k FansaChat_P05_v5_test2_5x4.mp4
+          ffmpeg -v error -y -i raw.mp4 -t 4.5 -af "volume=8dB,alimiter=limit=0.8:attack=0.5:release=40:level=false,$(cat ln.txt),aresample=48000" -c:v copy -c:a aac -b:a 256k FansaChat_P05_v5_test2_5x4.mp4
           rm raw.mp4
       - name: breakdown, sheets, loudness
         run: |

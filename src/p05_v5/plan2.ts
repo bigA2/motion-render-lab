@@ -16,12 +16,12 @@ export const T = {
   zoom0: 39, zoom1: 62, // camera dives into the composer (peaked in-out)
   dof0: 50, dof1: 64,   // background goes out of focus, pill comes forward
   type0: 64,     // first character
-  track0: 102, track1: 116, // camera tracks to the send button
+  track0: 104, track1: 116, // camera tracks to the send button
   cursorIn: 100, press: 116,
   cut2: 120,     // send: hard cut to the real 'sent' still (0.84 -> 1)
   end: TOTAL,
 };
-export const CPS = 1.7; // characters per frame
+export const CPS = 2.0; // characters per frame
 export const LINES = ['When someone books a sales call,', 'create a Notion page, then post in Slack.'];
 export const PROMPT = LINES.join(' ');
 
@@ -29,16 +29,16 @@ export const PROMPT = LINES.join(' ');
 export const PILL = {x: 29, w: 526, bottom: 1002, h1: 54, h2: 80}; // composer pill; grows upward like the real UI
 export const SEND = {x: 528, y: 975.5, r: 21}; // send button centre (one-line pill)
 export const PILL_GRAD = 'linear-gradient(90deg, #F4D3CC 0%, #ECCED1 23%, #E1C5DA 42%, #DDC2E5 61%, #D3BDEE 80%, #CDBCF0 100%)';
-export const UI_FONT = 19; // world px of the typed text (44 px on screen at 2.3x)
+export const UI_FONT = 19; // world px of the typed text (~44 px on screen at 2.25x with the 1.03 pop)
 
 // Camera keys: world centre (cx, cy) and scale s.
 export const CAM = {
   window: {cx: 960, cy: 540, s: 0.66},
-  composer: {cx: 300, cy: 940, s: 2.3},
-  drift: {cx: 318, cy: 944, s: 2.42},
+  composer: {cx: 292, cy: 944, s: 2.15},
+  drift: {cx: 292, cy: 950, s: 2.25},
   send: {cx: 470, cy: 962, s: 2.9},
   push: {cx: 528, cy: 962, s: 3.4},
-  sent: {cx: 300, cy: 196, s: 1.7},
+  sent: {cx: 300, cy: 250, s: 2.0},
 };
 
 // Mechanical SFX (Kenney CC0 + our procedural keyboard). f = first visible frame of the event.

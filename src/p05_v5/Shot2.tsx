@@ -1,6 +1,6 @@
 // P05 v5 test shot 2: hook words -> cut into our REAL app (still from our own recording) -> camera dives into the composer
 // -> the prompt is typed big inside the real pill -> camera tracks to the send button -> press -> hard cut to the real
-// 'sent' still. Motion = one camera (null-style) + layered crops; motion blur 180 deg. Draft = same timing in B/W Arial.
+// 'sent' still. Motion = one camera (null-style) + layered crops; motion blur 120 deg (180 smeared the typed text on the track). Draft = same timing in B/W Arial.
 import React from 'react';
 import {AbsoluteFill, Audio, Easing, Img, interpolate, interpolateColors, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import {CameraMotionBlur} from '@remotion/motion-blur';
@@ -36,6 +36,12 @@ const camAt = (f: number): Cam => {
   return mix(CAM.send, CAM.push, k(f, T.track1, T.cut2, inCut));
 };
 
+// hook exit: each LINE scales 1 -> 1.18 from its centre, blurs 0 -> 16 px, fades; line 2 leaves 1 f later; ease-in into the cut
+const lineExit = (f: number, ln: number, draft: boolean): React.CSSProperties => {
+  const q = k(f, T.hookOut + ln, T.hookOut + ln + 6, inCut);
+  return {opacity: 1 - q, transform: `scale(${1 + 0.18 * q})`, filter: draft ? 'none' : `blur(${q * 16}px)`};
+};
+
 const L0 = LINES[0].length;
 const fLine2 = T.type0 + (L0 + 1) / CPS;
 
@@ -59,7 +65,7 @@ const Picture: React.FC<{draft: boolean}> = ({draft}) => {
   const grow = k(f, fLine2, fLine2 + 6);
   const ph = PILL.h1 + (PILL.h2 - PILL.h1) * grow;
   const pTop = PILL.bottom - ph;
-  const pop = 1 + 0.04 * dof;
+  const pop = 1 + 0.03 * dof;
   const pcx = PILL.x + PILL.w / 2, pcy = pTop + ph / 2;
   // send button (child of the pill), pressed at T.press: 0.88 -> 1 in 4 f
   const btnX = SEND.x, btnY = pcy;
@@ -113,17 +119,16 @@ const Picture: React.FC<{draft: boolean}> = ({draft}) => {
         <div style={{position: 'absolute', left: 0, right: 0, top: 0, height: H, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
           fontFamily: sans, fontSize: 100, lineHeight: 1.04, letterSpacing: draft ? 0 : '-0.033em'}}>
           {[0, 1].map((ln) => (
-            <div key={ln} style={{display: 'flex', gap: '0.24em'}}>
+            <div key={ln} style={{display: 'flex', gap: '0.24em', ...lineExit(f, ln, draft)}}>
               {HOOK.map((h, i) => {
                 if (h.line !== ln) return null;
                 const p = k(f, WORD0 + i * WSTEP, WORD0 + i * WSTEP + WDUR);
-                const q = k(f, T.hookOut + i * 0.5, T.hookOut + i * 0.5 + 6, inCut);
                 const final = draft ? '#000' : h.bold ? '#FFFFFF' : '#E6E4EC';
                 return <span key={i} style={{display: 'inline-block', fontWeight: h.bold ? 700 : 500,
-                  opacity: interpolate(p, [0, 0.5], [0, 1], cl) * (1 - q),
+                  opacity: interpolate(p, [0, 0.5], [0, 1], cl),
                   color: draft ? '#000' : interpolateColors(p, [0, 1], ['#4A4852', final]),
-                  transform: `translateY(${(1 - p) * 22}px) scale(${(0.94 + 0.06 * p) * (1 + 0.18 * q)})`,
-                  filter: draft ? 'none' : `blur(${(1 - p) * 10 + q * 16}px)`}}>{h.w}</span>;
+                  transform: `translateY(${(1 - p) * 22}px) scale(${0.94 + 0.06 * p})`,
+                  filter: draft ? 'none' : `blur(${(1 - p) * 10}px)`}}>{h.w}</span>;
               })}
             </div>
           ))}
@@ -148,6 +153,6 @@ const Picture: React.FC<{draft: boolean}> = ({draft}) => {
 export const Shot2: React.FC<{draft: boolean}> = ({draft}) => (
   <AbsoluteFill>
     {!draft && SFX.map((x, i) => <Sequence key={i} from={x.f} layout="none"><Audio src={staticFile(x.src)} volume={x.vol} /></Sequence>)}
-    {draft ? <Picture draft /> : <CameraMotionBlur shutterAngle={180} samples={8}><Picture draft={false} /></CameraMotionBlur>}
+    {draft ? <Picture draft /> : <CameraMotionBlur shutterAngle={120} samples={8}><Picture draft={false} /></CameraMotionBlur>}
   </AbsoluteFill>
 );
