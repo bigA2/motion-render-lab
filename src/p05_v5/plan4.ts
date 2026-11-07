@@ -94,6 +94,7 @@ export const B = {
   lines: [{x: 1590, y: 840, w: 290, h: 30}, {x: 1964, y: 840, w: 292, h: 30}],
   nodeCy: 856, nodeR: 42,
 };
+export const NOTION_TITLE = {cx: 334, cy: 86}; // notion crop px: centre of the title 'Maya Chen'
 export const NOTION_BODY = {cx: 480, cy: 700}; // notion crop px of the 4 body lines' centre
 export const SLACK_LINE = {cx: 470, cy: 60};   // message crop px of 'New lead with Maya Chen, ...'
 
@@ -105,18 +106,18 @@ const keyCues: Cue[] = [];
 for (let f = T.type0, i = 0; f < TYPE_END; f += 3, i++) keyCues.push({f, src: KEYS[i % 3], vol: 0.26 + 0.06 * ((i * 7) % 3) / 2, why: 'typing: soft key (character group appears)'});
 export const SFX: Cue[] = [
   ...HOOK.map((_, i) => ({f: WORD0 + i * WSTEP, src: I + 'tick_00' + (i % 2 ? 2 : 4) + '.ogg', vol: 0.36, why: 'hook word lands: tick'})),
-  {f: T.win0, src: P + 'whoosh_m.ogg', vol: 0.16, why: 'window slides in from the right: whoosh'},
+  {f: T.win0, src: P + 'whoosh_m.ogg', vol: 0.12, why: 'window slides in from the right: whoosh'},
   {f: T.win1 - 2, src: I + 'switch_003.ogg', vol: 0.38, dur: 7, why: 'window lands: latch'},
   {f: T.lift0, src: P + 'whoosh_s.ogg', vol: 0.1, why: 'glass box lifts off the pill: soft whoosh'},
   ...keyCues,
   {f: T.press, src: I + 'click_001.ogg', vol: 0.7, why: 'press send: click'},
   {f: T.morph0, src: P + 'whoosh_s.ogg', vol: 0.13, why: 'box flies into the chat bubble: whoosh'},
   {f: T.morph1 - 2, src: I + 'switch_002.ogg', vol: 0.32, dur: 7, why: 'bubble lands: small latch'},
-  {f: T.pick0, src: P + 'whoosh_s.ogg', vol: 0.1, why: 'camera glides + card transforms: whoosh'},
-  {f: T.flow0, src: P + 'whoosh_s.ogg', vol: 0.1, why: 'mapping panel slides in: whoosh'},
-  {f: T.node1, src: I + 'tick_001.ogg', vol: 0.34, why: 'node 1 snaps in: tick'},
-  {f: T.node2, src: I + 'tick_001.ogg', vol: 0.34, why: 'node 2 snaps in: tick'},
-  {f: T.node3, src: I + 'tick_001.ogg', vol: 0.34, why: 'node 3 snaps in: tick'},
+  {f: T.pick0, src: P + 'whoosh_s.ogg', vol: 0.06, why: 'camera glides + card transforms: whoosh'},
+  {f: T.flow0, src: P + 'whoosh_s.ogg', vol: 0.06, why: 'mapping panel slides in: whoosh'},
+  {f: T.node1, src: I + 'tick_001.ogg', vol: 0.5, why: 'node 1 snaps in: tick'},
+  {f: T.node2, src: I + 'tick_001.ogg', vol: 0.5, why: 'node 2 snaps in: tick'},
+  {f: T.node3, src: I + 'tick_001.ogg', vol: 0.5, why: 'node 3 snaps in: tick'},
   {f: T.nIn0, src: P + 'whoosh_m.ogg', vol: 0.15, why: 'push into the Notion node: whoosh (peaks on the open)'},
   {f: T.cutN, src: I + 'switch_003.ogg', vol: 0.34, dur: 7, why: 'Notion page opens: latch'},
   {f: T.cutN, src: M + 'impactMetal_light_002.ogg', vol: 0.3, why: 'Notion page opens: light metal hit'},

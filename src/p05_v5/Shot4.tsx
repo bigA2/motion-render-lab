@@ -10,7 +10,7 @@ import {AbsoluteFill, Audio, Easing, Img, interpolate, interpolateColors, Sequen
 import {CameraMotionBlur} from '@remotion/motion-blur';
 import {loadFont as geist} from '@remotion/google-fonts/Geist';
 import {siNotion, siSlack} from 'simple-icons';
-import {B, BOX, CHROME_H, CPS, GRID, H, HOOK, HOOK_LINES, IMG, LINES, NOTION_BODY, Rect, SCALE_USED, SEND_R, SFX, SLACK_LINE, T, TOTAL, W, WIN, WDUR, WORD0, WSTEP, colX, colR} from './plan4';
+import {NOTION_TITLE, B, BOX, CHROME_H, CPS, GRID, H, HOOK, HOOK_LINES, IMG, LINES, NOTION_BODY, Rect, SCALE_USED, SEND_R, SFX, SLACK_LINE, T, TOTAL, W, WIN, WDUR, WORD0, WSTEP, colX, colR} from './plan4';
 
 const GEIST = geist('normal', {weights: ['500', '700'], subsets: ['latin']}).fontFamily;
 
@@ -47,8 +47,8 @@ const C = {
   bubble: {cx: 560, cy: 530, s: 1.1},
   picker: {cx: 760, cy: 560, s: 1.12},
   map: {cx: 560, cy: 520, s: 1.25},
-  flow: {cx: node2.x - 4, cy: node2.y + 6, s: 2.0},
-  node: {cx: node2.x, cy: node2.y, s: 2.3},
+  flow: {cx: node2.x - 4, cy: node2.y + 8, s: 2.5},
+  node: {cx: node2.x, cy: node2.y, s: 3.0},
   nFit: {cx: 693, cy: 548, s: 1.0},
   nKey: {cx: WIN.notion.x + NOTION_BODY.cx * NWS, cy: WIN.notion.y + CHROME_H + NOTION_BODY.cy * NWS - 20, s: 1.85},
   sFit: {cx: 675, cy: 548, s: 1.0},
@@ -245,6 +245,8 @@ const Window: React.FC<{f: number}> = ({f}) => {
   const cxN = node2.x - r.x, cyN = node2.y - (r.y + CHROME_H);
   const rad = lerp(B.nodeR * BWS * 1.6, Math.hypot(Math.max(cxN, cw - cxN), Math.max(cyN, ch - cyN)) + 4, nOpen);
   const sw = k(f, T.sSwap0, T.sSwap1); // Notion out left, Slack in from the right
+  const ns = cw / IMG.notion.w, tl = 1 - k(f, T.cutN, T.nFit, smooth);
+  const tOff = {x: (cxN - NOTION_TITLE.cx * ns) * tl, y: (cyN - NOTION_TITLE.cy * ns) * tl};
   return (
     <div style={{position: 'absolute', left: r.x, top: r.y, width: r.w, height: r.h, borderRadius: 14, overflow: 'hidden', background: '#fff',
       boxShadow: '0 50px 110px rgba(30,45,70,.24), 0 12px 30px rgba(30,45,70,.12), 0 0 0 1px rgba(255,255,255,.7)',
@@ -256,7 +258,10 @@ const Window: React.FC<{f: number}> = ({f}) => {
           <div style={{position: 'absolute', inset: 0, clipPath: nOpen < 1 ? `circle(${rad}px at ${cxN}px ${cyN}px)` : undefined,
             transform: `translateX(${-sw * cw * 0.45}px)`, opacity: 1 - interpolate(sw, [0.2, 0.8], [0, 1], cl)}}>
             <div style={{position: 'absolute', inset: 0, background: '#fff'}} />
-            <Full src={IMG.notion.src} w={IMG.notion.w} h={IMG.notion.h} s={cw / IMG.notion.w} />
+            {/* the page opens with its title "Maya Chen" sitting in the node, then glides to its place as the window settles */}
+            <div style={{position: 'absolute', left: 0, top: 0, transform: `translate(${tOff.x}px, ${tOff.y}px)`}}>
+              <Full src={IMG.notion.src} w={IMG.notion.w} h={IMG.notion.h} s={cw / IMG.notion.w} />
+            </div>
           </div>
         )}
         {f >= T.sSwap0 && (
