@@ -1,0 +1,48 @@
+cue_f  type    detected_f  delta_ms  why
+    4  tick         3.96     -1.3   hook word 1 lands: tick
+    8  tick         7.98     -0.7   hook word 2 lands: tick
+   12  tick        12.00     +0.0   hook word 3 lands: tick
+   16  tick        15.96     -1.3   hook word 4 lands: tick
+   20  tick        19.98     -0.7   hook word 5 lands: tick
+   36  whoosh   --          --        window slides in from the right (whoosh 1 of 2)   [no separate onset; rise 63.3 dB]
+   54  latch       53.94     -2.0   window lands: latch
+   60  swish       59.88     -4.0   zoom 1: camera glides into the composer (air swish)
+   80  key         79.98     -0.7   typing: soft key (characters appear this frame)
+   83  key         82.98     -0.7   typing: soft key (characters appear this frame)
+   86  key         85.98     -0.7   typing: soft key (characters appear this frame)
+   89  key         88.98     -0.7   typing: soft key (characters appear this frame)
+   92  key         91.98     -0.7   typing: soft key (characters appear this frame)
+   95  key         94.98     -0.7   typing: soft key (characters appear this frame)
+   98  key         97.98     -0.7   typing: soft key (characters appear this frame)
+  101  key        100.98     -0.7   typing: soft key (characters appear this frame)
+  104  key        103.98     -0.7   typing: soft key (characters appear this frame)
+  107  key        106.98     -0.7   typing: soft key (characters appear this frame)
+  110  key        109.98     -0.7   typing: soft key (characters appear this frame)
+  113  key        112.98     -0.7   typing: soft key (characters appear this frame)
+  116  key        115.98     -0.7   typing: soft key (characters appear this frame)
+  119  key        118.98     -0.7   typing: soft key (characters appear this frame)
+  122  key        121.98     -0.7   typing: soft key (characters appear this frame)
+  125  key        124.98     -0.7   typing: soft key (characters appear this frame)
+  128  key        127.98     -0.7   typing: soft key (characters appear this frame)
+  131  key        130.98     -0.7   typing: soft key (characters appear this frame)
+  134  key        133.98     -0.7   typing: soft key (characters appear this frame)
+  137  key        136.98     -0.7   typing: soft key (characters appear this frame)
+  140  key        139.98     -0.7   typing: soft key (characters appear this frame)
+  150  click      149.94     -2.0   press send: click
+  168  latch      168.00     +0.0   glass box lands in the sent bubble: small latch
+  192  swish    --          --        zoom 2: push onto the reply (air swish)   [no separate onset; rise 50.7 dB]
+  230  tick       229.98     -0.7   node 1 (form) connects: tick
+  240  tick       240.48    +16.0   node 2 (Notion) connects: tick
+  250  tick       249.96     -1.3   node 3 (Slack) connects: tick
+  264  swish    --          --        zoom out to the wide (falling air swish)   [no separate onset; rise 55.1 dB]
+  286  paper    --          --        Notion page slides in: paper slide   [no separate onset; rise 58.0 dB]
+  326  whoosh   --          --        Notion out / Slack in (whoosh 2 of 2)   [no separate onset; rise 71.6 dB]
+  344  chime      343.98     -0.7   Slack message arrives: short glass chime
+  394  chime    --          --        logo lands: soft chime   [no separate onset; rise 95.4 dB]
+  406  tick       405.96     -1.3   CTA pill lands: soft tick
+
+unexpected onsets (no cue within 1 f): 57.12, 171.12, 241.38, 290.52
+SFX count per type: chime 2, click 1, key 21, latch 2, paper 1, swish 3, tick 9, whoosh 2
+same sample twice within 1.5 s: none
+cues without a separate onset: 6
+stem frames > -50 dBFS outside any cue window: none
