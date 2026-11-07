@@ -63,8 +63,8 @@ const camAt = (f: number): Cam => {
   if (f < T.nIn0) return mix(C.map, C.flow, k(f, T.node2 - 2, T.node3 + 4, smooth));
   if (f < T.cutN) return mix(C.flow, C.node, k(f, T.nIn0, T.cutN, inCut));   // speed peaks as the node opens
   if (f < T.nPush0) return mix(C.node, C.nFit, k(f, T.cutN, T.nFit, outCut));
-  if (f < T.sSwap0) return sc(mix(C.nFit, C.nKey, k(f, T.nPush0, T.nPush1, peak)), 1 + 0.02 * k(f, T.nPush1, T.sSwap0, glide));
-  if (f < T.sPush0) return mix(sc(C.nKey, 1.02), C.sFit, k(f, T.sSwap0, T.sSwap1, smooth));
+  if (f < T.sCam0) return sc(mix(C.nFit, C.nKey, k(f, T.nPush0, T.nPush1, peak)), 1 + 0.02 * k(f, T.nPush1, T.sCam0, glide));
+  if (f < T.sPush0) return mix(sc(C.nKey, 1.02), C.sFit, k(f, T.sCam0, T.sSwap0 + 8, smooth));
   return sc(mix(C.sFit, C.sKey, k(f, T.sPush0, T.sPush1, peak)), 1 + 0.02 * k(f, T.sPush1, T.end, glide));
 };
 const toScreen = (c: Cam, r: Rect): Rect => ({x: 675 + (r.x - c.cx) * c.s, y: 540 + (r.y - c.cy) * c.s, w: r.w * c.s, h: r.h * c.s});
@@ -256,7 +256,7 @@ const Window: React.FC<{f: number}> = ({f}) => {
         {app === 'builder' || nOpen < 1 ? (app !== 'slack' && <BuilderContent f={Math.min(f, T.cutN + 10)} />) : null}
         {f >= T.cutN - 2 && f < T.sSwap1 && (
           <div style={{position: 'absolute', inset: 0, clipPath: nOpen < 1 ? `circle(${rad}px at ${cxN}px ${cyN}px)` : undefined,
-            transform: `translateX(${-sw * cw * 0.45}px)`, opacity: 1 - interpolate(sw, [0.2, 0.8], [0, 1], cl)}}>
+            transform: `translateX(${-sw * cw * 0.3}px)`, opacity: 1 - interpolate(sw, [0.2, 0.8], [0, 1], cl)}}>
             <div style={{position: 'absolute', inset: 0, background: '#fff'}} />
             {/* the page opens with its title "Maya Chen" sitting in the node, then glides to its place as the window settles */}
             <div style={{position: 'absolute', left: 0, top: 0, transform: `translate(${tOff.x}px, ${tOff.y}px)`}}>
@@ -265,7 +265,7 @@ const Window: React.FC<{f: number}> = ({f}) => {
           </div>
         )}
         {f >= T.sSwap0 && (
-          <div style={{position: 'absolute', inset: 0, transform: `translateX(${(1 - sw) * cw * 0.6}px)`, opacity: interpolate(sw, [0, 0.3], [0, 1], cl)}}>
+          <div style={{position: 'absolute', inset: 0, transform: `translateX(${(1 - sw) * cw * 0.35}px)`, opacity: interpolate(sw, [0, 0.3], [0, 1], cl)}}>
             <SlackContent f={f} s={cw / IMG.slackFrame.w} />
           </div>
         )}
@@ -418,7 +418,7 @@ const Hook: React.FC<{f: number}> = ({f}) => {
           {HOOK.map((h, i) => {
             if (h.line !== ln) return null;
             const p = k(f, WORD0 + i * WSTEP, WORD0 + i * WSTEP + WDUR);
-            const q = k(f, T.hookOut + i, T.hookOut + i + 9, inCut); // slide out left into the window's entrance
+            const q = k(f, T.hookOut + i, T.hookOut + i + 6, inCut); // slide out left into the window's entrance
             return <span key={i} style={{display: 'inline-block', fontWeight: L.weight, ...TRIM, opacity: interpolate(p, [0, 0.5], [0, 1], cl) * (1 - q),
               color: interpolateColors(p, [0, 1], [DIM, h.bold ? INK : '#2A3442']),
               transform: `translate(${-q * 260}px, ${(1 - p) * 22}px) scale(${0.94 + 0.06 * p})`, filter: `blur(${(1 - p) * 10 + q * 14}px)`}}>{h.w}</span>;

@@ -34,7 +34,7 @@ export const WORD0 = 2, WSTEP = 3, WDUR = 8;
 // ---------- timeline ----------
 export const T = {
   hookOut: 22,                   // words slide out left (1 f stagger, ease-in)
-  win0: 22, win1: 46,            // Chrome window slides in from the right (expo-out), parallax field
+  win0: 26, win1: 46,            // Chrome window slides in from the right (expo-out), parallax field
   lift0: 46, lift1: 58,          // glass box lifts off the real composer pill and opens to hero size
   type0: 58,                     // first character, 2 chars / frame
   cursorIn: 86, press: 100,      // cursor glides in, press send (in-box disc)
@@ -42,12 +42,13 @@ export const T = {
   sent0: 100, sent1: 106,        // real state: ready -> sent (cross-dissolve)
   pick0: 118, pick1: 132,        // shape picker card transforms into the "Reading your request" card (real states)
   flow0: 134,                    // reading -> built: mapping panel slides in from the left, flow connects node by node
-  node1: 140, node2: 148, node3: 156,
+  node1: 143, node2: 149, node3: 156,
   nIn0: 164, cutN: 172,          // camera pushes into the Notion node; the node opens into the real Notion page
   nFit: 186, nPush0: 188, nPush1: 202,
-  sSwap0: 212, sSwap1: 226,      // Notion slides out left, Slack slides in from the right, window resizes
-  msg: 222,                      // the real Slack message arrives (notification tick on its first visible frame)
-  sPush0: 226, sPush1: 236,
+  sCam0: 210,                    // camera pulls back out of the Notion push before the swap
+  sSwap0: 214, sSwap1: 226,      // Notion slides out left, Slack slides in from the right, window resizes
+  msg: 224,                      // the real Slack message arrives (notification tick on its first visible frame)
+  sPush0: 228, sPush1: 238,
   end: TOTAL,
 };
 export const CPS = 2;
