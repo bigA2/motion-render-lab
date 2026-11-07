@@ -106,6 +106,22 @@ const focusAt = (f: number): {id: string; e: number} | null => {
   for (const z of ZOOMS) {const e = envOf(f, z); if (e > 0 && (!best || e > best.e)) best = {id: z.id, e};}
   return best;
 };
+// the frost (veil) is held across a group of consecutive null zooms (no opaque flash between elements); its hole glides
+// from one element to the next during each release
+const GROUPS = [ZOOMS.slice(0, 3), ZOOMS.slice(3, 7), ZOOMS.slice(7)];
+const veilAt = (f: number): {e: number; r: Rect} | null => {
+  for (const g of GROUPS) {
+    const a = g[0], z = g[g.length - 1];
+    if (f < a.t || f >= z.rel1) continue;
+    const e = f < a.t + PUSH ? k(f, a.t, a.t + PUSH, smooth) : f < z.hold1 ? 1 : 1 - k(f, z.hold1, z.rel1, smooth);
+    let i = 0;
+    g.forEach((zz, j) => {if (f >= zz.t) i = j;});
+    const cur = ZRECT[g[i].id], nx = g[i + 1];
+    const r = nx && f >= g[i].hold1 ? lerpR(cur, ZRECT[nx.id], k(f, g[i].hold1, g[i].rel1, smooth)) : cur;
+    return {e, r};
+  }
+  return null;
+};
 type WayC = {top: string; bot: string; a: string; b: string; c: string; j: number; p: number};
 const wayAt = (f: number): WayC => {
   let j = -1;
@@ -321,8 +337,9 @@ const Window: React.FC<{f: number}> = ({f}) => {
   const tOff = {x: (cxN - NOTION_TITLE.cx * ns) * tl, y: (cyN - NOTION_TITLE.cy * ns) * tl};
   // null zoom focus: the rest of the window frosts (goes translucent) so the morphing field shows through; the element stays crisp
   const fo = focusAt(f), zr = fo ? ZRECT[fo.id] : null;
-  const lr = zr ? {x: zr.x - r.x, y: zr.y - r.y, w: zr.w, h: zr.h} : null;
-  const veil = fo ? 0.56 * fo.e : 0;
+  const vg = veilAt(f);
+  const lr = vg ? {x: vg.r.x - r.x, y: vg.r.y - r.y, w: vg.r.w, h: vg.r.h} : null;
+  const veil = vg ? 0.56 * vg.e : 0;
   const mask = lr && veil > 0.001 ? (() => {
     const rx = (lr.w / 2 * 1.45 + 10) / 0.6, ry = (lr.h / 2 * 1.45 + 10) / 0.6;
     return `radial-gradient(${rx}px ${ry}px at ${lr.x + lr.w / 2}px ${lr.y + lr.h / 2}px, #000 60%, rgba(0,0,0,0) 100%), linear-gradient(rgba(0,0,0,${1 - veil}), rgba(0,0,0,${1 - veil}))`;
