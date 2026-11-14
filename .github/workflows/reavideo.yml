@@ -11,7 +11,7 @@ jobs:
   study:
     runs-on: ubuntu-latest
     timeout-minutes: 300
-    strategy: { fail-fast: false, max-parallel: 20, matrix: { v: '${{ fromJSON(github.event.inputs.videos) }}' } }
+    strategy: { fail-fast: false, max-parallel: 4, matrix: { v: '${{ fromJSON(github.event.inputs.videos) }}' } }
     steps:
       - name: Hide the link in logs
         run: echo "::add-mask::${{ github.event.inputs.base }}"
@@ -20,7 +20,7 @@ jobs:
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
           python -m pip install -q "git+https://github.com/JuneYaooo/rea-video@3669923"
       - name: Fetch video
-        run: curl -fsS --retry 5 --retry-delay 10 -o in.mp4 "${{ github.event.inputs.base }}/v/${{ matrix.v }}.mp4" && ls -la in.mp4 | awk '{print $5}'
+        run: curl -fsS --retry 10 --retry-all-errors --retry-delay 20 -o in.mp4 "${{ github.event.inputs.base }}/v/${{ matrix.v }}.mp4" && ls -la in.mp4 | awk '{print $5}'
       - name: Decompose (full resolution)
         run: python -m rea_video decompose in.mp4 --no-vlm --no-stems --no-asr --lang en --workers 4 -o out/${{ matrix.v }}
       - name: Send results back
