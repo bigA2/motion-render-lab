@@ -1,0 +1,30 @@
+# Video study: one runner per video, full resolution, visuals only (rea-video, Apache-2.0, pinned commit).
+# Videos are fetched from a temporary private link and results are sent back to it. Nothing is stored here:
+# no videos, no results, no artifacts, no secrets.
+name: reavideo
+on:
+  workflow_dispatch:
+    inputs:
+      base: { description: 'temporary link base', required: true }
+      videos: { description: 'JSON list of video ids', required: true }
+jobs:
+  study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy: { fail-fast: false, max-parallel: 20, matrix: { v: '${{ fromJSON(github.event.inputs.videos) }}' } }
+    steps:
+      - name: Hide the link in logs
+        run: echo "::add-mask::${{ github.event.inputs.base }}"
+      - name: Tools
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+          python -m pip install -q "git+https://github.com/JuneYaooo/rea-video@3669923"
+      - name: Fetch video
+        run: curl -fsS --retry 5 --retry-delay 10 -o in.mp4 "${{ github.event.inputs.base }}/v/${{ matrix.v }}.mp4" && ls -la in.mp4 | awk '{print $5}'
+      - name: Decompose (full resolution)
+        run: python -m rea_video decompose in.mp4 --no-vlm --no-stems --no-asr --lang en --workers 4 -o out/${{ matrix.v }}
+      - name: Send results back
+        if: always()
+        run: |
+          rm -f in.mp4; tar czf r.tar.gz out || true
+          curl -fsS --retry 5 --retry-delay 10 -T r.tar.gz "${{ github.event.inputs.base }}/r/${{ matrix.v }}.tar.gz"
