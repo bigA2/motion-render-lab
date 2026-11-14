@@ -11,7 +11,7 @@ jobs:
   study:
     runs-on: ubuntu-latest
     timeout-minutes: 300
-    strategy: { fail-fast: false, max-parallel: 4, matrix: { v: '${{ fromJSON(github.event.inputs.videos) }}' } }
+    strategy: { fail-fast: false, max-parallel: 8, matrix: { v: '${{ fromJSON(github.event.inputs.videos) }}' } }
     steps:
       - name: Hide the link in logs
         run: echo "::add-mask::${{ github.event.inputs.base }}"
