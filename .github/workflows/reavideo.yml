@@ -22,7 +22,7 @@ jobs:
       - name: Fetch video
         run: curl -fsS --retry 10 --retry-all-errors --retry-delay 20 -o in.mp4 "${{ github.event.inputs.base }}/v/${{ matrix.v }}.mp4" && ls -la in.mp4 | awk '{print $5}'
       - name: Decompose (full resolution)
-        run: python -m rea_video decompose in.mp4 --no-vlm --no-stems --no-asr --lang en --workers 4 -o out/${{ matrix.v }}
+        run: python -m rea_video decompose in.mp4 --no-vlm --no-stems --no-asr --lang en --workers 2 -o out/${{ matrix.v }}
       - name: Send results back
         if: always()
         run: |
