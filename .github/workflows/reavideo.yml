@@ -1,5 +1,5 @@
 # Video study: one runner per video, full resolution, visuals only (rea-video, Apache-2.0, pinned commit).
-# Videos are fetched from a temporary private link and results are sent back to it. Nothing is stored here:
+# Videos are fetched from a temporary private link (optional id@k = 12-minute slice k, read with byte ranges) and results are sent back to it. Nothing is stored here:
 # no videos, no results, no artifacts, no secrets.
 name: reavideo
 on:
@@ -20,11 +20,16 @@ jobs:
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
           python -m pip install -q "git+https://github.com/JuneYaooo/rea-video@3669923"
       - name: Fetch video
-        run: curl -fsS --retry 10 --retry-all-errors --retry-delay 20 -o in.mp4 "${{ github.event.inputs.base }}/v/${{ matrix.v }}.mp4" && ls -la in.mp4 | awk '{print $5}'
+        run: |
+          V="${{ matrix.v }}"; ID="${V%@*}"
+          U="${{ github.event.inputs.base }}/v/$ID.mp4"
+          if [ "$ID" != "$V" ]; then K="${V#*@}"; for i in 1 2 3 4 5; do ffmpeg -y -v error -reconnect 1 -reconnect_streamed 1 -ss $((K*720)) -i "$U" -t 720 -c copy in.mp4 && break; sleep 20; done
+          else curl -fsS --retry 10 --retry-all-errors --retry-delay 20 -o in.mp4 "$U"; fi
+          ls -la in.mp4 | awk '{print $5}'
       - name: Decompose (full resolution)
-        run: python -m rea_video decompose in.mp4 --no-vlm --no-stems --no-asr --lang en --workers 2 -o out/${{ matrix.v }}
+        run: python -m rea_video decompose in.mp4 --no-vlm --no-stems --no-asr --lang en --workers 2 -o "out/${{ matrix.v }}"
       - name: Send results back
         if: always()
         run: |
           rm -f in.mp4; tar czf r.tar.gz out || true
-          curl -fsS --retry 5 --retry-delay 10 -T r.tar.gz "${{ github.event.inputs.base }}/r/${{ matrix.v }}.tar.gz"
+          curl -fsS --retry 5 --retry-delay 10 -T r.tar.gz "${{ github.event.inputs.base }}/r/$(echo "${{ matrix.v }}" | tr @ _).tar.gz"
