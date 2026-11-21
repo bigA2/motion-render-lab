@@ -1,9 +1,10 @@
+# Render the FansaChat before/after posts (beforeafter/build.py) and upload them as artifact "beforeafter".
 name: beforeafter
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
   push:
     branches: [images/before-after-2026-11-21]
-permissions: { contents: read }
+    paths: ['beforeafter/build.py', 'glass5/**', '.github/workflows/beforeafter.yml']
 jobs:
   render:
     runs-on: ubuntu-latest
@@ -11,9 +12,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
-      - run: pip install -q playwright && python -m playwright install --with-deps chromium
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: pip install playwright pillow && playwright install --with-deps chromium
       - run: python beforeafter/build.py
-      - run: cat beforeafter/out/QA.txt; ls beforeafter/out/*.png | wc -l
-      - uses: actions/upload-artifact@v4
-        with: { name: beforeafter, path: beforeafter/out, retention-days: 7 }
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: beforeafter
+          retention-days: 14
+          path: |
+            beforeafter/out/*.png
+            beforeafter/out/QA.txt

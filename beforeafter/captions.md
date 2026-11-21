@@ -1,242 +1,223 @@
-# FansaChat before/after: captions
-Copy-ready. One caption per post. Images: `beforeafter/out/NN_*_split.png` (single post) or the `_s1_before` + `_s2_after` pair (carousel).
+# FansaChat BEFORE/AFTER captions
 
----
+Copy-ready. Each post has a split image and a 2-slide carousel (slide 1 BEFORE, slide 2 AFTER).
 
-## 01. Booked call, prep ready (Sales)
+## 01. New lead to CRM  (Typeform, HubSpot, Slack)
 
-Most sales calls start with ten minutes of hunting for the right notes.
+A lead fills in your form on Friday. Who sees it?
 
-**Before**
-Someone books a call and you copy the name into Notion by hand.
-Then you remember to tell the team in Slack, if you remember at all.
+BEFORE
+Leads land in an inbox nobody checks over the weekend.
+Someone copies them into the CRM by hand on Monday.
 
-**After**
-FansaChat sees the booking, creates the Notion prep page with name, company and call time, and posts a heads-up in Slack.
-The prep is ready before you open your laptop.
+AFTER
+You type: when a form comes in, add the lead to HubSpot and tell the team in Slack.
+FansaChat builds it and the lead is in the CRM within seconds.
 
-**How it works**
-1. Type it in plain words. Type: "When someone books a call, create a Notion prep page and post in Slack."
-2. Connect your apps once (Notion, Slack and your booking tool).
-3. It runs on its own from then on.
+HOW
+1. Type what you want in plain words.
+2. Connect your apps once.
+3. It runs on its own.
 
-Join the waitlist at fansachat.com
+Join the waitlist: fansachat.com
 FansaChat Community on Telegram: t.me/fansachat
 
-#sales #salesops #automation #notion #slack #nocode #workflow #fansachat
+#sales #crm #leadgen #hubspot #automation #nocode #smallbusiness
 
----
+## 02. Booked call to prep page  (Calendly, Notion, Slack)
 
-## 02. Client request to task and alert (Agency)
+A call is booked. The prep starts from zero.
 
-A client request is only useful if someone actually sees it.
+BEFORE
+You open the calendar, then a notes page, then the chat, to copy the same name three times.
+The prep page is half done when the call starts.
 
-**Before**
-Requests land in an inbox and get forwarded from person to person.
-By the time it is a task, half the context is gone.
+AFTER
+FansaChat creates a prep page with name, company and time, and posts it in Slack.
+It is ready before you open your calendar.
 
-**After**
-FansaChat turns each request into a Notion task due today and sends a Slack alert with the client and the request.
-Nobody has to retype anything.
+HOW
+1. Type what you want in plain words.
+2. Connect your apps once.
+3. It runs on its own.
 
-**How it works**
-1. Type it in plain words. Type: "When a client request comes in, create a Notion task due today and alert Slack."
-2. Connect your apps once (Notion, Slack and your form).
-3. It runs on its own from then on.
-
-Join the waitlist at fansachat.com
+Join the waitlist: fansachat.com
 FansaChat Community on Telegram: t.me/fansachat
 
-#agency #clientservices #projectmanagement #automation #notion #slack #nocode #fansachat
+#sales #salescalls #notion #slack #automation #productivity #founders
 
----
+## 03. One post to every channel  (WordPress, Buffer, Instagram, Facebook Pages)
 
-## 03. Project brief saved and sent to you (Freelancer)
+One blog post, four channels, four rewrites.
 
-Freelancers lose more time looking for the brief than reading it.
+BEFORE
+You publish, then log in to each social tool to paste the link and write a new line.
+It eats half an hour every time.
 
-**Before**
-Briefs come by email, DM and form. The budget is in one place and the deadline in another.
-You rebuild the full picture every time.
+AFTER
+FansaChat posts to each channel when the article goes live.
+You publish once and the rest follows.
 
-**After**
-FansaChat saves each brief as a Notion page with client, budget, deadline and what they need.
-Then it sends you a Slack message with the client and the budget.
+HOW
+1. Type what you want in plain words.
+2. Connect your apps once.
+3. It runs on its own.
 
-**How it works**
-1. Type it in plain words. Type: "When a new brief arrives, save it as a Notion page and message me the client and budget."
-2. Connect your apps once (Notion, Slack and your intake form).
-3. It runs on its own from then on.
-
-Join the waitlist at fansachat.com
+Join the waitlist: fansachat.com
 FansaChat Community on Telegram: t.me/fansachat
 
-#freelance #freelancer #solopreneur #automation #notion #slack #nocode #fansachat
+#marketing #contentmarketing #socialmedia #buffer #automation #wordpress #creators
 
----
+## 04. Urgent ticket to the right person  (Zendesk, Slack, Linear)
 
-## 04. One blog post, drafts for every network (Marketing)
+An urgent ticket waited an hour. Nobody saw it.
 
-One blog post should not cost you an afternoon of captions.
+BEFORE
+The ticket sits in the queue while the team works in other tabs.
+Someone finds it later, after the customer has written twice.
 
-**Before**
-You publish the post, then rewrite the same idea for LinkedIn, Instagram and the rest.
-Every network gets scheduled by hand.
+AFTER
+FansaChat sends urgent tickets to the right Slack channel and opens a task in Linear.
+The right person knows within a minute.
 
-**After**
-FansaChat picks up the new post, writes a caption draft for each network and queues them in Buffer.
-You review the drafts instead of writing from scratch.
+HOW
+1. Type what you want in plain words.
+2. Connect your apps once.
+3. It runs on its own.
 
-**How it works**
-1. Type it in plain words. Type: "When I publish a WordPress post, write captions for each network and queue them in Buffer."
-2. Connect your apps once (WordPress, OpenAI, Buffer and Instagram).
-3. It runs on its own from then on.
-
-Join the waitlist at fansachat.com
+Join the waitlist: fansachat.com
 FansaChat Community on Telegram: t.me/fansachat
 
-#marketing #contentmarketing #socialmedia #automation #wordpress #buffer #nocode #fansachat
+#customersupport #support #zendesk #slack #linear #automation #saas
 
----
+## 05. Order to shipping label and sheet  (Shopify, Shippo, Google Sheets)
 
-## 05. Support email to ticket and owner (Support)
+Every order gets typed in twice.
 
-A shared inbox is where good support requests go to wait.
+BEFORE
+Each order is copied into a sheet, then the address is pasted into the shipping tool.
+It is the same hour of work every day.
 
-**Before**
-Everyone can see the email and nobody is sure who is replying.
-The customer waits while the team checks with each other.
+AFTER
+FansaChat creates the shipping label and adds a row to your sheet for each new order.
+No retyping, no missed orders.
 
-**After**
-FansaChat turns each support email into a Help Scout ticket and pings the right person in Slack.
-Every request has an owner from the first minute.
+HOW
+1. Type what you want in plain words.
+2. Connect your apps once.
+3. It runs on its own.
 
-**How it works**
-1. Type it in plain words. Type: "When a support email arrives, create a ticket and ping the owner in Slack."
-2. Connect your apps once (Gmail, Help Scout and Slack).
-3. It runs on its own from then on.
-
-Join the waitlist at fansachat.com
+Join the waitlist: fansachat.com
 FansaChat Community on Telegram: t.me/fansachat
 
-#customersupport #support #helpdesk #automation #gmail #slack #nocode #fansachat
+#ecommerce #shopify #operations #shipping #googlesheets #automation #smallbusiness
 
----
+## 06. Payments booked, Monday summary posted  (Stripe, QuickBooks, Slack)
 
-## 06. Order to label and tracking email (Ops / e-commerce)
+The Monday report is written on Sunday night.
 
-Every order you ship by hand is a few minutes you do not get back.
+BEFORE
+Payments are copied into the books one by one.
+The summary gets built late, after everyone has gone home.
 
-**Before**
-You copy the address from the order into the label tool.
-Then you paste the tracking number into an email to the buyer.
+AFTER
+FansaChat books each payment as it clears and posts the weekly summary in Slack.
+The report is ready when you sit down on Monday.
 
-**After**
-FansaChat sees the new order, creates the shipping label and emails the tracking link to the buyer.
-The order also gets a row in your log.
+HOW
+1. Type what you want in plain words.
+2. Connect your apps once.
+3. It runs on its own.
 
-**How it works**
-1. Type it in plain words. Type: "When a Shopify order comes in, make a Shippo label and email the tracking to the buyer."
-2. Connect your apps once (Shopify, Shippo, Gmail and Google Sheets).
-3. It runs on its own from then on.
-
-Join the waitlist at fansachat.com
+Join the waitlist: fansachat.com
 FansaChat Community on Telegram: t.me/fansachat
 
-#ecommerce #shopify #operations #shipping #automation #nocode #workflow #fansachat
+#finance #bookkeeping #quickbooks #stripe #smallbusiness #automation #startups
 
----
+## 07. Offer accepted to onboarding  (Greenhouse, BambooHR, Slack, Google Calendar)
 
-## 07. Monday revenue report builds itself (Finance)
+The offer is accepted. Now the checklists begin.
 
-The Monday report should not need your Sunday night.
+BEFORE
+HR keeps five checklists in five tabs and someone always misses one.
+The new hire arrives and the laptop request is still open.
 
-**Before**
-You export numbers, paste them into a sheet and fix the totals by hand.
-It is done late, and you are the only one who can do it.
+AFTER
+FansaChat starts onboarding when the offer is accepted: record, welcome message and a calendar invite.
+Day one is set up before they walk in.
 
-**After**
-FansaChat pulls the payments and books, updates the weekly totals sheet and emails the report.
-It is in your inbox before Monday starts.
+HOW
+1. Type what you want in plain words.
+2. Connect your apps once.
+3. It runs on its own.
 
-**How it works**
-1. Type it in plain words. Type: "Every Monday morning, update my revenue sheet from Stripe and QuickBooks and email me the report."
-2. Connect your apps once (Stripe, QuickBooks, Google Sheets and Gmail).
-3. It runs on its own from then on.
-
-Join the waitlist at fansachat.com
+Join the waitlist: fansachat.com
 FansaChat Community on Telegram: t.me/fansachat
 
-#finance #smallbusiness #bookkeeping #reporting #automation #stripe #nocode #fansachat
+#hr #onboarding #peopleops #bamboohr #greenhouse #automation #hiring
 
----
+## 08. Client request to task and alert  (Typeform, Notion, Slack)
 
-## 08. Offer accepted, onboarding starts (HR)
+Client requests arrive everywhere except one place.
 
-Day one starts well when the setup was done before it.
+BEFORE
+Some come by email, some in chat, some as a DM.
+Nobody is sure which message is the current one.
 
-**Before**
-The offer is accepted and five small tasks start by hand.
-HR record, welcome email, calendar invite, and more.
+AFTER
+FansaChat turns each request into a task with the client name and sends a Slack alert.
+Every request lives in one list.
 
-**After**
-FansaChat creates the BambooHR record, sends the welcome email and books the day-one invite.
-The new hire hears from you the same day.
+HOW
+1. Type what you want in plain words.
+2. Connect your apps once.
+3. It runs on its own.
 
-**How it works**
-1. Type it in plain words. Type: "When an offer is accepted in Greenhouse, add them to BambooHR, email a welcome and invite them for day one."
-2. Connect your apps once (Greenhouse, BambooHR, Gmail and Google Calendar).
-3. It runs on its own from then on.
-
-Join the waitlist at fansachat.com
+Join the waitlist: fansachat.com
 FansaChat Community on Telegram: t.me/fansachat
 
-#hr #humanresources #onboarding #recruiting #automation #bamboohr #nocode #fansachat
+#agency #agencylife #clientwork #notion #slack #automation #projectmanagement
 
----
+## 09. New video to every audience  (YouTube, Bluesky, Discord)
 
-## 09. New lead lands in the CRM (Sales)
+The video is live. Now the chores start.
 
-A lead that waits for someone to check the form is a lead you may lose.
+BEFORE
+You paste the link into every community and social account by hand.
+It happens after every single upload.
 
-**Before**
-The form fills in and the lead sits there until someone notices.
-Then it gets copied into the CRM by hand.
+AFTER
+FansaChat shares the link on Bluesky and Discord when the video goes up.
+You upload once and get ten minutes back.
 
-**After**
-FansaChat creates the deal in Pipedrive within seconds, sends a first reply and alerts the team in Slack.
-Every lead gets a first touch.
+HOW
+1. Type what you want in plain words.
+2. Connect your apps once.
+3. It runs on its own.
 
-**How it works**
-1. Type it in plain words. Type: "When someone fills in my form, create a Pipedrive deal, send a first reply and alert Slack."
-2. Connect your apps once (Typeform, Pipedrive, Gmail and Slack).
-3. It runs on its own from then on.
-
-Join the waitlist at fansachat.com
+Join the waitlist: fansachat.com
 FansaChat Community on Telegram: t.me/fansachat
 
-#sales #leadgeneration #crm #pipedrive #automation #nocode #workflow #fansachat
+#creator #youtube #contentcreator #discord #bluesky #automation #solopreneur
 
----
+## 10. Project brief to Notion and Slack  (Typeform, Notion, Slack)
 
-## 10. New video, drafts ready (Solo creator)
+The brief came by email. The budget is somewhere in the thread.
 
-Posting a video is the quick part. Everything around it is not.
+BEFORE
+Budget and deadline get buried under replies.
+You find them again three weeks later.
 
-**Before**
-You rewatch the upload to write the description.
-Then you pull the quotes and draft the posts one by one.
+AFTER
+FansaChat saves each brief as a Notion page with client, budget and deadline, and sends you a Slack summary.
+Nothing gets lost.
 
-**After**
-FansaChat takes the new upload, writes the description and post drafts, saves them in Google Docs and queues the posts in Buffer.
-You review and publish.
+HOW
+1. Type what you want in plain words.
+2. Connect your apps once.
+3. It runs on its own.
 
-**How it works**
-1. Type it in plain words. Type: "When I upload to YouTube, write a description and post drafts, save them in Google Docs and queue them in Buffer."
-2. Connect your apps once (YouTube, OpenAI, Google Docs and Buffer).
-3. It runs on its own from then on.
-
-Join the waitlist at fansachat.com
+Join the waitlist: fansachat.com
 FansaChat Community on Telegram: t.me/fansachat
 
-#creator #youtuber #contentcreator #solopreneur #automation #buffer #nocode #fansachat
+#freelance #freelancer #notion #slack #clientbrief #automation #productivity

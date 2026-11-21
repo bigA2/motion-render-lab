@@ -1,32 +1,31 @@
 # Before/After posts: RESULT
 
-Branch `images/before-after-2026-11-21`. Build: `python beforeafter/build.py` (CI: `.github/workflows/beforeafter.yml`, artifact `beforeafter`). Captions: `beforeafter/captions.md`.
-Each post has 3 PNGs (1080x1350) in `beforeafter/out/`: `NN_slug_split.png`, `NN_slug_s1_before.png`, `NN_slug_s2_after.png`.
+## Posts (each: split + carousel slide 1 BEFORE + slide 2 AFTER = 3 PNGs, 1080x1350, in beforeafter/out/)
 
-| # | Post | Area | Workflow | Apps | UI frame |
-|---|------|------|----------|------|----------|
-| 01 | Booked call, prep ready | Sales | Call booked -> Prep page -> Team heads-up | calendly, notion, slack | real P0x workflow frame |
-| 02 | Client request to task and alert | Agency | Client request -> Task, due today -> Alert to team | typeform, notion, slack | real P0x workflow frame |
-| 03 | Project brief saved and sent to you | Freelancer | New brief -> Brief page -> Message to you | typeform, notion, slack | real P0x workflow frame |
-| 04 | One blog post, drafts for every network | Marketing | New blog post -> Captions written -> Posts queued -> Instagram post | wordpress, openai, buffer, instagram-business | real FansaChat UI frame |
-| 05 | Support email to ticket and owner | Support | Support email -> Ticket created -> Owner pinged | gmail, help-scout, slack | real FansaChat UI frame |
-| 06 | Order to label and tracking email | Ops / e-commerce | New order -> Label made -> Tracking email -> Order log | shopify, shippo, gmail, google-sheets | real FansaChat UI frame |
-| 07 | Monday revenue report builds itself | Finance | Payments -> Books -> Weekly totals -> Report sent | stripe, quickbooks, google-sheets, gmail | real FansaChat UI frame |
-| 08 | Offer accepted, onboarding starts | HR | Offer accepted -> HR record -> Welcome email -> Day-one invite | greenhouse, bamboohr, gmail, google-calendar | real FansaChat UI frame |
-| 09 | New lead lands in the CRM | Sales | New lead -> Deal created -> First reply -> Team alert | typeform, pipedrive, gmail, slack | real FansaChat UI frame |
-| 10 | New video, drafts ready | Solo creator | New upload -> Drafts written -> Drafts saved -> Posts queued | youtube, openai, google-docs, buffer | real FansaChat UI frame |
+| # | Title | Area | Apps |
+|---|---|---|---|
+| 01 | New lead to CRM | Sales | Typeform, HubSpot, Slack |
+| 02 | Booked call to prep page | Sales | Calendly, Notion, Slack |
+| 03 | One post to every channel | Marketing | WordPress, Buffer, Instagram, Facebook Pages |
+| 04 | Urgent ticket to the right person | Support | Zendesk, Slack, Linear |
+| 05 | Order to shipping label and sheet | Ops | Shopify, Shippo, Google Sheets |
+| 06 | Payments booked, Monday summary posted | Finance | Stripe, QuickBooks, Slack |
+| 07 | Offer accepted to onboarding | HR | Greenhouse, BambooHR, Slack, Google Calendar |
+| 08 | Client request to task and alert | Agency | Typeform, Notion, Slack |
+| 09 | New video to every audience | Solo creator | YouTube, Bluesky, Discord |
+| 10 | Project brief to Notion and Slack | Freelance | Typeform, Notion, Slack |
+
+Captions: beforeafter/captions.md. Build: beforeafter/build.py, workflow .github/workflows/beforeafter.yml (artifact `beforeafter`).
 
 ## Fonts
-Space Grotesk (500, 700) for all text and the CTA; Anton for the BEFORE/AFTER labels only. No italic, script or serif faces.
+Space Grotesk (500/700) for text, Big Shoulders Display for labels and result words. Two families, no italic or script. CTA comes from glass5/cta.py and inherits Space Grotesk (its button gradient is the house CTA colour, left as is).
 
-## UI frames
-Cut with ffmpeg from `public/real/P05_ui.webm`, `P06_ui.webm`, `P07_ui.webm` and `P05_still_empty.png`. Posts 01 to 03 use the real built workflow step card of the matching recording (booked call, client request, project brief). Posts 04 to 10 do not have their own recordings, so they show generic real UI (workflow shape picker, empty chat) and no invented prompt text. App logos are all from `glass5/icons`.
+## Real UI frames
+Cut with ffmpeg from public/real/*.webm. Posts 02, 08, 10 show the real chat for their own flow (P05, P06, P07: booking, client request, brief). The other 7 workflows have no recording, so they show the real, app-neutral "How should your workflow look?" picker from P05 instead of a made-up chat. App logos are all from glass5/icons. No typed or drawn UI.
 
 ## QA notes
-- Automated per image: every text node >= 30px, nothing outside a 24px margin, no text overlapping text, nothing covering text (elementFromPoint), contrast check on chips, font list (Anton, Grotesk only). Report: `beforeafter/out/QA.txt`, 30/30 PASS.
-- Visual: opened contact sheets of all 30 PNGs plus full-size checks (01 split, 05 s2, 10 split). Fixed along the way: text covered by the logo pile, 3 and 4 line headlines touching the flow, flow labels running together on 4-node carousels, UI crop colliding with the footer, footer off the edge.
-- `glass5/cta.py` got one backward-compatible `sub` argument so the Telegram line can be >= 30px. Button text is the house CTA.
-- Claims are minutes or hours only, no percentages or prices. Posts 04 to 10 describe workflows FansaChat can build from chat with the listed apps; they were not recorded end to end.
-- Limits: the UI crops are small in the split post (real UI, screenshot text not legible there), larger in the carousel.
+- Automated (glass5 QA + checks): no text under 30px (CTA t.me and community label forced to 30px by CSS override on cta.py output), no overlaps, nothing covering main text, safe zone, 2 font families. 30/30 PASS (out/QA.txt).
+- Opened sample PNGs (posts 02, 04, 05, 06, 08, 10 plus a contact sheet of all 30) to check layout, contrast and clipping. Fixed: footer overlapping the Telegram pill, clipped logo pile, a cached wrong frame, mismatched generic UI crop.
+- Known limits: UI frame text is small by nature (real screenshot, not copy). Typeform logo is a plain T mark. Claims are time-based only (seconds, a minute, 10 or 30 minutes), no statistics.
 
 READY: yes
