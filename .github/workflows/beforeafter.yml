@@ -1,0 +1,19 @@
+name: beforeafter
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [images/before-after-2026-11-21]
+permissions: { contents: read }
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - run: pip install -q playwright && python -m playwright install --with-deps chromium
+      - run: python beforeafter/build.py
+      - run: cat beforeafter/out/QA.txt; ls beforeafter/out/*.png | wc -l
+      - uses: actions/upload-artifact@v4
+        with: { name: beforeafter, path: beforeafter/out, retention-days: 7 }
